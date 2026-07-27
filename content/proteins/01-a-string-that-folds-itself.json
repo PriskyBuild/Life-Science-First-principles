@@ -1,0 +1,117 @@
+{
+  "id": "proteins/01",
+  "module": "proteins",
+  "index": 0,
+  "title": "A String That Folds Itself",
+  "specimen": "folding-rig",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A protein is made as a floppy string. A second later it is a precise machine. Nothing folded it.",
+        "A protein leaves the ribosome as a floppy chain and within milliseconds it is a machine accurate to a fraction of a nanometre. There is no mould, no template and no instructions for the shape."
+      ],
+      "sub": [
+        "So how does it know what shape to be?",
+        "The shape is not stored anywhere. That is the thing to explain."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "sequence-determines-fold",
+      "question": [
+        "What decides the shape a protein folds into?",
+        "What determines a protein's final three-dimensional structure?"
+      ],
+      "options": [
+        "The order of the beads it is made from",
+        "A machine that folds it into shape",
+        "It is different every time"
+      ],
+      "outcome": "The order of the beads it is made from",
+      "note": [
+        "Have a guess first.",
+        "Commit. Anfinsen tested this by unfolding a protein completely and letting go — the result decided the question."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "folding",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Some beads hate water and some like it. Bend the string until the water-hating ones are all touching in the middle.",
+        "The round beads are oily and the square ones are happy in water. Fold the chain so the oily ones end up together, tucked inside."
+      ],
+      "params": { "seq": "PHHPPHHP", "target": 2, "aspect": 0.85 },
+      "goal": [
+        "The oily beads are hidden in the middle and the watery ones are on the outside. That is a folded protein.",
+        "Oily residues buried, water-loving residues facing out. That is the shape, and nothing chose it — it is just the arrangement nothing beats."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "folding",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "A different sequence. Find its best fold — and notice it is a different shape from the last one.",
+        "Same rule, different sequence. Find the optimum, then compare the shape you get with the one the previous chain gave. Nothing about the rule changed."
+      ],
+      "params": { "seq": "HHPPHPPHPPHH", "target": 4, "aspect": 0.85 },
+      "goal": [
+        "A different string, a different best shape. The order of the beads is the only thing that changed.",
+        "Different optimum, different geometry, identical physics. The sequence is the only input — which is exactly why it is called the primary structure."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The order of the beads decides the shape. That is the only thing that decides it.",
+        "The sequence of amino acids determines the folded structure. Nothing else is needed.",
+        "Anfinsen's dogma: the native structure is determined by the primary sequence alone, and it is the thermodynamic minimum rather than a kinetically trapped state.",
+        "Anfinsen unfolded ribonuclease completely — breaking every disulfide bond and denaturing it — then removed the denaturant and watched full activity return. No cellular machinery was present. The information for the fold is in the chain, and it is thermodynamic rather than historical."
+      ],
+      "sub": [
+        "Oily bits hide from the water. That is nearly the whole story.",
+        "The driver is the hydrophobic effect: oily residues have far fewer arrangements available to them in water, so burying them is overwhelmingly the likelier state.",
+        "Hydrogen bonding, packing and electrostatics all contribute, but the hydrophobic collapse is the dominant term and it is the one worth learning first.",
+        "It is entropic rather than energetic in origin, which is counter-intuitive: burying a hydrophobic side chain releases the ordered water shell around it, and the entropy gained by that water is what pays for the fold."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "sequence-determines-fold",
+      "q": [
+        "What told the string what shape to be?",
+        "Where is the information for the fold stored?",
+        "In what sense does the sequence encode the structure?"
+      ],
+      "options": [
+        "Nothing did — the shape is what the order of beads makes happen",
+        "A folding machine in the cell",
+        "The shape is written down in the DNA separately"
+      ],
+      "answer": 0,
+      "why": [
+        "Nobody folds it. Put those beads in that order in water and that shape is what you get, because it is the arrangement the beads settle into.",
+        "There is no separate instruction for shape. The DNA specifies the order of amino acids and nothing else; the structure is a consequence of that order plus water.",
+        "The encoding is implicit rather than explicit. The genome stores a one-dimensional string and the three-dimensional structure is computed by physics at run time — which is precisely why predicting structure from sequence was an unsolved problem for fifty years."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Working out the shape from the beads used to take years. Computers can now do it in minutes.",
+        "Structure prediction from sequence was one of biology's great open problems for half a century. AlphaFold largely closed it in 2021 and structures for essentially every known protein are now freely available — which changed drug discovery from a problem of getting a structure to a problem of what to do with it."
+      ]
+    }
+  ]
+}

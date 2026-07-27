@@ -1,0 +1,117 @@
+{
+  "id": "proteins/04",
+  "module": "proteins",
+  "index": 3,
+  "title": "When Folding Goes Wrong",
+  "specimen": "chaperone",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Sometimes a protein folds the wrong way. Sometimes the wrong shape is stickier than the right one.",
+        "Folding usually finds the right answer. When it does not, the misfolded form is occasionally more stable than the correct one — and then it does not go back."
+      ],
+      "sub": [
+        "And then it is very hard to undo.",
+        "A wrong shape that is more stable than the right shape is a different kind of problem from a mistake."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "misfolding-disease",
+      "question": [
+        "What is the danger of a protein folding into a sticky wrong shape?",
+        "Why is a stable misfolded conformation dangerous beyond the loss of one protein's function?"
+      ],
+      "options": [
+        "It sticks to others and they clump together",
+        "It gets used up quickly",
+        "It turns into a different protein"
+      ],
+      "outcome": "It sticks to others and they clump together",
+      "note": [
+        "Guess before you read on.",
+        "Commit. The answer is why a single misfolded molecule can matter at all."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "folding",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Fold this one and see how easy it is to get stuck somewhere that is nearly right but not right.",
+        "Fold this chain to its best shape. Notice how many arrangements are close to the answer without being it."
+      ],
+      "params": { "seq": "PHHPPHHPPHHP", "target": 3, "aspect": 0.85 },
+      "goal": [
+        "You got there. But there were plenty of nearly-right shapes on the way.",
+        "Found it. The point is how many almost-right arrangements you passed through — a real chain has vastly more."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "folding",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Find this one's best fold. Then count how many bends you needed, and think about a real protein with three hundred beads.",
+        "Reach the optimum, then consider the scaling. This chain has 12 residues and a handful of moves; a real protein has hundreds, and cannot search them all."
+      ],
+      "params": { "seq": "HHPPHPPHPPHH", "target": 4, "aspect": 0.85 },
+      "goal": [
+        "Found it — and you had to search. A real protein cannot search, so it must not need to.",
+        "Levinthal's paradox in miniature: a 100-residue chain sampling every conformation would take longer than the universe has existed, yet folding takes milliseconds. The resolution is that folding is a funnel, not a search — the landscape is biased toward the native state from everywhere on it."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The cell has helpers that stop proteins folding wrong. They are called chaperones.",
+        "Chaperone proteins bind newly made chains and prevent them from aggregating while they fold.",
+        "Chaperones do not specify the fold — they suppress the wrong outcomes, mainly by keeping exposed hydrophobic surfaces from finding each other.",
+        "The distinction matters: a chaperone raises the yield of the native state without adding information to it. Anfinsen still holds — the sequence determines the structure — and the chaperone only improves the odds of getting there without aggregating on the way."
+      ],
+      "sub": [
+        "And a cell can throw away the ones that still come out wrong.",
+        "Beyond that there is quality control: persistently misfolded proteins are tagged and destroyed.",
+        "Ubiquitin tagging marks a protein for the proteasome. Roughly a third of newly made proteins are destroyed almost immediately, which is a startling amount of deliberate waste.",
+        "That waste is the price of speed. Translation running fast enough to be useful produces a substantial defective fraction, and it is cheaper to destroy them than to slow everything down — the same fidelity-versus-rate trade you met in replication."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "misfolding-disease",
+      "q": [
+        "Why is a sticky misfolded protein dangerous?",
+        "Why does misfolding cause disease beyond the loss of function?",
+        "What makes amyloid pathology self-propagating?"
+      ],
+      "options": [
+        "It makes others fold wrong too, and they pile up",
+        "It stops the cell making new proteins",
+        "It uses up all the water"
+      ],
+      "answer": 0,
+      "why": [
+        "The wrong shape has sticky bits on the outside. It grabs others, they clump, and the clumps get bigger — losing one protein would not matter much, but a growing pile does.",
+        "The misfolded form templates the same misfolding in normal copies, so the problem grows rather than staying constant, and the aggregates themselves are toxic. Alzheimer's, Parkinson's and type 2 diabetes all involve protein aggregation.",
+        "Amyloid is a cross-β structure that is thermodynamically very stable and grows by recruiting monomers onto its ends. That is self-templating — which is why prion diseases are transmissible without any nucleic acid at all, a claim that took Prusiner a decade to get accepted."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Some of the hardest diseases to treat are protein-folding problems.",
+        "Cystic fibrosis is largely a folding disease: the commonest mutation produces a channel that works but never reaches the cell surface because quality control destroys it as misfolded. Drugs that help it fold correctly — correctors — treat the underlying defect rather than the symptoms, which is why they changed the prognosis so sharply."
+      ]
+    }
+  ]
+}

@@ -702,3 +702,30 @@ own the moment the path to it is written. The signpost copy went the same way �
 "the one you are in is finished", which was true for exactly as long as Cells was the only module
 with anything in it. Copy that states a fact about the content has to be computed from the
 content, or it becomes a lie quietly.
+
+### D51 — The folding model's targets are set by measurement, not by taste
+*New, and it caught two false claims of mine.*
+
+`js/sims/folding.js` is the HP lattice model (Dill, 1985) — a real model that real papers use,
+not a cartoon. Two things went wrong writing lessons against it, and both are the same mistake:
+asserting a property of a model instead of measuring it.
+
+**The optima were computed, not guessed.** Before authoring a single goal I ran an exhaustive
+self-avoiding walk over each sequence: `PHHPPHHP` maxes at 2 contacts, `PHHPPHHPPHHP` at 4,
+`HHPPHPPHPPHH` at 5. Then I measured how often *random* play reaches each: 63%, 20% and 4%
+respectively over 250 moves. A goal that random play hits 4% of the time is one a twelve-year-old
+on a phone will probably not reach, so the authored targets sit below the true optima — and the
+success message was rewritten to stop claiming the fold is optimal, because it often is not. A
+child who found a better fold after being told it was the best possible would have caught the app
+lying to them, which is a worse outcome than a slightly weaker celebration.
+
+**Two claims in my own header comment were false, and a test found them.** I had written that
+four pivots return the chain to where it started and that every arrangement is reachable. Neither
+holds: self-avoidance refuses some pivots, which breaks the first, and pivot moves are not
+provably ergodic on a lattice, which breaks the second. The comment now says so explicitly rather
+than being quietly corrected, because the interesting part is that a plausible-sounding sentence
+about a model survived being written and only died on contact with an assertion.
+
+What replaced it is the property that actually matters and is actually true: **a refused move
+changes nothing at all.** The chain is never left half-folded, and the refusal is shown, because
+"that one is blocked" is a fact about the shape rather than an error.

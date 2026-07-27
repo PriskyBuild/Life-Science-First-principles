@@ -1,0 +1,109 @@
+{
+  "id": "proteins/02",
+  "module": "proteins",
+  "index": 1,
+  "title": "Shape Is the Job",
+  "specimen": "shape-gauge",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Almost everything your body does is done by a protein. They are all made of the same twenty beads.",
+        "Muscle, sight, digestion, clotting, immunity, the machine that copies your DNA — all proteins, all built from the same twenty amino acids in different orders."
+      ],
+      "sub": [
+        "So what makes one different from another?",
+        "Identical parts list, wildly different jobs. Only one thing can be carrying the difference."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "shape-is-function",
+      "question": [
+        "If you changed a protein's shape but kept all the same beads, what would happen?",
+        "Denature a protein without breaking a single covalent bond. What happens to its function?"
+      ],
+      "options": [
+        "It would stop working",
+        "Nothing — it has the same parts",
+        "It would work better"
+      ],
+      "outcome": "It would stop working",
+      "note": [
+        "Guess before you read on.",
+        "Commit. Everything in the protein is still present and still connected — only the arrangement has changed."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Change the shape",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Folded properly. It works.",
+        "Slightly distorted. It still works, a bit slower.",
+        "Noticeably wrong. Most of the activity has gone.",
+        "Badly unfolded. It does nothing at all.",
+        "Completely open. Every bead still there, and useless."
+      ],
+      "t": [
+        "Nothing is being removed. Only the shape is changing.",
+        "Not one bond is broken across this range. Watch how fast function falls away anyway."
+      ],
+      "after": [
+        "Every bead is still there. It does nothing.",
+        "Composition unchanged from start to finish. Function is a property of the arrangement, not of the ingredients."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "What a protein does depends on the shape it is, not what it is made of.",
+        "Function follows structure. The composition is nearly the same across every protein; the fold is what differs.",
+        "Structure determines function, and it does so through surface geometry: which residues are exposed, in what arrangement, forming what pockets.",
+        "This is why proteins are described as molecular machines rather than molecules. What matters is the shape of the surface and how it moves — the chemistry of the individual side chains is nearly the same set in all of them."
+      ],
+      "sub": [
+        "Change the shape and you have changed the job.",
+        "A protein's shape IS its specification. Distort it and you have not damaged a working thing — you have made a different, useless thing.",
+        "Many proteins also change shape as part of working, and that motion is often the mechanism rather than an incidental.",
+        "Allostery makes the point sharply: binding at one site changes the shape at a distant one, so the molecule acts as a switch. Haemoglobin's cooperativity is exactly this, and it is why it can load oxygen in the lungs and release it in tissue."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "shape-is-function",
+      "q": [
+        "You unfold a protein but break nothing. Does it still work?",
+        "An unfolded protein retains every bond. Is it functional?",
+        "Why does denaturation abolish function without altering composition?"
+      ],
+      "options": [
+        "No — the shape was the job",
+        "Yes, all the parts are still there",
+        "Only if it was a small protein"
+      ],
+      "answer": 0,
+      "why": [
+        "Nothing has been taken away. But the working part of a protein is the shape of its surface, and once that is gone there is nothing left to do the job.",
+        "Every atom and every covalent bond is intact. Function lived in the arrangement — the pocket, the surface, the geometry — and unfolding destroys that while leaving the chemistry untouched.",
+        "The catalytic or binding site is an emergent property of the tertiary structure: residues far apart in sequence are brought together in space to form it. Unfolding separates them, and the site simply ceases to exist as a feature."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Cooking an egg is exactly this. The clear part goes white and never goes back.",
+        "Egg white turning opaque is denaturation you can watch: heat unfolds the proteins, the exposed oily interiors stick to each other, and they aggregate. Nothing has been chemically destroyed — and it is irreversible for the same reason a tangled net is, because the aggregate is more stable than the folded form."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "id": "proteins/05",
+  "module": "proteins",
+  "index": 4,
+  "title": "Build a Protein",
+  "specimen": "assembled-enzyme",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You have everything you need now. Build a working enzyme, then find out whether it survives being used.",
+        "Sequence, fold, active site, quality control. Assemble a working enzyme from those pieces — and then it gets stress-tested, properly."
+      ],
+      "sub": [
+        "It can go wrong. That is the point.",
+        "Any part in the wrong job produces a specific, predictable failure. That is what makes this a test rather than a ceremony."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Put each part in the job it does. Any part will go in any slot, so it is up to you.",
+        "Assign each component to its function. Placement is unconstrained — the marking is entirely on the assignment."
+      ],
+      "parts": [
+        { "id": "sequence", "label": "The bead order" },
+        { "id": "core", "label": "The oily core" },
+        { "id": "site", "label": "The active site" },
+        { "id": "chaperone", "label": "The chaperone" },
+        { "id": "tag", "label": "The disposal tag" }
+      ],
+      "slots": [
+        { "correct": "sequence", "label": ["Decides what shape it will be", "Specifies the fold"] },
+        { "correct": "core", "label": ["Holds the shape together", "Stabilises the tertiary structure"] },
+        { "correct": "site", "label": ["Does the actual job", "Binds substrate and catalyses"] },
+        { "correct": "chaperone", "label": ["Stops it sticking while it folds", "Prevents aggregation during folding"] },
+        { "correct": "tag", "label": ["Gets rid of the ones that come out wrong", "Marks misfolded protein for destruction"] }
+      ],
+      "trials": [
+        {
+          "name": ["Make it at all", "Synthesis"],
+          "needs": ["sequence"],
+          "pass": ["There is a chain to fold.", "A polypeptide exists to be folded."],
+          "fail": ["Nothing specified the beads, so there is no protein to fold.", "Without a sequence there is no chain, and everything downstream is moot."]
+        },
+        {
+          "name": ["Hold its shape at body temperature", "Thermal stability"],
+          "needs": ["sequence", "core"],
+          "pass": ["The buried oily residues hold it together.", "The hydrophobic core resists thermal fluctuation."],
+          "fail": ["It folded and fell apart again — nothing was holding the inside together.", "No buried core: the fold has no stabilising term and unfolds at physiological temperature."]
+        },
+        {
+          "name": ["Actually catalyse something", "Catalysis"],
+          "needs": ["sequence", "core", "site"],
+          "pass": ["Substrate goes in, product comes out.", "Substrate binds, transition state is stabilised, product is released."],
+          "fail": ["A beautifully stable lump that does nothing.", "Stable and inert: a fold without an active site is a structure, not an enzyme."]
+        },
+        {
+          "name": ["Survive being made in a crowded cell", "Aggregation resistance"],
+          "needs": ["sequence", "core", "site", "chaperone"],
+          "pass": ["It reached its shape without sticking to anything on the way.", "Folding completed without off-pathway aggregation."],
+          "fail": ["Half of them clumped together before they finished folding.", "Exposed hydrophobic surface during folding found other chains first. Yield collapses in the crowded cytoplasm."]
+        },
+        {
+          "name": ["Not poison the cell over time", "Quality control"],
+          "needs": ["sequence", "core", "site", "chaperone", "tag"],
+          "pass": ["The bad copies get thrown away instead of piling up.", "Misfolded copies are tagged and degraded rather than accumulating."],
+          "fail": ["It works, and the failures build up until they do damage.", "Functional, but with no disposal route the misfolded fraction accumulates — which is the mechanism behind several neurodegenerative diseases."]
+        }
+      ],
+      "win": [
+        "It works, it holds together, and it does not poison anything. That is a protein.",
+        "All five stresses survived. Every one of those parts is doing something no other part can do, and you can now say what each failure would look like."
+      ],
+      "lose": [
+        "Look at which test failed — it names what was in the wrong job. Move it and test again.",
+        "Read the failed trials: each names the function that was not being performed. Reassign and re-test; the point is the diagnosis, not the score."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "That is a protein: a string that folds itself into a machine.",
+        "That is the whole of this module — a sequence that becomes a structure that does a job, plus the machinery that keeps the process honest.",
+        "Primary sequence to tertiary structure to catalytic function, with chaperones raising the yield and degradation removing the failures.",
+        "Worth noticing what is absent from that account: nothing anywhere specifies the shape, and nothing supervises the folding. The information is one-dimensional and the machine is three-dimensional, and physics does the conversion."
+      ],
+      "sub": [
+        "And all of it comes from the order of the beads.",
+        "All of it downstream of a single string of letters, which is where the next world starts.",
+        "The genome specifies sequences. Everything else in this module is a consequence.",
+        "Which is why editing a genome is such a powerful and such a blunt instrument: you change one dimension and the other two follow in ways that are hard to predict."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "shape-is-function",
+      "q": [
+        "Which part actually decided everything else?",
+        "Which component determines all the others?",
+        "Which element is upstream of all the rest?"
+      ],
+      "options": [
+        "The order of the beads",
+        "The chaperone",
+        "The active site"
+      ],
+      "answer": 0,
+      "why": [
+        "The order of the beads decides the shape, the shape makes the core and the notch, and everything else is just helping it get there. Change the order and you change all of it.",
+        "The sequence determines the fold; the fold produces the core and the active site. Chaperones and degradation improve the yield of a process they do not specify, so they are support rather than cause.",
+        "It is a strict dependency chain, and the direction matters for reasoning about mutation: a single substitution can abolish the core, the site, or both, because it acts at the only point everything else descends from."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "People now design proteins that never existed, for jobs nature never needed doing.",
+        "De novo protein design has moved from aspiration to routine: enzymes for reactions with no biological precedent, binders built to order against a chosen target, and vaccine scaffolds designed atom by atom. It works because the rules in this module are sufficient — sequence in, structure out, and structure is the job."
+      ]
+    }
+  ]
+}

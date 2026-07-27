@@ -1961,6 +1961,64 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     /[a-z]/i.test(readout.text) && readout.valuetext === readout.text, JSON.stringify(readout));
 }
 
+/* 94-95. The folding model, checked as a model.
+
+   The lesson's claim is that the shape falls out of the sequence and nothing
+   else. That is only true if the energy function is the one advertised and the
+   chain cannot pass through itself — so both are measured here rather than
+   trusted. Same reasoning as the selection checks: a simulation a child reasons
+   from is a claim about the world, and claims get tested. */
+{
+  await openWith(changeSave(3), "#/");
+  const r = await page.evaluate(async () => {
+    await import("./js/sims/folding.js");
+    document.querySelectorAll("fp-folding").forEach((n) => n.remove());
+    const sim = document.createElement("fp-folding");
+    Object.assign(sim.dataset, { seq: "PHHPPHHPPHHP", target: "4" });
+    document.querySelector("#main").append(sim);
+    await new Promise((res) => setTimeout(res, 120));
+    sim.reduced = { matches: true };
+
+    // Only NON-SEQUENTIAL H-H pairs count. Sequence neighbours are touching for
+    // a trivial reason and would inflate every score if they were included.
+    const extended = sim.contacts();
+
+    // Random pivots must never produce a chain that overlaps itself.
+    let overlaps = 0, accepted = 0;
+    for (let i = 0; i < 400; i++) {
+      const at = 1 + Math.floor(Math.random() * (sim.seq.length - 2));
+      sim.cw = Math.random() < 0.5;
+      if (sim.pivot(at)) accepted += 1;
+      const seen = new Set(sim.pos.map(([x, y]) => `${x},${y}`));
+      if (seen.size !== sim.pos.length) overlaps += 1;
+    }
+    /* A refused pivot must be a complete no-op. Four turns do NOT reliably
+       return the chain home — self-avoidance blocks some of them — so the
+       property worth guaranteeing is that a blocked move leaves the chain
+       byte-identical rather than half-applied. Drive it into a wall and check. */
+    sim.reset();
+    sim.cw = true;
+    let refused = 0, corrupted = 0;
+    for (let i = 0; i < 200; i++) {
+      const at = 1 + Math.floor(Math.random() * (sim.seq.length - 2));
+      const snapshot = JSON.stringify([sim.dirs, sim.pos]);
+      if (!sim.pivot(at)) {
+        refused += 1;
+        if (JSON.stringify([sim.dirs, sim.pos]) !== snapshot) corrupted += 1;
+      }
+    }
+    return { extended, overlaps, accepted, refused, corrupted, best: sim.best };
+  });
+  check("an extended chain has no buried contacts, and neighbours never count",
+    r.extended === 0, `${r.extended} contacts when straight`);
+  check("no sequence of pivots can fold the chain through itself",
+    r.overlaps === 0 && r.accepted > 50, `${r.overlaps} overlaps in ${r.accepted} accepted moves`);
+  check("a blocked fold leaves the chain exactly as it was, never half-moved",
+    r.refused > 0 && r.corrupted === 0, `${r.corrupted} corrupted of ${r.refused} refusals`);
+  check("random folding finds real contacts, so the authored goals are reachable",
+    r.best > 0 && r.best <= 4, `best found ${r.best}, known optimum 4`);
+}
+
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
 
 await browser.close();

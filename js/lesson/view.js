@@ -29,6 +29,7 @@ const SIMS = {
   energy: () => import("../sims/energy.js"),
   selection: () => import("../sims/selection.js"),
   replication: () => import("../sims/replication.js"),
+  folding: () => import("../sims/folding.js"),
 };
 
 /** Level-indexed simulation parameters: one shared implementation, different

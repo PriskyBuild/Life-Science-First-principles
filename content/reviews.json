@@ -534,6 +534,99 @@
     ],
     "from": "natural-selection/01"
   },
+  "sequence-determines-fold": {
+    "q": [
+      "What told the string what shape to be?",
+      "Where is the information for the fold stored?",
+      "In what sense does the sequence encode the structure?"
+    ],
+    "options": [
+      "Nothing did — the shape is what the order of beads makes happen",
+      "A folding machine in the cell",
+      "The shape is written down in the DNA separately"
+    ],
+    "answer": 0,
+    "why": [
+      "Nobody folds it. Put those beads in that order in water and that shape is what you get, because it is the arrangement the beads settle into.",
+      "There is no separate instruction for shape. The DNA specifies the order of amino acids and nothing else; the structure is a consequence of that order plus water.",
+      "The encoding is implicit rather than explicit. The genome stores a one-dimensional string and the three-dimensional structure is computed by physics at run time — which is precisely why predicting structure from sequence was an unsolved problem for fifty years."
+    ],
+    "from": "proteins/01"
+  },
+  "shape-is-function": {
+    "q": [
+      "You unfold a protein but break nothing. Does it still work?",
+      "An unfolded protein retains every bond. Is it functional?",
+      "Why does denaturation abolish function without altering composition?"
+    ],
+    "options": [
+      "No — the shape was the job",
+      "Yes, all the parts are still there",
+      "Only if it was a small protein"
+    ],
+    "answer": 0,
+    "why": [
+      "Nothing has been taken away. But the working part of a protein is the shape of its surface, and once that is gone there is nothing left to do the job.",
+      "Every atom and every covalent bond is intact. Function lived in the arrangement — the pocket, the surface, the geometry — and unfolding destroys that while leaving the chemistry untouched.",
+      "The catalytic or binding site is an emergent property of the tertiary structure: residues far apart in sequence are brought together in space to form it. Unfolding separates them, and the site simply ceases to exist as a feature."
+    ],
+    "from": "proteins/02"
+  },
+  "enzyme-specificity": {
+    "q": [
+      "Why does an enzyme only do one job?",
+      "What is the basis of enzyme specificity?",
+      "Why are specificity and catalysis inseparable?"
+    ],
+    "options": [
+      "Because only one shape fits its notch",
+      "Because it is programmed to",
+      "Because it only meets one kind of molecule"
+    ],
+    "answer": 0,
+    "why": [
+      "The notch is a particular shape. Only a molecule that matches it can get in, so that is the only reaction it can help with.",
+      "The active site's geometry is what positions a substrate correctly, and a pocket shaped to fit one molecule precisely cannot fit another. Specificity is not a separate feature — it is the same feature.",
+      "Catalytic power comes from complementarity to the transition state, and complementarity is by definition exclusive. An enzyme that accepted many substrates would position none of them well enough to accelerate anything, so promiscuity and efficiency trade off directly."
+    ],
+    "from": "proteins/03"
+  },
+  "denaturation": {
+    "q": [
+      "Why does activity fall above the optimum temperature?",
+      "Why is the fall in activity above the optimum not simply the reverse of the rise?"
+    ],
+    "options": [
+      "The enzyme is unfolding, and that does not reverse on cooling",
+      "The reaction runs out of substrate",
+      "The molecules move too fast to collide"
+    ],
+    "answer": 0,
+    "why": [
+      "Below the peak, more heat means more collisions and more reaction. Above it, the heat is shaking the protein apart — and once it has unfolded and stuck to its neighbours, cooling it down does not bring it back.",
+      "The two effects are asymmetric in kind. Collision frequency is a smooth reversible function of temperature; denaturation is a cooperative transition that destroys the active site and is usually followed by irreversible aggregation. That asymmetry is why the curve is not a symmetric peak, and why a fever above about 42 °C is dangerous rather than merely uncomfortable."
+    ],
+    "from": "proteins/03"
+  },
+  "misfolding-disease": {
+    "q": [
+      "Why is a sticky misfolded protein dangerous?",
+      "Why does misfolding cause disease beyond the loss of function?",
+      "What makes amyloid pathology self-propagating?"
+    ],
+    "options": [
+      "It makes others fold wrong too, and they pile up",
+      "It stops the cell making new proteins",
+      "It uses up all the water"
+    ],
+    "answer": 0,
+    "why": [
+      "The wrong shape has sticky bits on the outside. It grabs others, they clump, and the clumps get bigger — losing one protein would not matter much, but a growing pile does.",
+      "The misfolded form templates the same misfolding in normal copies, so the problem grows rather than staying constant, and the aggregates themselves are toxic. Alzheimer's, Parkinson's and type 2 diabetes all involve protein aggregation.",
+      "Amyloid is a cross-β structure that is thermodynamically very stable and grows by recruiting monomers onto its ends. That is self-templating — which is why prion diseases are transmissible without any nucleic acid at all, a claim that took Prusiner a decade to get accepted."
+    ],
+    "from": "proteins/04"
+  },
   "life-is-a-process": {
     "q": [
       "What makes something alive?",

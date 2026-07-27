@@ -29,6 +29,13 @@
   "natural-selection": {
     "0": "natural-selection/01-the-beetles-that-vanished.json"
   },
+  "proteins": {
+    "0": "proteins/01-a-string-that-folds-itself.json",
+    "1": "proteins/02-shape-is-the-job.json",
+    "2": "proteins/03-the-enzyme-and-the-lock.json",
+    "3": "proteins/04-when-folding-goes-wrong.json",
+    "4": "proteins/05-build-a-protein.json"
+  },
   "what-is-life": {
     "0": "what-is-life/01-the-line-you-cannot-draw.json",
     "1": "what-is-life/02-seven-rules-and-their-exceptions.json",
