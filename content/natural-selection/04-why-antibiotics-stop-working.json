@@ -1,0 +1,158 @@
+{
+  "id": "natural-selection/04",
+  "module": "natural-selection",
+  "index": 3,
+  "title": "Why Antibiotics Stop Working",
+  "specimen": "resistant-strain",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A medicine that cured people in 1945 does nothing now. The medicine did not change.",
+        "Penicillin cleared infections in 1945 that it cannot touch today. The molecule is identical. Everything that changed happened on the other side."
+      ],
+      "sub": [
+        "So what did?",
+        "You have everything you need to answer this without being told."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "resistance-is-selection",
+      "question": [
+        "Why do antibiotics stop working?",
+        "What accounts for the loss of antibiotic efficacy over time?"
+      ],
+      "options": [
+        "The few germs that survived bred, and their offspring survive too",
+        "The germs learned to fight the drug",
+        "The drug goes stale"
+      ],
+      "outcome": "The few germs that survived bred, and their offspring survive too",
+      "note": [
+        "You already know this one. Say it anyway.",
+        "Commit. Note which option requires bacteria to respond to the drug, and which requires only that some already differed."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "selection",
+      "guided": false,
+      "t": [
+        "This is the same machine as the beetles, running in a hospital instead of a wood. Break it if you can.",
+        "Identical mechanism, different substrate: the drug supplies the differential survival. Establish it, then remove one condition and confirm it stops."
+      ],
+      "params": { "task": "break", "bg": 0.9, "switches": true, "pressure": 0.85, "aspect": 0.82 },
+      "paramsByLevel": { "1": { "task": "watch", "switches": false, "n": 27 }, "2": { "task": "watch", "switches": false } },
+      "goal": [
+        "Same three conditions, same result. Germs are just faster.",
+        "The same three conditions, in a species with a twenty-minute generation time. What took the moths fifty years takes bacteria a fortnight."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Now try to slow it down. Put each action next to what it actually does.",
+        "Resistance management is a selection problem, not a chemistry problem. Assign each intervention to its real effect — placement is unconstrained, so the marking is on you."
+      ],
+      "parts": [
+        { "id": "finish", "label": "Finish the course" },
+        { "id": "narrow", "label": "Use a narrow drug" },
+        { "id": "farm", "label": "Stop routine farm use" },
+        { "id": "combo", "label": "Use two drugs at once" },
+        { "id": "new", "label": "Find new drugs" }
+      ],
+      "slots": [
+        { "correct": "finish", "label": ["Kills the hardest ones instead of leaving them"] },
+        { "correct": "narrow", "label": ["Selects on fewer species at a time"] },
+        { "correct": "farm", "label": ["Removes the largest source of pressure"] },
+        { "correct": "combo", "label": ["Needs two rare mutations at once, not one"] },
+        { "correct": "new", "label": ["Buys time; does not solve anything"] }
+      ],
+      "trials": [
+        {
+          "name": ["Stop leaving survivors in one patient", "Complete eradication"],
+          "needs": ["finish"],
+          "pass": ["The hardest-to-kill ones do not get to breed.", "The least susceptible organisms are eliminated rather than enriched."],
+          "fail": ["Stopping early leaves exactly the ones the drug struggled with.", "Sub-eradicative exposure enriches for reduced susceptibility — the worst possible selection regime."]
+        },
+        {
+          "name": ["Not select on everything else in the patient", "Spectrum"],
+          "needs": ["finish", "narrow"],
+          "pass": ["Only the target species is under pressure.", "Selection pressure is confined to the intended organism."],
+          "fail": ["A broad drug selects for resistance in bacteria that were not the problem.", "Broad-spectrum exposure applies pressure to the entire commensal population, which then serves as a resistance reservoir."]
+        },
+        {
+          "name": ["Address where most of it is actually used", "Scale"],
+          "needs": ["finish", "narrow", "farm"],
+          "pass": ["The largest source of pressure is removed.", "Agricultural use, historically the majority of consumption by mass, is addressed."],
+          "fail": ["Perfect prescribing, and most of the world's antibiotics still go into livestock.", "Clinical stewardship alone leaves the dominant term untouched."]
+        },
+        {
+          "name": ["Make resistance need two lucky breaks, not one", "Combination"],
+          "needs": ["finish", "narrow", "farm", "combo"],
+          "pass": ["One mutation is not enough any more.", "Requiring simultaneous resistance to two agents multiplies two small probabilities."],
+          "fail": ["A single mutation is still enough to escape.", "Monotherapy needs one rare event. This is exactly why TB and HIV are treated with combinations."]
+        }
+      ],
+      "win": [
+        "You cannot stop it. You can slow it down a lot.",
+        "All four hold. Note that none of them stops resistance — selection cannot be switched off — and every one of them buys time."
+      ],
+      "lose": [
+        "Read which test failed. It names what that action was really for.",
+        "Each failed trial names the effect that was not being achieved. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Resistance is natural selection, with the medicine doing the choosing.",
+        "Antibiotic resistance is natural selection with a drug as the selective agent. Nothing about it is new or special.",
+        "The three conditions again: bacteria vary, the variation is heritable, and the drug makes survival depend on it. Resistance follows automatically.",
+        "Fleming warned about it in his 1945 Nobel lecture, before resistance had become a clinical problem, because the mechanism made it inevitable. That is a prediction from theory, made in advance, and it was right."
+      ],
+      "sub": [
+        "The drug does not make germs resistant. It finds the ones that already were.",
+        "The variation is present beforehand at low frequency. The drug reveals and amplifies it; it does not create it.",
+        "Luria and Delbrück demonstrated exactly this in 1943, before anyone knew what a gene was made of, by looking at the statistics of how many resistant colonies appeared.",
+        "Their reasoning is worth knowing: if resistance arose in response to the phage, colony counts would follow a Poisson distribution; if it arose beforehand by chance, the variance would be far larger because early mutations produce large clones. The variance was enormous. The distinction was settled by a distribution."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "resistance-is-selection",
+      "q": [
+        "Does the medicine make the germs resistant?",
+        "Does antibiotic exposure cause resistance mutations?",
+        "What did Luria and Delbrück's variance argument establish?"
+      ],
+      "options": [
+        "No — it kills the ones that were not, and the rest breed",
+        "Yes, it teaches them to resist",
+        "Yes, it damages their DNA and they change"
+      ],
+      "answer": 0,
+      "why": [
+        "The germs that could survive were already there before the medicine arrived. All the medicine did was clear away the competition.",
+        "Resistance is not induced. Some bacteria already carried it, at low frequency, and the drug removed everything else — leaving them the entire population to grow into.",
+        "That mutations arise independently of selection. The fluctuation test compared observed variance in resistant counts against what an induced response would predict; the observed variance was far too high, which is only explicable if mutations occurred before exposure, at random times during growth."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is the reason to finish a course of medicine even when you feel better.",
+        "Stopping early is the single worst thing an individual can do, because the bacteria left alive are precisely the ones the drug struggled with — you have run a selection experiment and kept the winners. At population scale, resistant infections already kill more people annually than malaria, and the mechanism driving it is the one you have just operated twice."
+      ]
+    }
+  ]
+}

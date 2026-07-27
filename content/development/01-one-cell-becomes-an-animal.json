@@ -1,0 +1,109 @@
+{
+  "id": "development/01",
+  "module": "development",
+  "index": 0,
+  "title": "One Cell Becomes an Animal",
+  "specimen": "first-division",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You were one cell. Nobody built you. You built yourself, out of that cell, with no plan to look at.",
+        "You began as a single cell and assembled yourself into thirty trillion, arranged correctly, with no blueprint anywhere and nothing supervising the process."
+      ],
+      "sub": [
+        "Where would the instructions for 'put an eye here' even be kept?",
+        "There is no drawing of you anywhere. So what is there instead?"
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "one-cell-to-many",
+      "question": [
+        "If one cell divides into two identical cells, and those divide again, how do you ever get different parts?",
+        "Division alone produces copies. Where does difference come from?"
+      ],
+      "options": [
+        "The cells must end up in different places, and place decides",
+        "Each cell is given a different set of instructions",
+        "Some cells simply choose to be different"
+      ],
+      "outcome": "The cells must end up in different places, and place decides",
+      "note": [
+        "Guess first.",
+        "Commit. You already know every cell keeps the identical genome, which rules one of these straight out."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Days after the start",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Day 0: one cell. Everything you are is in it.",
+        "Day 1: two cells. Still identical, still able to become anything.",
+        "Day 4: a hollow ball of about a hundred. Still no parts.",
+        "Day 15: three layers. Now there is an inside, an outside and a middle.",
+        "Day 22: a tube folds up along the back. That becomes your spine and brain."
+      ],
+      "t": [
+        "Watch one cell turn into something with a front and a back.",
+        "Follow the first three weeks. Note the moment difference first appears, and what it is made of."
+      ],
+      "after": [
+        "Difference arrived when position did.",
+        "Nothing differentiated until there were distinguishable positions to occupy. Layers come first, and organs come from layers."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Cells become different because of where they end up, not because they were told to.",
+        "Cells differentiate according to position. A cell's fate is decided by its neighbours and its location, not by an instruction it was handed.",
+        "Differentiation is positional. Identical genomes, different signalling environments, different subsets of genes switched on — which is the previous world's lesson doing structural work.",
+        "The logic is local throughout: no cell has any representation of the organism it is part of. Global order emerges from short-range signalling, which is the same class of explanation as the beetle population and the thirty trillion cells that never meet."
+      ],
+      "sub": [
+        "The same instructions, read differently depending on where you are.",
+        "Every cell keeps the whole genome. Position determines which parts of it get read.",
+        "Which is why an early embryonic cell can still become anything, and a late one cannot — the position has not yet been assigned.",
+        "Potency narrows as position resolves. Totipotent, then pluripotent, then multipotent, then committed — and each step is the loss of options rather than the loss of information."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "one-cell-to-many",
+      "q": [
+        "How does a cell know what to become?",
+        "What determines a cell's fate during development?",
+        "What is the source of positional information?"
+      ],
+      "options": [
+        "From where it is and what is next to it",
+        "It reads a plan of the whole body",
+        "It is decided randomly"
+      ],
+      "answer": 0,
+      "why": [
+        "There is no plan of you anywhere. A cell can only tell what is right next to it, and that turns out to be enough.",
+        "Fate follows position, and position is read from local signals — chemicals reaching the cell and contact with neighbours. No cell has access to any description of the whole.",
+        "Positional information is encoded in gradients and contacts, both strictly local. The remarkable part is that purely local rules produce a reproducible global arrangement, which is why development is the best worked example of emergence in biology."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Identical twins come from one ball of cells splitting in two, early enough that both halves can still make a whole person.",
+        "Monozygotic twinning is exactly this: a split early enough that each fragment still contains cells whose position has not yet committed them. A little later and it is impossible. The window exists because potency narrows as position resolves — which is also why the two are never quite identical, since position is assigned separately in each."
+      ]
+    }
+  ]
+}

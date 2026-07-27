@@ -751,3 +751,24 @@ for the wrong reason for a while and then failed for the wrong reason. A test sh
 rule — *the Atlas draws worlds with content and a reachable path* — and derive the numbers from
 whatever the content currently is. If a test needs editing because a lesson was authored, it was
 testing the lesson rather than the engine.
+
+### D53 — Test the plumbing with a deterministic setup, not a likely one
+*Second instance of D52, found by the fix for the first.*
+
+`the goal fires once and carries the simulation's own account of it` failed intermittently, and
+passed every time I reproduced it by hand. The cause was the same drift as D52 wearing different
+clothes: the test broke the simulation by removing *differential survival*, then gave it four
+generations to register as broken. Drift occasionally closes the gap enough during those four
+generations that the condition never trips.
+
+The fix is not more samples. **That test is not about the biology at all** — it asks whether the
+goal event fires exactly once and carries the sentence the simulation composed. So it now breaks
+the model by removing *variation* instead, where every organism is identical forever and the gap
+is pinned at its starting value with certainty.
+
+The rule worth extracting: when a test exercises plumbing, construct the input so the outcome is
+forced. Reserve sampling for the tests that are genuinely making a claim about behaviour — where
+the distribution IS the thing being asserted, as in D52. Mixing the two gives you a flaky test
+that is also a weak one.
+
+Both runs of the full suite after this change: 190/190.

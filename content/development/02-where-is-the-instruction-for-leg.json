@@ -1,0 +1,127 @@
+{
+  "id": "development/02",
+  "module": "development",
+  "index": 1,
+  "title": "Where Is the Instruction for 'Leg'?",
+  "specimen": "gradient-strip",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A cell cannot see. It cannot count. It has no idea where it is in you. And it has to get that right.",
+        "A cell has no eyes, no position sense and no map. Yet it has to know whether it is in your shoulder or your hip, and it has to be right nearly every time."
+      ],
+      "sub": [
+        "How do you tell something where it is, using only chemistry?",
+        "The problem is to encode a coordinate in something a cell can actually detect."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "positional-information",
+      "question": [
+        "How could a cell work out where it is, using only chemicals?",
+        "How can position be encoded chemically?"
+      ],
+      "options": [
+        "Leak a chemical from one end, and let strength mean distance",
+        "Give every cell a numbered address",
+        "It cannot be done with chemicals"
+      ],
+      "outcome": "Leak a chemical from one end, and let strength mean distance",
+      "note": [
+        "Have a think — you know how things spread out.",
+        "Commit. You have already watched the mechanism that makes this possible, in the very first simulation."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [1, 2],
+      "guided": true,
+      "label": "How far from the end?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Right at the source: lots of the chemical. Make a thumb.",
+        "Close: still plenty. Make a first finger.",
+        "Middle: some. Make a middle finger.",
+        "Further: a little. Make a ring finger.",
+        "Far end: almost none. Make a little finger."
+      ],
+      "t": [
+        "One chemical, leaking from one end. How much there is tells the cell what to build.",
+        "A single substance released at one edge. Concentration falls with distance, and different amounts mean different instructions."
+      ],
+      "after": [
+        "One chemical, five different fingers. The amount was the message.",
+        "Five distinct outcomes from one substance. The information is in the concentration, so a smooth gradient produces discrete parts."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "membrane",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "A gradient is just diffusion from a source. Run it again and watch a difference turn into a slope.",
+        "The gradient is nothing more exotic than the diffusion you met in Cells: a source at one end, unbiased random motion, and a stable concentration profile. Confirm it needs nothing else."
+      ],
+      "params": { "kinds": 5, "pore": 3, "per": 12, "temp": 1, "target": 0.55 },
+      "paramsByLevel": { "4": { "kinds": 6, "per": 14, "target": 0.6 } },
+      "goal": [
+        "A slope, made by nothing but random movement from a source.",
+        "A stable spatial profile produced by unbiased diffusion from a localised source. No mechanism reads out position — position simply is the concentration."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A chemical that tells a cell where it is is called a morphogen.",
+        "A substance whose concentration specifies position is a morphogen, and the slope it forms is a gradient.",
+        "Morphogen gradients convert a continuous spatial variable into discrete cell fates, by way of concentration thresholds.",
+        "Wolpert's French flag model, 1969: a field of cells reading one gradient against two thresholds produces three sharply bounded regions. Smooth input, sharp output — which is why fingers have edges when the chemistry does not."
+      ],
+      "sub": [
+        "Your fingers are numbered by how much of one chemical reaches them.",
+        "Limb digit identity is specified largely by one gradient, from a small signalling region at the back edge of the developing limb bud.",
+        "Sonic hedgehog, from the zone of polarising activity. Graft a second source onto the front edge and you get a mirror-image duplicated set of digits.",
+        "That graft experiment is the decisive one: it shows the gradient is instructive rather than merely correlated. Doubling the source doubles the pattern, which no descriptive account predicts and this one requires."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "positional-information",
+      "q": [
+        "How does one chemical make five different fingers?",
+        "How does a single morphogen specify multiple distinct fates?",
+        "How does a smooth gradient produce discrete boundaries?"
+      ],
+      "options": [
+        "Different amounts mean different things",
+        "It changes colour along the way",
+        "There are secretly five chemicals"
+      ],
+      "answer": 0,
+      "why": [
+        "Near the source there is a lot, far away there is hardly any. Cells do different things depending on how much they get, so one chemical can say five different things.",
+        "Concentration thresholds. Cells respond to bands of concentration rather than to the exact amount, so a smooth slope is read as a set of discrete regions.",
+        "Thresholds plus downstream gene networks that sharpen boundaries by mutual repression. The gradient supplies approximate position; cross-repression between the genes it switches on converts fuzzy edges into crisp ones — which is why real boundaries are far sharper than the gradient that specifies them."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Thalidomide caused limb differences because it interfered with this, at exactly the wrong weeks.",
+        "The thalidomide tragedy was a timing catastrophe: the drug interfered with limb-patterning signals during the narrow window when they were being read. Days mattered. It is why drug safety in pregnancy is now assessed against developmental windows rather than dose alone, and why 'harmless to the mother' was shown to be the wrong question."
+      ]
+    }
+  ]
+}

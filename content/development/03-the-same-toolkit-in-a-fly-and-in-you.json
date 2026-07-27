@@ -1,0 +1,126 @@
+{
+  "id": "development/03",
+  "module": "development",
+  "index": 2,
+  "title": "The Same Toolkit in a Fly and in You",
+  "specimen": "hox-set",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There are flies with legs growing where their antennae should be. One gene did that.",
+        "A single mutation in a fruit fly grows a perfectly formed leg out of the socket where an antenna belongs. Not a deformed antenna — a leg, in the wrong place, built correctly."
+      ],
+      "sub": [
+        "So some genes do not build parts. They say where parts go.",
+        "That tells you something about how the instructions are organised."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "conserved-toolkit",
+      "question": [
+        "What must that gene have been doing?",
+        "What kind of gene produces a well-formed structure in the wrong location?"
+      ],
+      "options": [
+        "Telling that segment what kind of thing to grow",
+        "Building the antenna itself",
+        "Making the fly grow too fast"
+      ],
+      "outcome": "Telling that segment what kind of thing to grow",
+      "note": [
+        "Guess first.",
+        "Commit. The structure was built correctly, which is the clue — the error was in the addressing, not the construction."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each gene in charge of the right part of the body.",
+        "These genes are arranged along the chromosome in the same order as the body parts they specify. Match them up."
+      ],
+      "parts": [
+        { "id": "head", "label": "Gene 1" },
+        { "id": "thorax", "label": "Gene 3" },
+        { "id": "abdomen", "label": "Gene 7" },
+        { "id": "tail", "label": "Gene 9" }
+      ],
+      "slots": [
+        { "accepts": "head", "label": ["The head end", "Anterior: head"] },
+        { "accepts": "thorax", "label": ["Just behind the head", "Thorax"] },
+        { "accepts": "abdomen", "label": ["The middle", "Abdomen"] },
+        { "accepts": "tail", "label": ["The tail end", "Posterior"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "These are Hox genes. They do not build anything — they say what goes where.",
+        "Hox genes specify identity along the head-to-tail axis. They are switches that tell a region what kind of structure to build, not instructions for building it.",
+        "Hox genes are transcription factors specifying positional identity. Remarkably, they sit on the chromosome in the same order as the body regions they control — colinearity, which nobody predicted and nobody has fully explained.",
+        "Colinearity is one of the strangest facts in biology: the spatial order of genes on the DNA matches the spatial order of the structures they specify along the animal. It holds in flies and in mammals, and there is still no complete account of why."
+      ],
+      "sub": [
+        "A fly has them. You have them. They are recognisably the same genes.",
+        "The same gene family, in the same order, in flies and mice and you — similar enough that a mouse version can substitute for a fly's and still work.",
+        "Mouse Hox genes have been put into flies lacking their own and have rescued the fly's development. That is a functional interchangeability across half a billion years of separation.",
+        "The toolkit's conservation was the founding surprise of evolutionary developmental biology in the 1980s. The expectation had been that different body plans required different genes; what was found was the same small set of genes deployed differently — which shifted the emphasis from inventing genes to redeploying them."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "conserved-toolkit",
+      "q": [
+        "What do Hox genes actually do?",
+        "What is the function of a Hox gene?",
+        "Why does a Hox mutation produce a well-formed structure in the wrong place?"
+      ],
+      "options": [
+        "They say what kind of thing to build here",
+        "They build legs and antennae directly",
+        "They control how fast the animal grows"
+      ],
+      "answer": 0,
+      "why": [
+        "They are labels, not builders. The gene says 'this bit is a head' or 'this bit is a middle', and everything else does the building.",
+        "They assign identity to a region. The machinery for building a leg exists regardless; the Hox gene decides whether that machinery is the one switched on there. Change the label and you get a correctly built leg in the wrong socket.",
+        "Because the addressing and the construction are separate systems. A homeotic mutation misaddresses a fully intact construction programme, which is why the result is a perfect structure in the wrong location rather than a malformed one in the right place. That separation is itself the discovery."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "differentiation",
+      "levels": [3, 4],
+      "q": [
+        "Why is the same toolkit in a fly and in a human interesting?",
+        "What made the conservation of the developmental toolkit surprising?"
+      ],
+      "options": [
+        "Because very different animals turn out to be built by the same small set of switches",
+        "Because it proves flies and humans are closely related",
+        "Because it means all animals develop identically"
+      ],
+      "answer": 0,
+      "why": [
+        "A fly and a person could hardly look less alike. The expectation was that they would need different genes. Instead they use the same small set, switched on in different places and at different times — the difference is in the deployment, not the inventory.",
+        "The pre-genomic expectation was that morphological disparity required genetic disparity. What was found instead was a small, highly conserved regulatory toolkit used combinatorially. That relocated the explanation of body-plan difference from gene content to gene regulation, and it is the reason evo-devo exists as a field."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why studying a fly tells you useful things about a person.",
+        "A fruit fly costs almost nothing, breeds in ten days, and shares the regulatory toolkit that patterns you. Enormous amounts of what is known about human development, cancer signalling and neurodegeneration were worked out in flies first — and that only works because the toolkit is shared."
+      ]
+    }
+  ]
+}

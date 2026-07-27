@@ -222,6 +222,99 @@
     ],
     "from": "cells/04"
   },
+  "one-cell-to-many": {
+    "q": [
+      "How does a cell know what to become?",
+      "What determines a cell's fate during development?",
+      "What is the source of positional information?"
+    ],
+    "options": [
+      "From where it is and what is next to it",
+      "It reads a plan of the whole body",
+      "It is decided randomly"
+    ],
+    "answer": 0,
+    "why": [
+      "There is no plan of you anywhere. A cell can only tell what is right next to it, and that turns out to be enough.",
+      "Fate follows position, and position is read from local signals — chemicals reaching the cell and contact with neighbours. No cell has access to any description of the whole.",
+      "Positional information is encoded in gradients and contacts, both strictly local. The remarkable part is that purely local rules produce a reproducible global arrangement, which is why development is the best worked example of emergence in biology."
+    ],
+    "from": "development/01"
+  },
+  "positional-information": {
+    "q": [
+      "How does one chemical make five different fingers?",
+      "How does a single morphogen specify multiple distinct fates?",
+      "How does a smooth gradient produce discrete boundaries?"
+    ],
+    "options": [
+      "Different amounts mean different things",
+      "It changes colour along the way",
+      "There are secretly five chemicals"
+    ],
+    "answer": 0,
+    "why": [
+      "Near the source there is a lot, far away there is hardly any. Cells do different things depending on how much they get, so one chemical can say five different things.",
+      "Concentration thresholds. Cells respond to bands of concentration rather than to the exact amount, so a smooth slope is read as a set of discrete regions.",
+      "Thresholds plus downstream gene networks that sharpen boundaries by mutual repression. The gradient supplies approximate position; cross-repression between the genes it switches on converts fuzzy edges into crisp ones — which is why real boundaries are far sharper than the gradient that specifies them."
+    ],
+    "from": "development/02"
+  },
+  "conserved-toolkit": {
+    "q": [
+      "What do Hox genes actually do?",
+      "What is the function of a Hox gene?",
+      "Why does a Hox mutation produce a well-formed structure in the wrong place?"
+    ],
+    "options": [
+      "They say what kind of thing to build here",
+      "They build legs and antennae directly",
+      "They control how fast the animal grows"
+    ],
+    "answer": 0,
+    "why": [
+      "They are labels, not builders. The gene says 'this bit is a head' or 'this bit is a middle', and everything else does the building.",
+      "They assign identity to a region. The machinery for building a leg exists regardless; the Hox gene decides whether that machinery is the one switched on there. Change the label and you get a correctly built leg in the wrong socket.",
+      "Because the addressing and the construction are separate systems. A homeotic mutation misaddresses a fully intact construction programme, which is why the result is a perfect structure in the wrong location rather than a malformed one in the right place. That separation is itself the discovery."
+    ],
+    "from": "development/03"
+  },
+  "differentiation": {
+    "q": [
+      "Why is the same toolkit in a fly and in a human interesting?",
+      "What made the conservation of the developmental toolkit surprising?"
+    ],
+    "options": [
+      "Because very different animals turn out to be built by the same small set of switches",
+      "Because it proves flies and humans are closely related",
+      "Because it means all animals develop identically"
+    ],
+    "answer": 0,
+    "why": [
+      "A fly and a person could hardly look less alike. The expectation was that they would need different genes. Instead they use the same small set, switched on in different places and at different times — the difference is in the deployment, not the inventory.",
+      "The pre-genomic expectation was that morphological disparity required genetic disparity. What was found instead was a small, highly conserved regulatory toolkit used combinatorially. That relocated the explanation of body-plan difference from gene content to gene regulation, and it is the reason evo-devo exists as a field."
+    ],
+    "from": "development/03"
+  },
+  "body-plan": {
+    "q": [
+      "Why do you have separate fingers?",
+      "How are digits separated during development?",
+      "What does interdigital apoptosis illustrate about development?"
+    ],
+    "options": [
+      "The cells between them were removed on purpose",
+      "The fingers grew outwards from a point",
+      "They were always separate"
+    ],
+    "answer": 0,
+    "why": [
+      "Your hand started as a paddle with no gaps. The cells in between were told to die, and that is what made the fingers separate.",
+      "The limb bud forms as a plate and the interdigital tissue is eliminated by programmed cell death. The fingers are not built apart; the space between them is taken away.",
+      "It shows that development is subtractive as well as additive, and that removal is instructed rather than incidental. Where the instruction fails, the digits remain joined — which is exactly what simple syndactyly is."
+    ],
+    "from": "development/04"
+  },
   "dna-packing": {
     "q": [
       "Why can the thread not just be squashed into a ball?",
@@ -704,6 +797,61 @@
       "This matters for how the claim is classified. Variation, heritability and differential survival are each independently measurable, and their joint consequence has been observed repeatedly under controlled conditions. Whatever one concludes about the history of life, this mechanism is not in dispute — it is demonstrated."
     ],
     "from": "natural-selection/01"
+  },
+  "fitness-is-contextual": {
+    "q": [
+      "Can an animal be fit and unfit at the same time?",
+      "Can one organism have two different fitnesses?",
+      "In what sense is fitness not a property of an organism?"
+    ],
+    "options": [
+      "Yes — in two different places",
+      "No, fitness is fixed at birth",
+      "Only if it moves house"
+    ],
+    "answer": 0,
+    "why": [
+      "Fitness is not a thing an animal has, like weight. It is about how well it does where it actually is, so the same animal has a different answer in a different place.",
+      "Fitness is a relation between an organism and an environment, so one organism has as many fitnesses as there are environments to put it in. Nothing about the animal has to change for the number to.",
+      "This is why 'the environment selects' is a better formulation than 'the fittest survive'. It also explains heterozygote advantage: the sickle-cell allele is a liability where there is no malaria and an asset where there is, so selection maintains it at intermediate frequency in exactly the places malaria is endemic."
+    ],
+    "from": "natural-selection/02"
+  },
+  "drift-is-not-selection": {
+    "q": [
+      "A population changes over time. Is that always selection?",
+      "Does directional change in a population entail selection?"
+    ],
+    "options": [
+      "No — it can drift by chance, especially if the population is small",
+      "Yes, change always means selection",
+      "Only if the change is large"
+    ],
+    "answer": 0,
+    "why": [
+      "You saw this in the simulation: with the predator picking at random the line still wandered, and sometimes it wandered the right way. Change happened, and nothing was being selected.",
+      "Sampling error alone moves allele frequencies, and it does so faster in small populations. Distinguishing drift from selection is a real statistical problem, not a technicality — it is why 'the population changed' and 'the population adapted' are two different claims, and why demonstrating selection requires more than showing a trend."
+    ],
+    "from": "natural-selection/02"
+  },
+  "resistance-is-selection": {
+    "q": [
+      "Does the medicine make the germs resistant?",
+      "Does antibiotic exposure cause resistance mutations?",
+      "What did Luria and Delbrück's variance argument establish?"
+    ],
+    "options": [
+      "No — it kills the ones that were not, and the rest breed",
+      "Yes, it teaches them to resist",
+      "Yes, it damages their DNA and they change"
+    ],
+    "answer": 0,
+    "why": [
+      "The germs that could survive were already there before the medicine arrived. All the medicine did was clear away the competition.",
+      "Resistance is not induced. Some bacteria already carried it, at low frequency, and the drug removed everything else — leaving them the entire population to grow into.",
+      "That mutations arise independently of selection. The fluctuation test compared observed variance in resistant counts against what an induced response would predict; the observed variance was far too high, which is only explicable if mutations occurred before exposure, at random times during growth."
+    ],
+    "from": "natural-selection/04"
   },
   "sequence-determines-fold": {
     "q": [

@@ -1,0 +1,121 @@
+{
+  "id": "natural-selection/02",
+  "module": "natural-selection",
+  "index": 1,
+  "title": "Fitness Is Not Strength",
+  "specimen": "fitness-dial",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "The strongest animal in the world would die in a week in the wrong place.",
+        "A polar bear is about as formidable an animal as exists. Put one in a desert and it is dead within days, outlived by every beetle there."
+      ],
+      "sub": [
+        "So 'the fittest' cannot mean the toughest.",
+        "'Survival of the fittest' is doing much less work than it sounds like."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "fitness-is-contextual",
+      "question": [
+        "What does 'the fittest' actually mean?",
+        "What does fitness measure?"
+      ],
+      "options": [
+        "Whoever leaves the most offspring here, in this place",
+        "The strongest and fastest",
+        "The most intelligent"
+      ],
+      "outcome": "Whoever leaves the most offspring here, in this place",
+      "note": [
+        "Guess before you look.",
+        "Commit. Note that the phrase was not Darwin's — Spencer coined it, and Darwin adopted it reluctantly."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "selection",
+      "guided": true,
+      "t": [
+        "Get the beetles matching the ground. Then change the ground and watch what happens to the winners.",
+        "Adapt the population to one background, then move the slider to a different one and watch the previously-best beetles become the worst."
+      ],
+      "params": { "task": "watch", "bg": 0.85, "aspect": 0.78 },
+      "paramsByLevel": { "1": { "n": 27, "pressure": 0.85 }, "4": { "n": 45, "pressure": 0.7 } },
+      "goal": [
+        "The beetles that were winning are now the ones getting eaten. Nothing about them changed.",
+        "The formerly-best beetles are now the worst, and not one of them changed. Only the ground did — which is where fitness actually lives."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Fitness means how many young you leave, here, now. It is not about being tough.",
+        "Fitness is reproductive success in a particular environment. It is a relationship between an organism and its surroundings, not a property of the organism.",
+        "Fitness is relative reproductive success in a specified environment. Change the environment and the fitness of every genotype changes, without any of them changing at all.",
+        "Because fitness is defined by reproductive output, 'survival of the fittest' is close to circular if read as a definition — which is a fair criticism of the slogan and not of the theory. The theory's content is in the three conditions, which are each independently measurable, and the slogan is a Victorian summary Darwin did not write."
+      ],
+      "sub": [
+        "A polar bear is very fit in the Arctic and very unfit in a desert.",
+        "The same animal has a different fitness in every environment, so the number belongs to the pairing, not to the animal.",
+        "It also has nothing to do with living a long time: an organism that survives a century and never breeds has a fitness of zero.",
+        "Longevity, strength and intelligence matter only insofar as they change reproductive output in that environment — which is why the peacock's tail, which is a survival liability, is a fitness asset."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "fitness-is-contextual",
+      "q": [
+        "Can an animal be fit and unfit at the same time?",
+        "Can one organism have two different fitnesses?",
+        "In what sense is fitness not a property of an organism?"
+      ],
+      "options": [
+        "Yes — in two different places",
+        "No, fitness is fixed at birth",
+        "Only if it moves house"
+      ],
+      "answer": 0,
+      "why": [
+        "Fitness is not a thing an animal has, like weight. It is about how well it does where it actually is, so the same animal has a different answer in a different place.",
+        "Fitness is a relation between an organism and an environment, so one organism has as many fitnesses as there are environments to put it in. Nothing about the animal has to change for the number to.",
+        "This is why 'the environment selects' is a better formulation than 'the fittest survive'. It also explains heterozygote advantage: the sickle-cell allele is a liability where there is no malaria and an asset where there is, so selection maintains it at intermediate frequency in exactly the places malaria is endemic."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "drift-is-not-selection",
+      "levels": [3, 4],
+      "q": [
+        "A population changes over time. Is that always selection?",
+        "Does directional change in a population entail selection?"
+      ],
+      "options": [
+        "No — it can drift by chance, especially if the population is small",
+        "Yes, change always means selection",
+        "Only if the change is large"
+      ],
+      "answer": 0,
+      "why": [
+        "You saw this in the simulation: with the predator picking at random the line still wandered, and sometimes it wandered the right way. Change happened, and nothing was being selected.",
+        "Sampling error alone moves allele frequencies, and it does so faster in small populations. Distinguishing drift from selection is a real statistical problem, not a technicality — it is why 'the population changed' and 'the population adapted' are two different claims, and why demonstrating selection requires more than showing a trend."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why an animal perfectly suited to somewhere can vanish when that place changes.",
+        "Specialists are the highest-fitness organisms in their environment and the first to go when it shifts. It is why habitat change drives extinction so efficiently: nothing has to attack the animal, and the animal does not have to get worse. The environment simply stops being the one its fitness was measured against."
+      ]
+    }
+  ]
+}

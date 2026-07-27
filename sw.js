@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "b377fcdbbc57";
+const VERSION = "c497b67d5d5a";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -26,6 +26,10 @@ const PRECACHE = [
   "content/cells/04-the-instruction-room.json",
   "content/cells/05-build-a-cell.json",
   "content/curriculum.json",
+  "content/development/01-one-cell-becomes-an-animal.json",
+  "content/development/02-where-is-the-instruction-for-leg.json",
+  "content/development/03-the-same-toolkit-in-a-fly-and-in-you.json",
+  "content/development/04-build-a-body-plan.json",
   "content/dna/01-two-metres-in-a-speck.json",
   "content/dna/02-the-four-letters.json",
   "content/dna/03-the-ladder-that-copies-itself.json",
@@ -47,6 +51,9 @@ const PRECACHE = [
   "content/human-body/04-the-longest-tube.json",
   "content/human-body/05-everything-talks-to-everything.json",
   "content/natural-selection/01-the-beetles-that-vanished.json",
+  "content/natural-selection/02-fitness-is-not-strength.json",
+  "content/natural-selection/03-the-peppered-moth.json",
+  "content/natural-selection/04-why-antibiotics-stop-working.json",
   "content/proteins/01-a-string-that-folds-itself.json",
   "content/proteins/02-shape-is-the-job.json",
   "content/proteins/03-the-enzyme-and-the-lock.json",

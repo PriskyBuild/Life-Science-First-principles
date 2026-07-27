@@ -1900,7 +1900,15 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     let fired = 0, said = null;
     sim.addEventListener("fp:sim-goal", (e) => { fired++; said = e.detail?.say ?? null; });
     generations(12);                       // establish it works
-    sim.on.survival = false; sim.reset(); generations(8);   // then break it
+    /* Break it by removing VARIATION, not survival. This test is about the
+       event plumbing — does the goal fire once, and does it carry the sim's own
+       sentence — so it must not ride on a stochastic outcome. With variation
+       off every beetle is identical forever and the gap is pinned at its
+       starting value, which satisfies the "still broken" condition with
+       certainty. Using survival made this flaky for exactly the reason D52
+       describes: drift occasionally closes the gap enough to look like
+       progress, and four generations is not many chances. */
+    sim.on.variation = false; sim.reset(); generations(8);
     const at = sim.gen;
     sim.next(); sim.next();
     return { fired, said, advancedAfterGoal: sim.gen > at, met: sim.met };

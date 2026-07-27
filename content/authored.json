@@ -12,6 +12,12 @@
     "3": "cells/04-the-instruction-room.json",
     "4": "cells/05-build-a-cell.json"
   },
+  "development": {
+    "0": "development/01-one-cell-becomes-an-animal.json",
+    "1": "development/02-where-is-the-instruction-for-leg.json",
+    "2": "development/03-the-same-toolkit-in-a-fly-and-in-you.json",
+    "3": "development/04-build-a-body-plan.json"
+  },
   "dna": {
     "0": "dna/01-two-metres-in-a-speck.json",
     "1": "dna/02-the-four-letters.json",
@@ -40,7 +46,10 @@
     "4": "human-body/05-everything-talks-to-everything.json"
   },
   "natural-selection": {
-    "0": "natural-selection/01-the-beetles-that-vanished.json"
+    "0": "natural-selection/01-the-beetles-that-vanished.json",
+    "1": "natural-selection/02-fitness-is-not-strength.json",
+    "2": "natural-selection/03-the-peppered-moth.json",
+    "3": "natural-selection/04-why-antibiotics-stop-working.json"
   },
   "proteins": {
     "0": "proteins/01-a-string-that-folds-itself.json",
