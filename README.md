@@ -48,9 +48,16 @@ The repo is a static site. There is no build step to configure on the host — b
 `npm run build` locally and commit the result, because it writes the service-worker precache
 list, the concatenated stylesheet and the review-beat index.
 
-**Vercel** — import the repo, framework preset **Other**, build command **empty**, output
-directory `.`. `vercel.json` is already here and sets the one header that matters: `sw.js` must
-never be cached, or a child stays on an old build forever.
+**Vercel** — import the repo and accept the defaults. `vercel.json` declares everything:
+`outputDirectory: "."` because this is a static site served from the repo root and nothing is
+emitted into a folder, `framework: null` so the detector does not guess otherwise, and
+`buildCommand` pointing at `tools/build.mjs` — deliberately, because that is what enforces the
+budgets and lints the content, so a lesson that breaks a rule fails the deploy instead of
+reaching a child. It also sets the one header that matters: `sw.js` must never be cached, or a
+child stays on an old build forever.
+
+Without `outputDirectory` the build succeeds and the deploy then fails looking for a `public/`
+directory that was never going to exist.
 
 **Cloudflare Pages** — connect the repo, build command **empty**, output directory `/`.
 `_headers` carries the same rules.
