@@ -1,0 +1,149 @@
+{
+  "cell-scale": {
+    "q": [
+      "How big is a cell?",
+      "Roughly how big is a typical human cell?",
+      "What is the approximate diameter of a typical human cell?",
+      "Order of magnitude for a typical eukaryotic cell diameter?"
+    ],
+    "options": [
+      "Too small to see without a microscope",
+      "About the size of a grain of sand",
+      "Big enough to see if you look closely"
+    ],
+    "answer": 0,
+    "why": [
+      "About 25 cells fit across a full stop. Your eyes stop working long before that.",
+      "About 25 fit across a full stop — roughly 20 micrometres each. The eye can just about resolve 100 micrometres, so a cell is about five times too small.",
+      "≈20 µm. Unaided visual acuity bottoms out around 100 µm, so a cell is about five times below the limit.",
+      "≈20 µm, against an unaided resolution limit near 100 µm — hence the entire history of the field waiting on lens grinding."
+    ],
+    "from": "cells/01"
+  },
+  "cell-is-a-system": {
+    "q": [
+      "What makes a cell like a city?",
+      "Why is a cell more like a city than like a brick?",
+      "In what sense is a cell a system rather than a component?",
+      "Why does the city analogy hold and the brick analogy fail?"
+    ],
+    "options": [
+      "It has many parts, each doing a different job",
+      "It is made of one solid material",
+      "It is the same all the way through"
+    ],
+    "answer": 0,
+    "why": [
+      "A brick is the same all the way through. A cell has power, walls and instructions — all different, all working at once.",
+      "A brick is uniform. A cell has a boundary, power plants, an instruction store and transport, all running at the same time and depending on each other.",
+      "A brick is homogeneous and passive. A cell is compartmentalised and active: each organelle performs a distinct function, and removing one stops the whole.",
+      "The analogy holds on functional differentiation and interdependence — remove the power plant and the instruction store stops being read. A brick has neither property."
+    ],
+    "from": "cells/01"
+  },
+  "membrane-selectivity": {
+    "q": [
+      "Why did the poison stay outside?",
+      "Why did the poison stay out when the food got in?",
+      "What determined which molecules crossed the membrane?",
+      "What is the selectivity mechanism at work here?"
+    ],
+    "options": [
+      "It was too big for the holes",
+      "The cell pushed it away",
+      "Poison cannot move"
+    ],
+    "answer": 0,
+    "why": [
+      "The holes were big enough for food and too small for poison. Nothing pushed anything — the size did all the work.",
+      "Passage depended only on size against hole size. The cell did nothing active: the food fitted and the poison did not.",
+      "Steric exclusion. Molecules smaller than the pore crossed by random motion; larger ones bounced. No energy was expended by the cell.",
+      "Steric exclusion alone. Both species executed the same unbiased random walk; only the pore geometry differed in outcome."
+    ],
+    "from": "cells/02"
+  },
+  "diffusion-is-passive": {
+    "q": [
+      "What made the food move inside?",
+      "What made the food end up inside the cell?",
+      "What drove net movement of food into the cell?",
+      "What accounts for the net inward flux of food?"
+    ],
+    "options": [
+      "It moved randomly and there was more room inside",
+      "The cell sucked it in",
+      "Food always moves towards cells"
+    ],
+    "answer": 0,
+    "why": [
+      "Every molecule wandered at random. There were more outside than inside, so more wandered in than out — until it evened up.",
+      "Each molecule moves randomly with no sense of direction. Because there were more outside, more happened to cross inwards than outwards, and it stopped when both sides matched.",
+      "Random motion plus a concentration difference. Flux is proportional to the gradient, so it falls to zero at equilibrium — nothing 'pulls'.",
+      "Fick's first law falling out of an unbiased random walk: net flux is proportional to the negative concentration gradient, and vanishes at equilibrium."
+    ],
+    "from": "cells/02"
+  },
+  "atp-is-a-flow": {
+    "q": [
+      "Why does the energy bar never stay still?",
+      "Why did the energy level never sit still, even when it was working?",
+      "Why is ATP level always changing even at steady state?",
+      "Why is a constant ATP pool not evidence of a static system?"
+    ],
+    "options": [
+      "Because energy is being made and spent all the time",
+      "Because the cell stores energy up",
+      "Because the sliders were moving"
+    ],
+    "answer": 0,
+    "why": [
+      "The cell never fills up. It makes energy and spends it at the same time, all the time.",
+      "There is no tank. Production and consumption run simultaneously, so the level is always the difference between two flows.",
+      "Steady state is a balance of two large opposing fluxes, not the absence of change. Stop synthesis and the pool is gone in seconds.",
+      "A constant pool reflects matched synthesis and hydrolysis rates, both large. Turnover, not stock, is the quantity that matters."
+    ],
+    "from": "cells/03"
+  },
+  "mitochondria-cost": {
+    "q": [
+      "Why is building loads of power plants a bad idea?",
+      "Why did adding more and more power plants stop helping?",
+      "Why does mitochondrial number have an optimum rather than a maximum?",
+      "What sets the upper bound on useful mitochondrial density?"
+    ],
+    "options": [
+      "Each one costs energy to run",
+      "They get in each other's way",
+      "There is not enough room"
+    ],
+    "answer": 0,
+    "why": [
+      "Every power plant needs energy just to keep going. Build too many and they eat more than they make.",
+      "Each mitochondrion has a maintenance cost. Past a point, the upkeep of the extras exceeds what they contribute.",
+      "Maintenance cost scales with number while output is capped by substrate supply, so net gain turns negative — cells regulate density rather than maximising it.",
+      "Output saturates at substrate limitation while maintenance scales linearly, so net ATP is non-monotonic in copy number."
+    ],
+    "from": "cells/03"
+  },
+  "copy-not-original": {
+    "q": [
+      "Why does the original stay in its room?",
+      "Why does DNA never leave the nucleus?",
+      "Why is the template retained rather than exported?",
+      "What is the functional argument for sequestering the template?"
+    ],
+    "options": [
+      "So it cannot be damaged or lost",
+      "Because it is stuck",
+      "Because copies are faster"
+    ],
+    "answer": 0,
+    "why": [
+      "There is only one original. If it were damaged, every copy after it would be wrong too.",
+      "You have one copy of your genome per cell. Damage to it is permanent and inherited by every daughter cell; damage to a transcript costs nothing.",
+      "The template is irreplaceable and its errors propagate; transcripts are disposable and their errors do not. Sequestering the template also allows expression to be regulated at the point of copying.",
+      "Error in a transcript is transient; error in the template is heritable. Compartmentalisation also creates a regulatory step between archive and product."
+    ],
+    "from": "cells/04"
+  }
+}

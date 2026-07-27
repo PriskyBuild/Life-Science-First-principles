@@ -1,0 +1,36 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      # The palette is generated. If a hue changed and nobody regenerated,
+      # the working tree moves — and that must fail rather than ship stale
+      # colours that no longer clear their contrast gates.
+      - run: python3 tools/gen-palette.py
+      - run: node tools/build.mjs
+      - name: generated files are up to date
+        run: git diff --exit-code -- css/worlds.css css/app.css sw.js content/reviews.json
+
+      - run: node tools/verify.mjs
+      - run: node tools/lighthouse.mjs
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots
+          path: shots/
+          if-no-files-found: ignore

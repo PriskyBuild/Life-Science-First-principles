@@ -1,0 +1,149 @@
+{
+  "id": "cells/04",
+  "module": "cells",
+  "index": 3,
+  "title": "The Instruction Room",
+  "specimen": "nucleus",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "The instructions for making you are locked in a room. So how does anything get built?",
+        "Every instruction for building you sits in one locked room in each cell. The builders are outside. How does the message get out?",
+        "The genome never leaves the nucleus. Protein synthesis happens outside it. Something has to carry the message across.",
+        "Compartmentalisation separates the archive from the factory. That separation is not an inconvenience; it is what makes regulation possible."
+      ],
+      "sub": [
+        "A copy goes out. The original never leaves.",
+        "A copy is made and sent out. The original stays where it is safe.",
+        "A transcript is made and exported. The template is never risked.",
+        "Transcription decouples the durable archive from the disposable working copy, so expression can be regulated per copy rather than per gene."
+      ]
+    },
+    {
+      "type": "predict",
+      "concept": "copy-not-original",
+      "question": [
+        "Why not just send the original instructions out?",
+        "Why does the cell send a copy instead of the original instructions?",
+        "Why is the template retained and a transcript exported?",
+        "What does keeping the template sequestered buy the cell?"
+      ],
+      "options": ["Because the original could get damaged or lost", "Because the original is too heavy", "Because copies work better"],
+      "outcome": "Because the original could get damaged or lost",
+      "note": [
+        "Have a guess first.",
+        "Guess before you look — it makes the answer stick.",
+        "Commit to a reason before reading on.",
+        "State a hypothesis before the mechanism is given."
+      ]
+    },
+    {
+      "type": "build",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Put each thing where it belongs.",
+        "Put each piece of the instruction system where it belongs. Tap a piece, then tap its place."
+      ],
+      "parts": [
+        { "id": "dna", "label": "The original" },
+        { "id": "copy", "label": "The copy" },
+        { "id": "builder", "label": "The builder" }
+      ],
+      "slots": [
+        { "accepts": "dna", "label": ["Locked room", "Stays in the locked room"] },
+        { "accepts": "copy", "label": ["Travels out", "Carries the message out"] },
+        { "accepts": "builder", "label": ["Does the building", "Reads the copy and builds"] }
+      ],
+      "win": ["That is the whole system.", "That is the whole system: archive, message, factory."],
+      "lose": ["Nearly — move the pieces around and try again.", "Not quite. Move a piece and see."]
+    },
+    {
+      "type": "build",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Five parts, five jobs. Work out which goes where — some of the names will be new, and that is fine.",
+        "Five components. Assign each to its role. The names may be unfamiliar; the logic of the pipeline should not be."
+      ],
+      "parts": [
+        { "id": "dna", "label": "DNA" },
+        { "id": "copy", "label": "mRNA" },
+        { "id": "builder", "label": "Ribosome" },
+        { "id": "carrier", "label": "tRNA" },
+        { "id": "product", "label": "Protein" }
+      ],
+      "slots": [
+        { "accepts": "dna", "label": ["The archive, kept in the nucleus"] },
+        { "accepts": "copy", "label": ["The transcript, exported to the cytoplasm"] },
+        { "accepts": "builder", "label": ["Reads the transcript three letters at a time"] },
+        { "accepts": "carrier", "label": ["Brings the matching amino acid"] },
+        { "accepts": "product", "label": ["The finished chain that folds and does a job"] }
+      ],
+      "win": ["That is transcription and translation in five parts.", "That is the central dogma, assembled: DNA to RNA to protein, with tRNA as the adaptor."],
+      "lose": ["Something is in the wrong place. Move it and look again.", "One or more assignments are wrong. Reconsider what each component physically does."]
+    },
+    {
+      "type": "name",
+      "t": [
+        "The locked room is the nucleus. The copy is called mRNA.",
+        "The locked room is the nucleus, the copy is messenger RNA, and the builder is a ribosome.",
+        "Transcription copies a gene into mRNA inside the nucleus; translation reads that mRNA into protein at a ribosome outside it.",
+        "Transcription produces a processed mRNA; translation decodes it in triplets at the ribosome, with tRNA as the physical adaptor between codon and amino acid."
+      ],
+      "sub": [
+        "One room, one copy, one builder. That is how everything in you gets made.",
+        "Every protein in your body was made this way, right now, thousands of times a second.",
+        "This pipeline runs continuously in every cell you have, and its regulation is most of what makes a liver cell different from a neuron.",
+        "The same genome, differently transcribed. Cell identity is a statement about which genes are being read, not about which genes are present."
+      ]
+    },
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Some medicines work by sending the cell a message of our own.",
+        "An mRNA vaccine works by handing your cells a copy of an instruction, which they read and then throw away.",
+        "mRNA vaccines exploit exactly this pipeline: a synthetic transcript is delivered, translated into one viral protein, and degraded. The nucleus is never involved and the genome is never touched.",
+        "Delivering a transcript rather than a gene means no nuclear entry and no integration risk, which is why the platform moved so quickly through safety review."
+      ]
+    },
+    {
+      "type": "check",
+      "concept": "copy-not-original",
+      "q": [
+        "Why does the original stay in its room?",
+        "Why does DNA never leave the nucleus?",
+        "Why is the template retained rather than exported?",
+        "What is the functional argument for sequestering the template?"
+      ],
+      "options": ["So it cannot be damaged or lost", "Because it is stuck", "Because copies are faster"],
+      "answer": 0,
+      "why": [
+        "There is only one original. If it were damaged, every copy after it would be wrong too.",
+        "You have one copy of your genome per cell. Damage to it is permanent and inherited by every daughter cell; damage to a transcript costs nothing.",
+        "The template is irreplaceable and its errors propagate; transcripts are disposable and their errors do not. Sequestering the template also allows expression to be regulated at the point of copying.",
+        "Error in a transcript is transient; error in the template is heritable. Compartmentalisation also creates a regulatory step between archive and product."
+      ]
+    },
+    {
+      "type": "check",
+      "concept": "cell-is-a-system",
+      "q": [
+        "What does the builder need before it can build?",
+        "What does a ribosome need before it can make anything?",
+        "What are the minimum inputs to translation?",
+        "What does a ribosome require beyond a transcript?"
+      ],
+      "options": ["The copy of the instructions", "More energy only", "Nothing, it just builds"],
+      "answer": 0,
+      "why": [
+        "A builder with no instructions builds nothing. The copy has to arrive first.",
+        "A ribosome is a reader. Without a transcript to read it has no sequence to follow, however much energy is available.",
+        "Translation needs the transcript, charged tRNAs and GTP. The transcript is what makes the product specific — the rest is machinery.",
+        "Machinery plus energy yields nothing without sequence information. Specificity enters only through the transcript."
+      ]
+    }
+  ]
+}

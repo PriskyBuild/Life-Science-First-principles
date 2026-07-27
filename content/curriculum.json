@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "worlds": [
+    {
+      "id": "origins",
+      "title": "Origins",
+      "tagline": ["Where living things begin", "What separates the living from the merely complicated"],
+      "requires": [],
+      "modules": [
+        { "id": "what-is-life", "title": "What is Life?", "lessons": 4, "requires": [],
+          "hook": ["A rock and a beetle are both made of atoms. Only one of them runs away.",
+                   "Every definition of life you have been given has an exception. Find one that doesn't."] },
+        { "id": "cells", "title": "Cells", "lessons": 5, "requires": ["what-is-life"],
+          "hook": ["What if a whole city had to fit inside something smaller than a grain of sand?",
+                   "Fit a working city — power, walls, instructions, transport — into 20 micrometres."],
+          "lessonTitles": ["The City in a Speck", "The Wall That Chooses", "The Power Plant",
+                           "The Instruction Room", "Build a Cell"],
+          "specimens": [
+            { "id": "scale-lens", "title": "Scale Lens", "unlocks": "Zoom any diagram down to cell size",
+              "blurb": ["A lens that shows how big things really are.",
+                        "Renders any structure at true relative scale."] },
+            { "id": "membrane", "title": "Membrane", "unlocks": "A wall you can put round anything",
+              "blurb": ["A wall that chooses what gets in.",
+                        "A selectively permeable bilayer. Needed to build anything that stays alive."] },
+            { "id": "mitochondrion", "title": "Mitochondrion", "unlocks": "Powers builds in later modules",
+              "blurb": ["The bit that makes the power.",
+                        "Turns glucose into ATP. Every build with a running cost needs one."] },
+            { "id": "nucleus", "title": "Nucleus", "unlocks": "Stores instructions for World 2",
+              "blurb": ["Where the instructions are kept.",
+                        "Holds the genome. Required before you can read or edit a gene."] },
+            { "id": "ribosome", "title": "Ribosome", "unlocks": "Build proteins in World 2",
+              "blurb": ["The machine that follows instructions.",
+                        "Translates mRNA into protein. This is what lets you build a protein later."] }
+          ] },
+        { "id": "biomolecules", "title": "Biomolecules", "lessons": 4, "requires": ["cells"],
+          "hook": ["Four kinds of building block make every living thing you have ever seen.",
+                   "Sugars, fats, proteins, nucleic acids. Four families, all of life."] }
+      ]
+    },
+    {
+      "id": "code",
+      "title": "The Code",
+      "tagline": ["The instructions inside you", "Information storage, retrieval, and manufacture"],
+      "requires": ["cells"],
+      "modules": [
+        { "id": "dna", "title": "DNA", "lessons": 5, "requires": [],
+          "hook": ["Two metres of instructions, folded into something you cannot see.",
+                   "Two metres of polymer per cell, packed 10,000-fold, read without tangling."] },
+        { "id": "genes", "title": "Genes", "lessons": 4, "requires": ["dna"],
+          "hook": ["Why do you have your grandmother's eyes and nobody else's laugh?",
+                   "The same genome builds a neuron and a liver cell. What decides?"] },
+        { "id": "proteins", "title": "Proteins", "lessons": 5, "requires": ["genes"],
+          "hook": ["A string of beads folds itself into a machine. Nobody tells it how.",
+                   "Sequence determines structure determines function. Break any link and see."] }
+      ]
+    },
+    {
+      "id": "change",
+      "title": "Change",
+      "tagline": ["How living things become different", "Variation, selection, and time"],
+      "requires": ["genes"],
+      "modules": [
+        { "id": "evolution", "title": "Evolution", "lessons": 5, "requires": [],
+          "hook": ["Nobody designed the eye. So how did it get so good?",
+                   "Descent with modification: the only mechanism that makes design without a designer."] },
+        { "id": "natural-selection", "title": "Natural Selection", "lessons": 4, "requires": ["evolution"],
+          "hook": ["Change the weather. Watch which beetles are left.",
+                   "Three conditions produce selection automatically. Remove one and it stops."] },
+        { "id": "development", "title": "Development", "lessons": 4, "requires": ["evolution"],
+          "hook": ["One cell becomes a whole animal. Where are the instructions for 'leg'?",
+                   "How a single cell partitions itself into an addressed, patterned body."] }
+      ]
+    },
+    {
+      "id": "bodies",
+      "title": "Bodies",
+      "tagline": ["The machine you live inside", "Systems, failure modes, and repair"],
+      "requires": ["cells"],
+      "modules": [
+        { "id": "human-body", "title": "Human Body", "lessons": 5, "requires": [],
+          "hook": ["Everything in you is moving right now. Even the bits that feel still.",
+                   "Eleven systems, one budget, no downtime for maintenance."] },
+        { "id": "nutrition", "title": "Nutrition", "lessons": 4, "requires": ["human-body"],
+          "hook": ["Your lunch becomes you. Follow it and find out how.",
+                   "Trace a molecule of glucose from plate to muscle to heat."] },
+        { "id": "immunity", "title": "Immunity", "lessons": 5, "requires": ["human-body"],
+          "hook": ["Something got in. You have about six hours.",
+                   "An army with no central command that must not attack its own country."] },
+        { "id": "neuroscience", "title": "Neuroscience", "lessons": 5, "requires": ["human-body"],
+          "hook": ["Your thoughts are electricity moving through wet meat. That is not an insult.",
+                   "Eighty-six billion cells, no clock, no supervisor, and yet: you."] },
+        { "id": "disease", "title": "Disease", "lessons": 4, "requires": ["immunity"],
+          "hook": ["Most of the time your body wins. What happens when it doesn't?",
+                   "Every disease is a mechanism failing in a specific, findable way."] },
+        { "id": "medicine", "title": "Medicine", "lessons": 4, "requires": ["disease"],
+          "hook": ["You have a fever. Should you get rid of it?",
+                   "Every treatment is a trade. Learn to see the other side of the trade."] }
+      ]
+    },
+    {
+      "id": "living",
+      "title": "The Living World",
+      "tagline": ["Everything else that is alive", "Populations, partnerships, and consequences"],
+      "requires": ["cells"],
+      "modules": [
+        { "id": "plants", "title": "Plants", "lessons": 5, "requires": [],
+          "hook": ["A tree is mostly made of air. Find out which part.",
+                   "Photosynthesis: the reaction that made an oxygen atmosphere and everything after."] },
+        { "id": "animals", "title": "Animals", "lessons": 4, "requires": [],
+          "hook": ["Why does a mouse's heart beat so much faster than yours?",
+                   "Body size sets metabolism, lifespan, and heartbeat. The scaling law is brutal."] },
+        { "id": "microbiology", "title": "Microbiology", "lessons": 4, "requires": [],
+          "hook": ["There are more of them on your hand than there are people on Earth.",
+                   "Most life is microbial. Most of it we have never grown in a lab."] },
+        { "id": "ecology", "title": "Ecology", "lessons": 5, "requires": ["plants", "animals"],
+          "hook": ["Remove the wolves. Watch the river change shape.",
+                   "Every population is held in place by forces you can only see by removing them."] },
+        { "id": "environmental-science", "title": "Environmental Science", "lessons": 4, "requires": ["ecology"],
+          "hook": ["The air you breathe out today will be in a leaf next spring.",
+                   "Carbon, nitrogen and water move in closed loops. We opened some of them."] }
+      ]
+    },
+    {
+      "id": "frontier",
+      "title": "Frontier",
+      "tagline": ["Biology we are still inventing", "Where the field is actively unfinished"],
+      "requires": ["proteins"],
+      "requiresAnyCompleted": 3,
+      "modules": [
+        { "id": "biotechnology", "title": "Biotechnology", "lessons": 4, "requires": [],
+          "hook": ["We taught bacteria to make human insulin. Here is how.",
+                   "Borrowing cellular machinery to manufacture things evolution never made."] },
+        { "id": "crispr", "title": "CRISPR", "lessons": 5, "requires": ["biotechnology"],
+          "hook": ["Bacteria invented gene editing to fight viruses. We took the scissors.",
+                   "A bacterial immune memory, repurposed into programmable molecular surgery."] },
+        { "id": "synthetic-biology", "title": "Synthetic Biology", "lessons": 4, "requires": ["crispr"],
+          "hook": ["If you could design a living thing from scratch, what would you make?",
+                   "Treating the cell as a platform: parts, devices, and the limits of the metaphor."] },
+        { "id": "space-biology", "title": "Space Biology", "lessons": 4, "requires": [],
+          "hook": ["Your bones start dissolving after two weeks in space. Why?",
+                   "Every system in you is calibrated to 1g. Remove it and watch what was load-bearing."] },
+        { "id": "future-biology", "title": "Future Biology", "lessons": 4, "requires": ["synthetic-biology"],
+          "hook": ["What should we build, now that we can build almost anything?",
+                   "The open problems, the live arguments, and the questions with no answer yet."] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+/* Design tokens. Colour and elevation ingredients live in worlds.css
+   (generated); everything else is here.
+
+   Two load-bearing ideas:
+
+   1. LEVEL SCALING. <html data-level="1..4"> rescales the whole product. No
+      JavaScript participates in presentational adaptation.
+
+   2. ONE MULTIPLIER DRIVES TYPE AND SPACE. --type-scale multiplies the user's
+      own root font size rather than replacing it, so a child who has set larger
+      text in their OS keeps that preference and gets the level scaling on top.
+      Spacing derives from rem, so it follows automatically.
+
+      --touch does NOT derive from type. It is a motor constraint (how big a
+      six-year-old's finger is), not a reading constraint, and tying it to font
+      size would shrink it for a child who prefers small text. */
+
+:root {
+  /* ---- type ---- */
+  --font-body: "Nunito", ui-rounded, "Segoe UI", system-ui, sans-serif;
+  --font-display: "Baloo 2", var(--font-body);
+  --weight-normal: 400;
+  --weight-bold: 700;
+  --weight-display: 600;
+
+  /* modular scale, powers of --ratio, all relative to the level-scaled rem */
+  --fs-xs: 0.78rem;
+  --fs-sm: 0.87rem;
+  --fs-md: 1rem;
+  --fs-lg: calc(1rem * var(--ratio));
+  --fs-xl: calc(1rem * var(--ratio) * var(--ratio));
+  --fs-2xl: calc(1rem * var(--ratio) * var(--ratio) * var(--ratio));
+
+  /* ---- radii: claymorphic, chunky ---- */
+  /* Chunkier than a general-purpose system. The UI/UX resolver's claymorphism
+     profile calls for 40-50px outer / 32 cards / 20 buttons; these are in rem
+     so they land near that at L1-L2 and stay sane at L4 rather than turning
+     into a cartoon for a sixteen-year-old. */
+  --r-sm: 0.75rem;
+  --r-md: 1.25rem;
+  --r-lg: 2rem;
+  --r-pill: 999px;
+
+  /* ---------------------------------------------------------------------
+     ELEVATION. Claymorphic depth is an affordance language, not a texture:
+
+       e0  flat        — NOT touchable. Places, panels, containers.
+       e1  resting     — touchable, at rest.
+       e2  lifted      — touchable, hovered or featured.
+       e3  floating    — above the page: the tutor, sheets, popovers.
+       press           — touchable, currently held.
+
+     Reviewing a screen means checking that every raised thing can be pressed
+     and every flat thing cannot. --shade and --rim come from worlds.css and are
+     theme-correct by construction: shade is always darker than the surface, rim
+     always lighter, in both themes.
+     --------------------------------------------------------------------- */
+  --clay-border: 3px;
+  --rim-light: inset 0 2px 0 0 rgb(var(--rim) / var(--rim-o));
+
+  --e0: none;
+  --e1:
+    0 3px 0 0 rgb(var(--shade) / var(--shade-o1)),
+    0 6px 14px -6px rgb(var(--shade) / var(--shade-o2)),
+    var(--rim-light);
+  --e2:
+    0 5px 0 0 rgb(var(--shade) / var(--shade-o1)),
+    0 12px 26px -10px rgb(var(--shade) / var(--shade-o2)),
+    var(--rim-light);
+  --e3:
+    0 2px 0 0 rgb(var(--shade) / var(--shade-o1)),
+    0 20px 44px -12px rgb(var(--shade) / var(--shade-o2)),
+    var(--rim-light);
+  --e-press:
+    0 1px 0 0 rgb(var(--shade) / var(--shade-o1)),
+    0 3px 8px -6px rgb(var(--shade) / var(--shade-o2)),
+    inset 0 2px 0 0 rgb(var(--rim) / calc(var(--rim-o) * 0.5));
+
+  /* how far a raised element travels between states — matches the shadow
+     offsets above so the element looks like it is really moving, not fading */
+  --lift: -2px;
+  --sink: 2px;
+
+  /* ---- motion. Durations are multiplied by --motion-scale per level. ---- */
+  --ease-appear: cubic-bezier(.34, 1.46, .64, 1);   /* overshoot: makes clay feel physical */
+  --ease-move: cubic-bezier(.22, .61, .36, 1);
+  --t-state: calc(120ms * var(--motion-scale));
+  --t-move: calc(240ms * var(--motion-scale));
+  --t-teach: calc(400ms * var(--motion-scale));
+  --stagger: calc(60ms * var(--motion-scale));
+
+  --focus-ring: 3px;
+  --shell-max: 68rem;
+}
+
+/* ---------------------------------------------------------------------------
+   LEVEL SCALING — blueprint 6.4.
+   L1's 76px target is 2cm at 96 CSS px/in (NN/g guidance for under-9s), not a
+   rounded-down 72px. It is one of only two rows here that is an absolute px
+   value, because it is a physical measurement of a hand.
+   --------------------------------------------------------------------------- */
+:root,
+[data-level="2"] {                      /* L2 is the default if nothing is set */
+  --type-scale: 1.1875;                 /* 19px at a 16px root */
+  --ratio: 1.25;
+  --lh-body: 1.6;
+  --measure: 50ch;
+  --motion-scale: 1.1;
+  --touch: 60px;
+  --touch-gap: 12px;
+}
+
+[data-level="1"] {
+  --type-scale: 1.375;                  /* 22px at a 16px root */
+  --ratio: 1.28;
+  --lh-body: 1.7;
+  --measure: 40ch;
+  --motion-scale: 1.25;
+  --touch: 76px;
+  --touch-gap: 16px;
+}
+
+[data-level="3"] {
+  --type-scale: 1.0625;
+  --ratio: 1.22;
+  --lh-body: 1.55;
+  --measure: 62ch;
+  --motion-scale: 1;
+  --touch: 48px;
+  --touch-gap: 8px;
+}
+
+[data-level="4"] {
+  --type-scale: 1;
+  --ratio: 1.2;
+  --lh-body: 1.5;
+  --measure: 68ch;
+  --motion-scale: .9;
+  --touch: 44px;
+  --touch-gap: 8px;
+}
+
+/* Spacing derives from the level-scaled rem, so one multiplier moves type and
+   rhythm together. Every step 1..16 is declared: a gap in the scale silently
+   resolves to zero padding, which is a layout bug with no error message.
+   tools/build.mjs fails the build on a reference to an undeclared step. */
+:root {
+  --space: 0.25rem;
+  --s-1: calc(var(--space) * 1);
+  --s-2: calc(var(--space) * 2);
+  --s-3: calc(var(--space) * 3);
+  --s-4: calc(var(--space) * 4);
+  --s-5: calc(var(--space) * 5);
+  --s-6: calc(var(--space) * 6);
+  --s-7: calc(var(--space) * 7);
+  --s-8: calc(var(--space) * 8);
+  --s-9: calc(var(--space) * 9);
+  --s-10: calc(var(--space) * 10);
+  --s-11: calc(var(--space) * 11);
+  --s-12: calc(var(--space) * 12);
+  --s-13: calc(var(--space) * 13);
+  --s-14: calc(var(--space) * 14);
+  --s-15: calc(var(--space) * 15);
+  --s-16: calc(var(--space) * 16);
+}
+
+/* Opt-in high-legibility body face (blueprint 10). Fetched only when enabled,
+   so children who do not need it pay nothing. */
+[data-face="hyperlegible"] {
+  --font-body: "Atkinson Hyperlegible", "Nunito", system-ui, sans-serif;
+  --font-display: var(--font-body);
+}

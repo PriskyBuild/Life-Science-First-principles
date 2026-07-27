@@ -1,0 +1,156 @@
+{
+  "id": "cells/01",
+  "module": "cells",
+  "index": 0,
+  "title": "The City in a Speck",
+  "specimen": "scale-lens",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "What if a whole city had to fit inside something smaller than a grain of sand?",
+        "What if a whole city — power stations, walls, a library, delivery vans — had to fit inside something smaller than a grain of sand?",
+        "A city needs power, walls, instructions, transport and waste disposal. Now fit all of it into something you cannot see.",
+        "Every function a city performs, running continuously, inside a volume of about four picolitres. No pause for maintenance."
+      ],
+      "sub": [
+        "It already happened. You are made of about thirty trillion of them.",
+        "It already happened, about four billion years ago. You are made of roughly thirty trillion of them.",
+        "This is not a metaphor for a cell. It is a fair description of one.",
+        "Roughly 3 × 10¹³ of them, in about 200 distinct types, in you right now."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "cell-scale",
+      "question": [
+        "How many of these tiny cities would fit across a full stop?",
+        "How many cells would fit across the full stop at the end of this sentence?",
+        "A typical human cell is about 20 micrometres across. How many fit across a 0.5 mm full stop?",
+        "Given a 20 µm cell and a 0.5 mm printed full stop, estimate the linear packing count."
+      ],
+      "options": ["About 5", "About 25", "About 2,000"],
+      "outcome": "About 25",
+      "note": [
+        "Guessing is the point. Nobody knows this one until they check.",
+        "Commit to a guess before you look — a guess you have made is what makes the answer stick.",
+        "Estimate before checking. The gap between your estimate and the answer is what you will remember.",
+        "Order-of-magnitude estimation first. Anchoring on your own wrong estimate is what makes the correction memorable."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [1, 2],
+      "guided": true,
+      "label": "How close are we?",
+      "min": 0, "max": 4, "value": 0,
+      "captions": [
+        "A whole city. You can see the buildings.",
+        "One street. You could walk down it.",
+        "A single brick. About as wide as your thumb.",
+        "A grain of sand. Now you need to squint.",
+        "A cell. You have run out of eyes — this needs a microscope."
+      ],
+      "t": [
+        "Drag the slider. Watch how much smaller each step is.",
+        "Drag the slider. Each step is about ten times smaller than the last."
+      ],
+      "after": [
+        "Every step shrank by ten. Five steps, and a city became a cell.",
+        "Five steps of ten. That is how you get from a city you can walk through to something you cannot see."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [3, 4],
+      "guided": false,
+      "label": "Powers of ten",
+      "min": 0, "max": 6, "value": 0,
+      "captions": [
+        "1 m — a person",
+        "10⁻¹ m — a hand",
+        "10⁻² m — a fingernail",
+        "10⁻³ m — a grain of sand",
+        "10⁻⁴ m — a hair's width",
+        "10⁻⁵ m — a human cell",
+        "10⁻⁶ m — a mitochondrion, and a bacterium beside it"
+      ],
+      "t": [
+        "Move it. Work out where a cell sits before the label tells you.",
+        "Each step is one order of magnitude. Predict where a eukaryotic cell falls before you reach it."
+      ],
+      "after": [
+        "A cell sits five orders of magnitude below you. Its power plants sit one below that — and they are the size of a whole bacterium, which is a clue we will come back to.",
+        "Five orders below a human, one further to the organelle. That a mitochondrion is bacterium-sized is not a coincidence; it is the evidence for endosymbiosis."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "That tiny city is called a cell.",
+        "That tiny city has a name: a cell. It is the smallest thing that is properly alive.",
+        "A cell is the smallest unit that performs every function we call living — it takes in energy, keeps itself separate from its surroundings, and copies itself.",
+        "A cell is the smallest self-maintaining thermodynamic system: it imports free energy, holds a boundary against equilibrium, and reproduces its own organisation."
+      ],
+      "sub": [
+        "Everything alive is made of them.",
+        "Everything alive is made of them — you, a mushroom, the mould on old bread.",
+        "Every living thing is one cell, or many. There is no third option.",
+        "No known life escapes this: unicellular or multicellular, with viruses sitting outside the definition precisely because they lack it."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "t": [
+        "Doctors look at your cells to find out why you feel poorly.",
+        "When a doctor takes a blood sample, they are counting and looking at cells. The shape of them says what is wrong.",
+        "A blood film is read cell by cell: shape, size and count identify anaemia, infection and leukaemia long before other symptoms are clear.",
+        "Cytology is diagnosis at the scale you just explored — morphology and count in a stained smear remain first-line for a large fraction of haematological disease."
+      ],
+      "kicker": "Why this matters"
+    },
+
+    {
+      "type": "check",
+      "concept": "cell-scale",
+      "q": [
+        "How big is a cell?",
+        "Roughly how big is a typical human cell?",
+        "What is the approximate diameter of a typical human cell?",
+        "Order of magnitude for a typical eukaryotic cell diameter?"
+      ],
+      "options": ["Too small to see without a microscope", "About the size of a grain of sand", "Big enough to see if you look closely"],
+      "answer": 0,
+      "why": [
+        "About 25 cells fit across a full stop. Your eyes stop working long before that.",
+        "About 25 fit across a full stop — roughly 20 micrometres each. The eye can just about resolve 100 micrometres, so a cell is about five times too small.",
+        "≈20 µm. Unaided visual acuity bottoms out around 100 µm, so a cell is about five times below the limit.",
+        "≈20 µm, against an unaided resolution limit near 100 µm — hence the entire history of the field waiting on lens grinding."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "cell-is-a-system",
+      "q": [
+        "What makes a cell like a city?",
+        "Why is a cell more like a city than like a brick?",
+        "In what sense is a cell a system rather than a component?",
+        "Why does the city analogy hold and the brick analogy fail?"
+      ],
+      "options": ["It has many parts, each doing a different job", "It is made of one solid material", "It is the same all the way through"],
+      "answer": 0,
+      "why": [
+        "A brick is the same all the way through. A cell has power, walls and instructions — all different, all working at once.",
+        "A brick is uniform. A cell has a boundary, power plants, an instruction store and transport, all running at the same time and depending on each other.",
+        "A brick is homogeneous and passive. A cell is compartmentalised and active: each organelle performs a distinct function, and removing one stops the whole.",
+        "The analogy holds on functional differentiation and interdependence — remove the power plant and the instruction store stops being read. A brick has neither property."
+      ]
+    }
+  ]
+}

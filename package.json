@@ -1,0 +1,21 @@
+{
+  "name": "first-principles-life-sciences",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Learn biology by operating the mechanism before naming it. Twenty-five modules for ages 5 to 16.",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 8000 || npx --yes serve -l 8000 .",
+    "build": "node tools/build.mjs",
+    "palette": "python3 tools/gen-palette.py",
+    "verify": "node tools/verify.mjs",
+    "lighthouse": "node tools/lighthouse.mjs",
+    "check": "npm run build && npm run verify && npm run lighthouse"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.0",
+    "lighthouse": "^12.0.0",
+    "chrome-launcher": "^1.1.0"
+  },
+  "engines": { "node": ">=20" }
+}

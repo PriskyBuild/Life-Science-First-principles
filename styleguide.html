@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" data-level="2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design system — First Principles Life Sciences</title>
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/worlds.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  /* Style-guide chrome only. Not part of the product; this file is excluded
+     from the service-worker precache and from the shell budgets. */
+  body { padding-bottom: var(--s-16); }
+  .sg-bar {
+    position: sticky; top: 0; z-index: 30;
+    display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3);
+    padding: var(--s-3) var(--s-4);
+    background: color-mix(in srgb, var(--paper) 90%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .sg-bar strong { font-family: var(--font-display); margin-inline-end: auto; }
+  .sg-seg { display: flex; gap: 2px; padding: 3px; background: var(--sunk); border-radius: var(--r-pill); }
+  .sg-seg button {
+    min-height: 2.2rem; padding-inline: var(--s-3); border-radius: var(--r-pill);
+    font-size: var(--fs-sm); font-weight: var(--weight-bold); color: var(--ink-2);
+  }
+  .sg-seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--e1); }
+  main { max-width: 76rem; }
+  section { margin-block: var(--s-16) var(--s-8); }
+  section > p { color: var(--ink-2); margin-bottom: var(--s-5); }
+  .sg-grid { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fill, minmax(min(13rem,100%), 1fr)); }
+  .sg-card { padding: var(--s-3); border-radius: var(--r-md); border: 1px solid var(--hairline); background: var(--surface); }
+  .sg-swatch { height: 3.2rem; border-radius: var(--r-sm); margin-bottom: var(--s-2); border: 1px solid rgb(var(--shade) / .12); }
+  .sg-name { font-size: var(--fs-sm); font-weight: var(--weight-bold); }
+  .sg-meta { font-size: var(--fs-xs); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .sg-pass { color: var(--w-correct-text); font-weight: var(--weight-bold); }
+  .sg-fail { color: var(--w-wrong-text); font-weight: var(--weight-bold); }
+  .sg-row { display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: flex-end; }
+  .sg-box { display: grid; place-items: center; background: var(--surface); border: var(--clay-border) solid var(--hairline); border-radius: var(--r-md); padding: var(--s-4); min-width: 8rem; }
+  .sg-bar-space { background: var(--w-frontier-line); height: .8rem; border-radius: 2px; }
+  table { border-collapse: collapse; width: 100%; font-size: var(--fs-sm); }
+  th, td { text-align: start; padding: var(--s-2) var(--s-3); border-bottom: 1px solid var(--hairline); }
+  th { color: var(--ink-3); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .06em; }
+  .sg-ruler { height: 2.4rem; background:
+    repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 1cm);
+    border-bottom: 2px solid var(--line); position: relative; }
+  .sg-ruler span { position: absolute; bottom: 2px; font-size: var(--fs-xs); color: var(--ink-3); }
+  code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .9em; background: var(--sunk); padding: 0 .3em; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="sg-bar">
+  <strong>Design system</strong>
+  <div class="sg-seg" id="sg-level" role="group" aria-label="Level"></div>
+  <div class="sg-seg" id="sg-theme" role="group" aria-label="Theme"></div>
+</div>
+
+<main>
+  <h1>First Principles Life Sciences</h1>
+  <p class="lede">Every value on this page is read from the live stylesheet, and every
+  contrast figure is measured from the rendered result. If a token drifts, this page says so
+  rather than looking fine.</p>
+
+  <section id="s-colour">
+    <h2>Colour</h2>
+    <p>Six world hues, three semantics, one neutral chrome. Text steps are solved to clear
+    4.5:1 and stroke steps 3:1 against <em>every</em> surface they can composite onto —
+    the page, cards, sunken panels and their own tint — not just the page background.</p>
+    <div id="out-chrome" class="sg-grid"></div>
+    <h3 style="margin-top:var(--s-6)">Worlds</h3>
+    <div id="out-worlds"></div>
+    <h3 style="margin-top:var(--s-6)">Semantics</h3>
+    <p>Never used alone. Every semantic colour ships paired with an icon and a text label,
+    because roughly one boy in twelve cannot use the hue.</p>
+    <div id="out-sem"></div>
+  </section>
+
+  <section id="s-type">
+    <h2>Type</h2>
+    <p>One multiplier per level scales the user's own root size rather than replacing it, so
+    a child who has set larger text keeps that and gets level scaling on top. Sizes below are
+    live <code>getComputedStyle</code> readings — switch the level and watch them move.</p>
+    <table id="out-type"><thead><tr><th>Token</th><th>Role</th><th>Computed</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <section id="s-space">
+    <h2>Space</h2>
+    <p>Derived from the level-scaled rem, so rhythm follows type automatically.</p>
+    <div id="out-space" style="display:grid;gap:var(--s-2)"></div>
+  </section>
+
+  <section id="s-elevation">
+    <h2>Elevation and the affordance rule</h2>
+    <p><strong>Inside the content area, raised means touchable and flat means not.</strong>
+    Reviewing a screen is checking that rule holds. Shadows are built from a fixed dark
+    <code>--shade</code> and a fixed light <code>--rim</code>, never from <code>--ink</code>,
+    which inverts between themes and would paint a pale halo under every dark-mode card.</p>
+    <div class="sg-row" id="out-elev"></div>
+    <p style="margin-top:var(--s-5)">Press any raised sample: it sinks to <code>--e-press</code>
+    within <code>--t-state</code>. That is role 3, and it is the only feedback a child needs to
+    know the tap landed.</p>
+  </section>
+
+  <section id="s-motion">
+    <h2>Motion</h2>
+    <p>Four permitted roles. An animation that cannot be assigned one of them is deleted in
+    review, which is why there is no general-purpose animate utility to reach for.</p>
+    <table>
+      <thead><tr><th>Role</th><th>Primitive</th><th>Under reduced motion</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 causal</strong> — the animation is the lesson</td>
+            <td><code>[data-motion-role="teach"]</code></td>
+            <td class="sg-pass">Preserved, substituted with a step-through control</td></tr>
+        <tr><td><strong>2 spatial</strong> — where you came from</td>
+            <td><code>.m-enter</code>, <code>.m-stagger</code>, view transitions</td>
+            <td>Removed</td></tr>
+        <tr><td><strong>3 state</strong> — your touch registered</td>
+            <td><code>.pressable</code></td><td>Removed</td></tr>
+        <tr><td><strong>4 attention</strong> — what just changed</td>
+            <td><code>.m-attend</code></td><td>Removed</td></tr>
+      </tbody>
+    </table>
+    <div class="sg-row" style="margin-top:var(--s-5)">
+      <button class="back pressable" id="play-enter">Play role 2 — enter</button>
+      <button class="back pressable" id="play-attend">Play role 4 — attention</button>
+    </div>
+    <div id="demo-stage" class="sg-grid m-stagger" style="margin-top:var(--s-4)"></div>
+
+    <h3 style="margin-top:var(--s-8)">Role 1 substitution, live</h3>
+    <p>This is the part a blanket <code>animation: none</code> would destroy. Turn on
+    reduced motion in your OS and reload: the autoplay control disappears and the step
+    control takes its place, so every state of the mechanism is still reachable.</p>
+    <div class="sg-box" data-motion-role="teach" style="min-width:100%;justify-items:start">
+      <div class="teach-play"><strong>Autoplay</strong> — continuous animation (motion allowed)</div>
+      <div class="teach-steps"><strong>Step through</strong> — manual key states (reduced motion)</div>
+      <p class="sg-meta" id="out-motion-state" style="margin-top:var(--s-2)"></p>
+    </div>
+  </section>
+
+  <section id="s-targets">
+    <h2>Touch targets</h2>
+    <p>The one row of the level table that is an absolute pixel value, because it measures a
+    hand rather than a typeface. Level 1 is 76px — 2cm at 96 CSS px/in, the Nielsen Norman
+    guidance for under-nines, and roughly four times the area of the adult 44px norm. Hold a
+    ruler against your screen: the scale below is in real centimetres.</p>
+    <div class="sg-ruler"><span style="left:0">0</span><span style="left:1cm">1cm</span><span style="left:2cm">2cm</span><span style="left:3cm">3cm</span></div>
+    <div class="sg-row" style="margin-top:var(--s-4)" id="out-targets"></div>
+  </section>
+
+  <section id="s-icons">
+    <h2>Icons</h2>
+    <p>Path data in a JavaScript module, not an SVG sprite. Sized in <code>em</code> so they
+    track the text beside them at every level. Every one is decorative and paired with a
+    label — nothing here is an icon-only control, because an icon-only control is a guessing
+    game for a five-year-old.</p>
+    <div class="sg-grid" id="out-icons"></div>
+  </section>
+
+
+  <section id="s-parts">
+    <h2>Lesson parts</h2>
+    <p>The phase 4 components. Each exists because it has behaviour that plain HTML plus a
+    class cannot express — anything that did not clear that bar stayed CSS.</p>
+
+    <h3>Placement — <code>&lt;fp-board&gt;</code>, <code>&lt;fp-placeable&gt;</code>, <code>&lt;fp-slot&gt;</code></h3>
+    <p>Nielsen Norman's developmental research is blunt: children aged 5&ndash;7 struggle with
+    dragging, and precise dragging stays hard well past that. So drag is not the interaction —
+    it is an enhancement over one state machine. <strong>Tap a part, then tap a slot. Or press
+    Enter twice. Or drag.</strong> All three call the same two methods, which is also how the
+    keyboard and screen-reader paths came for free rather than as a retrofit.</p>
+    <fp-board data-label="Build a cell">
+      <div data-tray>
+        <fp-placeable data-id="nucleus" data-label="Nucleus">Nucleus</fp-placeable>
+        <fp-placeable data-id="mito" data-label="Mitochondrion">Mitochondrion</fp-placeable>
+        <fp-placeable data-id="wall" data-label="Membrane">Membrane</fp-placeable>
+      </div>
+      <div class="sg-row">
+        <fp-slot data-accepts="nucleus" data-label="Control centre"></fp-slot>
+        <fp-slot data-accepts="mito" data-label="Power plant"></fp-slot>
+        <fp-slot data-accepts="wall" data-label="Outer edge"></fp-slot>
+      </div>
+    </fp-board>
+    <p class="sg-meta" id="out-board" style="margin-top:var(--s-3)">Nothing placed yet.</p>
+
+    <h3 style="margin-top:var(--s-8)">Parameter — <code>&lt;fp-slider&gt;</code></h3>
+    <p>Wraps the native range input rather than rebuilding one, so keyboard, screen-reader
+    semantics, touch handling and OS accessibility settings all come from the platform. The
+    wrapper adds a visible label, a live readout in the child's units, and a hit area that
+    meets the level's touch minimum.</p>
+    <div data-world="change">
+      <fp-slider data-label="Temperature" data-min="-10" data-max="60" data-value="20" data-unit="&deg;C"></fp-slider>
+    </div>
+
+    <h3 style="margin-top:var(--s-8)">Prediction — <code>&lt;fp-predict&gt;</code></h3>
+    <p>The pedagogical core, and the smallest component here. Sinha &amp; Kapur found the
+    highest-value feature of problem-solving-first teaching is instruction that visibly
+    <em>builds on the learner's own answer</em> (g&nbsp;=&nbsp;0.56). Here that is string
+    interpolation. Commit to a prediction, then run it — a wrong answer gets the discovery
+    colour, not the failure colour, because that is the moment the lesson works.</p>
+    <div data-world="origins">
+      <fp-predict id="demo-predict"
+        data-question="Warm the water up. What do the molecules do?"
+        data-options="They speed up|They slow down|Nothing changes"></fp-predict>
+      <div class="sg-row" style="margin-top:var(--s-3)">
+        <button class="back pressable" id="run-right">Resolve: they speed up</button>
+        <button class="back pressable" id="run-wrong">Resolve: they slow down</button>
+      </div>
+    </div>
+
+    <h3 style="margin-top:var(--s-8)">Disclosure — no component</h3>
+    <p>The blueprint listed an <code>&lt;fp-reveal&gt;</code>. Native
+    <code>&lt;details&gt;</code> already does action-gated disclosure with keyboard support,
+    screen-reader semantics and find-in-page, and lesson code can open it by setting one
+    attribute. Deleted rather than written.</p>
+    <details class="reveal">
+      <summary>Why does the membrane let some things through?</summary>
+      <p>Because it is built from molecules with a water-loving end and a water-hating end,
+      and that arrangement is picky about what can slip between them.</p>
+    </details>
+  </section>
+
+  <section id="s-states">
+    <h2>States</h2>
+    <p>Focus is never removed. Tab through these.</p>
+    <div class="sg-row" id="out-states"></div>
+  </section>
+</main>
+
+<script type="module" src="styleguide.js"></script>
+</body>
+</html>

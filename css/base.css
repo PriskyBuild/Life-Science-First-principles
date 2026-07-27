@@ -1,0 +1,183 @@
+/* Reset, typography, focus, and the motion vocabulary. */
+
+/* ---- fonts ----
+   Nunito is preloaded (25.1 KB, two weights) and carries first paint.
+   Baloo 2 is display-only and uses font-display:optional, so it NEVER blocks
+   and NEVER causes a layout shift: first visit renders headings in Nunito, the
+   service worker precaches Baloo, every later visit has it. Zero CLS by
+   construction rather than by metric-matching guesswork. */
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-latin-400-normal.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-latin-700-normal.woff2") format("woff2");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Baloo 2";
+  src: url("../assets/fonts/baloo-2-latin-600-normal.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: optional;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  /* Multiplies the user's own root size rather than replacing it: a child who
+     has set larger text in their OS keeps that and gets level scaling on top.
+     Everything downstream is in rem, so type and spacing move together. */
+  font-size: calc(var(--type-scale) * 100%);
+  -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-2xl); }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); font-family: var(--font-body); font-weight: var(--weight-bold); }
+p  { max-width: var(--measure); text-wrap: pretty; }
+
+button, input, select { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+ul, ol { list-style: none; padding: 0; }
+svg { display: block; }
+img { max-width: 100%; height: auto; }
+
+/* Icons are sized in em so they track whatever text they sit beside, at every
+   level, without a second scale to keep in sync. */
+.icon {
+  width: 1.1em; height: 1.1em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2.4;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.icon--lg { width: 1.7em; height: 1.7em; stroke-width: 2.1; }
+
+/* ---- focus. Never removed. 3px offset ring survives the clay shadows. ---- */
+:where(a, button, [tabindex], summary, input, select):focus-visible {
+  outline: var(--focus-ring) solid var(--ink);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute; inset-inline-start: var(--s-2); top: calc(-1 * var(--touch) - 20px);
+  z-index: 50; padding: var(--s-3) var(--s-4);
+  background: var(--surface); color: var(--ink);
+  border: var(--clay-border) solid var(--ink); border-radius: var(--r-md);
+  transition: top var(--t-state) var(--ease-move);
+}
+.skip-link:focus { top: var(--s-2); }
+
+/* ===========================================================================
+   MOTION VOCABULARY — blueprint 11.
+   Four permitted roles. An animation that cannot be assigned one of them is
+   deleted in review, so each has a named primitive here and there is no
+   general-purpose "animate this" utility to reach for instead.
+
+     1 causal    [data-motion-role="teach"]  the animation IS the lesson
+     2 spatial   .m-enter, view transitions   where you came from
+     3 state     .pressable                   your touch registered
+     4 attention .m-attend                    what just changed
+   =========================================================================== */
+
+/* --- role 3: state. The press. Every touchable thing gets this and nothing
+       else does, which is what keeps raised == pressable honest. --- */
+/* Pointer cursor on everything touchable, including custom elements, which get
+   no cursor from the UA. Straight off the resolver's pre-delivery checklist. */
+.pressable, [role="button"], summary { cursor: pointer; }
+.pressable[aria-disabled="true"], .pressable:disabled { cursor: default; }
+
+.pressable {
+  transition:
+    transform var(--t-state) var(--ease-move),
+    box-shadow var(--t-state) var(--ease-move),
+    border-color var(--t-state) var(--ease-move),
+    background-color var(--t-state) var(--ease-move);
+}
+.pressable:hover { transform: translateY(var(--lift)); box-shadow: var(--e2); }
+/* The squish. Clay deforms when you press it — the resolver's profile asks for
+   scale 0.92, which is far too much on a 76px target; 0.97 with the sink reads
+   as give without the element appearing to jump. */
+.pressable:active { transform: translateY(var(--sink)) scale(.97); box-shadow: var(--e-press); }
+@media (hover: none) {
+  .pressable:hover { transform: none; box-shadow: var(--e1); }
+}
+
+/* --- role 2: spatial. Content arriving in a place. --- */
+@keyframes m-enter {
+  from { opacity: 0; transform: translateY(8px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+.m-enter { animation: m-enter var(--t-move) var(--ease-appear) both; }
+.m-stagger > * {
+  animation: m-enter var(--t-move) var(--ease-appear) both;
+  animation-delay: calc(var(--stagger) * var(--i, 0));
+}
+
+/* --- role 4: attention. One shot, on the thing that changed, never a loop.
+       Animates outline rather than scale: scale on a grid item nudges its
+       neighbours and reads as a glitch. --- */
+@keyframes m-attend {
+  0%   { outline-color: rgb(var(--rim) / 0); outline-width: 0; }
+  35%  { outline-color: var(--w-line, var(--ink)); outline-width: 6px; }
+  100% { outline-color: rgb(var(--rim) / 0); outline-width: 0; }
+}
+.m-attend {
+  outline: 0 solid transparent; outline-offset: 4px;
+  animation: m-attend calc(var(--t-move) * 2) var(--ease-move) 1;
+}
+
+/* ---------------------------------------------------------------------------
+   REDUCED MOTION.
+   Roles 2, 3 and 4 are removed. Role 1 — causal animation, the kind that IS
+   the teaching — is NOT removed, because removing it removes the lesson.
+   It is substituted instead: the continuous animation stops, and a
+   step-through control appears so the child sees every state of the mechanism
+   under their own control with no involuntary motion.
+
+   `animation: none !important` on everything would be one line and would
+   quietly delete the pedagogy from a simulation. That is why this is longer.
+   --------------------------------------------------------------------------- */
+.teach-steps { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *:not([data-motion-role="teach"]):not([data-motion-role="teach"] *) {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+
+  /* the substitution: autoplay out, manual step-through in */
+  [data-motion-role="teach"] .teach-play { display: none; }
+  [data-motion-role="teach"] .teach-steps { display: flex; gap: var(--s-2); }
+}
+

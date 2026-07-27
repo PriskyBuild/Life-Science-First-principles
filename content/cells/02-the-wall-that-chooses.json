@@ -1,0 +1,142 @@
+{
+  "id": "cells/02",
+  "module": "cells",
+  "index": 1,
+  "title": "The Wall That Chooses",
+  "specimen": "membrane",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A wall keeps everything out. But a cell has to eat. So what kind of wall is it?",
+        "A wall that keeps everything out would also keep food out. So how does a cell eat and stay safe at the same time?",
+        "A barrier that excludes everything also excludes what you need. A cell must be closed and open at once. How?",
+        "A boundary that is impermeable is a coffin. Every living cell solves the same problem: selective exchange without loss of identity."
+      ],
+      "sub": [
+        "Watch what happens when you make the holes bigger.",
+        "You are about to control the one thing that decides: how big the holes are.",
+        "One parameter decides everything here — pore size relative to molecule size.",
+        "Selectivity here is steric. Chemistry adds channels and pumps later; size alone gets you surprisingly far."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "membrane-selectivity",
+      "question": [
+        "If you make the holes bigger, what gets in?",
+        "You are about to widen the holes in the wall. What do you think gets in?",
+        "Widening the pores changes what can cross. Predict the consequence.",
+        "Pore radius is the only free parameter. Predict the effect on solute flux by species."
+      ],
+      "options": ["Only the food", "The food and the poison", "Nothing changes"],
+      "outcome": "The food and the poison",
+      "note": [
+        "Have a guess. Nobody gets this one for free.",
+        "Commit before you touch anything — the gap between your guess and the result is the lesson.",
+        "Commit to a prediction. The correction only sticks if you were anchored on something first.",
+        "State your prediction before manipulating the parameter; the anchoring is what makes the correction durable."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "membrane",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Move the slider. Try to get food inside and keep the poison out.",
+        "Move the slider to change the hole size. Get the food in and keep the poison out."
+      ],
+      "params": { "kinds": 3, "pore": 2, "per": 12, "target": 0.5 },
+      "paramsByLevel": { "1": { "kinds": 2, "per": 10, "target": 0.4 } },
+      "goal": [
+        "You did it — the food got in and the poison stayed out.",
+        "That is a working membrane: big enough for food, too small for poison."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "membrane",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Five molecules, one pore size, and waste that has to get out as well as food getting in. Find the setting that works — and notice there may not be one that is perfect.",
+        "Six species, one steric parameter, and bidirectional requirements. Find the optimum, and notice that steric selectivity alone cannot satisfy every constraint at once. That gap is why channels and pumps exist."
+      ],
+      "params": { "kinds": 5, "pore": 3, "per": 12, "temp": 1, "target": 0.55 },
+      "paramsByLevel": { "4": { "kinds": 6, "per": 14, "target": 0.6 } },
+      "goal": [
+        "That is the best size — and it still is not perfect. Real cells cheat, and you will find out how.",
+        "You found the steric optimum, and it still leaks. Real membranes add selectivity channels and active pumps precisely because size alone runs out."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A wall with holes that pick and choose is called a membrane.",
+        "A wall that lets some things through and stops others is a membrane. Scientists call it selectively permeable.",
+        "This is a selectively permeable membrane: a barrier whose passage rule depends on the properties of what is trying to cross.",
+        "A selectively permeable membrane. Steric exclusion is one selectivity mechanism; charge, chemistry and dedicated channels are the others."
+      ],
+      "sub": [
+        "Nothing pushed the food in. It just wandered until there was as much inside as out.",
+        "Notice nothing pushed anything. Molecules move randomly, and random movement alone fills an empty space.",
+        "No transport was involved. Random motion plus a concentration difference produces net flux down the gradient — that is diffusion, and it costs nothing.",
+        "Net flux emerged from an unbiased random walk plus an initial concentration difference. No energy was spent; equilibrium, not transport, is the endpoint."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Medicines have to be the right size to get into your cells. Too big and they never arrive.",
+        "A medicine only works if it can reach the inside of a cell. Getting the size and shape right is most of the difficulty in making one.",
+        "Drug design is largely a membrane-permeability problem: a compound that binds its target perfectly is useless if it cannot cross the membrane to reach it.",
+        "Lipinski's rules are, at heart, an empirical summary of what crosses a bilayer. Most failed candidates fail on delivery, not on binding affinity."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "membrane-selectivity",
+      "q": [
+        "Why did the poison stay outside?",
+        "Why did the poison stay out when the food got in?",
+        "What determined which molecules crossed the membrane?",
+        "What is the selectivity mechanism at work here?"
+      ],
+      "options": ["It was too big for the holes", "The cell pushed it away", "Poison cannot move"],
+      "answer": 0,
+      "why": [
+        "The holes were big enough for food and too small for poison. Nothing pushed anything — the size did all the work.",
+        "Passage depended only on size against hole size. The cell did nothing active: the food fitted and the poison did not.",
+        "Steric exclusion. Molecules smaller than the pore crossed by random motion; larger ones bounced. No energy was expended by the cell.",
+        "Steric exclusion alone. Both species executed the same unbiased random walk; only the pore geometry differed in outcome."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "diffusion-is-passive",
+      "q": [
+        "What made the food move inside?",
+        "What made the food end up inside the cell?",
+        "What drove net movement of food into the cell?",
+        "What accounts for the net inward flux of food?"
+      ],
+      "options": ["It moved randomly and there was more room inside", "The cell sucked it in", "Food always moves towards cells"],
+      "answer": 0,
+      "why": [
+        "Every molecule wandered at random. There were more outside than inside, so more wandered in than out — until it evened up.",
+        "Each molecule moves randomly with no sense of direction. Because there were more outside, more happened to cross inwards than outwards, and it stopped when both sides matched.",
+        "Random motion plus a concentration difference. Flux is proportional to the gradient, so it falls to zero at equilibrium — nothing 'pulls'.",
+        "Fick's first law falling out of an unbiased random walk: net flux is proportional to the negative concentration gradient, and vanishes at equilibrium."
+      ]
+    }
+  ]
+}

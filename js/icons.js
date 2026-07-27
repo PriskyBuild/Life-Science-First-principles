@@ -1,0 +1,38 @@
+/* The icon set. Path data in a module rather than an SVG sprite:
+   a sprite needs either a build step that inlines it into index.html (breaking
+   zero-build development) or an external <use href> (which Safari does not
+   support), and buys nothing at this size. Phase 8 lesson modules import only
+   the icons they use, so lazily-loaded lessons do not drag the whole set in.
+
+   Deviates from blueprint 12 deliberately — see docs/DECISIONS.md D9.
+
+   Rule: every icon here is decorative and paired with a text label. Nothing in
+   this product is an icon-only control, because an icon-only control is a
+   guessing game for a five-year-old. */
+
+export const ICONS = {
+  done: "M5 13l4 4L19 7",
+  lock: "M7 11V8a5 5 0 0110 0v3M5 11h14v10H5z",
+  next: "M5 12h13M13 6l6 6-6 6",
+  back: "M19 12H6M11 6l-6 6 6 6",
+};
+
+const NS = "http://www.w3.org/2000/svg";
+
+/** Decorative by contract: aria-hidden, not focusable, inherits currentColor
+    and em-based sizing from .icon in base.css. */
+export function icon(name, cls = "icon") {
+  const d = ICONS[name];
+  if (!d) throw new Error(`unknown icon "${name}"`);
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  svg.setAttribute("class", cls);
+  const path = document.createElementNS(NS, "path");
+  path.setAttribute("d", d);
+  svg.append(path);
+  return svg;
+}
+
+export const svgEl = (tag) => document.createElementNS(NS, tag);

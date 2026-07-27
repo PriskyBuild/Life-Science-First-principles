@@ -1,0 +1,697 @@
+/* Shell components. Everything here is CSS on plain HTML — the custom elements
+   listed in the blueprint arrive in phase 4, when there is behaviour to justify
+   them. A <fp-button> that wraps <button> to add a class is the kind of
+   abstraction that looks tidy and costs a decade.
+
+   AFFORDANCE RULE: inside <main>, raised means touchable and flat means not.
+   Reviewing a screen is checking that rule holds. The app bar is exempt —
+   it is persistent chrome where position carries the affordance — and it is
+   the only exemption. */
+
+/* ---------------------------------------------------------------- app frame */
+.app-bar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: var(--s-3);
+  padding: var(--s-2) var(--s-4);
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--hairline);
+}
+.brand {
+  display: flex; align-items: center; gap: var(--s-2);
+  font-family: var(--font-display); font-weight: var(--weight-display);
+  font-size: var(--fs-lg); color: var(--ink); text-decoration: none;
+  padding: var(--s-2); border-radius: var(--r-md);
+  min-height: var(--touch);
+}
+.brand .mark { width: 1.6em; height: 1.6em; flex: none; }
+.app-bar .spacer { flex: 1; }
+
+.bar-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--touch); min-width: var(--touch);
+  padding-inline: var(--s-3);
+  border-radius: var(--r-pill); color: var(--ink);
+  text-decoration: none; font-weight: var(--weight-bold);
+  border: var(--clay-border) solid transparent;
+}
+.bar-link:hover { background: var(--sunk); box-shadow: var(--e1); }
+
+main {
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding: var(--s-6) var(--s-4) var(--s-16);
+}
+main > h1 { margin-bottom: var(--s-2); }
+main > h1:focus-visible { outline-offset: 6px; }
+.lede { color: var(--ink-2); margin-bottom: var(--s-8); }
+
+/* Hidden until the first paint resolves, so a child never sees an empty shell
+   flash. app.js sets data-ready in a finally block, so a failed boot still
+   reveals its error message rather than showing a blank page forever. */
+/* Scoped to #main, the app shell's own element. Targeting bare `main` also hid
+   styleguide.html, which never sets data-ready — the page rendered, passed its
+   own contrast checks, and was invisible to a human. */
+body:not([data-ready]) #main { opacity: 0; }
+#main { opacity: 1; transition: opacity var(--t-state) linear; }
+
+/* ------------------------------------------------------------------ continue */
+.continue {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "kicker icon" "title icon" "hook icon";
+  align-items: center;
+  gap: 2px var(--s-4);
+  padding: var(--s-5);
+  margin-bottom: var(--s-10);
+  border-radius: var(--r-lg);
+  border: var(--clay-border) solid var(--w-line);
+  background: var(--w-tint);
+  box-shadow: var(--e1);
+  text-decoration: none; color: var(--ink);
+  min-height: var(--touch);
+}
+.continue-kicker {
+  grid-area: kicker; font-size: var(--fs-sm); font-weight: var(--weight-bold);
+  letter-spacing: .06em; text-transform: uppercase; color: var(--w-text);
+}
+.continue-title { grid-area: title; font-family: var(--font-display); font-size: var(--fs-xl); }
+.continue-hook { grid-area: hook; color: var(--ink-2); font-size: var(--fs-sm); max-width: var(--measure); }
+.continue .icon { grid-area: icon; color: var(--w-text); }
+
+/* ------------------------------------------------------------------- islands */
+.islands {
+  display: grid; gap: var(--s-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(21rem, 100%), 1fr));
+}
+
+.island {
+  border: var(--clay-border) solid var(--hairline);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  padding: var(--s-5);
+  box-shadow: var(--e0);        /* flat: an island is a place, not a button */
+}
+.island--locked { background: var(--sunk); }
+.island--locked .island-head { opacity: .72; }
+
+.island-head {
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; gap: var(--s-3);
+  margin-bottom: var(--s-4);
+}
+.island-head h2 { color: var(--w-text); }
+.island-tag { color: var(--ink-3); font-size: var(--fs-sm); margin-top: 2px; }
+.island-pct {
+  font-variant-numeric: tabular-nums; font-size: var(--fs-sm);
+  font-weight: var(--weight-bold); color: var(--ink-3);
+}
+
+.ring { width: 2.4rem; height: 2.4rem; flex: none; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 4; stroke-linecap: round; }
+
+/* --------------------------------------------------------------------- chain */
+.chain { display: grid; gap: var(--touch-gap); position: relative; }
+
+.node { position: relative; }
+/* the connector: shows the chain is a sequence, not a menu */
+.node + .node::before {
+  content: ""; position: absolute;
+  inset-block-start: calc(-1 * var(--touch-gap) - 2px);
+  inset-inline-start: calc(var(--s-4) + 0.7rem);
+  width: 3px; height: calc(var(--touch-gap) + 4px);
+  background: var(--hairline); border-radius: 2px;
+}
+
+.node-hit {
+  display: grid; grid-template-columns: auto 1fr;
+  align-items: start; gap: var(--s-3);
+  min-height: var(--touch);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: var(--clay-border) solid var(--hairline);
+  background: var(--surface);
+  color: var(--ink); text-decoration: none;
+}
+a.node-hit { box-shadow: var(--e1); }              /* raised = touchable */
+a.node-hit:hover { border-color: var(--w-line); }
+
+.node--locked .node-hit {
+  box-shadow: var(--e0);                            /* flat = not touchable */
+  background: var(--sunk); color: var(--ink-3); cursor: not-allowed;
+}
+.node--next .node-hit { border-color: var(--w-line); background: var(--w-tint); }
+.node--done .node-hit { border-color: var(--w-fill); }
+
+.node-mark {
+  display: grid; place-items: center;
+  width: 1.55em; height: 1.55em; margin-top: 2px; flex: none;
+  border-radius: var(--r-pill);
+  background: var(--w-fill); color: var(--w-deep);
+}
+.node-mark .icon { width: .95em; height: .95em; }
+.node--locked .node-mark { background: var(--hairline); color: var(--ink-3); }
+.node--next .node-mark { background: var(--w-line); color: var(--paper); }
+
+.node-body { display: grid; gap: 1px; }
+.node-title { font-weight: var(--weight-bold); }
+.node-hook { color: var(--ink-2); font-size: var(--fs-sm); }
+.node-status { font-size: var(--fs-sm); color: var(--ink-3); font-weight: var(--weight-bold); }
+.node--next .node-status { color: var(--w-text); }
+
+/* -------------------------------------------------------------------- module */
+.back {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: var(--touch); padding-inline: var(--s-3) var(--s-4);
+  margin-bottom: var(--s-4);
+  border-radius: var(--r-pill); border: var(--clay-border) solid var(--hairline);
+  background: var(--surface); box-shadow: var(--e1);
+  color: var(--ink); text-decoration: none; font-weight: var(--weight-bold);
+}
+
+.module-head {
+  padding: var(--s-6); border-radius: var(--r-lg);
+  background: var(--w-tint); border: var(--clay-border) solid var(--w-line);
+  margin-bottom: var(--s-8);
+}
+.module-world {
+  font-size: var(--fs-sm); font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: .06em; color: var(--w-text);
+}
+.module-head h1 { margin: var(--s-1) 0 var(--s-2); }
+.module-hook { color: var(--ink-2); }
+
+.lessons { display: grid; gap: var(--s-2); margin-top: var(--s-3); }
+.lesson {
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; gap: var(--s-3);
+  min-height: var(--touch);
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-md);
+  border: 2px dashed var(--hairline);      /* dashed = not yet real */
+  color: var(--ink-3);
+}
+.lesson--done { border-style: solid; border-color: var(--w-fill); color: var(--ink); }
+.lesson-n {
+  display: grid; place-items: center; width: 1.7em; height: 1.7em;
+  border-radius: var(--r-pill); background: var(--sunk);
+  font-size: var(--fs-sm); font-weight: var(--weight-bold); font-variant-numeric: tabular-nums;
+}
+.lesson--done .lesson-n { background: var(--w-fill); color: var(--w-deep); }
+
+.notice {
+  margin-top: var(--s-6); padding: var(--s-4);
+  border-radius: var(--r-md); background: var(--sunk);
+  border-inline-start: 5px solid var(--line);
+  color: var(--ink-2); font-size: var(--fs-sm); max-width: var(--measure);
+}
+.notice--soft { border-inline-start-color: var(--hairline); color: var(--ink-3); }
+
+/* ------------------------------------------------------------------------ me */
+.stats {
+  display: grid; gap: var(--s-3); margin: var(--s-6) 0 var(--s-10);
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+}
+.stats li {
+  display: grid; gap: 2px; padding: var(--s-4);
+  border-radius: var(--r-md); background: var(--sunk);
+  border: var(--clay-border) solid var(--hairline);
+}
+.stat-v { font-family: var(--font-display); font-size: var(--fs-xl); line-height: 1; font-variant-numeric: tabular-nums; }
+.stat-k { font-size: var(--fs-sm); color: var(--ink-3); font-weight: var(--weight-bold); }
+
+.choices { border: 0; padding: 0; margin-bottom: var(--s-10); }
+.choices legend {
+  font-family: var(--font-display); font-size: var(--fs-xl);
+  margin-bottom: var(--s-3); padding: 0;
+}
+.choice-row { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); }
+.choice { display: block; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; width: 0; height: 0; }
+.choice-box {
+  display: grid; gap: 4px; height: 100%;
+  min-height: var(--touch);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  border: var(--clay-border) solid var(--hairline);
+  background: var(--surface); box-shadow: var(--e1);
+}
+.choice input:checked + .choice-box {
+  border-color: var(--w-origins-line);
+  background: var(--w-origins-tint);
+}
+/* focus lives on the invisible input, so it must be forwarded to the box */
+.choice input:focus-visible + .choice-box {
+  outline: var(--focus-ring) solid var(--ink); outline-offset: 3px;
+}
+.choice-label { font-weight: var(--weight-bold); }
+.choice-hint { font-size: var(--fs-sm); color: var(--ink-2); }
+.choice input:checked + .choice-box .choice-hint { color: var(--w-origins-text); }
+
+.danger {
+  min-height: var(--touch); padding: 0 var(--s-5);
+  border-radius: var(--r-pill);
+  border: var(--clay-border) solid var(--w-wrong-line);
+  color: var(--w-wrong-text); background: var(--surface);
+  font-weight: var(--weight-bold); box-shadow: var(--e1);
+}
+
+/* -------------------------------------------------------------- level picker */
+.picker {
+  display: grid; gap: var(--s-4); margin-top: var(--s-8);
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+.picker-card {
+  display: grid; gap: var(--s-3); align-content: space-between;
+  width: 100%; height: 100%; text-align: start;
+  min-height: calc(var(--touch) * 2);
+  padding: var(--s-5);
+  border-radius: var(--r-lg);
+  border: var(--clay-border) solid var(--hairline);
+  background: var(--surface); box-shadow: var(--e1);
+}
+.picker-card:hover { border-color: var(--w-origins-line); }
+/* The samples deliberately differ in length and complexity — the child picks
+   by recognising their own reading level, never by being asked their age. */
+.picker-age {
+  font-size: var(--fs-sm); font-weight: var(--weight-bold);
+  color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em;
+}
+
+/* ===========================================================================
+   LESSON PARTS — the phase 4 components.
+   Kept in this file rather than a lesson-only stylesheet: gzipped they are
+   ~1.5 KB against 10 KB of remaining budget, and one request beats a split
+   made for a problem we do not have yet. Split when lesson CSS outgrows the
+   shell budget, not before.
+   =========================================================================== */
+
+/* ---- <fp-board> / <fp-placeable> / <fp-slot> ---- */
+fp-board { display: grid; gap: var(--s-5); }
+fp-board [data-tray] {
+  display: flex; flex-wrap: wrap; gap: var(--touch-gap);
+  padding: var(--s-4); border-radius: var(--r-lg);
+  background: var(--sunk); border: var(--clay-border) dashed var(--hairline);
+}
+
+fp-placeable {
+  display: inline-grid; place-items: center;
+  min-width: var(--touch); min-height: var(--touch);
+  padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-md);
+  border: var(--clay-border) solid var(--w-line, var(--line));
+  background: var(--w-fill, var(--surface));
+  color: var(--ink);
+  font-weight: var(--weight-bold);
+  box-shadow: var(--e1);                    /* raised: this is the thing you move */
+  touch-action: none;                       /* we own the gesture; stops the page panning mid-drag */
+  user-select: none;
+}
+fp-placeable[data-state="held"] {
+  box-shadow: var(--e3);
+  outline: var(--focus-ring) solid var(--w-line, var(--ink));
+  outline-offset: 3px;
+}
+fp-placeable[data-dragging] {
+  position: relative; z-index: 40; pointer-events: none;
+  box-shadow: var(--e3); rotate: -2deg;
+}
+
+fp-slot {
+  display: grid; place-items: center;
+  min-width: calc(var(--touch) + var(--s-6));
+  min-height: calc(var(--touch) + var(--s-2));
+  padding: var(--s-2);
+  border-radius: var(--r-md);
+  border: var(--clay-border) dashed var(--line);
+  background: var(--sunk);
+  box-shadow: var(--e0);                    /* flat: a slot is a place, not a token */
+  color: var(--ink-3); font-size: var(--fs-sm); font-weight: var(--weight-bold);
+}
+/* The job label stays visible after the part lands. Hiding it once filled left
+   the boss showing four parts and no way to see what each was doing — which is
+   the one thing the stress test is about to grade. */
+fp-slot { grid-template-rows: auto auto; align-content: center; gap: var(--s-2); }
+fp-slot::before {
+  content: attr(data-label);
+  color: var(--ink-3); font-size: var(--fs-sm); font-weight: var(--weight-bold);
+  text-align: center; line-height: 1.3;
+}
+fp-slot[data-state="filled"]::before { color: var(--ink-2); }
+fp-slot[data-state="filled"] { border-style: solid; border-color: var(--w-line, var(--line)); background: var(--surface); }
+/* While something is held, valid slots invite and invalid ones recede. Both
+   stay focusable — dropping a slot out of the tab order mid-gesture loses the
+   keyboard user in the middle of their own action. */
+fp-slot[data-state="valid"] { border-color: var(--w-correct-line); background: var(--w-correct-tint); color: var(--w-correct-text); }
+fp-slot[data-state="invalid"] { opacity: .5; }
+fp-slot[data-over] { outline: var(--focus-ring) solid var(--w-correct-line); outline-offset: 3px; }
+
+/* ---- <fp-slider> ---- */
+fp-slider { display: grid; gap: var(--s-2); max-width: var(--measure); }
+.slider-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); }
+.slider-label { font-weight: var(--weight-bold); }
+.slider-value {
+  font-variant-numeric: tabular-nums; font-weight: var(--weight-bold);
+  color: var(--w-text, var(--ink-2));
+  background: var(--w-tint, var(--sunk)); padding: 0 var(--s-2); border-radius: var(--r-pill);
+}
+.slider-input {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: var(--touch);        /* the whole strip is the hit area */
+  background: transparent; cursor: pointer;
+}
+.slider-input::-webkit-slider-runnable-track {
+  height: .55rem; border-radius: var(--r-pill);
+  background: var(--sunk); border: 1px solid var(--hairline);
+}
+.slider-input::-moz-range-track {
+  height: .55rem; border-radius: var(--r-pill);
+  background: var(--sunk); border: 1px solid var(--hairline);
+}
+.slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 1.7rem; height: 1.7rem; margin-top: calc(-.6rem + 1px);
+  border-radius: var(--r-pill);
+  background: var(--w-line, var(--ink)); border: 3px solid var(--surface);
+  box-shadow: var(--e1);
+}
+.slider-input::-moz-range-thumb {
+  width: 1.7rem; height: 1.7rem;
+  border-radius: var(--r-pill);
+  background: var(--w-line, var(--ink)); border: 3px solid var(--surface);
+  box-shadow: var(--e1);
+}
+
+/* ---- <fp-predict> ---- */
+fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
+.predict-q { font-weight: var(--weight-bold); font-size: var(--fs-lg); font-family: var(--font-display); }
+.predict-options { display: grid; gap: var(--s-2); }
+.predict-option {
+  min-height: var(--touch); padding: var(--s-2) var(--s-4); text-align: start;
+  border-radius: var(--r-md); border: var(--clay-border) solid var(--hairline);
+  background: var(--surface); box-shadow: var(--e1); font-weight: var(--weight-bold);
+}
+.predict-option[aria-pressed="true"] { border-color: var(--w-line); background: var(--w-tint); color: var(--w-text); }
+.predict-option:disabled { box-shadow: var(--e0); background: var(--sunk); color: var(--ink-3); cursor: default; }
+.predict-result {
+  display: grid; gap: var(--s-1);
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--sunk); border-inline-start: 5px solid var(--w-line, var(--line));
+}
+.predict-line { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+.predict-kicker {
+  font-size: var(--fs-sm); font-weight: var(--weight-bold); color: var(--ink-3);
+  text-transform: uppercase; letter-spacing: .06em; min-width: 4.5rem;
+}
+.predict-verdict { margin-top: var(--s-2); font-weight: var(--weight-bold); }
+.predict-result[data-matched="true"] { border-inline-start-color: var(--w-correct-line); }
+.predict-result[data-matched="true"] .predict-verdict { color: var(--w-correct-text); }
+/* A wrong prediction is not an error state. It gets the discovery colour, not
+   the failure colour, because it is the moment the lesson works. */
+.predict-result[data-matched="false"] { border-inline-start-color: var(--w-discovery-line); }
+.predict-result[data-matched="false"] .predict-verdict { color: var(--w-discovery-text); }
+
+/* ---- progressive disclosure: native <details>, no component ----
+   The blueprint listed an <fp-reveal>. <details>/<summary> already does
+   action-gated disclosure with keyboard support, screen-reader semantics and
+   find-in-page. Lesson code sets .open when the gate opens. Deleted, see D11. */
+.reveal { border-radius: var(--r-md); border: var(--clay-border) solid var(--hairline); background: var(--surface); }
+.reveal > summary {
+  display: flex; align-items: center; gap: var(--s-2);
+  min-height: var(--touch); padding: var(--s-2) var(--s-4);
+  font-weight: var(--weight-bold); cursor: pointer; border-radius: var(--r-md);
+  list-style: none;
+}
+.reveal > summary::-webkit-details-marker { display: none; }
+.reveal > summary::after { content: "＋"; margin-inline-start: auto; color: var(--ink-3); }
+.reveal[open] > summary::after { content: "－"; }
+.reveal > :not(summary) { padding: 0 var(--s-4) var(--s-4); }
+
+/* ---- the review call. Raised, because since phase 6 it really does go
+   somewhere. It sits above the Continue card because a due retrieval is worth
+   more than the next lesson. (It was flat and dashed while the review flow did
+   not exist; the affordance audit caught the day that stopped being true.) ---- */
+.review-call {
+  display: grid; grid-template-columns: 1fr auto; align-items: center;
+  gap: 2px var(--s-4);
+  padding: var(--s-5); margin-bottom: var(--s-6);
+  border-radius: var(--r-lg);
+  border: var(--clay-border) solid var(--w-line);
+  background: var(--w-tint);
+  box-shadow: var(--e1);
+  text-decoration: none; color: var(--ink);
+  min-height: var(--touch);
+}
+.review-call > span:not(.icon) { grid-column: 1; }
+.review-call > .icon { grid-column: 2; grid-row: 1 / -1; color: var(--w-text); }
+.review-call .notice { margin-top: var(--s-3); }
+
+/* ---- shelves: badges and specimens in Me ---- */
+.shelf { margin-bottom: var(--s-10); }
+.shelf h2 { margin-bottom: var(--s-1); }
+.shelf-note { color: var(--ink-2); font-size: var(--fs-sm); margin-bottom: var(--s-4); }
+
+.badges { display: grid; gap: var(--s-2); }
+.badge {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--s-3); align-items: center;
+  padding: var(--s-3) var(--s-4); border-radius: var(--r-md);
+  border: var(--clay-border) solid var(--hairline); background: var(--sunk);
+  color: var(--ink-3);
+}
+.badge--earned { background: var(--surface); color: var(--ink); border-color: var(--w-discovery-line); }
+.badge-mark {
+  display: grid; place-items: center; width: 2em; height: 2em;
+  border-radius: var(--r-pill); background: var(--hairline); color: var(--ink-3);
+}
+.badge--earned .badge-mark { background: var(--w-discovery-fill); color: var(--w-discovery-deep); }
+.badge-title { display: block; font-weight: var(--weight-bold); }
+.badge-why { display: block; font-size: var(--fs-sm); color: var(--ink-3); }
+.badge--earned .badge-why { color: var(--ink-2); }
+
+.specimens { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fill, minmax(min(13rem,100%), 1fr)); }
+.specimen {
+  display: grid; gap: 2px; align-content: start;
+  padding: var(--s-4); border-radius: var(--r-md);
+  border: var(--clay-border) dashed var(--hairline); background: var(--sunk);
+  color: var(--ink-3); min-height: calc(var(--touch) + var(--s-4));
+}
+.specimen--got { border-style: solid; border-color: var(--w-line); background: var(--w-tint); color: var(--ink); }
+.specimen-title { font-weight: var(--weight-bold); font-family: var(--font-display); }
+.specimen--got .specimen-title { color: var(--w-text); }
+.specimen-blurb { font-size: var(--fs-sm); }
+/* The line that makes a specimen an inventory item rather than a sticker. */
+.specimen-unlocks:not(:empty) {
+  margin-top: var(--s-2); font-size: var(--fs-xs); font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: .05em; color: var(--w-text);
+}
+
+/* ===========================================================================
+   THE LESSON STAGE — phase 6.
+   One stage on screen at a time, deliberately. A scrollable lesson invites
+   skimming to the quiz; a paged one makes each beat a decision.
+   =========================================================================== */
+.stage-wrap {
+  display: grid; gap: var(--s-5);
+  padding: var(--s-5); border-radius: var(--r-lg);
+  border: var(--clay-border) solid var(--w-line);
+  background: var(--w-tint);
+  box-shadow: var(--e0);            /* a stage is a place, not a control */
+}
+.stage-host { min-height: 16rem; display: grid; align-content: start; }
+
+.stage { display: grid; gap: var(--s-3); align-content: start; }
+.stage:focus-visible { outline: var(--focus-ring) solid var(--ink); outline-offset: 6px; border-radius: var(--r-md); }
+.stage-kicker {
+  font-size: var(--fs-sm); font-weight: var(--weight-bold);
+  text-transform: uppercase; letter-spacing: .06em; color: var(--w-text);
+}
+.stage-hook, .stage-name { font-size: var(--fs-xl); }
+.stage-lead { font-size: var(--fs-lg); }
+.stage-sub, .stage-note { color: var(--ink-2); }
+.stage-note { font-size: var(--fs-sm); }
+.stage-actions { margin-top: var(--s-2); }
+
+.stage-readout {
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--surface); border: var(--clay-border) solid var(--w-fill);
+  min-height: calc(var(--touch) + var(--s-2)); display: grid; align-items: center;
+}
+.stage-caption { font-weight: var(--weight-bold); font-size: var(--fs-lg); }
+.stage-after {
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--w-discovery-tint); border-inline-start: 5px solid var(--w-discovery-line);
+  color: var(--ink);
+}
+
+/* progress ticks: position without a percentage, which means nothing to a
+   five-year-old and invites clock-watching in everyone else */
+.stage-progress { display: flex; }
+.stage-bar { display: flex; gap: 4px; flex: 1; }
+.tick { flex: 1; height: 6px; border-radius: 3px; background: var(--hairline); }
+.tick--done { background: var(--w-fill); }
+.tick--now { background: var(--w-line); }
+
+.stage-nav { display: flex; gap: var(--s-3); justify-content: space-between; flex-wrap: wrap; }
+.next-btn {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: var(--touch); padding-inline: var(--s-5) var(--s-4);
+  margin-inline-start: auto;
+  border-radius: var(--r-pill); border: var(--clay-border) solid var(--w-deep);
+  /* --w-deep, not --w-line: line is solved as a 3:1 stroke and cannot carry
+     reversed text. deep is gated to 4.6:1 against the page in both themes. */
+  background: var(--w-deep); color: var(--paper);
+  font-weight: var(--weight-bold); box-shadow: var(--e1);
+}
+.next-btn:disabled, .back:disabled {
+  box-shadow: var(--e0); background: var(--sunk); color: var(--ink-3);
+  border-color: var(--hairline); cursor: default;
+}
+.stage--done { text-align: start; }
+
+/* ---- <fp-quiz> ---- */
+fp-quiz { display: grid; gap: var(--s-3); }
+.quiz-q { font-weight: var(--weight-bold); font-size: var(--fs-lg); font-family: var(--font-display); }
+.quiz-options { display: grid; gap: var(--s-2); }
+.quiz-option {
+  min-height: var(--touch); padding: var(--s-2) var(--s-4); text-align: start;
+  border-radius: var(--r-md); border: var(--clay-border) solid var(--hairline);
+  background: var(--surface); box-shadow: var(--e1); font-weight: var(--weight-bold);
+}
+.quiz-option:disabled { box-shadow: var(--e0); cursor: default; }
+/* Marks, not just colour: the correct option gains a tick and the chosen wrong
+   one a cross, so the answer survives colour-vision deficiency and greyscale. */
+.quiz-option[data-mark="correct"] { border-color: var(--w-correct-line); background: var(--w-correct-tint); color: var(--w-correct-text); }
+.quiz-option[data-mark="correct"]::after { content: " ✓"; font-weight: var(--weight-bold); }
+.quiz-option[data-mark="chosen"] { border-color: var(--w-wrong-line); background: var(--w-wrong-tint); color: var(--w-wrong-text); }
+.quiz-option[data-mark="chosen"]::after { content: " ✗"; font-weight: var(--weight-bold); }
+
+.quiz-feedback {
+  display: grid; gap: var(--s-1);
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--surface); border-inline-start: 5px solid var(--w-line);
+}
+.quiz-feedback[data-right="true"] { border-inline-start-color: var(--w-correct-line); }
+.quiz-feedback[data-right="false"] { border-inline-start-color: var(--w-discovery-line); }
+.quiz-verdict { font-weight: var(--weight-bold); }
+.quiz-why { color: var(--ink-2); }
+
+/* ---- module screen: written lessons are links and raised, unwritten ones
+        are flat and dashed. The affordance rule does the honesty. ---- */
+.lesson { padding: 0; border: 0; }
+.lesson-hit {
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; gap: var(--s-3);
+  min-height: var(--touch); padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-md);
+  border: 2px dashed var(--hairline); color: var(--ink-3);
+  text-decoration: none;
+}
+a.lesson-hit {
+  border: var(--clay-border) solid var(--w-line);
+  background: var(--surface); color: var(--ink); box-shadow: var(--e1);
+}
+.lesson--done .lesson-hit { border-style: solid; border-color: var(--w-fill); color: var(--ink); }
+
+/* ===========================================================================
+   SIMULATIONS — phase 7.
+   =========================================================================== */
+fp-sim, .sim { display: grid; gap: var(--s-3); }
+.sim-holder { min-height: 12rem; }
+.sim-canvas {
+  width: 100%; display: block;
+  border-radius: var(--r-md);
+  border: var(--clay-border) solid var(--w-line);
+  background: var(--sunk);
+  box-shadow: var(--e0);        /* the canvas is a window, not a button */
+  touch-action: none;
+}
+.sim-controls { display: grid; gap: var(--s-3); }
+.sim-play { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+/* Deliberately no `display` here. base.css keeps .teach-steps hidden and turns
+   it on only under prefers-reduced-motion; setting display in this later
+   stylesheet showed the step controls to everyone. */
+.teach-steps { gap: var(--s-2); flex-wrap: wrap; }
+.sim-btn {
+  min-height: var(--touch); padding-inline: var(--s-4);
+  border-radius: var(--r-pill);
+  border: var(--clay-border) solid var(--hairline);
+  background: var(--surface); box-shadow: var(--e1);
+  font-weight: var(--weight-bold);
+}
+
+/* The description is not hidden. A sentence saying what the simulation is doing
+   helps a child who is not reading the canvas closely, not only one who cannot
+   see it — so it is visible text, and the live region at the same time. */
+.sim-live {
+  padding: var(--s-3) var(--s-4); border-radius: var(--r-md);
+  background: var(--surface); border-inline-start: 5px solid var(--w-line);
+  color: var(--ink-2); font-size: var(--fs-sm);
+}
+
+/* Shape is the redundant channel that stops colour being load-bearing. */
+.sim-legend { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); font-size: var(--fs-sm); color: var(--ink-2); }
+.sim-legend li { display: flex; align-items: center; gap: var(--s-2); }
+.sim-chip { width: 1em; height: 1em; background: var(--chip, var(--ink-3)); flex: none; }
+.sim-chip[data-shape="circle"] { border-radius: 50%; }
+.sim-chip[data-shape="triangle"] { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.sim-chip[data-shape="diamond"] { clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.sim-chip[data-shape="cross"] { clip-path: polygon(35% 0,65% 0,65% 35%,100% 35%,100% 65%,65% 65%,65% 100%,35% 100%,35% 65%,0 65%,0 35%,35% 35%); }
+.sim-chip[data-shape="hex"] { clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%); }
+.sim-chip[data-shape="square"] { border-radius: 2px; }
+
+/* ---- build stage and the boss trials ---- */
+.board-slots { display: flex; flex-wrap: wrap; gap: var(--touch-gap); }
+fp-board .board-slots fp-slot { flex: 1 1 8rem; }
+
+.trials {
+  display: grid; gap: var(--s-3);
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--surface); border: var(--clay-border) solid var(--w-line);
+}
+.trial-list { display: grid; gap: var(--s-2); }
+.trial {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--s-3); align-items: start;
+  padding: var(--s-2) var(--s-3); border-radius: var(--r-sm);
+  border-inline-start: 5px solid var(--line); background: var(--sunk);
+}
+/* A failed trial is diagnostic, not a scolding — it names the missing part, so
+   it gets the change colour rather than the error colour. */
+.trial--pass { border-inline-start-color: var(--w-correct-line); }
+.trial--pass .icon { color: var(--w-correct-text); }
+.trial--fail { border-inline-start-color: var(--w-change-line); }
+.trial--fail .icon { color: var(--w-change-text); }
+.trial strong { display: block; }
+.trial-why { color: var(--ink-2); font-size: var(--fs-sm); }
+.trial-summary { font-weight: var(--weight-bold); }
+
+/* ---- Sprout. Non-modal by construction: it sits in the flow of the stage, it
+   never traps focus, it never covers what the child is working on, and it never
+   opens itself. The nudge draws attention to the button; opening it is always
+   the child's decision. ---- */
+.tutor { display: grid; gap: var(--s-2); justify-items: start; }
+.tutor[hidden] { display: none; }
+.tutor-ask {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  min-height: var(--touch); padding-inline: var(--s-4);
+  border-radius: var(--r-pill);
+  border: var(--clay-border) dashed var(--w-line);
+  background: var(--surface); color: var(--w-text);
+  font-weight: var(--weight-bold);
+  /* Raised, because it is touchable. The dashed border keeps it visibly a
+     lighter offer than the Next button without breaking the affordance rule. */
+  box-shadow: var(--e1);
+}
+.tutor-ask:disabled { box-shadow: var(--e0); }
+.tutor-ask::before {
+  content: ""; width: 1.1em; height: 1.1em; border-radius: 50%;
+  background: var(--w-fill); border: 2px solid var(--w-line); flex: none;
+}
+.tutor-ask:disabled { border-style: solid; color: var(--ink-3); border-color: var(--hairline); cursor: default; }
+.tutor-panel {
+  max-width: var(--measure);
+  padding: var(--s-3) var(--s-4); border-radius: var(--r-md);
+  background: var(--w-tint); border-inline-start: 5px solid var(--w-line);
+}
+/* The last rung is the only one that states a fact, so it looks different. */
+.tutor-panel[data-rung="consolidate"] { border-inline-start-color: var(--w-discovery-line); background: var(--w-discovery-tint); }
+.tutor-line { color: var(--ink); }

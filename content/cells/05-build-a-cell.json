@@ -1,0 +1,137 @@
+{
+  "id": "cells/05",
+  "module": "cells",
+  "index": 4,
+  "title": "Build a Cell",
+  "specimen": "ribosome",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You have seen all the parts. Now build one that can stay alive.",
+        "You have met every part. Now put them together into something that survives.",
+        "Every component you have met has one job. Assemble them into a cell and find out whether it holds.",
+        "You have the parts list. Assemble a viable minimal cell and defend it against three failure modes."
+      ],
+      "sub": [
+        "Then we will try to break it.",
+        "Then we will try to break it — three different ways.",
+        "Then it faces three stresses. Each one is survivable, but only by a specific part.",
+        "Each stress is diagnostic: it fails in a specific, findable way if a specific component is absent."
+      ]
+    },
+    {
+      "type": "predict",
+      "concept": "cell-is-a-system",
+      "question": [
+        "Which part could you leave out and still be alive?",
+        "Is there any one part you could leave out and still have a living cell?",
+        "Which single component is dispensable in a minimal cell?",
+        "Is minimal viability achievable with any proper subset of these components?"
+      ],
+      "options": ["None of them", "The power plant", "The wall"],
+      "outcome": "None of them",
+      "note": [
+        "Guess first, then find out.",
+        "Commit before you build.",
+        "Commit to an answer, then test it by omission.",
+        "State it, then falsify it by construction."
+      ]
+    },
+    {
+      "type": "build",
+      "levels": [1, 2, 3, 4],
+      "guided": false,
+      "trialsTitle": ["Now we try to break it", "Stress test"],
+      "t": [
+        "Put every part in its place. Then we test it.",
+        "Place every part in the job it does. Then the cell faces three stresses.",
+        "Assign each component to its function, then watch the assembled cell face three stresses.",
+        "Assemble the minimal set, then observe which stresses it survives and which it does not."
+      ],
+      "parts": [
+        { "id": "membrane", "label": "Membrane" },
+        { "id": "mito", "label": "Mitochondrion" },
+        { "id": "nucleus", "label": "Nucleus" },
+        { "id": "ribosome", "label": "Ribosome" }
+      ],
+      "slots": [
+        { "correct": "membrane", "label": ["Keeps things out", "Decides what gets in and out"] },
+        { "correct": "mito", "label": ["Makes the energy", "Converts food into usable energy"] },
+        { "correct": "nucleus", "label": ["Keeps the instructions", "Stores and protects the genome"] },
+        { "correct": "ribosome", "label": ["Builds the parts", "Reads the message and builds protein"] }
+      ],
+      "trials": [
+        {
+          "name": ["Poison in the water", "Poison in the surroundings"],
+          "needs": ["membrane"],
+          "pass": ["The wall kept it out.", "Steric exclusion at the membrane: the toxin never got in."],
+          "fail": ["Nothing stopped it getting in.", "With no boundary there is no selectivity, and the toxin entered freely."]
+        },
+        {
+          "name": ["No food for a while", "Starvation"],
+          "needs": ["mito", "membrane"],
+          "pass": ["It burned its reserves and held on.", "Stored substrate was oxidised to ATP fast enough to cover demand."],
+          "fail": ["Nothing could turn the reserves into energy.", "Without oxidative capacity, reserves are inert: ATP demand goes unmet within seconds."]
+        },
+        {
+          "name": ["Something broke and needed replacing", "Damage requiring repair"],
+          "needs": ["nucleus", "ribosome", "mito"],
+          "pass": ["It read the instructions and built a new one.", "Transcript out, ribosome reads it, replacement protein synthesised — powered by ATP."],
+          "fail": ["It had no way to make a replacement.", "Repair needs the instruction, the machinery to read it, and the energy to run it. Missing any one and the damage is permanent."]
+        }
+      ],
+      "win": [
+        "It survived everything. That is a working cell.",
+        "It survived all three. Every part earned its place — and you can see exactly which stress each one answered."
+      ],
+      "lose": [
+        "Look at which test it failed, put that part in, and try again.",
+        "Read which trial failed: it names the missing component. Place it and the same stress becomes survivable."
+      ]
+    },
+    {
+      "type": "name",
+      "t": [
+        "Four parts. Take any one away and it stops being alive.",
+        "Four parts, four jobs, and no spares. Take one away and the whole thing stops.",
+        "A cell is not a bag of parts. Each component depends on the others: remove one and functions that seemed unrelated fail with it.",
+        "Viability is a property of the assembly, not of any component. That interdependence is the reason no one has yet built a cell from scratch."
+      ],
+      "sub": [
+        "That is what being alive means: all the parts working at once.",
+        "That is why a cell is like a city and not like a brick — every part needs the others.",
+        "This is why the minimal genome question is hard: 'essential' is only definable relative to a whole system.",
+        "Minimal-genome work has driven the count below 500 genes and still finds roughly a fifth of them of unknown function. The system resists reduction."
+      ]
+    },
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Doctors work out what is wrong by finding which part stopped working.",
+        "Diagnosis is largely this exercise in reverse: from what is failing, work out which part broke.",
+        "Clinical reasoning runs this backwards — a pattern of failures implies a specific broken component, which is why symptoms cluster the way they do.",
+        "Mitochondrial, lysosomal and ribosomopathic diseases each present with a characteristic tissue pattern precisely because the failure is componentwise and tissues differ in demand."
+      ]
+    },
+    {
+      "type": "check",
+      "concept": "cell-is-a-system",
+      "q": [
+        "Why did taking one part away break more than one thing?",
+        "Why did removing a single part cause several different failures?",
+        "Why do component failures produce effects that look unrelated?",
+        "Why is the failure signature of a missing component broader than its stated function?"
+      ],
+      "options": ["Because the parts all depend on each other", "Because the parts are fragile", "Because the tests were unfair"],
+      "answer": 0,
+      "why": [
+        "Repair needed the instructions AND the builder AND the energy. Take away any one and repair stops, even though only one part is missing.",
+        "Most functions use several parts at once. Repair needs the instructions, the builder and the energy — so losing the power plant breaks repair as well as everything obviously energy-related.",
+        "Functions are composite. Repair depends on transcript, ribosome and ATP simultaneously, so a mitochondrial defect presents as a repair defect too. Interdependence is why symptom clusters look surprising.",
+        "Because functions are multiply dependent. The observable phenotype of a lesion is the union of every composite process that requires it, not the component's nominal role."
+      ]
+    }
+  ]
+}
