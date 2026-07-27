@@ -1,0 +1,135 @@
+{
+  "id": "what-is-life/04",
+  "module": "what-is-life",
+  "index": 3,
+  "title": "Could Life Start By Itself?",
+  "specimen": "spark-flask",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Every living thing you have ever seen came from another living thing. Every single one.",
+        "Every organism anyone has ever observed came from a parent organism. There are no exceptions on record — which makes the first one a genuine problem."
+      ],
+      "sub": [
+        "So where did the first one come from?",
+        "Nobody knows. That is not a dodge — it is the honest state of the field, and it is agreed on all sides."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "origin-of-life-unsolved",
+      "question": [
+        "In 1953 two scientists put gas and water in a flask and zapped it with lightning. What came out?",
+        "Miller and Urey passed an electric discharge through a mixture of simple gases and water. What did the experiment produce?"
+      ],
+      "options": [
+        "Some of the building blocks that living things are made of",
+        "A tiny living creature",
+        "Absolutely nothing"
+      ],
+      "outcome": "Some of the building blocks that living things are made of",
+      "note": [
+        "Have a guess. It is one of the most famous experiments there is.",
+        "Commit. Note that the popular account of this experiment and what it actually produced have drifted a long way apart."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "They made amino acids — the beads that proteins are made of. They did not make anything alive.",
+        "The experiment produced amino acids: the components proteins are built from. It did not produce a cell, a self-copying molecule, or anything alive.",
+        "Miller–Urey demonstrated abiotic synthesis of several amino acids under assumed early-earth conditions. The gap between a mixture of monomers and a self-replicating, metabolising, information-bearing system remains open.",
+        "The result was real and important, and its popular reading is not what it showed. Producing monomers is a long way from the assembly, sequence-specificity, homochirality, compartmentation and coupled replication a minimal cell requires."
+      ],
+      "sub": [
+        "Beads are not a necklace, and a necklace is not alive.",
+        "Having the parts is not the same as having the thing. Nobody has bridged that gap in a laboratory.",
+        "The leading current hypothesis is an RNA world, in which a molecule that both stores information and catalyses reactions preceded both DNA and protein. It has real support and real unsolved problems.",
+        "The RNA-world hypothesis addresses the chicken-and-egg problem of DNA needing proteins and proteins needing DNA, and it has laboratory support in ribozymes. Its difficulties — prebiotic ribose synthesis, nucleotide assembly, homochirality, and the fidelity threshold for replication — are openly discussed in the mainstream literature."
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "chemistry-vs-information",
+      "t": [
+        "Everyone agrees nobody has done it. Here is what each side thinks that means.",
+        "The empirical situation is agreed: origin of life is unsolved. The disagreement is about what to conclude from an unsolved problem."
+      ],
+      "evidence": [
+        "Nobody has ever made something alive from things that were not alive. Everyone agrees about that.",
+        "No laboratory has produced a self-replicating, metabolising system from non-living chemistry. This is not disputed by anybody, and the mainstream literature says so plainly."
+      ],
+      "views": [
+        {
+          "who": "Most origin-of-life researchers",
+          "claim": [
+            "It is a hard problem that has not been solved yet, and there is no reason to think it cannot be.",
+            "This is an open research problem, not a demonstrated impossibility. Unsolved is not unsolvable."
+          ],
+          "because": [
+            "Lots of hard problems looked impossible before someone solved them. Real progress has been made on pieces of it.",
+            "Individual steps have been achieved under plausible conditions: nucleotide synthesis without a prebiotic ribose step, self-replicating ribozymes, lipid vesicles that grow and divide, and mineral surfaces that concentrate and orient reactants. They argue the history of science favours continued work over declaring a boundary, and note that arguing from a current gap to a permanent one has a poor track record."
+          ],
+          "predicts": [
+            "More of the steps should keep being filled in.",
+            "Incremental closure: further prebiotically-plausible synthesis routes, higher-fidelity self-replicators, and eventually coupled replication inside a compartment."
+          ]
+        },
+        {
+          "who": "Creation scientists (Answers in Genesis)",
+          "claim": [
+            "Life needs instructions, and instructions do not write themselves out of chemistry.",
+            "The barrier is not chemical but informational: a living system requires specified sequence, and chemistry alone has no tendency to produce it."
+          ],
+          "because": [
+            "Chemistry can make the beads. It does not tell you what order to put them in — and the order is the whole thing.",
+            "They argue the sequence in DNA is not determined by the chemistry of the backbone, so no chemical law explains why one sequence rather than another; that all known instances of specified information trace to a mind; and they point to homochirality, the instability of the required molecules, and the absence of any known route to a functional sequence as evidence that the gap is one of kind rather than degree."
+          ],
+          "predicts": [
+            "The gap between chemicals and instructions should stay unclosed.",
+            "Continued failure to produce sequence specificity from undirected chemistry, and continued reliance on experimenter intervention in the successful steps."
+          ]
+        }
+      ],
+      "ask": [
+        "One says 'not yet'. The other says 'not ever'. How would you tell which one you are looking at?",
+        "Both accounts are consistent with today's evidence, which is a warning sign that today's evidence is not the discriminator. So ask each: what result would you accept as decisive against yourself, and how long should 'not yet' be given before it becomes an excuse? Notice that the second question cuts both ways — an argument from a present gap is only as strong as the gap is permanent."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "origin-of-life-unsolved",
+      "q": [
+        "Has anyone ever made something alive out of things that were not alive?",
+        "What is the current experimental status of the origin of life?",
+        "What is the honest experimental status of abiogenesis?"
+      ],
+      "options": [
+        "No. Some of the steps, but not the whole thing",
+        "Yes, in 1953",
+        "Yes, it happens in laboratories all the time"
+      ],
+      "answer": 0,
+      "why": [
+        "The famous experiment made building blocks, not a living thing. It is still an open question, and anyone who tells you it is settled is going beyond the evidence.",
+        "Individual steps have been achieved; the whole has not. Both sides of the disagreement accept this, and a textbook or a video that implies otherwise has overstated the case.",
+        "This is worth being precise about, because it is misreported in both directions: popular accounts sometimes imply the problem is solved, and some critiques imply no progress has been made. Neither is accurate. Substantial partial results exist; a complete route does not."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Knowing exactly what has and has not been shown is a skill you will use everywhere.",
+        "The ability to state precisely what an experiment demonstrated, as distinct from what it is popularly taken to demonstrate, is worth more than any particular result — and it is the single most transferable thing in this module."
+      ]
+    }
+  ]
+}

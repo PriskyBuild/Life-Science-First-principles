@@ -135,9 +135,13 @@ function signpost() {
   if (!coming.length) return null;
   return el("section", { class: "signpost" },
     el("h2", { text: pick(["More is being built", "Still being built"]) }),
+    /* This used to say "the one you are in is finished", which stopped being
+       true the moment a lesson was authored in a module that is not complete.
+       Copy that states a fact about the content has to be computed from the
+       content, or it becomes a lie quietly and nobody notices. */
     el("p", { class: "shelf-note", text: pick([
-      "These worlds are coming. The one you are in is finished.",
-      `${coming.length} more worlds are being written. Everything on the map above is finished and playable.`,
+      `${coming.length} more worlds are being made. You can play everything on the map above.`,
+      `${coming.length} more worlds are being written. Some are waiting on lessons earlier in the map, so they will appear on their own as those are finished.`,
     ]) }),
     el("ul", { class: "signpost-list" }, coming.map((w) =>
       el("li", { "data-world": w.id },

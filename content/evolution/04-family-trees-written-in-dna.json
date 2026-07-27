@@ -1,0 +1,135 @@
+{
+  "id": "evolution/04",
+  "module": "evolution",
+  "index": 3,
+  "title": "Family Trees Written in DNA",
+  "specimen": "sequence-reader",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You cannot make vitamin C. Nor can a chimp, or a guinea pig. A dog can. The recipe is in you — it is just broken.",
+        "You carry the gene for making vitamin C. So do chimps and guinea pigs. In all of you it is broken, which is why you need fruit — and a dog, whose copy works, does not."
+      ],
+      "sub": [
+        "Why would anyone be given a recipe that does not work?",
+        "The interesting question is not the missing ability. It is the presence of the broken instructions for it."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "shared-errors",
+      "question": [
+        "Two children hand in the same essay with the same spelling mistake in the same word. What do you think?",
+        "Two pupils submit essays containing an identical, unusual error in the identical place. What is the natural conclusion?"
+      ],
+      "options": [
+        "One copied the other, or both copied something else",
+        "They both happened to make the same mistake",
+        "The mistake proves nothing at all"
+      ],
+      "outcome": "One copied the other, or both copied something else",
+      "note": [
+        "Say what you think first.",
+        "Commit. Note that shared correctness proves nothing here — everyone spells common words the same. It is the shared error that carries the weight."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "When the same broken bit turns up in the same place in two creatures, that is called a shared error.",
+        "Identical damage at an identical position in two genomes is a shared error — and it is treated very differently from shared function.",
+        "Shared derived defects: pseudogenes disabled by the same lesion at the same nucleotide, and endogenous retroviral insertions at the same genomic coordinate in different species.",
+        "The argument turns on the vast size of the space of possible errors. Function can be independently arrived at; a specific inactivating mutation at a specific site, or a viral insertion at one of billions of possible loci, cannot easily be."
+      ],
+      "sub": [
+        "There are millions of ways to break something. Breaking it the same way twice by accident is very unlucky.",
+        "Working parts can match because both work. Broken parts matching in the same way is a much narrower coincidence.",
+        "Humans and chimps share thousands of endogenous retroviral insertions at matching loci, and the vitamin C pseudogene is disabled by the same deletion in both.",
+        "Roughly 8% of the human genome is retroviral in origin, and the insertion sites are shared with other primates in a nested pattern that matches the tree derived from anatomy."
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "shared-errors",
+      "t": [
+        "The broken genes are really there, in the same places. Here is what each side makes of that.",
+        "The sequence data are not in dispute. What they license is."
+      ],
+      "evidence": [
+        "The same broken vitamin C recipe sits in the same place in humans and chimps, damaged the same way. Thousands of old virus insertions line up too.",
+        "The GULO pseudogene is inactivated by shared lesions across primates; thousands of endogenous retroviral insertions occupy matching genomic coordinates; and independent gene sets recover largely congruent nested trees."
+      ],
+      "views": [
+        {
+          "who": "Most biologists",
+          "claim": [
+            "The same breaks are in the same places because they were inherited from a shared ancestor.",
+            "Shared derived defects are inherited: the damage happened once, in an ancestor, and everything descended from it carries the same scar."
+          ],
+          "because": [
+            "There are millions of ways to break a gene. Two creatures breaking it identically by chance would be an enormous coincidence — but inheriting one old break is ordinary.",
+            "The pattern is nested and congruent across independent character sets — anatomy, several unlinked gene families, retroviral insertion sites, and developmental sequence — which is a far stronger claim than resemblance. Statistically, the probability of independent identical insertion at matching loci thousands of times over is vanishing."
+          ],
+          "predicts": [
+            "New genes should keep giving the same family tree as the old ones.",
+            "Newly sequenced genomes should fall into the existing nested hierarchy, and newly examined pseudogenes should show damage shared exactly along the tree and not across it."
+          ]
+        },
+        {
+          "who": "Creation geneticists (Answers in Genesis)",
+          "claim": [
+            "Similar creatures were built to a similar plan, and some of those broken bits are not really broken.",
+            "Sequence similarity reflects common design; and much of what was called junk or broken has since been found to do something."
+          ],
+          "because": [
+            "The same designer using the same plan explains the matching. And things called useless before have turned out to have a job — so calling something broken may just mean we have not found out what it does.",
+            "They point to the substantial functional roles now assigned to non-coding DNA and to some endogenous retroviral sequences — some are co-opted in placental development — and argue the 'shared mistake' framing assumes non-function it cannot demonstrate. They also press cases where gene trees conflict with one another and with anatomy."
+          ],
+          "predicts": [
+            "More of the 'broken' parts should turn out to have jobs.",
+            "Continued discovery of function in sequences currently classed as degraded, and continued discordance between trees built from different genes."
+          ]
+        }
+      ],
+      "ask": [
+        "If a broken part turned out to have a job, would that settle it? What if it did not?",
+        "Test the reasoning on both sides. Does discovering a function for some retroviral insertions bear on why the insertion sites match position-for-position? And does congruence across gene trees follow from design, or is it compatible with any nested arrangement a designer chose? Ask each account what result it would count as a loss."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "shared-errors",
+      "q": [
+        "Why do scientists care more about shared mistakes than shared working parts?",
+        "Why is a shared defect treated as stronger evidence than a shared function?",
+        "Why does a shared inactivating lesion carry more inferential weight than shared function?"
+      ],
+      "options": [
+        "Because there are far more ways to break something than to make it work",
+        "Because broken things are more interesting",
+        "Because working parts are harder to compare"
+      ],
+      "answer": 0,
+      "why": [
+        "Two people can spell a word right for the same reason: it is right. Spelling it wrong the same way needs an explanation.",
+        "Function constrains: there may be only a few ways to build a working enzyme, so independent arrival at the same solution is unremarkable. Failure does not constrain — the space of possible breaks is huge, so a shared specific break is a much narrower coincidence.",
+        "It is an argument from the size of the outcome space. Convergence on function is expected under constraint; convergence on one particular lesion out of an enormous set of equally-disabling alternatives is not. This is why the argument targets shared derived defects specifically, and why demonstrating function in the sequence is the relevant counter-move."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is how they work out where a new virus came from, in days.",
+        "Comparing sequences to build trees is routine public-health infrastructure: tracing a new outbreak to its source animal and tracking variants through a population both run on exactly this method, on a timescale of days."
+      ]
+    }
+  ]
+}

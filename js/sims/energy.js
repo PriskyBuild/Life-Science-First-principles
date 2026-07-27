@@ -91,7 +91,7 @@ class Energy extends Sim {
 
   describe() {
     const state = this.dead ? "The cell has run out of energy and stopped."
-      : this.finished ? "The cell has held steady long enough. That setting works."
+      : this.met ? "The cell has held steady long enough. That setting works."
       : this.made > this.need + 0.2 ? "Making more than it needs — the level is climbing."
       : this.made < this.need - 0.2 ? "Spending more than it makes — the level is falling."
       : "Making almost exactly what it needs.";

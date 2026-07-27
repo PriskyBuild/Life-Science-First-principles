@@ -123,6 +123,41 @@ A boss whose every slot constrains placement can only ever be won, which makes t
 a cutscene. `trials[].needs` lists the parts that must be *correctly placed* for that trial to
 pass; each failure names what was missing, and the child can fix it in place and re-test.
 
+### `weigh` — two attributed readings of the same evidence
+```json
+{ "type": "weigh", "levels": [3, 4], "concept": "fossil-order",
+  "t": [...],
+  "evidence": ["what nobody disputes"],
+  "views": [
+    { "who": "Most geologists", "claim": [...], "because": [...], "predicts": [...] },
+    { "who": "Flood geologists (Answers in Genesis)", "claim": [...], "because": [...], "predicts": [...] }
+  ],
+  "ask": ["the question you leave them with"] }
+```
+
+For the places where the evidence is agreed and the reading of it is not. Six lessons in this
+curriculum are like that; most are not, and this stage does not belong in them.
+
+**`who` is mandatory and the build enforces it.** This stage type exists so that an
+interpretation cannot be asserted without saying whose it is. The page never speaks in its own
+voice here — every sentence belongs to somebody named.
+
+**`because` is mandatory too.** A view without its reasoning is a label, and labelling a position
+you disagree with is how a strawman gets built by accident.
+
+**`predicts` is the field that does the work.** A disagreement written as two beliefs is a
+stand-off and a child can only pick a side. Written as two sets of expectations it becomes
+something a person can go and check. Give both sides a real one.
+
+Both views must be opened before Next unlocks. The two cards are styled identically and there is
+a test asserting it — a heavier card is an argument made in CSS, and children read visual weight
+before they read words. `ask` closes the stage with an open question and deliberately nowhere to
+type; not everything worth asking is a thing to be marked.
+
+Put contested stages on `levels: [3, 4]`. A six-year-old should be finding out what a fossil is,
+not adjudicating assumptions in radiometric dating. Levels 1–2 get the observation without the
+dispute.
+
 ### `name` — the concept, finally
 ```json
 { "type": "name", "t": [...], "sub": [...] }
@@ -157,6 +192,28 @@ lessons 1, 4 and 5, and that is deliberate. Every concept in a finished lesson i
 the retrieval schedule at 1, 3, 7, 16 and 35 days.
 
 Two or three concepts per lesson. A lesson testing six concepts is two lessons.
+
+**A concept must be declared in its module's `concepts` list in `curriculum.json`.** The build
+fails otherwise. This is deliberate friction: a typo'd concept id used to create an orphan review
+beat that no lesson ever seeded and no child ever saw again, and nothing anywhere reported it.
+Adding a concept is one line; adding it on purpose is the point.
+
+## Writing a new simulation
+
+`docs/DECISIONS.md` D45–D48 is the reasoning. The contract in short:
+
+| | |
+|---|---|
+| `once()` | Mount-lifetime state. `reset()` never touches it. Cross-run history and the child's own switch settings go here — otherwise "run it twice and compare" cannot be written. |
+| `setup()` | Run-lifetime state. Rebuilt by every reset. |
+| `describe()` | Mandatory. Pass an array to `say()` and it resolves for the reading level, exactly like `pick()` does in a lesson. |
+| `succeed({ say })` | Means *the lesson may advance*. It does **not** end the simulation, and must not — the moment a child solves something is the moment they most want to keep poking. `say` is the sim's own account of what this child did, shown under the authored `goal`. |
+| `get autoplay()` | Return `false` for an **episodic** sim — one whose state advances when the child asks (generations, heartbeats, outbreaks) rather than sixty times a second. Borrow the loop for the reveal with `resume()`, hand it back with `settle()`. |
+
+An episodic sim needs **no reduced-motion substitution**, because the model advances on the click
+and the animation only reveals what already happened. Both motion modes drive the identical
+control — so put that control in `.sim-controls`, never in `.teach-play`, which reduced motion
+hides. There is a test for that, because it was got wrong first time.
 
 ## Specimens
 

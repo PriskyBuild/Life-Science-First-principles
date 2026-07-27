@@ -145,5 +145,203 @@
       "Error in a transcript is transient; error in the template is heritable. Compartmentalisation also creates a regulatory step between archive and product."
     ],
     "from": "cells/04"
+  },
+  "testable-expectation": {
+    "q": [
+      "What makes an idea a good one to test?",
+      "What makes an idea testable?",
+      "Which property makes a claim testable?",
+      "Which property makes a claim empirically tractable?"
+    ],
+    "options": [
+      "It tells you what you should find",
+      "Lots of people believe it",
+      "It has been around a long time"
+    ],
+    "answer": 0,
+    "why": [
+      "A good idea sticks its neck out. It says: if I am right, you will find THIS. Then you can go and look.",
+      "An idea earns its keep by saying in advance what you should find. If it fits whatever you discover, it was never at risk, and an idea that was never at risk has not been tested.",
+      "Testability is about forbidden outcomes. A claim that is compatible with every possible observation excludes nothing and so is confirmed by nothing. This is why 'what would change your mind?' is the sharpest question you can ask anyone, including yourself.",
+      "A hypothesis is informative in proportion to what it rules out. Popper's asymmetry — that no number of confirmations establishes a universal claim while one clean falsification refutes it — is the strict form; in practice theories are compared on how much they forbid and how well they survive attempts to violate it."
+    ],
+    "from": "evolution/01"
+  },
+  "evidence-and-inference": {
+    "q": [
+      "Two people look at the same clue and say different things. What helps most?",
+      "Two accounts fit the same evidence. What helps you decide between them?",
+      "What most effectively discriminates between two accounts that both fit the current evidence?",
+      "Given underdetermination by present evidence, what best discriminates two rival accounts?"
+    ],
+    "options": [
+      "Ask each one what they would expect to find next",
+      "See which one sounds more confident",
+      "Count how many people agree with each"
+    ],
+    "answer": 0,
+    "why": [
+      "If two people expect different things, go and look. Whoever guessed right has the better idea — and being willing to say what you expect is what makes it a fair test.",
+      "Confidence and popularity are not evidence; expectations are. Ask each account what it predicts you will find next, then go and find out. The account that keeps being surprised is in trouble, whichever one it is.",
+      "Present evidence usually underdetermines rival accounts, so the discriminating move is forward-looking: derive a novel prediction from each, and test where they diverge. Note that this test is symmetrical — it is only useful if you are willing to apply it to the account you favour.",
+      "Novel-prediction success is the standard currency because it is the hardest thing to arrange after the fact. Accommodation of known data is cheap; both rival accounts will manage it. The asymmetry appears only at the points where they forbid different things."
+    ],
+    "from": "evolution/01"
+  },
+  "homology": {
+    "q": [
+      "What does 'homologous' mean?",
+      "What does calling two structures homologous claim?",
+      "What is the content of a homology claim?"
+    ],
+    "options": [
+      "The same parts in the same order, doing different jobs",
+      "Two things that do the same job",
+      "Two things that look the same from outside"
+    ],
+    "answer": 0,
+    "why": [
+      "It is about the parts underneath, not the job on top. A bat's wing and a bee's wing both fly, but they are not homologous — there are no matching bones, because a bee has none.",
+      "Homology is correspondence of parts by position and origin, deliberately defined without reference to function. A bat wing and an insect wing are analogous — same job, no shared parts. A bat wing and a whale flipper are homologous — same parts, no shared job.",
+      "The definition is intentionally function-blind, because a function-based definition would make the concept circular. Diagnosis rests on relative position, connectivity and developmental origin, which is why an octopus eye and a vertebrate eye are analogous despite the resemblance: they develop from different tissues and are wired in opposite directions."
+    ],
+    "from": "evolution/02"
+  },
+  "fossil-order": {
+    "q": [
+      "What is the surprising thing about the fossil layers?",
+      "What is the feature of the fossil record that most needs explaining?",
+      "Which feature of the record carries the explanatory burden?"
+    ],
+    "options": [
+      "The order is the same all over the world",
+      "There are a lot of fossils",
+      "Fossils are made of stone"
+    ],
+    "answer": 0,
+    "why": [
+      "Fossils being common is not surprising. The same order turning up on every continent is — that is a pattern, and patterns need a reason.",
+      "Abundance is unremarkable; consistency of sequence across independent sites is not. A pattern that could easily have come out otherwise and did not is the thing an account has to earn.",
+      "Global consistency of relative order is the explanandum, because it is highly specific and would have been easy to violate. Both accounts on offer are attempts to supply a sorting mechanism for it, and both should be judged on how much they forbid."
+    ],
+    "from": "evolution/03"
+  },
+  "shared-errors": {
+    "q": [
+      "Why do scientists care more about shared mistakes than shared working parts?",
+      "Why is a shared defect treated as stronger evidence than a shared function?",
+      "Why does a shared inactivating lesion carry more inferential weight than shared function?"
+    ],
+    "options": [
+      "Because there are far more ways to break something than to make it work",
+      "Because broken things are more interesting",
+      "Because working parts are harder to compare"
+    ],
+    "answer": 0,
+    "why": [
+      "Two people can spell a word right for the same reason: it is right. Spelling it wrong the same way needs an explanation.",
+      "Function constrains: there may be only a few ways to build a working enzyme, so independent arrival at the same solution is unremarkable. Failure does not constrain — the space of possible breaks is huge, so a shared specific break is a much narrower coincidence.",
+      "It is an argument from the size of the outcome space. Convergence on function is expected under constraint; convergence on one particular lesion out of an enormous set of equally-disabling alternatives is not. This is why the argument targets shared derived defects specifically, and why demonstrating function in the sequence is the relevant counter-move."
+    ],
+    "from": "evolution/04"
+  },
+  "limits-of-change": {
+    "q": [
+      "What do both sides of this argument actually agree about?",
+      "Which of these is agreed by both accounts?",
+      "Which claim is common ground across the dispute?"
+    ],
+    "options": [
+      "That natural selection is real and new species appear",
+      "That nothing ever changes",
+      "That all life shares one ancestor"
+    ],
+    "answer": 0,
+    "why": [
+      "Natural selection is not the argument. Both sides think it happens. The argument is about how far it can take you.",
+      "Selection, mutation and speciation are common ground. Finding the actual point of disagreement — the ceiling — is what makes it possible to argue about the right thing.",
+      "Locating the genuine locus of dispute is a discipline worth having in every argument, not only this one. Most heat here is generated by attacking positions the other side does not hold: selection and speciation are accepted on both accounts, and universal common descent is the contested claim."
+    ],
+    "from": "evolution/05"
+  },
+  "selection-needs-no-agent": {
+    "q": [
+      "Did any single beetle change colour?",
+      "Did any individual beetle change during the simulation?",
+      "What exactly changed over the generations?",
+      "At which level did the change occur?"
+    ],
+    "options": [
+      "No — only which beetles were left changed",
+      "Yes, each beetle got slowly darker",
+      "Yes, the babies chose to be darker"
+    ],
+    "answer": 0,
+    "why": [
+      "Every beetle kept the colour it hatched with. What changed was who was still there to have babies — and their babies looked like them.",
+      "No individual changed. Each beetle kept its shade for life. The population's average moved because the mismatched ones were eaten before breeding, and offspring resembled the survivors.",
+      "The individual is not the unit that changes. Each beetle's shade was fixed at hatching; the distribution moved because survival was not independent of shade. Change at the population level with none at the individual level is the signature of selection.",
+      "Selection acts on individuals and changes populations. Confusing the two levels produces Lamarckian intuitions — the beetle striving and darkening — which the simulation rules out by construction: shade is assigned at hatching and never written to again."
+    ],
+    "from": "natural-selection/01"
+  },
+  "three-conditions": {
+    "q": [
+      "You switched off 'babies like parents' and it stopped. Why?",
+      "Removing heredity halted adaptation even though the predator still ate the mismatched beetles. Why?",
+      "Why does removing heritability halt adaptation, given that differential mortality still occurs?"
+    ],
+    "options": [
+      "The killing still happened, but nothing was passed on, so each generation started over",
+      "The bird stopped being able to see them",
+      "Fewer beetles died once heredity was off"
+    ],
+    "answer": 0,
+    "why": [
+      "Exactly the same beetles got eaten. But their babies came out any colour at all, so the next round began from scratch. Selection with nothing inherited is just killing.",
+      "Mortality was unchanged — the same mismatched beetles died. But offspring shade was drawn independently of the parents, so the survivors' advantage was not transmitted. Each generation restarted from the same distribution.",
+      "Differential mortality without transmission produces no cumulative change. Selection sorts a generation; heredity is what makes the sorting persist. Remove it and each generation is an independent sample — the population is culled every round and returns to the same mean every round."
+    ],
+    "from": "natural-selection/01"
+  },
+  "selection-is-observed": {
+    "q": [
+      "Where can you actually watch this happen?",
+      "Which of these is natural selection you can observe directly?",
+      "Which of these is a directly observed instance of natural selection?",
+      "Which is an observation rather than an inference about the unobserved past?"
+    ],
+    "options": [
+      "Germs becoming hard to kill with medicine",
+      "Only in books about long ago",
+      "Nowhere — it is too slow to see"
+    ],
+    "answer": 0,
+    "why": [
+      "You can watch it in a week in a dish of germs. It is not a story about long ago — it is happening in hospitals right now.",
+      "Antibiotic resistance is measured in laboratories in days and in hospitals in weeks. So is pesticide resistance in insects, and so is the peppered moth, which was counted year by year.",
+      "Selection is observational science: resistance evolution is measured in real time, the peppered moth was censused across decades, and Darwin's finches have been tracked bird by bird on Daphne Major since 1973. None of these requires an inference about the deep past.",
+      "This matters for how the claim is classified. Variation, heritability and differential survival are each independently measurable, and their joint consequence has been observed repeatedly under controlled conditions. Whatever one concludes about the history of life, this mechanism is not in dispute — it is demonstrated."
+    ],
+    "from": "natural-selection/01"
+  },
+  "origin-of-life-unsolved": {
+    "q": [
+      "Has anyone ever made something alive out of things that were not alive?",
+      "What is the current experimental status of the origin of life?",
+      "What is the honest experimental status of abiogenesis?"
+    ],
+    "options": [
+      "No. Some of the steps, but not the whole thing",
+      "Yes, in 1953",
+      "Yes, it happens in laboratories all the time"
+    ],
+    "answer": 0,
+    "why": [
+      "The famous experiment made building blocks, not a living thing. It is still an open question, and anyone who tells you it is settled is going beyond the evidence.",
+      "Individual steps have been achieved; the whole has not. Both sides of the disagreement accept this, and a textbook or a video that implies otherwise has overstated the case.",
+      "This is worth being precise about, because it is misreported in both directions: popular accounts sometimes imply the problem is solved, and some critiques imply no progress has been made. Neither is accurate. Substantial partial results exist; a complete route does not."
+    ],
+    "from": "what-is-life/04"
   }
 }

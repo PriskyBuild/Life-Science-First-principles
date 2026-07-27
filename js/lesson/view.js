@@ -27,6 +27,7 @@ import { watchForStuck, loadHints } from "./tutor.js";
 const SIMS = {
   membrane: () => import("../sims/membrane.js"),
   energy: () => import("../sims/energy.js"),
+  selection: () => import("../sims/selection.js"),
 };
 
 /** Level-indexed simulation parameters: one shared implementation, different
@@ -120,10 +121,16 @@ const RENDER = {
       for (const [k, v] of Object.entries(paramsFor(s, ctx.level))) {
         node.dataset[k] = typeof v === "string" ? v : JSON.stringify(v);
       }
-      node.addEventListener("fp:sim-goal", () => {
+      node.addEventListener("fp:sim-goal", (e) => {
         celebrate();
         goal.hidden = false;
-        goal.textContent = pick(s.goal);
+        /* Two sentences with two different authors. The lesson's `goal` says
+           what the objective was; `detail.say` is the simulation's own account
+           of what THIS child actually did — which switch they threw, how many
+           generations it took — and no string in the JSON can know that. */
+        mount(goal,
+          el("span", { text: pick(s.goal) }),
+          e.detail?.say ? el("span", { class: "stage-said", text: e.detail.say }) : null);
         goal.classList.add("m-attend");
         ctx.allowAdvance();
       });
@@ -219,6 +226,52 @@ const RENDER = {
     ];
   },
 
+  /* Two or more ATTRIBUTED readings of the same evidence.
+
+     A disagreement stated as two beliefs is a stand-off and a child can only
+     pick a side. Stated as two sets of EXPECTATIONS it becomes something a
+     person can go and check, which is the only version worth teaching. So
+     `predicts` is the field that does the work here, not `claim`.
+
+     `who` is mandatory and the build enforces it: this format cannot assert an
+     interpretation without saying whose it is. The page never speaks in its own
+     voice on a weigh stage — every sentence belongs to somebody named.
+
+     Native <details> rather than a custom disclosure, so keyboard, screen
+     reader and find-in-page all work without being rebuilt. Both views must be
+     opened before Next unlocks: reading one side and moving on is the failure
+     mode this whole stage type exists to prevent. */
+  weigh: (s, ctx) => {
+    const opened = new Set();
+    const cards = s.views.map((v, i) => {
+      const card = el("details", { class: "weigh-view" },
+        el("summary", { class: "weigh-who pressable" }, el("span", { text: v.who })),
+        el("div", { class: "weigh-body" },
+          el("p", { class: "weigh-claim", text: pick(v.claim) }),
+          el("p", { class: "weigh-because", text: pick(v.because) }),
+          v.predicts ? el("p", { class: "weigh-predicts" },
+            el("strong", { text: "So it expects to find: " }),
+            el("span", { text: pick(v.predicts) })) : null));
+      card.addEventListener("toggle", () => {
+        if (!card.open) return;
+        opened.add(i);
+        if (opened.size === s.views.length) ctx.allowAdvance();
+      });
+      return card;
+    });
+    return [
+      el("p", { class: "stage-kicker", text: s.views.length === 2
+        ? "Two readings of the same evidence" : "Readings of the same evidence" }),
+      el("p", { class: "stage-lead", text: pick(s.t) }),
+      s.evidence ? el("p", { class: "weigh-evidence" },
+        el("strong", { text: "Not in dispute: " }), el("span", { text: pick(s.evidence) })) : null,
+      el("div", { class: "weigh-views" }, cards),
+      // An open question, deliberately with nowhere to type. Not everything
+      // worth asking a child is a thing to be marked.
+      s.ask ? el("p", { class: "weigh-ask", text: pick(s.ask) }) : null,
+    ];
+  },
+
   check: (s, ctx) => {
     const q = el("fp-quiz", {
       "data-concept": s.concept,
@@ -239,7 +292,7 @@ const RENDER = {
 /* Stages that must be acted on before the child can move on. Everything else
    advances freely — gating a paragraph behind a click teaches nothing and
    just makes the lesson feel like a corridor. */
-const GATED = new Set(["predict", "slider", "check", "sim", "build"]);
+const GATED = new Set(["predict", "slider", "check", "sim", "build", "weigh"]);
 
 /* One short pulse, on achievement only — never on every press. The resolver's
    own guidance says do not overuse it, and a phone buzzing on each tap is

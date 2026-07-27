@@ -575,3 +575,130 @@ be edited by someone who does not write JavaScript.
 Related: the lesson linter matched "any JSON under `content/`", so once the build started
 writing `authored.json` and `hints.json` there, **it tried to lint its own output**. Lessons live
 in `content/<module>/`; the pattern now says so.
+
+---
+
+## Phase 12 — the format meets a lesson that is not about Cells
+
+Five lessons in one module had proved that the format worked. They had not proved what it
+*could not say*, because everything written against it so far was a continuous molecular
+simulation with a setting to find. Authoring Natural Selection lesson 1 before Cells lesson 6
+was the whole point: find the walls by walking into them.
+
+Four of the five entries below are things that were **impossible to express**, not things that
+were wrong. That is the more dangerous category, because nothing fails — you simply write a
+worse lesson and never learn why.
+
+### D44 — The curriculum spine is a contract, not documentation
+*New.*
+
+Every module now carries `lessonTitles`, `specimens` and a `concepts` vocabulary: 110 lessons
+across 25 modules, all named. Titles and specimens make the Atlas honest about what is coming.
+The concept list is the part that does work — it is the vocabulary a lesson in that module may
+test, and it exists so that a typo'd concept id fails the build instead of silently creating an
+orphan review beat that no lesson ever seeds and no child ever sees again.
+
+Writing the spine also caught the module the whole project was quietly deferring: an `evolution`
+module whose first lesson I had drafted as *"Nobody Designed the Eye."* That title asserts a
+conclusion. The brief says begin with curiosity, never with a definition — and a hook that hands
+over the answer before the question is a worse hook by the platform's own standard, whatever one
+thinks of the answer. It is now *"What Would Change Your Mind?"*, which is a question.
+
+### D45 — `once()`: state that survives a reset
+*New contract on `Sim`.*
+
+`reset()` called `setup()`, which rebuilt everything. So a stage whose task is **run it, change
+one thing, run it again and compare** could not be written: pressing "start again" erased both
+the previous run's trace and the child's own switch settings — that is, it erased the experiment
+and the hypothesis at the same time.
+
+`once()` now runs on connect and `reset()` never touches it. Two lines in the base class, and it
+names a real distinction: mount-lifetime state versus run-lifetime state. Cross-run comparison is
+going to be wanted by every population sim in Change, Ecology and Immunity, so this was worth
+generalising rather than patching in one file.
+
+### D46 — Meeting the goal no longer ends the simulation
+*Reverses part of phase 7.*
+
+`succeed()` set `finished`, and `finished` blocked `play()`. Two different claims — *the lesson
+may advance* and *there is nothing left to try here* — were the same flag.
+
+The cost was invisible until a lesson needed it. A child who found the working membrane could not
+then widen the pore and watch it break, which is the best thing they could possibly do next; and
+a stage that has to compare a working run against a broken one was unwritable. Worse, freezing
+lands at the exact moment a child most wants to keep poking.
+
+`succeed()` now fires the event and sets `met`. It does not pause. Membrane and Energy both read
+better for it.
+
+### D47 — `detail.say`, and the register gap in `describe()`
+*New, plus a debt recorded honestly.*
+
+The goal banner could only show an authored string, so it could say what the objective was and
+never what the child actually did — which switch they threw, how many generations it took. Sims
+now pass `detail.say` and the banner renders it under the authored line. Two sentences, two
+authors, and the sim's one is the only one that can know.
+
+The debt: `describe()` has been writing at a single register for all four reading levels since
+lesson 2. That is the accessible text — the thing a child using a screen reader hears — and a
+five-year-old and a sixteen-year-old have been getting the same sentence. `say()` is now in the
+base class and Selection uses it throughout; Membrane and Energy have **not** been retrofitted.
+Recorded here rather than quietly left, because a known gap in the accessible path is exactly the
+kind of thing that becomes invisible.
+
+### D48 — Episodic simulations, and why they need no reduced-motion substitute
+*Extends contract 3.*
+
+The shared loop assumed every sim genuinely ticks. Generations do not: they happen when a child
+asks. Driving one at 60Hz between clicks is wrong in a way that is not merely wasteful — it makes
+the animation look like the mechanism.
+
+`autoplay` is now false for such a sim, which borrows the loop for a half-second reveal and hands
+it back. The consequence is the interesting part: **an episodic sim is reduced-motion-native.**
+The model advances on the click; the animation only reveals what already happened. So there is
+nothing to substitute, both motion modes drive the identical control, and the branch disappears
+instead of doubling. The one trap is that the control must not live in `.teach-play`, which
+reduced motion hides — there is a test for that now, because I made exactly that mistake.
+
+### D49 — `weigh`: the format may not assert an interpretation unattributed
+*New stage type.*
+
+Six lessons in this curriculum sit where a scientific reading of evidence and a creationist
+reading of the same evidence diverge. The product's owner asked for them Socratic and
+side-by-side, and it deploys publicly.
+
+A stage type is the right place to put that discipline, because a rule the author has to remember
+is a rule that erodes. `weigh` carries two or more readings; **every one must name `who` holds it
+and give its actual `because`**, and the build fails otherwise. The field that does the real work
+is `predicts` — a disagreement stated as two beliefs is a stand-off a child can only pick a side
+in, while the same disagreement stated as two sets of expectations becomes something a person can
+go and check.
+
+Three supporting decisions:
+
+- **Both readings must be opened before the lesson advances.** Reading one side and moving on is
+  the exact failure this exists to prevent.
+- **The two cards are styled identically**, and there is a test asserting it. A child reads visual
+  weight long before they read words, so a heavier card is an argument made behind the author's
+  back.
+- **The contested stages are `levels: [3, 4]`.** A six-year-old should be learning what a fossil
+  is, not adjudicating assumptions in radiometric dating. Levels 1–2 get the observations without
+  the dispute — which is the existing pedagogy fork doing its job, not a separate mechanism.
+
+The `ask` field closes each one with an open question and deliberately nowhere to type. Not
+everything worth asking a child is a thing to be marked.
+
+### D50 — A world with content but no route to it is not drawn
+*Found by authoring out of order.*
+
+Authoring Change before Code produced a world with six real lessons behind a gate that no amount
+of play could open, because the modules it waits on have nothing written in them at all. The
+Atlas drew it as a locked island naming a prerequisite that does not exist — a door with no key,
+and no way for a child to know that.
+
+`playableWorlds()` now computes reachability **against what is authored**, not against the graph:
+a module counts as completable only if every one of its lessons exists. The world appears on its
+own the moment the path to it is written. The signpost copy went the same way — it used to say
+"the one you are in is finished", which was true for exactly as long as Cells was the only module
+with anything in it. Copy that states a fact about the content has to be computed from the
+content, or it becomes a lie quietly.

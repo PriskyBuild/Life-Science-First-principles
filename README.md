@@ -9,7 +9,10 @@ deleted; if a lesson can be understood by reading it, it has failed — it shoul
 simulation.
 
 Twenty-five modules across six worlds, for ages 5 to 16, adapting to four reading levels.
-The Cells module is complete: five lessons, two simulations, and a boss you can lose.
+All 110 lessons are specified — title, concepts and specimen. Eleven are authored: Cells complete
+with a boss you can lose, Natural Selection opened with a population simulation whose three
+conditions are on switches, and the Evolution module written as attributed side-by-side readings
+rather than a verdict.
 
 **Zero runtime dependencies. No framework, no bundler, no build step to develop.**
 
@@ -31,7 +34,7 @@ four levels and both themes. If a token drifts, that page says so rather than lo
 
 ```bash
 npm run build      # lints content, enforces budgets, regenerates sw.js + reviews.json + app.css
-npm run verify     # drives Chromium through 171 checks (~4 min)
+npm run verify     # drives Chromium through 186 checks (~5 min)
 npm run lighthouse # performance / a11y / best practices / SEO, all gated at 95
 ```
 
@@ -77,8 +80,11 @@ and are redistributed here under it.
 | `tools/` | Build, palette generator, browser test suite, Lighthouse runner. |
 | `docs/` | The blueprint, `DECISIONS.md`, and **`AUTHORING.md` — read this to write a lesson.** |
 
-**Read `docs/DECISIONS.md` before changing anything.** It is thirty-odd entries of what
-contradicted the plan and why — every one of them a bug that shipped, or nearly did.
+**Read `docs/DECISIONS.md` before changing anything.** It is fifty entries of what contradicted
+the plan and why — every one of them a bug that shipped, or nearly did. D44–D50 are the newest,
+and they are the more dangerous kind: four of them were things the lesson format made
+*impossible to express*, which fails silently. You simply write a worse lesson and never find
+out why.
 
 ### Four load tiers, four budgets
 
@@ -86,11 +92,15 @@ Enforced by `tools/build.mjs`; the build fails if any is exceeded.
 
 | Tier | Budget | Currently |
 |---|---|---|
-| Shell JS (gzipped) | 25 KB | 18.1 |
-| Lesson JS (lazy) | 20 KB | 17.3 |
-| Simulation JS (per stage) | 20 KB | 9.3 |
-| Shell CSS (gzipped) | 20 KB | 14.4 |
+| Shell JS (gzipped) | 25 KB | 18.8 |
+| Lesson JS (lazy) | 20 KB | 18.3 |
+| Simulation JS (worst single stage) | 20 KB | 12.0 |
+| Shell CSS (gzipped) | 20 KB | 14.9 |
 | Preloaded fonts | 35 KB | 25.1 |
+
+The simulation budget is base plus the **largest single** sim, not the sum of all of them — a
+stage loads one. Summing measured a cost nobody pays and would have failed the build at about
+five simulations on a number no child would ever download.
 
 ---
 
@@ -154,16 +164,51 @@ See `docs/DECISIONS.md` D42.
 
 ---
 
+## Where this curriculum takes a position
+
+Six of the 110 lessons sit where a mainstream scientific reading of the evidence and a
+creationist reading of the same evidence diverge: the five lessons of `evolution`, and the
+origin-of-life lesson in `what-is-life`. This repository is public, so it says plainly how they
+are built.
+
+They use a `weigh` stage, and the format enforces three things the author cannot forget:
+
+- **Every reading names who holds it.** `who` is mandatory and the build fails without it. The
+  page never speaks in its own voice on a weigh stage.
+- **Every reading gives its actual reasoning.** `because` is mandatory too, because a view
+  without it is a label, and labelling a position is how a strawman gets built by accident.
+- **Both must be opened before the lesson advances**, and the two cards are styled identically
+  with a test asserting it. Children read visual weight long before they read words.
+
+The field that does the real work is `predicts`. A disagreement written as two beliefs is a
+stand-off a child can only pick a side in; written as two sets of expectations it becomes
+something a person can go and check. Each stage closes with an open question and deliberately
+nowhere to type.
+
+The contested stages are `levels: [3, 4]`. A six-year-old should be finding out what a fossil is,
+not adjudicating assumptions in radiometric dating; levels 1–2 get the observations without the
+dispute. That is the existing pedagogy fork doing its job, not a separate mechanism.
+
+Nothing in the other 104 lessons is affected. Cells, DNA, proteins, immunity, neuroscience,
+ecology and the rest are operational biology, run identically by everyone. Natural selection is
+in that group too, which surprises people: variation, heredity and differential survival are
+directly observed, and Answers in Genesis affirms all three — the dispute there is about the
+ceiling, which is what lesson 5 of `evolution` is about.
+
 ## Still to do
 
-The engine is complete; the content is one module of twenty-five. In rough order of value:
+The engine is complete and the spine is written; 99 lesson bodies are not. In rough order of
+value:
 
 1. **Put it in front of a real child.** The blueprint's open risks are now testable for the
    first time — whether the level picker misfires (the nudge is built, its thresholds are
    guesses), and whether the membrane simulation is legible to an eight-year-old rather than
    merely correct. No further code answers either.
-2. **An authoring tool.** Twenty-four modules of hand-written JSON is the actual constraint on
-   scale. `docs/AUTHORING.md` is the spec; the format has survived five lessons.
+2. **The remaining 99 lessons.** This is the actual constraint on scale, and it is a writing
+   project rather than a build step. `docs/AUTHORING.md` is the spec and every remaining lesson
+   already has its title, concepts and specimen in `curriculum.json` — so the next author is
+   filling in a specification, not inventing one. An authoring tool would pay for itself
+   somewhere around lesson thirty.
 3. **The Lab** — free play with every simulation, no lesson wrapper. Costs almost nothing; it is
    where this stops being a course and starts being a thing children open on a Saturday.
 4. **A live model behind Sprout.** The interface is already async for exactly this.

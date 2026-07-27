@@ -1,0 +1,135 @@
+{
+  "id": "evolution/02",
+  "module": "evolution",
+  "index": 1,
+  "title": "The Same Bones in Different Jobs",
+  "specimen": "limb-set",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A bat's wing, a whale's flipper and your hand. Different jobs. Same bones, in the same order.",
+        "A bat flies, a whale swims, a mole digs and you type. Open all four up and you find the same bones in the same order, just stretched differently."
+      ],
+      "sub": [
+        "One long bone. Then two. Then a handful of little ones. Then fingers.",
+        "One bone, then two, then a cluster of small ones, then digits. Every time, in that order."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "homology",
+      "question": [
+        "If you were building a wing from scratch, would you start with a hand?",
+        "If you were designing a wing with no constraints at all, would the arrangement of a hand be your starting point?"
+      ],
+      "options": [
+        "No — I would build whatever works best for flying",
+        "Yes — a hand is the obvious way to start",
+        "It would not matter either way"
+      ],
+      "outcome": "No — I would build whatever works best for flying",
+      "note": [
+        "Think about it before you look.",
+        "Commit first. Notice that an insect wing, which flies perfectly well, contains no bones at all."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Bones that match like this are called homologous. It means 'the same underneath'.",
+        "Structures that match part-for-part in this way are called homologous — the same underlying plan doing different jobs.",
+        "Homologous structures: the same skeletal elements in the same topological relationships, serving different functions. Contrast analogous structures, which do the same job by different means — a bird wing and an insect wing.",
+        "Homology is a claim about correspondence of parts, not of function. It is diagnosed by relative position, developmental origin and connectivity, and it is deliberately independent of what the structure is used for — otherwise it would be circular."
+      ],
+      "sub": [
+        "The bat and the whale do totally different things with them.",
+        "Same parts, same order, wildly different jobs — that combination is the interesting bit.",
+        "The pattern is nested: all four limbs share the one-bone-two-bones plan, but only some share the wrist arrangement, and fewer still share particular finger reductions.",
+        "Crucially the similarities are nested rather than scattered — groups within groups — which is a far more specific pattern than mere resemblance and is what both accounts below have to explain."
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "homology",
+      "t": [
+        "Everyone agrees the bones match. Here is what each side says the matching means.",
+        "The anatomical correspondence is not disputed. What it licenses you to conclude is."
+      ],
+      "evidence": [
+        "The bones really do correspond, part for part, across mammals, birds, reptiles and amphibians — and the correspondence is nested, with groups inside groups.",
+        "The correspondence is detailed, part-for-part, and nested: tetrapod limbs share one-bone-two-bones universally, while finer features are shared only within subgroups. Nobody disputes the anatomy."
+      ],
+      "views": [
+        {
+          "who": "Most biologists",
+          "claim": [
+            "The bones match because these animals all got them from a shared ancestor.",
+            "Homology reflects common descent: the plan is shared because it was inherited, and modified afterwards for different jobs."
+          ],
+          "because": [
+            "A designer starting fresh could build a wing any way at all. An inherited plan can only be bent, not replaced — which is exactly what you see.",
+            "Descent with modification predicts constrained, historically-contingent design: you can only alter what you inherited. It also explains features that are useless or actively bad — the giraffe's recurrent laryngeal nerve looping down the neck and back, the vertebrate retina wired back-to-front — which are hard to motivate as design but trivial as inherited history."
+          ],
+          "predicts": [
+            "Animals that look related in their bones should also look related in their genes.",
+            "Independent character sets — bones, genes, developmental sequences, shared broken genes — should produce the same nested tree, and shared mistakes should be shared in exactly that pattern."
+          ]
+        },
+        {
+          "who": "Creation biologists (Answers in Genesis)",
+          "claim": [
+            "The bones match because one Designer used one good plan many times.",
+            "Homology reflects common design: a single Designer reusing a proven engineering solution across many creatures."
+          ],
+          "because": [
+            "Engineers reuse good designs all the time. Finding the same wheel on many different cars does not mean the cars had babies.",
+            "Reuse of a working module is normal engineering practice and predicts exactly this kind of shared architecture. They also argue the inference is weakened where homologous structures arise from non-homologous genes or different embryonic tissues — which, on their account, descent should not permit."
+          ],
+          "predicts": [
+            "You should find the same good ideas turning up in creatures that are not related at all.",
+            "Homologous structures should sometimes be built by different genes or different developmental routes, and strikingly similar solutions should recur in distant groups — as with the eye of an octopus and the eye of a vertebrate."
+          ]
+        }
+      ],
+      "ask": [
+        "Both explain the matching bones. Which one also explains a mistake being copied?",
+        "Both accounts handle useful shared structure comfortably. The place they come apart is shared NON-function: broken genes, useless remnants, wiring that costs the animal something. Ask what each account predicts about those, and then ask what each would accept as a counter-example."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "homology",
+      "q": [
+        "What does 'homologous' mean?",
+        "What does calling two structures homologous claim?",
+        "What is the content of a homology claim?"
+      ],
+      "options": [
+        "The same parts in the same order, doing different jobs",
+        "Two things that do the same job",
+        "Two things that look the same from outside"
+      ],
+      "answer": 0,
+      "why": [
+        "It is about the parts underneath, not the job on top. A bat's wing and a bee's wing both fly, but they are not homologous — there are no matching bones, because a bee has none.",
+        "Homology is correspondence of parts by position and origin, deliberately defined without reference to function. A bat wing and an insect wing are analogous — same job, no shared parts. A bat wing and a whale flipper are homologous — same parts, no shared job.",
+        "The definition is intentionally function-blind, because a function-based definition would make the concept circular. Diagnosis rests on relative position, connectivity and developmental origin, which is why an octopus eye and a vertebrate eye are analogous despite the resemblance: they develop from different tissues and are wired in opposite directions."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why medicines can be tested on mice first. The parts are close enough to tell you something.",
+        "Nearly all drug development runs through model organisms because their parts correspond to ours. Where the correspondence breaks down, so does the prediction — which is why some drugs pass in mice and fail in people."
+      ]
+    }
+  ]
+}

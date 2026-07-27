@@ -20,7 +20,14 @@
    4. FIXED TIMESTEP. step() always receives the same dt, so the physics is
       identical on a 60Hz laptop, a 120Hz tablet and a step-through click.
       A dt that varies with frame rate makes a simulation teach different
-      things to different children. */
+      things to different children.
+
+   5. THE MODEL IS NOT THE ANIMATION. A sim may be continuous (molecules, which
+      genuinely tick) or EPISODIC (generations, heartbeats, outbreaks — which
+      advance when a child asks). An episodic sim sets `autoplay` false, computes
+      its new state in one go, and uses the loop only to reveal it. That is what
+      makes it reduced-motion-native: with the reveal removed, the mechanism is
+      untouched. Contract 3 still applies to what the reveal shows. */
 
 const TICK = 1 / 60;          // seconds per simulation step, always
 const MAX_CATCHUP = 5;        // never simulate more than this many steps per frame
@@ -99,6 +106,11 @@ export class Sim extends HTMLElement {
 
     this.reduced = matchMedia("(prefers-reduced-motion: reduce)");
     this.params = this.readParams();
+    // once() is mount-lifetime state and reset() never touches it. The
+    // distinction exists because a stage whose task is "run it twice and
+    // compare" needs the first run to survive the second — and reset() calling
+    // setup() wiped exactly that. See DECISIONS D45.
+    this.once();
     this.setup();
     this.fit();
 
@@ -139,14 +151,31 @@ export class Sim extends HTMLElement {
     this.render();
   }
 
-  play() {
-    // Under reduced motion the loop never drives this sim; the step control does.
-    if (this.reduced.matches || this.finished) return;
+  /** True for a continuous simulation. False for an EPISODIC one — a sim that
+      sits still until the child asks for the next beat, runs a short burst, and
+      stops again. Generations, heartbeats and outbreaks are episodic; the
+      shared loop should not be driving them between clicks. */
+  get autoplay() { return true; }
+
+  /** Scrolling back to a sim resumes it if it was running, and starts a
+      continuous one. It must not start an episodic sim mid-idle. */
+  play() { if (this.autoplay || this.wants) this.resume(); }
+
+  /** Enter the shared loop. Under reduced motion nothing involuntary moves, so
+      the loop never drives anything here — the step control does. An episodic
+      sim must therefore reach its end state directly when this returns false. */
+  resume() {
+    if (this.reduced.matches) return false;
+    this.wants = true;
     running.add(this);
     start();
+    return true;
   }
 
   pause() { running.delete(this); }
+
+  /** Leave the loop and stay out until something asks again. */
+  settle() { this.wants = false; running.delete(this); }
 
   /** One manual step-through beat: a visible slice of mechanism, not one frame. */
   stepOnce(steps = 30) {
@@ -171,18 +200,27 @@ export class Sim extends HTMLElement {
   }
 
   reset() {
-    this.finished = false;
+    this.met = false;
     this.setup();
     this.render();
     this.announce();
     this.play();
   }
 
-  /** Fired once when the stage's objective is met, so the lesson can unlock. */
+  /** Fired once when the stage's objective is met, so the lesson can unlock.
+
+      It does NOT end the simulation. "The lesson may advance" and "there is
+      nothing left to try here" are different claims, and conflating them cost
+      us two things: a child who found the right membrane could not then widen
+      the pore and watch it break, and a stage whose whole task is to compare a
+      working run with a broken one could not be written at all. Freezing on
+      success is the one moment a child most wants to keep poking. D46.
+
+      `detail.say` lets a sim contribute a sentence about what the child
+      actually did, which no authored string can know. */
   succeed(detail = {}) {
-    if (this.finished) return;
-    this.finished = true;
-    this.pause();
+    if (this.met) return;
+    this.met = true;
     this.dispatchEvent(new CustomEvent("fp:sim-goal", { bubbles: true, detail }));
   }
 
@@ -199,6 +237,8 @@ export class Sim extends HTMLElement {
   }
 
   /* ---- subclass contract ---- */
+  /** Mount-lifetime state: survives reset(). Cross-run history lives here. */
+  once() {}
   setup() { throw new Error(`${this.tagName}: setup() not implemented`); }
   step() { throw new Error(`${this.tagName}: step() not implemented`); }
   draw() { throw new Error(`${this.tagName}: draw() not implemented`); }
@@ -209,6 +249,17 @@ export class Sim extends HTMLElement {
     );
   }
   buildControls() {}
+}
+
+/** Resolve a text variant for the child's READING level, mirroring pick() in
+    the lesson runner. A sim narrates itself in describe(), and until now it did
+    so at one register for all four levels — the same sentence for a five-year-
+    old and a sixteen-year-old. Sims read the root attribute rather than import
+    the runner, because js/lesson/ is a separate load tier. D47. */
+export function say(node) {
+  if (!Array.isArray(node)) return node ?? "";
+  const lv = Number(document.documentElement.dataset.level) || 1;
+  return node[Math.min(lv - 1, node.length - 1)] ?? node[0] ?? "";
 }
 
 /** Colour lookups go through the stylesheet, so a sim can never invent a hue

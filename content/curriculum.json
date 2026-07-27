@@ -4,144 +4,1733 @@
     {
       "id": "origins",
       "title": "Origins",
-      "tagline": ["Where living things begin", "What separates the living from the merely complicated"],
+      "tagline": [
+        "Where living things begin",
+        "What separates the living from the merely complicated"
+      ],
       "requires": [],
       "modules": [
-        { "id": "what-is-life", "title": "What is Life?", "lessons": 4, "requires": [],
-          "hook": ["A rock and a beetle are both made of atoms. Only one of them runs away.",
-                   "Every definition of life you have been given has an exception. Find one that doesn't."] },
-        { "id": "cells", "title": "Cells", "lessons": 5, "requires": ["what-is-life"],
-          "hook": ["What if a whole city had to fit inside something smaller than a grain of sand?",
-                   "Fit a working city — power, walls, instructions, transport — into 20 micrometres."],
-          "lessonTitles": ["The City in a Speck", "The Wall That Chooses", "The Power Plant",
-                           "The Instruction Room", "Build a Cell"],
+        {
+          "id": "what-is-life",
+          "title": "What is Life?",
+          "lessons": 4,
+          "requires": [],
+          "hook": [
+            "A rock and a beetle are both made of atoms. Only one of them runs away.",
+            "Every definition of life you have been given has an exception. Find one that doesn't."
+          ],
+          "concepts": [
+            "life-is-a-process",
+            "seven-signs",
+            "boundary-cases",
+            "metabolism-is-not-burning",
+            "origin-of-life-unsolved",
+            "chemistry-vs-information"
+          ],
+          "lessonTitles": [
+            "The Line You Cannot Draw",
+            "Seven Rules and Their Exceptions",
+            "The Fire That Isn't Alive",
+            "Could Life Start By Itself?"
+          ],
           "specimens": [
-            { "id": "scale-lens", "title": "Scale Lens", "unlocks": "Zoom any diagram down to cell size",
-              "blurb": ["A lens that shows how big things really are.",
-                        "Renders any structure at true relative scale."] },
-            { "id": "membrane", "title": "Membrane", "unlocks": "A wall you can put round anything",
-              "blurb": ["A wall that chooses what gets in.",
-                        "A selectively permeable bilayer. Needed to build anything that stays alive."] },
-            { "id": "mitochondrion", "title": "Mitochondrion", "unlocks": "Powers builds in later modules",
-              "blurb": ["The bit that makes the power.",
-                        "Turns glucose into ATP. Every build with a running cost needs one."] },
-            { "id": "nucleus", "title": "Nucleus", "unlocks": "Stores instructions for World 2",
-              "blurb": ["Where the instructions are kept.",
-                        "Holds the genome. Required before you can read or edit a gene."] },
-            { "id": "ribosome", "title": "Ribosome", "unlocks": "Build proteins in World 2",
-              "blurb": ["The machine that follows instructions.",
-                        "Translates mRNA into protein. This is what lets you build a protein later."] }
-          ] },
-        { "id": "biomolecules", "title": "Biomolecules", "lessons": 4, "requires": ["cells"],
-          "hook": ["Four kinds of building block make every living thing you have ever seen.",
-                   "Sugars, fats, proteins, nucleic acids. Four families, all of life."] }
+            {
+              "id": "sorting-tray",
+              "title": "Sorting Tray",
+              "unlocks": "Sort any specimen into alive, not alive, or argue",
+              "blurb": [
+                "A tray for sorting things into alive and not alive.",
+                "Sorts specimens against the seven signs — and flags the ones that refuse to sort."
+              ]
+            },
+            {
+              "id": "checklist",
+              "title": "The Seven Signs",
+              "unlocks": "Test any specimen against all seven signs at once",
+              "blurb": [
+                "The seven things living things do.",
+                "The standard checklist, with every exception it fails on written on the back."
+              ]
+            },
+            {
+              "id": "flame-jar",
+              "title": "Flame Jar",
+              "unlocks": "Compare any process against burning",
+              "blurb": [
+                "A fire that grows, eats and breathes — and is not alive.",
+                "The classic counter-example: metabolism-like behaviour with no organisation and no heredity."
+              ]
+            },
+            {
+              "id": "spark-flask",
+              "title": "Spark Flask",
+              "unlocks": "Run the 1953 experiment and see exactly what it gives you",
+              "blurb": [
+                "The flask that made the beads life is built from.",
+                "Miller–Urey, reproduced honestly: monomers out, nothing alive, and the gap left visible."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cells",
+          "title": "Cells",
+          "lessons": 5,
+          "requires": [
+            "what-is-life"
+          ],
+          "hook": [
+            "What if a whole city had to fit inside something smaller than a grain of sand?",
+            "Fit a working city — power, walls, instructions, transport — into 20 micrometres."
+          ],
+          "lessonTitles": [
+            "The City in a Speck",
+            "The Wall That Chooses",
+            "The Power Plant",
+            "The Instruction Room",
+            "Build a Cell"
+          ],
+          "specimens": [
+            {
+              "id": "scale-lens",
+              "title": "Scale Lens",
+              "unlocks": "Zoom any diagram down to cell size",
+              "blurb": [
+                "A lens that shows how big things really are.",
+                "Renders any structure at true relative scale."
+              ]
+            },
+            {
+              "id": "membrane",
+              "title": "Membrane",
+              "unlocks": "A wall you can put round anything",
+              "blurb": [
+                "A wall that chooses what gets in.",
+                "A selectively permeable bilayer. Needed to build anything that stays alive."
+              ]
+            },
+            {
+              "id": "mitochondrion",
+              "title": "Mitochondrion",
+              "unlocks": "Powers builds in later modules",
+              "blurb": [
+                "The bit that makes the power.",
+                "Turns glucose into ATP. Every build with a running cost needs one."
+              ]
+            },
+            {
+              "id": "nucleus",
+              "title": "Nucleus",
+              "unlocks": "Stores instructions for World 2",
+              "blurb": [
+                "Where the instructions are kept.",
+                "Holds the genome. Required before you can read or edit a gene."
+              ]
+            },
+            {
+              "id": "ribosome",
+              "title": "Ribosome",
+              "unlocks": "Build proteins in World 2",
+              "blurb": [
+                "The machine that follows instructions.",
+                "Translates mRNA into protein. This is what lets you build a protein later."
+              ]
+            }
+          ],
+          "concepts": [
+            "cell-scale",
+            "cell-is-a-system",
+            "membrane-selectivity",
+            "diffusion-is-passive",
+            "atp-is-a-flow",
+            "mitochondria-cost",
+            "copy-not-original"
+          ]
+        },
+        {
+          "id": "biomolecules",
+          "title": "Biomolecules",
+          "lessons": 4,
+          "requires": [
+            "cells"
+          ],
+          "hook": [
+            "Four kinds of building block make every living thing you have ever seen.",
+            "Sugars, fats, proteins, nucleic acids. Four families, all of life."
+          ],
+          "concepts": [
+            "four-families",
+            "sugar-is-stored-energy",
+            "hydrophobic-effect",
+            "shape-from-sequence",
+            "polymers-from-monomers"
+          ],
+          "lessonTitles": [
+            "Four Families, All of Life",
+            "Sugar Is a Battery",
+            "Why Oil and Water Won't Mix",
+            "Beads That Fold Into Machines"
+          ],
+          "specimens": [
+            {
+              "id": "family-key",
+              "title": "Family Key",
+              "unlocks": "Identify any molecule as one of the four families",
+              "blurb": [
+                "A key that tells you which family a molecule belongs to.",
+                "Sorts any biological molecule into carbohydrate, lipid, protein or nucleic acid."
+              ]
+            },
+            {
+              "id": "glucose-ring",
+              "title": "Glucose Ring",
+              "unlocks": "Fuel any build that has a running cost",
+              "blurb": [
+                "The ring that holds the energy.",
+                "Stored chemical energy in bond form. Feeds every process with an upkeep."
+              ]
+            },
+            {
+              "id": "lipid-drop",
+              "title": "Lipid Drop",
+              "unlocks": "Build any boundary or store",
+              "blurb": [
+                "The drop that will not mix in.",
+                "The hydrophobic effect made portable: builds membranes, stores and insulation."
+              ]
+            },
+            {
+              "id": "peptide-chain",
+              "title": "Peptide Chain",
+              "unlocks": "Start any protein build",
+              "blurb": [
+                "A string of beads that folds itself up.",
+                "An unfolded polypeptide. Sequence in; shape, and therefore function, out."
+              ]
+            }
+          ]
+        }
       ]
     },
     {
       "id": "code",
       "title": "The Code",
-      "tagline": ["The instructions inside you", "Information storage, retrieval, and manufacture"],
-      "requires": ["cells"],
+      "tagline": [
+        "The instructions inside you",
+        "Information storage, retrieval, and manufacture"
+      ],
+      "requires": [
+        "cells"
+      ],
       "modules": [
-        { "id": "dna", "title": "DNA", "lessons": 5, "requires": [],
-          "hook": ["Two metres of instructions, folded into something you cannot see.",
-                   "Two metres of polymer per cell, packed 10,000-fold, read without tangling."] },
-        { "id": "genes", "title": "Genes", "lessons": 4, "requires": ["dna"],
-          "hook": ["Why do you have your grandmother's eyes and nobody else's laugh?",
-                   "The same genome builds a neuron and a liver cell. What decides?"] },
-        { "id": "proteins", "title": "Proteins", "lessons": 5, "requires": ["genes"],
-          "hook": ["A string of beads folds itself into a machine. Nobody tells it how.",
-                   "Sequence determines structure determines function. Break any link and see."] }
+        {
+          "id": "dna",
+          "title": "DNA",
+          "lessons": 5,
+          "requires": [],
+          "hook": [
+            "Two metres of instructions, folded into something you cannot see.",
+            "Two metres of polymer per cell, packed 10,000-fold, read without tangling."
+          ],
+          "concepts": [
+            "dna-packing",
+            "four-letters",
+            "base-pairing",
+            "semiconservative-copying",
+            "mutation-is-copy-error",
+            "chromosome-structure"
+          ],
+          "lessonTitles": [
+            "Two Metres in a Speck",
+            "The Four Letters",
+            "The Ladder That Copies Itself",
+            "Mistakes Get Made",
+            "Reading Without Tangling"
+          ],
+          "specimens": [
+            {
+              "id": "packing-spool",
+              "title": "Packing Spool",
+              "unlocks": "Fold any long thing into a small space",
+              "blurb": [
+                "The spool that fits two metres into a dot.",
+                "Hierarchical coiling: DNA onto histones, onto fibres, onto chromosomes."
+              ]
+            },
+            {
+              "id": "base-set",
+              "title": "Base Set",
+              "unlocks": "Write any sequence",
+              "blurb": [
+                "The four letters everything is written in.",
+                "A, C, G and T. Enough alphabet for every organism that has ever lived."
+              ]
+            },
+            {
+              "id": "replication-fork",
+              "title": "Replication Fork",
+              "unlocks": "Copy any sequence you hold",
+              "blurb": [
+                "The place where the ladder splits in two.",
+                "Semiconservative replication: each old strand templates a new one."
+              ]
+            },
+            {
+              "id": "error-lens",
+              "title": "Error Lens",
+              "unlocks": "Spot copying errors in any sequence",
+              "blurb": [
+                "A lens that finds the letters that went wrong.",
+                "Highlights substitutions, insertions and deletions against a reference."
+              ]
+            },
+            {
+              "id": "unwinder",
+              "title": "Unwinder",
+              "unlocks": "Read a gene without breaking the strand",
+              "blurb": [
+                "The tool that unwinds without knotting.",
+                "Topoisomerase in specimen form: relieves supercoiling ahead of the fork."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "genes",
+          "title": "Genes",
+          "lessons": 4,
+          "requires": [
+            "dna"
+          ],
+          "hook": [
+            "Why do you have your grandmother's eyes and nobody else's laugh?",
+            "The same genome builds a neuron and a liver cell. What decides?"
+          ],
+          "concepts": [
+            "gene-is-a-unit",
+            "expression-is-selective",
+            "dominance",
+            "inheritance-patterns",
+            "genotype-vs-phenotype"
+          ],
+          "lessonTitles": [
+            "What Is a Gene For?",
+            "Same Book, Different Pages",
+            "Two Copies of Everything",
+            "Your Grandmother's Eyes"
+          ],
+          "specimens": [
+            {
+              "id": "gene-tag",
+              "title": "Gene Tag",
+              "unlocks": "Label any stretch of sequence with its job",
+              "blurb": [
+                "A tag that says what a piece of DNA is for.",
+                "Marks reading frames, promoters and regulatory regions on a sequence."
+              ]
+            },
+            {
+              "id": "switch-board",
+              "title": "Switch Board",
+              "unlocks": "Turn genes on and off in any cell",
+              "blurb": [
+                "The switches that decide which pages get read.",
+                "Regulatory control: why a liver cell and a neuron share a genome and share nothing else."
+              ]
+            },
+            {
+              "id": "allele-pair",
+              "title": "Allele Pair",
+              "unlocks": "Cross any two organisms and predict the result",
+              "blurb": [
+                "Two copies of the same instruction, one from each parent.",
+                "Diploidy, dominance and recessiveness, made testable with a cross."
+              ]
+            },
+            {
+              "id": "pedigree-chart",
+              "title": "Pedigree Chart",
+              "unlocks": "Trace any trait through a family",
+              "blurb": [
+                "A chart for following a trait through a family.",
+                "Standard pedigree notation. Distinguishes dominant, recessive and sex-linked patterns."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "proteins",
+          "title": "Proteins",
+          "lessons": 5,
+          "requires": [
+            "genes"
+          ],
+          "hook": [
+            "A string of beads folds itself into a machine. Nobody tells it how.",
+            "Sequence determines structure determines function. Break any link and see."
+          ],
+          "concepts": [
+            "sequence-determines-fold",
+            "shape-is-function",
+            "enzyme-specificity",
+            "denaturation",
+            "misfolding-disease"
+          ],
+          "lessonTitles": [
+            "A String That Folds Itself",
+            "Shape Is the Job",
+            "The Enzyme and the Lock",
+            "When Folding Goes Wrong",
+            "Build a Protein"
+          ],
+          "specimens": [
+            {
+              "id": "folding-rig",
+              "title": "Folding Rig",
+              "unlocks": "Fold any sequence and watch it find its shape",
+              "blurb": [
+                "The rig that lets a string fold up on its own.",
+                "Nothing directs the fold: the sequence and the water do all of it."
+              ]
+            },
+            {
+              "id": "shape-gauge",
+              "title": "Shape Gauge",
+              "unlocks": "Test whether a folded protein can do its job",
+              "blurb": [
+                "A gauge that checks if the shape is right.",
+                "Function follows conformation. Change the shape and the job goes."
+              ]
+            },
+            {
+              "id": "active-site",
+              "title": "Active Site",
+              "unlocks": "Catalyse any reaction you have the enzyme for",
+              "blurb": [
+                "The notch that only one thing fits into.",
+                "Substrate specificity and transition-state stabilisation, in one component."
+              ]
+            },
+            {
+              "id": "chaperone",
+              "title": "Chaperone",
+              "unlocks": "Rescue a protein that folded badly",
+              "blurb": [
+                "The helper that stops proteins folding wrong.",
+                "Chaperone protein. Prevents aggregation — the failure behind several diseases."
+              ]
+            },
+            {
+              "id": "assembled-enzyme",
+              "title": "Assembled Enzyme",
+              "unlocks": "Proves you can go from sequence to working machine",
+              "blurb": [
+                "A working machine you built from beads.",
+                "Sequence to fold to function, assembled end to end without a shortcut."
+              ]
+            }
+          ]
+        }
       ]
     },
     {
       "id": "change",
       "title": "Change",
-      "tagline": ["How living things become different", "Variation, selection, and time"],
-      "requires": ["genes"],
+      "tagline": [
+        "How living things become different",
+        "Variation, selection, and time"
+      ],
+      "requires": [
+        "genes"
+      ],
       "modules": [
-        { "id": "evolution", "title": "Evolution", "lessons": 5, "requires": [],
-          "hook": ["Nobody designed the eye. So how did it get so good?",
-                   "Descent with modification: the only mechanism that makes design without a designer."] },
-        { "id": "natural-selection", "title": "Natural Selection", "lessons": 4, "requires": ["evolution"],
-          "hook": ["Change the weather. Watch which beetles are left.",
-                   "Three conditions produce selection automatically. Remove one and it stops."] },
-        { "id": "development", "title": "Development", "lessons": 4, "requires": ["evolution"],
-          "hook": ["One cell becomes a whole animal. Where are the instructions for 'leg'?",
-                   "How a single cell partitions itself into an addressed, patterned body."] }
+        {
+          "id": "evolution",
+          "title": "Evolution",
+          "lessons": 5,
+          "requires": [],
+          "hook": [
+            "Nobody designed the eye. So how did it get so good?",
+            "Descent with modification: the only mechanism that makes design without a designer."
+          ],
+          "concepts": [
+            "evidence-and-inference",
+            "testable-expectation",
+            "homology",
+            "fossil-order",
+            "shared-errors",
+            "limits-of-change",
+            "nested-hierarchy"
+          ],
+          "lessonTitles": [
+            "What Would Change Your Mind?",
+            "The Same Bones in Different Jobs",
+            "The Order in the Rocks",
+            "Family Trees Written in DNA",
+            "How Much Can Change?"
+          ],
+          "specimens": [
+            {
+              "id": "two-lenses",
+              "title": "Two Lenses",
+              "unlocks": "Examine any claim as observation or as inference",
+              "blurb": [
+                "Two lenses: one for what you saw, one for what you worked out.",
+                "Separates directly observed claims from inferences about the unobserved, and asks what each would take to overturn."
+              ]
+            },
+            {
+              "id": "limb-set",
+              "title": "Limb Set",
+              "unlocks": "Compare the parts of any two limbs",
+              "blurb": [
+                "Four limbs that do different jobs with the same bones.",
+                "Bat, whale, mole and human forelimbs, alignable part for part."
+              ]
+            },
+            {
+              "id": "core-sample",
+              "title": "Core Sample",
+              "unlocks": "Read any layered rock as a sequence",
+              "blurb": [
+                "A tube of rock with the layers still in order.",
+                "A stratigraphic core. Carries the sequence, and leaves its cause open."
+              ]
+            },
+            {
+              "id": "sequence-reader",
+              "title": "Sequence Reader",
+              "unlocks": "Compare any two genomes and build a tree",
+              "blurb": [
+                "A reader that lines up two sets of instructions.",
+                "Aligns sequences and scores similarity, including shared damage."
+              ]
+            },
+            {
+              "id": "change-gauge",
+              "title": "Change Gauge",
+              "unlocks": "Measure how far a population has moved",
+              "blurb": [
+                "A gauge for how far something has changed.",
+                "Distinguishes change within a population from the contested extrapolation beyond it."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "natural-selection",
+          "title": "Natural Selection",
+          "lessons": 4,
+          "requires": [
+            "evolution"
+          ],
+          "hook": [
+            "Change the weather. Watch which beetles are left.",
+            "Three conditions produce selection automatically. Remove one and it stops."
+          ],
+          "concepts": [
+            "selection-needs-no-agent",
+            "three-conditions",
+            "selection-is-observed",
+            "fitness-is-contextual",
+            "drift-is-not-selection",
+            "resistance-is-selection"
+          ],
+          "lessonTitles": [
+            "The Beetles That Vanished",
+            "Fitness Is Not Strength",
+            "The Peppered Moth",
+            "Why Antibiotics Stop Working"
+          ],
+          "specimens": [
+            {
+              "id": "pale-beetle",
+              "title": "Pale Beetle",
+              "unlocks": "Run selection on any trait you hold",
+              "blurb": [
+                "A beetle that got eaten for being the wrong colour.",
+                "The specimen that failed the three conditions. Carries the mechanism with it."
+              ]
+            },
+            {
+              "id": "fitness-dial",
+              "title": "Fitness Dial",
+              "unlocks": "Score any trait against a named environment",
+              "blurb": [
+                "A dial that shows what counts as good here.",
+                "Fitness is relative to an environment, not a property of an organism."
+              ]
+            },
+            {
+              "id": "moth-pair",
+              "title": "Moth Pair",
+              "unlocks": "Compare two forms of one species side by side",
+              "blurb": [
+                "Two moths, one pale and one dark.",
+                "Biston betularia, both morphs. Counted year by year for over a century."
+              ]
+            },
+            {
+              "id": "resistant-strain",
+              "title": "Resistant Strain",
+              "unlocks": "Stress-test any medicine you design",
+              "blurb": [
+                "The germ the medicine could not kill.",
+                "A resistant isolate. Turns every later drug build into a selection problem."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "development",
+          "title": "Development",
+          "lessons": 4,
+          "requires": [
+            "evolution"
+          ],
+          "hook": [
+            "One cell becomes a whole animal. Where are the instructions for 'leg'?",
+            "How a single cell partitions itself into an addressed, patterned body."
+          ],
+          "concepts": [
+            "one-cell-to-many",
+            "positional-information",
+            "conserved-toolkit",
+            "differentiation",
+            "body-plan"
+          ],
+          "lessonTitles": [
+            "One Cell Becomes an Animal",
+            "Where Is the Instruction for 'Leg'?",
+            "The Same Toolkit in a Fly and in You",
+            "Build a Body Plan"
+          ],
+          "specimens": [
+            {
+              "id": "first-division",
+              "title": "First Division",
+              "unlocks": "Start any body from a single cell",
+              "blurb": [
+                "The moment one cell becomes two.",
+                "The first cleavage. Everything downstream is division plus difference."
+              ]
+            },
+            {
+              "id": "gradient-strip",
+              "title": "Gradient Strip",
+              "unlocks": "Tell any cell where it is",
+              "blurb": [
+                "A strip that tells a cell where it is.",
+                "A morphogen gradient: position encoded as concentration."
+              ]
+            },
+            {
+              "id": "hox-set",
+              "title": "Hox Set",
+              "unlocks": "Lay out the axis of any body plan",
+              "blurb": [
+                "The same set of instructions a fly uses.",
+                "Hox genes, colinear and deeply conserved. Same toolkit, different animal."
+              ]
+            },
+            {
+              "id": "body-blueprint",
+              "title": "Body Blueprint",
+              "unlocks": "Proves you can lay out an animal from scratch",
+              "blurb": [
+                "A plan for a whole animal.",
+                "Axes, segments and appendage placement, assembled and stress-tested."
+              ]
+            }
+          ]
+        }
       ]
     },
     {
       "id": "bodies",
       "title": "Bodies",
-      "tagline": ["The machine you live inside", "Systems, failure modes, and repair"],
-      "requires": ["cells"],
+      "tagline": [
+        "The machine you live inside",
+        "Systems, failure modes, and repair"
+      ],
+      "requires": [
+        "cells"
+      ],
       "modules": [
-        { "id": "human-body", "title": "Human Body", "lessons": 5, "requires": [],
-          "hook": ["Everything in you is moving right now. Even the bits that feel still.",
-                   "Eleven systems, one budget, no downtime for maintenance."] },
-        { "id": "nutrition", "title": "Nutrition", "lessons": 4, "requires": ["human-body"],
-          "hook": ["Your lunch becomes you. Follow it and find out how.",
-                   "Trace a molecule of glucose from plate to muscle to heat."] },
-        { "id": "immunity", "title": "Immunity", "lessons": 5, "requires": ["human-body"],
-          "hook": ["Something got in. You have about six hours.",
-                   "An army with no central command that must not attack its own country."] },
-        { "id": "neuroscience", "title": "Neuroscience", "lessons": 5, "requires": ["human-body"],
-          "hook": ["Your thoughts are electricity moving through wet meat. That is not an insult.",
-                   "Eighty-six billion cells, no clock, no supervisor, and yet: you."] },
-        { "id": "disease", "title": "Disease", "lessons": 4, "requires": ["immunity"],
-          "hook": ["Most of the time your body wins. What happens when it doesn't?",
-                   "Every disease is a mechanism failing in a specific, findable way."] },
-        { "id": "medicine", "title": "Medicine", "lessons": 4, "requires": ["disease"],
-          "hook": ["You have a fever. Should you get rid of it?",
-                   "Every treatment is a trade. Learn to see the other side of the trade."] }
+        {
+          "id": "human-body",
+          "title": "Human Body",
+          "lessons": 5,
+          "requires": [],
+          "hook": [
+            "Everything in you is moving right now. Even the bits that feel still.",
+            "Eleven systems, one budget, no downtime for maintenance."
+          ],
+          "concepts": [
+            "colony-of-cells",
+            "circulation-is-a-loop",
+            "gas-exchange",
+            "digestion-is-disassembly",
+            "systems-interact"
+          ],
+          "lessonTitles": [
+            "A Colony of Thirty Trillion",
+            "The Pump That Never Stops",
+            "Breathing Is Not for Air",
+            "The Longest Tube",
+            "Everything Talks to Everything"
+          ],
+          "specimens": [
+            {
+              "id": "cell-census",
+              "title": "Cell Census",
+              "unlocks": "Count the cells in any body",
+              "blurb": [
+                "A counter for how many cells you are.",
+                "Cell census by tissue, including the bacteria that are not yours."
+              ]
+            },
+            {
+              "id": "heart-model",
+              "title": "Heart Model",
+              "unlocks": "Circulate anything round a closed loop",
+              "blurb": [
+                "A pump that runs your whole life without stopping.",
+                "Four chambers, two circuits. The pressure gradient does the rest."
+              ]
+            },
+            {
+              "id": "gas-swap",
+              "title": "Gas Swap",
+              "unlocks": "Exchange gases across any surface",
+              "blurb": [
+                "The place where the air swaps over.",
+                "Alveolar exchange. The urgent half of breathing is getting carbon dioxide out."
+              ]
+            },
+            {
+              "id": "gut-tube",
+              "title": "Gut Tube",
+              "unlocks": "Break any food down into parts you can use",
+              "blurb": [
+                "A tube nine metres long, folded up inside you.",
+                "The alimentary canal: controlled disassembly, then selective absorption."
+              ]
+            },
+            {
+              "id": "signal-web",
+              "title": "Signal Web",
+              "unlocks": "Connect any two systems you have built",
+              "blurb": [
+                "The messages the parts send each other.",
+                "Endocrine and neural signalling. No organ works alone, and none can be tested alone."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nutrition",
+          "title": "Nutrition",
+          "lessons": 4,
+          "requires": [
+            "human-body"
+          ],
+          "hook": [
+            "Your lunch becomes you. Follow it and find out how.",
+            "Trace a molecule of glucose from plate to muscle to heat."
+          ],
+          "concepts": [
+            "food-is-fuel-and-parts",
+            "digestion-is-disassembly",
+            "essential-nutrients",
+            "evidence-in-nutrition"
+          ],
+          "lessonTitles": [
+            "Food Is Two Things",
+            "What Happens to a Sandwich",
+            "The Vitamin Nobody Could Find",
+            "Why Diets Disagree"
+          ],
+          "specimens": [
+            {
+              "id": "fuel-and-bricks",
+              "title": "Fuel and Bricks",
+              "unlocks": "Split any food into energy and materials",
+              "blurb": [
+                "Food is both fuel to burn and bricks to build with.",
+                "Separates the caloric and the structural roles of an intake."
+              ]
+            },
+            {
+              "id": "digest-trace",
+              "title": "Digest Trace",
+              "unlocks": "Follow any meal through the whole tube",
+              "blurb": [
+                "A trace that follows food all the way through.",
+                "Tracks a bolus from mastication to absorption, enzyme by enzyme."
+              ]
+            },
+            {
+              "id": "citrus-crate",
+              "title": "Citrus Crate",
+              "unlocks": "Cure a deficiency in any body you build",
+              "blurb": [
+                "The crate of lemons that stopped sailors dying.",
+                "Lind's 1747 trial in specimen form — arguably the first controlled clinical experiment."
+              ]
+            },
+            {
+              "id": "study-sieve",
+              "title": "Study Sieve",
+              "unlocks": "Filter any health claim by evidence quality",
+              "blurb": [
+                "A sieve for telling good advice from bad.",
+                "Grades a claim by study design, confounding and effect size."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "immunity",
+          "title": "Immunity",
+          "lessons": 5,
+          "requires": [
+            "human-body"
+          ],
+          "hook": [
+            "Something got in. You have about six hours.",
+            "An army with no central command that must not attack its own country."
+          ],
+          "concepts": [
+            "layered-defence",
+            "recognise-remember-respond",
+            "vaccination-is-training",
+            "self-vs-nonself",
+            "herd-effect"
+          ],
+          "lessonTitles": [
+            "The Army With No General",
+            "Recognise, Remember, Respond",
+            "How a Vaccine Teaches",
+            "When the Army Attacks You",
+            "Build a Defence"
+          ],
+          "specimens": [
+            {
+              "id": "barrier-set",
+              "title": "Barrier Set",
+              "unlocks": "Defend any body you have built",
+              "blurb": [
+                "The walls that stop most things getting in.",
+                "Innate barriers: skin, mucus, acid, temperature. Most of defence, none of it clever."
+              ]
+            },
+            {
+              "id": "antibody",
+              "title": "Antibody",
+              "unlocks": "Tag any invader for destruction",
+              "blurb": [
+                "A tag that sticks to one invader and nothing else.",
+                "Adaptive specificity: one clone, one target, and a memory afterwards."
+              ]
+            },
+            {
+              "id": "vaccine-vial",
+              "title": "Vaccine Vial",
+              "unlocks": "Train immunity without the disease",
+              "blurb": [
+                "A way to learn the lesson without getting ill.",
+                "Antigen without virulence. Produces memory at a fraction of the risk."
+              ]
+            },
+            {
+              "id": "self-marker",
+              "title": "Self Marker",
+              "unlocks": "Distinguish your own cells from invaders",
+              "blurb": [
+                "The label that says 'this one is yours'.",
+                "MHC self-presentation. Autoimmunity is this discrimination failing."
+              ]
+            },
+            {
+              "id": "immune-stack",
+              "title": "Immune Stack",
+              "unlocks": "Proves your defence survives a real challenge",
+              "blurb": [
+                "A whole defence you put together yourself.",
+                "Layered innate and adaptive response, stress-tested against live challenges."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "neuroscience",
+          "title": "Neuroscience",
+          "lessons": 5,
+          "requires": [
+            "human-body"
+          ],
+          "hook": [
+            "Your thoughts are electricity moving through wet meat. That is not an insult.",
+            "Eighty-six billion cells, no clock, no supervisor, and yet: you."
+          ],
+          "concepts": [
+            "signals-are-electrical",
+            "synapse-is-a-gap",
+            "perception-is-constructed",
+            "memory-is-reconstructive",
+            "reflex-arc"
+          ],
+          "lessonTitles": [
+            "Thinking Is Electricity",
+            "The Gap That Matters",
+            "Your Brain Edits What You See",
+            "Memory Is Rebuilt, Not Replayed",
+            "Wire a Reflex"
+          ],
+          "specimens": [
+            {
+              "id": "action-potential",
+              "title": "Action Potential",
+              "unlocks": "Send a signal down any nerve",
+              "blurb": [
+                "A spark that runs down a nerve.",
+                "An all-or-nothing depolarisation wave. Information is in the rate, not the size."
+              ]
+            },
+            {
+              "id": "synapse",
+              "title": "Synapse",
+              "unlocks": "Connect any two neurons",
+              "blurb": [
+                "The tiny gap the message has to jump.",
+                "Chemical transmission across a cleft — which is what makes the connection adjustable."
+              ]
+            },
+            {
+              "id": "illusion-card",
+              "title": "Illusion Card",
+              "unlocks": "Test any perception against the input",
+              "blurb": [
+                "A picture that proves your eyes lie to you.",
+                "Demonstrates that perception is inference, not transmission."
+              ]
+            },
+            {
+              "id": "recall-trace",
+              "title": "Recall Trace",
+              "unlocks": "Compare a memory with what happened",
+              "blurb": [
+                "A memory changes a little every time you use it.",
+                "Reconsolidation: retrieval rewrites. Why eyewitnesses drift and why testing beats re-reading."
+              ]
+            },
+            {
+              "id": "reflex-arc",
+              "title": "Reflex Arc",
+              "unlocks": "Proves you can build a working circuit",
+              "blurb": [
+                "A circuit that acts before you have thought.",
+                "Sensory neuron, interneuron, motor neuron. No brain required, and that is the point."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "disease",
+          "title": "Disease",
+          "lessons": 4,
+          "requires": [
+            "immunity"
+          ],
+          "hook": [
+            "Most of the time your body wins. What happens when it doesn't?",
+            "Every disease is a mechanism failing in a specific, findable way."
+          ],
+          "concepts": [
+            "causes-of-illness",
+            "transmission-and-r0",
+            "outbreak-investigation",
+            "eradication-conditions"
+          ],
+          "lessonTitles": [
+            "What Makes You Ill",
+            "How Something Spreads",
+            "The Outbreak Detective",
+            "Why Some Diseases Vanish"
+          ],
+          "specimens": [
+            {
+              "id": "cause-sorter",
+              "title": "Cause Sorter",
+              "unlocks": "Classify any illness by what causes it",
+              "blurb": [
+                "A sorter for what actually made you ill.",
+                "Infectious, genetic, deficiency, degenerative, environmental — and the overlaps."
+              ]
+            },
+            {
+              "id": "spread-model",
+              "title": "Spread Model",
+              "unlocks": "Model transmission through any population",
+              "blurb": [
+                "A model of how something passes from person to person.",
+                "Contact rate, transmissibility and duration. R0 falls out; it is not put in."
+              ]
+            },
+            {
+              "id": "case-map",
+              "title": "Case Map",
+              "unlocks": "Find the source of any outbreak",
+              "blurb": [
+                "A map of who got ill and where.",
+                "Snow's Broad Street pump generalised: find the source from the pattern of cases."
+              ]
+            },
+            {
+              "id": "eradication-kit",
+              "title": "Eradication Kit",
+              "unlocks": "Test whether a disease can be eliminated",
+              "blurb": [
+                "The kit that got rid of one disease for good.",
+                "Smallpox eradication. Checks the conditions: no animal reservoir, stable antigen, good vaccine."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "medicine",
+          "title": "Medicine",
+          "lessons": 4,
+          "requires": [
+            "disease"
+          ],
+          "hook": [
+            "You have a fever. Should you get rid of it?",
+            "Every treatment is a trade. Learn to see the other side of the trade."
+          ],
+          "concepts": [
+            "drug-must-reach-target",
+            "controlled-trial",
+            "resistance-is-selection",
+            "risk-and-benefit"
+          ],
+          "lessonTitles": [
+            "Finding the Right Molecule",
+            "Why Trials Have Two Groups",
+            "Resistance",
+            "Design a Treatment"
+          ],
+          "specimens": [
+            {
+              "id": "candidate-set",
+              "title": "Candidate Set",
+              "unlocks": "Screen molecules against any target",
+              "blurb": [
+                "A tray of molecules, one of which might work.",
+                "Screening for binding and for delivery. Most failures are delivery."
+              ]
+            },
+            {
+              "id": "control-arm",
+              "title": "Control Arm",
+              "unlocks": "Test any treatment honestly",
+              "blurb": [
+                "The other group, who did not get the medicine.",
+                "Randomised control. Without it, recovery and treatment cannot be told apart."
+              ]
+            },
+            {
+              "id": "resistance-clock",
+              "title": "Resistance Clock",
+              "unlocks": "Predict how long any drug will keep working",
+              "blurb": [
+                "A clock counting down on a medicine.",
+                "Selection pressure applied to a pathogen population. Usage rate sets the pace."
+              ]
+            },
+            {
+              "id": "treatment-plan",
+              "title": "Treatment Plan",
+              "unlocks": "Proves your treatment survives trial and resistance",
+              "blurb": [
+                "A treatment you designed and tested properly.",
+                "Target, delivery, trial design and resistance management, assembled together."
+              ]
+            }
+          ]
+        }
       ]
     },
     {
       "id": "living",
       "title": "The Living World",
-      "tagline": ["Everything else that is alive", "Populations, partnerships, and consequences"],
-      "requires": ["cells"],
+      "tagline": [
+        "Everything else that is alive",
+        "Populations, partnerships, and consequences"
+      ],
+      "requires": [
+        "cells"
+      ],
       "modules": [
-        { "id": "plants", "title": "Plants", "lessons": 5, "requires": [],
-          "hook": ["A tree is mostly made of air. Find out which part.",
-                   "Photosynthesis: the reaction that made an oxygen atmosphere and everything after."] },
-        { "id": "animals", "title": "Animals", "lessons": 4, "requires": [],
-          "hook": ["Why does a mouse's heart beat so much faster than yours?",
-                   "Body size sets metabolism, lifespan, and heartbeat. The scaling law is brutal."] },
-        { "id": "microbiology", "title": "Microbiology", "lessons": 4, "requires": [],
-          "hook": ["There are more of them on your hand than there are people on Earth.",
-                   "Most life is microbial. Most of it we have never grown in a lab."] },
-        { "id": "ecology", "title": "Ecology", "lessons": 5, "requires": ["plants", "animals"],
-          "hook": ["Remove the wolves. Watch the river change shape.",
-                   "Every population is held in place by forces you can only see by removing them."] },
-        { "id": "environmental-science", "title": "Environmental Science", "lessons": 4, "requires": ["ecology"],
-          "hook": ["The air you breathe out today will be in a leaf next spring.",
-                   "Carbon, nitrogen and water move in closed loops. We opened some of them."] }
+        {
+          "id": "plants",
+          "title": "Plants",
+          "lessons": 5,
+          "requires": [],
+          "hook": [
+            "A tree is mostly made of air. Find out which part.",
+            "Photosynthesis: the reaction that made an oxygen atmosphere and everything after."
+          ],
+          "concepts": [
+            "photosynthesis-is-building",
+            "transpiration-pull",
+            "leaf-is-a-tradeoff",
+            "pollination-is-a-deal",
+            "plant-systems"
+          ],
+          "lessonTitles": [
+            "Eating Light",
+            "The Plumbing That Has No Pump",
+            "Why Leaves Are Flat",
+            "Flowers Are Advertisements",
+            "Build a Plant"
+          ],
+          "specimens": [
+            {
+              "id": "chloroplast",
+              "title": "Chloroplast",
+              "unlocks": "Power any build from light alone",
+              "blurb": [
+                "The green bit that eats light.",
+                "Light to chemical bond. The entry point for almost all energy in the biosphere."
+              ]
+            },
+            {
+              "id": "water-column",
+              "title": "Water Column",
+              "unlocks": "Move water upward without a pump",
+              "blurb": [
+                "Water climbing a tree with nothing pushing it.",
+                "Cohesion-tension: evaporation at the top pulls an unbroken column up."
+              ]
+            },
+            {
+              "id": "leaf-section",
+              "title": "Leaf Section",
+              "unlocks": "Optimise any surface for capture and loss",
+              "blurb": [
+                "A leaf, sliced to show why it is that shape.",
+                "The area trade-off: maximise light capture, minimise water loss."
+              ]
+            },
+            {
+              "id": "flower-model",
+              "title": "Flower Model",
+              "unlocks": "Strike a deal with any pollinator",
+              "blurb": [
+                "A flower is an advert with a payment attached.",
+                "Reward, signal and specificity. Coevolved contracts, sometimes cheated."
+              ]
+            },
+            {
+              "id": "whole-plant",
+              "title": "Whole Plant",
+              "unlocks": "Proves your plant survives real conditions",
+              "blurb": [
+                "A plant you built that stays alive.",
+                "Roots, transport, leaf and reproduction, tested against drought and shade."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "animals",
+          "title": "Animals",
+          "lessons": 4,
+          "requires": [],
+          "hook": [
+            "Why does a mouse's heart beat so much faster than yours?",
+            "Body size sets metabolism, lifespan, and heartbeat. The scaling law is brutal."
+          ],
+          "concepts": [
+            "form-follows-constraint",
+            "surface-area-to-volume",
+            "locomotion-tradeoffs",
+            "behaviour-is-heritable"
+          ],
+          "lessonTitles": [
+            "Every Body Is a Compromise",
+            "Big, Small, and Why It Matters",
+            "How to Move Without Wheels",
+            "Behaviour Is Inherited Too"
+          ],
+          "specimens": [
+            {
+              "id": "tradeoff-scale",
+              "title": "Trade-off Scale",
+              "unlocks": "Weigh any two competing demands",
+              "blurb": [
+                "A scale that shows what a body gave up.",
+                "No design is free: speed costs armour, size costs agility."
+              ]
+            },
+            {
+              "id": "scaling-rule",
+              "title": "Scaling Rule",
+              "unlocks": "Predict what changes when size changes",
+              "blurb": [
+                "Why a mouse and an elephant cannot be the same shape.",
+                "Surface area scales as the square, volume as the cube. Almost everything follows."
+              ]
+            },
+            {
+              "id": "gait-set",
+              "title": "Gait Set",
+              "unlocks": "Move any body you have built",
+              "blurb": [
+                "All the ways of getting about without wheels.",
+                "Walking, swimming, flying, burrowing — each with its cost curve."
+              ]
+            },
+            {
+              "id": "instinct-card",
+              "title": "Instinct Card",
+              "unlocks": "Give any animal a behaviour it never learned",
+              "blurb": [
+                "Something an animal knows without being taught.",
+                "Fixed action patterns: heritable, selectable, and modifiable by learning."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "microbiology",
+          "title": "Microbiology",
+          "lessons": 4,
+          "requires": [],
+          "hook": [
+            "There are more of them on your hand than there are people on Earth.",
+            "Most life is microbial. Most of it we have never grown in a lab."
+          ],
+          "concepts": [
+            "invisible-majority",
+            "fast-generations",
+            "microbiome",
+            "culture-and-count"
+          ],
+          "lessonTitles": [
+            "The Invisible Majority",
+            "Fast Life",
+            "The Ones That Live in You",
+            "Growing Something You Cannot See"
+          ],
+          "specimens": [
+            {
+              "id": "microbe-scale",
+              "title": "Microbe Scale",
+              "unlocks": "See anything too small to see",
+              "blurb": [
+                "Most living things are too small to see.",
+                "Scale bar from millimetre to nanometre, with the whole domain in between."
+              ]
+            },
+            {
+              "id": "generation-timer",
+              "title": "Generation Timer",
+              "unlocks": "Run selection at bacterial speed",
+              "blurb": [
+                "Some things have babies every twenty minutes.",
+                "Generation time as the rate-limiter on evolution. Days become millennia."
+              ]
+            },
+            {
+              "id": "microbiome-swab",
+              "title": "Microbiome Swab",
+              "unlocks": "Sample the microbes on any body",
+              "blurb": [
+                "The tiny things living on you right now.",
+                "Community sampling. More of them than of you, and mostly not optional."
+              ]
+            },
+            {
+              "id": "culture-plate",
+              "title": "Culture Plate",
+              "unlocks": "Grow and count any microbe",
+              "blurb": [
+                "A plate for growing things you cannot see.",
+                "Selective media and colony counting — one colony, one founding cell."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ecology",
+          "title": "Ecology",
+          "lessons": 5,
+          "requires": [
+            "plants",
+            "animals"
+          ],
+          "hook": [
+            "Remove the wolves. Watch the river change shape.",
+            "Every population is held in place by forces you can only see by removing them."
+          ],
+          "concepts": [
+            "nothing-eats-alone",
+            "energy-loss-up-trophic",
+            "carrying-capacity",
+            "keystone-effects",
+            "food-web-stability"
+          ],
+          "lessonTitles": [
+            "Nothing Eats Alone",
+            "Energy Runs Out Going Up",
+            "The Number That Stops Growing",
+            "Remove One Thing",
+            "Build a Food Web"
+          ],
+          "specimens": [
+            {
+              "id": "food-link",
+              "title": "Food Link",
+              "unlocks": "Connect any two organisms by what eats what",
+              "blurb": [
+                "A line from one thing to the thing that eats it.",
+                "The unit of a food web. Direction matters; energy only goes one way."
+              ]
+            },
+            {
+              "id": "trophic-ladder",
+              "title": "Trophic Ladder",
+              "unlocks": "Work out how many predators any system supports",
+              "blurb": [
+                "Why there are never many lions.",
+                "Roughly a tenth carries up each level. That single number sets pyramid shape."
+              ]
+            },
+            {
+              "id": "capacity-line",
+              "title": "Capacity Line",
+              "unlocks": "Find the ceiling of any population",
+              "blurb": [
+                "Every population hits a ceiling.",
+                "Carrying capacity as a consequence of limiting resources, not a fixed constant."
+              ]
+            },
+            {
+              "id": "keystone",
+              "title": "Keystone",
+              "unlocks": "Test which species any system cannot lose",
+              "blurb": [
+                "The one you cannot take out.",
+                "Keystone species: disproportionate effect relative to abundance."
+              ]
+            },
+            {
+              "id": "living-web",
+              "title": "Living Web",
+              "unlocks": "Proves your ecosystem survives losing a species",
+              "blurb": [
+                "A whole web you built that keeps working.",
+                "Assembled web, stress-tested by removal. Redundancy is what survives."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "environmental-science",
+          "title": "Environmental Science",
+          "lessons": 4,
+          "requires": [
+            "ecology"
+          ],
+          "hook": [
+            "The air you breathe out today will be in a leaf next spring.",
+            "Carbon, nitrogen and water move in closed loops. We opened some of them."
+          ],
+          "concepts": [
+            "carbon-cycle",
+            "energy-balance",
+            "extinction-is-permanent",
+            "intervention-tradeoffs"
+          ],
+          "lessonTitles": [
+            "The Carbon Round Trip",
+            "Why a Degree Matters",
+            "Extinction Is Forever",
+            "Fix One Thing"
+          ],
+          "specimens": [
+            {
+              "id": "carbon-tracer",
+              "title": "Carbon Tracer",
+              "unlocks": "Follow a carbon atom anywhere it goes",
+              "blurb": [
+                "Follow one carbon atom all the way round.",
+                "Atmosphere, ocean, biosphere, rock. Fluxes and residence times."
+              ]
+            },
+            {
+              "id": "energy-budget",
+              "title": "Energy Budget",
+              "unlocks": "Balance energy in against energy out",
+              "blurb": [
+                "A small change in temperature is not a small change.",
+                "Radiative balance: small forcing, large integrated consequence."
+              ]
+            },
+            {
+              "id": "last-specimen",
+              "title": "Last Specimen",
+              "unlocks": "Records what cannot be recovered",
+              "blurb": [
+                "The last one there ever was.",
+                "An irreversible loss. Every other specimen here can be rebuilt; this one cannot."
+              ]
+            },
+            {
+              "id": "intervention-kit",
+              "title": "Intervention Kit",
+              "unlocks": "Test any fix for what it breaks",
+              "blurb": [
+                "A fix that does not break something else.",
+                "Every intervention has second-order effects. This one makes you find them first."
+              ]
+            }
+          ]
+        }
       ]
     },
     {
       "id": "frontier",
       "title": "Frontier",
-      "tagline": ["Biology we are still inventing", "Where the field is actively unfinished"],
-      "requires": ["proteins"],
+      "tagline": [
+        "Biology we are still inventing",
+        "Where the field is actively unfinished"
+      ],
+      "requires": [
+        "proteins"
+      ],
       "requiresAnyCompleted": 3,
       "modules": [
-        { "id": "biotechnology", "title": "Biotechnology", "lessons": 4, "requires": [],
-          "hook": ["We taught bacteria to make human insulin. Here is how.",
-                   "Borrowing cellular machinery to manufacture things evolution never made."] },
-        { "id": "crispr", "title": "CRISPR", "lessons": 5, "requires": ["biotechnology"],
-          "hook": ["Bacteria invented gene editing to fight viruses. We took the scissors.",
-                   "A bacterial immune memory, repurposed into programmable molecular surgery."] },
-        { "id": "synthetic-biology", "title": "Synthetic Biology", "lessons": 4, "requires": ["crispr"],
-          "hook": ["If you could design a living thing from scratch, what would you make?",
-                   "Treating the cell as a platform: parts, devices, and the limits of the metaphor."] },
-        { "id": "space-biology", "title": "Space Biology", "lessons": 4, "requires": [],
-          "hook": ["Your bones start dissolving after two weeks in space. Why?",
-                   "Every system in you is calibrated to 1g. Remove it and watch what was load-bearing."] },
-        { "id": "future-biology", "title": "Future Biology", "lessons": 4, "requires": ["synthetic-biology"],
-          "hook": ["What should we build, now that we can build almost anything?",
-                   "The open problems, the live arguments, and the questions with no answer yet."] }
+        {
+          "id": "biotechnology",
+          "title": "Biotechnology",
+          "lessons": 4,
+          "requires": [],
+          "hook": [
+            "We taught bacteria to make human insulin. Here is how.",
+            "Borrowing cellular machinery to manufacture things evolution never made."
+          ],
+          "concepts": [
+            "cells-as-factories",
+            "amplify-dna",
+            "read-a-genome",
+            "recombinant-protein"
+          ],
+          "lessonTitles": [
+            "Making Cells Work for You",
+            "Copying DNA on Purpose",
+            "Reading a Genome",
+            "Insulin From Bacteria"
+          ],
+          "specimens": [
+            {
+              "id": "host-cell",
+              "title": "Host Cell",
+              "unlocks": "Run any process inside a living factory",
+              "blurb": [
+                "A cell doing a job you gave it.",
+                "An engineered host. Cheaper than chemistry, and it self-replicates."
+              ]
+            },
+            {
+              "id": "thermal-cycler",
+              "title": "Thermal Cycler",
+              "unlocks": "Amplify any sequence you hold",
+              "blurb": [
+                "A machine that copies DNA over and over.",
+                "PCR. Doubling per cycle turns one molecule into billions in an afternoon."
+              ]
+            },
+            {
+              "id": "sequencer",
+              "title": "Sequencer",
+              "unlocks": "Read any genome you collect",
+              "blurb": [
+                "A machine that reads the whole instruction book.",
+                "High-throughput sequencing. Cost per genome fell faster than computing power."
+              ]
+            },
+            {
+              "id": "recombinant-vial",
+              "title": "Recombinant Vial",
+              "unlocks": "Manufacture any protein at scale",
+              "blurb": [
+                "Medicine made by germs doing what you told them.",
+                "A human gene in a bacterial host — the first recombinant drug, and still the model."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "crispr",
+          "title": "CRISPR",
+          "lessons": 5,
+          "requires": [
+            "biotechnology"
+          ],
+          "hook": [
+            "Bacteria invented gene editing to fight viruses. We took the scissors.",
+            "A bacterial immune memory, repurposed into programmable molecular surgery."
+          ],
+          "concepts": [
+            "guided-cutting",
+            "bacterial-origin",
+            "targeting-accuracy",
+            "off-target-risk",
+            "edit-consequences"
+          ],
+          "lessonTitles": [
+            "Scissors That Read First",
+            "Where the Scissors Came From",
+            "Cutting the Right Place",
+            "What Could Go Wrong",
+            "Edit a Gene"
+          ],
+          "specimens": [
+            {
+              "id": "guide-rna",
+              "title": "Guide RNA",
+              "unlocks": "Aim an edit at any sequence",
+              "blurb": [
+                "Scissors that check before they cut.",
+                "The guide strand supplies the address; the nuclease supplies the cut."
+              ]
+            },
+            {
+              "id": "phage-record",
+              "title": "Phage Record",
+              "unlocks": "Records what a bacterium remembered",
+              "blurb": [
+                "Germs invented this to fight viruses.",
+                "A CRISPR array: captured viral sequence, kept as adaptive immune memory."
+              ]
+            },
+            {
+              "id": "target-lock",
+              "title": "Target Lock",
+              "unlocks": "Verify any edit before you make it",
+              "blurb": [
+                "Making sure you cut the right one.",
+                "Specificity checking against the whole genome, not just the intended site."
+              ]
+            },
+            {
+              "id": "off-target-log",
+              "title": "Off-Target Log",
+              "unlocks": "Audit any edit for unintended cuts",
+              "blurb": [
+                "A list of the cuts you did not mean to make.",
+                "Off-target and mosaicism record. The germline question sits here too."
+              ]
+            },
+            {
+              "id": "edited-genome",
+              "title": "Edited Genome",
+              "unlocks": "Proves your edit worked and did nothing else",
+              "blurb": [
+                "A gene you changed on purpose.",
+                "A verified edit: intended change present, off-target audit clean."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "synthetic-biology",
+          "title": "Synthetic Biology",
+          "lessons": 4,
+          "requires": [
+            "crispr"
+          ],
+          "hook": [
+            "If you could design a living thing from scratch, what would you make?",
+            "Treating the cell as a platform: parts, devices, and the limits of the metaphor."
+          ],
+          "concepts": [
+            "biology-as-parts",
+            "genetic-circuits",
+            "minimal-genome",
+            "design-then-test"
+          ],
+          "lessonTitles": [
+            "Biology as Parts",
+            "A Circuit Made of Genes",
+            "The Smallest Possible Life",
+            "Design an Organism"
+          ],
+          "specimens": [
+            {
+              "id": "part-registry",
+              "title": "Part Registry",
+              "unlocks": "Draw standard parts for any build",
+              "blurb": [
+                "A box of standard biological parts.",
+                "Characterised, composable parts. Standardisation is the whole idea."
+              ]
+            },
+            {
+              "id": "gene-switch",
+              "title": "Gene Switch",
+              "unlocks": "Build logic into any organism",
+              "blurb": [
+                "A switch built out of genes.",
+                "A toggle or oscillator. Logic implemented in transcription."
+              ]
+            },
+            {
+              "id": "minimal-cell",
+              "title": "Minimal Cell",
+              "unlocks": "Establish the floor for any organism",
+              "blurb": [
+                "The fewest instructions something can live with.",
+                "A minimal genome. Notably, a fraction of its genes have no known function."
+              ]
+            },
+            {
+              "id": "designed-organism",
+              "title": "Designed Organism",
+              "unlocks": "Proves your design survives contact with reality",
+              "blurb": [
+                "Something you designed that actually lives.",
+                "Specified, built, and tested — including against what it does when it escapes."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "space-biology",
+          "title": "Space Biology",
+          "lessons": 4,
+          "requires": [],
+          "hook": [
+            "Your bones start dissolving after two weeks in space. Why?",
+            "Every system in you is calibrated to 1g. Remove it and watch what was load-bearing."
+          ],
+          "concepts": [
+            "life-without-gravity",
+            "habitability",
+            "extremophiles",
+            "closed-life-support"
+          ],
+          "lessonTitles": [
+            "Life Without Weight",
+            "Could Anything Live on Mars?",
+            "The Toughest Animal Alive",
+            "Pack a Spaceship Garden"
+          ],
+          "specimens": [
+            {
+              "id": "microgravity-rig",
+              "title": "Microgravity Rig",
+              "unlocks": "Test any body without gravity",
+              "blurb": [
+                "What happens to a body with no up.",
+                "Bone loss, fluid shift, muscle wasting. Gravity turns out to be a signal."
+              ]
+            },
+            {
+              "id": "habitability-card",
+              "title": "Habitability Card",
+              "unlocks": "Score any world for life",
+              "blurb": [
+                "A card for scoring whether somewhere could hold life.",
+                "Liquid water, energy gradient, chemistry, shielding, stability."
+              ]
+            },
+            {
+              "id": "tardigrade",
+              "title": "Tardigrade",
+              "unlocks": "Survive conditions that kill everything else",
+              "blurb": [
+                "An animal that survives being frozen, boiled and put in space.",
+                "Cryptobiosis. Redefines the envelope, without redefining what life needs to run."
+              ]
+            },
+            {
+              "id": "closed-system",
+              "title": "Closed System",
+              "unlocks": "Proves your life support closes the loop",
+              "blurb": [
+                "A garden that has to keep you alive with nothing coming in.",
+                "A closed ecological system. Everything cycles or the crew dies."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "future-biology",
+          "title": "Future Biology",
+          "lessons": 4,
+          "requires": [
+            "synthetic-biology"
+          ],
+          "hook": [
+            "What should we build, now that we can build almost anything?",
+            "The open problems, the live arguments, and the questions with no answer yet."
+          ],
+          "concepts": [
+            "grown-tissue",
+            "de-extinction",
+            "ethics-of-capability",
+            "designing-responsibly"
+          ],
+          "lessonTitles": [
+            "Growing an Organ",
+            "Bringing Back the Dead",
+            "Should We?",
+            "What You Would Build"
+          ],
+          "specimens": [
+            {
+              "id": "scaffold",
+              "title": "Scaffold",
+              "unlocks": "Grow tissue in any shape you need",
+              "blurb": [
+                "A shape for cells to grow into.",
+                "A seeded scaffold. Vascularisation remains the limiting problem."
+              ]
+            },
+            {
+              "id": "recovered-sequence",
+              "title": "Recovered Sequence",
+              "unlocks": "Reconstruct a genome from fragments",
+              "blurb": [
+                "Instructions rescued from something long gone.",
+                "A degraded ancient genome. What comes back is a close approximation, not the original."
+              ]
+            },
+            {
+              "id": "ethics-frame",
+              "title": "Ethics Frame",
+              "unlocks": "Ask the question capability cannot answer",
+              "blurb": [
+                "Being able to do something is not a reason to.",
+                "Separates the technical question from the question of whether to proceed, and keeps both open."
+              ]
+            },
+            {
+              "id": "your-design",
+              "title": "Your Design",
+              "unlocks": "Proves you can justify what you build, not just build it",
+              "blurb": [
+                "The thing you would make, and why.",
+                "A final open build. Judged on the reasoning as much as the organism."
+              ]
+            }
+          ]
+        }
       ]
     }
   ]

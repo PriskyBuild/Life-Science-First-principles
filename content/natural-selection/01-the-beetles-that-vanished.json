@@ -1,0 +1,176 @@
+{
+  "id": "natural-selection/01",
+  "module": "natural-selection",
+  "index": 0,
+  "title": "The Beetles That Vanished",
+  "specimen": "pale-beetle",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A hundred years ago these beetles were pale. Now they are dark. Not one beetle ever changed colour.",
+        "Every beetle on this island is dark. A hundred years ago almost all of them were pale — and not a single beetle ever changed colour in its life.",
+        "The population is dark now and was pale a century ago, yet no individual beetle ever changed. Both of those are true. How?",
+        "A population-level shift with no individual-level change. The trait is fixed at hatching and heritable, yet the distribution has moved. Account for it."
+      ],
+      "sub": [
+        "So who changed?",
+        "If no beetle changed, then what did?",
+        "Something changed. It was not any beetle. Work out what it was.",
+        "The unit that changed is not the unit you are looking at. That displacement is the whole idea."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "selection-needs-no-agent",
+      "question": [
+        "How did the beetles all end up dark?",
+        "The island went from pale beetles to dark beetles. How?",
+        "What is the most likely explanation for the shift?",
+        "Which account is consistent with a fixed, heritable trait and a moved population mean?"
+      ],
+      "options": [
+        "Each beetle slowly turned darker",
+        "The pale ones were easier to spot and got eaten",
+        "The beetles decided to change"
+      ],
+      "outcome": "The pale ones were easier to spot and got eaten",
+      "note": [
+        "Say what you think. Being wrong here is useful.",
+        "Commit before you look. The gap between your guess and what happens is where the learning is.",
+        "Commit. Two of these require something to be doing the changing; one does not.",
+        "Note which options require an agent and which require only differential mortality. That distinction is the lesson."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "selection",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Move the ground to dark soil. Then send the bird, and let the ones that are left have babies. Do it again and again.",
+        "Set the ground to something the beetles do not match. Then take turns: send the bird, let the survivors breed. Watch the line at the bottom."
+      ],
+      "params": { "task": "watch", "bg": 0.85, "aspect": 0.78 },
+      "paramsByLevel": { "1": { "n": 27, "pressure": 0.85 } },
+      "goal": [
+        "The beetles match the ground now — and not one of them ever changed colour.",
+        "The population matches its background, and no individual beetle changed. Only which beetles were left changed."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "selection",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Three things have to be true for this to work, and they are on switches. Get it working first. Then switch exactly one off, run five generations, and see whether it still works.",
+        "Three conditions are exposed as switches. Establish the effect with all three on, then remove precisely one, hold the other two, and run enough generations to distinguish a real halt from noise. Removing two at once will also stop it and will tell you nothing about why."
+      ],
+      "params": { "task": "break", "bg": 0.85, "switches": true, "aspect": 0.82 },
+      "paramsByLevel": { "4": { "n": 45, "pressure": 0.7, "mutation": 0.05 } },
+      "goal": [
+        "You stopped it. That is the important half.",
+        "You found a condition that adaptation cannot do without. The other two are still there to try."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "This is called natural selection. Nobody chose. The bird just could not see the ones that matched.",
+        "This is natural selection. Nothing chose anything: the beetles that were harder to spot left more babies, and that was enough.",
+        "This is natural selection: variation, heredity and differential survival, all three at once. Given those, the population shifts automatically — no chooser is required, and none is available.",
+        "Natural selection is the name for the joint consequence of three conditions. It is not a force acting on the population; it is a description of what necessarily follows when all three hold. The explanatory work is done by the conditions, not by the label."
+      ],
+      "sub": [
+        "The word 'selection' makes it sound like someone picked. Nobody picked.",
+        "The word 'selection' is misleading — it sounds like choosing. Nothing chose; the pale ones were simply seen more often.",
+        "The term is unfortunate: 'selection' implies a selector. Darwin borrowed it from animal breeding, where there genuinely is one. Here there is not.",
+        "Darwin took the term by analogy from artificial selection, where a breeder does choose. The analogy carried a chooser into a process that has none, and that borrowed implication has caused a century and a half of confusion."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "selection-needs-no-agent",
+      "q": [
+        "Did any single beetle change colour?",
+        "Did any individual beetle change during the simulation?",
+        "What exactly changed over the generations?",
+        "At which level did the change occur?"
+      ],
+      "options": [
+        "No — only which beetles were left changed",
+        "Yes, each beetle got slowly darker",
+        "Yes, the babies chose to be darker"
+      ],
+      "answer": 0,
+      "why": [
+        "Every beetle kept the colour it hatched with. What changed was who was still there to have babies — and their babies looked like them.",
+        "No individual changed. Each beetle kept its shade for life. The population's average moved because the mismatched ones were eaten before breeding, and offspring resembled the survivors.",
+        "The individual is not the unit that changes. Each beetle's shade was fixed at hatching; the distribution moved because survival was not independent of shade. Change at the population level with none at the individual level is the signature of selection.",
+        "Selection acts on individuals and changes populations. Confusing the two levels produces Lamarckian intuitions — the beetle striving and darkening — which the simulation rules out by construction: shade is assigned at hatching and never written to again."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "three-conditions",
+      "levels": [3, 4],
+      "q": [
+        "You switched off 'babies like parents' and it stopped. Why?",
+        "Removing heredity halted adaptation even though the predator still ate the mismatched beetles. Why?",
+        "Why does removing heritability halt adaptation, given that differential mortality still occurs?"
+      ],
+      "options": [
+        "The killing still happened, but nothing was passed on, so each generation started over",
+        "The bird stopped being able to see them",
+        "Fewer beetles died once heredity was off"
+      ],
+      "answer": 0,
+      "why": [
+        "Exactly the same beetles got eaten. But their babies came out any colour at all, so the next round began from scratch. Selection with nothing inherited is just killing.",
+        "Mortality was unchanged — the same mismatched beetles died. But offspring shade was drawn independently of the parents, so the survivors' advantage was not transmitted. Each generation restarted from the same distribution.",
+        "Differential mortality without transmission produces no cumulative change. Selection sorts a generation; heredity is what makes the sorting persist. Remove it and each generation is an independent sample — the population is culled every round and returns to the same mean every round."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why some medicines stop working. The germs that survive have babies, and their babies survive too.",
+        "This is exactly why antibiotics stop working. A few bacteria happen to survive the drug, they are the only ones that breed, and their offspring inherit whatever let them survive.",
+        "Antibiotic resistance is this mechanism running in a hospital over weeks rather than on an island over centuries. Bacteria vary, the variation is heritable, and the drug supplies the differential survival. Finishing a course matters because stopping early leaves exactly the survivors that were hardest to kill.",
+        "Resistance is not something bacteria develop in response to a drug; it is something a drug reveals and then amplifies. The variation is present beforehand at low frequency. This is also why resistance management is a selection problem — cycling, combination therapy, reduced agricultural use — rather than a chemistry problem."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "selection-is-observed",
+      "q": [
+        "Where can you actually watch this happen?",
+        "Which of these is natural selection you can observe directly?",
+        "Which of these is a directly observed instance of natural selection?",
+        "Which is an observation rather than an inference about the unobserved past?"
+      ],
+      "options": [
+        "Germs becoming hard to kill with medicine",
+        "Only in books about long ago",
+        "Nowhere — it is too slow to see"
+      ],
+      "answer": 0,
+      "why": [
+        "You can watch it in a week in a dish of germs. It is not a story about long ago — it is happening in hospitals right now.",
+        "Antibiotic resistance is measured in laboratories in days and in hospitals in weeks. So is pesticide resistance in insects, and so is the peppered moth, which was counted year by year.",
+        "Selection is observational science: resistance evolution is measured in real time, the peppered moth was censused across decades, and Darwin's finches have been tracked bird by bird on Daphne Major since 1973. None of these requires an inference about the deep past.",
+        "This matters for how the claim is classified. Variation, heritability and differential survival are each independently measurable, and their joint consequence has been observed repeatedly under controlled conditions. Whatever one concludes about the history of life, this mechanism is not in dispute — it is demonstrated."
+      ]
+    }
+  ]
+}

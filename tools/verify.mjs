@@ -2,7 +2,7 @@ import { chromium } from "playwright";
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, readFileSync } from "node:fs";
 
 /* Repo-relative so this runs from a clone, in CI, on anyone's machine. */
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
@@ -64,6 +64,18 @@ check("the Atlas draws only worlds that have something in them",
 check("and names the rest honestly instead of pretending they are open",
   (await page.locator(".signpost-list li").count()) === 5,
   await page.locator(".signpost h2").textContent());
+// Authoring Change before Code produced a world with real lessons behind a gate
+// no amount of play could open. A door with no key is worse than no door.
+{
+  const r = await page.evaluate(async () => {
+    const c = await import("./js/curriculum.js");
+    const withContent = c.worlds.filter(c.worldHasContent).map((w) => w.id);
+    return { withContent, drawn: c.playableWorlds().map((w) => w.id) };
+  });
+  check("a world with content but no reachable path is not drawn yet",
+    r.withContent.includes("change") && !r.drawn.includes("change"),
+    `content in ${r.withContent.join(",")}; drawn ${r.drawn.join(",")}`);
+}
 // The dependency graph itself must be unchanged — the display was gated, the
 // model was not.
 {
@@ -805,8 +817,13 @@ await page.waitForSelector(".islands");
     await page.locator(".stats").innerText().then((t) => t.replace(/\n/g, " ")));
   check("Me lists every badge with its real criterion",
     (await page.locator(".badge").count()) === 5, "");
+  // Counted from the curriculum, not hard-coded: a literal here silently
+  // stopped meaning anything as soon as the spine landed.
+  const specimenTotal = await page.evaluate(async () =>
+    (await import("./js/curriculum.js")).allSpecimens().length);
   check("Me shows the specimen collection including uncollected slots",
-    (await page.locator(".specimen").count()) === 5, "");
+    (await page.locator(".specimen").count()) === specimenTotal && specimenTotal > 100,
+    `${specimenTotal} slots`);
   await openWith(freshSave({ level: 2, specimens: ["ribosome"] }), "#/me");
   await page.waitForSelector(".specimen--got");
   const unlocks = await page.locator(".specimen--got .specimen-unlocks").textContent();
@@ -1105,9 +1122,10 @@ async function openSim(lv) {
   const r = await page.evaluate(async () => {
     const { _running } = await import("./js/sims/base.js");
     const sim = document.querySelector("fp-membrane");
-    // Earlier tests drive this sim past its goal, and a finished sim correctly
-    // refuses to rejoin the loop. Clear that before testing loop membership.
-    sim.finished = false;
+    // Earlier tests drive this sim past its goal. Meeting a goal no longer
+    // stops a sim (D46), but clear the flag anyway so this measures membership
+    // rather than whatever the previous test left behind.
+    sim.met = false;
     sim.play();
     const playing = _running.size;
     sim.pause();
@@ -1199,8 +1217,8 @@ async function openSim(lv) {
     const sim = document.querySelector("fp-membrane");
     sim.addEventListener("fp:sim-goal", () => res(true), { once: true });
     sim.pore = 4;                        // food fits, poison does not
-    for (let i = 0; i < 20000 && !sim.finished; i++) sim.step(1 / 60);
-    setTimeout(() => res(sim.finished), 50);
+    for (let i = 0; i < 20000 && !sim.met; i++) sim.step(1 / 60);
+    setTimeout(() => res(sim.met), 50);
   }));
   check("meeting the objective fires the goal and unlocks Next", unlocked === true, String(unlocked));
 }
@@ -1701,8 +1719,204 @@ const assemble = (swap = null) => page.evaluate((sw) => {
     const checks = await Promise.all(entries.map(async ([, , f]) => (await fetch(`content/${f}`)).ok));
     return { n: entries.length, allPresent: checks.every(Boolean) };
   });
+  // Counted from disk rather than hard-coded: the last time this was a literal
+  // it silently stopped meaning anything the moment a sixth lesson landed.
+  const onDisk = Object.values(JSON.parse(readFileSync(join(ROOT, "content/authored.json"), "utf8")))
+    .reduce((n, m) => n + Object.keys(m).length, 0);
   check("every lesson the app offers actually exists on disk",
-    consistent.n === 5 && consistent.allPresent, JSON.stringify(consistent));
+    consistent.n === onDisk && consistent.allPresent, `${consistent.n} of ${onDisk}`);
+}
+
+/* ===========================================================================
+   85-93. THE FORMAT PAST CELLS.
+   Everything above this line was written while the only authored module was
+   Cells, and a format proved against one module is a format proved against one
+   module. These check the things that broke when a structurally different
+   lesson — an episodic simulation and an attributed disagreement — was written
+   against it. See DECISIONS D45-D48.
+   =========================================================================== */
+
+/* A save with everything upstream of the Change world finished. */
+const changeSave = (level) => freshSave({ level, modules: {
+  "what-is-life": { lessonsDone: 4 }, cells: { lessonsDone: 5 },
+  dna: { lessonsDone: 5 }, genes: { lessonsDone: 4 },
+} });
+
+/** Walk a lesson forward until a stage of the given type is on screen. */
+async function walkTo(type, limit = 12) {
+  for (let i = 0; i < limit; i++) {
+    const t = await page.locator(".stage").getAttribute("data-type");
+    if (t === type) return true;
+    if (t === "predict") await page.locator(".predict-option").first().click();
+    if (t === "check") await page.locator(".quiz-option").first().click();
+    await page.waitForTimeout(60);
+    await page.locator(".next-btn").click();
+    await page.waitForTimeout(80);
+  }
+  return false;
+}
+
+/** Mount a selection sim directly, with the reveal made instantaneous so these
+    measure the MODEL rather than the animation that shows it. */
+const mountSelection = (body) => page.evaluate(async (src) => {
+  const { _running } = await import("./js/sims/base.js");
+  await import("./js/sims/selection.js");
+  document.querySelectorAll("fp-selection").forEach((n) => n.remove());
+  const sim = document.createElement("fp-selection");
+  Object.assign(sim.dataset, { task: "break", switches: "true", bg: "0.9" });
+  document.querySelector("#main").append(sim);
+  await new Promise((r) => setTimeout(r, 120));
+  sim.reduced = { matches: true };
+  const generations = (n) => { for (let i = 0; i < n * 2; i++) sim.next(); };
+  // eslint-disable-next-line no-new-func
+  return await new Function("sim", "_running", "generations", `return (async () => { ${src} })()`)(sim, _running, generations);
+}, body);
+
+/* 85. An episodic sim must not be driven by the shared loop between clicks. */
+{
+  await openWith(changeSave(3), "#/");
+  const r = await mountSelection(`
+    return { autoplay: sim.autoplay, inLoop: _running.has(sim), gen: sim.gen };
+  `);
+  check("an episodic simulation stays out of the shared loop until asked",
+    r.autoplay === false && r.inLoop === false && r.gen === 0, JSON.stringify(r));
+}
+
+/* 86. THE LESSON ITSELF, as a measurement. With all three conditions on the
+   population must track its background; with any one removed it must not. This
+   is the only test in the suite that checks a scientific claim rather than a
+   piece of software, and it is the one worth having. */
+{
+  const r = await mountSelection(`
+    const runOf = () => { sim.reset(); const s = sim.gap; generations(14); return { start: s, end: sim.gap }; };
+    const all = runOf();
+    const off = {};
+    for (const key of ["variation", "heredity", "survival"]) {
+      sim.on[key] = false;
+      off[key] = runOf();
+      sim.on[key] = true;
+    }
+    return { all, off };
+  `);
+  const closed = (x) => x.end < x.start * 0.35;
+  check("with all three conditions the population adapts",
+    r.all.start > 0.18 && closed(r.all), JSON.stringify(r.all));
+  for (const key of ["variation", "heredity", "survival"]) {
+    check(`removing ${key} stops adaptation`, !closed(r.off[key]), JSON.stringify(r.off[key]));
+  }
+}
+
+/* 87. Cross-run state survives reset, which is what makes "run it twice and
+   compare" expressible at all. Before once() existed, reset() wiped both the
+   trace history and the child's own switch settings. */
+{
+  const r = await mountSelection(`
+    sim.on.heredity = false;
+    generations(6);
+    sim.reset();
+    return { keptRuns: sim.runs.length, keptSwitch: sim.on.heredity, freshTrace: sim.trace.length };
+  `);
+  check("reset starts a new run without erasing the last one or the hypothesis",
+    r.keptRuns >= 1 && r.keptSwitch === false && r.freshTrace === 1, JSON.stringify(r));
+}
+
+/* 88. Meeting the objective unlocks the lesson; it does not end the experiment.
+   Freezing on success is the exact moment a child most wants to keep poking. */
+{
+  const r = await mountSelection(`
+    let fired = 0, said = null;
+    sim.addEventListener("fp:sim-goal", (e) => { fired++; said = e.detail?.say ?? null; });
+    generations(12);                       // establish it works
+    sim.on.survival = false; sim.reset(); generations(8);   // then break it
+    const at = sim.gen;
+    sim.next(); sim.next();
+    return { fired, said, advancedAfterGoal: sim.gen > at, met: sim.met };
+  `);
+  check("the goal fires once and carries the simulation's own account of it",
+    r.fired === 1 && typeof r.said === "string" && r.said.length > 20, JSON.stringify(r).slice(0, 140));
+  check("meeting the goal does not freeze the simulation", r.advancedAfterGoal === true, JSON.stringify(r));
+}
+
+/* 89. A weigh stage may not be walked past having read one side. */
+{
+  await openWith(changeSave(3), "#/l/evolution/0");
+  await page.waitForSelector(".stage");
+  const reached = await walkTo("weigh");
+  check("the evolution lesson reaches its weigh stage at content level 3", reached, "");
+
+  const lockedAtStart = await page.locator(".next-btn").isDisabled();
+  await page.locator(".weigh-who").first().click();
+  await page.waitForTimeout(120);
+  const lockedAfterOne = await page.locator(".next-btn").isDisabled();
+  await page.locator(".weigh-who").nth(1).click();
+  await page.waitForTimeout(120);
+  const lockedAfterBoth = await page.locator(".next-btn").isDisabled();
+  check("both readings must be opened before the lesson moves on",
+    lockedAtStart && lockedAfterOne && !lockedAfterBoth,
+    `start ${lockedAtStart}, one ${lockedAfterOne}, both ${lockedAfterBoth}`);
+}
+
+/* 90. Nothing on a weigh stage is asserted in the product's own voice. Every
+   view is attributed and every view shows its reasoning — this is the rule the
+   whole stage type exists to enforce, so it is checked in the browser and not
+   only in the build. */
+{
+  const r = await page.evaluate(() => [...document.querySelectorAll(".weigh-view")].map((v) => ({
+    who: v.querySelector(".weigh-who")?.textContent?.trim() ?? "",
+    claim: (v.querySelector(".weigh-claim")?.textContent ?? "").length,
+    because: (v.querySelector(".weigh-because")?.textContent ?? "").length,
+  })));
+  check("every reading is attributed and shows its reasoning",
+    r.length >= 2 && r.every((v) => v.who.length > 3 && v.claim > 20 && v.because > 40),
+    JSON.stringify(r));
+}
+
+/* 91. The two views must not be styled to favour one. A child reads visual
+   weight long before they read the words, so an argument made in CSS is an
+   argument made behind the author's back. */
+{
+  const same = await page.evaluate(() => {
+    const [a, b] = [...document.querySelectorAll(".weigh-view")].map((v) => {
+      const s = getComputedStyle(v);
+      return [s.backgroundColor, s.borderTopWidth, s.borderTopColor, s.boxShadow,
+              getComputedStyle(v.querySelector(".weigh-who")).fontSize].join("|");
+    });
+    return a === b;
+  });
+  check("the two readings are presented with identical visual weight", same, "");
+}
+
+/* 92. Reduced motion needs no substitution for an episodic sim, because the
+   control is already the child's own click. But the control must still BE
+   there — putting it in .teach-play would have hidden it. */
+{
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await openWith(changeSave(1), "#/l/natural-selection/0");
+  await page.waitForSelector(".stage");
+  await walkTo("sim");
+  await page.waitForSelector("fp-selection .sim-canvas");
+  const r = await page.evaluate(() => {
+    const sim = document.querySelector("fp-selection");
+    const btn = sim.querySelector(".sim-beat");
+    const before = sim.gen;
+    btn.click(); btn.click();
+    return { visible: getComputedStyle(btn).display !== "none", advanced: sim.gen > before,
+             label: btn.textContent };
+  });
+  check("an episodic simulation keeps its control under reduced motion",
+    r.visible && r.advanced, JSON.stringify(r));
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+}
+
+/* 93. A slider whose readout is a bare number tells a five-year-old nothing. */
+{
+  const readout = await page.evaluate(() => {
+    const s = document.querySelector("fp-selection fp-slider");
+    return { text: s.querySelector(".slider-value").textContent,
+             valuetext: s.querySelector("input").getAttribute("aria-valuetext") };
+  });
+  check("a worded slider reads as words, in the readout and to a screen reader",
+    /[a-z]/i.test(readout.text) && readout.valuetext === readout.text, JSON.stringify(readout));
 }
 
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));

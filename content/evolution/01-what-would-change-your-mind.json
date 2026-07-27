@@ -1,0 +1,170 @@
+{
+  "id": "evolution/01",
+  "module": "evolution",
+  "index": 0,
+  "title": "What Would Change Your Mind?",
+  "specimen": "two-lenses",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "The cake is gone. There are crumbs on the floor and the dog looks guilty. You did not see it happen.",
+        "The cake is gone, there are crumbs by the dog's bed, and nobody saw anything. You are already sure what happened. How?",
+        "You know things you never watched happen, and you know them well enough to act on. What licenses that?",
+        "Most of what anyone knows was never observed by them. The interesting question is what makes an unobserved claim more or less secure."
+      ],
+      "sub": [
+        "How do you know something you did not see?",
+        "This whole module rests on that question, so it goes first.",
+        "This module is about the deep past. Before any of it, the question of how the past is known at all.",
+        "Method before content: what would make you change your mind, decided before you know which way the evidence falls."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "evidence-and-inference",
+      "question": [
+        "How do you know the dog ate the cake?",
+        "You did not see the dog eat the cake. So how do you know?",
+        "On what basis do you hold the conclusion about the dog?",
+        "What is the epistemic route from crumbs to conclusion?"
+      ],
+      "options": [
+        "You worked it out from what was left behind",
+        "You saw it happen",
+        "You cannot really know at all"
+      ],
+      "outcome": "You worked it out from what was left behind",
+      "note": [
+        "Have a guess first.",
+        "Commit before you read on.",
+        "Commit. The answer is less obvious than it looks — the third option has serious defenders.",
+        "Commit before proceeding. Note that the third option is a live philosophical position, not a throwaway."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "There are two ways of knowing: watching it happen, and working it out from what is left.",
+        "Two different ways of knowing: watching something happen, and working it out afterwards from what it left behind.",
+        "Two routes to a claim: direct observation, and inference from traces. Both are real knowledge. They fail in different ways.",
+        "Observation and inference. Neither is second-class, but they carry different risks: observation can be mistaken about what it saw, inference can be mistaken about what else could have produced the same trace."
+      ],
+      "sub": [
+        "Both are real. Both can go wrong.",
+        "Scientists use both, all the time, and they are careful about which one they are doing.",
+        "The second is sometimes called historical or forensic science. It is how murder trials, geology and cosmology all work — and it is not weaker for it, but it does carry an extra assumption: that the trace could not easily have been produced another way.",
+        "The distinction matters most where the two are conflated. An inference presented as an observation borrows a certainty it has not earned; an observation dismissed as 'only inference' loses one it has."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "testable-expectation",
+      "q": [
+        "What makes an idea a good one to test?",
+        "What makes an idea testable?",
+        "Which property makes a claim testable?",
+        "Which property makes a claim empirically tractable?"
+      ],
+      "options": [
+        "It tells you what you should find",
+        "Lots of people believe it",
+        "It has been around a long time"
+      ],
+      "answer": 0,
+      "why": [
+        "A good idea sticks its neck out. It says: if I am right, you will find THIS. Then you can go and look.",
+        "An idea earns its keep by saying in advance what you should find. If it fits whatever you discover, it was never at risk, and an idea that was never at risk has not been tested.",
+        "Testability is about forbidden outcomes. A claim that is compatible with every possible observation excludes nothing and so is confirmed by nothing. This is why 'what would change your mind?' is the sharpest question you can ask anyone, including yourself.",
+        "A hypothesis is informative in proportion to what it rules out. Popper's asymmetry — that no number of confirmations establishes a universal claim while one clean falsification refutes it — is the strict form; in practice theories are compared on how much they forbid and how well they survive attempts to violate it."
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "evidence-and-inference",
+      "t": [
+        "People who look at the very same rock sometimes reach different conclusions about it. Here is how each of them reasons.",
+        "The same rock, the same measurements, two different conclusions about what they mean. Open both and look at the reasoning rather than the conclusion."
+      ],
+      "evidence": [
+        "Everyone agrees about the rock itself: what minerals are in it, how much of each element it contains, and what the measuring instruments read. None of that is in dispute anywhere.",
+        "The measurements are not in dispute by anyone. Mineral composition, isotope ratios and instrument calibration are agreed across the disagreement. What is disputed is what may be inferred from them about the unobserved past."
+      ],
+      "views": [
+        {
+          "who": "Most geologists and biologists",
+          "claim": [
+            "You can work out the deep past, because lots of separate clues agree with each other.",
+            "The deep past is reliably reconstructable, because many independent methods converge on the same answers."
+          ],
+          "because": [
+            "Different clues that know nothing about each other keep giving the same answer. That is hard to explain unless the answer is right.",
+            "Radiometric dating, annual ice layers, tree rings, coral bands, seafloor spreading and the light-travel time of distant stars rest on entirely different physics, and they agree. Independent methods agreeing is hard to arrange by accident, and no known error would push them all the same way."
+          ],
+          "predicts": [
+            "New ways of measuring should keep agreeing with the old ones.",
+            "Any newly-devised independent dating method should land in the same range; and no fossil should ever turn up in the wrong layer."
+          ]
+        },
+        {
+          "who": "Creation scientists (Answers in Genesis)",
+          "claim": [
+            "You can watch things happen now, but working out the far past needs guesses about how things started.",
+            "Observational science is one thing; claims about the unobserved past are another, because they require assumptions about starting conditions nobody was there to check."
+          ],
+          "because": [
+            "To read a clock you have to know what time it started at. Nobody watched the rocks start.",
+            "Every dating method assumes something unobservable: how much daughter isotope was there at the beginning, whether the sample stayed sealed, and whether rates held constant. They point to cases they say show the assumptions failing — new lava dated as very old, carbon-14 found in coal and diamonds that should have none left, and helium still trapped in zircon crystals."
+          ],
+          "predicts": [
+            "Where the starting guesses are wrong, different clocks should disagree with each other.",
+            "Discordant dates should keep turning up in samples of known age, and short-lived signals like carbon-14 should keep appearing where a long age says they cannot."
+          ]
+        }
+      ],
+      "ask": [
+        "Both of them are looking at the same rock. What could someone go and measure that would count for one and against the other?",
+        "Both accounts fit the rock as described. So ask the question that separates them: what observation would each side accept as counting against its own position? An account that cannot answer that has stopped being testable — and the question applies with exactly equal force to both."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is how a detective works. You were not there, but the clues still narrow it down.",
+        "Every court case works this way. A jury never watched the crime; they weigh what each account predicts should have been left behind.",
+        "This is the structure of forensic science, epidemiology, cosmology and geology alike: no one observed the event, so competing accounts are judged by what each requires the evidence to look like.",
+        "It is also why 'were you there?' is a weaker challenge than it first appears — applied consistently it would dissolve criminal conviction, medical diagnosis and the reconstruction of yesterday. The serious version of the question is not whether the past is knowable but how much weight a particular inference can carry."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "evidence-and-inference",
+      "q": [
+        "Two people look at the same clue and say different things. What helps most?",
+        "Two accounts fit the same evidence. What helps you decide between them?",
+        "What most effectively discriminates between two accounts that both fit the current evidence?",
+        "Given underdetermination by present evidence, what best discriminates two rival accounts?"
+      ],
+      "options": [
+        "Ask each one what they would expect to find next",
+        "See which one sounds more confident",
+        "Count how many people agree with each"
+      ],
+      "answer": 0,
+      "why": [
+        "If two people expect different things, go and look. Whoever guessed right has the better idea — and being willing to say what you expect is what makes it a fair test.",
+        "Confidence and popularity are not evidence; expectations are. Ask each account what it predicts you will find next, then go and find out. The account that keeps being surprised is in trouble, whichever one it is.",
+        "Present evidence usually underdetermines rival accounts, so the discriminating move is forward-looking: derive a novel prediction from each, and test where they diverge. Note that this test is symmetrical — it is only useful if you are willing to apply it to the account you favour.",
+        "Novel-prediction success is the standard currency because it is the hardest thing to arrange after the fact. Accommodation of known data is cheap; both rival accounts will manage it. The asymmetry appears only at the points where they forbid different things."
+      ]
+    }
+  ]
+}

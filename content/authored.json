@@ -5,5 +5,18 @@
     "2": "cells/03-the-power-plant.json",
     "3": "cells/04-the-instruction-room.json",
     "4": "cells/05-build-a-cell.json"
+  },
+  "evolution": {
+    "0": "evolution/01-what-would-change-your-mind.json",
+    "1": "evolution/02-the-same-bones-in-different-jobs.json",
+    "2": "evolution/03-the-order-in-the-rocks.json",
+    "3": "evolution/04-family-trees-written-in-dna.json",
+    "4": "evolution/05-how-much-can-change.json"
+  },
+  "natural-selection": {
+    "0": "natural-selection/01-the-beetles-that-vanished.json"
+  },
+  "what-is-life": {
+    "3": "what-is-life/04-could-life-start-by-itself.json"
   }
 }

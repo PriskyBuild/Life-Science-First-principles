@@ -64,7 +64,7 @@ for (const w of curriculum.worlds) {
    the only naming stage with it. Second, the review flow needs its beats
    without loading whole lessons, so they are extracted here rather than
    maintained as a second copy that drifts. */
-const STAGE_TYPES = new Set(["hook", "predict", "slider", "name", "apply", "check", "sim", "build"]);
+const STAGE_TYPES = new Set(["hook", "predict", "slider", "name", "apply", "check", "sim", "build", "weigh"]);
 const REGISTERED_SIMS = new Set(files.filter((f) => f.startsWith("js/sims/") && f !== "js/sims/base.js")
   .map((f) => f.slice("js/sims/".length, -3)));
 const REQUIRED_PER_LEVEL = [
@@ -88,7 +88,7 @@ for (const f of lessonFiles) {
   for (const [i, st] of lesson.stages.entries()) {
     if (!STAGE_TYPES.has(st.type)) where(`stage ${i}: unknown type "${st.type}"`);
     if (st.levels && st.levels.some((l) => l < 1 || l > 4)) where(`stage ${i}: levels out of range`);
-    for (const key of ["t", "sub", "q", "why", "question", "note", "after"]) {
+    for (const key of ["t", "sub", "q", "why", "question", "note", "after", "evidence", "ask"]) {
       const v = st[key];
       if (v === undefined) continue;
       if (!Array.isArray(v)) { where(`stage ${i}: "${key}" must be an array of level variants`); continue; }
@@ -123,6 +123,20 @@ for (const f of lessonFiles) {
         for (const n of t.needs ?? []) if (!ids.has(n)) where(`stage ${i}: trial "${t.name?.[0]}" needs "${n}", which is not a part`);
       }
     }
+    /* A weigh stage carries interpretations that this product does not itself
+       assert, so the one thing it may never do is present one unattributed.
+       "Labelled, not smuggled" is a rule about the format, not a habit of the
+       author, which means the build has to be the thing that enforces it. */
+    if (st.type === "weigh") {
+      if (!Array.isArray(st.views) || st.views.length < 2) {
+        where(`stage ${i}: a weigh stage needs at least two views — one view is an assertion, not a weighing`);
+      }
+      for (const [j, v] of (st.views ?? []).entries()) {
+        if (!v.who?.trim()) where(`stage ${i}, view ${j}: no "who" — an interpretation must say whose it is`);
+        if (!Array.isArray(v.claim) || !v.claim[0]) where(`stage ${i}, view ${j}: "claim" needs an L1 variant`);
+        if (!Array.isArray(v.because) || !v.because[0]) where(`stage ${i}, view ${j}: "because" needs an L1 variant — a view without its reasoning is a label`);
+      }
+    }
     if (st.type === "check") {
       if (!st.concept) where(`stage ${i}: a check must name the concept it tests`);
       if (st.answer == null || !st.options?.length) where(`stage ${i}: check needs options and an answer index`);
@@ -130,6 +144,27 @@ for (const f of lessonFiles) {
       else if (st.concept && !reviews[st.concept]) {
         reviews[st.concept] = { q: st.q, options: st.options, answer: st.answer, why: st.why, from: lesson.id };
       }
+    }
+  }
+
+  /* The module's concept list is a contract, not documentation. A typo'd
+     concept id used to lift a review beat into reviews.json that no lesson ever
+     seeded — so the child was scheduled to be retested on something that could
+     never come due, and nothing anywhere said so. */
+  {
+    const owner = modules.find((m) => m.id === lesson.module);
+    if (!owner) where(`module "${lesson.module}" is not in curriculum.json`);
+    else if (!owner.concepts?.length) where(`module "${lesson.module}" declares no concepts`);
+    else {
+      const allowed = new Set(owner.concepts);
+      for (const st of lesson.stages) {
+        if (st.concept && !allowed.has(st.concept)) {
+          where(`concept "${st.concept}" is not declared in ${lesson.module}'s concepts list`);
+        }
+      }
+    }
+    if (lesson.specimen && !(owner?.specimens ?? []).some((s) => s.id === lesson.specimen)) {
+      where(`specimen "${lesson.specimen}" is not defined under module ${lesson.module}`);
     }
   }
 
@@ -186,7 +221,17 @@ const shellJs = files.filter((f) => /^js\/[^/]+\.js$/.test(f));
    the membrane physics, so counting it against the lesson budget would be a
    number nobody experiences. */
 const lessonJs = files.filter((f) => f.startsWith("js/lesson/") || f.startsWith("js/components/"));
+/* A sim stage loads base.js plus ONE simulation, never all of them — so the sum
+   was measuring a cost nobody pays, and with thirty more sims to write it would
+   have failed the build on a number no child would ever download. The budget is
+   the worst single stage: base plus the largest sim. */
 const simJs = files.filter((f) => f.startsWith("js/sims/"));
+const simStage = () => {
+  const base = simJs.filter((f) => f === "js/sims/base.js");
+  const worst = simJs.filter((f) => f !== "js/sims/base.js")
+    .sort((a, b) => gz(b) - gz(a)).slice(0, 1);
+  return [...base, ...worst];
+};
 const shellCss = CSS_ORDER_FOR_BUDGET;
 
 const preloadFonts = files.filter((f) => f.includes("fonts/nunito"));
@@ -207,7 +252,7 @@ const preloadFonts = files.filter((f) => f.includes("fonts/nunito"));
 const budgets = [
   ["shell JS (gz)", sum(shellJs), 25 * 1024],
   ["lesson JS (gz, lazy)", sum(lessonJs), 20 * 1024],
-  ["sim JS (gz, per-stage)", sum(simJs), 20 * 1024],
+  ["sim JS (gz, worst stage)", sum(simStage()), 20 * 1024],
   ["shell CSS (gz)", sum(shellCss), 20 * 1024],
   ["preloaded fonts", raw(preloadFonts), 35 * 1024],
 ];

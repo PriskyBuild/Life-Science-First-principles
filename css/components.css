@@ -521,7 +521,35 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
   padding: var(--s-4); border-radius: var(--r-md);
   background: var(--w-discovery-tint); border-inline-start: 5px solid var(--w-discovery-line);
   color: var(--ink);
+  display: grid; gap: var(--s-2);
 }
+/* The simulation's own account of what this child did, under the authored
+   objective. Quieter, because it is a report rather than a reward. */
+.stage-said { color: var(--ink-2); font-size: var(--fs-sm); }
+
+/* ---- weigh: attributed readings of the same evidence ----
+   Deliberately symmetrical. Two views styled differently is an argument made
+   in CSS, and a child reads that long before they read the words. Same border,
+   same weight, same everything; only the name at the top differs. */
+.weigh-evidence, .weigh-ask {
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--sunk); color: var(--ink-2); font-size: var(--fs-sm);
+}
+.weigh-ask { border-inline-start: 5px solid var(--w-line); color: var(--ink); font-size: var(--fs-md); }
+.weigh-views { display: grid; gap: var(--s-3); }
+.weigh-view {
+  border: var(--clay-border) solid var(--hairline);
+  border-radius: var(--r-md); background: var(--surface); box-shadow: var(--e1);
+}
+.weigh-who {
+  display: flex; align-items: center; gap: var(--s-3);
+  min-height: var(--touch); padding: var(--s-2) var(--s-4);
+  font-weight: var(--weight-bold); cursor: pointer;
+  border-radius: var(--r-md);
+}
+.weigh-body { padding: 0 var(--s-4) var(--s-4); display: grid; gap: var(--s-2); }
+.weigh-claim { font-weight: var(--weight-bold); }
+.weigh-because, .weigh-predicts { color: var(--ink-2); font-size: var(--fs-sm); }
 
 /* progress ticks: position without a percentage, which means nothing to a
    five-year-old and invites clock-watching in everyone else */
@@ -638,6 +666,25 @@ fp-sim, .sim { display: grid; gap: var(--s-3); }
 .sim-chip[data-shape="cross"] { clip-path: polygon(35% 0,65% 0,65% 35%,100% 35%,100% 65%,65% 65%,65% 100%,35% 100%,35% 65%,0 65%,0 35%,35% 35%); }
 .sim-chip[data-shape="hex"] { clip-path: polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%); }
 .sim-chip[data-shape="square"] { border-radius: 2px; }
+
+/* ---- condition switches ----
+   Both states are pressable, so both stay raised: elevation means "you may
+   press this" everywhere inside <main>, and borrowing it to also mean "this is
+   switched on" would break the one rule the whole affordance language rests on.
+   The state is carried by the word in the label, by aria-pressed, and by a
+   border and a rule through the text — three channels, none of them colour. */
+.sim-switches { display: flex; flex-wrap: wrap; gap: var(--touch-gap); }
+.sim-switch {
+  min-height: var(--touch); padding-inline: var(--s-4);
+  border-radius: var(--r-pill);
+  border: var(--clay-border) solid var(--hairline);
+  background: var(--surface); box-shadow: var(--e1);
+  font-weight: var(--weight-bold); font-size: var(--fs-sm);
+}
+.sim-switch[aria-pressed="true"] { border-color: var(--w-line); color: var(--w-text); background: var(--w-tint); }
+.sim-switch[aria-pressed="false"] { color: var(--ink-3); text-decoration: line-through; }
+.sim-switch-note { font-size: var(--fs-sm); color: var(--ink-2); margin: 0; }
+.sim-beat { flex: 1 1 auto; }
 
 /* ---- build stage and the boss trials ---- */
 .board-slots { display: flex; flex-wrap: wrap; gap: var(--touch-gap); }

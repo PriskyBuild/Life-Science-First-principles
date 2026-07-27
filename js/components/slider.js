@@ -43,9 +43,14 @@ class Slider extends HTMLElement {
   }
 
   sync(emit) {
+    // A slider labelled "The ground" reading "3" says nothing. data-words maps
+    // each step to a name, and that name becomes both the visible readout and
+    // aria-valuetext — so the number is never the only thing on offer.
+    const words = this.dataset.words?.split("|");
     const unit = this.dataset.unit ?? "";
-    this.readout.textContent = `${this.input.value}${unit}`;
-    this.input.setAttribute("aria-valuetext", `${this.input.value}${unit}`);
+    const text = words?.[Number(this.input.value)] ?? `${this.input.value}${unit}`;
+    this.readout.textContent = text;
+    this.input.setAttribute("aria-valuetext", text);
     if (emit) {
       this.dispatchEvent(new CustomEvent("fp:change", {
         bubbles: true, detail: { value: this.value, label: this.dataset.label },

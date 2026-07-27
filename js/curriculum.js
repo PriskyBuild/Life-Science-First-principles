@@ -80,8 +80,47 @@ export const lessonFile = (moduleId, index) => authored[moduleId]?.[index] ?? nu
     Atlas used to promise twenty-five modules and deliver one, which reads as
     abandoned rather than early. */
 export const worldHasContent = (world) => world.modules.some((m) => writtenCount(m.id) > 0);
-export const playableWorlds = () => worlds.filter(worldHasContent);
-export const comingWorlds = () => worlds.filter((w) => !worldHasContent(w));
+
+/** Having content is not enough — the child has to be able to GET there.
+
+    Authoring the Change world before the Code world produced a world with five
+    real lessons in it sitting behind a gate that no amount of play could open,
+    because the modules it waits on have nothing written in them yet. A locked
+    island naming a prerequisite that does not exist is worse than no island: it
+    is a door with no key, and the child has no way to know that.
+
+    So reachability is computed against what is AUTHORED, not against the graph:
+    play the unlock rules forward, treating a module as completable only if
+    every one of its lessons exists. A world appears when playing could actually
+    arrive at it, and it appears on its own the moment the path is written. */
+const reachableWorlds = () => {
+  const completable = new Set();
+  const fully = (m) => writtenCount(m.id) >= m.lessons;
+  for (let moved = true; moved; ) {
+    moved = false;
+    for (const w of worlds) {
+      for (const m of w.modules) {
+        if (completable.has(m.id) || !fully(m)) continue;
+        const gate = w.requires.every((r) => completable.has(r)) &&
+          (!w.requiresAnyCompleted || completable.size >= w.requiresAnyCompleted) &&
+          m.requires.every((r) => completable.has(r));
+        if (gate) { completable.add(m.id); moved = true; }
+      }
+    }
+  }
+  return new Set(worlds.filter((w) =>
+    w.requires.every((r) => completable.has(r)) &&
+    (!w.requiresAnyCompleted || completable.size >= w.requiresAnyCompleted)).map((w) => w.id));
+};
+
+export const playableWorlds = () => {
+  const open = reachableWorlds();
+  return worlds.filter((w) => worldHasContent(w) && open.has(w.id));
+};
+export const comingWorlds = () => {
+  const drawn = new Set(playableWorlds().map((w) => w.id));
+  return worlds.filter((w) => !drawn.has(w.id));
+};
 
 /** Every specimen in the curriculum, with the module it comes from. Flat so
     the Me screen can render the whole collection, collected or not — an empty

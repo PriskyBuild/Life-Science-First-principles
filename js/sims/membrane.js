@@ -162,7 +162,7 @@ class Membrane extends Sim {
       .filter((k) => k.id !== "water")
       .map((k) => `${c[k.id].in} of ${c[k.id].total} ${k.label.toLowerCase()} inside`);
     const blocked = this.kinds.filter((k) => k.size > this.pore).map((k) => k.label.toLowerCase());
-    const verdict = this.finished
+    const verdict = this.met
       ? "The cell has what it needs and the poison is out."
       : blocked.length
         ? `Holes this size block ${blocked.join(" and ")}.`
