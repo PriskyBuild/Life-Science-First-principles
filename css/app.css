@@ -411,10 +411,19 @@
 }
 
 /* ---------------------------------------------------------------------------
-   LEVEL SCALING — blueprint 6.4.
+   TWO DIALS, TWO ATTRIBUTES — blueprint 6.4, corrected.
+
+   data-level  <- prose    reading concerns: type, measure, motion
+   data-age    <- content  motor concerns: touch targets and gaps
+
+   They were one attribute until a review noticed what that does to a dyslexic
+   fourteen-year-old: asking for readable sentences also gave them a
+   five-year-old's science AND 76px buttons they do not need. Reading ability
+   and hand size are independent, so they scale independently.
+
    L1's 76px target is 2cm at 96 CSS px/in (NN/g guidance for under-9s), not a
-   rounded-down 72px. It is one of only two rows here that is an absolute px
-   value, because it is a physical measurement of a hand.
+   rounded-down 72px. It is the only absolute pixel value in the system,
+   because it is a physical measurement of a hand.
    --------------------------------------------------------------------------- */
 :root,
 [data-level="2"] {                      /* L2 is the default if nothing is set */
@@ -423,39 +432,34 @@
   --lh-body: 1.6;
   --measure: 50ch;
   --motion-scale: 1.1;
-  --touch: 60px;
-  --touch-gap: 12px;
 }
-
 [data-level="1"] {
   --type-scale: 1.375;                  /* 22px at a 16px root */
   --ratio: 1.28;
   --lh-body: 1.7;
   --measure: 40ch;
   --motion-scale: 1.25;
-  --touch: 76px;
-  --touch-gap: 16px;
 }
-
 [data-level="3"] {
   --type-scale: 1.0625;
   --ratio: 1.22;
   --lh-body: 1.55;
   --measure: 62ch;
   --motion-scale: 1;
-  --touch: 48px;
-  --touch-gap: 8px;
 }
-
 [data-level="4"] {
   --type-scale: 1;
   --ratio: 1.2;
   --lh-body: 1.5;
   --measure: 68ch;
   --motion-scale: .9;
-  --touch: 44px;
-  --touch-gap: 8px;
 }
+
+:root,
+[data-age="2"] { --touch: 60px; --touch-gap: 12px; }
+[data-age="1"] { --touch: 76px; --touch-gap: 16px; }
+[data-age="3"] { --touch: 48px; --touch-gap: 8px; }
+[data-age="4"] { --touch: 44px; --touch-gap: 8px; }
 
 /* Spacing derives from the level-scaled rem, so one multiplier moves type and
    rhythm together. Every step 1..16 is declared: a gap in the scale silently
@@ -1371,3 +1375,34 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
 /* The last rung is the only one that states a fact, so it looks different. */
 .tutor-panel[data-rung="consolidate"] { border-inline-start-color: var(--w-discovery-line); background: var(--w-discovery-tint); }
 .tutor-line { color: var(--ink); }
+
+/* ---- the signpost: one card instead of eighteen empty modules ---- */
+.signpost {
+  margin-top: var(--s-8); padding: var(--s-5);
+  border-radius: var(--r-lg); border: var(--clay-border) dashed var(--hairline);
+  background: var(--sunk);
+  box-shadow: var(--e0);         /* flat: nothing here is touchable yet */
+}
+.signpost-list { display: grid; gap: var(--s-2); grid-template-columns: repeat(auto-fill, minmax(min(15rem,100%), 1fr)); }
+.signpost-list li {
+  display: grid; gap: 2px; padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--hairline);
+}
+.signpost-title { font-weight: var(--weight-bold); color: var(--w-text); }
+.signpost-tag { font-size: var(--fs-sm); color: var(--ink-3); }
+
+/* ---- the level nudge: an offer, with a visible way to decline ---- */
+.nudge {
+  display: grid; gap: var(--s-3); margin-top: var(--s-4);
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--w-discovery-tint); border-inline-start: 5px solid var(--w-discovery-line);
+}
+.nudge-q { font-weight: var(--weight-bold); }
+.nudge-row { display: flex; gap: var(--s-3); flex-wrap: wrap; }
+
+/* ---- a simulation that broke says so, recoverably ---- */
+.sim-broken {
+  padding: var(--s-3) var(--s-4); border-radius: var(--r-md);
+  background: var(--w-change-tint); border-inline-start: 5px solid var(--w-change-line);
+  color: var(--ink); font-size: var(--fs-sm);
+}

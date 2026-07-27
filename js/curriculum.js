@@ -3,11 +3,16 @@
    data, not here — this file only evaluates them. */
 
 export let worlds = [];
+export let authored = {};      // moduleId -> { lessonIndex: file }
 const byId = new Map();       // moduleId -> { module, world }
 
 export async function loadCurriculum() {
-  const res = await fetch("content/curriculum.json");
+  const [res, auth] = await Promise.all([
+    fetch("content/curriculum.json"),
+    fetch("content/authored.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
+  ]);
   if (!res.ok) throw new Error(`curriculum ${res.status}`);
+  authored = auth;
   const data = await res.json();
   worlds = data.worlds;
   byId.clear();
@@ -66,6 +71,17 @@ export function lockReason(id, p) {
   }
   return "";
 }
+
+export const writtenCount = (moduleId) => Object.keys(authored[moduleId] ?? {}).length;
+export const isWritten = (moduleId, index) => authored[moduleId]?.[index] != null;
+export const lessonFile = (moduleId, index) => authored[moduleId]?.[index] ?? null;
+
+/** A world is only shown once something in it can actually be played. The
+    Atlas used to promise twenty-five modules and deliver one, which reads as
+    abandoned rather than early. */
+export const worldHasContent = (world) => world.modules.some((m) => writtenCount(m.id) > 0);
+export const playableWorlds = () => worlds.filter(worldHasContent);
+export const comingWorlds = () => worlds.filter((w) => !worldHasContent(w));
 
 /** Every specimen in the curriculum, with the module it comes from. Flat so
     the Me screen can render the whole collection, collected or not — an empty

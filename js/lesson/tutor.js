@@ -27,128 +27,45 @@ import { pick } from "./runner.js";
 export const RUNGS = ["notice", "focus", "compare", "analogy", "partial", "consolidate"];
 
 /* Level-scaled register: the same rung, said the way this child is spoken to. */
-const GENERIC = {
-  predict: [
-    ["Have a guess. You cannot get it wrong here.",
-     "Just pick one. A guess you have made is what makes the answer stick.",
-     "Commit to something. Being wrong on purpose is a legitimate strategy.",
-     "Anchor on a prediction. The size of the correction is what you will retain."],
-    ["Read the choices again. Which one feels most likely?",
-     "Read them again. Which would you bet a small amount on?",
-     "Narrow it to two, then pick between them.",
-     "Eliminate the one you are most confident is wrong, then choose."],
-    ["Two of them cannot both be true. Which?",
-     "Look for the two that disagree most. The answer is usually one of them.",
-     "Which two options are actually opposites? The real answer is rarely the neutral one.",
-     "The neutral option is almost never right in a designed question. Discount it and compare the rest."],
-    ["Have you seen anything like this before?",
-     "Has anything you already know behaved like this?",
-     "What is the nearest thing you already understand?",
-     "What analogous system do you already have a model for?"],
-    ["Think about what usually happens when something gets bigger.",
-     "Think about what changes when you make an opening bigger — not just for one thing.",
-     "Consider the effect on everything, not only the thing you want.",
-     "Consider the effect on the full population of species, not the target one."],
-    ["It is fine to just pick one and find out. That is what this is for.",
-     "Pick one and run it. The result is the teaching, not the guess.",
-     "Commit and test. An unconfirmed prediction teaches nothing either way.",
-     "Commit, then falsify. The prediction only has value once it meets the result."],
-  ],
-  sim: [
-    ["Try moving the slider and watch what happens.",
-     "Move the slider and watch. Something changes — see if you can catch what.",
-     "Change one thing at a time and watch what responds.",
-     "Vary one parameter and observe. Changing two at once tells you nothing about either."],
-    ["Watch just one kind of thing. Ignore the rest.",
-     "Pick one kind of molecule and follow only that one.",
-     "Track a single species and ignore the others for a moment.",
-     "Isolate one species and characterise its behaviour before considering the system."],
-    ["Some got through and some did not. What is different about them?",
-     "Some crossed and some bounced. What do the ones that crossed have in common?",
-     "Compare what crossed with what did not. The difference is one property.",
-     "Partition by outcome and find the property that separates the sets."],
-    ["It is a bit like a gate that only lets small things through.",
-     "Think of a sieve, or a gate with a height limit on it.",
-     "Think of any filter you know: what does it use to decide?",
-     "Every physical filter discriminates on some property. Which one is available here?"],
-    ["The size of the holes matters. What else does?",
-     "Hole size is half of it. What about the thing trying to get through?",
-     "Passage depends on two quantities, not one. You control one of them.",
-     "The criterion is relational: pore versus molecule. You control only one side."],
-    ["The holes let small things through and stop big ones. Try setting them so only the good stuff fits.",
-     "Passage depends on size against hole size. Find the setting where food fits and poison does not — then check it holds.",
-     "This is steric exclusion. Find the pore size between the two molecule sizes, then verify it is stable.",
-     "Steric exclusion: set the pore between the two radii. Then check whether that setting satisfies every requirement at once — it may not, and that gap is the point."],
-  ],
-  build: [
-    ["Read what each place says it needs.",
-     "Read each label. It says what job that place does.",
-     "Read the job descriptions before moving anything.",
-     "Read each slot's stated function first; the assignment is determined by it."],
-    ["Start with the one you are most sure about.",
-     "Do the easy one first. That leaves fewer choices for the rest.",
-     "Place the certain ones first and let elimination handle the rest.",
-     "Fix the constrained assignments first; the remainder collapses."],
-    ["One of them keeps things out. Which part does that?",
-     "One job is about keeping things out. Which part did that in the earlier lesson?",
-     "Match each job to the lesson it came from.",
-     "Each role maps onto one mechanism you have already operated. Recall the mechanism, not the name."],
-    ["Think of it like a house: walls, power, plans, builders.",
-     "A house has walls, power, plans and builders. Same four jobs here.",
-     "Any autonomous system needs a boundary, energy, information and machinery.",
-     "Boundary, energy, information, machinery — the same four functions in any self-maintaining system."],
-    ["The wall keeps things out. Now do the other three.",
-     "The membrane is the wall. That leaves energy, instructions and building.",
-     "Boundary is the membrane. Assign energy, information and synthesis.",
-     "Membrane is the boundary. The remaining three map to mitochondrion, nucleus and ribosome."],
-    ["Membrane keeps things out, mitochondrion makes energy, nucleus keeps instructions, ribosome builds. Put them in and see what survives.",
-     "Membrane is the boundary, mitochondrion the power, nucleus the archive, ribosome the factory. Place them and watch which stresses it survives.",
-     "Membrane, mitochondrion, nucleus, ribosome — boundary, energy, information, synthesis. Assign them and read which trials pass.",
-     "Boundary, energy, archive, synthesis. Assign accordingly, then note which trials each component rescues — that mapping is the lesson."],
-  ],
-  check: [
-    ["Have a go. Getting it wrong tells you something too.",
-     "Answer anyway. A wrong answer with an explanation teaches more than skipping.",
-     "Attempt it. Failed retrieval with feedback still strengthens the memory.",
-     "Attempt regardless. The testing effect survives failure provided feedback follows."],
-    ["Think back to what you just did.",
-     "Think back to what actually happened in the simulation.",
-     "Recall the mechanism you just operated, not the words around it.",
-     "Reconstruct from the mechanism you just manipulated rather than from the prose."],
-    ["One of these is the opposite of what you saw.",
-     "One answer contradicts what you watched happen. Cross it off.",
-     "Eliminate the option incompatible with what you observed.",
-     "Discard whichever option your own observation falsifies."],
-    ["What would happen if it were true?",
-     "Take each answer and ask what would follow if it were right.",
-     "Test each option by its consequence rather than its plausibility.",
-     "Evaluate each by entailment: what would have to be true elsewhere?"],
-    ["It is to do with size.",
-     "The answer is about one property of the thing, not about the cell doing anything.",
-     "Nothing active happened. That rules some options out.",
-     "No energy was expended by the system. That constrains the answer set."],
-    ["Pick the one that matches what you saw, then read why. The why is the part worth keeping.",
-     "Choose and read the explanation. The explanation is the point of the question.",
-     "Answer, then read the mechanism. The correction is what makes it stick.",
-     "Answer, then read the mechanism given. The feedback, not the score, is what does the work."],
-  ],
-};
+/* The ladders live in content/hints.json, not here.
+
+   They were 9 KB of strings compiled into the lesson bundle, which is why that
+   budget sat at 93% — one component from failing — for prose that is not code.
+   As content they are fetched with the lesson, cached, and editable by someone
+   who does not write JavaScript. Sprout's voice should not need a build. */
+let GENERIC = null;
+
+export async function loadHints() {
+  if (GENERIC) return GENERIC;
+  try {
+    GENERIC = await (await fetch("content/hints.json")).json();
+  } catch {
+    GENERIC = {};        // no hints is a quiet tutor, not a broken lesson
+  }
+  return GENERIC;
+}
 
 /* Stages with nothing to be stuck on. Offering help on a paragraph is noise. */
 const SILENT = new Set(["hook", "name", "apply", "slider"]);
 
-const ladderFor = (stage) => stage?.hints ?? GENERIC[stage?.type] ?? null;
+const ladderFor = (stage) => stage?.hints ?? GENERIC?.[stage?.type] ?? null;
 
 /** The interface a live model would implement. Async by design so swapping in
     a network-backed tutor later touches nothing but this function. */
 export async function ask({ stage, rung = 0 }) {
+  await loadHints();
   const ladder = ladderFor(stage);
   if (!ladder) return null;
   const n = Math.min(rung, ladder.length - 1);
   return { rung: n, name: RUNGS[n], text: pick(ladder[n]), last: n >= ladder.length - 1 };
 }
 
-export const canHelp = (stage) => !!stage && !SILENT.has(stage.type) && !!ladderFor(stage);
+/* Synchronous, so setStage can decide visibility without awaiting: once the
+   hints have loaded it is exact, and before then it errs toward offering help
+   for the stage types that always have a ladder. */
+const ALWAYS_HAS_A_LADDER = new Set(["predict", "sim", "build", "check"]);
+export const canHelp = (stage) =>
+  !!stage && !SILENT.has(stage.type) && (!!stage.hints || ALWAYS_HAS_A_LADDER.has(stage.type));
 
 /* ------------------------------------------------------------------ element */
 /* Non-modal by construction: it is a details/summary in the flow of the page.

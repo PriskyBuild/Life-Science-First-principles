@@ -10,7 +10,7 @@
    is how an economy like this rots, and it should fail loudly at the call site
    rather than pass review as a one-line diff. */
 
-import { progress, update, touchStreak, flush } from "./state.js";
+import { progress, update, flush } from "./state.js";
 import { survived, seed } from "./scheduler.js";
 
 export const RATES = Object.freeze({
@@ -60,7 +60,6 @@ export function awardXp(reason, { concept = null, multiplier = 1 } = {}) {
     p.xp += amount;
     p.ledger = [{ reason, amount, concept, at: Date.now() }, ...(p.ledger ?? [])].slice(0, 50);
   });
-  touchStreak();
   return amount;
 }
 

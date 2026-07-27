@@ -35,7 +35,11 @@ const browser = await chromium.launch(
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
 const page = await ctx.newPage();
 const errors = [];
-page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
+page.on("console", (m) => {
+  // One test throws on purpose to prove the loop survives it; its own log is
+  // not a defect. Everything else is.
+  if (m.type() === "error" && !/FP-BAD stopped/.test(m.text())) errors.push(m.text());
+});
 page.on("pageerror", (e) => errors.push(String(e)));
 
 await page.goto(BASE, { waitUntil: "networkidle" });
@@ -53,16 +57,35 @@ const EXPECT = { 1: 76, 2: 60, 3: 48, 4: 44 };
 await page.locator(".picker-card").nth(1).click();
 await page.waitForSelector(".islands");
 check("picking a level lands on the Atlas", (await page.locator("h1").textContent()) === "Atlas");
-check("6 world islands render", await page.locator(".island").count() === 6);
-check("25 module nodes render", await page.locator(".node").count() === 25);
+// Only worlds with playable content are drawn. Eighteen modules of "not yet
+// written" read as abandoned rather than early.
+check("the Atlas draws only worlds that have something in them",
+  (await page.locator(".island").count()) === 1, `${await page.locator(".island").count()} islands`);
+check("and names the rest honestly instead of pretending they are open",
+  (await page.locator(".signpost-list li").count()) === 5,
+  await page.locator(".signpost h2").textContent());
+// The dependency graph itself must be unchanged — the display was gated, the
+// model was not.
+{
+  const graph = await page.evaluate(async () => {
+    const c = await import("./js/curriculum.js");
+    const s = await import("./js/state.js");
+    return {
+      total: c.worlds.reduce((n, w) => n + w.modules.length, 0),
+      openNow: c.worlds.flatMap((w) => w.modules).filter((m) => c.isModuleUnlocked(m.id, s.progress)).length,
+    };
+  });
+  check("all 25 modules still exist in the graph behind it",
+    graph.total === 25 && graph.openNow === 1, JSON.stringify(graph));
+}
 
 // 3. unlock graph, cold save: only World 1 open, only its first module unlocked
 const openNodes = await page.locator("a.node-hit").count();
 check("exactly 1 module is open on a cold save", openNodes === 1, `${openNodes} open`);
 check("the open module is What is Life?",
   (await page.locator("a.node-hit .node-title").textContent()) === "What is Life?");
-const lockedIslands = await page.locator(".island--locked").count();
-check("5 worlds are locked before Cells", lockedIslands === 5, `${lockedIslands} locked`);
+check("the one drawn world is open, not a locked shell",
+  (await page.locator(".island--locked").count()) === 0, "");
 check("locks explain themselves rather than saying 'locked'",
   (await page.locator(".node--locked .node-status").first().textContent()).startsWith("Finish"));
 
@@ -101,7 +124,8 @@ check("locked modules are not focusable",
 // 8. level scaling: measure a real rendered target at every level
 for (const n of [1, 2, 3, 4]) {
   await page.evaluate((lv) => {
-    const p = JSON.parse(localStorage.getItem("fp.progress")); p.level = lv;
+    const p = JSON.parse(localStorage.getItem("fp.progress"));
+    p.prose = lv; p.content = lv;
     localStorage.setItem("fp.progress", JSON.stringify(p));
   }, n);
   await page.reload({ waitUntil: "networkidle" });
@@ -150,8 +174,8 @@ await page.reload({ waitUntil: "networkidle" });
 await page.waitForSelector(".islands");
 const titles = await page.locator("a.node-hit .node-title").allTextContents();
 check("completing What is Life? opens Cells", titles.includes("Cells"), titles.join(", "));
-check("Bodies/Living stay shut until Cells is done",
-  (await page.locator(".island--locked").count()) === 5);
+check("finishing one module does not conjure worlds that have no content",
+  (await page.locator(".island").count()) === 1, `${await page.locator(".island").count()} islands`);
 
 // 12. offline: kill the network and reload
 await page.goto(BASE, { waitUntil: "networkidle" });
@@ -319,7 +343,8 @@ for (const scheme of ["light", "dark"]) {
   await page.emulateMedia({ colorScheme: scheme });
   for (const lv of [1, 2, 3, 4]) {
     await page.goto(BASE + "styleguide.html", { waitUntil: "networkidle" });
-    await page.evaluate((n) => { document.documentElement.dataset.level = String(n); }, lv);
+    await page.evaluate((n) => { document.documentElement.dataset.level = String(n);
+    document.documentElement.dataset.age = String(n); }, lv);
     await page.waitForTimeout(120);
     const fails = await page.locator(".sg-fail").count();
     check(`styleguide: no failing token pair (${scheme} L${lv})`, fails === 0, `${fails} failing`);
@@ -353,6 +378,7 @@ await page.emulateMedia({ colorScheme: "light" });
   await page.goto(BASE + "styleguide.html", { waitUntil: "networkidle" });
   const read = async (lv) => page.evaluate((n) => {
     document.documentElement.dataset.level = String(n);
+    document.documentElement.dataset.age = String(n);
     const probe = document.createElement("div");
     probe.style.cssText = "width:var(--s-4);font-size:var(--fs-md)";
     document.body.append(probe);
@@ -402,7 +428,8 @@ await page.emulateMedia({ colorScheme: "light" });
   await page.waitForSelector(".islands");
   const sizes = [];
   for (const lv of [1, 4]) {
-    await page.evaluate((n) => { document.documentElement.dataset.level = String(n); }, lv);
+    await page.evaluate((n) => { document.documentElement.dataset.level = String(n);
+    document.documentElement.dataset.age = String(n); }, lv);
     await page.waitForTimeout(80);
     sizes.push((await page.locator(".node-mark .icon").first().boundingBox()).width);
   }
@@ -588,9 +615,10 @@ await page.screenshot({ path: join(SHOTS, "parts.png"), fullPage: false });
 
 /* ===================== phase 5: the gamification engine ===================== */
 
-const freshSave = (extra = {}) => ({
-  version: 1, level: 2, xp: 0, modules: {}, concepts: {}, specimens: [],
-  ledger: [], streak: { days: 0, last: null }, prefs: {}, ...extra,
+const freshSave = ({ level, ...extra } = {}) => ({
+  version: 2, prose: level ?? 2, content: level ?? 2,
+  xp: 0, modules: {}, concepts: {}, specimens: [], ledger: [], recent: [],
+  prefs: {}, ...extra,
 });
 const setSave = (save) => page.evaluate((s) => localStorage.setItem("fp.progress", JSON.stringify(s)), save);
 const getSave = () => page.evaluate(() => JSON.parse(localStorage.getItem("fp.progress")));
@@ -733,26 +761,18 @@ await page.waitForSelector(".islands");
     r.first === true && r.again === false && r.has && r.n === 1, JSON.stringify(r));
 }
 
-/* 39. Streak: two-day grace, and no dramatic loss. */
+/* 39. The streak and the XP counter are gone from the UI on purpose: built
+   carefully, read by nothing, shown to no measured benefit. What must NOT be
+   gone is the ledger, because badges are derived from it. */
 {
   const r = await engine((reward, sched, state) => {
     state.reset();
-    const DAY = 864e5;
-    const set = (dayIndex) => { state.progress.streak.last = dayIndex; };
-    // day 0, then day 2 (one day missed) -> grace holds
-    state.touchStreak();
-    const d0 = state.progress.streak.days;
-    set(Math.floor(Date.now() / DAY) - 2);
-    state.touchStreak();
-    const afterGap2 = state.progress.streak.days;
-    // day 0, then day 5 -> restart, but at 1 rather than 0
-    set(Math.floor(Date.now() / DAY) - 5);
-    state.touchStreak();
-    const afterGap5 = state.progress.streak.days;
-    return { d0, afterGap2, afterGap5 };
+    reward.awardXp("predict");
+    reward.awardXp("retrievalHit");
+    return { ledger: state.progress.ledger.length, streak: "streak" in state.progress };
   });
-  check("a two-day gap keeps the streak alive; a longer one restarts gently",
-    r.d0 === 1 && r.afterGap2 === 2 && r.afterGap5 === 1, JSON.stringify(r));
+  check("the XP ledger survives so badges keep their evidence",
+    r.ledger === 2 && r.streak === false, JSON.stringify(r));
 }
 
 /* 40. The Atlas puts due reviews above new material and reports the true
@@ -780,6 +800,9 @@ await page.waitForSelector(".islands");
 {
   await openWith(freshSave({ level: 2 }), "#/me");
   await page.waitForSelector(".badges");
+  check("Me shows no XP number and no streak",
+    !/\bXP\b|streak/i.test(await page.locator(".stats").innerText()),
+    await page.locator(".stats").innerText().then((t) => t.replace(/\n/g, " ")));
   check("Me lists every badge with its real criterion",
     (await page.locator(".badge").count()) === 5, "");
   check("Me shows the specimen collection including uncollected slots",
@@ -1318,10 +1341,15 @@ const assemble = (swap = null) => page.evaluate((sw) => {
     modules: { "what-is-life": { lessonsDone: 4 }, cells: { lessonsDone: 5 } },
   }));
   await page.waitForSelector(".islands");
-  const locked = await page.locator(".island--locked").count();
-  const open = await page.locator("a.node-hit").count();
-  check("completing Cells opens Bodies, The Living World and The Code",
-    locked === 2, `${locked} worlds still locked, ${open} modules open`);
+  const unlocked = await page.evaluate(async () => {
+    const c = await import("./js/curriculum.js");
+    const s = await import("./js/state.js");
+    return c.worlds.filter((w) => c.isWorldUnlocked(w, s.progress)).map((w) => w.id);
+  });
+  check("completing Cells still opens Bodies, The Living World and The Code in the graph",
+    ["bodies", "living", "code"].every((w) => unlocked.includes(w)), unlocked.join(", "));
+  check("but the Atlas only draws what a child can actually play",
+    (await page.locator(".island").count()) === 1, `${await page.locator(".island").count()} drawn`);
 }
 
 /* 68. Five lessons means five concepts on the retrieval schedule. */
@@ -1492,6 +1520,189 @@ const assemble = (swap = null) => page.evaluate((sw) => {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
   check("a landscape phone at level 1 still fits horizontally", overflow <= 1, `${overflow}px over`);
   await page.setViewportSize({ width: 1280, height: 900 });
+}
+
+/* ===================== the optimisation patch ===================== */
+
+/* 77. THE HEADLINE FIX. Reading register and conceptual depth are independent.
+   A dyslexic fourteen-year-old asking for readable sentences must not be given
+   a five-year-old's science — which is exactly what one dial did. */
+{
+  await openWith({ ...freshSave(), prose: 1, content: 4,
+    modules: { "what-is-life": { lessonsDone: 4 }, cells: { lessonsDone: 1 } } }, "#/l/cells/1");
+  await page.waitForSelector(".stage");
+  const hook = await page.locator(".stage-hook").textContent();
+  const roots = await page.evaluate(() => ({
+    level: document.documentElement.dataset.level,
+    age: document.documentElement.dataset.age,
+    fs: getComputedStyle(document.body).fontSize,
+    touch: getComputedStyle(document.documentElement).getPropertyValue("--touch").trim(),
+  }));
+  check("simple words and hard science can be asked for together",
+    roots.level === "1" && roots.age === "4", JSON.stringify(roots));
+  check("the prose really is the level-1 wording",
+    /A wall keeps everything out/.test(hook), hook.slice(0, 50));
+
+  // and the CONTENT track is the grown-up one: five molecule types, not two
+  for (let i = 0; i < 8; i++) {
+    const t = await page.locator(".stage").getAttribute("data-type");
+    if (t === "sim") break;
+    if (t === "predict") await page.locator(".predict-option").first().click();
+    await page.waitForTimeout(50);
+    await page.locator(".next-btn").click();
+    await page.waitForTimeout(70);
+  }
+  await page.waitForSelector(".sim-canvas");
+  const kinds = await page.evaluate(() => document.querySelector("fp-membrane").kinds.length);
+  check("while the science stays at the level-4 track", kinds === 6, `${kinds} molecule types`);
+}
+
+/* 78. Touch targets follow CONTENT, not prose. A teenager who wants large text
+   has adult motor control and does not want 76px buttons. */
+{
+  await openWith({ ...freshSave(), prose: 1, content: 4 });
+  await page.waitForSelector(".islands");
+  const big = await page.evaluate(() => ({
+    fs: parseFloat(getComputedStyle(document.body).fontSize),
+    touch: parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--touch")),
+  }));
+  await openWith({ ...freshSave(), prose: 4, content: 1 });
+  await page.waitForSelector(".islands");
+  const small = await page.evaluate(() => ({
+    fs: parseFloat(getComputedStyle(document.body).fontSize),
+    touch: parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--touch")),
+  }));
+  check("big text with small targets, and small text with big targets, are both reachable",
+    big.fs > small.fs && big.touch < small.touch,
+    `prose1/content4: ${big.fs}px text, ${big.touch}px target — prose4/content1: ${small.fs}px, ${small.touch}px`);
+}
+
+/* 79. Me exposes both dials and says why they are separate. */
+{
+  await openWith(freshSave(), "#/me");
+  await page.waitForSelector(".choices");
+  const legends = await page.locator(".choices legend").allTextContents();
+  check("Me offers words and science as two separate settings",
+    legends.some((l) => /words/i.test(l)) && legends.some((l) => /science/i.test(l)),
+    legends.join(" / "));
+  // the radio itself is visually hidden behind its clay box by design; a real
+  // child clicks the label, so the test does too
+  await page.locator('label:has(input[name="content"][value="4"])').click();
+  await page.waitForTimeout(150);
+  const after = await page.evaluate(() => ({
+    level: document.documentElement.dataset.level, age: document.documentElement.dataset.age }));
+  check("changing one dial leaves the other alone",
+    after.level === "2" && after.age === "4", JSON.stringify(after));
+}
+
+/* 80. One throwing simulation must not take the loop down with it. Before this,
+   the next frame was already scheduled at the top of tick(), so a throw meant
+   sixty errors a second forever and nothing rendered. */
+{
+  const r = await page.evaluate(async () => {
+    const { Sim, _running } = await import("./js/sims/base.js");
+    class Bad extends Sim {
+      setup() {} draw() {} describe() { return "bad"; }
+      step() { throw new Error("deliberate"); }
+    }
+    if (!customElements.get("fp-bad")) customElements.define("fp-bad", Bad);
+    const bad = document.createElement("fp-bad");
+    const good = document.createElement("fp-bad");
+    good.step = () => { good.ticks = (good.ticks ?? 0) + 1; };
+    // Pin them in the viewport: the off-screen IntersectionObserver would
+    // otherwise pause both a moment after they mount, which is correct
+    // behaviour and would make this test measure nothing.
+    for (const el of [bad, good]) el.style.cssText = "position:fixed;top:0;left:0;width:24px;height:24px;opacity:0";
+    document.body.append(bad, good);
+    // play() is what joins the shared loop AND starts it; adding to the set
+    // directly leaves the rAF unscheduled and nothing ever runs.
+    bad.play(); good.play();
+    await new Promise((res) => setTimeout(res, 260));
+    const out = { badStillRunning: _running.has(bad), goodTicks: good.ticks ?? 0,
+                  toldTheChild: !!document.querySelector(".sim-broken") };
+    bad.remove(); good.remove(); _running.clear();
+    return out;
+  });
+  check("a broken simulation is evicted rather than killing the loop",
+    r.badStillRunning === false && r.goodTicks > 5,
+    `evicted=${!r.badStillRunning}, healthy sim ticked ${r.goodTicks} times`);
+  check("and it says so recoverably instead of leaving a blank rectangle",
+    r.toldTheChild, "");
+}
+
+/* 81. The boss announces. It is the climax of the module and it was silent. */
+{
+  await openBoss();
+  await assemble(["mito", "nucleus"]);
+  await page.waitForSelector(".trials");
+  const spoken = await page.locator("fp-stage p[role=status].sr-only").textContent();
+  check("the stress-test result is spoken, not only drawn",
+    /1 of 3 stresses survived/.test(spoken) && /failed/.test(spoken), spoken.slice(0, 80));
+  await assemble();
+  await page.waitForTimeout(120);
+  check("and the announcement updates when the child fixes it",
+    /All 3 stresses survived/.test(await page.locator("fp-stage p[role=status].sr-only").textContent()), "");
+}
+
+/* 82. The level nudge: three lessons of evidence, then one offer, never an
+   automatic change. Self-selected difficulty skews upward and this is the
+   corrective the blueprint specified and phase 6 never built. */
+{
+  const r = await page.evaluate(async () => {
+    const lv = await import("./js/level.js");
+    const st = await import("./js/state.js");
+    st.reset();
+    lv.setLevels({ prose: 3, content: 3 });
+    const none = lv.levelNudge();
+    for (let i = 0; i < 3; i++) lv.recordLessonPerformance({ hits: 0, misses: 3, helped: true });
+    const down = lv.levelNudge();
+    st.reset(); lv.setLevels({ prose: 2, content: 2 });
+    for (let i = 0; i < 3; i++) lv.recordLessonPerformance({ hits: 4, misses: 0, helped: false });
+    const up = lv.levelNudge();
+    return { none, down, up };
+  });
+  check("no nudge before there is evidence", r.none === null, JSON.stringify(r.none));
+  check("three struggling lessons offer a gentler science level",
+    r.down?.direction === "down" && r.down.to === 2, JSON.stringify(r.down));
+  check("three effortless lessons offer a harder one",
+    r.up?.direction === "up" && r.up.to === 3, JSON.stringify(r.up));
+  const changed = await page.evaluate(async () => {
+    const st = await import("./js/state.js");
+    return st.progress.content;
+  });
+  check("but nothing changed on its own — the offer is the whole mechanism",
+    changed === 2, `content is ${changed}`);
+}
+
+/* 83. Sprout's ladders are content now, not 9 KB of strings in the bundle. */
+{
+  const fetched = [];
+  const listen = (r) => fetched.push(new URL(r.url()).pathname);
+  page.on("request", listen);
+  await openWith(freshSave({ modules: { "what-is-life": { lessonsDone: 4 } } }), "#/l/cells/0");
+  await page.waitForSelector(".stage");
+  await page.locator(".next-btn").click();
+  await page.waitForSelector("fp-tutor:not([hidden])");
+  await page.locator(".tutor-ask").click();
+  await page.waitForTimeout(120);
+  page.off("request", listen);
+  check("hints are fetched as content rather than compiled in",
+    fetched.some((u) => u.endsWith("/content/hints.json")), "");
+  check("and Sprout still speaks", (await page.locator(".tutor-line").textContent()).length > 10,
+    (await page.locator(".tutor-line").textContent()).slice(0, 40));
+}
+
+/* 84. The lesson index is generated, so a link can never point at a file that
+   is not there. */
+{
+  const consistent = await page.evaluate(async () => {
+    const c = await import("./js/curriculum.js");
+    const entries = Object.entries(c.authored).flatMap(([m, ls]) => Object.entries(ls).map(([i, f]) => [m, i, f]));
+    const checks = await Promise.all(entries.map(async ([, , f]) => (await fetch(`content/${f}`)).ok));
+    return { n: entries.length, allPresent: checks.every(Boolean) };
+  });
+  check("every lesson the app offers actually exists on disk",
+    consistent.n === 5 && consistent.allPresent, JSON.stringify(consistent));
 }
 
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));

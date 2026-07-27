@@ -31,7 +31,7 @@ four levels and both themes. If a token drifts, that page says so rather than lo
 
 ```bash
 npm run build      # lints content, enforces budgets, regenerates sw.js + reviews.json + app.css
-npm run verify     # drives Chromium through 151 checks (~4 min)
+npm run verify     # drives Chromium through 171 checks (~4 min)
 npm run lighthouse # performance / a11y / best practices / SEO, all gated at 95
 ```
 
@@ -75,7 +75,7 @@ and are redistributed here under it.
 | `js/sims/` | Simulations, imported per stage. A child in lesson 1 never downloads lesson 2's physics. |
 | `content/` | The curriculum graph and the lessons. `reviews.json` is generated from the lessons. |
 | `tools/` | Build, palette generator, browser test suite, Lighthouse runner. |
-| `docs/` | The Phase 1 blueprint, and `DECISIONS.md`. |
+| `docs/` | The blueprint, `DECISIONS.md`, and **`AUTHORING.md` — read this to write a lesson.** |
 
 **Read `docs/DECISIONS.md` before changing anything.** It is thirty-odd entries of what
 contradicted the plan and why — every one of them a bug that shipped, or nearly did.
@@ -86,10 +86,10 @@ Enforced by `tools/build.mjs`; the build fails if any is exceeded.
 
 | Tier | Budget | Currently |
 |---|---|---|
-| Shell JS (gzipped) | 25 KB | 15.8 |
-| Lesson JS (lazy) | 20 KB | 18.6 |
-| Simulation JS (per stage) | 20 KB | 8.9 |
-| Shell CSS (gzipped) | 20 KB | 14.0 |
+| Shell JS (gzipped) | 25 KB | 18.1 |
+| Lesson JS (lazy) | 20 KB | 17.3 |
+| Simulation JS (per stage) | 20 KB | 9.3 |
+| Shell CSS (gzipped) | 20 KB | 14.4 |
 | Preloaded fonts | 35 KB | 25.1 |
 
 ---
@@ -124,9 +124,13 @@ tap-to-pick then tap-to-place is the base, Enter and Space run the identical cod
 is a pointer layer calling the same two methods past an 8px threshold. One state machine, and
 the keyboard and screen-reader paths are the primary path rather than a retrofit.
 
-**Touch targets for young children are 2cm, not 44px.** 76px at level 1, and it is one of only
-two values in the system that is an absolute pixel measurement — it measures a hand, not a
-typeface, so it deliberately does not scale with the type.
+**Touch targets for young children are 2cm, not 44px.** 76px at level 1, and the only absolute
+pixel value in the system — it measures a hand, not a typeface.
+
+**Reading level and conceptual level are two dials, not one.** A dyslexic fourteen-year-old
+needs level-1 sentences and level-4 science. `data-level` carries the reading register (type,
+measure, motion); `data-age` carries the motor one (touch targets). They start linked and can
+be separated in Me. As a side effect, authoring needs two prose variants rather than four.
 
 ## What the XP will not pay for
 
@@ -144,18 +148,22 @@ will be tempted to add:
 Badges are derived from the retrieval schedule and never stored. "Finished the module" is not a
 badge. "Still had it three weeks later" is.
 
+The streak and the on-screen XP number are **deleted**. Both were built carefully and read by
+nothing — not a badge, not a screen, not a decision. The ledger stays because badges need it.
+See `docs/DECISIONS.md` D42.
+
 ---
 
 ## Still to do
 
 The engine is complete; the content is one module of twenty-five. In rough order of value:
 
-1. **Put it in front of a real child.** Two of the blueprint's open risks are now testable for
-   the first time — whether level inference from one non-verbal question is right often enough,
-   and whether the membrane simulation is legible to an eight-year-old rather than merely
-   correct. No further code answers either.
+1. **Put it in front of a real child.** The blueprint's open risks are now testable for the
+   first time — whether the level picker misfires (the nudge is built, its thresholds are
+   guesses), and whether the membrane simulation is legible to an eight-year-old rather than
+   merely correct. No further code answers either.
 2. **An authoring tool.** Twenty-four modules of hand-written JSON is the actual constraint on
-   scale. The format has survived five real lessons, so this is now a well-posed problem.
+   scale. `docs/AUTHORING.md` is the spec; the format has survived five lessons.
 3. **The Lab** — free play with every simulation, no lesson wrapper. Costs almost nothing; it is
    where this stops being a course and starts being a thing children open on a Saturday.
 4. **A live model behind Sprout.** The interface is already async for exactly this.

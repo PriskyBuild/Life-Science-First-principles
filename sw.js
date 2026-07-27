@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "53f75a52cc94";
+const VERSION = "c56122a28168";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -15,12 +15,14 @@ const PRECACHE = [
   "assets/icon-512.png",
   "assets/icon-maskable.png",
   "assets/mark.svg",
+  "content/authored.json",
   "content/cells/01-city-in-a-speck.json",
   "content/cells/02-the-wall-that-chooses.json",
   "content/cells/03-the-power-plant.json",
   "content/cells/04-the-instruction-room.json",
   "content/cells/05-build-a-cell.json",
   "content/curriculum.json",
+  "content/hints.json",
   "content/reviews.json",
   "css/app.css",
   "index.html",

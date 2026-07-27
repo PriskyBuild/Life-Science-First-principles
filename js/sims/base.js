@@ -36,8 +36,18 @@ function tick(now) {
   last = now;
   let steps = Math.min(Math.round(elapsed / TICK) || 1, MAX_CATCHUP);
   for (const sim of running) {
-    for (let i = 0; i < steps; i++) sim.step(TICK);
-    sim.render();
+    /* Without this, one simulation throwing does not stop the loop — the next
+       frame was already scheduled at the top of this function, so it throws
+       sixty times a second forever and nothing renders. Evict the offender,
+       let the rest carry on, and tell the child something recoverable. */
+    try {
+      for (let i = 0; i < steps; i++) sim.step(TICK);
+      sim.render();
+    } catch (err) {
+      running.delete(sim);
+      console.error(`${sim.tagName} stopped:`, err);
+      sim.fail?.(err);
+    }
   }
   if (!running.size) { cancelAnimationFrame(frame); frame = 0; }
 }
@@ -174,6 +184,18 @@ export class Sim extends HTMLElement {
     this.finished = true;
     this.pause();
     this.dispatchEvent(new CustomEvent("fp:sim-goal", { bubbles: true, detail }));
+  }
+
+  /** A simulation that breaks is not a blank rectangle: say so, and offer the
+      one action that might fix it. */
+  fail() {
+    this.canvas?.setAttribute("aria-label", "This experiment stopped working.");
+    const note = document.createElement("p");
+    note.className = "sim-broken";
+    note.setAttribute("role", "status");
+    note.textContent = "This experiment stopped. Try starting it again — nothing you did caused it.";
+    this.live?.replaceWith(note);
+    this.live = note;
   }
 
   /* ---- subclass contract ---- */

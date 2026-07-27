@@ -5,17 +5,21 @@
    app into a 2000-line one. */
 
 const KEY = "fp.progress";
-export const VERSION = 1;
+export const VERSION = 2;
 
 const fresh = () => ({
   version: VERSION,
-  level: null,            // null until inferred; see level.js
+  /* TWO dials, not one. Reading ability and conceptual maturity are
+     independent: a dyslexic fourteen-year-old needs level-1 prose and level-4
+     science, and one dial gave them a five-year-old's biology. */
+  prose: null,            // reading register: type size, measure, wording
+  content: null,          // conceptual depth: which stages, which parameters
   xp: 0,
   modules: {},            // id -> { lessonsDone: n, completedAt: iso }
   concepts: {},           // id -> { ease, due, reps } — spaced retrieval, phase 6
   specimens: [],          // collected specimen ids
   ledger: [],             // last 50 XP awards, so badges can read real history
-  streak: { days: 0, last: null },
+  recent: [],             // last few lessons' retrieval accuracy, for the level nudge
   prefs: {},              // theme, face, motion overrides
 });
 
@@ -23,7 +27,16 @@ const fresh = () => ({
    rather than after the first child loses a month of progress. Each entry
    upgrades FROM its key TO key+1. */
 const migrations = {
-  // 0: (d) => { ...; return d; },
+  /* v1 -> v2: one `level` became `prose` + `content`, and `streak` went away
+     with the counter nobody was shown. */
+  1: (d) => {
+    d.prose ??= d.level ?? null;
+    d.content ??= d.level ?? null;
+    delete d.level;
+    delete d.streak;
+    d.recent ??= [];
+    return d;
+  },
 };
 
 function migrate(data) {
@@ -92,20 +105,11 @@ export function reset() {
   update(() => {});
 }
 
-/* ---- streak: days a child learned something. Two-day grace, no loss drama,
-   no freeze economy, no notifications. Deliberate; see blueprint 7.4. ---- */
-const DAY = 864e5;
-const today = () => Math.floor(Date.now() / DAY);
-
-export function touchStreak() {
-  update((p) => {
-    const now = today();
-    if (p.streak.last === now) return;
-    const gap = p.streak.last == null ? Infinity : now - p.streak.last;
-    p.streak.days = gap <= 2 ? p.streak.days + 1 : 1;
-    p.streak.last = now;
-  });
-}
+/* The streak is gone. It was built carefully, shown to nobody's benefit, and
+   read by nothing — not one badge, not one screen. A retention mechanic in a
+   product with no retention data is a guess wearing a number. If a real child
+   ever asks where their streak went, that is the evidence to build it back on.
+*/
 
 /* XP is awarded only through reward.js, which owns the rate table and refuses
    to pay for anything not in it. There is deliberately no generic

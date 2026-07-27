@@ -15,21 +15,24 @@
       variants and be refined later without a schema change. One lesson file,
       not four. */
 
-import { progress } from "../state.js";
-import { DEFAULT_LEVEL } from "../level.js";
+import { prose, content } from "../level.js";
 
-export const level = () => progress.level ?? DEFAULT_LEVEL;
+export { prose, content };
+/** Kept as an alias so older call sites read naturally; it means PROSE. */
+export const level = prose;
 
-/** Resolve a text node for the current level. Falls back downward, never up:
+/** Resolve a text node for the reading register. Falls back downward, never up:
     an L4 child seeing L2 prose is a missed opportunity, an L1 child seeing L4
     prose is a wall. */
-export function pick(node, lv = level()) {
+export function pick(node, lv = prose()) {
   if (!Array.isArray(node)) return node ?? "";
   return node[Math.min(lv - 1, node.length - 1)] ?? node[0] ?? "";
 }
 
-/** Stages with no `levels` are for everyone. */
-export const forLevel = (stages, lv = level()) =>
+/** Stage filtering is a CONTENT decision, never a prose one — this is where
+    the pedagogy fork lives, and it must not move because a child asked for
+    bigger text. */
+export const forLevel = (stages, lv = content()) =>
   stages.filter((s) => !s.levels || s.levels.includes(lv));
 
 const cache = new Map();
@@ -50,7 +53,7 @@ export const conceptsOf = (lesson) =>
 
 /** Walks a lesson for one level. Deliberately a plain object with an index —
     a state machine class here would be an abstraction over `i++`. */
-export function runner(lesson, lv = level()) {
+export function runner(lesson, lv = content()) {
   const stages = forLevel(lesson.stages, lv);
   let i = 0;
   return {

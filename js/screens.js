@@ -4,19 +4,16 @@
 import { el } from "./el.js";
 import { icon as svgIcon, svgEl } from "./icons.js";
 import { progress, reset, update } from "./state.js";
-import { LEVELS, DEFAULT_LEVEL, setLevel } from "./level.js";
+import { LEVELS, DEPTH, prose, content, setLevels } from "./level.js";
 import {
   worlds, getModule, getWorldOf, isComplete, isModuleUnlocked,
   isWorldUnlocked, worldProgress, lockReason, nextUp, completedCount, allSpecimens,
+  playableWorlds, comingWorlds, writtenCount, isWritten,
 } from "./curriculum.js";
 import { due, dueCount, SESSION_CAP } from "./scheduler.js";
 import { BADGES, earnedBadges, hasSpecimen } from "./reward.js";
 
-const lvl = () => progress.level ?? DEFAULT_LEVEL;
-
-/* Which lessons actually exist. Kept here rather than guessed from the lesson
-   count so the module screen can be honest about what is written. */
-const AUTHORED = new Set(["cells/0", "cells/1", "cells/2", "cells/3", "cells/4"]);
+const lvl = prose;   /* text variants are a reading decision, always */
 
 /** Text nodes carry variants and fall back to the nearest lower level, so
     content can ship with two variants and be refined later without a schema
@@ -124,8 +121,28 @@ export function atlas() {
         el("span", { class: "continue-title", text: m.title }),
         el("span", { class: "continue-hook", text: pick(m.hook) }),
         svgIcon("next", "icon icon--lg")) : null,
-    el("div", { class: "islands" }, worlds.map(island)),
+    el("div", { class: "islands" }, playableWorlds().map(island)),
+    signpost(),
   ];
+}
+
+/* One card instead of eighteen empty modules. Finishing Cells used to open
+   eight modules that all said "not yet written", which reads as abandoned
+   rather than early. A small map that feels finished beats a large one that
+   feels broken. */
+function signpost() {
+  const coming = comingWorlds();
+  if (!coming.length) return null;
+  return el("section", { class: "signpost" },
+    el("h2", { text: pick(["More is being built", "Still being built"]) }),
+    el("p", { class: "shelf-note", text: pick([
+      "These worlds are coming. The one you are in is finished.",
+      `${coming.length} more worlds are being written. Everything on the map above is finished and playable.`,
+    ]) }),
+    el("ul", { class: "signpost-list" }, coming.map((w) =>
+      el("li", { "data-world": w.id },
+        el("span", { class: "signpost-title", text: w.title }),
+        el("span", { class: "signpost-tag", text: pick(w.tagline) })))));
 }
 
 /* --------------------------------------------------------------------- module */
@@ -147,7 +164,7 @@ export function module(id) {
     el("h2", { text: `${m.lessons} lessons` }),
     el("ol", { class: "lessons", "data-world": world.id },
       Array.from({ length: m.lessons }, (_, i) => {
-        const written = AUTHORED.has(`${id}/${i}`);
+        const written = isWritten(id, i);
         const inner = [
           el("span", { class: "lesson-n", text: String(i + 1) }),
           el("span", { class: "lesson-t", text: titles[i] ?? "Not yet written" }),
@@ -161,7 +178,7 @@ export function module(id) {
             : el("div", { class: "lesson-hit" }, inner));
       })),
     (() => {
-      const written = [...AUTHORED].filter((k) => k.startsWith(`${id}/`)).length;
+      const written = writtenCount(id);
       return written >= m.lessons ? null : el("p", { class: "notice notice--soft", text:
         `${written} of ${m.lessons} lessons are written. The engine, the format and the review schedule underneath them are already running.` });
     })(),
@@ -230,11 +247,15 @@ function specimenShelf() {
 }
 
 export function me() {
+  /* No XP number and no streak. Both were built carefully and read by nothing:
+     not a badge, not a screen, not a decision. A score with no evidence that a
+     child wants it is a number that teaches score-watching. Badges stay,
+     because they are evidence of mastery, and specimens stay because they are
+     content. See DECISIONS D37. */
   const stats = [
-    ["XP", progress.xp],
-    ["Modules complete", completedCount(progress)],
-    ["Day streak", progress.streak.days],
+    ["Modules finished", completedCount(progress)],
     ["Specimens", progress.specimens.length],
+    ["Badges", earnedBadges(progress).length],
   ];
 
   return [
@@ -246,8 +267,19 @@ export function me() {
     badgeShelf(),
     specimenShelf(),
 
-    choiceGroup("Which sentence feels right?", "level",
-      LEVELS.map((l) => ({ value: l.n, label: l.label, hint: l.sample })), lvl(), setLevel),
+    /* Two dials, deliberately separate and deliberately explained. Reading
+       ability and conceptual maturity are independent, and the child who needs
+       that most is the one who cannot get at it if they are one control. */
+    el("p", { class: "shelf-note", text: pick([
+      "You can change how the words are written and how hard the science is, one at a time.",
+      "Words and science are separate settings. Make the words easier without making the science easier — that is allowed, and it is what it is for.",
+    ]) }),
+    choiceGroup("How should the words be written?", "prose",
+      LEVELS.map((l) => ({ value: l.n, label: l.label, hint: l.sample })), prose(),
+      (v) => setLevels({ prose: v })),
+    choiceGroup("How deep should the science go?", "content",
+      DEPTH.map((d) => ({ value: d.n, label: d.label, hint: d.hint })), content(),
+      (v) => setLevels({ content: v })),
 
     choiceGroup("Colours", "theme", [
       { value: "", label: "Match my device" }, { value: "light", label: "Light" }, { value: "dark", label: "Dark" },
@@ -272,7 +304,8 @@ export function levelPicker() {
     el("p", { class: "lede", text: "Tap the sentence that sounds most like you. You can change it any time." }),
     el("ul", { class: "picker" }, LEVELS.map((l) =>
       el("li", {},
-        el("button", { class: "picker-card pressable", onclick: () => { setLevel(l.n); location.hash = "#/"; } },
+        el("button", { class: "picker-card pressable",
+          onclick: () => { setLevels({ prose: l.n, content: l.n }); location.hash = "#/"; } },
           el("span", { class: "picker-sample", text: l.sample }),
           el("span", { class: "picker-age", text: `Ages ${l.label}` }))))),
   ];

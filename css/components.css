@@ -695,3 +695,34 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
 /* The last rung is the only one that states a fact, so it looks different. */
 .tutor-panel[data-rung="consolidate"] { border-inline-start-color: var(--w-discovery-line); background: var(--w-discovery-tint); }
 .tutor-line { color: var(--ink); }
+
+/* ---- the signpost: one card instead of eighteen empty modules ---- */
+.signpost {
+  margin-top: var(--s-8); padding: var(--s-5);
+  border-radius: var(--r-lg); border: var(--clay-border) dashed var(--hairline);
+  background: var(--sunk);
+  box-shadow: var(--e0);         /* flat: nothing here is touchable yet */
+}
+.signpost-list { display: grid; gap: var(--s-2); grid-template-columns: repeat(auto-fill, minmax(min(15rem,100%), 1fr)); }
+.signpost-list li {
+  display: grid; gap: 2px; padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--hairline);
+}
+.signpost-title { font-weight: var(--weight-bold); color: var(--w-text); }
+.signpost-tag { font-size: var(--fs-sm); color: var(--ink-3); }
+
+/* ---- the level nudge: an offer, with a visible way to decline ---- */
+.nudge {
+  display: grid; gap: var(--s-3); margin-top: var(--s-4);
+  padding: var(--s-4); border-radius: var(--r-md);
+  background: var(--w-discovery-tint); border-inline-start: 5px solid var(--w-discovery-line);
+}
+.nudge-q { font-weight: var(--weight-bold); }
+.nudge-row { display: flex; gap: var(--s-3); flex-wrap: wrap; }
+
+/* ---- a simulation that broke says so, recoverably ---- */
+.sim-broken {
+  padding: var(--s-3) var(--s-4); border-radius: var(--r-md);
+  background: var(--w-change-tint); border-inline-start: 5px solid var(--w-change-line);
+  color: var(--ink); font-size: var(--fs-sm);
+}

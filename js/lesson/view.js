@@ -6,23 +6,21 @@
 
 import { el, mount } from "../el.js";
 import { icon } from "../icons.js";
-import { pick, loadLesson, runner, conceptsOf, level } from "./runner.js";
+import { pick, loadLesson, runner, conceptsOf, content } from "./runner.js";
 import { awardXp, completeLesson } from "../reward.js";
+import { recordLessonPerformance, levelNudge, acceptNudge, declineNudge } from "../level.js";
 import { review, GRADE } from "../scheduler.js";
-import { getModule, getWorldOf } from "../curriculum.js";
+import { getModule, getWorldOf, lessonFile } from "../curriculum.js";
 import "../components/predict.js";
 import "../components/slider.js";
 import "../components/quiz.js";
 import "../components/board.js";
-import { watchForStuck, canHelp } from "./tutor.js";
+import { watchForStuck, loadHints } from "./tutor.js";
 
-const LESSONS = {
-  "cells/0": "cells/01-city-in-a-speck.json",
-  "cells/1": "cells/02-the-wall-that-chooses.json",
-  "cells/2": "cells/03-the-power-plant.json",
-  "cells/3": "cells/04-the-instruction-room.json",
-  "cells/4": "cells/05-build-a-cell.json",
-};
+/* Which lesson file backs which slot comes from content/authored.json, which
+   the build generates by looking at what is on disk. A hand-maintained map
+   drifts the moment somebody adds a file, and the drift shows up as a link to
+   a lesson that does not exist. */
 
 /* Simulations are imported by name, only when a stage asks for one. A child who
    never reaches lesson 2 never downloads the physics. */
@@ -171,6 +169,11 @@ const RENDER = {
 
     const verdict = el("div", { class: "trials" });
     verdict.hidden = true;
+    /* The climax of the whole module was silent to a screen reader: the trials
+       rendered as a plain div. A concise spoken summary goes first, then the
+       readable detail — announcing the full list verbatim would be a paragraph
+       of speech nobody asked for. */
+    const spoken = el("p", { class: "sr-only", role: "status", "aria-live": "polite" });
 
     board.addEventListener("fp:place", () => {
       const slots = board.slots;
@@ -197,6 +200,10 @@ const RENDER = {
         el("p", { class: "trial-summary", text: results.every((r) => r.survived)
           ? pick(s.win) : pick(s.lose) }),
       );
+      const won = results.filter((r) => r.survived).length;
+      spoken.textContent = won === results.length
+        ? `All ${results.length} stresses survived. ${pick(s.win)}`
+        : `${won} of ${results.length} stresses survived. ${results.filter((r) => !r.survived).map((r) => pick(r.name)).join(" and ")} failed.`;
       verdict.classList.add("m-attend");
       // Surviving everything is the win. Failing is not a wall: the child sees
       // exactly which part was missing and can put it in and test again.
@@ -207,6 +214,7 @@ const RENDER = {
       el("p", { class: "stage-kicker", text: s.guided ? "Put it together" : "Build it" }),
       el("p", { class: "stage-lead", text: pick(s.t) }),
       board,
+      spoken,
       verdict,
     ];
   },
@@ -221,6 +229,7 @@ const RENDER = {
     });
     q.addEventListener("fp:quiz", (e) => {
       awardXp(e.detail.correct ? "retrievalHit" : "retrievalMiss", { concept: s.concept });
+      ctx.tally?.(e.detail.correct);
       ctx.allowAdvance();
     });
     return [el("p", { class: "stage-kicker", text: "Check yourself" }), q];
@@ -245,7 +254,7 @@ function celebrate() {
 /* --------------------------------------------------------------------- view */
 export async function lessonView(moduleId, indexStr) {
   const index = Number(indexStr);
-  const path = LESSONS[`${moduleId}/${index}`];
+  const path = lessonFile(moduleId, index);
   const mod = getModule(moduleId);
   const world = getWorldOf(moduleId);
 
@@ -259,8 +268,9 @@ export async function lessonView(moduleId, indexStr) {
   }
 
   const lesson = await loadLesson(path);
-  const lv = level();
+  const lv = content();           // stage filtering and sim complexity
   const walk = runner(lesson, lv);
+  loadHints();                    // warm the tutor's ladders while the child reads
   const host = el("div", { class: "stage-host" });
   const tutor = el("fp-tutor", { class: "tutor" });
   const bar = el("div", { class: "stage-bar" });
@@ -269,10 +279,12 @@ export async function lessonView(moduleId, indexStr) {
   const nextBtn = el("button", { class: "next-btn pressable", onclick: () => { walk.next(); draw(); } },
     el("span", { text: "Next" }), icon("next"));
 
+  const run = { hits: 0, misses: 0, helped: false };
   const ctx = {
     world: world?.id,
     level: lv,
     allowAdvance() { nextBtn.disabled = false; nextBtn.classList.add("m-attend"); },
+    tally(correct) { correct ? (run.hits += 1) : (run.misses += 1); },
   };
 
   function draw() {
@@ -299,7 +311,9 @@ export async function lessonView(moduleId, indexStr) {
     // specimen, seed the schedule, flush. This is the moment the spacing engine
     // starts running for this child.
     completeLesson(moduleId, index, { concepts, specimen: lesson.specimen });
+    recordLessonPerformance(run);
     celebrate();
+    const nudge = levelNudge();
     mount(host, el("div", { class: "stage stage--done m-enter" },
       el("p", { class: "stage-kicker", text: "Done" }),
       el("h2", { text: pick([
@@ -315,6 +329,24 @@ export async function lessonView(moduleId, indexStr) {
         "Queued at 1, 3, 7, 16 and 35 days, adjusted by how you do. Retrieval, not review.",
       ]) }),
       lesson.specimen ? el("p", { class: "stage-note", text: "Specimen collected. Check Me." }) : null,
+      /* Offered, never applied. Moving a child's level without asking is a
+         thing that happens TO them, and the whole reason this exists is that
+         self-selected difficulty skews upward and needed a corrective. */
+      nudge ? el("div", { class: "nudge" },
+        el("p", { class: "nudge-q", text: nudge.direction === "down"
+          ? pick(["That one was hard. Want the science a bit gentler for a while?",
+                  "That was a tough one. Shall I make the science a little gentler? The words stay exactly as they are."])
+          : pick(["That was easy for you. Want it harder?",
+                  "You got everything without help. Shall I make the science harder? The words stay as they are."]) }),
+        el("div", { class: "nudge-row" },
+          el("button", { class: "back pressable", onclick: (e) => {
+            acceptNudge(nudge);
+            e.target.closest(".nudge").replaceChildren(el("p", { class: "nudge-q", text: "Done. You can change it back in Me any time." }));
+          } }, el("span", { text: nudge.direction === "down" ? "Yes, gentler" : "Yes, harder" })),
+          el("button", { class: "back pressable", onclick: (e) => {
+            declineNudge();
+            e.target.closest(".nudge").remove();
+          } }, el("span", { text: "No, leave it" })))) : null,
       el("a", { class: "back pressable", href: `#/m/${moduleId}` }, icon("back"), el("span", { text: "Back to the module" }))));
     bar.replaceChildren();
     backBtn.hidden = nextBtn.hidden = true;
@@ -325,6 +357,7 @@ export async function lessonView(moduleId, indexStr) {
     // Struggle is detected, not self-reported: three seconds short of a minute
     // with no input, or one wrong answer, and Sprout puts its hand up.
     watchForStuck(host, () => tutor.nudge?.());
+    tutor.addEventListener("click", () => { run.helped = true; });
   });
 
   return [

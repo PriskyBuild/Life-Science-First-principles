@@ -31,6 +31,7 @@ const DEV_ONLY = new Set([
   "css/worlds.css", "css/tokens.css", "css/base.css", "css/components.css",
   // repo furniture, not app content
   "package.json", "package-lock.json", "vercel.json", "_headers", "README.md", "LICENSE",
+  "docs",
 ]);
 const files = walk().filter((f) => f !== "sw.js" && !f.endsWith(".woff") && !DEV_ONLY.has(f));
 const CSS_ORDER_FOR_BUDGET = ["css/worlds.css", "css/tokens.css", "css/base.css", "css/components.css"];
@@ -73,8 +74,10 @@ const REQUIRED_PER_LEVEL = [
   ["a check", (t) => t === "check"],
 ];
 
-const lessonFiles = files.filter((f) => f.startsWith("content/") && f !== "content/curriculum.json"
-  && f !== "content/reviews.json" && f.endsWith(".json"));
+/* Lessons live in content/<module>/, one file each. Everything directly inside
+   content/ is data the build itself writes or the curriculum graph — matching
+   on "any json under content" made the linter try to parse its own output. */
+const lessonFiles = files.filter((f) => /^content\/[^/]+\/[^/]+\.json$/.test(f));
 const reviews = {};
 
 for (const f of lessonFiles) {
@@ -140,6 +143,16 @@ for (const f of lessonFiles) {
 }
 
 writeFileSync(join(ROOT, "content/reviews.json"), JSON.stringify(reviews, null, 2) + "\n");
+
+/* Which lessons actually exist, generated rather than hand-listed. A hardcoded
+   set drifts the moment somebody adds a file, and the drift shows up as a link
+   to a lesson that is not there. */
+const authored = {};
+for (const f of lessonFiles) {
+  const lesson = JSON.parse(readFileSync(join(ROOT, f), "utf8"));
+  (authored[lesson.module] ??= {})[lesson.index] = f.replace(/^content\//, "");
+}
+writeFileSync(join(ROOT, "content/authored.json"), JSON.stringify(authored, null, 2) + "\n");
 
 /* Reachability: play the graph forward from an empty save. Anything still
    locked when nothing more can be unlocked is unreachable content — the bug
