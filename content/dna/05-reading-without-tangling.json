@@ -1,0 +1,140 @@
+{
+  "id": "dna/05",
+  "module": "dna",
+  "index": 4,
+  "title": "Reading Without Tangling",
+  "specimen": "unwinder",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Take a twisted rope and pull the two strands apart in the middle. The rest of it winds up tighter and tighter.",
+        "Separate a twisted rope anywhere along its length and the twist does not vanish — it piles up ahead of your hands until the rope will not open any further."
+      ],
+      "sub": [
+        "The same thing happens to DNA. So how does anything ever get read?",
+        "DNA is a double helix, so every fork has this problem, every time. Something has to deal with the twist."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "chromosome-structure",
+      "question": [
+        "What could you do about the twist piling up ahead?",
+        "The supercoiling accumulates ahead of the fork. What is the solution?"
+      ],
+      "options": [
+        "Cut the rope, let it spin, then join it back up",
+        "Pull harder",
+        "Nothing — it just has to stay twisted"
+      ],
+      "outcome": "Cut the rope, let it spin, then join it back up",
+      "note": [
+        "Guess first. The real answer is more alarming than you would expect.",
+        "Commit. The actual solution involves deliberately breaking the molecule the cell most needs intact."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each helper where it goes on the fork.",
+        "Assemble the replication fork: give each protein the job it does."
+      ],
+      "parts": [
+        { "id": "helicase", "label": "Unzipper" },
+        { "id": "topo", "label": "Twist-reliever" },
+        { "id": "polymerase", "label": "Copier" },
+        { "id": "ligase", "label": "Joiner" }
+      ],
+      "slots": [
+        { "correct": "helicase", "label": ["Splits the two sides apart", "Separates the strands at the fork"] },
+        { "correct": "topo", "label": ["Deals with the twist piling up", "Relieves supercoiling ahead of the fork"] },
+        { "correct": "polymerase", "label": ["Puts the new letters in", "Adds bases against the template"] },
+        { "correct": "ligase", "label": ["Sticks the pieces together", "Seals the gaps between fragments"] }
+      ],
+      "trials": [
+        {
+          "name": ["Open the strands", "Strand separation"],
+          "needs": ["helicase"],
+          "pass": ["The two sides come apart.", "The duplex opens at the fork."],
+          "fail": ["Nothing opened, so nothing could be copied.", "Without a helicase the duplex never opens and no template is exposed."]
+        },
+        {
+          "name": ["Keep going past the first turn", "Sustained progression"],
+          "needs": ["helicase", "topo"],
+          "pass": ["The twist gets released, so the fork keeps moving.", "Supercoiling is relieved and the fork continues."],
+          "fail": ["It opened, then jammed solid on its own twist.", "The fork stalled: torsional stress ahead of it made further unwinding impossible."]
+        },
+        {
+          "name": ["Actually copy it", "Synthesis"],
+          "needs": ["helicase", "topo", "polymerase"],
+          "pass": ["New letters go in against the old ones.", "The daughter strand is synthesised against the template."],
+          "fail": ["The strands were open and nothing wrote anything.", "Template exposed, no synthesis — separation alone copies nothing."]
+        },
+        {
+          "name": ["End up with one continuous strand", "Continuity"],
+          "needs": ["helicase", "topo", "polymerase", "ligase"],
+          "pass": ["The pieces are sealed into one whole strand.", "Fragments are joined into a continuous daughter strand."],
+          "fail": ["You got the letters right and left it in pieces.", "Correct sequence, unsealed: one strand is built in fragments and stays fragmented without a ligase."]
+        }
+      ],
+      "win": [
+        "It copies, and it does not tie itself in knots.",
+        "A working fork. Every one of those four jobs is required, and leaving any one out fails a different way."
+      ],
+      "lose": [
+        "Look at which test failed — it says what was missing.",
+        "Read which trial failed: each names the job that was not being done. Move the part and test again."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The twist-reliever really does cut the strand, let it spin, and join it up again.",
+        "The twist-reliever is an enzyme called topoisomerase, and it genuinely cuts the backbone, allows rotation, and reseals it.",
+        "Topoisomerase relieves torsional stress by transiently breaking one or both strands, permitting rotation, and religating. The break is real and controlled.",
+        "It is a startling solution: the cell's response to a topological problem is to deliberately introduce the exact lesion its repair machinery spends the rest of its time preventing — and then undo it, thousands of times a second, without losing the ends."
+      ],
+      "sub": [
+        "It is the scariest thing in the cell, and it happens constantly.",
+        "Breaking DNA on purpose is the last thing you would expect a cell to do, and it does it continuously.",
+        "The enzyme stays covalently bound to the cut end throughout, which is what stops the break from becoming permanent damage.",
+        "That transient covalent intermediate is also a drug target: several antibiotics and chemotherapies work by trapping topoisomerase mid-reaction, so the break is made and never resealed."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "chromosome-structure",
+      "q": [
+        "Why does the twist matter?",
+        "Why is supercoiling a problem for replication?",
+        "Why does torsional stress limit fork progression?"
+      ],
+      "options": [
+        "Because it builds up ahead and jams the fork",
+        "Because twisted DNA looks untidy",
+        "Because the twist makes the letters unreadable"
+      ],
+      "answer": 0,
+      "why": [
+        "Every bit you open makes the rest wind tighter. Without something to let the twist out, the whole thing seizes up after a short distance.",
+        "Unwinding at the fork does not remove twist, it displaces it. It accumulates ahead as supercoiling until the torsional resistance exceeds what the helicase can overcome, and the fork stalls.",
+        "The linking number of a closed or anchored duplex is topologically invariant, so local unwinding must be compensated somewhere. That is a mathematical constraint rather than a mechanical inconvenience, which is why the solution has to involve breaking the backbone rather than pulling harder."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Some medicines work by jamming this exact tool in fast-growing cells.",
+        "Fluoroquinolone antibiotics target bacterial topoisomerase, and several chemotherapies target the human one. Both trap the enzyme after it has cut and before it reseals, so the cells replicating fastest accumulate breaks first — which is why these drugs hit bacteria and tumours harder than resting tissue, and why their side effects land where they do."
+      ]
+    }
+  ]
+}

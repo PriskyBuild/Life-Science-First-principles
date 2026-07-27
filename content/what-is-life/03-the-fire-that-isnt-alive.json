@@ -1,0 +1,129 @@
+{
+  "id": "what-is-life/03",
+  "module": "what-is-life",
+  "index": 2,
+  "title": "The Fire That Isn't Alive",
+  "specimen": "flame-jar",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A fire eats, breathes, grows, gives off waste, and makes more fires. It is not alive.",
+        "A candle flame takes in fuel and oxygen, gives off carbon dioxide and water, grows, moves, responds to being disturbed, and starts new flames. It fails almost nothing on the list — and it is not alive."
+      ],
+      "sub": [
+        "So what is it missing?",
+        "This is the sharpest test the seven signs face, and working out what is absent is the point of the lesson."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "metabolism-is-not-burning",
+      "question": [
+        "What has a fire got that a living thing has not?",
+        "What does a flame lack that a cell has?"
+      ],
+      "options": [
+        "Instructions — a fire has no recipe for itself",
+        "Nothing, really",
+        "Fire is too hot to be alive"
+      ],
+      "outcome": "Instructions — a fire has no recipe for itself",
+      "note": [
+        "Guess before you read on.",
+        "Commit. Two of these are serious answers and one is a red herring about temperature."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Compare them",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Both take in fuel. Tie.",
+        "Both use oxygen and give off carbon dioxide. Tie.",
+        "Both grow and both spread. Tie.",
+        "A cell releases its energy in small controlled steps. A fire lets it all go at once, as heat.",
+        "A cell carries instructions for rebuilding itself. A fire carries nothing at all."
+      ],
+      "t": [
+        "Go through it point by point and find where they stop matching.",
+        "Compare the two systems criterion by criterion. The first three are genuine ties; the last two are not."
+      ],
+      "after": [
+        "Controlled steps, and a recipe. Those are the two differences that matter.",
+        "Two real differences: energy released in small captured steps rather than all at once, and a heritable specification of the system itself. Everything else was a draw."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Getting energy out in small steps, on purpose, is called metabolism.",
+        "Releasing energy in small controlled steps and capturing it is metabolism — not simply burning.",
+        "Metabolism is coupled, enzyme-catalysed oxidation: the same overall reaction as combustion, run in many small steps so the energy can be captured rather than lost as heat.",
+        "Glucose oxidation in a cell and in a flame have identical reactants, products and free energy change. The difference is entirely in the path — roughly thirty enzymatic steps that capture about a third of the available energy in ATP, against one step that captures none."
+      ],
+      "sub": [
+        "And a recipe for making another one of you.",
+        "Plus heredity: a specification that gets copied. A fire lights another fire but passes on nothing.",
+        "Combustion is inheritance-free. A new flame carries no information from the old one, so nothing can accumulate and nothing can improve.",
+        "This is why fire is the sharpest counter-example available. It has metabolism-like behaviour with no coupling and reproduction-like behaviour with no heredity — and it isolates exactly the two properties that matter."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "metabolism-is-not-burning",
+      "q": [
+        "Why is a fire not alive?",
+        "What does a flame fundamentally lack?",
+        "Which two properties does combustion lack?"
+      ],
+      "options": [
+        "It carries no instructions and captures no energy",
+        "It is not made of cells",
+        "It cannot move on its own"
+      ],
+      "answer": 0,
+      "why": [
+        "A fire does lots of things living things do. But it has no recipe for itself, and it throws all its energy away as heat instead of using it.",
+        "No heredity and no coupling. A new flame inherits nothing from the old one, so nothing can accumulate; and the energy leaves as heat rather than being captured to do work.",
+        "Both are needed and neither is present. Without energy capture there is nothing to power maintenance; without heredity there is nothing to select on, so a fire cannot adapt in any generation, however many flames it lights."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "life-is-a-process",
+      "levels": [3, 4],
+      "q": [
+        "Cells and fires run the same reaction on sugar. So what differs?",
+        "Glucose oxidation has the same ΔG in a cell and in a flame. What differs?"
+      ],
+      "options": [
+        "The path — many small captured steps instead of one uncontrolled one",
+        "The amount of energy released",
+        "The products of the reaction"
+      ],
+      "answer": 0,
+      "why": [
+        "The same sugar and the same oxygen make the same carbon dioxide and water, and release the same amount of energy. A cell just takes it out in about thirty small steps and catches most of it on the way.",
+        "Reactants, products and free energy change are identical; only the path differs. Thermodynamics fixes the endpoints and says nothing about the route, which is precisely the freedom enzymes exploit — they cannot change what is possible, only how fast and in what steps, and the steps are where the energy gets captured."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Your body runs at about the same temperature all day, even though it is burning fuel constantly.",
+        "You dissipate roughly a hundred watts continuously and hold your core temperature within a degree. That is only possible because the oxidation is staged: if a cell released glucose's energy the way a flame does, it would cook itself. Stepwise release is not an efficiency detail — it is what makes the whole arrangement survivable."
+      ]
+    }
+  ]
+}

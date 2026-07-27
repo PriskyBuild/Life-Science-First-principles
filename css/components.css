@@ -773,3 +773,11 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
   background: var(--w-change-tint); border-inline-start: 5px solid var(--w-change-line);
   color: var(--ink); font-size: var(--fs-sm);
 }
+
+/* A base in the replication tray IS a letter, which makes the letter the
+   redundant channel and means nothing has to be looked up in a legend. */
+.sim-base {
+  min-width: var(--touch);
+  font-family: var(--font-display); font-size: var(--fs-lg);
+  border-color: var(--chip, var(--w-line)); color: var(--w-text);
+}

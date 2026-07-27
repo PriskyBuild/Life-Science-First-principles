@@ -59,22 +59,34 @@ await page.waitForSelector(".islands");
 check("picking a level lands on the Atlas", (await page.locator("h1").textContent()) === "Atlas");
 // Only worlds with playable content are drawn. Eighteen modules of "not yet
 // written" read as abandoned rather than early.
-check("the Atlas draws only worlds that have something in them",
-  (await page.locator(".island").count()) === 1, `${await page.locator(".island").count()} islands`);
-check("and names the rest honestly instead of pretending they are open",
-  (await page.locator(".signpost-list li").count()) === 5,
-  await page.locator(".signpost h2").textContent());
-// Authoring Change before Code produced a world with real lessons behind a gate
-// no amount of play could open. A door with no key is worse than no door.
+/* Derived, never a literal. These were `=== 1` and `=== 5` when Cells was the
+   only authored module, and both silently stopped meaning anything the moment a
+   second module landed — they asserted a snapshot of the content rather than
+   the rule the content has to obey. */
 {
   const r = await page.evaluate(async () => {
     const c = await import("./js/curriculum.js");
-    const withContent = c.worlds.filter(c.worldHasContent).map((w) => w.id);
-    return { withContent, drawn: c.playableWorlds().map((w) => w.id) };
+    const satisfiable = (w) => w.requires.every((id) => {
+      const m = c.worlds.flatMap((x) => x.modules).find((x) => x.id === id);
+      return m && c.writtenCount(m.id) >= m.lessons;
+    });
+    return {
+      drawn: c.playableWorlds().map((w) => w.id),
+      coming: c.comingWorlds().map((w) => w.id),
+      withContent: c.worlds.filter(c.worldHasContent).map((w) => w.id),
+      badlyDrawn: c.playableWorlds().filter((w) => !c.worldHasContent(w) || !satisfiable(w)).map((w) => w.id),
+    };
   });
-  check("a world with content but no reachable path is not drawn yet",
-    r.withContent.includes("change") && !r.drawn.includes("change"),
-    `content in ${r.withContent.join(",")}; drawn ${r.drawn.join(",")}`);
+  const islands = await page.locator(".island").count();
+  const listed = await page.locator(".signpost-list li").count();
+  check("the Atlas draws exactly the worlds that are playable",
+    islands === r.drawn.length && r.drawn.length > 0, `${islands} islands, expected ${r.drawn.length}`);
+  check("and names every other world honestly instead of hiding it",
+    listed === r.coming.length && islands + listed === 6, `${listed} listed, ${islands} drawn`);
+  // Authoring Change before Code produced a world with real lessons behind a
+  // gate no amount of play could open. A door with no key is worse than no door.
+  check("no world is drawn that has no content or no reachable path",
+    r.badlyDrawn.length === 0, r.badlyDrawn.join(",") || "none");
 }
 // The dependency graph itself must be unchanged — the display was gated, the
 // model was not.
@@ -96,8 +108,22 @@ const openNodes = await page.locator("a.node-hit").count();
 check("exactly 1 module is open on a cold save", openNodes === 1, `${openNodes} open`);
 check("the open module is What is Life?",
   (await page.locator("a.node-hit .node-title").textContent()) === "What is Life?");
-check("the one drawn world is open, not a locked shell",
-  (await page.locator(".island--locked").count()) === 0, "");
+/* A locked island is legitimate now that later worlds are authored — it is a
+   preview and a goal. What is NOT legitimate is one whose stated prerequisite
+   cannot be finished, which is the state the reachability rule exists to
+   prevent. So the check moved from "no locked islands" to "every locked island
+   names something a child can actually go and do". */
+{
+  const bad = await page.evaluate(async () => {
+    const c = await import("./js/curriculum.js");
+    return c.playableWorlds().flatMap((w) => w.requires).filter((id) => {
+      const m = c.worlds.flatMap((x) => x.modules).find((x) => x.id === id);
+      return !m || c.writtenCount(m.id) < m.lessons;
+    });
+  });
+  check("every locked world names a prerequisite a child can actually finish",
+    bad.length === 0, bad.join(",") || "none");
+}
 check("locks explain themselves rather than saying 'locked'",
   (await page.locator(".node--locked .node-status").first().textContent()).startsWith("Finish"));
 
@@ -186,8 +212,13 @@ await page.reload({ waitUntil: "networkidle" });
 await page.waitForSelector(".islands");
 const titles = await page.locator("a.node-hit .node-title").allTextContents();
 check("completing What is Life? opens Cells", titles.includes("Cells"), titles.join(", "));
-check("finishing one module does not conjure worlds that have no content",
-  (await page.locator(".island").count()) === 1, `${await page.locator(".island").count()} islands`);
+{
+  const expect = await page.evaluate(async () =>
+    (await import("./js/curriculum.js")).playableWorlds().length);
+  const islands = await page.locator(".island").count();
+  check("finishing one module does not conjure worlds that have no content",
+    islands === expect, `${islands} islands, expected ${expect}`);
+}
 
 // 12. offline: kill the network and reload
 await page.goto(BASE, { waitUntil: "networkidle" });
@@ -1366,8 +1397,19 @@ const assemble = (swap = null) => page.evaluate((sw) => {
   });
   check("completing Cells still opens Bodies, The Living World and The Code in the graph",
     ["bodies", "living", "code"].every((w) => unlocked.includes(w)), unlocked.join(", "));
+  /* The point is the gap between the two, not a count: the graph opens Bodies
+     and The Living World, and the Atlas still refuses to draw them because
+     there is nothing in them yet. Asserting a literal here meant the test
+     stopped checking that gap the moment a second world was authored. */
+  const empty = await page.evaluate(async () => {
+    const c = await import("./js/curriculum.js");
+    const drawn = new Set(c.playableWorlds().map((w) => w.id));
+    return { drawnEmpty: c.worlds.filter((w) => drawn.has(w.id) && !c.worldHasContent(w)).map((w) => w.id),
+             bodiesDrawn: drawn.has("bodies"), livingDrawn: drawn.has("living") };
+  });
   check("but the Atlas only draws what a child can actually play",
-    (await page.locator(".island").count()) === 1, `${await page.locator(".island").count()} drawn`);
+    !empty.bodiesDrawn && !empty.livingDrawn && empty.drawnEmpty.length === 0,
+    JSON.stringify(empty));
 }
 
 /* 68. Five lessons means five concepts on the retrieval schedule. */

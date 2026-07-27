@@ -1,0 +1,130 @@
+{
+  "id": "genes/01",
+  "module": "genes",
+  "index": 0,
+  "title": "What Is a Gene For?",
+  "specimen": "gene-tag",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Three billion letters in a row, with no gaps and no full stops. Somewhere in there is the bit that makes your eyes.",
+        "Three billion letters, unpunctuated. No spaces, no capitals, no full stops — and somewhere inside it, the instruction for an eye."
+      ],
+      "sub": [
+        "How would you even find where one instruction starts?",
+        "Before you can read a genome you have to solve a problem nobody set out to create: where does one instruction end and the next begin?"
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "gene-is-a-unit",
+      "question": [
+        "How could you tell where an instruction starts in all those letters?",
+        "What would mark the beginning of a gene in an unpunctuated sequence?"
+      ],
+      "options": [
+        "There must be a particular pattern that means 'start here'",
+        "You would have to count from the beginning every time",
+        "You could not tell — you would have to guess"
+      ],
+      "outcome": "There must be a particular pattern that means 'start here'",
+      "note": [
+        "Have a think first.",
+        "Commit. The solution is the same one a written language would reach for, which is a hint about what a genome is."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Zoom in",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "A whole chromosome. Hundreds of millions of letters.",
+        "One region. A few million letters, and some of it is doing something.",
+        "A gene: a stretch with a start signal and a stop signal.",
+        "Inside it, the coding parts and the bits cut out before use.",
+        "Three letters at a time. Each triplet names one bead of a protein."
+      ],
+      "t": [
+        "Zoom in from a whole chromosome until you can see individual letters.",
+        "Zoom from chromosome to codon and watch the units change at each scale."
+      ],
+      "after": [
+        "A gene is a stretch of letters with a start and a stop, and a job.",
+        "The unit is not defined by length but by boundaries: a promoter that says where to begin, a coding stretch, and a stop. Everything else about a gene follows from that."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A gene is a stretch of the thread that has one job.",
+        "A gene is a length of DNA with a start signal, a stop signal, and a product it specifies.",
+        "A gene is a sequence with regulatory boundaries that specifies a functional product — usually a protein, sometimes an RNA that is the product itself.",
+        "The definition has been revised repeatedly and none of the versions is clean. One gene can yield several proteins by alternative splicing, genes overlap, and some are read from both strands. 'Gene' is a useful unit rather than a natural one, and it is worth knowing that early."
+      ],
+      "sub": [
+        "You have about twenty thousand of them.",
+        "About twenty thousand — which came as a shock, because the estimate before sequencing was five times higher.",
+        "Roughly 20,000 protein-coding genes, against pre-genome estimates of 100,000. A rice plant has more.",
+        "Gene count correlates poorly with anything anyone expected it to. The complexity is in regulation and combination, not inventory — which is what the next lesson is about."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "gene-is-a-unit",
+      "q": [
+        "What makes a gene a gene?",
+        "What defines the boundaries of a gene?",
+        "What individuates a gene?"
+      ],
+      "options": [
+        "It has a start, a stop, and something it makes",
+        "It is a fixed number of letters long",
+        "It is the part of DNA that is coloured differently"
+      ],
+      "answer": 0,
+      "why": [
+        "Genes are all different lengths. What they share is a signal saying where to start reading, a signal saying where to stop, and something they make.",
+        "Boundaries and product, not size. Genes vary from a few hundred bases to over two million, so length tells you nothing about whether you are looking at one.",
+        "The individuation is functional and regulatory rather than structural, which is exactly why the concept frays at the edges: overlapping reading frames, nested genes and alternative splicing all break the assumption that the genome partitions cleanly into units."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Finding where a gene starts is the first thing you have to do before you can fix a broken one.",
+        "Gene editing needs an address before it needs a tool. Locating boundaries precisely is what makes it possible to target a therapy at one gene and leave its neighbours alone — and getting the address wrong is the main risk in the whole field."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "genotype-vs-phenotype",
+      "q": [
+        "Is the instruction the same thing as the eye?",
+        "What is the relationship between a gene and the trait it affects?",
+        "How does genotype relate to phenotype?"
+      ],
+      "options": [
+        "No — one is the recipe, the other is what gets made",
+        "Yes, they are the same thing",
+        "The gene is a tiny copy of the eye"
+      ],
+      "answer": 0,
+      "why": [
+        "The recipe is not the cake. A gene is instructions for making something, and lots of other things affect how it turns out.",
+        "The sequence you carry is your genotype; what you actually end up with is your phenotype. Food, temperature, chance and other genes all sit between them.",
+        "The mapping is many-to-many and heavily context-dependent. Identical twins share a genotype and are distinguishable, which is the cleanest everyday demonstration that the relation is not identity — and the reason 'a gene for X' is nearly always a misleading phrase."
+      ]
+    }
+  ]
+}

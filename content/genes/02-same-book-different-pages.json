@@ -1,0 +1,133 @@
+{
+  "id": "genes/02",
+  "module": "genes",
+  "index": 1,
+  "title": "Same Book, Different Pages",
+  "specimen": "switch-board",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A cell in your eye and a cell in your liver have exactly the same instructions. They are not remotely the same.",
+        "Every cell in your body carries an identical genome. A neuron and a liver cell share every letter of it and have almost nothing else in common."
+      ],
+      "sub": [
+        "Same book. So what is different?",
+        "If the instructions are identical, the difference cannot be in the instructions."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "expression-is-selective",
+      "question": [
+        "If two cells have the same instructions, why are they different?",
+        "Given identical genomes, what accounts for the difference between cell types?"
+      ],
+      "options": [
+        "They read different parts of it",
+        "One of them has lost some instructions",
+        "They must have different instructions after all"
+      ],
+      "outcome": "They read different parts of it",
+      "note": [
+        "Guess first.",
+        "Commit. Two of these were seriously proposed, and one was disproved by cloning a frog."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [1, 2],
+      "guided": true,
+      "label": "Which cell?",
+      "min": 0,
+      "max": 3,
+      "value": 0,
+      "captions": [
+        "A stem cell: hardly anything switched on yet.",
+        "A muscle cell: the muscle pages on, the rest shut.",
+        "A liver cell: a different set on, and it makes different things.",
+        "A nerve cell: different again — and all four have the same book."
+      ],
+      "t": [
+        "Move through four different cells. Watch which pages are open.",
+        "Four cell types, one genome. Watch which genes are switched on in each."
+      ],
+      "after": [
+        "Same book every time. Only the open pages change.",
+        "Nothing was added or removed. What changed is which genes are being read."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [3, 4],
+      "guided": false,
+      "label": "Proportion of genes active",
+      "min": 0,
+      "max": 3,
+      "value": 0,
+      "captions": [
+        "Stem cell: broadly permissive chromatin, few lineage genes committed.",
+        "Muscle: myogenic programme on, alternative lineages actively repressed.",
+        "Liver: ~50% of genes expressed, but a different 50%.",
+        "Neuron: highest transcriptional diversity of any human cell type."
+      ],
+      "t": [
+        "Work out what is actually varying between these cells, given the genome is constant.",
+        "The genome is invariant across all four. Identify what the varying quantity is, and note that repression is as active a process as activation."
+      ],
+      "after": [
+        "Roughly half of all genes are on in any given cell — a different half each time.",
+        "Differentiation is not subtraction. Alternative programmes are actively repressed rather than absent, which is precisely why a differentiated nucleus can be reprogrammed at all."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Which pages a cell reads is called gene expression.",
+        "Which genes a cell is reading at any moment is its pattern of gene expression.",
+        "Gene expression: the regulated transcription of a subset of the genome. Identity is a expression state, not a genomic one.",
+        "Regulation is where the complexity lives. Human and chimpanzee protein-coding sequence differs by little more than one percent; most of what distinguishes them is when and where genes are switched on."
+      ],
+      "sub": [
+        "Nothing gets thrown away. It just gets switched off.",
+        "The unused instructions are still there, intact — which is a testable claim, and it was tested.",
+        "Gurdon transplanted a nucleus from an intestinal cell into an egg and grew a whole frog, proving nothing had been discarded. Fifty years later the same logic gave induced pluripotent stem cells.",
+        "Gurdon in 1962 and Yamanaka in 2006 share the 2012 Nobel for the two halves of that argument: the differentiated nucleus retains everything, and four transcription factors are enough to send it back."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "expression-is-selective",
+      "q": [
+        "What is different between a liver cell and a nerve cell?",
+        "What differs between two cell types in the same body?",
+        "What is the locus of difference between differentiated cell types?"
+      ],
+      "options": [
+        "Which genes they are reading",
+        "Which genes they have",
+        "How many chromosomes they have"
+      ],
+      "answer": 0,
+      "why": [
+        "They both have all the instructions. They are just reading different bits — and the bits they are not reading are still there.",
+        "The genome is identical; the expression pattern is not. This is why a skin cell can be reprogrammed back into something that can become anything — nothing was ever thrown away.",
+        "Difference is regulatory, not genomic. The strongest evidence is reversibility: somatic cell nuclear transfer produces a whole organism from a differentiated nucleus, which would be impossible if differentiation involved loss."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Doctors can turn a bit of your skin back into a cell that could become anything.",
+        "Induced pluripotent stem cells are made by switching a handful of genes back on in an ordinary adult cell. They let researchers grow a patient's own neurons in a dish to test a drug on the actual disease, and they sidestep the ethical objections to embryonic sources entirely."
+      ]
+    }
+  ]
+}

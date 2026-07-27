@@ -1,0 +1,124 @@
+{
+  "id": "genes/04",
+  "module": "genes",
+  "index": 3,
+  "title": "Your Grandmother's Eyes",
+  "specimen": "pedigree-chart",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Something skips a generation. Your grandmother had it, your mother did not, you do.",
+        "A trait appears, vanishes for a generation, and comes back. Nothing was lost and nothing was regained — and that pattern is a fingerprint."
+      ],
+      "sub": [
+        "How can it disappear and then come back?",
+        "The way a trait moves through a family tells you what kind of trait it is, before you sequence anything."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "inheritance-patterns",
+      "question": [
+        "How can something skip a whole generation?",
+        "What must be true for a trait to skip a generation entirely?"
+      ],
+      "options": [
+        "It was carried without showing",
+        "It came back by chance",
+        "It was passed on by someone else"
+      ],
+      "outcome": "It was carried without showing",
+      "note": [
+        "Guess first — you already know enough to work this out.",
+        "Commit. The previous lesson has already given you everything needed."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Match each family pattern to what it tells you.",
+        "Each pattern of inheritance leaves a distinctive signature in a family tree. Match them."
+      ],
+      "parts": [
+        { "id": "recessive", "label": "Needs two broken copies" },
+        { "id": "dominant", "label": "Needs only one" },
+        { "id": "xlinked", "label": "Carried on the X" }
+      ],
+      "slots": [
+        { "accepts": "recessive", "label": ["Skips generations; parents unaffected", "Appears in siblings with unaffected parents; both sexes equally"] },
+        { "accepts": "dominant", "label": ["Shows in every generation", "Present in every generation, affected child always has an affected parent"] },
+        { "accepts": "xlinked", "label": ["Mostly boys, passed through mothers", "Predominantly males, transmitted through unaffected female carriers, never father to son"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Someone who carries a broken copy without showing it is called a carrier.",
+        "A person with one broken copy and no signs of the condition is a carrier — and most people are carriers of something.",
+        "Heterozygous carriers are typically asymptomatic for recessive conditions. The average person carries several severe recessive alleles without knowing.",
+        "Every person carries an estimated one to two alleles that would be lethal or severely disabling in the homozygous state. This is the actual basis of the harm from close-relative marriage: shared ancestry raises the chance that both parents carry the same rare allele."
+      ],
+      "sub": [
+        "Which is why it can hide for a generation and then show up.",
+        "The trait did not skip anything. It was present the whole time, just not visible.",
+        "'Skipping a generation' is a description of the phenotype, never of the genotype — the allele was transmitted every step of the way.",
+        "The distinction matters for reasoning about family history: absence of the phenotype in a generation is weak evidence about the genotype, and pedigrees are read with that asymmetry in mind."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "inheritance-patterns",
+      "q": [
+        "Did the trait really skip a generation?",
+        "In what sense did the trait skip a generation?",
+        "Is 'skipping a generation' an accurate description?"
+      ],
+      "options": [
+        "No — the instruction was there, it just did not show",
+        "Yes, it was gone and came back",
+        "Yes, it jumped from grandmother to grandchild directly"
+      ],
+      "answer": 0,
+      "why": [
+        "Your mother had the broken copy and passed it to you. She had a working copy too, so it never showed in her.",
+        "The allele was transmitted at every step. Only the phenotype was absent, because the intervening carrier also had a working copy. Nothing skipped anything.",
+        "Genotype and phenotype come apart here, which is precisely why the distinction is worth having. Nothing can jump a generation — transmission is strictly stepwise — so any apparent skip is an unexpressed carrier."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "genotype-vs-phenotype",
+      "levels": [3, 4],
+      "q": [
+        "Why can a family tree tell you the pattern before any test?",
+        "What licenses inferring a mode of inheritance from a pedigree alone?"
+      ],
+      "options": [
+        "Because each pattern forbids things the others allow",
+        "Because affected people always look alike",
+        "Because the traits are always visible"
+      ],
+      "answer": 0,
+      "why": [
+        "Each pattern rules something out. X-linked recessive never goes father to son — so a single father-to-son transmission kills that explanation on its own, whatever else the tree looks like.",
+        "Pedigree analysis works by exclusion rather than accumulation. Each mode forbids particular transmissions — no male-to-male transmission for X-linked, no unaffected parent of an affected child for a fully penetrant dominant — so a single observation in the forbidden class eliminates a hypothesis outright. It is the same forbidden-outcome logic you met in the evidence lesson, applied to families."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Drawing a family tree is still one of the first things a doctor does.",
+        "A three-generation pedigree costs nothing, takes ten minutes, and remains one of the highest-yield tools in clinical genetics — it often narrows the possibilities enough to choose which test to order, or to show that no test is warranted."
+      ]
+    }
+  ]
+}

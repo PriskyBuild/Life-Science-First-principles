@@ -146,6 +146,120 @@
     ],
     "from": "cells/04"
   },
+  "dna-packing": {
+    "q": [
+      "Why can the thread not just be squashed into a ball?",
+      "Why is simple compression the wrong solution?",
+      "Why is undifferentiated compaction unacceptable?"
+    ],
+    "options": [
+      "Because it still has to be read, one bit at a time",
+      "Because a ball takes up more room",
+      "Because DNA is too stiff to squash"
+    ],
+    "answer": 0,
+    "why": [
+      "A tangle would fit. But the cell has to find one small part of it and read it — so it has to be packed in a way that can be undone in one spot without undoing the rest.",
+      "Volume is only half the problem. The structure has to permit local, reversible unpacking, because genes are read individually while the rest stays stored.",
+      "Compaction and accessibility are competing requirements, and the hierarchical solution satisfies both: each level can be locally relaxed without disturbing the others. A tangle would satisfy the first requirement and destroy the second."
+    ],
+    "from": "dna/01"
+  },
+  "chromosome-structure": {
+    "q": [
+      "When can you actually see a chromosome?",
+      "When are chromosomes visible under a light microscope?",
+      "Under what condition is a chromosome resolvable by light microscopy?"
+    ],
+    "options": [
+      "When the cell is dividing and it is packed up tight",
+      "All the time",
+      "Only when the cell is dead"
+    ],
+    "answer": 0,
+    "why": [
+      "Most of the time the thread is loose so it can be read. It only packs up tight when the cell is about to split, and that is the only time it is thick enough to see.",
+      "Chromatin is decondensed during interphase — which is what makes it readable — and condenses only for division. Chromosomes were named and counted for decades before anyone knew what they were made of, precisely because that is the one state visible with the instruments available.",
+      "Resolution is the constraint: decondensed chromatin is well below the diffraction limit, and only metaphase condensation brings it above. This is a nice case of a structure being characterised long before its composition, because the observable state was the atypical one."
+    ],
+    "from": "dna/01"
+  },
+  "four-letters": {
+    "q": [
+      "Why is four letters enough?",
+      "Why is a four-base alphabet sufficient?",
+      "Why is alphabet size the wrong thing to worry about?"
+    ],
+    "options": [
+      "Because the message is billions of letters long",
+      "Because each letter means a lot on its own",
+      "Because living things are simple"
+    ],
+    "answer": 0,
+    "why": [
+      "Each extra letter multiplies what you can say by four. Make the message long enough and four letters can say anything.",
+      "Capacity grows exponentially with length and only linearly with alphabet size. Three billion positions at four options each is capacity nobody has found a use for all of.",
+      "This is why binary is not a limitation for computers either. The alphabet sets bits per symbol — two for DNA — and the length does the rest. The interesting constraints on genomes are error rate and replication cost, not vocabulary."
+    ],
+    "from": "dna/02"
+  },
+  "base-pairing": {
+    "q": [
+      "Which letter does C hold hands with?",
+      "Which base pairs with cytosine?",
+      "What is the complement of cytosine?"
+    ],
+    "options": [
+      "G",
+      "A",
+      "T"
+    ],
+    "answer": 0,
+    "why": [
+      "C always goes with G, and A always goes with T. Never any other way round.",
+      "C pairs with G, A with T. The rule has no exceptions, and the next lesson is about what that rule makes possible.",
+      "C–G, joined by three hydrogen bonds against A–T's two, which is why GC-rich sequence has a higher melting temperature. The pairing is geometric as well as chemical: purine to pyrimidine keeps every rung the same width."
+    ],
+    "from": "dna/02"
+  },
+  "semiconservative-copying": {
+    "q": [
+      "How much of a new ladder is brand new?",
+      "In a newly replicated double helix, how much is newly synthesised?",
+      "What is the composition of a daughter duplex?"
+    ],
+    "options": [
+      "Half — one side is the original",
+      "All of it",
+      "None of it"
+    ],
+    "answer": 0,
+    "why": [
+      "Each new ladder is one old side and one new side. That is why it is called semiconservative — half is conserved.",
+      "One parental strand and one new one. Meselson and Stahl proved it by weight: after one round every molecule was intermediate in density, which only the semiconservative model predicts.",
+      "One parental, one daughter strand. Conservative replication would have given two populations after one round — all-heavy and all-light — and dispersive would never have separated at all. The single intermediate band ruled out both."
+    ],
+    "from": "dna/03"
+  },
+  "mutation-is-copy-error": {
+    "q": [
+      "What is a mutation?",
+      "What is a mutation, precisely?",
+      "What is the precise definition of a mutation?"
+    ],
+    "options": [
+      "A letter that got copied wrong and was not fixed",
+      "A monster in a film",
+      "Something a body does on purpose when it needs to change"
+    ],
+    "answer": 0,
+    "why": [
+      "It is just a copying mistake nobody corrected. Not something the body chose, and usually not dramatic at all.",
+      "An uncorrected copying error. Nothing about it is intentional — a cell cannot decide to mutate a gene it would find useful, and this is why the beetles could not simply turn dark.",
+      "It is undirected with respect to need, which is the load-bearing part. Bacteria placed under antibiotic pressure do not generate resistance mutations in response to the drug; the variation is present beforehand at low frequency and the drug reveals it. That was the point of the Luria–Delbrück experiment in 1943."
+    ],
+    "from": "dna/04"
+  },
   "testable-expectation": {
     "q": [
       "What makes an idea a good one to test?",
@@ -264,6 +378,101 @@
     ],
     "from": "evolution/05"
   },
+  "gene-is-a-unit": {
+    "q": [
+      "What makes a gene a gene?",
+      "What defines the boundaries of a gene?",
+      "What individuates a gene?"
+    ],
+    "options": [
+      "It has a start, a stop, and something it makes",
+      "It is a fixed number of letters long",
+      "It is the part of DNA that is coloured differently"
+    ],
+    "answer": 0,
+    "why": [
+      "Genes are all different lengths. What they share is a signal saying where to start reading, a signal saying where to stop, and something they make.",
+      "Boundaries and product, not size. Genes vary from a few hundred bases to over two million, so length tells you nothing about whether you are looking at one.",
+      "The individuation is functional and regulatory rather than structural, which is exactly why the concept frays at the edges: overlapping reading frames, nested genes and alternative splicing all break the assumption that the genome partitions cleanly into units."
+    ],
+    "from": "genes/01"
+  },
+  "genotype-vs-phenotype": {
+    "q": [
+      "Is the instruction the same thing as the eye?",
+      "What is the relationship between a gene and the trait it affects?",
+      "How does genotype relate to phenotype?"
+    ],
+    "options": [
+      "No — one is the recipe, the other is what gets made",
+      "Yes, they are the same thing",
+      "The gene is a tiny copy of the eye"
+    ],
+    "answer": 0,
+    "why": [
+      "The recipe is not the cake. A gene is instructions for making something, and lots of other things affect how it turns out.",
+      "The sequence you carry is your genotype; what you actually end up with is your phenotype. Food, temperature, chance and other genes all sit between them.",
+      "The mapping is many-to-many and heavily context-dependent. Identical twins share a genotype and are distinguishable, which is the cleanest everyday demonstration that the relation is not identity — and the reason 'a gene for X' is nearly always a misleading phrase."
+    ],
+    "from": "genes/01"
+  },
+  "expression-is-selective": {
+    "q": [
+      "What is different between a liver cell and a nerve cell?",
+      "What differs between two cell types in the same body?",
+      "What is the locus of difference between differentiated cell types?"
+    ],
+    "options": [
+      "Which genes they are reading",
+      "Which genes they have",
+      "How many chromosomes they have"
+    ],
+    "answer": 0,
+    "why": [
+      "They both have all the instructions. They are just reading different bits — and the bits they are not reading are still there.",
+      "The genome is identical; the expression pattern is not. This is why a skin cell can be reprogrammed back into something that can become anything — nothing was ever thrown away.",
+      "Difference is regulatory, not genomic. The strongest evidence is reversibility: somatic cell nuclear transfer produces a whole organism from a differentiated nucleus, which would be impossible if differentiation involved loss."
+    ],
+    "from": "genes/02"
+  },
+  "dominance": {
+    "q": [
+      "Why is a dominant copy dominant?",
+      "Why is a dominant allele dominant?",
+      "What is the usual mechanistic basis of dominance?"
+    ],
+    "options": [
+      "Because one working copy makes enough",
+      "Because it is stronger than the other one",
+      "Because it comes from the father"
+    ],
+    "answer": 0,
+    "why": [
+      "Nothing is fighting anything. If one copy makes enough of what you need, having a broken second copy does not show.",
+      "It is a dosage fact, not a contest. One functional allele generally produces sufficient product, so the broken one is invisible — which also explains why some conditions are not recessive: where half the normal amount is not enough, one broken copy does show.",
+      "Dominance is a consequence of the shape of the dose-response curve. Most enzymes operate well above the level at which output limits flux, so halving them changes nothing measurable. Where flux is dose-sensitive you get haploinsufficiency instead, and the same class of mutation becomes dominant."
+    ],
+    "from": "genes/03"
+  },
+  "inheritance-patterns": {
+    "q": [
+      "Did the trait really skip a generation?",
+      "In what sense did the trait skip a generation?",
+      "Is 'skipping a generation' an accurate description?"
+    ],
+    "options": [
+      "No — the instruction was there, it just did not show",
+      "Yes, it was gone and came back",
+      "Yes, it jumped from grandmother to grandchild directly"
+    ],
+    "answer": 0,
+    "why": [
+      "Your mother had the broken copy and passed it to you. She had a working copy too, so it never showed in her.",
+      "The allele was transmitted at every step. Only the phenotype was absent, because the intervening carrier also had a working copy. Nothing skipped anything.",
+      "Genotype and phenotype come apart here, which is precisely why the distinction is worth having. Nothing can jump a generation — transmission is strictly stepwise — so any apparent skip is an unexpressed carrier."
+    ],
+    "from": "genes/04"
+  },
   "selection-needs-no-agent": {
     "q": [
       "Did any single beetle change colour?",
@@ -324,6 +533,63 @@
       "This matters for how the claim is classified. Variation, heritability and differential survival are each independently measurable, and their joint consequence has been observed repeatedly under controlled conditions. Whatever one concludes about the history of life, this mechanism is not in dispute — it is demonstrated."
     ],
     "from": "natural-selection/01"
+  },
+  "life-is-a-process": {
+    "q": [
+      "What makes something alive?",
+      "What distinguishes living from non-living matter?",
+      "On what does the living/non-living distinction rest?"
+    ],
+    "options": [
+      "What it does and keeps doing",
+      "A special sort of stuff inside it",
+      "Whether it can move about"
+    ],
+    "answer": 0,
+    "why": [
+      "There is no special living material. Everything in you is the same kind of stuff as a rock — it is what it is all doing together that makes the difference.",
+      "No component is distinctive; the organisation is. Living things maintain themselves against decay, and that maintenance is the thing being pointed at, not any ingredient.",
+      "Movement is a poor criterion — a tree does not move and is alive, a river does and is not. The property that does the work is self-maintenance: living systems expend energy to hold themselves away from equilibrium, and stop being alive precisely when they stop."
+    ],
+    "from": "what-is-life/01"
+  },
+  "seven-signs": {
+    "q": [
+      "A tree cannot walk. Is it alive?",
+      "A tree does not move from its position. Does that count against it being alive?",
+      "How should a single failed criterion be weighed?"
+    ],
+    "options": [
+      "Yes — it does nearly all the others",
+      "No, moving is required",
+      "Only partly alive"
+    ],
+    "answer": 0,
+    "why": [
+      "Missing one sign does not matter much. A tree grows, uses energy, senses light, gets rid of waste and makes seeds — that is plenty.",
+      "One failure carries almost no weight in a cluster concept. A tree satisfies six of seven comfortably, and moving turns out to be the least important of them.",
+      "Weight it as evidence rather than as a gate. This is why 'is a virus alive?' has no clean answer and does not need one — the useful question is which properties it has and which it lacks, and that question does have an answer."
+    ],
+    "from": "what-is-life/02"
+  },
+  "metabolism-is-not-burning": {
+    "q": [
+      "Why is a fire not alive?",
+      "What does a flame fundamentally lack?",
+      "Which two properties does combustion lack?"
+    ],
+    "options": [
+      "It carries no instructions and captures no energy",
+      "It is not made of cells",
+      "It cannot move on its own"
+    ],
+    "answer": 0,
+    "why": [
+      "A fire does lots of things living things do. But it has no recipe for itself, and it throws all its energy away as heat instead of using it.",
+      "No heredity and no coupling. A new flame inherits nothing from the old one, so nothing can accumulate; and the energy leaves as heat rather than being captured to do work.",
+      "Both are needed and neither is present. Without energy capture there is nothing to power maintenance; without heredity there is nothing to select on, so a fire cannot adapt in any generation, however many flames it lights."
+    ],
+    "from": "what-is-life/03"
   },
   "origin-of-life-unsolved": {
     "q": [

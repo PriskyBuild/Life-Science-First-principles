@@ -1,0 +1,149 @@
+{
+  "id": "genes/03",
+  "module": "genes",
+  "index": 2,
+  "title": "Two Copies of Everything",
+  "specimen": "allele-pair",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You got one copy of every instruction from each parent. So what happens when the two copies disagree?",
+        "Every gene you have arrives in duplicate — one from each parent. They are frequently not the same, and the cell has to do something about that."
+      ],
+      "sub": [
+        "Two recipes for the same thing, and they say different things.",
+        "There is no vote and no averaging. What actually happens is stranger and simpler."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "dominance",
+      "question": [
+        "Your two copies say different things. What do you end up with?",
+        "The two alleles differ. What determines the outcome?"
+      ],
+      "options": [
+        "It depends which one still works",
+        "A mixture of the two",
+        "Whichever came from your mother"
+      ],
+      "outcome": "It depends which one still works",
+      "note": [
+        "Have a guess before you look.",
+        "Commit. The everyday framing of 'strong' and 'weak' genes gets this badly wrong, and the correct answer is more mechanical."
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Put each pair of copies with what you would end up with.",
+        "Match each pair of alleles to the result."
+      ],
+      "parts": [
+        { "id": "works", "label": "It works" },
+        { "id": "still-works", "label": "It still works" },
+        { "id": "broken", "label": "It does not work" }
+      ],
+      "slots": [
+        { "accepts": "works", "label": ["Two working copies", "Both copies working"] },
+        { "accepts": "still-works", "label": ["One working, one broken", "One working, one broken"] },
+        { "accepts": "broken", "label": ["Two broken copies", "Both copies broken"] }
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Any answer fits any slot here, so the marking is on you. Work out each cross.",
+        "Placement is unconstrained. Predict the phenotype ratio for each cross, given that the working allele is dominant."
+      ],
+      "parts": [
+        { "id": "all-affected", "label": "All affected" },
+        { "id": "none-affected", "label": "None affected" },
+        { "id": "quarter", "label": "One in four affected" },
+        { "id": "half", "label": "One in two affected" }
+      ],
+      "slots": [
+        { "correct": "none-affected", "label": ["Both parents carry two working copies"] },
+        { "correct": "quarter", "label": ["Both parents carry one working and one broken copy"] },
+        { "correct": "half", "label": ["One parent has two broken copies, the other has one of each"] },
+        { "correct": "all-affected", "label": ["Both parents carry two broken copies"] }
+      ],
+      "trials": [
+        {
+          "name": ["Two carriers have a child", "Carrier × carrier"],
+          "needs": ["quarter"],
+          "pass": ["One in four. That is why healthy parents can have an affected child.", "1 in 4 affected — the classic recessive ratio, and why two unaffected carriers can have an affected child."],
+          "fail": ["Not right. Each parent has one broken copy to pass on, so work out the four combinations.", "Reconsider: each parent transmits one of two alleles independently, giving four equally likely combinations."]
+        },
+        {
+          "name": ["An affected parent and a carrier", "Affected × carrier"],
+          "needs": ["half"],
+          "pass": ["Half. The affected parent can only pass on a broken copy.", "1 in 2 — the affected parent transmits a broken allele with certainty, so the outcome rests entirely on the carrier."],
+          "fail": ["Not right. One parent has nothing but broken copies to give.", "Reconsider: a homozygote has only one allele to transmit, which collapses the cross to a single coin flip."]
+        }
+      ],
+      "win": [
+        "You can now predict a cross before it happens.",
+        "That is the whole of Mendelian prediction: alleles segregate independently, so the ratios follow from counting combinations."
+      ],
+      "lose": [
+        "Look at which cross you missed — it says what to think about.",
+        "Read the failed trial: each names the step in the reasoning to revisit, and you can reassign and test again."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A copy that still works even when the other is broken is called dominant.",
+        "When one working copy is enough, that version is dominant and the broken one is recessive.",
+        "Dominance describes the relationship between alleles at a locus, not a property of either allele alone. Most recessive conditions are recessive because one functional copy makes enough product.",
+        "Dominance is a statement about the mapping from genotype to phenotype, and it is not intrinsic. The same allele can be dominant for one trait and recessive for another — sickle-cell is recessive for the anaemia and effectively dominant for malaria resistance."
+      ],
+      "sub": [
+        "It is not about being stronger. It is about one copy being enough.",
+        "Nothing overpowers anything. Usually one working copy simply produces enough of the product to do the job.",
+        "This is why most loss-of-function mutations are recessive: half the normal enzyme level is generally sufficient. The exceptions — haploinsufficiency, dominant negatives — are informative precisely because they are exceptions.",
+        "The 'strong gene beats weak gene' framing is not a simplification of this, it is a different and wrong theory. It predicts blending, which is the thing Mendel's ratios ruled out."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "dominance",
+      "q": [
+        "Why is a dominant copy dominant?",
+        "Why is a dominant allele dominant?",
+        "What is the usual mechanistic basis of dominance?"
+      ],
+      "options": [
+        "Because one working copy makes enough",
+        "Because it is stronger than the other one",
+        "Because it comes from the father"
+      ],
+      "answer": 0,
+      "why": [
+        "Nothing is fighting anything. If one copy makes enough of what you need, having a broken second copy does not show.",
+        "It is a dosage fact, not a contest. One functional allele generally produces sufficient product, so the broken one is invisible — which also explains why some conditions are not recessive: where half the normal amount is not enough, one broken copy does show.",
+        "Dominance is a consequence of the shape of the dose-response curve. Most enzymes operate well above the level at which output limits flux, so halving them changes nothing measurable. Where flux is dose-sensitive you get haploinsufficiency instead, and the same class of mutation becomes dominant."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is how a doctor can tell parents the chance of passing something on.",
+        "Genetic counselling is this arithmetic applied carefully. Two carriers of a cystic fibrosis allele face a one-in-four risk in each pregnancy — independently each time, which is the part people find hardest, because three unaffected children change the fourth pregnancy's odds not at all."
+      ]
+    }
+  ]
+}

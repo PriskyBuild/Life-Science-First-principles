@@ -1,0 +1,174 @@
+{
+  "id": "dna/02",
+  "module": "dna",
+  "index": 1,
+  "title": "The Four Letters",
+  "specimen": "base-set",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Everything alive is written with four letters. An oak tree, a shark, you. The same four.",
+        "One alphabet, four letters, and every living thing that has ever existed is written in it — including the ones nobody has found yet.",
+        "Four bases, universal across every domain of life. The alphabet is not merely similar between organisms; it is identical.",
+        "Four nucleotides, and a coding convention shared by essentially every organism on earth. Universality of that kind is a fact that demands an explanation, and it is one of the few facts every account of life's history has to accommodate."
+      ],
+      "sub": [
+        "Not four hundred. Four.",
+        "Twenty-six letters seem barely enough for English. Four run everything.",
+        "The question worth holding: is four a lot or hardly any?",
+        "Information capacity is set by alphabet size and string length together, and the second term is doing nearly all the work."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "four-letters",
+      "question": [
+        "Can you write much with only four letters?",
+        "Is a four-letter alphabet enough to specify an organism?"
+      ],
+      "options": [
+        "Yes, if the message is long enough",
+        "No, four is far too few",
+        "Only for very simple creatures"
+      ],
+      "outcome": "Yes, if the message is long enough",
+      "note": [
+        "Have a think first.",
+        "Commit. A computer manages with two, which is a hint about which term matters."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How long is the message?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "1 letter: 4 possible messages.",
+        "2 letters: 16.",
+        "5 letters: 1,024.",
+        "10 letters: about a million.",
+        "30 letters: more than a billion billion."
+      ],
+      "t": [
+        "Four letters is not many. But watch what happens when the message gets longer.",
+        "Alphabet size adds; message length multiplies. Watch which one wins."
+      ],
+      "after": [
+        "Length beats alphabet, every time.",
+        "Every letter you add multiplies the possibilities by four. Your genome is three billion letters long — the number of possible sequences that length is beyond any use for a number."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The four letters are A, T, C and G. They are called bases.",
+        "The four letters are A, T, C and G — adenine, thymine, cytosine and guanine. Each is a base.",
+        "Adenine, thymine, cytosine and guanine: two purines and two pyrimidines, strung along a sugar-phosphate backbone.",
+        "The backbone is chemically uniform, which matters: the sequence carries the information precisely because the chemistry does not constrain the order. Any base can follow any base."
+      ],
+      "sub": [
+        "And they always hold hands the same way: A with T, C with G.",
+        "They pair in a fixed way — A always with T, C always with G. That is the next lesson, and it is the important one.",
+        "Pairing is A–T and C–G, enforced by geometry: a purine always faces a pyrimidine, so every rung spans the same distance.",
+        "Chargaff noticed the ratios A=T and C=G years before anyone knew why. The explanation, when it arrived, was the structure — and it carried the copying mechanism with it."
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Put each letter next to the one it holds hands with.",
+        "Match each base with its partner."
+      ],
+      "parts": [
+        { "id": "T", "label": "T" },
+        { "id": "A", "label": "A" },
+        { "id": "G", "label": "G" },
+        { "id": "C", "label": "C" }
+      ],
+      "slots": [
+        { "accepts": "T", "label": ["Goes with A", "Partner of A"] },
+        { "accepts": "A", "label": ["Goes with T", "Partner of T"] },
+        { "accepts": "G", "label": ["Goes with C", "Partner of C"] },
+        { "accepts": "C", "label": ["Goes with G", "Partner of G"] }
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Any base will go in any slot here, so getting it right is up to you.",
+        "Placement is unconstrained — any base fits any position, and only the assignment is graded. Pair them correctly."
+      ],
+      "parts": [
+        { "id": "T", "label": "T" },
+        { "id": "A", "label": "A" },
+        { "id": "G", "label": "G" },
+        { "id": "C", "label": "C" }
+      ],
+      "slots": [
+        { "correct": "T", "label": ["Pairs with A"] },
+        { "correct": "A", "label": ["Pairs with T"] },
+        { "correct": "G", "label": ["Pairs with C"] },
+        { "correct": "C", "label": ["Pairs with G"] }
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "four-letters",
+      "q": [
+        "Why is four letters enough?",
+        "Why is a four-base alphabet sufficient?",
+        "Why is alphabet size the wrong thing to worry about?"
+      ],
+      "options": [
+        "Because the message is billions of letters long",
+        "Because each letter means a lot on its own",
+        "Because living things are simple"
+      ],
+      "answer": 0,
+      "why": [
+        "Each extra letter multiplies what you can say by four. Make the message long enough and four letters can say anything.",
+        "Capacity grows exponentially with length and only linearly with alphabet size. Three billion positions at four options each is capacity nobody has found a use for all of.",
+        "This is why binary is not a limitation for computers either. The alphabet sets bits per symbol — two for DNA — and the length does the rest. The interesting constraints on genomes are error rate and replication cost, not vocabulary."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Because it is the same four letters in everything, you can put a human instruction into a bacterium and it works.",
+        "Universality is what makes biotechnology possible at all: a human insulin gene placed in E. coli is read correctly, because the alphabet and very nearly the whole coding convention are shared. Nothing has to be translated."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "base-pairing",
+      "q": [
+        "Which letter does C hold hands with?",
+        "Which base pairs with cytosine?",
+        "What is the complement of cytosine?"
+      ],
+      "options": ["G", "A", "T"],
+      "answer": 0,
+      "why": [
+        "C always goes with G, and A always goes with T. Never any other way round.",
+        "C pairs with G, A with T. The rule has no exceptions, and the next lesson is about what that rule makes possible.",
+        "C–G, joined by three hydrogen bonds against A–T's two, which is why GC-rich sequence has a higher melting temperature. The pairing is geometric as well as chemical: purine to pyrimidine keeps every rung the same width."
+      ]
+    }
+  ]
+}

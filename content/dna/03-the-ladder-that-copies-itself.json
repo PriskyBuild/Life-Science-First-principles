@@ -1,0 +1,144 @@
+{
+  "id": "dna/03",
+  "module": "dna",
+  "index": 2,
+  "title": "The Ladder That Copies Itself",
+  "specimen": "replication-fork",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Split the ladder down the middle. Each half still knows exactly what the other half was.",
+        "Cut a zip down the middle and you have destroyed it. Split this ladder down the middle and you have two complete sets of instructions.",
+        "Because pairing is fixed, a single strand is not half a molecule. It is a complete specification for rebuilding the whole.",
+        "Watson and Crick's paper closes with the most famous understatement in biology: it has not escaped their notice that the specific pairing immediately suggests a possible copying mechanism. The structure is the mechanism."
+      ],
+      "sub": [
+        "Nothing else has to remember anything.",
+        "No separate copying machine is needed. The shape does it.",
+        "The copying instruction is not stored anywhere. It is a consequence of the geometry.",
+        "This is why the structure paper mattered more than any experiment that year: it explained heredity as a corollary of a shape."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "semiconservative-copying",
+      "question": [
+        "If you split the ladder in two, how much of the message is on each half?",
+        "Separate the two strands. How much information does each retain?"
+      ],
+      "options": [
+        "All of it — each half tells you the other",
+        "Half of it each",
+        "None of it once they are apart"
+      ],
+      "outcome": "All of it — each half tells you the other",
+      "note": [
+        "Guess before you try it.",
+        "Commit. The answer follows from the previous lesson, not from anything new."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "replication",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "You be the copier. Look at the letter on top, then tap the one that goes with it.",
+        "Take the polymerase's job. The template base is shown; place its partner. A wrong base will not stick."
+      ],
+      "params": { "task": "pair", "n": 18, "aspect": 0.62 },
+      "paramsByLevel": { "1": { "n": 12 } },
+      "goal": [
+        "You copied the whole thing — and you never once had a choice.",
+        "The whole strand copied, and every base was decided for you by the one opposite it."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "replication",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Now let the polymerase do it, and you set how fast. Find the fastest speed that still copies cleanly.",
+        "The enzyme runs itself; you set the rate. Misincorporation climbs faster than rate does, so there is an optimum and it is not the maximum. Find it."
+      ],
+      "params": { "task": "fidelity", "n": 40, "speed": 4, "allow": 1, "aspect": 0.62 },
+      "paramsByLevel": { "4": { "n": 60, "allow": 0 } },
+      "goal": [
+        "That speed works. Faster than that and mistakes start getting through.",
+        "That is the working range. Fidelity is bought with time, which is the trade-off every real polymerase makes."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Copying DNA is called replication. Each new ladder keeps one old side.",
+        "This is replication, and it is semiconservative: every new double strand keeps one original strand and builds one new one.",
+        "Semiconservative replication. Each daughter duplex retains one parental strand — which is not obvious, and was not settled until it was measured.",
+        "Meselson and Stahl settled it in 1958 by growing bacteria on heavy nitrogen and watching the density of the DNA shift over successive generations. It is often called the most beautiful experiment in biology, because it distinguished three plausible models with one measurement."
+      ],
+      "sub": [
+        "So half of it is always the original.",
+        "Nothing is copied from a copy of a copy — every round starts from an original strand.",
+        "This matters for error: each round proofreads against a parental template rather than compounding the previous round's mistakes.",
+        "The alternative models — conservative and dispersive — would each have produced a different density profile. That is what made the experiment decisive rather than merely suggestive."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "semiconservative-copying",
+      "q": [
+        "How much of a new ladder is brand new?",
+        "In a newly replicated double helix, how much is newly synthesised?",
+        "What is the composition of a daughter duplex?"
+      ],
+      "options": [
+        "Half — one side is the original",
+        "All of it",
+        "None of it"
+      ],
+      "answer": 0,
+      "why": [
+        "Each new ladder is one old side and one new side. That is why it is called semiconservative — half is conserved.",
+        "One parental strand and one new one. Meselson and Stahl proved it by weight: after one round every molecule was intermediate in density, which only the semiconservative model predicts.",
+        "One parental, one daughter strand. Conservative replication would have given two populations after one round — all-heavy and all-light — and dispersive would never have separated at all. The single intermediate band ruled out both."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "base-pairing",
+      "q": [
+        "Why could you never choose which letter to place?",
+        "Why was the template's base sufficient to determine yours?",
+        "Why does the template fully determine the daughter strand?"
+      ],
+      "options": [
+        "Because each letter only fits one partner",
+        "Because the game would not let you",
+        "Because the letters are in alphabetical order"
+      ],
+      "answer": 0,
+      "why": [
+        "A only fits T and C only fits G. Once you can see the letter opposite, there is only one thing that will go there.",
+        "Pairing is one-to-one, so the template leaves no freedom at all. That total absence of choice is exactly what makes accurate copying possible.",
+        "The specificity is geometric — a purine opposite a pyrimidine keeps every rung the same width, and the hydrogen-bond donors and acceptors only line up in the correct pairing. A wrong base is not forbidden by a rule; it physically does not fit."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Machines use this to copy DNA on purpose. It is how a test can find a tiny bit of virus in you.",
+        "PCR is this mechanism run deliberately in a tube: heat to separate the strands, cool, let polymerase copy both, repeat. Doubling each cycle turns a few molecules into billions in an afternoon, which is how a swab detects a virus present at a handful of copies."
+      ]
+    }
+  ]
+}

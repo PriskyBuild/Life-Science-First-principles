@@ -1,0 +1,106 @@
+{
+  "id": "what-is-life/01",
+  "module": "what-is-life",
+  "index": 0,
+  "title": "The Line You Cannot Draw",
+  "specimen": "sorting-tray",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A stone is not alive. A beetle is. Easy. Now try a seed, a feather, and a fire.",
+        "Sorting a stone from a beetle takes no effort at all. Then someone hands you a seed, a fallen feather and a candle flame, and the easy job stops being easy."
+      ],
+      "sub": [
+        "Some of these are harder than they look.",
+        "The hard cases are where the definition actually lives."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "boundary-cases",
+      "question": [
+        "Is a seed alive?",
+        "Is a dormant seed alive?"
+      ],
+      "options": [
+        "Yes, but it is not doing anything at the moment",
+        "No, it is not doing anything",
+        "Only once it starts growing"
+      ],
+      "outcome": "Yes, but it is not doing anything at the moment",
+      "note": [
+        "Say what you think. There is no trick here.",
+        "Commit. A seed can sit for a thousand years and then grow, which is a fact any answer has to survive."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each one where you think it goes.",
+        "Sort each specimen. Two of them are meant to be difficult."
+      ],
+      "parts": [
+        { "id": "beetle", "label": "A beetle" },
+        { "id": "stone", "label": "A stone" },
+        { "id": "seed", "label": "A dry seed" },
+        { "id": "fire", "label": "A fire" }
+      ],
+      "slots": [
+        { "correct": "beetle", "label": ["Alive, and obviously so", "Uncontroversially alive"] },
+        { "correct": "stone", "label": ["Not alive, and obviously not", "Uncontroversially not alive"] },
+        { "correct": "seed", "label": ["Alive, but doing nothing", "Alive but metabolically arrested"] },
+        { "correct": "fire", "label": ["Does living things, but is not alive", "Behaves like life without being it"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Being alive is something a thing does, not something it is made of.",
+        "Life is a process rather than a substance. Nothing in a living thing is made of any special material.",
+        "There is no vital substance. Every atom in you is ordinary and was somewhere else last year; what distinguishes life is an organised, self-maintaining process.",
+        "Vitalism — the idea of a living essence — was the mainstream position until Wöhler synthesised urea in 1828 from plainly inorganic starting material. What replaced it is harder to state and much better supported: life is a particular kind of organisation, and organisation is a verb."
+      ],
+      "sub": [
+        "You are made of the same stuff as everything else.",
+        "The atoms are ordinary. The arrangement, and the fact that it keeps rebuilding itself, is not.",
+        "You replace most of your own material continuously and remain yourself, which tells you the identity is in the pattern rather than the matter.",
+        "This is why the boundary cases are genuinely hard rather than merely unsettled: if life is a process, then something can have some of the process and not the rest, and there is no fact of the matter waiting to be discovered."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "life-is-a-process",
+      "q": [
+        "What makes something alive?",
+        "What distinguishes living from non-living matter?",
+        "On what does the living/non-living distinction rest?"
+      ],
+      "options": [
+        "What it does and keeps doing",
+        "A special sort of stuff inside it",
+        "Whether it can move about"
+      ],
+      "answer": 0,
+      "why": [
+        "There is no special living material. Everything in you is the same kind of stuff as a rock — it is what it is all doing together that makes the difference.",
+        "No component is distinctive; the organisation is. Living things maintain themselves against decay, and that maintenance is the thing being pointed at, not any ingredient.",
+        "Movement is a poor criterion — a tree does not move and is alive, a river does and is not. The property that does the work is self-maintenance: living systems expend energy to hold themselves away from equilibrium, and stop being alive precisely when they stop."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "If we ever look for life on another world, we have to know what we are looking for.",
+        "Every mission designed to detect life elsewhere has to commit in advance to what would count, and the instruments follow from that commitment. The Viking landers ran experiments in 1976 whose results are still argued about, largely because the question of what would settle it was never fully settled."
+      ]
+    }
+  ]
+}

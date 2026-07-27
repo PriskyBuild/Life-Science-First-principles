@@ -1,0 +1,138 @@
+{
+  "id": "dna/04",
+  "module": "dna",
+  "index": 3,
+  "title": "Mistakes Get Made",
+  "specimen": "error-lens",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Copy out three billion letters. Now do it again, in every cell, your whole life. You will get some wrong.",
+        "Three billion letters, copied every time a cell divides, in a body doing that about two million times a second. Perfection is not on the menu."
+      ],
+      "sub": [
+        "So what happens to the ones that go wrong?",
+        "The interesting question is not whether errors happen. It is what a cell does about them, and what it does not."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "mutation-is-copy-error",
+      "question": [
+        "Would it be better if copying never made any mistakes at all?",
+        "Would a zero-error copying system be an improvement?"
+      ],
+      "options": [
+        "It would cost something to be that careful",
+        "Yes, obviously — mistakes are always bad",
+        "It makes no difference either way"
+      ],
+      "outcome": "It would cost something to be that careful",
+      "note": [
+        "Think about it before you answer.",
+        "Commit. Note that you already met a population that could not change because nothing new ever appeared in it."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "replication",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Let it copy fast, then slow. Count the red ones.",
+        "Run it fast, then run it slow, and watch what happens to the mistakes."
+      ],
+      "params": { "task": "fidelity", "n": 30, "speed": 6, "allow": 1, "aspect": 0.62 },
+      "goal": [
+        "Slower means fewer mistakes. Going fast is what lets them through.",
+        "Fewer errors at lower speed. Accuracy is bought with time — it is not free."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "replication",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Now you can switch the checking off as well. Work out how much it is doing.",
+        "Proofreading is exposed as a switch. Quantify what it buys: run the same rate with it on and off, and compare."
+      ],
+      "params": { "task": "fidelity", "n": 50, "speed": 5, "allow": 1, "proofswitch": true, "aspect": 0.62 },
+      "paramsByLevel": { "4": { "n": 70, "speed": 6 } },
+      "goal": [
+        "Checking each one catches nearly all of them.",
+        "Proofreading removes the great majority of misincorporations, which is why a real polymerase pauses to check rather than running flat out."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A letter copied wrong is called a mutation.",
+        "A base copied incorrectly and left uncorrected is a mutation.",
+        "A mutation is an uncorrected replication error, or damage that repair missed. Most are neutral, some are harmful, a few are useful.",
+        "Mutation is the only source of genuinely novel sequence; recombination reshuffles, it does not invent. Any account of how populations change has to supply this term or explain what replaces it."
+      ],
+      "sub": [
+        "Most of them do not matter at all.",
+        "The vast majority land in stretches where nothing depends on the exact letter.",
+        "Human polymerase makes roughly one uncorrected error per 10 billion bases copied. Across three billion bases that is a handful per division — and one of the reasons cancer risk rises with age.",
+        "Roughly 10⁻⁸ per base with proofreading, against 10⁻⁵ without: three orders of magnitude bought by checking twice. Rates are not arbitrary — they are themselves under selection, and a lineage that copies too accurately adapts too slowly to keep up."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "mutation-is-copy-error",
+      "q": [
+        "What is a mutation?",
+        "What is a mutation, precisely?",
+        "What is the precise definition of a mutation?"
+      ],
+      "options": [
+        "A letter that got copied wrong and was not fixed",
+        "A monster in a film",
+        "Something a body does on purpose when it needs to change"
+      ],
+      "answer": 0,
+      "why": [
+        "It is just a copying mistake nobody corrected. Not something the body chose, and usually not dramatic at all.",
+        "An uncorrected copying error. Nothing about it is intentional — a cell cannot decide to mutate a gene it would find useful, and this is why the beetles could not simply turn dark.",
+        "It is undirected with respect to need, which is the load-bearing part. Bacteria placed under antibiotic pressure do not generate resistance mutations in response to the drug; the variation is present beforehand at low frequency and the drug reveals it. That was the point of the Luria–Delbrück experiment in 1943."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "mutation-is-copy-error",
+      "levels": [3, 4],
+      "q": [
+        "Why has copying not evolved to be perfect?",
+        "Why is replication fidelity not maximised?"
+      ],
+      "options": [
+        "Perfect copying costs time, and leaves nothing for selection to work on",
+        "Because cells are not very good at chemistry",
+        "Because nobody has needed accurate copying yet"
+      ],
+      "answer": 0,
+      "why": [
+        "Two costs. Checking every base takes time a dividing cell does not have, and a population that never varies is the one you already watched go flat — selection needs something to select between.",
+        "Fidelity trades against replication rate directly, and against evolvability indirectly. Mutation rates are themselves heritable and under selection; observed rates sit in a narrow band that is neither the cheapest nor the most accurate achievable, which is what a trade-off looks like from the outside."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Cancer is what happens when the mistakes land in the instructions that tell a cell when to stop growing.",
+        "Cancer is fundamentally a disease of accumulated somatic mutation — errors landing in the genes that regulate division and repair. It is why risk rises steeply with age, why some inherited repair defects raise it sharply, and why tobacco smoke, which damages DNA directly, is so effective a carcinogen."
+      ]
+    }
+  ]
+}

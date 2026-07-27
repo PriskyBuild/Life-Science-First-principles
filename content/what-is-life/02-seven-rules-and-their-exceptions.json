@@ -1,0 +1,111 @@
+{
+  "id": "what-is-life/02",
+  "module": "what-is-life",
+  "index": 1,
+  "title": "Seven Rules and Their Exceptions",
+  "specimen": "checklist",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There is a list of seven things living things do. Every single one has something that breaks it.",
+        "Textbooks give seven signs of life. Each one has a well-known exception, and the exceptions are more interesting than the list."
+      ],
+      "sub": [
+        "So is the list wrong?",
+        "A definition that fails at the edges is not necessarily a bad definition. But it is worth knowing where it fails."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Go through the seven",
+      "min": 0,
+      "max": 6,
+      "value": 0,
+      "captions": [
+        "Moves — but a tree stays put its whole life.",
+        "Breathes — but some bacteria are poisoned by oxygen.",
+        "Senses things — but a sponge has no nerves at all.",
+        "Grows — but a crystal grows too, and is not alive.",
+        "Gets rid of waste — so does a car engine.",
+        "Has young — but a mule has none, and a worker bee never will.",
+        "Eats — but a plant makes its own out of light."
+      ],
+      "t": [
+        "Slide through the seven signs. Each one has something that breaks it.",
+        "Each sign, with its standard counter-example. Watch for the ones where the exception is a living thing failing the test."
+      ],
+      "after": [
+        "Not one of the seven works on its own.",
+        "No single criterion is necessary and sufficient. Note the two kinds of failure: things that are alive and fail a test, and things that pass a test and are not alive."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "seven-signs",
+      "question": [
+        "If every rule has an exception, is the list useless?",
+        "Given that each criterion admits counter-examples, what is the list good for?"
+      ],
+      "options": [
+        "No — you need most of them at once, not any one",
+        "Yes, it should be thrown away",
+        "Yes, unless you can find a rule with no exceptions"
+      ],
+      "outcome": "No — you need most of them at once, not any one",
+      "note": [
+        "Have a think first.",
+        "Commit. The same structure appears in medical diagnosis, where no single symptom is decisive either."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Nothing is alive because of one sign. It is alive because of most of them together.",
+        "Life is recognised by a cluster of properties, not by any single test. The list works collectively even though every item fails alone.",
+        "This is a cluster concept: membership is conferred by satisfying enough of a set of criteria, none of which is individually necessary.",
+        "Wittgenstein's family-resemblance account fits this exactly — the members of a category can share no single common feature and still form a real category. Biology is full of these, and treating them as if they had crisp definitions produces most of the confusion around viruses."
+      ],
+      "sub": [
+        "A tree does not move and a mule has no babies. Both are clearly alive.",
+        "Failing one criterion is not disqualifying, which is why the list survives its own exceptions.",
+        "The interesting entries are the ones failing many at once — a virus outside a cell does none of the seven.",
+        "Cluster concepts do not have sharp boundaries and do not need them. The demand for a crisp definition is where the trouble starts, not the lack of one."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "seven-signs",
+      "q": [
+        "A tree cannot walk. Is it alive?",
+        "A tree does not move from its position. Does that count against it being alive?",
+        "How should a single failed criterion be weighed?"
+      ],
+      "options": [
+        "Yes — it does nearly all the others",
+        "No, moving is required",
+        "Only partly alive"
+      ],
+      "answer": 0,
+      "why": [
+        "Missing one sign does not matter much. A tree grows, uses energy, senses light, gets rid of waste and makes seeds — that is plenty.",
+        "One failure carries almost no weight in a cluster concept. A tree satisfies six of seven comfortably, and moving turns out to be the least important of them.",
+        "Weight it as evidence rather than as a gate. This is why 'is a virus alive?' has no clean answer and does not need one — the useful question is which properties it has and which it lacks, and that question does have an answer."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Doctors have to decide when a person has died, and that turns out to be just as hard.",
+        "The legal and medical definition of death has been rewritten more than once as technology changed what could be maintained. Brain-death criteria exist because the older tests — heartbeat, breathing — stopped tracking what they were meant to track once machines could supply both. The boundary problem is not academic."
+      ]
+    }
+  ]
+}

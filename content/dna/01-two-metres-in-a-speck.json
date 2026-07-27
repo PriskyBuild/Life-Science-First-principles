@@ -1,0 +1,160 @@
+{
+  "id": "dna/01",
+  "module": "dna",
+  "index": 0,
+  "title": "Two Metres in a Speck",
+  "specimen": "packing-spool",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There is a thread inside every one of your cells. Pulled straight, it would be twice as long as you are tall.",
+        "Every cell in your body holds about two metres of thread — inside something you need a microscope to see at all.",
+        "Two metres of DNA sits inside a nucleus about six micrometres across. That is a length-to-container ratio of roughly 300,000 to one.",
+        "Two metres of polymer in a six-micrometre compartment, and it must remain readable, copyable and separable on demand. The packing problem and the access problem are the same problem."
+      ],
+      "sub": [
+        "How do you fit that in something you cannot even see?",
+        "And it cannot just be crumpled up — it has to be read.",
+        "Crumpling solves the volume and destroys the function. Both have to survive.",
+        "Any solution that is merely compact is wrong; it has to be compact AND locally unpackable."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "dna-packing",
+      "question": [
+        "How would you fit a really long thread into a really small box?",
+        "You have two metres of thread and a box a fraction of a millimetre across. What is your approach?"
+      ],
+      "options": [
+        "Wind it round something, then wind that up too",
+        "Squash it into a ball",
+        "Cut it into little pieces"
+      ],
+      "outcome": "Wind it round something, then wind that up too",
+      "note": [
+        "Have a guess. There is more than one sensible answer.",
+        "Commit first — and notice that two of these would make the thread impossible to use afterwards."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [1, 2],
+      "guided": true,
+      "label": "Wind it up",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Two metres of loose thread. Far too long.",
+        "Wound round little spools. Shorter already.",
+        "The spools coil up into a thicker rope.",
+        "The rope loops back on itself, again and again.",
+        "Folded up into a chromosome. Now it fits."
+      ],
+      "t": [
+        "Slide it along and watch the thread get packed away, one step at a time.",
+        "Each step winds the level below it. Watch how fast the length falls."
+      ],
+      "after": [
+        "Five foldings, and two metres fits in a speck.",
+        "Each level winds the one beneath it, so the shortening multiplies rather than adds. That is why five steps are enough."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [3, 4],
+      "guided": false,
+      "label": "Levels of coiling",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "2 m of naked DNA. Compaction ×1.",
+        "Wound twice round histone octamers — nucleosomes. ×6.",
+        "Nucleosomes coil into a 30 nm fibre. ×40.",
+        "The fibre loops onto a protein scaffold. ×1000.",
+        "Fully condensed metaphase chromosome. ×10,000."
+      ],
+      "t": [
+        "Each level winds the one below it. Watch the compaction figure rather than the picture.",
+        "Compaction is hierarchical, so the factors multiply. Note where the biggest single jump happens, and ask what has to be true for a gene inside that structure to be read at all."
+      ],
+      "after": [
+        "Ten thousand times shorter — and it can be unwound in one place at a time.",
+        "×10,000 overall. The critical property is not the ratio but that it is locally reversible: a cell unwinds the region it needs and leaves the rest condensed, which is how packing and access coexist."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The thread is called DNA. Wound up tight, it makes a chromosome.",
+        "The thread is DNA. Wound around proteins and coiled repeatedly, it forms a chromosome.",
+        "DNA wound around histone octamers forms nucleosomes; nucleosomes coil into fibres, fibres loop onto a scaffold, and the fully condensed result is a chromosome.",
+        "The hierarchy is DNA → nucleosome → 30 nm fibre → looped domain → chromatid. Only the last is visible by light microscopy, and only during division, which is why chromosomes were described long before DNA was."
+      ],
+      "sub": [
+        "You have 46 of them in nearly every cell.",
+        "Forty-six in nearly every cell — 23 from each parent.",
+        "Twenty-three pairs. The packing state is not fixed: chromatin loosens where genes are being read and tightens where they are not.",
+        "Condensation is itself regulatory. Densely packed regions are largely silent, so how tightly a stretch is wound is part of how a cell decides what it is."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "dna-packing",
+      "q": [
+        "Why can the thread not just be squashed into a ball?",
+        "Why is simple compression the wrong solution?",
+        "Why is undifferentiated compaction unacceptable?"
+      ],
+      "options": [
+        "Because it still has to be read, one bit at a time",
+        "Because a ball takes up more room",
+        "Because DNA is too stiff to squash"
+      ],
+      "answer": 0,
+      "why": [
+        "A tangle would fit. But the cell has to find one small part of it and read it — so it has to be packed in a way that can be undone in one spot without undoing the rest.",
+        "Volume is only half the problem. The structure has to permit local, reversible unpacking, because genes are read individually while the rest stays stored.",
+        "Compaction and accessibility are competing requirements, and the hierarchical solution satisfies both: each level can be locally relaxed without disturbing the others. A tangle would satisfy the first requirement and destroy the second."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Doctors can look at chromosomes under a microscope and spot when one is missing or doubled.",
+        "Karyotyping — photographing condensed chromosomes and counting them — detects whole-chromosome abnormalities, and it works precisely because condensation makes them visible. It is one of the oldest genetic tests still in routine use."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "chromosome-structure",
+      "q": [
+        "When can you actually see a chromosome?",
+        "When are chromosomes visible under a light microscope?",
+        "Under what condition is a chromosome resolvable by light microscopy?"
+      ],
+      "options": [
+        "When the cell is dividing and it is packed up tight",
+        "All the time",
+        "Only when the cell is dead"
+      ],
+      "answer": 0,
+      "why": [
+        "Most of the time the thread is loose so it can be read. It only packs up tight when the cell is about to split, and that is the only time it is thick enough to see.",
+        "Chromatin is decondensed during interphase — which is what makes it readable — and condenses only for division. Chromosomes were named and counted for decades before anyone knew what they were made of, precisely because that is the one state visible with the instruments available.",
+        "Resolution is the constraint: decondensed chromatin is well below the diffraction limit, and only metaphase condensation brings it above. This is a nice case of a structure being characterised long before its composition, because the observable state was the atypical one."
+      ]
+    }
+  ]
+}
