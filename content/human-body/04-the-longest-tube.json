@@ -1,0 +1,106 @@
+{
+  "id": "human-body/04",
+  "module": "human-body",
+  "index": 3,
+  "title": "The Longest Tube",
+  "specimen": "gut-tube",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There is a tube running right through you, about nine metres long. What is inside it is not inside you.",
+        "A nine-metre tube runs through you from end to end. Everything in it is topologically outside your body — you are a very elaborate doughnut."
+      ],
+      "sub": [
+        "Nothing counts as being in you until it crosses the wall.",
+        "Nothing has entered you until it crosses the gut wall, which is where the interesting part happens."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "digestion-is-disassembly",
+      "question": [
+        "Why can you not use food as it is?",
+        "Why must food be broken down rather than absorbed intact?"
+      ],
+      "options": [
+        "The pieces are too big, and they are somebody else's design",
+        "Food is dirty and has to be cleaned first",
+        "You could, but it would be slower"
+      ],
+      "outcome": "The pieces are too big, and they are somebody else's design",
+      "note": [
+        "Have a think first.",
+        "Commit. You met the size constraint in the membrane and the design constraint in proteins."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each part of the tube next to what it does.",
+        "Match each region of the gut to its function."
+      ],
+      "parts": [
+        { "id": "mouth", "label": "Mouth" },
+        { "id": "stomach", "label": "Stomach" },
+        { "id": "small", "label": "Small intestine" },
+        { "id": "large", "label": "Large intestine" }
+      ],
+      "slots": [
+        { "accepts": "mouth", "label": ["Breaks it into smaller lumps", "Mechanical breakdown, and starch digestion begins"] },
+        { "accepts": "stomach", "label": ["Acid, and starts on the proteins", "Acid denaturation and protein digestion"] },
+        { "accepts": "small", "label": ["Where almost everything gets absorbed", "Enzymatic completion and nearly all absorption"] },
+        { "accepts": "large", "label": ["Takes the water back", "Water reabsorption and the bacterial community"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Digestion is taking food apart into pieces small enough to cross the wall.",
+        "Digestion is controlled disassembly: polymers broken back down into the monomers they were built from.",
+        "Hydrolysis of polymers into monomers — starch to glucose, protein to amino acids, fat to fatty acids — which are then small enough to be absorbed and generic enough to rebuild anything.",
+        "The elegance is that the monomer set is universal, so an organism can dismantle any other organism and reuse the parts. Digestion is not purification; it is reduction to a common currency."
+      ],
+      "sub": [
+        "Then you build your own things out of the pieces.",
+        "You do not absorb a cow's proteins — you absorb amino acids and build your own out of them.",
+        "This is also why food allergy exists: an intact protein that slips across the wall is exactly the thing the immune system is built to notice.",
+        "And why insulin has to be injected rather than swallowed. It is a protein, and the gut would take it apart into amino acids before it could do anything — the delivery problem, not the chemistry, is what kept it a needle for a century."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "digestion-is-disassembly",
+      "q": [
+        "What actually crosses into you?",
+        "What is absorbed across the gut wall?",
+        "What is the absorbed form, and why that form?"
+      ],
+      "options": [
+        "Small pieces: sugars, amino acids, fatty acids",
+        "The food itself, in small lumps",
+        "Only water and salt"
+      ],
+      "answer": 0,
+      "why": [
+        "Big things cannot cross the wall, and anyway they are built to somebody else's plan. You take them apart into the standard pieces and build your own.",
+        "Monomers cross, polymers do not. That solves two problems at once — size, which the membrane lesson covered, and specification, since a cow's protein is the wrong protein for you regardless.",
+        "Reduction to monomers is what makes any food substitutable for any other. It is also why the process must be thorough: an intact protein crossing the barrier is precisely the signal the immune system treats as foreign, which is the basis of food allergy."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Your small intestine is folded so much that it has the surface area of a tennis court.",
+        "Absorption rate depends on surface area, so the small intestine is folded, and the folds carry villi, and the villi carry microvilli. Three levels of folding turn a few metres of tube into around 30 square metres — the same optimisation, on the same variable, as the lungs. When that surface is damaged, as in coeliac disease, the problem is not the tube but the area."
+      ]
+    }
+  ]
+}

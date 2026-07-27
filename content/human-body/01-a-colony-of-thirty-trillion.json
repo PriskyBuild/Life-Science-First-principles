@@ -1,0 +1,109 @@
+{
+  "id": "human-body/01",
+  "module": "human-body",
+  "index": 0,
+  "title": "A Colony of Thirty Trillion",
+  "specimen": "cell-census",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You are not one thing. You are about thirty trillion tiny things, agreeing to work together.",
+        "You are not an object. You are roughly thirty trillion cells, none of which knows you exist, cooperating closely enough that you get to think of yourself as one."
+      ],
+      "sub": [
+        "And not one of them knows about you.",
+        "There is no cell in charge, and no cell that can see the whole."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "colony-of-cells",
+      "question": [
+        "How does a body work if no cell is in charge?",
+        "With no controlling cell, what coordinates thirty trillion of them?"
+      ],
+      "options": [
+        "Each one follows local rules and reacts to its neighbours",
+        "The brain tells every cell what to do",
+        "They must all be identical, so it does not matter"
+      ],
+      "outcome": "Each one follows local rules and reacts to its neighbours",
+      "note": [
+        "Guess first.",
+        "Commit. Your brain has no connection to the great majority of your cells, which rules one of these out."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Zoom out",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "One cell. About 20 micrometres across.",
+        "A tissue: thousands of the same kind, doing one job together.",
+        "An organ: several tissues, arranged for a purpose.",
+        "A system: organs that only make sense together.",
+        "A body: eleven systems, thirty trillion cells, one thing."
+      ],
+      "t": [
+        "Zoom out from one cell all the way to you.",
+        "Cell to tissue to organ to system to organism. Each level is a real thing, not a label."
+      ],
+      "after": [
+        "Five levels, and nobody is in charge at any of them.",
+        "Each level's behaviour comes from the level below following local rules. There is no step where central control appears."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Lots of the same cells together make a tissue. Tissues make organs. Organs make systems.",
+        "Cells of one kind form a tissue; tissues form an organ; organs that work together form a system.",
+        "Levels of organisation: cell, tissue, organ, organ system, organism. Each level has properties the level below does not.",
+        "The properties at each level are emergent in a strict sense — no muscle cell contracts a limb, and no neuron has a thought. Describing a level in terms of the one below is possible in principle and useless in practice, which is why physiology exists as a discipline."
+      ],
+      "sub": [
+        "About two hundred different kinds of cell in you.",
+        "Roughly two hundred cell types, all carrying the identical genome and reading different parts of it.",
+        "And more bacterial cells living in and on you than human ones, by count — though far less by mass.",
+        "The ratio was long quoted as ten to one and is closer to one to one on current estimates. The bacteria are not passengers: germ-free animals develop abnormal immune systems, so the colony is part of the organism in a functional sense."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "colony-of-cells",
+      "q": [
+        "Who tells all your cells what to do?",
+        "What coordinates the cells of a body?",
+        "How is coordination achieved without central control?"
+      ],
+      "options": [
+        "Nobody — each reacts to what is around it",
+        "The brain, cell by cell",
+        "The heart"
+      ],
+      "answer": 0,
+      "why": [
+        "No cell is in charge and no cell can see the whole body. Each one just responds to the chemicals and cells right next to it, and the whole thing works out.",
+        "Coordination is local and chemical. A cell responds to what touches it and to signals reaching it; there is no address book and no central instruction. Your brain has no connection at all to most of your cells.",
+        "It is distributed control with no controller — the same class of system as the beetle population, and the same reason it is counter-intuitive. Order at the top does not require an orderer, only rules at the bottom and a lot of iterations."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Cancer is one cell that stops following the local rules.",
+        "A tumour is a lineage of cells that has stopped responding to the signals telling it when to stop dividing and when to die. Nothing new is added — the cooperation simply fails, and a body only exists because that cooperation normally holds for decades."
+      ]
+    }
+  ]
+}

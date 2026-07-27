@@ -1,4 +1,80 @@
 {
+  "polymers-from-monomers": {
+    "q": [
+      "Why is a short parts list not a problem?",
+      "Why does a small monomer set not limit variety?",
+      "Why is monomer diversity not the binding constraint?"
+    ],
+    "options": [
+      "Because the order they are joined in does the work",
+      "Because the pieces are very complicated",
+      "Because living things are all quite similar"
+    ],
+    "answer": 0,
+    "why": [
+      "Twenty different beads on a string a hundred beads long gives more orders than there are atoms in the universe. The pieces do not need to be clever.",
+      "Variety comes from sequence, not from inventory. Twenty amino acids in a chain of 100 gives 20¹⁰⁰ possible proteins — a number with 130 digits, against roughly 10⁸⁰ atoms in the observable universe.",
+      "This is the same argument as the four-letter alphabet in DNA, and it generalises: capacity scales exponentially with length and only linearly with alphabet size, so the interesting constraints are always on length, error rate and assembly cost rather than on the parts list."
+    ],
+    "from": "biomolecules/01"
+  },
+  "sugar-is-stored-energy": {
+    "q": [
+      "Why does sugar not release its energy on its own?",
+      "Why is glucose stable in a bowl but not in a cell?",
+      "Why is glucose kinetically stable despite being thermodynamically unstable?"
+    ],
+    "options": [
+      "It needs something to start it off and take it apart",
+      "It has no energy until you eat it",
+      "Sugar only works inside a body"
+    ],
+    "answer": 0,
+    "why": [
+      "The energy is there the whole time. It just needs something to get it started — which is exactly why a sugar cube burns if you light it, and does nothing if you do not.",
+      "Releasing the energy requires getting over a barrier first. Heat does it crudely; an enzyme does it at body temperature, in small steps, capturing the energy instead of losing it.",
+      "The reaction is strongly favourable and extremely slow, which is the definition of kinetic stability. Enzymes lower the activation barrier without altering ΔG, so they change the rate and never the yield — the same amount of energy is available whether it is burnt or respired."
+    ],
+    "from": "biomolecules/02"
+  },
+  "hydrophobic-effect": {
+    "q": [
+      "What actually pushes oil into a blob?",
+      "Where does the driving force for hydrophobic association come from?",
+      "Why is the hydrophobic effect not an attraction between oily molecules?"
+    ],
+    "options": [
+      "The water, getting itself out of the way",
+      "The oil molecules gripping each other",
+      "Gravity"
+    ],
+    "answer": 0,
+    "why": [
+      "Oily things are not sticky. Water is just much happier next to other water, so it shoves the oil together to get on with it.",
+      "The force comes from the solvent. Water has to arrange itself into a rigid cage around an exposed oily surface; shrinking that surface releases the cage, and that release is what drives the association.",
+      "The effect is entropic and lives in the water, not enthalpic and living in the oil. The clearest evidence is the temperature dependence: over a broad range hydrophobic association gets stronger as you warm it, which no ordinary attraction between two molecules does."
+    ],
+    "from": "biomolecules/03"
+  },
+  "shape-from-sequence": {
+    "q": [
+      "Why does changing one bead matter so much?",
+      "Why can a single substitution abolish function?",
+      "Why is the sequence-structure map so unforgiving at some positions and not others?"
+    ],
+    "options": [
+      "Because the shape depends on the whole order at once",
+      "Because one bead is much bigger than the others",
+      "Because there are only twenty to choose from"
+    ],
+    "answer": 0,
+    "why": [
+      "The shape comes from all the beads together. Move one and the folding can come out completely different — or leave a sticky bit on the outside where there should not be one.",
+      "The fold is a global property of the sequence, so a local change can have a non-local effect. A substitution buried in the core, or one that exposes an oily surface, can wreck the structure; the same change elsewhere may do nothing at all.",
+      "Positional sensitivity varies enormously and predictably: buried core residues and active-site residues are highly constrained, surface loops are largely tolerant. This is why conservation across species is such a good predictor of which mutations will be pathogenic — evolution has already run the experiment."
+    ],
+    "from": "biomolecules/04"
+  },
   "cell-scale": {
     "q": [
       "How big is a cell?",
@@ -472,6 +548,101 @@
       "Genotype and phenotype come apart here, which is precisely why the distinction is worth having. Nothing can jump a generation — transmission is strictly stepwise — so any apparent skip is an unexpressed carrier."
     ],
     "from": "genes/04"
+  },
+  "colony-of-cells": {
+    "q": [
+      "Who tells all your cells what to do?",
+      "What coordinates the cells of a body?",
+      "How is coordination achieved without central control?"
+    ],
+    "options": [
+      "Nobody — each reacts to what is around it",
+      "The brain, cell by cell",
+      "The heart"
+    ],
+    "answer": 0,
+    "why": [
+      "No cell is in charge and no cell can see the whole body. Each one just responds to the chemicals and cells right next to it, and the whole thing works out.",
+      "Coordination is local and chemical. A cell responds to what touches it and to signals reaching it; there is no address book and no central instruction. Your brain has no connection at all to most of your cells.",
+      "It is distributed control with no controller — the same class of system as the beetle population, and the same reason it is counter-intuitive. Order at the top does not require an orderer, only rules at the bottom and a lot of iterations."
+    ],
+    "from": "human-body/01"
+  },
+  "circulation-is-a-loop": {
+    "q": [
+      "Why can your body not just let things spread on their own?",
+      "Why is diffusion insufficient for a body your size?",
+      "Why does body size force the evolution of circulation?"
+    ],
+    "options": [
+      "Diffusion is fine over tiny distances and hopeless over big ones",
+      "Diffusion only works in water",
+      "Diffusion stops working once you are born"
+    ],
+    "answer": 0,
+    "why": [
+      "Diffusion is quick across a cell and impossibly slow across a body. Over a centimetre it would take hours, and you would be dead long before the oxygen arrived.",
+      "Diffusion time rises with the square of distance. Crossing a cell takes under a millisecond; crossing a centimetre of tissue would take hours. Circulation exists to carry things the long way quickly, so diffusion only ever has to cover the last few micrometres.",
+      "The t ∝ x² scaling is the whole argument, and it is why every animal above a millimetre or so has some form of bulk transport. It also explains capillary density: the system's job is to get a vessel within diffusion distance of every cell, which is why no cell in you sits more than about 20 micrometres from one."
+    ],
+    "from": "human-body/02"
+  },
+  "gas-exchange": {
+    "q": [
+      "What makes oxygen go into your blood?",
+      "What drives oxygen across the alveolar wall?",
+      "What accounts for net oxygen flux into the pulmonary capillary?"
+    ],
+    "options": [
+      "There is more of it in the air than in the blood",
+      "The lungs suck it in",
+      "The blood grabs hold of it"
+    ],
+    "answer": 0,
+    "why": [
+      "It is exactly what you watched in the membrane. More outside than inside means more happens to wander in than out. Nothing pulls it.",
+      "A concentration difference plus random motion. Breathing keeps fresh air arriving so the gradient stays steep, and blood flow keeps carrying the oxygen away — but the crossing itself is unassisted diffusion.",
+      "Net flux is proportional to the partial pressure gradient, and both ventilation and perfusion exist to maintain that gradient rather than to move the gas. Haemoglobin sharpens it further by binding oxygen and so keeping dissolved concentration low, which steepens the gradient it is diffusing down."
+    ],
+    "from": "human-body/03"
+  },
+  "digestion-is-disassembly": {
+    "q": [
+      "What actually crosses into you?",
+      "What is absorbed across the gut wall?",
+      "What is the absorbed form, and why that form?"
+    ],
+    "options": [
+      "Small pieces: sugars, amino acids, fatty acids",
+      "The food itself, in small lumps",
+      "Only water and salt"
+    ],
+    "answer": 0,
+    "why": [
+      "Big things cannot cross the wall, and anyway they are built to somebody else's plan. You take them apart into the standard pieces and build your own.",
+      "Monomers cross, polymers do not. That solves two problems at once — size, which the membrane lesson covered, and specification, since a cow's protein is the wrong protein for you regardless.",
+      "Reduction to monomers is what makes any food substitutable for any other. It is also why the process must be thorough: an intact protein crossing the barrier is precisely the signal the immune system treats as foreign, which is the basis of food allergy."
+    ],
+    "from": "human-body/04"
+  },
+  "systems-interact": {
+    "q": [
+      "Why does the loop need a signal coming back?",
+      "Why is the return path essential rather than a refinement?",
+      "Why does open-loop control fail here specifically?"
+    ],
+    "options": [
+      "So it knows when to stop and does not overshoot",
+      "So the brain can keep a record",
+      "So it can happen twice"
+    ],
+    "answer": 0,
+    "why": [
+      "Without something reporting back, the response has no way of knowing the problem is fixed. It keeps pushing, overshoots, and then has to correct the other way.",
+      "Feedback is what makes the response proportional to the remaining error. Without it the effector runs at full output regardless, so the system overshoots and oscillates rather than settling — instability, not just imprecision.",
+      "The controlled variable is the same one being sensed, which is what closes the loop and makes the correction self-limiting. Open loop, the output is independent of the result, so any disturbance or drift accumulates. Baroreflex failure produces exactly this clinically: pressure that swings wildly rather than pressure that is simply low."
+    ],
+    "from": "human-body/05"
   },
   "selection-needs-no-agent": {
     "q": [

@@ -1,0 +1,119 @@
+{
+  "id": "human-body/03",
+  "module": "human-body",
+  "index": 2,
+  "title": "Breathing Is Not for Air",
+  "specimen": "gas-swap",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Hold your breath. The thing that makes you gasp is not running out of oxygen.",
+        "Hold your breath and the urgency that builds is not oxygen running low. Your body is barely monitoring oxygen at all — it is measuring something else."
+      ],
+      "sub": [
+        "So what is it measuring?",
+        "The signal you are feeling is a different molecule entirely."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "gas-exchange",
+      "question": [
+        "What makes you desperate to breathe?",
+        "What is the actual stimulus driving the urge to breathe?"
+      ],
+      "options": [
+        "Carbon dioxide building up",
+        "Oxygen running out",
+        "Your lungs getting tired"
+      ],
+      "outcome": "Carbon dioxide building up",
+      "note": [
+        "Guess before you read on — most people get this wrong.",
+        "Commit. This is a genuinely dangerous piece of knowledge to lack, for reasons the apply stage gets to."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "membrane",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Gases cross into your blood exactly the way things crossed the cell wall. Make the holes big enough and watch it happen.",
+        "Gas exchange is the same diffusion you already met. Set the holes and watch things cross from where there is more to where there is less."
+      ],
+      "params": { "kinds": 3, "pore": 2, "per": 12, "target": 0.5 },
+      "paramsByLevel": { "1": { "kinds": 2, "per": 10, "target": 0.4 } },
+      "goal": [
+        "Across it goes, with nothing pushing. That is how oxygen gets into you.",
+        "Net movement from crowded to empty, with nothing doing any pushing. Your lungs do exactly this, and nothing else."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "membrane",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Two gases crossing in opposite directions at once. Find the setting that works for both.",
+        "Bidirectional exchange down two opposing gradients simultaneously — oxygen inward, carbon dioxide outward. Find the configuration that satisfies both, and note that no active transport is involved anywhere."
+      ],
+      "params": { "kinds": 5, "pore": 3, "per": 12, "temp": 1, "target": 0.55 },
+      "paramsByLevel": { "4": { "kinds": 6, "per": 14, "target": 0.6 } },
+      "goal": [
+        "Both directions at once, and nothing spent any energy doing it.",
+        "Two opposing net fluxes maintained simultaneously by nothing but two concentration gradients. Breathing costs energy; the exchange itself costs none."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Breathing is mostly about getting carbon dioxide out.",
+        "Breathing serves two jobs, and the urgent one is removing carbon dioxide rather than collecting oxygen.",
+        "Ventilation is regulated primarily by arterial CO₂, detected as a fall in blood pH. Oxygen sensing exists but only takes over at low levels.",
+        "Central chemoreceptors respond to pH change in cerebrospinal fluid, which tracks CO₂ closely because CO₂ crosses the blood-brain barrier and hydrates to carbonic acid. Oxygen is monitored peripherally and contributes little until saturation falls a long way — which is a control design with a serious failure mode."
+      ],
+      "sub": [
+        "The swap itself is just diffusion. Nothing pushes the gases across.",
+        "The exchange surface does nothing active at all: gases cross by diffusion alone, down gradients your breathing maintains.",
+        "Your lungs pack about 70 square metres of exchange surface into your chest — roughly a tennis court, folded.",
+        "Alveolar walls are a single cell thick, and the total surface is around 70 m². Both numbers exist for the same reason: diffusion rate scales with area and inversely with distance, so the organ is optimised on exactly those two terms."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "gas-exchange",
+      "q": [
+        "What makes oxygen go into your blood?",
+        "What drives oxygen across the alveolar wall?",
+        "What accounts for net oxygen flux into the pulmonary capillary?"
+      ],
+      "options": [
+        "There is more of it in the air than in the blood",
+        "The lungs suck it in",
+        "The blood grabs hold of it"
+      ],
+      "answer": 0,
+      "why": [
+        "It is exactly what you watched in the membrane. More outside than inside means more happens to wander in than out. Nothing pulls it.",
+        "A concentration difference plus random motion. Breathing keeps fresh air arriving so the gradient stays steep, and blood flow keeps carrying the oxygen away — but the crossing itself is unassisted diffusion.",
+        "Net flux is proportional to the partial pressure gradient, and both ventilation and perfusion exist to maintain that gradient rather than to move the gas. Haemoglobin sharpens it further by binding oxygen and so keeping dissolved concentration low, which steepens the gradient it is diffusing down."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why a room full of a gas with no oxygen in it is so dangerous. You would not feel anything wrong.",
+        "Because the alarm is wired to carbon dioxide rather than oxygen, an atmosphere that lets you exhale CO₂ normally but contains no oxygen triggers no distress at all. People walk into nitrogen-filled or argon-filled spaces and lose consciousness without any warning sensation. It is a leading cause of confined-space deaths, and it is a direct consequence of which molecule the body chose to monitor."
+      ]
+    }
+  ]
+}

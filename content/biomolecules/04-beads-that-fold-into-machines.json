@@ -1,0 +1,101 @@
+{
+  "id": "biomolecules/04",
+  "module": "biomolecules",
+  "index": 3,
+  "title": "Beads That Fold Into Machines",
+  "specimen": "peptide-chain",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Twenty kinds of bead. Join them in any order and the string folds itself into a machine.",
+        "Twenty amino acids, joined in any order you like. The chain then folds itself into a specific machine, and the order is the only thing that decided which one."
+      ],
+      "sub": [
+        "The same twenty, in everything alive.",
+        "Same twenty everywhere, which is why a human gene works in a bacterium."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "shape-from-sequence",
+      "question": [
+        "If you swapped two beads over, what would happen?",
+        "Exchange two residues in a chain. What is the consequence?"
+      ],
+      "options": [
+        "It might fold into a completely different shape",
+        "Nothing — same beads, same total",
+        "It would fold the same but be slightly heavier"
+      ],
+      "outcome": "It might fold into a completely different shape",
+      "note": [
+        "Guess first.",
+        "Commit. Sickle-cell disease is one amino acid out of 146, which is a fact worth holding while you answer."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "folding",
+      "guided": true,
+      "t": [
+        "Fold this string and see what it turns into.",
+        "Fold the chain to its best arrangement, then look at the shape you ended up with."
+      ],
+      "params": { "seq": "PHHPPHHP", "target": 2, "aspect": 0.85 },
+      "paramsByLevel": { "3": { "seq": "HHPPHPPHPPHH", "target": 4 }, "4": { "seq": "HHPPHPPHPPHH", "target": 4 } },
+      "goal": [
+        "A shape, from nothing but the order of the beads.",
+        "A specific structure, produced by sequence alone. No template, no mould, nothing supervising it."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A string of these beads is a protein. The beads are amino acids.",
+        "A chain of amino acids is a protein, and it is the most versatile of the four families by a long way.",
+        "Amino acids joined by peptide bonds. Twenty side chains — oily, watery, acidic, basic, large, tiny — which is the variety that makes the fold specific.",
+        "The nucleic acids store and the carbohydrates fuel and the lipids partition, but essentially every action in a cell is taken by a protein. That division of labour is close to universal, and the RNA world hypothesis exists partly because it is hard to see how it could have started that way."
+      ],
+      "sub": [
+        "Change one bead and the machine can stop working.",
+        "One substitution can abolish the fold entirely, because the shape depends on the whole sequence at once.",
+        "Sickle-cell disease is a single glutamate replaced by a valine — one residue in 146 — which puts an oily patch on the outside where there should be a watery one.",
+        "That exposed hydrophobic patch makes deoxygenated haemoglobin polymerise into fibres, which deform the cell. One residue, one exposed surface, and a disease — and the same allele confers malaria resistance in carriers, which is why selection has not removed it."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "shape-from-sequence",
+      "q": [
+        "Why does changing one bead matter so much?",
+        "Why can a single substitution abolish function?",
+        "Why is the sequence-structure map so unforgiving at some positions and not others?"
+      ],
+      "options": [
+        "Because the shape depends on the whole order at once",
+        "Because one bead is much bigger than the others",
+        "Because there are only twenty to choose from"
+      ],
+      "answer": 0,
+      "why": [
+        "The shape comes from all the beads together. Move one and the folding can come out completely different — or leave a sticky bit on the outside where there should not be one.",
+        "The fold is a global property of the sequence, so a local change can have a non-local effect. A substitution buried in the core, or one that exposes an oily surface, can wreck the structure; the same change elsewhere may do nothing at all.",
+        "Positional sensitivity varies enormously and predictably: buried core residues and active-site residues are highly constrained, surface loops are largely tolerant. This is why conservation across species is such a good predictor of which mutations will be pathogenic — evolution has already run the experiment."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is where the next world starts: the instructions that say what order the beads go in.",
+        "The genome does one job — it specifies the order of the beads. Everything in this module follows from that, and the next world is about how those instructions are written, copied and read."
+      ]
+    }
+  ]
+}

@@ -1,4 +1,10 @@
 {
+  "biomolecules": {
+    "0": "biomolecules/01-four-families-all-of-life.json",
+    "1": "biomolecules/02-sugar-is-a-battery.json",
+    "2": "biomolecules/03-why-oil-and-water-wont-mix.json",
+    "3": "biomolecules/04-beads-that-fold-into-machines.json"
+  },
   "cells": {
     "0": "cells/01-city-in-a-speck.json",
     "1": "cells/02-the-wall-that-chooses.json",
@@ -25,6 +31,13 @@
     "1": "genes/02-same-book-different-pages.json",
     "2": "genes/03-two-copies-of-everything.json",
     "3": "genes/04-your-grandmothers-eyes.json"
+  },
+  "human-body": {
+    "0": "human-body/01-a-colony-of-thirty-trillion.json",
+    "1": "human-body/02-the-pump-that-never-stops.json",
+    "2": "human-body/03-breathing-is-not-for-air.json",
+    "3": "human-body/04-the-longest-tube.json",
+    "4": "human-body/05-everything-talks-to-everything.json"
   },
   "natural-selection": {
     "0": "natural-selection/01-the-beetles-that-vanished.json"

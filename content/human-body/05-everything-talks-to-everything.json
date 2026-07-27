@@ -1,0 +1,140 @@
+{
+  "id": "human-body/05",
+  "module": "human-body",
+  "index": 4,
+  "title": "Everything Talks to Everything",
+  "specimen": "signal-web",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Stand up quickly. Before you notice anything, four different systems have already reacted.",
+        "Stand up fast and your blood tries to pool in your legs. Within one heartbeat, sensors, nerves, heart and vessels have all responded — and you noticed none of it."
+      ],
+      "sub": [
+        "Nothing decided to do that.",
+        "No decision was taken anywhere. Work out what the arrangement must be for that to happen."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "systems-interact",
+      "question": [
+        "How can four systems react before you have even noticed?",
+        "How is a response coordinated across systems faster than conscious awareness?"
+      ],
+      "options": [
+        "A sensor triggers a loop that corrects itself automatically",
+        "The brain works it out very quickly",
+        "It is a coincidence that they all do the right thing"
+      ],
+      "outcome": "A sensor triggers a loop that corrects itself automatically",
+      "note": [
+        "Guess before you read on.",
+        "Commit. The mechanism is the same one a thermostat uses, and it needs no intelligence anywhere in it."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Build the loop that stops you fainting. Any part fits any slot, so it is on you.",
+        "Assemble the baroreflex. Placement is unconstrained; each misassignment fails a specific test."
+      ],
+      "parts": [
+        { "id": "sensor", "label": "Pressure sensor" },
+        { "id": "nerve", "label": "Nerve to the brainstem" },
+        { "id": "effector", "label": "Heart and vessels" },
+        { "id": "feedback", "label": "The return signal" }
+      ],
+      "slots": [
+        { "correct": "sensor", "label": ["Notices the pressure has dropped"] },
+        { "correct": "nerve", "label": ["Carries the news, fast"] },
+        { "correct": "effector", "label": ["Does something about it"] },
+        { "correct": "feedback", "label": ["Reports back so it knows when to stop"] }
+      ],
+      "trials": [
+        {
+          "name": ["Notice anything at all", "Detection"],
+          "needs": ["sensor"],
+          "pass": ["The drop in pressure is detected.", "The stimulus is transduced into a signal."],
+          "fail": ["Pressure fell and nothing registered it.", "No sensor, no signal. A correction cannot begin."]
+        },
+        {
+          "name": ["React in time", "Speed"],
+          "needs": ["sensor", "nerve"],
+          "pass": ["The message arrives within a heartbeat.", "Neural conduction delivers the signal in well under a second."],
+          "fail": ["It was noticed and the news went nowhere fast enough.", "Detected but not conducted: hormonal signalling alone takes seconds to minutes, and you would already be on the floor."]
+        },
+        {
+          "name": ["Actually fix it", "Correction"],
+          "needs": ["sensor", "nerve", "effector"],
+          "pass": ["Heart rate up, vessels tighten, pressure recovers.", "Heart rate and vascular tone rise; arterial pressure is restored."],
+          "fail": ["A perfect alarm and nobody acting on it.", "Signal without an effector changes nothing. Sensing is not regulating."]
+        },
+        {
+          "name": ["Know when to stop", "Feedback"],
+          "needs": ["sensor", "nerve", "effector", "feedback"],
+          "pass": ["It corrects and then settles.", "The correction is fed back, so the response scales down as the error closes."],
+          "fail": ["It overcorrected and kept going. Your pressure swings instead of settling.", "Open loop: without feedback the response does not know the error has closed, so it overshoots and oscillates. That is not a small flaw — it is why open-loop control is unusable here."]
+        }
+      ],
+      "win": [
+        "It corrects itself and then settles down. Nobody decided anything.",
+        "A closed negative-feedback loop. It regulates without any part of it knowing what blood pressure is for."
+      ],
+      "lose": [
+        "Read which test failed — it names the missing job.",
+        "Each failure names the element that was absent. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Keeping things steady like this is called homeostasis.",
+        "Holding conditions steady against disturbance is homeostasis, and it is done with feedback loops rather than decisions.",
+        "Homeostasis: regulation by negative feedback. Sensor, comparator, effector, and a return path — the same architecture wherever it appears, and it requires no intelligence at any point.",
+        "Cannon named it in 1926, and Bernard's milieu intérieur set it up seventy years earlier. The insight is that an organism does not tolerate its environment — it maintains an internal one, and nearly every physiological variable you can name is defended this way."
+      ],
+      "sub": [
+        "Your temperature, water, sugar and salt are all held steady the same way.",
+        "Temperature, blood glucose, pH, water, calcium, oxygen — all regulated by loops of this same shape.",
+        "The feedback is what makes it stable. Remove it and the response overshoots and oscillates rather than settling.",
+        "Which is why homeostatic failure is so often oscillation rather than simple absence: a loop with damaged feedback does not stop working, it starts hunting, and a system that swings is frequently more dangerous than one that has merely stopped."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "systems-interact",
+      "q": [
+        "Why does the loop need a signal coming back?",
+        "Why is the return path essential rather than a refinement?",
+        "Why does open-loop control fail here specifically?"
+      ],
+      "options": [
+        "So it knows when to stop and does not overshoot",
+        "So the brain can keep a record",
+        "So it can happen twice"
+      ],
+      "answer": 0,
+      "why": [
+        "Without something reporting back, the response has no way of knowing the problem is fixed. It keeps pushing, overshoots, and then has to correct the other way.",
+        "Feedback is what makes the response proportional to the remaining error. Without it the effector runs at full output regardless, so the system overshoots and oscillates rather than settling — instability, not just imprecision.",
+        "The controlled variable is the same one being sensed, which is what closes the loop and makes the correction self-limiting. Open loop, the output is independent of the result, so any disturbance or drift accumulates. Baroreflex failure produces exactly this clinically: pressure that swings wildly rather than pressure that is simply low."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Type 1 diabetes is one of these loops with the sensor's answer missing.",
+        "Blood glucose is held steady by a loop in which insulin is the effector signal. Destroy the cells that make it and the loop opens: glucose is still sensed and nothing can act on the reading. Treatment is prosthetic feedback — measure, calculate, dose — and closed-loop insulin pumps are an engineer's attempt to rebuild the return path the body lost."
+      ]
+    }
+  ]
+}

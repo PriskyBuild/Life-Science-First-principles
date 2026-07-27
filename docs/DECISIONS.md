@@ -729,3 +729,25 @@ about a model survived being written and only died on contact with an assertion.
 What replaced it is the property that actually matters and is actually true: **a refused move
 changes nothing at all.** The chain is never left half-folded, and the refusal is shown, because
 "that one is blocked" is a fact about the shape rather than an error.
+
+### D52 — A flaky test of a true claim is worth more rewritten than deleted
+*Fixes the selection checks; third instance of the same class of bug.*
+
+`removing survival stops adaptation` failed once, on a run where the mean drifted from 0.428 to
+0.131. Nothing was broken. That is genetic drift — with the predator picking at random the mean
+still wanders, and about one run in twenty wanders far enough to look like the real thing. I had
+measured that rate when the simulation was built and chosen to narrate it rather than suppress
+it, then written a single-run assertion that could not survive it.
+
+The claim was never "it can never close". It was "it does not reliably close". So the test now
+runs each condition 24 times and measures the rate: all three conditions on must close ≥90% of
+runs, any one removed must close ≤25%. That is a stronger check than the original — it asserts
+the actual shape of the biology rather than one sample of it — and it cannot flake.
+
+**The general point, which this file keeps relearning.** Three separate tests broke this session
+by asserting a literal that described the content on the day it was written: `=== 1 island`,
+`=== 5 signposts`, and `#/m/biomolecules` as the example of an unwritten module. Every one passed
+for the wrong reason for a while and then failed for the wrong reason. A test should encode the
+rule — *the Atlas draws worlds with content and a reachable path* — and derive the numbers from
+whatever the content currently is. If a test needs editing because a lesson was authored, it was
+testing the lesson rather than the engine.

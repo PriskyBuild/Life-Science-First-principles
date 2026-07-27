@@ -1,0 +1,117 @@
+{
+  "id": "biomolecules/03",
+  "module": "biomolecules",
+  "index": 2,
+  "title": "Why Oil and Water Won't Mix",
+  "specimen": "lipid-drop",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Shake oil and water together as hard as you like. Leave it a minute and it separates again.",
+        "Shake oil and water as violently as you can and it mixes for a moment. Stand still and watch it come apart again, on its own, every time."
+      ],
+      "sub": [
+        "Nothing pushed them apart. So what did?",
+        "No force separated them and nothing was arranged. Work out what did it."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "hydrophobic-effect",
+      "question": [
+        "Why does oil gather back into a blob?",
+        "What drives the oil back together after mixing?"
+      ],
+      "options": [
+        "The water is what pushes it together",
+        "The oil molecules attract each other strongly",
+        "The oil is heavier, so it sinks"
+      ],
+      "outcome": "The water is what pushes it together",
+      "note": [
+        "Guess before you look — the usual answer is the wrong one.",
+        "Commit. The intuitive answer is the second, and it is not correct: the effect is driven from the water's side."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "folding",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "The round beads hate water. Bend the string and watch them find each other.",
+        "Round beads are oily, square ones are happy in water. Fold the chain until the oily ones are together in the middle."
+      ],
+      "params": { "seq": "PHHPPHHP", "target": 2, "aspect": 0.85 },
+      "goal": [
+        "The oily ones ended up together in the middle. Nobody put them there.",
+        "The oily beads gathered inside and the watery ones face out. Nothing arranged that — it is what the water leaves as the likeliest arrangement."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "folding",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "A longer chain. Find its best arrangement, and notice the oily ones always end up inside.",
+        "Different sequence, same single rule. Find the best arrangement and note that the pattern of the result — buried oil, exposed polar — is invariant even though the shape is not."
+      ],
+      "params": { "seq": "HHPPHPPHPPHH", "target": 4, "aspect": 0.85 },
+      "goal": [
+        "Different shape, same idea: the oily bits go inside.",
+        "Different geometry, identical principle. This is the same effect that makes a membrane, folds a protein, and splits your salad dressing."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Water squeezes the oily bits together. It is called the hydrophobic effect.",
+        "This is the hydrophobic effect. The water does the work — oil is pushed together rather than pulling itself together.",
+        "The hydrophobic effect is entropic. Water forms an ordered cage around an exposed oily surface; burying that surface frees the caged water, and the entropy gained by the water pays for it.",
+        "It is one of the few genuinely counter-intuitive results in undergraduate biochemistry: the association of the nonpolar molecules is not driven by any attraction between them. The driving term sits in the solvent, which is why the effect strengthens with temperature over a wide range instead of weakening."
+      ],
+      "sub": [
+        "The oil is not sticky. The water is fussy.",
+        "Oil-oil attraction is weak. The water's preference for its own company is what does it.",
+        "Which is why the same effect builds a membrane, folds a protein and separates a vinaigrette — one cause, three phenomena.",
+        "It is also why soap works: a molecule with an oily tail and a water-loving head can sit at the boundary and satisfy both, which is the whole of detergency and, not coincidentally, the whole of how a cell membrane assembles itself."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "hydrophobic-effect",
+      "q": [
+        "What actually pushes oil into a blob?",
+        "Where does the driving force for hydrophobic association come from?",
+        "Why is the hydrophobic effect not an attraction between oily molecules?"
+      ],
+      "options": [
+        "The water, getting itself out of the way",
+        "The oil molecules gripping each other",
+        "Gravity"
+      ],
+      "answer": 0,
+      "why": [
+        "Oily things are not sticky. Water is just much happier next to other water, so it shoves the oil together to get on with it.",
+        "The force comes from the solvent. Water has to arrange itself into a rigid cage around an exposed oily surface; shrinking that surface releases the cage, and that release is what drives the association.",
+        "The effect is entropic and lives in the water, not enthalpic and living in the oil. The clearest evidence is the temperature dependence: over a broad range hydrophobic association gets stronger as you warm it, which no ordinary attraction between two molecules does."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why a cell has a wall at all. The oily bits line up and shut the water out.",
+        "A membrane is not built by anything. Put molecules with oily tails and water-loving heads into water and they assemble themselves into a double sheet, because that is the arrangement that buries the most oil. Every cell boundary that has ever existed forms for exactly the reason your salad dressing separates."
+      ]
+    }
+  ]
+}

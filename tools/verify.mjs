@@ -1012,12 +1012,24 @@ async function stepLesson(maxSteps = 16, stopAt = null) {
     links === 5 && flat === 0, `${links} links, ${flat} flat`);
   check("and the 'not written yet' notice disappears once they all are",
     (await page.locator(".notice--soft").count()) === 0, "");
-  // a module that is still unwritten must still say so
-  await openWith(freshSave({ level: 2, modules: { "what-is-life": { lessonsDone: 4 }, cells: { lessonsDone: 5 } } }), "#/m/biomolecules");
-  await page.waitForSelector(".lessons");
-  check("an unwritten module is still honest about it",
-    /0 of 4 lessons are written/.test(await page.locator(".notice--soft").textContent()),
-    await page.locator(".notice--soft").textContent());
+  /* A module that is still unwritten must still say so. Which module that IS
+     changes every time one gets authored, so it is looked up rather than named
+     — this test pointed at Biomolecules and broke the moment Biomolecules was
+     written, which is the third literal in this file to age out that way. */
+  const blank = await page.evaluate(async () => {
+    const c = await import("./js/curriculum.js");
+    const m = c.worlds.flatMap((w) => w.modules).find((x) => c.writtenCount(x.id) === 0);
+    return m ? { id: m.id, lessons: m.lessons } : null;
+  });
+  if (!blank) {
+    check("an unwritten module is still honest about it", true, "every module is authored — nothing left to warn about");
+  } else {
+    await openWith(freshSave({ level: 2, modules: { "what-is-life": { lessonsDone: 4 }, cells: { lessonsDone: 5 } } }), `#/m/${blank.id}`);
+    await page.waitForSelector(".lessons");
+    const note = await page.locator(".notice--soft").textContent();
+    check("an unwritten module is still honest about it",
+      new RegExp(`0 of ${blank.lessons} lessons are written`).test(note), `${blank.id}: ${note}`);
+  }
 }
 
 /* 50. A child on the Atlas never downloads the lesson runner. */
@@ -1403,12 +1415,21 @@ const assemble = (swap = null) => page.evaluate((sw) => {
      stopped checking that gap the moment a second world was authored. */
   const empty = await page.evaluate(async () => {
     const c = await import("./js/curriculum.js");
+    const s = await import("./js/state.js");
     const drawn = new Set(c.playableWorlds().map((w) => w.id));
-    return { drawnEmpty: c.worlds.filter((w) => drawn.has(w.id) && !c.worldHasContent(w)).map((w) => w.id),
-             bodiesDrawn: drawn.has("bodies"), livingDrawn: drawn.has("living") };
+    // The rule: a world the graph has unlocked is STILL not drawn if it has
+    // nothing in it. Naming Bodies and The Living World here broke the moment
+    // Human Body was authored — the third literal in this file to do that.
+    return {
+      unlockedButEmpty: c.worlds
+        .filter((w) => c.isWorldUnlocked(w, s.progress) && !c.worldHasContent(w))
+        .map((w) => ({ id: w.id, drawn: drawn.has(w.id) })),
+      drawnEmpty: c.worlds.filter((w) => drawn.has(w.id) && !c.worldHasContent(w)).map((w) => w.id),
+    };
   });
   check("but the Atlas only draws what a child can actually play",
-    !empty.bodiesDrawn && !empty.livingDrawn && empty.drawnEmpty.length === 0,
+    empty.drawnEmpty.length === 0 && empty.unlockedButEmpty.length > 0
+      && empty.unlockedButEmpty.every((w) => !w.drawn),
     JSON.stringify(empty));
 }
 
@@ -1829,22 +1850,32 @@ const mountSelection = (body) => page.evaluate(async (src) => {
    is the only test in the suite that checks a scientific claim rather than a
    piece of software, and it is the one worth having. */
 {
+  /* Sampled, not single-shot. With differential survival switched off the mean
+     still wanders — that is genetic drift, and it is real biology rather than a
+     defect — so roughly one run in twenty drifts far enough to look adapted. A
+     single-run assertion here failed exactly that way, which made it a flaky
+     test of a true claim. Measuring the RATE turns it into a stronger check:
+     the claim was never "it can never close" but "it does not reliably close". */
+  const N = 24;
   const r = await mountSelection(`
-    const runOf = () => { sim.reset(); const s = sim.gap; generations(14); return { start: s, end: sim.gap }; };
-    const all = runOf();
+    const closes = () => { sim.reset(); const s = sim.gap; generations(14);
+                           return s > 0.18 && sim.gap < s * 0.35; };
+    const rate = (setup) => { let hits = 0;
+      for (let i = 0; i < ${N}; i++) { setup(); if (closes()) hits++; }
+      return hits / ${N}; };
+    const all = rate(() => {});
     const off = {};
     for (const key of ["variation", "heredity", "survival"]) {
-      sim.on[key] = false;
-      off[key] = runOf();
-      sim.on[key] = true;
+      off[key] = rate(() => { for (const k of ["variation","heredity","survival"]) sim.on[k] = k !== key; });
     }
+    for (const k of ["variation","heredity","survival"]) sim.on[k] = true;
     return { all, off };
   `);
-  const closed = (x) => x.end < x.start * 0.35;
-  check("with all three conditions the population adapts",
-    r.all.start > 0.18 && closed(r.all), JSON.stringify(r.all));
+  check("with all three conditions the population reliably adapts",
+    r.all >= 0.9, `${Math.round(r.all * 100)}% of ${N} runs`);
   for (const key of ["variation", "heredity", "survival"]) {
-    check(`removing ${key} stops adaptation`, !closed(r.off[key]), JSON.stringify(r.off[key]));
+    check(`removing ${key} stops adaptation`, r.off[key] <= 0.25,
+      `${Math.round(r.off[key] * 100)}% of ${N} runs still closed — drift, not selection`);
   }
 }
 

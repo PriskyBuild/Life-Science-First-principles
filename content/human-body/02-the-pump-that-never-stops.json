@@ -1,0 +1,165 @@
+{
+  "id": "human-body/02",
+  "module": "human-body",
+  "index": 1,
+  "title": "The Pump That Never Stops",
+  "specimen": "heart-model",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Your heart has beaten every few seconds since before you were born. It has never once had a rest.",
+        "Your heart started beating about three weeks after you were conceived and has not paused since. It will do roughly three billion beats without maintenance."
+      ],
+      "sub": [
+        "Why does anything need pumping at all?",
+        "Before asking how it works, ask why the job exists."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "circulation-is-a-loop",
+      "question": [
+        "Why does blood need pushing round instead of just sitting there?",
+        "Why is circulation necessary rather than simple diffusion through the body?"
+      ],
+      "options": [
+        "Because things spread far too slowly on their own",
+        "Because blood is heavy and would sink",
+        "Because the body would get cold"
+      ],
+      "outcome": "Because things spread far too slowly on their own",
+      "note": [
+        "Guess first — think about how long diffusion took in the membrane.",
+        "Commit. Diffusion time scales with the square of distance, which is the number that decides this."
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Put each part of the loop in the right place.",
+        "Assemble the circuit: each component in the job it does."
+      ],
+      "parts": [
+        { "id": "heart", "label": "The pump" },
+        { "id": "arteries", "label": "Pipes going out" },
+        { "id": "capillaries", "label": "Tiny thin pipes" },
+        { "id": "veins", "label": "Pipes coming back" }
+      ],
+      "slots": [
+        { "accepts": "heart", "label": ["Pushes the blood", "Generates the pressure"] },
+        { "accepts": "arteries", "label": ["Carries it away at high pressure", "Carries blood away from the heart"] },
+        { "accepts": "capillaries", "label": ["Where things actually get swapped", "Where exchange with tissue happens"] },
+        { "accepts": "veins", "label": ["Brings it back to the pump", "Returns blood to the heart"] }
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Any part goes in any slot, so the marking is on you. Then it gets tested.",
+        "Placement is unconstrained. Assign each component, then the circuit is stress-tested — and every misassignment fails a different way."
+      ],
+      "parts": [
+        { "id": "heart", "label": "The pump" },
+        { "id": "arteries", "label": "Arteries" },
+        { "id": "capillaries", "label": "Capillaries" },
+        { "id": "veins", "label": "Veins" },
+        { "id": "valves", "label": "Valves" }
+      ],
+      "slots": [
+        { "correct": "heart", "label": ["Generates the pressure"] },
+        { "correct": "arteries", "label": ["Carries blood away under high pressure"] },
+        { "correct": "capillaries", "label": ["Thin enough for exchange to happen"] },
+        { "correct": "veins", "label": ["Returns blood at low pressure"] },
+        { "correct": "valves", "label": ["Stops it going backwards"] }
+      ],
+      "trials": [
+        {
+          "name": ["Move blood at all", "Generate flow"],
+          "needs": ["heart", "arteries"],
+          "pass": ["Blood leaves the heart under pressure.", "Pressure is generated and conducted away from the pump."],
+          "fail": ["Nothing is pushing, or nothing is carrying it away.", "No pressure source or no conducting vessel: there is no flow to speak of."]
+        },
+        {
+          "name": ["Actually deliver anything", "Exchange"],
+          "needs": ["heart", "arteries", "capillaries"],
+          "pass": ["Thin enough walls for oxygen to cross into tissue.", "Exchange occurs across capillary walls."],
+          "fail": ["Blood went round and never gave anything up.", "Flow without a thin-walled exchange bed delivers nothing. Transport is not the purpose; exchange is."]
+        },
+        {
+          "name": ["Complete the circuit", "Return"],
+          "needs": ["heart", "arteries", "capillaries", "veins"],
+          "pass": ["It comes back, so it can go round again.", "Venous return closes the loop and the circuit is continuous."],
+          "fail": ["Blood arrived somewhere and stayed there.", "No return path: this is an open system, and it drains rather than circulates."]
+        },
+        {
+          "name": ["Work while standing up", "Directionality against gravity"],
+          "needs": ["heart", "arteries", "capillaries", "veins", "valves"],
+          "pass": ["It cannot run backwards down your legs.", "One-way valves prevent retrograde flow in low-pressure vessels."],
+          "fail": ["It circulated beautifully lying down and pooled in your feet.", "Venous pressure is too low to oppose gravity unaided — without valves, blood pools in the legs. This is exactly what varicose veins are."]
+        }
+      ],
+      "win": [
+        "A loop that works standing up. That is a circulation.",
+        "A complete closed circuit with directionality. Every part failed a different test, which is what tells you each is doing a distinct job."
+      ],
+      "lose": [
+        "Read which test failed — it names what was in the wrong place.",
+        "Each failed trial names the function that was missing. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Blood goes round in a loop. It never stops and never runs out.",
+        "This is a closed circulation: the same blood goes round and round, and the pump only has to keep it moving.",
+        "A closed double circulation — one circuit to the lungs, one to the body — driven by a four-chambered pump. Delivery happens only in the capillaries; everything else is plumbing.",
+        "Harvey worked out in 1628 that the blood must circulate, and he did it by arithmetic rather than dissection: the heart pumps more than the body's weight in blood every hour, so it cannot possibly be manufacturing it. It has to be the same blood coming back."
+      ],
+      "sub": [
+        "The tiny pipes are where the useful bit happens.",
+        "Capillaries are where the whole system earns its keep; no cell in you is more than about two cells away from one.",
+        "The double circuit matters: it lets lung pressure stay low enough not to force fluid into the airways while body pressure stays high enough to reach your feet.",
+        "That separation of pressures is the reason a four-chambered heart appears independently in birds and mammals. A single circuit cannot satisfy both constraints at once, and the fix is the same fix twice."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "circulation-is-a-loop",
+      "q": [
+        "Why can your body not just let things spread on their own?",
+        "Why is diffusion insufficient for a body your size?",
+        "Why does body size force the evolution of circulation?"
+      ],
+      "options": [
+        "Diffusion is fine over tiny distances and hopeless over big ones",
+        "Diffusion only works in water",
+        "Diffusion stops working once you are born"
+      ],
+      "answer": 0,
+      "why": [
+        "Diffusion is quick across a cell and impossibly slow across a body. Over a centimetre it would take hours, and you would be dead long before the oxygen arrived.",
+        "Diffusion time rises with the square of distance. Crossing a cell takes under a millisecond; crossing a centimetre of tissue would take hours. Circulation exists to carry things the long way quickly, so diffusion only ever has to cover the last few micrometres.",
+        "The t ∝ x² scaling is the whole argument, and it is why every animal above a millimetre or so has some form of bulk transport. It also explains capillary density: the system's job is to get a vessel within diffusion distance of every cell, which is why no cell in you sits more than about 20 micrometres from one."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "A heart attack is a blocked pipe in the heart's own supply.",
+        "The heart cannot use the blood inside its chambers; it has its own small arteries on the outside. Block one and the muscle downstream dies within minutes — which is why a heart attack is a plumbing failure rather than a pump failure, and why unblocking the pipe quickly is the whole of the treatment."
+      ]
+    }
+  ]
+}

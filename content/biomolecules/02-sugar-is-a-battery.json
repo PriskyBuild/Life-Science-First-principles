@@ -1,0 +1,119 @@
+{
+  "id": "biomolecules/02",
+  "module": "biomolecules",
+  "index": 1,
+  "title": "Sugar Is a Battery",
+  "specimen": "glucose-ring",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A spoonful of sugar holds enough energy to lift you off the ground. It just sits there quietly instead.",
+        "A teaspoon of sugar carries roughly the energy needed to lift a person a metre off the floor, and it will sit in the bowl for years without doing any of it."
+      ],
+      "sub": [
+        "Where is the energy, and why does it stay put?",
+        "Both halves of that need explaining: where it is, and why it does not simply leave."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "sugar-is-stored-energy",
+      "question": [
+        "Where in a sugar molecule is the energy kept?",
+        "In what does a sugar molecule's chemical energy consist?"
+      ],
+      "options": [
+        "In the bonds between its atoms",
+        "In tiny amounts of heat inside it",
+        "It is not really energy, it just feels like it"
+      ],
+      "outcome": "In the bonds between its atoms",
+      "note": [
+        "Have a guess.",
+        "Commit. Note that the sugar is not hot, which rules out one of these immediately."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "energy",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Let some sugar in and see how long the cell can keep going.",
+        "Open the food doors and add power plants. Find a setting that keeps the cell alive."
+      ],
+      "params": { "doors": 3, "plants": 2, "hold": 16 },
+      "paramsByLevel": { "1": { "doors": 4, "plants": 2, "hold": 12 } },
+      "goal": [
+        "Sugar came in and the cell kept running. That is what the energy was for.",
+        "Steady. The sugar was not doing anything until something took it apart — which is the whole point of storing energy in bonds."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "energy",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "More power plants is not simply better. Find out why, and find the best setting.",
+        "Each power plant has an upkeep of its own, and demand rises partway through. There is an optimum and it is not the maximum of either control."
+      ],
+      "params": { "doors": 3, "plants": 2, "spike": 2, "hold": 20 },
+      "paramsByLevel": { "4": { "spike": 3, "upkeep": 0.8, "hold": 24 } },
+      "goal": [
+        "That is the best setting — and it is not the biggest one.",
+        "Found it. Capacity costs upkeep, so the optimum sits below the maximum of both controls. That shape of answer recurs everywhere in biology."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Sugar is a store. The energy is locked in the bonds until something breaks them.",
+        "A carbohydrate is chemical energy in storage. The bonds hold it, and it stays held until an enzyme takes the molecule apart in controlled steps.",
+        "Energy is released when bonds in glucose and oxygen are exchanged for the stronger bonds in carbon dioxide and water. The difference is what a cell captures.",
+        "Strictly it is the difference in bond enthalpy between reactants and products, not energy 'in' any one bond — a common and stubborn misstatement. Bonds do not contain energy waiting to escape; breaking a bond costs energy, and the yield comes from forming stronger ones afterwards."
+      ],
+      "sub": [
+        "Which is why sugar does nothing until you eat it.",
+        "Stability is the feature. A store that released itself would not be a store.",
+        "The activation barrier is what keeps it stable at room temperature, and enzymes lower that barrier without changing the amount released.",
+        "Plants store it as starch — the same glucose, joined so it packs and stays put. Cellulose is the same monomer again, joined the other way up, and almost no animal can digest it. Identical parts, different linkage, entirely different substance."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "sugar-is-stored-energy",
+      "q": [
+        "Why does sugar not release its energy on its own?",
+        "Why is glucose stable in a bowl but not in a cell?",
+        "Why is glucose kinetically stable despite being thermodynamically unstable?"
+      ],
+      "options": [
+        "It needs something to start it off and take it apart",
+        "It has no energy until you eat it",
+        "Sugar only works inside a body"
+      ],
+      "answer": 0,
+      "why": [
+        "The energy is there the whole time. It just needs something to get it started — which is exactly why a sugar cube burns if you light it, and does nothing if you do not.",
+        "Releasing the energy requires getting over a barrier first. Heat does it crudely; an enzyme does it at body temperature, in small steps, capturing the energy instead of losing it.",
+        "The reaction is strongly favourable and extremely slow, which is the definition of kinetic stability. Enzymes lower the activation barrier without altering ΔG, so they change the rate and never the yield — the same amount of energy is available whether it is burnt or respired."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Plants store the sun's energy as sugar. Everything else eats it, one way or another.",
+        "Photosynthesis is the entry point for essentially all the energy in the biosphere, and sugar is the form it is banked in. Coal and oil are the same store, laid down and left, which makes fossil fuel a withdrawal from an account filled by sunlight hundreds of millions of years ago."
+      ]
+    }
+  ]
+}

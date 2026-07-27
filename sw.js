@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "c3e826643ba9";
+const VERSION = "b377fcdbbc57";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -16,6 +16,10 @@ const PRECACHE = [
   "assets/icon-maskable.png",
   "assets/mark.svg",
   "content/authored.json",
+  "content/biomolecules/01-four-families-all-of-life.json",
+  "content/biomolecules/02-sugar-is-a-battery.json",
+  "content/biomolecules/03-why-oil-and-water-wont-mix.json",
+  "content/biomolecules/04-beads-that-fold-into-machines.json",
   "content/cells/01-city-in-a-speck.json",
   "content/cells/02-the-wall-that-chooses.json",
   "content/cells/03-the-power-plant.json",
@@ -37,6 +41,11 @@ const PRECACHE = [
   "content/genes/03-two-copies-of-everything.json",
   "content/genes/04-your-grandmothers-eyes.json",
   "content/hints.json",
+  "content/human-body/01-a-colony-of-thirty-trillion.json",
+  "content/human-body/02-the-pump-that-never-stops.json",
+  "content/human-body/03-breathing-is-not-for-air.json",
+  "content/human-body/04-the-longest-tube.json",
+  "content/human-body/05-everything-talks-to-everything.json",
   "content/natural-selection/01-the-beetles-that-vanished.json",
   "content/proteins/01-a-string-that-folds-itself.json",
   "content/proteins/02-shape-is-the-job.json",

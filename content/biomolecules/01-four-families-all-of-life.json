@@ -1,0 +1,106 @@
+{
+  "id": "biomolecules/01",
+  "module": "biomolecules",
+  "index": 0,
+  "title": "Four Families, All of Life",
+  "specimen": "family-key",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Every living thing on earth is built from four families of molecule. Only four.",
+        "Every organism that has ever lived is built from four families of large molecule. Not four hundred, not forty — four."
+      ],
+      "sub": [
+        "A tree, a whale and a germ all use the same four.",
+        "The parts list is astonishingly short, and it is the same list everywhere."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "polymers-from-monomers",
+      "question": [
+        "How do you make thousands of different big molecules from a short parts list?",
+        "How does a short inventory of building blocks yield unlimited variety?"
+      ],
+      "options": [
+        "Join small units into long chains, in different orders",
+        "Invent a new kind of atom for each one",
+        "You cannot — that is why life is so limited"
+      ],
+      "outcome": "Join small units into long chains, in different orders",
+      "note": [
+        "Guess first — you have already seen this trick.",
+        "Commit. You met the same argument about a four-letter alphabet, and it is the same argument."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each building block with the big thing it makes.",
+        "Match each monomer to the polymer it builds."
+      ],
+      "parts": [
+        { "id": "sugar", "label": "A sugar" },
+        { "id": "fatty", "label": "A fatty acid" },
+        { "id": "amino", "label": "An amino acid" },
+        { "id": "nucleotide", "label": "A nucleotide" }
+      ],
+      "slots": [
+        { "accepts": "sugar", "label": ["Makes starch, and the walls of plants", "Builds carbohydrates: starch, glycogen, cellulose"] },
+        { "accepts": "fatty", "label": ["Makes fats and the wall round a cell", "Builds lipids: stores, membranes, insulation"] },
+        { "accepts": "amino", "label": ["Makes proteins — the machines", "Builds proteins: enzymes, structure, signals"] },
+        { "accepts": "nucleotide", "label": ["Makes the instructions", "Builds nucleic acids: DNA and RNA"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The four families are carbohydrates, lipids, proteins and nucleic acids.",
+        "Carbohydrates, lipids, proteins and nucleic acids. Three of the four are chains of repeating units.",
+        "Carbohydrates, lipids, proteins and nucleic acids. Three are polymers built from monomers; lipids are the odd one out and are not chains at all.",
+        "The polymer trick — a small monomer set joined in arbitrary order — appears three times independently in that list, which tells you something about how few good solutions there are to the problem of open-ended variety."
+      ],
+      "sub": [
+        "Small pieces, joined into long strings, in any order you like.",
+        "The same trick each time: a handful of units, joined end to end, and the order carries the meaning.",
+        "Lipids are grouped by behaviour rather than structure — they are the molecules that will not dissolve in water, which is a physical property rather than a chemical family.",
+        "That makes 'lipid' the only one of the four defined by what it does in water rather than what it is made of, which is worth noticing: the category exists because the hydrophobic effect matters that much."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "polymers-from-monomers",
+      "q": [
+        "Why is a short parts list not a problem?",
+        "Why does a small monomer set not limit variety?",
+        "Why is monomer diversity not the binding constraint?"
+      ],
+      "options": [
+        "Because the order they are joined in does the work",
+        "Because the pieces are very complicated",
+        "Because living things are all quite similar"
+      ],
+      "answer": 0,
+      "why": [
+        "Twenty different beads on a string a hundred beads long gives more orders than there are atoms in the universe. The pieces do not need to be clever.",
+        "Variety comes from sequence, not from inventory. Twenty amino acids in a chain of 100 gives 20¹⁰⁰ possible proteins — a number with 130 digits, against roughly 10⁸⁰ atoms in the observable universe.",
+        "This is the same argument as the four-letter alphabet in DNA, and it generalises: capacity scales exponentially with length and only linearly with alphabet size, so the interesting constraints are always on length, error rate and assembly cost rather than on the parts list."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why food from any living thing can feed any other. The parts fit.",
+        "You can eat a plant, a fish or a mushroom and build yourself out of the results, because all three are made of the same four families broken down into the same monomers. Nutrition works at all only because the parts list is universal."
+      ]
+    }
+  ]
+}
