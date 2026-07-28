@@ -1,0 +1,129 @@
+{
+  "id": "neuroscience/04",
+  "module": "neuroscience",
+  "index": 3,
+  "title": "Memory Is Rebuilt, Not Replayed",
+  "specimen": "recall-trace",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Every time you remember something, you change it a little.",
+        "Remembering is not opening a file. It is rebuilding — and the rebuilt version is what gets stored again, slightly different from the one you started with."
+      ],
+      "sub": [
+        "The memories you have used most are the least reliable.",
+        "That has an uncomfortable consequence, and it is the opposite of what everyone assumes."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "memory-is-reconstructive",
+      "question": [
+        "Which memory is most likely to have changed?",
+        "Which memory has drifted furthest from the event?"
+      ],
+      "options": [
+        "The one you have told the most times",
+        "The one you have never thought about since",
+        "They are equally reliable"
+      ],
+      "outcome": "The one you have told the most times",
+      "note": [
+        "Guess before you look. Most people pick the opposite.",
+        "Commit. The intuitive answer is the second, and the evidence goes the other way."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Each time you remember it",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "The event happens. A pattern is laid down.",
+        "You recall it. The pattern is rebuilt from pieces, not read off.",
+        "Rebuilding is imperfect — a detail from somewhere else slips in.",
+        "What gets stored again is the rebuilt version, including the mistake.",
+        "Next time you recall THAT one. The error is now part of the memory."
+      ],
+      "t": [
+        "Follow one memory through being remembered four times.",
+        "Follow a single trace through repeated retrieval, and watch where the drift enters."
+      ],
+      "after": [
+        "Each recall is a chance to change it, and the change gets saved.",
+        "Retrieval is not read-only. The reconsolidated version replaces the original, so errors accumulate rather than being corrected."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Remembering rebuilds the memory, and then saves the rebuilt one.",
+        "Recall is reconstructive, and it is followed by reconsolidation — the memory is stored again, in whatever state recall left it.",
+        "Reconsolidation: retrieval returns a memory to a labile state, and it must be re-stabilised. Whatever changed during retrieval is what gets re-stored.",
+        "The finding is relatively recent and was resisted, because it undermines the archive metaphor entirely. It also means memory is not a recording device that sometimes fails; it is a reconstruction device that usually succeeds — and those two descriptions make very different predictions about when it will go wrong."
+      ],
+      "sub": [
+        "It does not feel like guessing. That is the problem.",
+        "A reconstructed memory feels exactly like a retrieved one, so confidence is no guide at all.",
+        "Loftus showed people can be given confident, detailed memories of events that never happened, using nothing but suggestion.",
+        "Confidence and accuracy are only weakly related, and both rise with rehearsal — so repeated telling makes a memory feel more certain while making it less faithful. That divergence is the single most practically important thing in this lesson."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "memory-is-reconstructive",
+      "q": [
+        "Why does telling a story often make it less accurate?",
+        "Why does rehearsal reduce a memory's fidelity while increasing confidence?",
+        "Why do confidence and accuracy come apart with rehearsal?"
+      ],
+      "options": [
+        "Each telling rebuilds it, and the rebuilt version is what gets kept",
+        "Because people exaggerate on purpose",
+        "Because memories fade with time"
+      ],
+      "answer": 0,
+      "why": [
+        "Nobody is lying. Every time you tell it you build it again out of pieces, and any small change you make gets saved as the new version. Tell it fifty times and you are remembering the fiftieth telling.",
+        "Each retrieval destabilises and re-stores the trace, so alterations persist. Fluency rises with practice and fluency feels like accuracy — which is why the most-rehearsed account is both the most confident and the most drifted.",
+        "They are tracking different things. Confidence tracks ease of retrieval, which rehearsal reliably improves; accuracy tracks correspondence to the event, which rehearsal can only degrade. Nothing in the system measures the second, so there is no internal signal that would tell you."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "memory-is-reconstructive",
+      "levels": [3, 4],
+      "q": [
+        "Given all this, what is the best way to learn something?",
+        "What does reconstructive memory imply about effective study?"
+      ],
+      "options": [
+        "Test yourself, because retrieving is what strengthens it",
+        "Read it over and over until it feels familiar",
+        "Highlight the important parts"
+      ],
+      "answer": 0,
+      "why": [
+        "Retrieval is what changes a memory — so deliberately retrieving it, and then checking, is what makes it both stronger and correct. Re-reading feels effective because it feels easy, and feeling easy is exactly the signal that misleads you.",
+        "The testing effect follows directly: since retrieval reconsolidates, practising retrieval strengthens the trace far more than restudying does, and adding feedback corrects drift rather than compounding it. Re-reading raises fluency without raising accuracy, producing precisely the confidence–accuracy gap this lesson is about — and it is why this whole platform tests you on old material instead of letting you re-read it."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why we ask you about old lessons instead of letting you read them again.",
+        "The spaced retrieval running underneath this whole product is built on exactly this finding. Being asked something days later, guessing, and then being shown the mechanism does more for durable memory than any amount of re-reading — and the fact that it feels harder is the point rather than a cost."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "id": "neuroscience/03",
+  "module": "neuroscience",
+  "index": 2,
+  "title": "Your Brain Edits What You See",
+  "specimen": "illusion-card",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There is a hole in your vision, in both eyes, right now. You have never noticed it.",
+        "Each of your eyes has a patch with no light detectors at all — where the nerve leaves. You have a blind spot in your field of view at this moment, and you cannot find it by looking."
+      ],
+      "sub": [
+        "Something is filling it in.",
+        "You do not see a gap. That is the part that needs explaining."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "perception-is-constructed",
+      "question": [
+        "Why do you not see a black hole where the blind spot is?",
+        "Why is the blind spot not perceived as a gap?"
+      ],
+      "options": [
+        "Your brain fills it in with a guess from around it",
+        "The other eye covers it",
+        "The hole is too small to notice"
+      ],
+      "outcome": "Your brain fills it in with a guess from around it",
+      "note": [
+        "Guess first, then go and check it on yourself.",
+        "Commit. The next stage has you demonstrate this on your own eye, so your answer is about to be tested."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Try it on yourself",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Hold up your left thumb and your right thumb, about 20 cm apart, at arm's length.",
+        "Close your LEFT eye. With your right eye, stare hard at your left thumb. Do not let your gaze move.",
+        "Still staring at the left thumb, slowly move your right thumb further to the right.",
+        "Keep staring. At some point your right thumb vanishes completely — and comes back if you move further.",
+        "It did not go dark where it vanished. You saw background there instead."
+      ],
+      "t": [
+        "You can find your own blind spot right now. Follow each step.",
+        "This works on you, today, with no equipment. Follow the steps and keep your gaze fixed — the effect disappears the moment your eye moves."
+      ],
+      "after": [
+        "Your thumb disappeared and nothing black appeared. Your brain made something up.",
+        "The thumb vanished and was replaced by plausible background rather than by darkness. Nothing reported the absence, because the filling-in happens before anything you can introspect on."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "What you see is not a picture of the world. It is your brain's best guess.",
+        "Perception is not reception. Your brain builds a model from incomplete data and you experience the model, not the data.",
+        "Perception is inference. The retinal image is ambiguous, low-resolution outside the fovea, interrupted by the optic disc and smeared by eye movement — and none of that reaches awareness.",
+        "Helmholtz called it unconscious inference in the 1860s and the framing has held up. The visual system is solving an underdetermined problem — infinitely many scenes are consistent with any retinal image — and it resolves it using assumptions about the world. Those assumptions are usually right, which is why illusions are interesting: they are the cases where a normally-correct assumption is wrong."
+      ],
+      "sub": [
+        "Most of the time the guess is right, so you never notice you are guessing.",
+        "The guess is usually correct, which is exactly why it is invisible. You only catch it when it fails.",
+        "You are also blind for about 40 minutes a day during saccades, and never experience a single moment of it.",
+        "Your eyes make several rapid movements a second and vision is suppressed during each one. Add it up and it is a substantial fraction of waking life spent not seeing, edited out so smoothly that the edit itself is undetectable from the inside."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "perception-is-constructed",
+      "q": [
+        "Is what you see the same as what is there?",
+        "What is the relationship between the retinal image and what you perceive?",
+        "In what sense is perception inferential rather than receptive?"
+      ],
+      "options": [
+        "No — it is your brain's best guess from what arrives",
+        "Yes, your eyes send a picture to your brain",
+        "Yes, unless you have something wrong with your eyes"
+      ],
+      "answer": 0,
+      "why": [
+        "Your eyes do not send a picture. They send patches of information with holes in it, and your brain builds something complete out of that. You just showed yourself one of the holes.",
+        "The image is incomplete, and what you experience is a reconstruction. You demonstrated the point yourself: the thumb vanished and background appeared, which means something manufactured that background.",
+        "The mapping from scene to retinal image loses information irreversibly, so recovering the scene is underdetermined and requires assumptions. Perception is the output of that inference. Illusions are not malfunctions — they are the inference machinery running correctly on input it was not built for."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why eyewitnesses can be completely honest and completely wrong.",
+        "An eyewitness is not replaying a recording; they are reporting a reconstruction, built from incomplete input and filled in with what was probable. Confidence does not track accuracy, because the filling-in is invisible from the inside — a witness cannot feel the difference between what they saw and what their brain supplied. This is now well enough established that many courts instruct juries about it."
+      ]
+    }
+  ]
+}

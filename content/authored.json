@@ -58,6 +58,13 @@
     "2": "natural-selection/03-the-peppered-moth.json",
     "3": "natural-selection/04-why-antibiotics-stop-working.json"
   },
+  "neuroscience": {
+    "0": "neuroscience/01-thinking-is-electricity.json",
+    "1": "neuroscience/02-the-gap-that-matters.json",
+    "2": "neuroscience/03-your-brain-edits-what-you-see.json",
+    "3": "neuroscience/04-memory-is-rebuilt-not-replayed.json",
+    "4": "neuroscience/05-wire-a-reflex.json"
+  },
   "proteins": {
     "0": "proteins/01-a-string-that-folds-itself.json",
     "1": "proteins/02-shape-is-the-job.json",

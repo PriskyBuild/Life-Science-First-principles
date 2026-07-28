@@ -2058,6 +2058,55 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     r.best > 0 && r.best <= 4, `best found ${r.best}, known optimum 4`);
 }
 
+/* 96-98. All-or-nothing, measured rather than asserted.
+
+   The whole of Neuroscience lesson 1 rests on one claim: a stronger stimulus
+   does not produce a bigger spike. That is a claim about the model, so it gets
+   tested like one — the same reasoning as the selection checks. If FitzHugh–
+   Nagumo ever stopped behaving this way the lesson would be teaching something
+   false, and nothing else in the suite would notice. */
+{
+  const r = await page.evaluate(async () => {
+    await import("./js/sims/spike.js");
+    document.querySelectorAll("fp-spike").forEach((n) => n.remove());
+    const sim = document.createElement("fp-spike");
+    Object.assign(sim.dataset, { task: "threshold", amp: 4 });
+    document.querySelector("#main").append(sim);
+    await new Promise((res) => setTimeout(res, 120));
+    sim.reduced = { matches: true };        // drive it by hand, so this is deterministic
+
+    const probe = (amp) => {
+      sim.reset();
+      sim.amp = amp;
+      sim.poke();
+      for (let i = 0; i < 400; i++) sim.step(1 / 60);
+      return { amp, spikes: sim.spikes, peak: sim.lastPeak };
+    };
+    const runs = [2, 4, 5, 6, 8, 10, 12].map(probe);
+    // A sustained drive well past the upper edge must go quiet again.
+    sim.reset();
+    sim.amp = 0;
+    sim.current = 16;
+    for (let i = 0; i < 900; i++) sim.step(1 / 60);
+    const blocked = { spikes: sim.spikes, sinceSpike: +sim.sinceSpike.toFixed(1) };
+    return { runs, blocked };
+  });
+
+  const fired = r.runs.filter((x) => x.spikes > 0);
+  const silent = r.runs.filter((x) => x.spikes === 0);
+  check("below threshold a stimulus produces no spike at all",
+    silent.length > 0 && silent.every((x) => x.peak == null),
+    silent.map((x) => x.amp).join(",") + " silent");
+  check("above threshold every spike is the same height, however hard the poke",
+    fired.length >= 3 &&
+      (Math.max(...fired.map((x) => x.peak)) - Math.min(...fired.map((x) => x.peak))) < 0.15,
+    fired.map((x) => `${x.amp}:${x.peak.toFixed(2)}`).join(" "));
+  // Too much drive silences it too — depolarisation block, and the reason the
+  // open-track lesson asks for a window rather than a curve.
+  check("far too much steady drive silences it again rather than firing faster",
+    r.blocked.sinceSpike > 3, JSON.stringify(r.blocked));
+}
+
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
 
 await browser.close();

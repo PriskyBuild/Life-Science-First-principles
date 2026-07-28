@@ -946,6 +946,101 @@
     ],
     "from": "natural-selection/04"
   },
+  "signals-are-electrical": {
+    "q": [
+      "How does your brain know something hurt a lot?",
+      "How is stimulus intensity encoded if amplitude is fixed?",
+      "What channels remain for intensity once amplitude is unavailable?"
+    ],
+    "options": [
+      "Lots of signals arrive, quickly",
+      "The signals are bigger",
+      "The signals travel faster"
+    ],
+    "answer": 0,
+    "why": [
+      "Every signal is the same size, so size cannot tell you anything. What changes is how many arrive and how fast they come — a hard press sends a flood, a light touch sends a trickle.",
+      "Rate and recruitment. A stronger stimulus fires each neuron more often and brings more neurons above threshold; amplitude is fixed and carries nothing.",
+      "Frequency and population coding, and they are what is left rather than what was chosen. The all-or-nothing law removes amplitude as a variable, so any information about intensity must be carried by the remaining degrees of freedom."
+    ],
+    "from": "neuroscience/01"
+  },
+  "synapse-is-a-gap": {
+    "q": [
+      "Why is a gap better than a wire here?",
+      "What does a chemical synapse buy over a direct electrical connection?",
+      "Why is the conversion to chemical and back worth its cost in speed?"
+    ],
+    "options": [
+      "It can be made stronger or weaker, so the brain can learn",
+      "Chemicals travel faster than electricity",
+      "It stops the cells getting tangled"
+    ],
+    "answer": 0,
+    "why": [
+      "A wire is always the same. A gap can be made easier or harder to cross — and changing how easy each gap is to cross is what learning actually is inside your head.",
+      "Adjustability. Transmitter released, receptor number and clearance rate can all change with use, so the connection has a strength that experience can set. A direct electrical junction is fixed.",
+      "It costs perhaps half a millisecond and buys plasticity, inhibition and signal inversion. Electrical synapses do exist and are faster — they are used where speed matters more than modifiability, such as escape reflexes — which is the clearest evidence that the chemical one is a deliberate trade rather than a limitation."
+    ],
+    "from": "neuroscience/02"
+  },
+  "perception-is-constructed": {
+    "q": [
+      "Is what you see the same as what is there?",
+      "What is the relationship between the retinal image and what you perceive?",
+      "In what sense is perception inferential rather than receptive?"
+    ],
+    "options": [
+      "No — it is your brain's best guess from what arrives",
+      "Yes, your eyes send a picture to your brain",
+      "Yes, unless you have something wrong with your eyes"
+    ],
+    "answer": 0,
+    "why": [
+      "Your eyes do not send a picture. They send patches of information with holes in it, and your brain builds something complete out of that. You just showed yourself one of the holes.",
+      "The image is incomplete, and what you experience is a reconstruction. You demonstrated the point yourself: the thumb vanished and background appeared, which means something manufactured that background.",
+      "The mapping from scene to retinal image loses information irreversibly, so recovering the scene is underdetermined and requires assumptions. Perception is the output of that inference. Illusions are not malfunctions — they are the inference machinery running correctly on input it was not built for."
+    ],
+    "from": "neuroscience/03"
+  },
+  "memory-is-reconstructive": {
+    "q": [
+      "Why does telling a story often make it less accurate?",
+      "Why does rehearsal reduce a memory's fidelity while increasing confidence?",
+      "Why do confidence and accuracy come apart with rehearsal?"
+    ],
+    "options": [
+      "Each telling rebuilds it, and the rebuilt version is what gets kept",
+      "Because people exaggerate on purpose",
+      "Because memories fade with time"
+    ],
+    "answer": 0,
+    "why": [
+      "Nobody is lying. Every time you tell it you build it again out of pieces, and any small change you make gets saved as the new version. Tell it fifty times and you are remembering the fiftieth telling.",
+      "Each retrieval destabilises and re-stores the trace, so alterations persist. Fluency rises with practice and fluency feels like accuracy — which is why the most-rehearsed account is both the most confident and the most drifted.",
+      "They are tracking different things. Confidence tracks ease of retrieval, which rehearsal reliably improves; accuracy tracks correspondence to the event, which rehearsal can only degrade. Nothing in the system measures the second, so there is no internal signal that would tell you."
+    ],
+    "from": "neuroscience/04"
+  },
+  "reflex-arc": {
+    "q": [
+      "Was your brain in charge of pulling your hand away?",
+      "Is the withdrawal reflex directed by the brain?",
+      "What is the brain's role in a spinal reflex?"
+    ],
+    "options": [
+      "No — the spinal cord decided, and your brain was told afterwards",
+      "Yes, it decided very quickly",
+      "Yes, but subconsciously"
+    ],
+    "answer": 0,
+    "why": [
+      "The decision was made in your spinal cord, where the message turned straight round. The signal to your brain went off at the same time and arrived later, which is why the movement comes before the pain.",
+      "The arc is complete within the cord. The ascending pathway runs in parallel and produces the sensation afterwards — the ordering you notice is real and it is a consequence of the wiring.",
+      "The brain is informed, not consulted. It can modulate the reflex — you can suppress withdrawal deliberately, up to a point — but the loop closes without it, and that is what the architecture is for."
+    ],
+    "from": "neuroscience/05"
+  },
   "sequence-determines-fold": {
     "q": [
       "What told the string what shape to be?",

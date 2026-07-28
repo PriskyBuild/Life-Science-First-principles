@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "9f9d9fc564d9";
+const VERSION = "5bb8f2c20478";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -59,6 +59,11 @@ const PRECACHE = [
   "content/natural-selection/02-fitness-is-not-strength.json",
   "content/natural-selection/03-the-peppered-moth.json",
   "content/natural-selection/04-why-antibiotics-stop-working.json",
+  "content/neuroscience/01-thinking-is-electricity.json",
+  "content/neuroscience/02-the-gap-that-matters.json",
+  "content/neuroscience/03-your-brain-edits-what-you-see.json",
+  "content/neuroscience/04-memory-is-rebuilt-not-replayed.json",
+  "content/neuroscience/05-wire-a-reflex.json",
   "content/proteins/01-a-string-that-folds-itself.json",
   "content/proteins/02-shape-is-the-job.json",
   "content/proteins/03-the-enzyme-and-the-lock.json",
@@ -92,6 +97,7 @@ const PRECACHE = [
   "js/sims/membrane.js",
   "js/sims/replication.js",
   "js/sims/selection.js",
+  "js/sims/spike.js",
   "js/state.js",
   "manifest.webmanifest"
 ];

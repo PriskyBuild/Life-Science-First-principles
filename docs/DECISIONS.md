@@ -789,3 +789,28 @@ So the build now scans every source file, including `tools/`, for absolute paths
 directory or a Windows drive, and fails on them. It is placed before the browser suite in CI, so
 the cheap check runs first. I verified it fires by reintroducing the bug and watching the build
 reject it — a guard that has never been seen to fail is not known to be a guard at all.
+
+### D55 — Measure the model before authoring goals against it, and say what it gets wrong
+*The spike simulation, and a metric that was quietly measuring the wrong thing.*
+
+`js/sims/spike.js` is FitzHugh–Nagumo, a real reduced model rather than a cartoon. Before writing
+a single lesson goal I measured what it actually does, and the measurement changed the lesson.
+
+**What it gets right** — a sharp threshold, and near-constant spike amplitude: peak 1.69 at
+stimulus 6 against 1.81 at stimulus 12. Double the poke, 7% taller spike. That is the
+all-or-nothing law, demonstrated rather than asserted, and the suite now checks it.
+
+**What it gets wrong** — firing rate spans only 0.31 Hz to 0.41 Hz across its whole range, where
+a real neuron spans two orders of magnitude. FHN badly compresses rate coding. So the open-track
+lesson does **not** teach a rate curve from it. It teaches the *window* instead: silence below
+threshold, firing in the middle, and silence again above about I = 1.4 — which is not an artefact
+but depolarisation block, the reason severe hyperkalaemia stops a heart. Choosing the lesson to
+fit what the model does honestly, rather than the model to fit the lesson I wanted, is the whole
+of this entry.
+
+**And a metric that was silently wrong.** The block test failed, and the model was fine — my
+measure was not. I had been accumulating "time spent below threshold" and calling it silence. In
+depolarisation block the membrane is stuck *high*, so that counter never advances and a cell
+silent for fifteen seconds reported as busy. It now measures time since the last spike, which is
+what I actually meant. Worth recording because the wrong metric was not wrong-looking: it agreed
+with the right one everywhere except the one state the simulation exists to show.

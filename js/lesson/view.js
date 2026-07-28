@@ -30,6 +30,7 @@ const SIMS = {
   selection: () => import("../sims/selection.js"),
   replication: () => import("../sims/replication.js"),
   folding: () => import("../sims/folding.js"),
+  spike: () => import("../sims/spike.js"),
 };
 
 /** Level-indexed simulation parameters: one shared implementation, different

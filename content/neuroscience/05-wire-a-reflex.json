@@ -1,0 +1,150 @@
+{
+  "id": "neuroscience/05",
+  "module": "neuroscience",
+  "index": 4,
+  "title": "Wire a Reflex",
+  "specimen": "reflex-arc",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Touch something hot and your hand is already moving before you feel it.",
+        "Your hand leaves a hot surface before the pain arrives. That ordering is not an illusion — the movement genuinely happens first, and your brain is told afterwards."
+      ],
+      "sub": [
+        "Your brain was not consulted.",
+        "Which means the decision was taken somewhere else, by something with no brain in it."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "reflex-arc",
+      "question": [
+        "Why is the hand moving before you feel anything?",
+        "Why does withdrawal precede the conscious percept?"
+      ],
+      "options": [
+        "The signal took a shortcut and never went to the brain",
+        "Your brain is very fast",
+        "You felt it and forgot"
+      ],
+      "outcome": "The signal took a shortcut and never went to the brain",
+      "note": [
+        "Guess first.",
+        "Commit. Note that the distance to the brain and back is roughly a metre and a half."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Build the circuit. Any part goes in any slot, so the marking is on you — and then it gets tested.",
+        "Assemble the reflex arc. Placement is unconstrained; each misassignment fails a specific and different test."
+      ],
+      "parts": [
+        { "id": "sensor", "label": "Heat sensor" },
+        { "id": "sensory", "label": "Sensory neuron" },
+        { "id": "inter", "label": "Interneuron in the cord" },
+        { "id": "motor", "label": "Motor neuron" },
+        { "id": "muscle", "label": "Muscle" },
+        { "id": "brain", "label": "Signal onward to the brain" }
+      ],
+      "slots": [
+        { "correct": "sensor", "label": ["Notices the heat"] },
+        { "correct": "sensory", "label": ["Carries it inward to the spinal cord"] },
+        { "correct": "inter", "label": ["Turns it straight round, without asking anyone"] },
+        { "correct": "motor", "label": ["Carries the order back out"] },
+        { "correct": "muscle", "label": ["Actually moves the hand"] },
+        { "correct": "brain", "label": ["Tells you about it afterwards"] }
+      ],
+      "trials": [
+        {
+          "name": ["Notice the heat", "Transduction"],
+          "needs": ["sensor"],
+          "pass": ["The heat becomes a signal.", "The stimulus is transduced into action potentials."],
+          "fail": ["Your hand is burning and nothing has registered.", "No transducer, no signal. Congenital insensitivity to pain is exactly this, and it is dangerous rather than enviable."]
+        },
+        {
+          "name": ["Get the message inside", "Afferent path"],
+          "needs": ["sensor", "sensory"],
+          "pass": ["It reaches the spinal cord.", "The afferent fibre delivers it to the cord."],
+          "fail": ["It was detected and went nowhere.", "Detection without conduction changes nothing."]
+        },
+        {
+          "name": ["Decide without waiting", "Local switching"],
+          "needs": ["sensor", "sensory", "inter"],
+          "pass": ["The cord turns it round on the spot.", "The interneuron closes the loop locally, without cortical involvement."],
+          "fail": ["The message went all the way to the brain and back, and you are already burnt.", "Routing through the brain costs the round trip — and this circuit exists precisely to avoid paying it."]
+        },
+        {
+          "name": ["Actually move", "Efferent path and effector"],
+          "needs": ["sensor", "sensory", "inter", "motor", "muscle"],
+          "pass": ["The hand pulls away.", "The efferent signal reaches the muscle and withdrawal occurs."],
+          "fail": ["A perfect decision that nothing carried out.", "A circuit that decides and cannot act is not a reflex."]
+        },
+        {
+          "name": ["Learn not to do it again", "Ascending pathway"],
+          "needs": ["sensor", "sensory", "inter", "motor", "muscle", "brain"],
+          "pass": ["You feel it a moment later, and you remember.", "The ascending signal produces the conscious percept, and with it learning."],
+          "fail": ["Your hand moved and you never knew why. You would do it again tomorrow.", "Reflex without perception protects you this once and teaches you nothing. The brain is not in the loop, but it does need to be told."]
+        }
+      ],
+      "win": [
+        "It pulls away first and tells you afterwards. That is a reflex.",
+        "A working arc. Note the ordering the circuit forces: action, then awareness, then learning."
+      ],
+      "lose": [
+        "Read which test failed — it names what was in the wrong job.",
+        "Each failed trial names the missing function. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A loop like this is called a reflex arc, and your brain is not in it.",
+        "This is a reflex arc: sensor, in, turn round, out, move. The brain is informed in parallel, not consulted in series.",
+        "A spinal reflex arc. The decision is taken by a circuit of two or three neurons in the cord; the ascending pathway to cortex runs alongside and arrives later.",
+        "The design constraint is conduction time. A metre and a half at conduction velocity, plus synaptic delays and cortical processing, is a substantial fraction of a second — long enough to matter for tissue damage. Deciding locally is not a shortcut in the pejorative sense; it is the only architecture that meets the deadline."
+      ],
+      "sub": [
+        "Deciding locally is much faster than asking.",
+        "The round trip to the brain and back is the expensive part, and this circuit does not pay it.",
+        "Doctors tap your knee to test exactly this loop — a reflex that is absent or exaggerated localises damage to a particular level of the cord.",
+        "Which is why reflex testing survives in an era of scanners: it is a functional test of a specific circuit, and it tells you something an image does not — whether the wiring works, not merely whether it is present."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "reflex-arc",
+      "q": [
+        "Was your brain in charge of pulling your hand away?",
+        "Is the withdrawal reflex directed by the brain?",
+        "What is the brain's role in a spinal reflex?"
+      ],
+      "options": [
+        "No — the spinal cord decided, and your brain was told afterwards",
+        "Yes, it decided very quickly",
+        "Yes, but subconsciously"
+      ],
+      "answer": 0,
+      "why": [
+        "The decision was made in your spinal cord, where the message turned straight round. The signal to your brain went off at the same time and arrived later, which is why the movement comes before the pain.",
+        "The arc is complete within the cord. The ascending pathway runs in parallel and produces the sensation afterwards — the ordering you notice is real and it is a consequence of the wiring.",
+        "The brain is informed, not consulted. It can modulate the reflex — you can suppress withdrawal deliberately, up to a point — but the loop closes without it, and that is what the architecture is for."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why a doctor taps your knee with a hammer.",
+        "The knee-jerk tests one specific loop through one specific level of the spinal cord. Absent, and something has interrupted it; exaggerated, and the descending control that normally damps it has been lost. Two seconds and a hammer localise damage in a way that took decades of anatomy to make interpretable — and it works because the circuit is short, stereotyped, and does not involve the brain."
+      ]
+    }
+  ]
+}

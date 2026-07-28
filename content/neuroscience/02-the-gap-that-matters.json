@@ -1,0 +1,108 @@
+{
+  "id": "neuroscience/02",
+  "module": "neuroscience",
+  "index": 1,
+  "title": "The Gap That Matters",
+  "specimen": "synapse",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Nerve cells do not touch. There is a gap, and the signal has to get across it.",
+        "Neurons are not wired together. Every connection has a gap in it — and building a gap into a signalling system looks like a terrible idea until you ask what it buys."
+      ],
+      "sub": [
+        "Why build in a gap on purpose?",
+        "A continuous wire would be faster and simpler. So the gap is doing something."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "synapse-is-a-gap",
+      "question": [
+        "What does a gap let you do that a solid wire does not?",
+        "What does an interrupted connection make possible?"
+      ],
+      "options": [
+        "Change how strong the connection is, or switch it off",
+        "Make the signal travel faster",
+        "Nothing — it is just how they grew"
+      ],
+      "outcome": "Change how strong the connection is, or switch it off",
+      "note": [
+        "Have a think first.",
+        "Commit. Ask what you could adjust at a gap that you could not adjust in a wire."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each part of the crossing in order.",
+        "Assemble the synapse: each component in the job it does."
+      ],
+      "parts": [
+        { "id": "arrive", "label": "Signal arrives" },
+        { "id": "release", "label": "Chemical released" },
+        { "id": "cross", "label": "It drifts across" },
+        { "id": "receive", "label": "Receptors catch it" },
+        { "id": "clear", "label": "The gap is cleared" }
+      ],
+      "slots": [
+        { "accepts": "arrive", "label": ["The spike reaches the end", "Action potential reaches the terminal"] },
+        { "accepts": "release", "label": ["Little packets are let out", "Vesicles fuse and release transmitter"] },
+        { "accepts": "cross", "label": ["It floats over the gap", "Transmitter diffuses across the cleft"] },
+        { "accepts": "receive", "label": ["The next cell catches it", "Receptors bind it on the far side"] },
+        { "accepts": "clear", "label": ["It gets mopped up straight away", "Transmitter is removed, ending the signal"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The gap is called a synapse, and the chemical that crosses it is a neurotransmitter.",
+        "The gap is a synapse. The signal crosses it as a chemical — a neurotransmitter — and becomes electrical again on the other side.",
+        "A chemical synapse: the electrical signal is converted to a chemical one across a 20-nanometre cleft, then back. That conversion is what makes the connection adjustable.",
+        "The cleft is about 20 nm and crossing takes well under a millisecond by diffusion alone — the same unassisted diffusion as everywhere else, working because the distance is tiny. Over any greater distance it would be hopeless, which is why the gap is so narrow."
+      ],
+      "sub": [
+        "It is not just a wire. It is a switch that can be turned up or down.",
+        "The strength of each crossing can be changed — more transmitter, more receptors, faster clearing — and that is what a wire cannot offer.",
+        "Some synapses excite the next cell and some inhibit it, so the gap can also invert the message.",
+        "Changing synaptic strength with use is the physical basis of learning. A brain that was hard-wired could compute, but it could not learn — so the gap is not a compromise, it is the whole reason the system is modifiable."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "synapse-is-a-gap",
+      "q": [
+        "Why is a gap better than a wire here?",
+        "What does a chemical synapse buy over a direct electrical connection?",
+        "Why is the conversion to chemical and back worth its cost in speed?"
+      ],
+      "options": [
+        "It can be made stronger or weaker, so the brain can learn",
+        "Chemicals travel faster than electricity",
+        "It stops the cells getting tangled"
+      ],
+      "answer": 0,
+      "why": [
+        "A wire is always the same. A gap can be made easier or harder to cross — and changing how easy each gap is to cross is what learning actually is inside your head.",
+        "Adjustability. Transmitter released, receptor number and clearance rate can all change with use, so the connection has a strength that experience can set. A direct electrical junction is fixed.",
+        "It costs perhaps half a millisecond and buys plasticity, inhibition and signal inversion. Electrical synapses do exist and are faster — they are used where speed matters more than modifiability, such as escape reflexes — which is the clearest evidence that the chemical one is a deliberate trade rather than a limitation."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Almost every medicine that changes how you feel works at this gap.",
+        "Antidepressants, anaesthetics, stimulants, antipsychotics, nicotine, caffeine and alcohol all act at synapses — changing how much transmitter is released, how long it stays, or what happens when it binds. The gap is where the drugs get in, and there is essentially nowhere else in the nervous system that is so chemically addressable."
+      ]
+    }
+  ]
+}

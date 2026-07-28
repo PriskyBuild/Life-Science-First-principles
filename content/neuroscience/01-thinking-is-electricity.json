@@ -1,0 +1,117 @@
+{
+  "id": "neuroscience/01",
+  "module": "neuroscience",
+  "index": 0,
+  "title": "Thinking Is Electricity",
+  "specimen": "action-potential",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Touch something gently, then hard. The nerve sends exactly the same signal both times.",
+        "A light touch and a hard one both travel to your brain as identical signals. Nothing about the message is bigger for the harder press."
+      ],
+      "sub": [
+        "So how do you know one of them hurt?",
+        "If size carries no information, something else must be carrying it."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "signals-are-electrical",
+      "question": [
+        "If you poke a nerve twice as hard, what happens to the signal?",
+        "Doubling stimulus strength: what happens to the action potential?"
+      ],
+      "options": [
+        "Nothing — it is the same size, or there is none at all",
+        "It gets twice as big",
+        "It travels twice as fast"
+      ],
+      "outcome": "Nothing — it is the same size, or there is none at all",
+      "note": [
+        "Guess before you try it.",
+        "Commit. You are about to measure this rather than be told it."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "spike",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Poke it gently. Then poke it harder. Watch the size of what comes out.",
+        "Try a weak poke, then a stronger one, then a very strong one. Watch the height of the spike each time — and find the point below which nothing happens at all."
+      ],
+      "params": { "task": "threshold", "amp": 4, "aspect": 0.6 },
+      "goal": [
+        "Every spike is the same height. Poking harder does not make it shout louder.",
+        "Amplitude did not change with stimulus strength, and below a certain poke there was no spike at all."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "spike",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Now push steadily instead of poking. Find both edges of the range where it fires.",
+        "Sustained current rather than a pulse. There is a lower bound below which nothing happens — and an upper bound above which it also stops. Find both, and work out why the two silences are not the same silence."
+      ],
+      "params": { "task": "window", "current": 0, "aspect": 0.6 },
+      "goal": [
+        "Too little and nothing. Too much and it stops again.",
+        "Both boundaries found. Silence below threshold and silence above it have completely different causes."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A nerve signal is called an action potential, and it is always the same size.",
+        "An action potential is all-or-nothing: below threshold nothing happens, above it you get a full spike, and the spike does not grow with the stimulus.",
+        "The all-or-nothing law. Amplitude is set by the ion gradients across the membrane, not by the stimulus, so the stimulus can only decide whether a spike happens.",
+        "Amplitude is fixed because it is determined by the sodium and potassium equilibrium potentials, which the stimulus does not touch. The stimulus only pushes the membrane past the point where voltage-gated sodium channels open faster than potassium can oppose them — and after that the spike is a runaway that runs the same way every time."
+      ],
+      "sub": [
+        "So how hard something is, is sent as how MANY signals, not how big.",
+        "Intensity is carried in firing rate and in how many fibres are recruited, because size is unavailable as a channel.",
+        "This is rate coding, and it is forced: once amplitude is fixed, the only remaining variables are frequency and population.",
+        "Adrian won a Nobel for establishing this in 1932 — that intensity is frequency. It is a good example of a constraint producing a design: nothing chose rate coding, it is what remains once amplitude is spoken for."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "signals-are-electrical",
+      "q": [
+        "How does your brain know something hurt a lot?",
+        "How is stimulus intensity encoded if amplitude is fixed?",
+        "What channels remain for intensity once amplitude is unavailable?"
+      ],
+      "options": [
+        "Lots of signals arrive, quickly",
+        "The signals are bigger",
+        "The signals travel faster"
+      ],
+      "answer": 0,
+      "why": [
+        "Every signal is the same size, so size cannot tell you anything. What changes is how many arrive and how fast they come — a hard press sends a flood, a light touch sends a trickle.",
+        "Rate and recruitment. A stronger stimulus fires each neuron more often and brings more neurons above threshold; amplitude is fixed and carries nothing.",
+        "Frequency and population coding, and they are what is left rather than what was chosen. The all-or-nothing law removes amplitude as a variable, so any information about intensity must be carried by the remaining degrees of freedom."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Local anaesthetic works by stopping the signal from ever starting.",
+        "Local anaesthetics block the voltage-gated sodium channels that make the spike run away. The nerve cannot reach threshold, so nothing fires and nothing arrives — the injury is still there and the message never leaves. It is a blockade at the very first step, which is why it is so complete and so local."
+      ]
+    }
+  ]
+}
