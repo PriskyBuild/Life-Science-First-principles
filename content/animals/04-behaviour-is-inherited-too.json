@@ -1,0 +1,101 @@
+{
+  "id": "animals/04",
+  "module": "animals",
+  "index": 3,
+  "title": "Behaviour Is Inherited Too",
+  "specimen": "instinct-card",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A cuckoo chick has never met its parents. It still flies to the right country, alone.",
+        "A young cuckoo is raised by a different species, and its own parents have already left. Weeks later it flies thousands of kilometres to a wintering ground it has never seen, unaccompanied and unshown."
+      ],
+      "sub": [
+        "Nobody taught it. So where did the route come from?",
+        "There is nobody it could have learned this from, which narrows the possibilities considerably."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "behaviour-is-heritable",
+      "question": [
+        "Where did the cuckoo get the route from?",
+        "What is the source of the migratory route?"
+      ],
+      "options": [
+        "It was inherited, like the shape of its wing",
+        "It worked it out on the way",
+        "It followed other birds"
+      ],
+      "outcome": "It was inherited, like the shape of its wing",
+      "note": [
+        "Guess first.",
+        "Commit. Note that adult cuckoos leave weeks before the young ones do."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "selection",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "If a behaviour is inherited, selection can act on it exactly like a colour. Check that the machine does not care what the trait is.",
+        "The three conditions say nothing about what the trait must be. If a behaviour varies and is heritable and affects survival, selection acts on it identically. Confirm that by breaking it the same way."
+      ],
+      "params": { "task": "break", "bg": 0.85, "switches": true, "aspect": 0.82 },
+      "goal": [
+        "The same machine, and it never asked what the trait was.",
+        "Identical mechanism. Nothing in the three conditions refers to colour, or to anatomy — only to variation, heredity and differential survival. A behaviour meeting those is selected on exactly as a pigment is."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A behaviour you are born knowing is called an instinct.",
+        "An inherited behaviour performed without learning is an instinct, or a fixed action pattern — and it evolves exactly as a body part does.",
+        "Fixed action patterns are heritable, variable, and selectable. They are triggered by a specific stimulus, run to completion once started, and can be studied genetically like any other trait.",
+        "Cross-breeding experiments settle the genetics directly. Blackcaps from populations with different migratory directions produce hybrids that orient intermediately — the heading is inherited quantitatively, which is about as clean a demonstration that a behaviour is a genetic trait as one could ask for."
+      ],
+      "sub": [
+        "It can be selected for, just like a colour or a bone.",
+        "The three conditions never mention what the trait is made of, so behaviour is not a special case.",
+        "Instinct and learning are not alternatives: most behaviour is an inherited tendency shaped by experience.",
+        "The nature-versus-nurture framing is the wrong shape for almost every real case. What is inherited is usually a predisposition and a learning rule, not a finished behaviour — and asking which of the two 'caused' it is like asking whether the area of a rectangle is caused by its length or its width."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "behaviour-is-heritable",
+      "q": [
+        "Can natural selection change how an animal behaves?",
+        "Can behaviour evolve by natural selection?",
+        "Why does the mechanism apply to behaviour without modification?"
+      ],
+      "options": [
+        "Yes — behaviour is inherited, so the same three conditions apply",
+        "No, selection only changes bodies",
+        "Only if the animal practises"
+      ],
+      "answer": 0,
+      "why": [
+        "The three conditions are about differences being passed on and mattering for survival. They never say the difference has to be a colour or a bone. If a behaviour is inherited and it matters, it gets selected.",
+        "Nothing in the mechanism refers to the physical nature of the trait. Behaviour varies, is heritable, and affects survival and reproduction, so it satisfies all three conditions and is selected on identically.",
+        "The mechanism is substrate-neutral, which is why it also describes antibiotic resistance and clonal selection in your immune system. That generality is the strongest thing about it — and it is why 'evolution of behaviour' needs no separate theory."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Dogs were bred for behaviour long before anyone knew what a gene was.",
+        "Herding, pointing, retrieving and guarding are inherited behaviours selected deliberately over centuries by people with no theory of genetics at all. A border collie stalks sheep without being taught, using a modified hunting sequence that was selected for and then arrested before the kill. It is artificial selection acting on behaviour, and it worked long before anyone could say why."
+      ]
+    }
+  ]
+}

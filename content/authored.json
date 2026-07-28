@@ -1,4 +1,10 @@
 {
+  "animals": {
+    "0": "animals/01-every-body-is-a-compromise.json",
+    "1": "animals/02-big-small-and-why-it-matters.json",
+    "2": "animals/03-how-to-move-without-wheels.json",
+    "3": "animals/04-behaviour-is-inherited-too.json"
+  },
   "biomolecules": {
     "0": "biomolecules/01-four-families-all-of-life.json",
     "1": "biomolecules/02-sugar-is-a-battery.json",
@@ -51,6 +57,12 @@
     "2": "immunity/03-how-a-vaccine-teaches.json",
     "3": "immunity/04-when-the-army-attacks-you.json",
     "4": "immunity/05-build-a-defence.json"
+  },
+  "microbiology": {
+    "0": "microbiology/01-the-invisible-majority.json",
+    "1": "microbiology/02-fast-life.json",
+    "2": "microbiology/03-the-ones-that-live-in-you.json",
+    "3": "microbiology/04-growing-something-you-cannot-see.json"
   },
   "natural-selection": {
     "0": "natural-selection/01-the-beetles-that-vanished.json",

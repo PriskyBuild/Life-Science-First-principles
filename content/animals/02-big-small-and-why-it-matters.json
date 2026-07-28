@@ -1,0 +1,135 @@
+{
+  "id": "animals/02",
+  "module": "animals",
+  "index": 1,
+  "title": "Big, Small, and Why It Matters",
+  "specimen": "scaling-rule",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A mouse blown up to elephant size would cook itself. An elephant shrunk to mouse size would freeze.",
+        "You cannot scale an animal up or down and keep it working. A mouse enlarged to elephant size would overheat and an elephant reduced to mouse size would lose heat faster than it could possibly generate it."
+      ],
+      "sub": [
+        "Size is not just size.",
+        "Almost everything about an animal changes when you change how big it is, and the reason is arithmetic."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "surface-area-to-volume",
+      "question": [
+        "Make a cube twice as wide. What happens to its outside compared to its inside?",
+        "Double every dimension of a cube. How do surface area and volume change relative to each other?"
+      ],
+      "options": [
+        "The inside grows faster than the outside",
+        "They both grow the same amount",
+        "The outside grows faster than the inside"
+      ],
+      "outcome": "The inside grows faster than the outside",
+      "note": [
+        "Guess before you look.",
+        "Commit. Area goes as the square of length and volume as the cube, which decides the whole lesson."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [1, 2],
+      "guided": true,
+      "label": "Make the cube bigger",
+      "min": 0,
+      "max": 3,
+      "value": 0,
+      "captions": [
+        "Side 1. Outside 6, inside 1. Six times as much outside as inside.",
+        "Side 2. Outside 24, inside 8. Now only three times as much.",
+        "Side 4. Outside 96, inside 64. One and a half times.",
+        "Side 10. Outside 600, inside 1000. Less outside than inside now."
+      ],
+      "t": [
+        "Watch the outside and the inside as the cube grows.",
+        "The numbers are exact. Watch the ratio between them rather than either one on its own."
+      ],
+      "after": [
+        "Ten times wider, and the ratio flipped completely.",
+        "Surface-to-volume went from 6 to 0.6 — a factor of ten — over a tenfold change in length. Everything an animal does through its surface is governed by that number."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [3, 4],
+      "guided": false,
+      "label": "How big is the animal?",
+      "min": 0,
+      "max": 5,
+      "value": 0,
+      "captions": [
+        "Shrew, 5 g. Burns energy about 11 times faster per kilogram than you do.",
+        "Mouse, 20 g. About 7.7 times your rate per kilogram.",
+        "Cat, 4 kg. About 2 times.",
+        "Human, 70 kg. Call this 1.",
+        "Elephant, 4 tonnes. About 0.36 — a third of your rate per kilogram.",
+        "Blue whale, 150 tonnes. About 0.15."
+      ],
+      "t": [
+        "Per kilogram, small animals burn energy far faster. Work out from the previous stage why.",
+        "These are real figures from Kleiber's law, where metabolic rate scales as mass to the power three-quarters. Derive the direction of the effect from surface-to-volume before reading the last caption."
+      ],
+      "after": [
+        "Small means more outside per inside, so heat leaves faster and has to be replaced faster.",
+        "A shrew must eat close to its own body weight daily and dies within hours of not eating; a large animal can fast for weeks. Note that the exponent is 0.75 rather than the 0.67 pure surface-area scaling predicts — the discrepancy is real, has been argued about since 1932, and is usually attributed to the geometry of distribution networks."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Surface grows by squaring. Volume grows by cubing. Volume always wins.",
+        "Surface area scales as length squared, volume as length cubed. So the bigger something gets, the less outside it has per unit of inside.",
+        "The square-cube law. Any quantity governed by surface — heat loss, gas exchange, diffusion, drag — falls behind any quantity governed by volume, which includes mass, heat production and strength requirements.",
+        "It is the most consistently underrated constraint in biology, and it is arithmetic rather than biology. It explains why there are no insects the size of dogs, why large animals need lungs and small ones sometimes do not, why a mouse survives a fall that kills a horse, and why cells stay small."
+      ],
+      "sub": [
+        "So small animals lose heat fast, and have to eat almost constantly.",
+        "A shrew eats close to its own weight every day and starves in a few hours. Nothing about that is a choice.",
+        "It also sets a lower bound: below a certain size a warm-blooded animal cannot eat fast enough to replace what it loses.",
+        "That bound is roughly the size of a bumblebee bat or an Etruscan shrew, and both live at the edge — perpetually feeding, with heart rates over a thousand a minute. There is no warm-blooded animal smaller, and the reason is not that none evolved."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "surface-area-to-volume",
+      "q": [
+        "Why does a mouse have to eat so much for its size?",
+        "Why is mass-specific metabolic rate higher in small animals?",
+        "Why does the square-cube law force high mass-specific metabolism at small size?"
+      ],
+      "options": [
+        "It has much more outside for its inside, so heat pours out",
+        "Mice are greedy",
+        "Small animals have bigger stomachs for their size"
+      ],
+      "answer": 0,
+      "why": [
+        "Heat is made by the inside and lost through the outside. A small animal has loads of outside for very little inside, so it loses heat fast and has to keep replacing it — which means eating almost all the time.",
+        "Heat production scales with volume and heat loss with surface, so as size falls the loss term grows relative to the production term. The animal compensates by running its metabolism faster, and pays for it by needing to eat almost continuously.",
+        "It is a ratio problem rather than an absolute one. A shrew loses less heat in total than an elephant and vastly more per gram, and it is the per-gram figure that determines how hard the metabolism has to work. Kleiber's exponent of 0.75 sits between the 0.67 of pure surface scaling and the 1.0 of pure volume scaling, which is itself informative."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why premature babies are kept in incubators.",
+        "A small baby has a large surface for its volume and very little insulation, so it loses heat far faster than it can produce it. An incubator is not treating an illness — it is compensating for arithmetic. The same reasoning explains why small children get cold in water that adults find comfortable."
+      ]
+    }
+  ]
+}

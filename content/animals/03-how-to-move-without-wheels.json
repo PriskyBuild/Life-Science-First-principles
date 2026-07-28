@@ -1,0 +1,106 @@
+{
+  "id": "animals/03",
+  "module": "animals",
+  "index": 2,
+  "title": "How to Move Without Wheels",
+  "specimen": "gait-set",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "The wheel is the best way we know to move things. No animal has ever grown one.",
+        "Wheels are the most efficient way humans have found to move over flat ground, and in four billion years no animal has evolved one. Nothing about that is a coincidence."
+      ],
+      "sub": [
+        "So either wheels are bad, or they are impossible to grow.",
+        "Both halves turn out to be partly true, and the second is the more interesting."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "locomotion-tradeoffs",
+      "question": [
+        "Why has no animal grown a wheel?",
+        "What prevents the evolution of a rotating limb?"
+      ],
+      "options": [
+        "A wheel has to spin freely, so nothing could feed it",
+        "Wheels are slower than legs",
+        "Animals never needed to travel far"
+      ],
+      "outcome": "A wheel has to spin freely, so nothing could feed it",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what a rotating part could not be connected to."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Match each way of moving to what it is best at.",
+        "Each of these is the best answer to a particular problem. Match them."
+      ],
+      "parts": [
+        { "id": "run", "label": "Running" },
+        { "id": "swim", "label": "Swimming" },
+        { "id": "fly", "label": "Flying" },
+        { "id": "burrow", "label": "Burrowing" }
+      ],
+      "slots": [
+        { "accepts": "run", "label": ["Fast over open ground, cheap to start", "High speed over firm terrain, low startup cost"] },
+        { "accepts": "swim", "label": ["Cheapest of all per distance", "Lowest energy cost per unit distance — the medium supports the weight"] },
+        { "accepts": "fly", "label": ["Fastest, and by far the most expensive", "Highest speed, highest energetic cost per unit time"] },
+        { "accepts": "burrow", "label": ["Slowest, and nothing can follow you", "Very slow, very costly, and almost perfect concealment"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A wheel needs to spin all the way round, and nothing living can do that.",
+        "A wheel must rotate freely and continuously, so it cannot be connected to the body — and anything not connected cannot be fed, repaired or grown.",
+        "The constraint is topological. Continuous rotation forbids a permanent connection, and blood vessels, nerves and tissue supply all require one. There is no route to a wheel that passes through functioning intermediates.",
+        "Bacterial flagella actually are true rotating motors, which shows the physics is not the obstacle. The obstacle is scale and supply: at bacterial size the driving structure is small enough to work without vasculature. Above that, a rotating limb would starve, and the developmental route to one has no viable intermediate step."
+      ],
+      "sub": [
+        "And a wheel is useless on ground that is not flat.",
+        "Wheels also need prepared surfaces. Legs handle terrain a wheel cannot, which is why we build roads for wheels and not for feet.",
+        "So there are two answers, and the second is the honest one: even if it could be grown, it would be worth having only where humans have already flattened the world.",
+        "That is a useful general caution about 'why has evolution not done X'. The answer is usually one of three things: it is developmentally unreachable, it is not actually advantageous in the relevant environment, or it has happened and you have not looked. Wheels are the first two at once."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "locomotion-tradeoffs",
+      "q": [
+        "Why is swimming the cheapest way to travel?",
+        "Why is the energy cost per distance lowest for swimming?",
+        "Why does swimming have the lowest cost of transport?"
+      ],
+      "options": [
+        "The water holds you up, so no energy goes into not falling",
+        "Water is thinner than air",
+        "Swimming animals are lazier"
+      ],
+      "answer": 0,
+      "why": [
+        "A running animal spends energy holding itself up and lifting itself with every step. A fish is already held up by the water, so all its effort goes into going forwards.",
+        "Buoyancy removes the cost of supporting body weight, which is a large part of what walking and running spend energy on. Everything left goes into overcoming drag — so per kilometre, swimming wins comfortably despite water being far denser than air.",
+        "Cost of transport separates into supporting weight and overcoming resistance. Buoyancy nearly eliminates the first term, and although drag in water is much higher than in air, the elimination outweighs it at the speeds animals actually use. Flight is the opposite case: it must pay for support continuously, which is why it is the most expensive per unit time and yet efficient per unit distance."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Robots that have to cross rough ground are built with legs, not wheels.",
+        "Wheels beat legs on prepared surfaces and lose badly off them, which is why search-and-rescue and planetary robots keep returning to legged designs despite their complexity. The engineers arrived at the same trade-off from the other direction, and for the same reason."
+      ]
+    }
+  ]
+}

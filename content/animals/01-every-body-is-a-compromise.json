@@ -1,0 +1,197 @@
+{
+  "id": "animals/01",
+  "module": "animals",
+  "index": 0,
+  "title": "Every Body Is a Compromise",
+  "specimen": "tradeoff-scale",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There is no animal that is fast, strong, armoured and cheap to run. There never has been.",
+        "Nothing is fast and armoured and strong and cheap to feed. Not one species out of the millions that have existed has managed it, which is a fact that needs explaining."
+      ],
+      "sub": [
+        "That is not bad luck. It is not possible.",
+        "The absence is too complete to be accidental."
+      ]
+    },
+    {
+      "type": "predict",
+      "concept": "form-follows-constraint",
+      "question": [
+        "Why has no animal got everything?",
+        "Why does no organism maximise every performance dimension?"
+      ],
+      "options": [
+        "Improving one thing usually costs you another",
+        "Evolution has not had enough time yet",
+        "Such animals existed and died out"
+      ],
+      "outcome": "Improving one thing usually costs you another",
+      "note": [
+        "Have a think first.",
+        "Commit. Ask what armour actually costs before you answer."
+      ]
+    },
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Design an animal. Give each trait to the job it is good at — then it gets tested three ways.",
+        "Assign each trait to what it actually buys. Placement is unconstrained; then three challenges, each needing a different trait."
+      ],
+      "parts": [
+        {
+          "id": "armour",
+          "label": "Heavy armour"
+        },
+        {
+          "id": "legs",
+          "label": "Long thin legs"
+        },
+        {
+          "id": "bulk",
+          "label": "Large muscles"
+        },
+        {
+          "id": "small",
+          "label": "Small body"
+        }
+      ],
+      "slots": [
+        {
+          "correct": "armour",
+          "label": [
+            "Surviving an attack you cannot avoid"
+          ]
+        },
+        {
+          "correct": "legs",
+          "label": [
+            "Outrunning something"
+          ]
+        },
+        {
+          "correct": "bulk",
+          "label": [
+            "Winning a fight you cannot escape"
+          ]
+        },
+        {
+          "correct": "small",
+          "label": [
+            "Living on very little food"
+          ]
+        }
+      ],
+      "trials": [
+        {
+          "name": [
+            "Escape a predator",
+            "Escape"
+          ],
+          "needs": [
+            "legs"
+          ],
+          "pass": [
+            "Long light legs, and it gets away.",
+            "High stride length and low limb mass: escape succeeds."
+          ],
+          "fail": [
+            "Nothing here was built for speed.",
+            "No escape trait assigned. Armour and bulk do not outrun anything."
+          ]
+        },
+        {
+          "name": [
+            "Survive being caught",
+            "Defence"
+          ],
+          "needs": [
+            "legs",
+            "armour"
+          ],
+          "pass": [
+            "When it is caught, the armour holds.",
+            "Armour converts a caught encounter into a survivable one."
+          ],
+          "fail": [
+            "It got caught once, and that was that.",
+            "Speed alone means every failure is fatal — a strategy with no second chance."
+          ]
+        },
+        {
+          "name": [
+            "Get through a hard winter",
+            "Scarcity"
+          ],
+          "needs": [
+            "legs",
+            "armour",
+            "small"
+          ],
+          "pass": [
+            "Small enough to live on very little.",
+            "Low absolute energy requirement carries it through scarcity."
+          ],
+          "fail": [
+            "All that armour and muscle costs food it cannot find.",
+            "Armour and muscle are metabolically and mechanically expensive. In a lean season the cost is what kills."
+          ]
+        }
+      ],
+      "win": [
+        "Three tests, three different traits. No single one of them would have passed all three.",
+        "All three survived — and note that each needed a different trait. That is the point: there is no trait that answers all three, which is why the animal has to be a compromise rather than an optimum."
+      ],
+      "lose": [
+        "Read which test failed — it names the trait that was in the wrong job.",
+        "Each failed trial names the function that was not being performed. Reassign and re-test."
+      ]
+    },
+    {
+      "type": "name",
+      "t": [
+        "Every animal is a set of compromises. Being good at one thing costs you another.",
+        "Traits trade off against each other. An animal is not an optimum — it is a compromise between demands that pull in different directions.",
+        "Trade-offs arise because traits share a finite budget of energy, mass and developmental resource, and because some requirements are physically contradictory.",
+        "The absence of a fast, armoured, strong, cheap animal is therefore not a gap waiting to be filled. It is excluded — partly by shared budgets and partly by physical contradiction, and no amount of time or selection produces one."
+      ],
+      "sub": [
+        "Which is why there are so many different kinds of animal.",
+        "Different environments make different compromises worth making, and that is why diversity exists rather than one best animal.",
+        "It also means every trait implies a cost somewhere, and asking what a feature costs is usually more informative than asking what it is for.",
+        "The peacock's tail is the standard example: a survival cost paid for a reproductive gain. It is a trade-off rather than a puzzle, and it only looks paradoxical if you assume fitness means survival."
+      ]
+    },
+    {
+      "type": "check",
+      "concept": "form-follows-constraint",
+      "q": [
+        "Why is there no animal that is good at everything?",
+        "Why is a universally optimal animal impossible rather than merely absent?",
+        "What excludes a universally optimal phenotype?"
+      ],
+      "options": [
+        "Because getting better at one thing makes you worse at another",
+        "Because it would be too expensive to grow",
+        "Because they would take over the world"
+      ],
+      "answer": 0,
+      "why": [
+        "Armour is heavy, so it slows you down. Big muscles need lots of food. Being small means you cannot be strong. You cannot have all of it because the things fight each other.",
+        "Traits compete for a shared budget and some are physically contradictory. Armour adds the mass that speed requires you not to carry; large muscles require the food supply that small size exists to avoid needing.",
+        "Two separate mechanisms, and both are needed for the full argument. Shared resource budgets make simultaneous maximisation costly; physical contradiction makes it impossible. Only the second explains the complete absence rather than the rarity."
+      ]
+    },
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why asking what a feature costs tells you more than asking what it is for.",
+        "Once you expect trade-offs, the useful question about any trait changes. Not 'what is this for' — which usually has an easy and shallow answer — but 'what does this cost, and what is the animal giving up to have it'. That question generalises well beyond biology, into anything that has been designed under constraint."
+      ]
+    }
+  ]
+}

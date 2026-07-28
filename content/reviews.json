@@ -1,4 +1,80 @@
 {
+  "form-follows-constraint": {
+    "q": [
+      "Why is there no animal that is good at everything?",
+      "Why is a universally optimal animal impossible rather than merely absent?",
+      "What excludes a universally optimal phenotype?"
+    ],
+    "options": [
+      "Because getting better at one thing makes you worse at another",
+      "Because it would be too expensive to grow",
+      "Because they would take over the world"
+    ],
+    "answer": 0,
+    "why": [
+      "Armour is heavy, so it slows you down. Big muscles need lots of food. Being small means you cannot be strong. You cannot have all of it because the things fight each other.",
+      "Traits compete for a shared budget and some are physically contradictory. Armour adds the mass that speed requires you not to carry; large muscles require the food supply that small size exists to avoid needing.",
+      "Two separate mechanisms, and both are needed for the full argument. Shared resource budgets make simultaneous maximisation costly; physical contradiction makes it impossible. Only the second explains the complete absence rather than the rarity."
+    ],
+    "from": "animals/01"
+  },
+  "surface-area-to-volume": {
+    "q": [
+      "Why does a mouse have to eat so much for its size?",
+      "Why is mass-specific metabolic rate higher in small animals?",
+      "Why does the square-cube law force high mass-specific metabolism at small size?"
+    ],
+    "options": [
+      "It has much more outside for its inside, so heat pours out",
+      "Mice are greedy",
+      "Small animals have bigger stomachs for their size"
+    ],
+    "answer": 0,
+    "why": [
+      "Heat is made by the inside and lost through the outside. A small animal has loads of outside for very little inside, so it loses heat fast and has to keep replacing it — which means eating almost all the time.",
+      "Heat production scales with volume and heat loss with surface, so as size falls the loss term grows relative to the production term. The animal compensates by running its metabolism faster, and pays for it by needing to eat almost continuously.",
+      "It is a ratio problem rather than an absolute one. A shrew loses less heat in total than an elephant and vastly more per gram, and it is the per-gram figure that determines how hard the metabolism has to work. Kleiber's exponent of 0.75 sits between the 0.67 of pure surface scaling and the 1.0 of pure volume scaling, which is itself informative."
+    ],
+    "from": "animals/02"
+  },
+  "locomotion-tradeoffs": {
+    "q": [
+      "Why is swimming the cheapest way to travel?",
+      "Why is the energy cost per distance lowest for swimming?",
+      "Why does swimming have the lowest cost of transport?"
+    ],
+    "options": [
+      "The water holds you up, so no energy goes into not falling",
+      "Water is thinner than air",
+      "Swimming animals are lazier"
+    ],
+    "answer": 0,
+    "why": [
+      "A running animal spends energy holding itself up and lifting itself with every step. A fish is already held up by the water, so all its effort goes into going forwards.",
+      "Buoyancy removes the cost of supporting body weight, which is a large part of what walking and running spend energy on. Everything left goes into overcoming drag — so per kilometre, swimming wins comfortably despite water being far denser than air.",
+      "Cost of transport separates into supporting weight and overcoming resistance. Buoyancy nearly eliminates the first term, and although drag in water is much higher than in air, the elimination outweighs it at the speeds animals actually use. Flight is the opposite case: it must pay for support continuously, which is why it is the most expensive per unit time and yet efficient per unit distance."
+    ],
+    "from": "animals/03"
+  },
+  "behaviour-is-heritable": {
+    "q": [
+      "Can natural selection change how an animal behaves?",
+      "Can behaviour evolve by natural selection?",
+      "Why does the mechanism apply to behaviour without modification?"
+    ],
+    "options": [
+      "Yes — behaviour is inherited, so the same three conditions apply",
+      "No, selection only changes bodies",
+      "Only if the animal practises"
+    ],
+    "answer": 0,
+    "why": [
+      "The three conditions are about differences being passed on and mattering for survival. They never say the difference has to be a colour or a bone. If a behaviour is inherited and it matters, it gets selected.",
+      "Nothing in the mechanism refers to the physical nature of the trait. Behaviour varies, is heritable, and affects survival and reproduction, so it satisfies all three conditions and is selected on identically.",
+      "The mechanism is substrate-neutral, which is why it also describes antibiotic resistance and clonal selection in your immune system. That generality is the strongest thing about it — and it is why 'evolution of behaviour' needs no separate theory."
+    ],
+    "from": "animals/04"
+  },
   "polymers-from-monomers": {
     "q": [
       "Why is a short parts list not a problem?",
@@ -829,6 +905,82 @@
       "It is a structural consequence, not an error. Any system generating specificity without prior knowledge of its targets must generate self-reactivity, and must therefore also implement a separate deletion step. The thymus is the cost of the strategy."
     ],
     "from": "immunity/04"
+  },
+  "invisible-majority": {
+    "q": [
+      "Why did nobody know about germs until 350 years ago?",
+      "Why was microbial life undiscovered for the whole of recorded history?",
+      "What made microbial life inaccessible before the 1670s?"
+    ],
+    "options": [
+      "They are far too small to see without a lens",
+      "There were fewer of them then",
+      "Nobody thought to look"
+    ],
+    "answer": 0,
+    "why": [
+      "They were everywhere the whole time. Nobody could see them, and you cannot investigate something you have no way of detecting.",
+      "It was an instrument problem, not a curiosity problem. People had wondered about invisible causes of disease for centuries; what was missing was any way to look, and a good enough lens supplied it immediately.",
+      "The observation was gated entirely on optics, which is why the discovery arrives so suddenly and so completely once lens-making improves. It is a clean example of a whole domain of nature being inaccessible not for want of thought but for want of an instrument — and a reason to be careful about concluding that something does not exist."
+    ],
+    "from": "microbiology/01"
+  },
+  "fast-generations": {
+    "q": [
+      "Why do bacteria evolve so much faster than animals?",
+      "Why is evolutionary change so rapid in bacteria?",
+      "What makes generation time the rate-limiter on adaptation?"
+    ],
+    "options": [
+      "They have a new generation every twenty minutes",
+      "Their DNA is less accurate",
+      "They want to change more"
+    ],
+    "answer": 0,
+    "why": [
+      "Selection needs generations to work with. A bacterium has three an hour, so what would take an elephant a thousand years takes a germ a fortnight.",
+      "The three conditions act once per generation, so the number of generations sets the pace. Twenty minutes against twenty years is a factor of half a million, and that is nearly the whole explanation.",
+      "Population size compounds it: a culture holds enough individuals that even very rare mutations are present somewhere, so a bacterial population explores sequence space vastly faster than a large-bodied animal can. Rate and number, not any difference in the mechanism."
+    ],
+    "from": "microbiology/02"
+  },
+  "microbiome": {
+    "q": [
+      "Are the bacteria living in you a bad thing?",
+      "Is the resident microbiota harmful, harmless or necessary?",
+      "In what sense is the microbiome functionally part of the organism?"
+    ],
+    "options": [
+      "No — you need them, and you are unhealthy without them",
+      "Yes, all bacteria cause illness",
+      "They make no difference either way"
+    ],
+    "answer": 0,
+    "why": [
+      "They do jobs you cannot do yourself: getting energy out of food you cannot digest, making vitamins you cannot make, and teaching your defences what to leave alone.",
+      "They are necessary. Germ-free animals are demonstrably abnormal — poorly developed guts, miscalibrated immune systems — which establishes that the community is doing work the host depends on rather than merely tolerating it.",
+      "It supplies metabolic capability absent from the host genome and participates in host development, which is a functional rather than a rhetorical sense of 'part of'. It is also why broad-spectrum antibiotics have consequences beyond the infection they treat: they are not selective about which community members they remove."
+    ],
+    "from": "microbiology/03"
+  },
+  "culture-and-count": {
+    "q": [
+      "Why does one spot mean one cell?",
+      "Why does a colony correspond to a single founding cell?",
+      "Why does the method depend on adequate dilution?"
+    ],
+    "options": [
+      "The spot is all the descendants of one cell that landed there",
+      "Bacteria always arrive in groups of one",
+      "The spots are drawn on afterwards"
+    ],
+    "answer": 0,
+    "why": [
+      "A single cell lands, and cannot move. It divides where it is until there are millions of copies in a heap you can see. So one spot means one cell arrived there.",
+      "Bacteria on a solid surface are effectively immobile, so all descendants of one cell stay in one place and form a visible clone. Dilution matters because the correspondence only holds if cells land far enough apart to grow into separate colonies.",
+      "The one-cell-one-colony correspondence is the entire basis of the count, and it breaks when colonies merge. This is why plates are counted only in a specific range — typically 30 to 300 — with anything denser being reported as too numerous to count rather than estimated."
+    ],
+    "from": "microbiology/04"
   },
   "selection-needs-no-agent": {
     "q": [

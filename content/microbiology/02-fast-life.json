@@ -1,0 +1,110 @@
+{
+  "id": "microbiology/02",
+  "module": "microbiology",
+  "index": 1,
+  "title": "Fast Life",
+  "specimen": "generation-timer",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "One bacterium becomes two every twenty minutes. Left alone for two days it would outweigh the Earth.",
+        "A single E. coli divides about every twenty minutes. Given unlimited food and space for two days it would produce several thousand times the mass of the planet."
+      ],
+      "sub": [
+        "It obviously does not. So what stops it?",
+        "The arithmetic is not in dispute. What the arithmetic tells you about the world is the interesting part."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "fast-generations",
+      "question": [
+        "One cell, doubling every twenty minutes. How much after a single day?",
+        "Starting from one cell with a 20-minute doubling time, what is the mass after 24 hours?"
+      ],
+      "options": [
+        "Thousands of tonnes",
+        "About a spoonful",
+        "A few grams"
+      ],
+      "outcome": "Thousands of tonnes",
+      "note": [
+        "Guess before you look. People almost always guess far too low.",
+        "Commit. Exponential growth is the thing human intuition is worst at, and knowing that does not much help."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How long has it been growing?",
+      "min": 0,
+      "max": 5,
+      "value": 0,
+      "captions": [
+        "1 hour: 8 cells. Nothing to see.",
+        "4 hours: about 4,000. Still invisible.",
+        "12 hours: 69 billion. About a tenth of a gram — you could just see it.",
+        "24 hours: 4.7 thousand million million million. Nearly 5,000 tonnes.",
+        "36 hours: enough to be measured against the mass of planets.",
+        "48 hours: several thousand times the mass of the Earth."
+      ],
+      "t": [
+        "Slide along and watch what doubling does. The numbers are real.",
+        "Real figures: one cell, twenty-minute doubling, no limits. Note where it goes from invisible to absurd — it is a much narrower window than it feels."
+      ],
+      "after": [
+        "For half a day you could not see it. A few hours later it is bigger than a building.",
+        "Nothing about the growth rate changed. The visible transition from nothing to catastrophic happens in a handful of doublings, which is why exponential processes are noticed too late."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Doubling again and again is called exponential growth, and it never really happens for long.",
+        "This is exponential growth. It never continues, because something always runs out — food, space, or somewhere to put the waste.",
+        "Unconstrained exponential growth is a limiting case that no real population sustains. In practice growth is logistic: exponential early, then flattening as a resource becomes limiting.",
+        "The interesting question is therefore never whether growth is exponential but what stops it, and when. That is the same question as carrying capacity in ecology, and it is the same question as why a tumour eventually needs its own blood supply."
+      ],
+      "sub": [
+        "Which is why one germ on your hand matters and one on a table usually does not.",
+        "The reason a small contamination is serious is not the number that arrives but the doubling time once it does.",
+        "It is also why bacteria evolve so fast: a hundred generations takes a day and a half.",
+        "Generation time is the rate-limiter on evolution. What takes an elephant a thousand years takes E. coli a fortnight, which is why laboratory evolution is done in bacteria and why resistance appears within a single course of treatment."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "fast-generations",
+      "q": [
+        "Why do bacteria evolve so much faster than animals?",
+        "Why is evolutionary change so rapid in bacteria?",
+        "What makes generation time the rate-limiter on adaptation?"
+      ],
+      "options": [
+        "They have a new generation every twenty minutes",
+        "Their DNA is less accurate",
+        "They want to change more"
+      ],
+      "answer": 0,
+      "why": [
+        "Selection needs generations to work with. A bacterium has three an hour, so what would take an elephant a thousand years takes a germ a fortnight.",
+        "The three conditions act once per generation, so the number of generations sets the pace. Twenty minutes against twenty years is a factor of half a million, and that is nearly the whole explanation.",
+        "Population size compounds it: a culture holds enough individuals that even very rare mutations are present somewhere, so a bacterial population explores sequence space vastly faster than a large-bodied animal can. Rate and number, not any difference in the mechanism."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why food left out gets dangerous long before it looks or smells wrong.",
+        "A contamination too small to detect on Monday evening is a serious dose by Tuesday morning, and it can reach that point while still looking and smelling perfectly normal — spoilage organisms and pathogens are not the same organisms. Refrigeration works not by killing anything but by lengthening the doubling time, which is enough to move the dangerous point past when you eat it."
+      ]
+    }
+  ]
+}

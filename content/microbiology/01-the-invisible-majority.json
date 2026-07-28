@@ -1,0 +1,109 @@
+{
+  "id": "microbiology/01",
+  "module": "microbiology",
+  "index": 0,
+  "title": "The Invisible Majority",
+  "specimen": "microbe-scale",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Almost everything alive is too small to see. We only noticed any of it 350 years ago.",
+        "The overwhelming majority of living things are invisible without a lens, and nobody knew they existed until a Dutch draper ground his own and looked at pond water in the 1670s."
+      ],
+      "sub": [
+        "For all of history before that, nobody knew.",
+        "Every explanation of disease before that date was constructed without the main cause of it."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "invisible-majority",
+      "question": [
+        "What is the smallest thing you can see with just your eyes?",
+        "What is the resolution limit of the unaided human eye?"
+      ],
+      "options": [
+        "About the width of a hair — and bacteria are fifty times smaller",
+        "About the size of a bacterium",
+        "Anything, if you look closely enough"
+      ],
+      "outcome": "About the width of a hair — and bacteria are fifty times smaller",
+      "note": [
+        "Guess first.",
+        "Commit. A human hair is about 70 micrometres and a typical bacterium about 1 to 2."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Zoom in",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "1 millimetre: a grain of sand. The smallest thing you can really examine.",
+        "70 micrometres: a human hair's width. About the limit of what you can see at all.",
+        "20 micrometres: one of your cells. Invisible without a microscope.",
+        "2 micrometres: a bacterium. Fifty of them across a hair.",
+        "100 nanometres: a virus. A hundred of those across a bacterium."
+      ],
+      "t": [
+        "Go from something you can hold to something nobody saw for the whole of history.",
+        "Five steps from a sand grain to a virus. Note where the eye stops and where the light microscope stops."
+      ],
+      "after": [
+        "Two whole levels of life below anything anyone could see.",
+        "The light microscope reaches bacteria and stops; viruses needed the electron microscope in the 1930s. Each instrument revealed a layer that had been there throughout."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Living things too small to see are called microbes, and there are more of them than everything else put together.",
+        "Microorganisms — bacteria, archaea, many fungi and protists — outnumber all visible life by an enormous margin, and always have.",
+        "Bacteria and archaea account for the majority of Earth's biological diversity and a substantial fraction of its biomass, much of it kilometres underground in rock.",
+        "Visible life is a thin and unrepresentative sample. Most of the genetic diversity on the planet is microbial, most metabolic strategies exist only in microbes, and the deep subsurface biosphere alone may hold a mass comparable to all surface life. Animals are the exception that happens to be doing the looking."
+      ],
+      "sub": [
+        "They were doing everything for billions of years before anything bigger existed.",
+        "Life was exclusively microbial for roughly the first three billion years — most of its history.",
+        "Every major chemical trick — photosynthesis, nitrogen fixation, respiration — was invented by microbes and inherited by everything else.",
+        "Your mitochondria and a plant's chloroplasts are captured bacteria, retained as organelles. Complex life did not invent its own power supply; it acquired one, and the evidence is that both still carry their own genomes."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "invisible-majority",
+      "q": [
+        "Why did nobody know about germs until 350 years ago?",
+        "Why was microbial life undiscovered for the whole of recorded history?",
+        "What made microbial life inaccessible before the 1670s?"
+      ],
+      "options": [
+        "They are far too small to see without a lens",
+        "There were fewer of them then",
+        "Nobody thought to look"
+      ],
+      "answer": 0,
+      "why": [
+        "They were everywhere the whole time. Nobody could see them, and you cannot investigate something you have no way of detecting.",
+        "It was an instrument problem, not a curiosity problem. People had wondered about invisible causes of disease for centuries; what was missing was any way to look, and a good enough lens supplied it immediately.",
+        "The observation was gated entirely on optics, which is why the discovery arrives so suddenly and so completely once lens-making improves. It is a clean example of a whole domain of nature being inaccessible not for want of thought but for want of an instrument — and a reason to be careful about concluding that something does not exist."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Once people could see them, they worked out what was causing disease, and everything changed.",
+        "Germ theory follows directly from being able to see the germs, and it is arguably the single most consequential idea in the history of medicine — more lives saved by handwashing, clean water and sterile surgery than by any drug. All of it waited on a lens good enough to show that the cause was there at all."
+      ]
+    }
+  ]
+}

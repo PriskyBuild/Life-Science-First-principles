@@ -1,0 +1,136 @@
+{
+  "id": "microbiology/04",
+  "module": "microbiology",
+  "index": 3,
+  "title": "Growing Something You Cannot See",
+  "specimen": "culture-plate",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "How do you study something you cannot see? You grow it until there are enough to see.",
+        "The whole of practical microbiology rests on one trick: you cannot see one bacterium, but a few million of them descended from it make a visible spot."
+      ],
+      "sub": [
+        "One spot on a plate means one cell landed there.",
+        "That correspondence is what turns an invisible problem into a countable one."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "culture-and-count",
+      "question": [
+        "You see 40 spots on a plate. What does that tell you?",
+        "Forty colonies have grown on a plate. What does the count represent?"
+      ],
+      "options": [
+        "About 40 cells landed on it",
+        "There were 40 bacteria in the whole sample",
+        "Nothing useful — spots appear at random"
+      ],
+      "outcome": "About 40 cells landed on it",
+      "note": [
+        "Guess first.",
+        "Commit. Note the difference between the first two options: one is about the plate, one is about the sample."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Put each step of growing something invisible in the job it does. Any part fits any slot.",
+        "Assign each technique to its purpose, then the method is tested. Each omission produces a specific and different failure."
+      ],
+      "parts": [
+        { "id": "sterile", "label": "Sterilise everything first" },
+        { "id": "medium", "label": "Food it can grow on" },
+        { "id": "dilute", "label": "Dilute the sample" },
+        { "id": "spread", "label": "Spread it thinly" },
+        { "id": "count", "label": "Count the spots" }
+      ],
+      "slots": [
+        { "correct": "sterile", "label": ["Makes sure nothing was there already"] },
+        { "correct": "medium", "label": ["Gives it something to grow on"] },
+        { "correct": "dilute", "label": ["Stops it being a solid lawn"] },
+        { "correct": "spread", "label": ["Keeps each spot separate from its neighbours"] },
+        { "correct": "count", "label": ["Turns spots back into a number"] }
+      ],
+      "trials": [
+        {
+          "name": ["Know the result came from your sample", "Sterility"],
+          "needs": ["sterile", "medium"],
+          "pass": ["Nothing grew that you did not put there.", "The plate was sterile before inoculation, so growth is attributable to the sample."],
+          "fail": ["Something grew, and you have no idea where it came from.", "Without sterile technique the result is uninterpretable — you cannot distinguish sample from contaminant."]
+        },
+        {
+          "name": ["Get separate spots rather than a smear", "Separation"],
+          "needs": ["sterile", "medium", "dilute", "spread"],
+          "pass": ["Individual colonies, each from one cell.", "Discrete colonies, each a clone of a single founding cell."],
+          "fail": ["A solid lawn of growth. You can see it and you cannot count it.", "Too concentrated: colonies merge and the one-cell-one-colony correspondence is lost, so nothing can be counted."]
+        },
+        {
+          "name": ["Say how many were in the original sample", "Quantification"],
+          "needs": ["sterile", "medium", "dilute", "spread", "count"],
+          "pass": ["Spots times the dilution gives you the number you started with.", "Colony count multiplied by the dilution factor recovers the original concentration."],
+          "fail": ["You grew it beautifully and cannot say how much there was.", "Without counting and the dilution factor the procedure is qualitative — it detects, and it does not measure."]
+        }
+      ],
+      "win": [
+        "One cell, one spot, and a number at the end.",
+        "The whole method rests on one correspondence — one founding cell per colony — and everything else exists to protect it."
+      ],
+      "lose": [
+        "Read which test failed — it names what was in the wrong job.",
+        "Each failed trial names the step that was not being performed. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Growing them on purpose is called culturing, and each spot is a colony.",
+        "This is culture: give them food, keep everything else out, and let one cell become a visible colony. Counting colonies counts the cells you started with.",
+        "Plate counting. Each colony-forming unit descends from a single cell, so counts multiplied by dilution give the original concentration — the foundation of quantitative microbiology.",
+        "It also has a large blind spot that took a century to notice: the great majority of microbial species will not grow on any medium anyone has devised. Estimates of the unculturable fraction run above 99%, so a hundred years of microbiology described whichever organisms happened to like the conditions in a laboratory."
+      ],
+      "sub": [
+        "The spot is millions of copies of the one cell that landed there.",
+        "A colony is a clone. That is what makes the count meaningful and what lets you pick a pure strain off a plate.",
+        "Sequencing changed the field precisely because it does not require growing anything first.",
+        "Metagenomics — sequencing everything in a sample without culturing it — revealed whole branches of life that had been invisible to the older method. It is the same lesson as the microscope, one level along: the instrument decided what could be known, and nobody could see the boundary from inside."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "culture-and-count",
+      "q": [
+        "Why does one spot mean one cell?",
+        "Why does a colony correspond to a single founding cell?",
+        "Why does the method depend on adequate dilution?"
+      ],
+      "options": [
+        "The spot is all the descendants of one cell that landed there",
+        "Bacteria always arrive in groups of one",
+        "The spots are drawn on afterwards"
+      ],
+      "answer": 0,
+      "why": [
+        "A single cell lands, and cannot move. It divides where it is until there are millions of copies in a heap you can see. So one spot means one cell arrived there.",
+        "Bacteria on a solid surface are effectively immobile, so all descendants of one cell stay in one place and form a visible clone. Dilution matters because the correspondence only holds if cells land far enough apart to grow into separate colonies.",
+        "The one-cell-one-colony correspondence is the entire basis of the count, and it breaks when colonies merge. This is why plates are counted only in a specific range — typically 30 to 300 — with anything denser being reported as too numerous to count rather than estimated."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is how anyone knows whether water is safe to drink.",
+        "Water safety testing is exactly this procedure: filter a known volume, culture what is caught, count the colonies. The result is a number per hundred millilitres that determines whether a supply is fit to drink — one of the most consequential measurements routinely made anywhere, and it works because one cell makes one countable spot."
+      ]
+    }
+  ]
+}

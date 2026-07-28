@@ -850,3 +850,28 @@ tells a child that the maximum loses, and a lesson is only as true as the model 
 The open track adds a midday heat spike, and the discovery is that no fixed aperture works. That
 is not a puzzle invented for the lesson; it is why guard cells regulate continuously, and why CAM
 plants moved gas exchange to the night entirely.
+
+### D58 — A lesson claimed the engine could express something it cannot
+*Caught while authoring, not by a test.*
+
+Animals lesson 1 is about trade-offs, so I wrote a fourth trial called "all of it at once" and
+told the child it was unwinnable — the point being that no animal can be fast, armoured, strong
+and cheap.
+
+The engine does not work that way. `trials[].needs` grades **placement correctness**, so a child
+who put all four parts in their correct slots would have passed the trial I had just described as
+impossible. The lesson would have contradicted itself on screen, and the build linter had no way
+to know: every rule it enforces was satisfied.
+
+I removed the trial. The point lands in the hook, the naming stage and the check, all of which can
+carry it honestly.
+
+The tempting alternative was to give the build more parts than slots, so something must be left
+out — which would express a real constraint in the mechanic rather than in prose. It does not work
+either, because each slot carries exactly one `correct` value, so there is only one right
+assignment and the child never chooses what to sacrifice. Expressing a genuine either/or would
+need a new stage type, and inventing one to rescue a single lesson is the wrong trade.
+
+The general rule: when a lesson needs the engine to mean something it does not mean, the lesson is
+wrong until the engine changes. Writing prose that describes behaviour the code does not have is
+the most invisible defect available — nothing fails, and only a child notices.

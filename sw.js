@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "8a1b11767e0a";
+const VERSION = "bd2503722ae7";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -15,6 +15,10 @@ const PRECACHE = [
   "assets/icon-512.png",
   "assets/icon-maskable.png",
   "assets/mark.svg",
+  "content/animals/01-every-body-is-a-compromise.json",
+  "content/animals/02-big-small-and-why-it-matters.json",
+  "content/animals/03-how-to-move-without-wheels.json",
+  "content/animals/04-behaviour-is-inherited-too.json",
   "content/authored.json",
   "content/biomolecules/01-four-families-all-of-life.json",
   "content/biomolecules/02-sugar-is-a-battery.json",
@@ -55,6 +59,10 @@ const PRECACHE = [
   "content/immunity/03-how-a-vaccine-teaches.json",
   "content/immunity/04-when-the-army-attacks-you.json",
   "content/immunity/05-build-a-defence.json",
+  "content/microbiology/01-the-invisible-majority.json",
+  "content/microbiology/02-fast-life.json",
+  "content/microbiology/03-the-ones-that-live-in-you.json",
+  "content/microbiology/04-growing-something-you-cannot-see.json",
   "content/natural-selection/01-the-beetles-that-vanished.json",
   "content/natural-selection/02-fitness-is-not-strength.json",
   "content/natural-selection/03-the-peppered-moth.json",
