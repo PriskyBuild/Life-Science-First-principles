@@ -772,3 +772,20 @@ the distribution IS the thing being asserted, as in D52. Mixing the two gives yo
 that is also a weak one.
 
 Both runs of the full suite after this change: 190/190.
+
+### D54 — A machine path from my own container shipped in the test suite
+*Found by CI, which is the only place it could have been found.*
+
+`tools/verify.mjs` took one screenshot to a hardcoded `/home/claude/shots/...`. Everything else in
+that file derives paths from `import.meta.url`, and the file's own header comment says it is
+"repo-relative so this runs from a clone, in CI, on anyone's machine". It passed locally every
+single time, because locally that path exists. The first GitHub Actions run failed on it.
+
+The one-line fix is uninteresting. What matters is that **no local test could ever have caught
+it** — the property being violated is portability, and a machine that has the path cannot detect
+a dependency on having the path.
+
+So the build now scans every source file, including `tools/`, for absolute paths rooted in a home
+directory or a Windows drive, and fails on them. It is placed before the browser suite in CI, so
+the cheap check runs first. I verified it fires by reintroducing the bug and watching the build
+reject it — a guard that has never been seen to fail is not known to be a guard at all.

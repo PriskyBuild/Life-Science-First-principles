@@ -173,7 +173,7 @@ for (const n of [1, 2, 3, 4]) {
   const b = await box(".bar-link");
   check(`L${n}: minimum-size control >= ${EXPECT[n]}px`, b.height >= EXPECT[n] - 0.5,
     `measured ${b.height.toFixed(1)}px`);
-  await page.screenshot({ path: `/home/claude/shots/atlas-L${n}.png`, fullPage: false });
+  await page.screenshot({ path: join(SHOTS, `atlas-L${n}.png`), fullPage: false });
 }
 
 // 9. dark theme renders

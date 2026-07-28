@@ -260,6 +260,26 @@ for (const [name, actual, limit] of budgets) {
   if (actual > limit) fail(`budget: ${name} is ${(actual / 1024).toFixed(1)} KB, limit ${(limit / 1024).toFixed(0)} KB`);
 }
 
+/* Portability gate. Every file in this repo is supposed to run from a clone,
+   in CI, on anyone's machine — and one screenshot line in verify.mjs had my own
+   container's home directory hardcoded into it. It passed locally forever and
+   failed on the first GitHub Actions run, which is the worst possible place to
+   discover it. Absolute paths rooted in a home directory or a Windows drive are
+   never correct here; ROOT is derived from import.meta.url for exactly this
+   reason. tools/ is scanned too, because that is where it happened. */
+{
+  const scan = [...files, ...readdirSync(join(ROOT, "tools")).map((f) => `tools/${f}`)]
+    .filter((f) => /\.(m?js|json|ya?ml|html|css)$/.test(f));
+  const ABS = /(?:^|["'`(\s])(?:\/(?:home|Users|root|tmp)\/[\w.-]+|[A-Za-z]:\\\\)/;
+  for (const f of scan) {
+    const text = readFileSync(join(ROOT, f), "utf8");
+    for (const [i, line] of text.split("\n").entries()) {
+      if (line.includes("eslint") || /^\s*(\*|\/\/)/.test(line)) continue;   // comments and prose
+      if (ABS.test(line)) fail(`${f}:${i + 1}: absolute machine path — this must run from any clone`);
+    }
+  }
+}
+
 /* Syntax gate. `node --check file.js` parses as CommonJS and happily accepts a
    file the browser rejects — an unbalanced paren in screens.js passed every
    local check and only failed as a blank page. Parse each file AS a module. */
