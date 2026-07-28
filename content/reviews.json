@@ -505,6 +505,101 @@
     ],
     "from": "dna/04"
   },
+  "nothing-eats-alone": {
+    "q": [
+      "Why is a food web safer than a food chain?",
+      "Why does a web tolerate a loss that a chain would not?",
+      "What property does the chain abstraction discard?"
+    ],
+    "options": [
+      "If one link goes, there are other routes",
+      "Webs have more animals in them",
+      "Chains only exist in the sea"
+    ],
+    "answer": 0,
+    "why": [
+      "In a chain, if one thing disappears everything above it goes hungry. In a web there is usually something else to eat, so losing one link does not have to bring the whole thing down.",
+      "Redundancy. Multiple routes to the same energy mean the loss of one link can be absorbed — which is why real ecosystems survive losses that a chain diagram predicts would be fatal.",
+      "It discards redundancy, which is the property that determines robustness. That makes the chain actively misleading rather than merely simplified: it predicts fragility that is usually absent, and it gives no way to identify the cases — keystone species — where the fragility is real."
+    ],
+    "from": "ecology/01"
+  },
+  "energy-loss-up-trophic": {
+    "q": [
+      "Why are there so few big predators?",
+      "Why is the number of trophic levels limited to four or five?",
+      "Why does trophic efficiency bound chain length?"
+    ],
+    "options": [
+      "There is only a tenth as much energy at each level up",
+      "They are killed by people",
+      "They breed too slowly"
+    ],
+    "answer": 0,
+    "why": [
+      "Ten thousand units of sunlight becomes about one unit five levels up. There is simply not enough left to feed anything else, so the chain has to stop.",
+      "Energy falls by roughly a factor of ten per level, so after four or five levels there is not enough to support a viable population. The limit is arithmetic, not biology.",
+      "Each transfer loses about 90%, so available energy falls geometrically while the minimum viable population size does not. The two curves cross after four or five levels, and that crossing is the ceiling. It also explains why top predators need enormous territories — the area required scales with the energy shortfall."
+    ],
+    "from": "ecology/02"
+  },
+  "carrying-capacity": {
+    "q": [
+      "What decides how many animals a place can hold?",
+      "What sets carrying capacity?",
+      "Why does only the scarcest resource matter?"
+    ],
+    "options": [
+      "Whichever thing they need runs out first",
+      "How much space there is",
+      "How fast they breed"
+    ],
+    "answer": 0,
+    "why": [
+      "Plenty of grass is no use if there is no water. Whatever they run out of first is what sets the number, and giving them more of anything else makes no difference at all.",
+      "The binding constraint, and only that one. Relieving any other requirement changes nothing until the scarce one is relieved too — which is why a single limiting nutrient can control the productivity of a whole system.",
+      "Breeding rate determines how fast the ceiling is reached, never how high it is. Confusing the two is why 'they breed too fast' is almost always the wrong diagnosis of an overpopulation problem — the rate sets the approach, the resource sets the level."
+    ],
+    "from": "ecology/03"
+  },
+  "keystone-effects": {
+    "q": [
+      "Why did the plants suffer when the hunters were removed?",
+      "Why does removing a predator reduce plant abundance?",
+      "Why does the effect alternate in sign as it descends?"
+    ],
+    "options": [
+      "Nothing was eating the plant eaters any more, so there were far more of them",
+      "The hunters had been protecting the plants directly",
+      "The plants needed the hunters' waste"
+    ],
+    "answer": 0,
+    "why": [
+      "The hunters never went near the plants. But they kept the plant eaters down — and once they were gone there were more than twice as many mouths, and the plants could not keep up.",
+      "Predator release raised herbivore numbers, and the increased grazing pressure suppressed the plants. The route runs through the middle level, which is why the effect is indirect and why nobody expected it.",
+      "Because each level suppresses the one below it. Removing a suppressor releases its prey, which suppresses the next level down, so the sign flips at every step. That alternation predicts what happens when you remove a herbivore instead — plants should rise — and it does, which is what makes the account testable."
+    ],
+    "from": "ecology/04"
+  },
+  "food-web-stability": {
+    "q": [
+      "Why does having several species doing the same job help?",
+      "What does functional redundancy buy?",
+      "Why does redundancy loss produce non-linear failure?"
+    ],
+    "options": [
+      "If one is lost, another can do it",
+      "It makes the ecosystem bigger",
+      "They help each other out"
+    ],
+    "answer": 0,
+    "why": [
+      "If only one thing eats a particular plant and it disappears, that job stops. If four things eat it, losing one hardly matters. Spares are what let a web survive losing pieces.",
+      "It buys the ability to absorb loss. A role with several occupants continues when one is lost; a role with one occupant does not — and a species in that position is a keystone whether or not it is abundant.",
+      "Because redundancy is consumed before function is. Losses are absorbed with no measurable change until the last occupant of some role goes, and then the failure is abrupt. This is why monitoring ecosystem function is a poor early-warning system, and why diversity is worth protecting before anything appears to be wrong."
+    ],
+    "from": "ecology/05"
+  },
   "testable-expectation": {
     "q": [
       "What makes an idea a good one to test?",

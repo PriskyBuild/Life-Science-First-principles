@@ -2146,6 +2146,45 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     r.map((x) => `${x.aperture}:${x.sugar}${x.dead ? "†" : ""}`).join(" "));
 }
 
+/* 101-103. The trophic cascade, measured.
+
+   Ecology lesson 4 tells a child that removing the top predator makes the
+   PLANTS crash — two levels down, through a level nobody touched. That is a
+   claim about the model, so it is checked rather than trusted. If the
+   parameters ever drifted so that the cascade stopped appearing, the lesson
+   would be asserting something its own simulation contradicts. */
+{
+  const r = await page.evaluate(async () => {
+    await import("./js/sims/web.js");
+    document.querySelectorAll("fp-web").forEach((n) => n.remove());
+    const sim = document.createElement("fp-web");
+    Object.assign(sim.dataset, { task: "cascade", switches: true });
+    document.querySelector("#main").append(sim);
+    await new Promise((res) => setTimeout(res, 120));
+    sim.reduced = { matches: true };
+    const settle = () => {
+      sim.reset();
+      for (let i = 0; i < 60 * 40 && !sim.settled; i++) sim.step(1 / 60);
+      return { P: +sim.P.toFixed(1), H: +sim.H.toFixed(1), C: +sim.C.toFixed(1), settled: sim.settled };
+    };
+    sim.on = { plants: true, herbivores: true, carnivores: true };
+    const full = settle();
+    sim.on.carnivores = false;
+    const noTop = settle();
+    sim.on = { plants: true, herbivores: false, carnivores: false };
+    const plantsOnly = settle();
+    return { full, noTop, plantsOnly };
+  });
+
+  check("a population left alone stops at its carrying capacity",
+    r.plantsOnly.settled && Math.abs(r.plantsOnly.P - 100) < 2, JSON.stringify(r.plantsOnly));
+  check("the whole web settles rather than oscillating or dying",
+    r.full.settled && r.full.P > 1 && r.full.H > 1 && r.full.C > 1, JSON.stringify(r.full));
+  check("removing the top predator crashes the plants two levels below it",
+    r.noTop.H > r.full.H * 1.5 && r.noTop.P < r.full.P * 0.6,
+    `full P${r.full.P} H${r.full.H} -> no-top P${r.noTop.P} H${r.noTop.H}`);
+}
+
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
 
 await browser.close();

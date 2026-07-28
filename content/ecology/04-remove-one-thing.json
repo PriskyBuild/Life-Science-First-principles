@@ -1,0 +1,100 @@
+{
+  "id": "ecology/04",
+  "module": "ecology",
+  "index": 3,
+  "title": "Remove One Thing",
+  "specimen": "keystone",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Take away the wolves and the trees start dying. Nobody touched the trees.",
+        "Wolves were removed from Yellowstone in the 1920s. Over the following decades the willows and aspens along the rivers thinned and failed to regenerate — and nothing had been done to the trees at all."
+      ],
+      "sub": [
+        "Wolves do not eat trees.",
+        "So the effect travelled through something, and that something is the lesson."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "keystone-effects",
+      "question": [
+        "How could removing wolves harm the trees?",
+        "By what route does removing a top predator affect vegetation?"
+      ],
+      "options": [
+        "Through the deer, which nothing was hunting any more",
+        "The wolves were fertilising the soil",
+        "It was a coincidence"
+      ],
+      "outcome": "Through the deer, which nothing was hunting any more",
+      "note": [
+        "Guess first.",
+        "Commit. Then check it in the simulation rather than taking my word for it."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "web",
+      "guided": false,
+      "t": [
+        "Let the whole web settle. Then take the hunters away and let it settle again. Compare the plants.",
+        "Run the full web to equilibrium and note all three numbers. Then remove the top level, re-run, and compare — particularly the level you did not touch."
+      ],
+      "params": { "task": "cascade", "switches": true, "aspect": 0.85 },
+      "goal": [
+        "The plants collapsed, and you never touched the plants.",
+        "Plants fell sharply after a removal two levels above them. The effect travelled down through a level that was never manipulated."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "An effect that travels down through the levels is called a trophic cascade.",
+        "This is a trophic cascade: a change at the top propagating downwards through levels nobody touched.",
+        "A trophic cascade. Removing a predator releases its prey, which then suppresses the level below — so the sign of the effect alternates as it descends.",
+        "The alternation is the diagnostic feature: remove a carnivore and herbivores rise and plants fall; remove a herbivore and plants rise. That sign-flipping pattern is what distinguishes a genuine cascade from a coincidence, and it is why the prediction is testable rather than merely plausible."
+      ],
+      "sub": [
+        "A species that matters far more than its numbers suggest is a keystone.",
+        "Keystone species have an effect out of all proportion to their abundance — the wolves were never numerous.",
+        "Paine coined the term in 1969 by removing one starfish species from a rocky shore and watching the number of species there fall from fifteen to eight.",
+        "Paine's experiment is the reason the concept exists as science rather than intuition: he did the removal deliberately, on a real shore, and the community collapsed to a mussel monoculture. The starfish was neither abundant nor conspicuous, which is precisely the point — importance and abundance are different quantities."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "keystone-effects",
+      "q": [
+        "Why did the plants suffer when the hunters were removed?",
+        "Why does removing a predator reduce plant abundance?",
+        "Why does the effect alternate in sign as it descends?"
+      ],
+      "options": [
+        "Nothing was eating the plant eaters any more, so there were far more of them",
+        "The hunters had been protecting the plants directly",
+        "The plants needed the hunters' waste"
+      ],
+      "answer": 0,
+      "why": [
+        "The hunters never went near the plants. But they kept the plant eaters down — and once they were gone there were more than twice as many mouths, and the plants could not keep up.",
+        "Predator release raised herbivore numbers, and the increased grazing pressure suppressed the plants. The route runs through the middle level, which is why the effect is indirect and why nobody expected it.",
+        "Because each level suppresses the one below it. Removing a suppressor releases its prey, which suppresses the next level down, so the sign flips at every step. That alternation predicts what happens when you remove a herbivore instead — plants should rise — and it does, which is what makes the account testable."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why nobody can safely say a species does not matter much.",
+        "Importance and abundance are different quantities, and there is no reliable way to tell from looking which species is holding a system together. Sea otters are not numerous and their loss turns kelp forests into barrens; the starfish Paine removed was inconspicuous. This is the strongest practical argument against deciding that a rare species can be spared — the prediction is not merely uncertain, it is systematically hard."
+      ]
+    }
+  ]
+}

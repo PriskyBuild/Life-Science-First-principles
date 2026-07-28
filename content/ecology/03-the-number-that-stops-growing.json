@@ -1,0 +1,100 @@
+{
+  "id": "ecology/03",
+  "module": "ecology",
+  "index": 2,
+  "title": "The Number That Stops Growing",
+  "specimen": "capacity-line",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Every population could double for ever. None of them does.",
+        "Every species is capable of exponential growth — you watched bacteria do it — and no population anywhere has ever kept it up. Something always stops it."
+      ],
+      "sub": [
+        "Something stops it. The question is what, and when.",
+        "The interesting question is never whether growth is exponential. It is what the brake is."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "carrying-capacity",
+      "question": [
+        "What stops a population growing?",
+        "What arrests exponential growth in a real population?"
+      ],
+      "options": [
+        "It runs out of something it needs",
+        "It decides to stop",
+        "The animals get old"
+      ],
+      "outcome": "It runs out of something it needs",
+      "note": [
+        "Guess first.",
+        "Commit. Note that the brake has to get stronger as numbers rise, or it would not stabilise anything."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "web",
+      "guided": true,
+      "t": [
+        "Start with a few plants and nothing eating them. Watch how they grow.",
+        "A handful of plants, nothing eating them, unlimited time. Watch the shape of the curve rather than the final number."
+      ],
+      "params": { "task": "capacity", "p0": 5, "aspect": 0.85 },
+      "goal": [
+        "Fast at first, then slower, then it stopped. Nothing stopped it — it ran out of room.",
+        "Exponential at first, then decelerating, then flat. Nothing imposed the ceiling: growth slows because each new individual has less to go round."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The number a place can hold is called its carrying capacity.",
+        "The level a population settles at is the carrying capacity — the number the environment can support given whatever is scarcest.",
+        "Carrying capacity is not a property of the species or of the place alone, but of the pairing, and it moves whenever the limiting resource does.",
+        "It is also not a fixed constant, which is where the concept is most often misused. Carrying capacity for humans has risen repeatedly with agriculture, sanitation and fertiliser — each of which relaxed whatever was binding at the time. Treating it as a number rather than as a function of the binding constraint is the standard error."
+      ],
+      "sub": [
+        "It is whatever runs out first. Food, water, space, somewhere to nest.",
+        "Only the scarcest requirement matters — adding more of anything else changes nothing until the binding one is relieved.",
+        "Which is Liebig's law of the minimum, and it is why fertiliser works so dramatically when it happens to supply the one thing missing.",
+        "Real populations frequently overshoot and then crash rather than settling smoothly, because reproduction responds to conditions with a lag. Reindeer introduced to St Matthew Island went from 29 to 6,000 and then to 42 in three years — the same curve with a delay in it."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "carrying-capacity",
+      "q": [
+        "What decides how many animals a place can hold?",
+        "What sets carrying capacity?",
+        "Why does only the scarcest resource matter?"
+      ],
+      "options": [
+        "Whichever thing they need runs out first",
+        "How much space there is",
+        "How fast they breed"
+      ],
+      "answer": 0,
+      "why": [
+        "Plenty of grass is no use if there is no water. Whatever they run out of first is what sets the number, and giving them more of anything else makes no difference at all.",
+        "The binding constraint, and only that one. Relieving any other requirement changes nothing until the scarce one is relieved too — which is why a single limiting nutrient can control the productivity of a whole system.",
+        "Breeding rate determines how fast the ceiling is reached, never how high it is. Confusing the two is why 'they breed too fast' is almost always the wrong diagnosis of an overpopulation problem — the rate sets the approach, the resource sets the level."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why putting more fish in a lake does not give you more fish.",
+        "Stocking a lake beyond what its food supply supports does not raise the number of fish it holds — it raises competition and produces the same total in smaller, poorer condition. Fisheries management is largely the practice of working out what is actually binding, which is rarely the thing that looks obvious."
+      ]
+    }
+  ]
+}

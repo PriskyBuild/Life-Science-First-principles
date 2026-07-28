@@ -1,0 +1,129 @@
+{
+  "id": "ecology/05",
+  "module": "ecology",
+  "index": 4,
+  "title": "Build a Food Web",
+  "specimen": "living-web",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Build an ecosystem. Then things start being taken out of it.",
+        "Assemble a working ecosystem, then it faces four losses. What survives a loss is not what you would guess from looking at it."
+      ],
+      "sub": [
+        "The part you would miss most is not the part you would expect.",
+        "Importance and abundance are different quantities, and this is where that stops being an abstraction."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Put each thing in the job it does. Any part fits any slot, so the marking is on you.",
+        "Assign each group to its role. Placement is unconstrained; then four losses, each of which fails differently."
+      ],
+      "parts": [
+        { "id": "producers", "label": "Plants" },
+        { "id": "herbivores", "label": "Plant eaters" },
+        { "id": "predators", "label": "Predators" },
+        { "id": "decomposers", "label": "Decomposers" },
+        { "id": "diversity", "label": "Several species per job" }
+      ],
+      "slots": [
+        { "correct": "producers", "label": ["Brings the energy in from outside"] },
+        { "correct": "herbivores", "label": ["Moves energy up from the plants"] },
+        { "correct": "predators", "label": ["Keeps the plant eaters in check"] },
+        { "correct": "decomposers", "label": ["Puts the materials back"] },
+        { "correct": "diversity", "label": ["Gives every job a spare route"] }
+      ],
+      "trials": [
+        {
+          "name": ["Have any energy at all", "Primary production"],
+          "needs": ["producers"],
+          "pass": ["Sunlight enters the system.", "Energy enters via primary production."],
+          "fail": ["Nothing is bringing energy in. Everything starves.", "No producers, no input. Every other role is downstream of this one."]
+        },
+        {
+          "name": ["Get the energy upwards", "Transfer"],
+          "needs": ["producers", "herbivores"],
+          "pass": ["Plant energy reaches the levels above.", "Energy transfers from producers into consumers."],
+          "fail": ["All that energy, and nothing carrying it up.", "Production with no consumers supports nothing above the first level."]
+        },
+        {
+          "name": ["Not be eaten bare", "Regulation"],
+          "needs": ["producers", "herbivores", "predators"],
+          "pass": ["Grazing stays within what the plants can take.", "Predation holds herbivore density below the level that would suppress producers."],
+          "fail": ["The plant eaters ate everything and then starved.", "Unregulated herbivory collapses the producer level and then itself — which is the cascade you already watched happen."]
+        },
+        {
+          "name": ["Keep going for more than one round", "Nutrient cycling"],
+          "needs": ["producers", "herbivores", "predators", "decomposers"],
+          "pass": ["The materials go back and the plants can grow again.", "Nutrients are returned to producers and the system persists."],
+          "fail": ["Everything worked, once. Then the nutrients were all locked up in the dead.", "Energy flows through and is lost; matter must cycle. Without decomposers the nutrients accumulate in dead material and production stops within decades."]
+        },
+        {
+          "name": ["Survive losing a species", "Redundancy"],
+          "needs": ["producers", "herbivores", "predators", "decomposers", "diversity"],
+          "pass": ["Something else does that job, and the web holds.", "Functional redundancy absorbs the loss; another species occupies the role."],
+          "fail": ["It worked perfectly until one species went, and then it unravelled.", "A web with one species per role is a chain wearing a web's diagram. The redundancy is the robustness — without it, every loss is a keystone loss."]
+        }
+      ],
+      "win": [
+        "It brings energy in, moves it up, keeps itself in check, recycles, and survives a loss.",
+        "All five hold. Note that the last one is not about any organism's job — it is about there being more than one of everything."
+      ],
+      "lose": [
+        "Read which loss it failed — it names what was in the wrong job.",
+        "Each failed trial names the function that was not being performed. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A web survives losing things. A chain does not.",
+        "Redundancy is what makes an ecosystem robust: more than one species doing each job means a loss can be absorbed.",
+        "Functional redundancy is the property that separates a resilient system from a fragile one, and it is invisible in a diagram that draws one species per role.",
+        "It also predicts where the exceptions are. A keystone species is precisely one whose role has no redundancy — which is why keystone effects are not a separate phenomenon but the limiting case of this one, and why they cannot be identified by counting."
+      ],
+      "sub": [
+        "Which is why losing lots of species is worse than it sounds.",
+        "Each loss removes a spare route, so the damage from the tenth extinction is greater than from the first.",
+        "The system looks fine right up until it does not, because redundancy is consumed invisibly before anything fails.",
+        "That non-linearity is the practically important part: a community can lose a great deal of diversity with no visible change in function, and then change abruptly when the last redundant route for some role is gone. Monitoring what a system does tells you very little about how close it is to not doing it."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "food-web-stability",
+      "q": [
+        "Why does having several species doing the same job help?",
+        "What does functional redundancy buy?",
+        "Why does redundancy loss produce non-linear failure?"
+      ],
+      "options": [
+        "If one is lost, another can do it",
+        "It makes the ecosystem bigger",
+        "They help each other out"
+      ],
+      "answer": 0,
+      "why": [
+        "If only one thing eats a particular plant and it disappears, that job stops. If four things eat it, losing one hardly matters. Spares are what let a web survive losing pieces.",
+        "It buys the ability to absorb loss. A role with several occupants continues when one is lost; a role with one occupant does not — and a species in that position is a keystone whether or not it is abundant.",
+        "Because redundancy is consumed before function is. Losses are absorbed with no measurable change until the last occupant of some role goes, and then the failure is abrupt. This is why monitoring ecosystem function is a poor early-warning system, and why diversity is worth protecting before anything appears to be wrong."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why conservation cares about how many kinds there are, not just how many animals.",
+        "Counting individuals misses the thing that determines whether a system holds together. A community with high numbers spread across few species is more fragile than a smaller one with many, and the difference does not show until something is lost. It is also why restoration usually means putting species back rather than putting numbers back."
+      ]
+    }
+  ]
+}

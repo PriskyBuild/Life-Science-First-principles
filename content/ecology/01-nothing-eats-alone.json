@@ -1,0 +1,106 @@
+{
+  "id": "ecology/01",
+  "module": "ecology",
+  "index": 0,
+  "title": "Nothing Eats Alone",
+  "specimen": "food-link",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Draw a line from a thing to the thing that eats it. Keep going. You will not get a chain — you will get a mess.",
+        "Start with one species and draw an arrow to whatever eats it, then repeat. What you get is never a tidy chain, and the untidiness is the important part."
+      ],
+      "sub": [
+        "Nothing eats only one thing.",
+        "The neat food chain in most textbooks is a simplification that removes the property that matters."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "nothing-eats-alone",
+      "question": [
+        "Which is safer for a fox: eating only rabbits, or eating five different things?",
+        "Which strategy is more robust: specialising on one prey species, or generalising across several?"
+      ],
+      "options": [
+        "Five different things — one bad year does not finish it",
+        "Only rabbits — it gets very good at catching them",
+        "It makes no difference"
+      ],
+      "outcome": "Five different things — one bad year does not finish it",
+      "note": [
+        "Have a think first.",
+        "Commit. Note that the specialist really is better at its one job, which is what makes this a trade-off rather than an obvious answer."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each thing where it belongs in the web.",
+        "Every organism occupies a position defined by what it eats and what eats it. Place them."
+      ],
+      "parts": [
+        { "id": "grass", "label": "Grass" },
+        { "id": "rabbit", "label": "Rabbit" },
+        { "id": "fox", "label": "Fox" },
+        { "id": "fungus", "label": "Fungus" }
+      ],
+      "slots": [
+        { "accepts": "grass", "label": ["Makes its own food from light", "Producer: fixes energy from sunlight"] },
+        { "accepts": "rabbit", "label": ["Eats the ones that make food", "Primary consumer: eats producers"] },
+        { "accepts": "fox", "label": ["Eats the ones that eat plants", "Secondary consumer: eats primary consumers"] },
+        { "accepts": "fungus", "label": ["Eats whatever has died, and gives it back", "Decomposer: returns nutrients to the producers"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "All those lines together are called a food web.",
+        "The whole network of who-eats-what is a food web. A food chain is one thread pulled out of it.",
+        "A food web is the full set of trophic links. The chain is a useful abstraction that discards exactly the property — redundancy — that determines how the system responds to loss.",
+        "Which is why chains mislead. A chain implies that removing a link breaks everything downstream; a web implies that it usually does not, because there are other routes. Whether a particular removal matters is then an empirical question about that web's structure rather than something readable off a diagram."
+      ],
+      "sub": [
+        "And the decomposers are the part everyone forgets.",
+        "Every web closes: decomposers return the material to the producers, so nutrients cycle even though energy does not.",
+        "That distinction is the one to hold — energy flows through and is lost, matter goes round.",
+        "Without decomposition the nutrients would all end up locked in dead material within a few decades and productivity would stop. It is the least visible part of every ecosystem and the one whose removal would be fastest to matter."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "nothing-eats-alone",
+      "q": [
+        "Why is a food web safer than a food chain?",
+        "Why does a web tolerate a loss that a chain would not?",
+        "What property does the chain abstraction discard?"
+      ],
+      "options": [
+        "If one link goes, there are other routes",
+        "Webs have more animals in them",
+        "Chains only exist in the sea"
+      ],
+      "answer": 0,
+      "why": [
+        "In a chain, if one thing disappears everything above it goes hungry. In a web there is usually something else to eat, so losing one link does not have to bring the whole thing down.",
+        "Redundancy. Multiple routes to the same energy mean the loss of one link can be absorbed — which is why real ecosystems survive losses that a chain diagram predicts would be fatal.",
+        "It discards redundancy, which is the property that determines robustness. That makes the chain actively misleading rather than merely simplified: it predicts fragility that is usually absent, and it gives no way to identify the cases — keystone species — where the fragility is real."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why a specialist animal is usually the first to be in trouble.",
+        "Species that eat one thing are efficient and exposed. Pandas, koalas and many specialist insects are threatened partly because a single failure in their one food source has no alternative route — while generalists like foxes and crows thrive nearly everywhere. Diet breadth predicts extinction risk about as well as any single trait."
+      ]
+    }
+  ]
+}

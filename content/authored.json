@@ -31,6 +31,13 @@
     "3": "dna/04-mistakes-get-made.json",
     "4": "dna/05-reading-without-tangling.json"
   },
+  "ecology": {
+    "0": "ecology/01-nothing-eats-alone.json",
+    "1": "ecology/02-energy-runs-out-going-up.json",
+    "2": "ecology/03-the-number-that-stops-growing.json",
+    "3": "ecology/04-remove-one-thing.json",
+    "4": "ecology/05-build-a-food-web.json"
+  },
   "evolution": {
     "0": "evolution/01-what-would-change-your-mind.json",
     "1": "evolution/02-the-same-bones-in-different-jobs.json",

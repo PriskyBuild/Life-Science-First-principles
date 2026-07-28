@@ -875,3 +875,31 @@ need a new stage type, and inventing one to rescue a single lesson is the wrong 
 The general rule: when a lesson needs the engine to mean something it does not mean, the lesson is
 wrong until the engine changes. Writing prose that describes behaviour the code does not have is
 the most invisible defect available — nothing fails, and only a child notices.
+
+### D59 — Four simulations in, the rule has a name: use the model for what it shows
+*`js/sims/web.js`, and the fourth instance of D51/D55/D57.*
+
+The food web is the standard tri-trophic Lotka–Volterra system with logistic growth at the
+bottom — real, and taught in every ecology course. Measured before any lesson was written:
+
+| | plants | herbivores | carnivores |
+|---|---|---|---|
+| plants alone | 100 (= K) | — | — |
+| full web | 66.7 | 15.0 | 14.3 |
+| top predator removed | **25.7** | 33.4 | 0 |
+
+Removing the carnivore more than doubles the herbivores and crashes the plants to 39% of where
+they were, through a level nobody touched. That is a trophic cascade falling out of three
+equations, and the suite asserts it.
+
+**And what it is not used for.** Those are counts of individuals, not biomass, and a carnivore
+does not weigh what a herbivore weighs — so the equilibrium above is *not* a biomass pyramid and
+the lessons never present it as one. The ten-percent rule is taught in a separate stage from real
+ecological figures, with the caveat that 10% is an average spanning roughly 1% to 40%.
+
+That is now four sims where the honest move was to narrow the lesson to the model's actual
+demonstrated range: folding (targets below the true optimum), spike (window, not rate curve),
+stomata (the maximum losing), and this one. It is worth stating as a rule rather than rediscovering
+it each time: **decide what the model demonstrates, write that lesson, and put the gap in the file
+header.** The failure mode it prevents is subtle — a lesson that is true, running on a model that
+does not show it, which no test catches because both halves are individually fine.

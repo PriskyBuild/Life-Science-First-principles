@@ -1,0 +1,109 @@
+{
+  "id": "ecology/02",
+  "module": "ecology",
+  "index": 1,
+  "title": "Energy Runs Out Going Up",
+  "specimen": "trophic-ladder",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There are millions of grass plants, thousands of rabbits, and a handful of foxes. Always that way round.",
+        "Every ecosystem has vastly more producers than herbivores and vastly more herbivores than predators. The ratio is remarkably consistent, and nobody arranges it."
+      ],
+      "sub": [
+        "You never find it the other way up.",
+        "A pyramid standing on its point is not rare. It does not occur."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "energy-loss-up-trophic",
+      "question": [
+        "A rabbit eats 100 units of grass. How much of that becomes rabbit?",
+        "Of the energy a herbivore consumes, what fraction is available to its predator?"
+      ],
+      "options": [
+        "About 10",
+        "About 90",
+        "About 50"
+      ],
+      "outcome": "About 10",
+      "note": [
+        "Guess before you look. Almost everyone guesses far too high.",
+        "Commit. The rest is not wasted in any loose sense — it goes somewhere specific."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Follow 10,000 units of sunlight",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "10,000 units captured by plants.",
+        "1,000 units become plant-eater. The other 9,000 went into moving, breathing and heat.",
+        "100 units become the animal that eats them.",
+        "10 units reach the level above that.",
+        "1 unit. There is nothing left to build a level on."
+      ],
+      "t": [
+        "Follow the energy up the levels. Roughly a tenth carries up each time.",
+        "Approximately 10% transfers between levels. Follow it up and find where it stops being enough to support anything."
+      ],
+      "after": [
+        "That is why there are never many lions, and why there is no level above them.",
+        "Four or five levels is the practical ceiling, and it is set by arithmetic rather than by anything biological. The energy simply runs out."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Each level up gets about a tenth of what the one below had.",
+        "Roughly 10% of the energy at one level becomes body mass at the next. The rest is spent living, or lost as heat.",
+        "Trophic efficiency averages around 10%, though it ranges from about 1% to 40% depending on the organisms. The remainder goes to respiration, movement, and material that is never eaten or never digested.",
+        "The figure is a rough average rather than a law — aquatic systems with small, fast producers run considerably higher than terrestrial ones with woody plants. What is robust is the order of magnitude, and that is enough to explain the pyramid and the ceiling on chain length."
+      ],
+      "sub": [
+        "The rest is not wasted. It is spent staying alive, and then it is heat.",
+        "Most of what an animal eats is burned to keep it running, and that energy leaves as heat and never comes back.",
+        "This is why energy flows through an ecosystem while matter cycles round it — heat cannot be recovered.",
+        "It follows from the second law: every conversion loses some as unusable heat, so energy makes a single pass from the sun to space. That is the deepest reason a food chain has a ceiling, and it is physics rather than ecology."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "energy-loss-up-trophic",
+      "q": [
+        "Why are there so few big predators?",
+        "Why is the number of trophic levels limited to four or five?",
+        "Why does trophic efficiency bound chain length?"
+      ],
+      "options": [
+        "There is only a tenth as much energy at each level up",
+        "They are killed by people",
+        "They breed too slowly"
+      ],
+      "answer": 0,
+      "why": [
+        "Ten thousand units of sunlight becomes about one unit five levels up. There is simply not enough left to feed anything else, so the chain has to stop.",
+        "Energy falls by roughly a factor of ten per level, so after four or five levels there is not enough to support a viable population. The limit is arithmetic, not biology.",
+        "Each transfer loses about 90%, so available energy falls geometrically while the minimum viable population size does not. The two curves cross after four or five levels, and that crossing is the ceiling. It also explains why top predators need enormous territories — the area required scales with the energy shortfall."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why feeding people plants directly takes far less land than feeding them meat.",
+        "Eating one level down skips a 90% loss, so the same land supports far more people on plants than on animals raised on those plants. Roughly a third of the world's cropland grows animal feed. This is arithmetic rather than advocacy — the same figure appears whatever anyone concludes from it, and the conclusion is a separate question involving land that grows nothing else, nutrition and culture."
+      ]
+    }
+  ]
+}
