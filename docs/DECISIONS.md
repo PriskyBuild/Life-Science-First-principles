@@ -814,3 +814,39 @@ depolarisation block the membrane is stuck *high*, so that counter never advance
 silent for fifteen seconds reported as busy. It now measures time since the last spike, which is
 what I actually meant. Worth recording because the wrong metric was not wrong-looking: it agreed
 with the right one everywhere except the one state the simulation exists to show.
+
+### D56 — The fix for D52 made the same mistake D52 was about
+*Worth recording precisely because it is embarrassing.*
+
+D52 and D53 are entries about tests that asserted a snapshot of the content instead of a rule.
+The fix I wrote for the Atlas check asserted `unlockedButEmpty.length > 0` — that is, it required
+an unlocked-but-empty world to *exist* — because I wanted to stop the check passing vacuously.
+
+It passed for five modules and then failed the moment every unlocked world had content. It failed
+for the best possible reason, and it was still the identical error: a claim about what the
+curriculum happened to look like the day I wrote it.
+
+The resolution is to separate the two clauses by whether they can go vacuous. **No drawn world is
+empty** is the rule, and it is never vacuous because there are always drawn worlds. **An unlocked
+but empty world is refused** is a strengthening that only applies while such a world exists, so it
+is conditional — and the detail line now says out loud when it has gone quiet, so nobody later
+mistakes a dormant clause for a passing one.
+
+Three entries on one theme in one session suggests the lesson is not "be careful" but structural:
+before writing an assertion, ask what would make it stop meaning anything, and whether that thing
+is progress. If it is progress, the assertion is wrong.
+
+### D57 — The leaf trade-off, with the numbers taken first
+*`js/sims/stomata.js`.*
+
+Same discipline as D51 and D55: measure, then author. On a steady day sugar climbs with aperture
+to about 7 and then stops, because past that light rather than carbon dioxide is limiting —
+opening further costs water and buys nothing, which is why real stomatal conductance saturates.
+At full aperture the leaf dies at 50 seconds having made **less** sugar than one held at 5.
+
+The suite asserts that ordering directly — `0:-30 2:78 5:240 7:330 10:273†` — because the lesson
+tells a child that the maximum loses, and a lesson is only as true as the model under it.
+
+The open track adds a midday heat spike, and the discovery is that no fixed aperture works. That
+is not a puzzle invented for the lesson; it is why guard cells regulate continuously, and why CAM
+plants moved gas exchange to the night entirely.

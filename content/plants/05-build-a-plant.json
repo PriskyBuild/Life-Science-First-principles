@@ -1,0 +1,123 @@
+{
+  "id": "plants/05",
+  "module": "plants",
+  "index": 4,
+  "title": "Build a Plant",
+  "specimen": "whole-plant",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Build a plant that stays alive. Then the weather happens to it.",
+        "Assemble a working plant, then it faces drought, shade, wind and a season with no pollinators. Each part you leave out fails somewhere different."
+      ],
+      "sub": [
+        "Every part is answering a problem you have already met.",
+        "Nothing here is new. What is new is that they all have to hold at once."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Put each part in the job it does. Any part fits any slot.",
+        "Assign each structure to its function. Placement is unconstrained; the assignment is the whole of the marking."
+      ],
+      "parts": [
+        { "id": "roots", "label": "Roots" },
+        { "id": "xylem", "label": "Water tubes" },
+        { "id": "leaf", "label": "Flat leaves" },
+        { "id": "stomata", "label": "Adjustable pores" },
+        { "id": "flower", "label": "Flowers" }
+      ],
+      "slots": [
+        { "correct": "roots", "label": ["Collects water and holds it upright"] },
+        { "correct": "xylem", "label": ["Carries water up without a pump"] },
+        { "correct": "leaf", "label": ["Catches as much light as possible"] },
+        { "correct": "stomata", "label": ["Lets gas in, and can shut when it must"] },
+        { "correct": "flower", "label": ["Gets pollen to another plant"] }
+      ],
+      "trials": [
+        {
+          "name": ["An ordinary sunny day", "Baseline"],
+          "needs": ["roots", "xylem", "leaf", "stomata"],
+          "pass": ["Water up, gas in, sugar made.", "Supply, transport, capture and exchange all functioning."],
+          "fail": ["One of the four links in the chain was missing, so nothing arrived.", "Any break in supply → transport → capture → exchange stops the whole sequence; the chain has no redundancy."]
+        },
+        {
+          "name": ["A hot afternoon", "Drought stress"],
+          "needs": ["roots", "xylem", "leaf", "stomata"],
+          "pass": ["The pores shut and the plant rides it out.", "Stomatal closure limits transpiration until evaporative demand falls."],
+          "fail": ["Nothing could close, so it dried out.", "Without adjustable aperture there is no response to changing demand — fixed pores are lethal on the first hot day."]
+        },
+        {
+          "name": ["Growing in shade", "Low light"],
+          "needs": ["roots", "xylem", "leaf", "stomata"],
+          "pass": ["Broad flat leaves catch what light there is.", "Large intercepting area compensates for low irradiance."],
+          "fail": ["Too little surface to catch enough light.", "Without the area, capture falls below upkeep and the plant runs at a loss."]
+        },
+        {
+          "name": ["Reproducing at all", "Pollination"],
+          "needs": ["roots", "xylem", "leaf", "stomata", "flower"],
+          "pass": ["Pollen reaches another plant and there are seeds.", "Gametes are transferred and viable seed is set."],
+          "fail": ["A magnificent plant, alive, and the last of its line.", "Survival is not fitness. A plant that cannot reproduce has a fitness of zero however well it grows — which is the definition you met in Change."]
+        }
+      ],
+      "win": [
+        "It feeds itself, survives a hot day, copes with shade, and has offspring.",
+        "All four hold together. Note that the last one is not about staying alive at all — and that it is the only one that counts in the long run."
+      ],
+      "lose": [
+        "Read which test failed — it names what was in the wrong job.",
+        "Each failed trial names the function that was not being performed. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Every part of a plant is an answer to being stuck in one place.",
+        "A plant's whole body plan follows from one constraint: it cannot move. Everything else is a consequence.",
+        "Rooted immobility forces every solution here — collect from where you are, transport without a pump, capture diffuse energy over area, and hire something mobile to reproduce.",
+        "Being sessile also explains what plants do not have: no nervous system, no immune memory of the animal kind, and no ability to flee. What they have instead is chemistry — the majority of the drugs and poisons humans use come from plants, because a thing that cannot run has to make something a predator will regret."
+      ],
+      "sub": [
+        "Including the flowers, which are for getting somewhere it cannot go.",
+        "The flower exists because the pollen has to travel and the plant cannot, which is the same constraint again.",
+        "Seeds are the second half of that answer: the offspring move even though the parent never did.",
+        "Between pollen and seed a plant gets two chances at movement per generation, both delegated. Every fruit you have ever eaten is a bribe paid for the second one."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "plant-systems",
+      "q": [
+        "What problem is a flower solving?",
+        "What constraint does the flower exist to overcome?",
+        "Why is reproduction the hardest problem for a sessile organism?"
+      ],
+      "options": [
+        "The plant cannot move, but its pollen has to",
+        "Attracting sunlight to the plant",
+        "Keeping insects away from the leaves"
+      ],
+      "answer": 0,
+      "why": [
+        "A plant is stuck where it grew. Its pollen still has to get to a different plant, so it pays an animal to carry it — that is what the colour and the nectar are for.",
+        "Gametes must reach another individual and the individual cannot travel. The flower solves it by recruiting something that can, paying in nectar, and shaping itself so the payment cannot be collected without the service being done.",
+        "Because it is the one function that cannot be performed locally. Feeding, drinking and defending can all be done in place; outcrossing cannot, so it must be delegated — to an animal, or to the wind, and both routes shape the flower entirely."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Everything you have ever eaten was a plant, or ate one.",
+        "Every crop is this set of trade-offs tuned by breeding: leaves for capture, roots for supply, stomata for the water balance, and flowers for the seed we usually want. Agriculture is the deliberate manipulation of a design that was already an answer to being unable to move — which is why understanding the constraint tells you more about farming than any list of parts."
+      ]
+    }
+  ]
+}

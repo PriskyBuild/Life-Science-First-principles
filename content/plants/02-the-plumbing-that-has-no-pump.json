@@ -1,0 +1,109 @@
+{
+  "id": "plants/02",
+  "module": "plants",
+  "index": 1,
+  "title": "The Plumbing That Has No Pump",
+  "specimen": "water-column",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Water gets to the top of a hundred-metre tree. There is no pump anywhere in it.",
+        "The tallest redwoods lift water more than a hundred metres. There is no heart, no muscle and nothing that pushes — and no pump at the bottom could do it anyway."
+      ],
+      "sub": [
+        "And nothing is pushing from below.",
+        "Suction from below has a hard ceiling of about ten metres. So it is not that either."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "transpiration-pull",
+      "question": [
+        "What could get water a hundred metres up with nothing pushing?",
+        "What mechanism lifts water beyond the limit of any suction pump?"
+      ],
+      "options": [
+        "Water leaving the top pulls the rest up behind it",
+        "The roots squeeze it upwards",
+        "It climbs by soaking into the wood"
+      ],
+      "outcome": "Water leaving the top pulls the rest up behind it",
+      "note": [
+        "Guess first.",
+        "Commit. Note that atmospheric pressure caps any suction pump at about ten metres, which rules out one answer immediately."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Follow one water molecule",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "It evaporates out of a leaf, through an open pore.",
+        "That leaves a gap — and water molecules cling to each other.",
+        "So it pulls the one behind it, which pulls the one behind that.",
+        "The whole thread of water in the tube is under tension, all the way down.",
+        "At the bottom, another molecule is dragged in from the soil."
+      ],
+      "t": [
+        "One molecule leaves the top. Follow what happens behind it.",
+        "Evaporation at the top is the only energy input. Follow the consequence down the column."
+      ],
+      "after": [
+        "The sun did the work, at the top. Nothing pushed from below.",
+        "The energy comes from evaporation, which is driven by the sun. The column is pulled, not pushed — and the plant spends nothing on it."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Water leaving the leaves drags the rest up. It is called transpiration pull.",
+        "Evaporation from the leaves puts the water column under tension and drags it upward — cohesion-tension. The plant spends no energy on the lifting.",
+        "The cohesion-tension mechanism: hydrogen bonding holds the column together, evaporation at the top generates negative pressure, and an unbroken thread of water is pulled from root to leaf.",
+        "The water in a tall tree is under substantial negative pressure — genuinely stretched, in a metastable state that ought to boil at ordinary temperatures and does not, because the xylem vessels are narrow enough and free enough of nucleation sites to prevent it. It is one of the stranger physical situations in biology."
+      ],
+      "sub": [
+        "Water molecules stick to each other. That is the whole trick.",
+        "Cohesion between water molecules is what makes a thread of water strong enough to be pulled rather than snapping.",
+        "If a bubble forms the thread breaks and that vessel is finished — which is what cavitation is.",
+        "Cavitation is audible: you can detect the clicks with a sensitive microphone on a drought-stressed trunk. Each click is a vessel failing permanently, and it is why severe drought damage persists long after the rain returns."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "transpiration-pull",
+      "q": [
+        "What actually moves the water up?",
+        "What provides the motive force?",
+        "Where does the energy for lifting come from?"
+      ],
+      "options": [
+        "Evaporation at the top, pulling the thread behind it",
+        "The roots pumping it up",
+        "The stem squeezing rhythmically"
+      ],
+      "answer": 0,
+      "why": [
+        "Nothing pushes. Water leaves the leaves, and because water molecules hold onto each other, the ones behind get dragged along — all the way down to the roots.",
+        "The energy is the sun's, spent evaporating water from the leaf surface. The column is pulled from above rather than pushed from below, which is why height is not limited the way a pump would limit it.",
+        "The plant contributes no metabolic energy to the lifting at all — evaporation is driven by the atmosphere's water potential. Root pressure exists and is real, but it is a minor contribution and cannot account for anything like the observed heights."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why a tree with no water quickly cannot fix itself.",
+        "Once the thread of water snaps in a vessel, that vessel is out of service — the plant cannot simply refill it against the tension. Severe drought therefore leaves damage that persists after the rain, which is a large part of why forests die months or years after the dry spell that caused it."
+      ]
+    }
+  ]
+}

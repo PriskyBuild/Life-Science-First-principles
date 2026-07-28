@@ -65,6 +65,13 @@
     "3": "neuroscience/04-memory-is-rebuilt-not-replayed.json",
     "4": "neuroscience/05-wire-a-reflex.json"
   },
+  "plants": {
+    "0": "plants/01-eating-light.json",
+    "1": "plants/02-the-plumbing-that-has-no-pump.json",
+    "2": "plants/03-why-leaves-are-flat.json",
+    "3": "plants/04-flowers-are-advertisements.json",
+    "4": "plants/05-build-a-plant.json"
+  },
   "proteins": {
     "0": "proteins/01-a-string-that-folds-itself.json",
     "1": "proteins/02-shape-is-the-job.json",

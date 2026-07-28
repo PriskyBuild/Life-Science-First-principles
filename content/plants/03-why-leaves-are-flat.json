@@ -1,0 +1,119 @@
+{
+  "id": "plants/03",
+  "module": "plants",
+  "index": 2,
+  "title": "Why Leaves Are Flat",
+  "specimen": "leaf-section",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A leaf has to let air in to eat. The moment it does, water starts escaping.",
+        "The inside of a leaf is wet, and the carbon dioxide it needs is outside. Every hole that lets gas in lets water out — one opening, two consequences, and no way to have one without the other."
+      ],
+      "sub": [
+        "One hole, two problems that pull opposite ways.",
+        "There is no setting that satisfies both, which is the whole of being a plant."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "leaf-is-a-tradeoff",
+      "question": [
+        "Should a leaf just open its holes as wide as possible?",
+        "Is maximum stomatal aperture the optimum?"
+      ],
+      "options": [
+        "No — it would make more sugar and then dry out and die",
+        "Yes, more air means more food",
+        "It makes no difference either way"
+      ],
+      "outcome": "No — it would make more sugar and then dry out and die",
+      "note": [
+        "Guess before you try it.",
+        "Commit. You are about to be able to check whether the maximum really does lose."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "stomata",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Open the holes and watch two things at once: the sugar going up, and the water going down.",
+        "Set the aperture and watch both bars. You need enough sugar by the end of the day, with water left."
+      ],
+      "params": { "aperture": 3, "target": 200, "aspect": 0.9 },
+      "paramsByLevel": { "1": { "target": 150 } },
+      "goal": [
+        "Enough sugar, and still alive. Wide open would have made less, because the leaf dies first.",
+        "Target reached with water in hand — and opening all the way would have produced LESS sugar, because the leaf dries out before the day is over."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "stomata",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Dry, windy air, and it gets much hotter in the middle of the day. One setting will not do.",
+        "Higher evaporative demand, with a midday peak. Find out whether any fixed aperture works — and if not, what the plant should do instead."
+      ],
+      "params": { "aperture": 4, "dry": 1.4, "heat": 1.2, "target": 200, "aspect": 0.9 },
+      "paramsByLevel": { "4": { "dry": 1.7, "heat": 1.5, "target": 220 } },
+      "goal": [
+        "You had to shut it partway through. That is exactly what a real plant does.",
+        "The best strategy was to close during the midday peak and reopen after — which is precisely what real stomata do, and why they are regulated continuously rather than set once."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The holes are called stomata, and a plant opens and shuts them all day.",
+        "The pores are stomata, each with two guard cells that swell and shrink to open and close it — continuously, in response to water, light and carbon dioxide.",
+        "Stomatal conductance is regulated moment to moment against a trade-off with no fixed solution. It is why leaves are thin and broad: maximise the area intercepting light while minimising the diffusion distance for gas.",
+        "The regulation is the point. There is no optimum aperture, only an optimum for the current conditions, so a plant that could not adjust would be badly wrong most of the time. CAM plants take the strategy to its limit and open only at night, storing carbon as acid until morning — paying an energetic cost to move gas exchange to the cool hours."
+      ],
+      "sub": [
+        "Wide open is not the answer. It never is.",
+        "Beyond a point, opening further adds no sugar at all — light becomes the limit — and still costs water.",
+        "That saturation is why real stomatal conductance plateaus: the marginal gain falls to zero while the marginal cost does not.",
+        "A flat leaf is the same optimisation solved in geometry rather than in behaviour: area up for light capture, thickness down for diffusion, and the cost is that a flat wet thing loses water faster than anything else its size. Cacti abandoned the leaf entirely rather than pay it."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "leaf-is-a-tradeoff",
+      "q": [
+        "Why does a plant not just keep its holes wide open?",
+        "Why is maximum aperture not optimal?",
+        "Why does the marginal value of aperture fall to zero while its cost does not?"
+      ],
+      "options": [
+        "It would run out of water before the day was over",
+        "It would get too much carbon dioxide",
+        "The holes would break"
+      ],
+      "answer": 0,
+      "why": [
+        "You watched it happen. Wide open makes sugar fast and empties the leaf of water, and a dead leaf makes no sugar at all. The most it can do is not the best it can do.",
+        "Transpirational loss rises with aperture without limit, while sugar production stops rising once light rather than CO₂ is limiting. Past that point the leaf pays more and gains nothing — and if loss exceeds root supply for long enough it dies, having produced less than a more modest setting would have.",
+        "Photosynthesis saturates and transpiration does not. That asymmetry is what makes an intermediate optimal, and because the position of the optimum depends on humidity, wind and temperature, it has to be tracked rather than set — which is what guard cells are for."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why a plant wilts on a hot day even when the soil is wet.",
+        "Wilting on a hot afternoon with damp soil is not thirst — it is transpiration temporarily outrunning root supply. The plant closes its stomata to stop the loss, and pays for it by stopping photosynthesis. This trade-off sets the water requirement of every crop on earth, and it is the reason drought reduces yield even when the plants survive."
+      ]
+    }
+  ]
+}

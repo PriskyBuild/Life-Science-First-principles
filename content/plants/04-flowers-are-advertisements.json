@@ -1,0 +1,106 @@
+{
+  "id": "plants/04",
+  "module": "plants",
+  "index": 3,
+  "title": "Flowers Are Advertisements",
+  "specimen": "flower-model",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A plant cannot move. It still has to get its pollen to another plant, sometimes miles away.",
+        "A plant is rooted to one spot and must nevertheless deliver pollen to a specific other plant, possibly kilometres off. It solves this by hiring something that can move."
+      ],
+      "sub": [
+        "So it pays something else to do the travelling.",
+        "Flowers are not decoration. They are a contract."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "pollination-is-a-deal",
+      "question": [
+        "Why are flowers bright and sweet-smelling?",
+        "What are a flower's colour and scent for?"
+      ],
+      "options": [
+        "To advertise to the animals that will carry the pollen",
+        "To look nice",
+        "To scare off animals that would eat them"
+      ],
+      "outcome": "To advertise to the animals that will carry the pollen",
+      "note": [
+        "Guess first.",
+        "Commit. Ask who the advertisement is aimed at — it is emphatically not us."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Match each flower to the animal it is advertising to.",
+        "Each of these is aimed at a particular pollinator. Work out which."
+      ],
+      "parts": [
+        { "id": "bee", "label": "Bees" },
+        { "id": "bird", "label": "Birds" },
+        { "id": "moth", "label": "Night moths" },
+        { "id": "fly", "label": "Flies" }
+      ],
+      "slots": [
+        { "accepts": "bee", "label": ["Blue and yellow, with landing marks", "Blue-yellow, ultraviolet nectar guides, a landing platform"] },
+        { "accepts": "bird", "label": ["Bright red, no smell, lots of nectar", "Red, scentless, copious dilute nectar, tubular"] },
+        { "accepts": "moth", "label": ["White, and only smells at night", "White, strongly scented after dusk, long nectar spur"] },
+        { "accepts": "fly", "label": ["Smells like rotting meat", "Dull red-brown, carrion-scented, no nectar reward"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A flower is an advert with a payment attached. The payment is nectar.",
+        "A flower is a signal plus a reward: colour and scent to advertise, nectar to pay, and pollen transferred as a condition of collection.",
+        "Pollination is a mutualism with the structure of a contract — signal, reward, and a mechanism that makes the reward hard to collect without providing the service.",
+        "Specificity is what makes it efficient. A flower shaped for one pollinator wastes far less pollen than one broadcasting to all comers, and both parties end up committed to the arrangement. Darwin predicted a moth with a 30-centimetre tongue from the spur of a Madagascan orchid; it was found forty-one years after his death."
+      ],
+      "sub": [
+        "Red flowers are not for bees. Bees cannot really see red.",
+        "Bee vision runs into the ultraviolet and out at red, so a red flower is essentially invisible to them — which is exactly why bird-pollinated flowers are red.",
+        "Many flowers carry ultraviolet patterns we cannot see at all, pointing directly at the nectar.",
+        "Which is a useful correction to the assumption that flowers are beautiful. They are signals optimised for a receiver with different eyes from ours, and we are eavesdropping on an advertisement not addressed to us."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "pollination-is-a-deal",
+      "q": [
+        "Why is a bird-pollinated flower red and unscented?",
+        "Why do bird-pollinated flowers converge on red with little scent?",
+        "What does the red-and-scentless combination tell you about the receiver?"
+      ],
+      "options": [
+        "Birds see red well and smell poorly; bees are the opposite",
+        "Red is the strongest colour",
+        "Scent would attract the wrong birds"
+      ],
+      "answer": 0,
+      "why": [
+        "Birds see red very well and hardly smell at all, so a red flower with no scent is shouting at birds and staying invisible to bees. It is advertising to one customer and nobody else.",
+        "The signal is matched to the receiver's sensory system. Red is outside useful bee vision and well within bird vision, and scent would be wasted on an animal that barely smells. Excluding the wrong visitor matters as much as attracting the right one, because pollen given to the wrong courier is lost.",
+        "It is evidence read backwards: the flower's advertisement tells you what its intended customer can perceive. Convergence on the same combination across unrelated plant families on different continents is the strongest form of that argument — the same receiver produces the same signal wherever the relationship arises."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "About a third of what you eat depends on an animal having visited a flower.",
+        "Roughly 75% of leading food crops benefit from animal pollination and about a third of global food volume depends on it. When pollinator populations fall the effect lands on the most nutritious crops first — fruit, nuts, vegetables — because staple grains are wind-pollinated and largely unaffected. The loss is not uniform, and that is what makes it serious."
+      ]
+    }
+  ]
+}

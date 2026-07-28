@@ -1,0 +1,109 @@
+{
+  "id": "plants/01",
+  "module": "plants",
+  "index": 0,
+  "title": "Eating Light",
+  "specimen": "chloroplast",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A tree weighs tonnes. Almost none of that came out of the ground.",
+        "An oak weighs several tonnes, and the soil around it is not several tonnes lighter. Nearly all of that mass arrived from somewhere else."
+      ],
+      "sub": [
+        "So where did a tree come from?",
+        "The answer was got wrong for two thousand years, and settling it took one careful experiment."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "photosynthesis-is-building",
+      "question": [
+        "Where does most of a tree's weight come from?",
+        "What is the principal source of a tree's dry mass?"
+      ],
+      "options": [
+        "Out of the air",
+        "Out of the soil",
+        "Out of the water"
+      ],
+      "outcome": "Out of the air",
+      "note": [
+        "Guess before you look. Almost everybody gets this wrong.",
+        "Commit. Van Helmont weighed a willow and its pot for five years in the 1640s and concluded it was the water — which was closer than the received view and still wrong."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Where the wood came from",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "A tiny seed, and a pot of soil that gets weighed.",
+        "Five years of water and sunlight. The tree is now enormous.",
+        "Weigh the soil again: it has lost a few grams. Nowhere near enough.",
+        "The carbon came out of the air, as carbon dioxide gas.",
+        "The tree is made of air and water, assembled using light."
+      ],
+      "t": [
+        "Follow the experiment that settled it.",
+        "Van Helmont's willow, and what it did and did not establish."
+      ],
+      "after": [
+        "A tree is mostly air. That is a very strange sentence and it is true.",
+        "Dry mass is roughly half carbon, and every carbon atom arrived as atmospheric CO₂. The soil supplies minerals in small quantities and almost none of the bulk."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Making food out of air and light is called photosynthesis.",
+        "Photosynthesis: carbon dioxide and water, plus light energy, assembled into sugar. Oxygen is the leftover.",
+        "6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂. Light energy is captured and stored in chemical bonds; the oxygen is a by-product of splitting water, not of the carbon dioxide.",
+        "The oxygen comes from the water rather than the CO₂, which was settled by isotope labelling in 1941 and is not obvious from the equation. Every oxygen molecule you have ever breathed was pulled off a water molecule by a plant, an alga or a cyanobacterium."
+      ],
+      "sub": [
+        "The oxygen you breathe is what plants throw away.",
+        "Oxygen is waste. The atmosphere you depend on is the discarded by-product of somebody else's chemistry.",
+        "It accumulated over hundreds of millions of years and was, for the organisms already here, a catastrophe.",
+        "The Great Oxidation Event was a mass extinction caused by pollution — oxygen is corrosive, and the anaerobic life it poisoned had no defence. Everything that breathes it now descends from whatever survived."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "photosynthesis-is-building",
+      "q": [
+        "What is a tree mostly made of?",
+        "What is the source of the carbon in wood?",
+        "Where does the carbon in a tree's dry mass originate?"
+      ],
+      "options": [
+        "Carbon that used to be in the air",
+        "Minerals it pulled up from the soil",
+        "Water it soaked up through its roots"
+      ],
+      "answer": 0,
+      "why": [
+        "Every bit of wood is built from carbon dioxide the tree took out of the air. The soil gives it a few minerals and holds it upright, and that is nearly all.",
+        "Wood is roughly half carbon by dry mass, and all of that carbon entered as atmospheric CO₂. Soil contributes minerals in trace quantities — which is why a hydroponically grown plant does perfectly well with no soil at all.",
+        "The soil supplies nitrogen, phosphorus and trace elements in small amounts; the bulk is atmospheric carbon fixed by the Calvin cycle. This is also why afforestation is a carbon sink in a literal rather than metaphorical sense — the carbon is structurally in the tree."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Almost every scrap of energy in every living thing started as sunlight caught by a plant.",
+        "Photosynthesis is the entry point for essentially all energy in the biosphere. Your lunch, the animal that ate the plant, the coal in a power station and the oil in a tanker are all the same store — sunlight banked in chemical bonds, some of it this year and some of it three hundred million years ago."
+      ]
+    }
+  ]
+}

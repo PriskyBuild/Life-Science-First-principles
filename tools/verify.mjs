@@ -1427,10 +1427,18 @@ const assemble = (swap = null) => page.evaluate((sw) => {
       drawnEmpty: c.worlds.filter((w) => drawn.has(w.id) && !c.worldHasContent(w)).map((w) => w.id),
     };
   });
+  /* The rule is "no drawn world is empty", and that is never vacuous because
+     there are always drawn worlds. The stronger clause — that an unlocked but
+     empty world is refused — only applies while such a world exists, so it is
+     conditional rather than required. Demanding one exist was the same
+     snapshot mistake D52 and D53 are about, made by the fix for them: it
+     passed until every unlocked world had content, then failed for the best
+     possible reason. The detail line says when the clause went quiet. */
   check("but the Atlas only draws what a child can actually play",
-    empty.drawnEmpty.length === 0 && empty.unlockedButEmpty.length > 0
-      && empty.unlockedButEmpty.every((w) => !w.drawn),
-    JSON.stringify(empty));
+    empty.drawnEmpty.length === 0 && empty.unlockedButEmpty.every((w) => !w.drawn),
+    empty.unlockedButEmpty.length
+      ? `${empty.unlockedButEmpty.length} unlocked-but-empty, all refused`
+      : "every unlocked world now has content — stronger clause not applicable");
 }
 
 /* 68. Five lessons means five concepts on the retrieval schedule. */
@@ -2105,6 +2113,37 @@ const mountSelection = (body) => page.evaluate(async (src) => {
   // open-track lesson asks for a window rather than a curve.
   check("far too much steady drive silences it again rather than firing faster",
     r.blocked.sinceSpike > 3, JSON.stringify(r.blocked));
+}
+
+/* 99-100. The leaf trade-off: the maximum has to actually lose.
+
+   Plants lesson 3 tells a child that opening the pores all the way produces
+   LESS sugar than a middle setting, because the leaf dries out before the day
+   ends. If that ever stopped being true of the model the lesson would be
+   teaching a falsehood, and nothing else here would notice. */
+{
+  const r = await page.evaluate(async () => {
+    await import("./js/sims/stomata.js");
+    document.querySelectorAll("fp-stomata").forEach((n) => n.remove());
+    const sim = document.createElement("fp-stomata");
+    Object.assign(sim.dataset, { aperture: 4, target: 100000 });   // never succeed; run the day out
+    document.querySelector("#main").append(sim);
+    await new Promise((res) => setTimeout(res, 120));
+    sim.reduced = { matches: true };
+    const day = (aperture) => {
+      sim.reset();
+      sim.aperture = aperture;
+      for (let i = 0; i < 60 * 60 && !sim.dead; i++) sim.step(1 / 60);
+      return { aperture, sugar: +sim.sugar.toFixed(0), dead: sim.dead, water: +sim.water.toFixed(0) };
+    };
+    return [0, 2, 5, 7, 10].map(day);
+  });
+  const at = (a) => r.find((x) => x.aperture === a);
+  check("shutting the pores makes no sugar at all",
+    at(0).sugar <= 0, JSON.stringify(at(0)));
+  check("opening them all the way kills the leaf, and it ends with less sugar than a middle setting",
+    at(10).dead && !at(5).dead && at(10).sugar < at(7).sugar,
+    r.map((x) => `${x.aperture}:${x.sugar}${x.dead ? "†" : ""}`).join(" "));
 }
 
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
