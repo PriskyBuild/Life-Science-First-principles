@@ -1,0 +1,109 @@
+{
+  "id": "immunity/04",
+  "module": "immunity",
+  "index": 3,
+  "title": "When the Army Attacks You",
+  "specimen": "self-marker",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "If your body makes millions of random shapes, some of them will fit you.",
+        "Receptors are generated at random. Randomness has no way of avoiding your own molecules — so a proportion of every new lymphocyte batch is, by construction, aimed at you."
+      ],
+      "sub": [
+        "That is not a possibility. It is a certainty.",
+        "This is not a flaw in the design. It is an unavoidable consequence of how the design works."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "self-vs-nonself",
+      "question": [
+        "What should your body do with a defence cell that attacks you?",
+        "How should the system handle self-reactive lymphocytes?"
+      ],
+      "options": [
+        "Test each one early and destroy the ones that react to you",
+        "Hope none of them ever get made",
+        "Only make cells that fit germs in the first place"
+      ],
+      "outcome": "Test each one early and destroy the ones that react to you",
+      "note": [
+        "Guess before you look.",
+        "Commit. Note that the third option would require knowing in advance what is a germ, which is exactly what the system cannot do."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "In the training school",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "New cells arrive, each with its own random shape.",
+        "They are shown your own molecules, deliberately.",
+        "Any cell that reacts strongly to you is destroyed on the spot.",
+        "Any cell that reacts to nothing useful is destroyed too.",
+        "About two in a hundred survive. Those are released."
+      ],
+      "t": [
+        "Every new defence cell goes through a test before it is allowed out.",
+        "T cells are screened in the thymus against self antigens before release. Watch how much is discarded."
+      ],
+      "after": [
+        "Ninety-eight out of a hundred are thrown away. That is the price.",
+        "Roughly 98% of developing T cells are eliminated. That enormous wastage is the cost of generating specificity at random and then having to check it."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Learning not to attack yourself is called tolerance.",
+        "Self-tolerance is learned, cell by cell, by destroying the ones that react to you.",
+        "Central tolerance: developing lymphocytes are tested against self antigens and deleted if they bind strongly. Peripheral mechanisms catch what escapes.",
+        "The thymus deliberately expresses proteins from all over the body — insulin, myelin, retinal proteins — specifically so that T cells can be screened against them. A single transcription factor, AIRE, drives that promiscuous expression, and children who inherit a broken copy develop autoimmunity against many organs at once."
+      ],
+      "sub": [
+        "It is not built in. It has to be learned, and it can go wrong.",
+        "Tolerance is an active, ongoing process rather than a property of the design, which is why it can fail.",
+        "When it fails, the immune system attacks the body: type 1 diabetes, multiple sclerosis, rheumatoid arthritis, coeliac disease.",
+        "Autoimmunity is therefore not the system malfunctioning in an alien way — it is the system doing exactly what it does, aimed at the wrong target. That is why treatment is so difficult: you cannot remove the capability without removing the defence."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "self-vs-nonself",
+      "q": [
+        "Why does your body make cells that attack you at all?",
+        "Why are self-reactive lymphocytes produced in the first place?",
+        "Why is self-reactivity unavoidable given the mechanism?"
+      ],
+      "options": [
+        "Because the shapes are random, and random includes you",
+        "Because it is a mistake that should not happen",
+        "Because you have been infected by something"
+      ],
+      "answer": 0,
+      "why": [
+        "The shapes are made at random so that some of them will fit germs nobody has met. Random means random — some of them fit you instead. There is no way to have one without the other.",
+        "Randomness is what gives the repertoire its coverage, and randomness cannot be selective about what it happens to match. Self-reactive cells are a necessary by-product, which is why an entire screening organ exists to remove them.",
+        "It is a structural consequence, not an error. Any system generating specificity without prior knowledge of its targets must generate self-reactivity, and must therefore also implement a separate deletion step. The thymus is the cost of the strategy."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Type 1 diabetes is your own defences destroying the cells that make insulin.",
+        "In type 1 diabetes, T cells that should have been deleted attack the insulin-producing beta cells specifically. Nothing is infecting anything; the machinery is working correctly and pointed at the wrong target. That is why insulin replaces what was lost rather than stopping the attack, and why the promising treatments are ones that re-teach tolerance rather than suppress immunity wholesale."
+      ]
+    }
+  ]
+}

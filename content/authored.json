@@ -45,6 +45,13 @@
     "3": "human-body/04-the-longest-tube.json",
     "4": "human-body/05-everything-talks-to-everything.json"
   },
+  "immunity": {
+    "0": "immunity/01-the-army-with-no-general.json",
+    "1": "immunity/02-recognise-remember-respond.json",
+    "2": "immunity/03-how-a-vaccine-teaches.json",
+    "3": "immunity/04-when-the-army-attacks-you.json",
+    "4": "immunity/05-build-a-defence.json"
+  },
   "natural-selection": {
     "0": "natural-selection/01-the-beetles-that-vanished.json",
     "1": "natural-selection/02-fitness-is-not-strength.json",

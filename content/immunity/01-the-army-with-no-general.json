@@ -1,0 +1,106 @@
+{
+  "id": "immunity/01",
+  "module": "immunity",
+  "index": 0,
+  "title": "The Army With No General",
+  "specimen": "barrier-set",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Something tries to get into you roughly every few seconds. You almost never notice.",
+        "You are under continuous attack — every breath, every meal, every surface you touch. The reason you rarely notice is not that the attacks are rare."
+      ],
+      "sub": [
+        "So what is stopping all of it?",
+        "Most of the defending happens before anything clever gets involved."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "layered-defence",
+      "question": [
+        "What stops most germs getting into you?",
+        "What accounts for the majority of successful defence?"
+      ],
+      "options": [
+        "Walls and traps that do not know what they are stopping",
+        "The clever part of the immune system that recognises invaders",
+        "Nothing much — most germs are harmless"
+      ],
+      "outcome": "Walls and traps that do not know what they are stopping",
+      "note": [
+        "Have a guess before you look.",
+        "Commit. The clever part is famous, and it is not where most of the work happens."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each barrier next to what it does.",
+        "Each of these stops things without identifying them. Match them up."
+      ],
+      "parts": [
+        { "id": "skin", "label": "Skin" },
+        { "id": "mucus", "label": "Mucus" },
+        { "id": "acid", "label": "Stomach acid" },
+        { "id": "fever", "label": "Fever" }
+      ],
+      "slots": [
+        { "accepts": "skin", "label": ["A wall nothing can walk through", "A physical barrier: dead, dry, and continuously shed"] },
+        { "accepts": "mucus", "label": ["Sticky stuff that traps things", "Traps particles and sweeps them out"] },
+        { "accepts": "acid", "label": ["A bath that kills most things you swallow", "pH around 1.5 — lethal to most swallowed organisms"] },
+        { "accepts": "fever", "label": ["Making yourself too hot for them", "Raises temperature past many pathogens' optimum"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The first defences do not know what they are fighting. They stop nearly everything anyway.",
+        "This is innate immunity: fast, general, and completely uninterested in what it is stopping.",
+        "Innate immunity — barriers, phagocytes and inflammation — responds within minutes to broad classes of threat, using receptors for features shared by whole groups of pathogens.",
+        "It recognises patterns rather than individuals: bacterial cell-wall components, double-stranded RNA, flagellin. Those are features a pathogen cannot easily abandon, which is why a system with a few dozen receptors can cover an enormous range of threats and why it has changed little in hundreds of millions of years."
+      ],
+      "sub": [
+        "No memory, no learning, and it does most of the work.",
+        "It never improves and never remembers, and it handles the overwhelming majority of encounters.",
+        "Plants and insects have only this, and it is entirely sufficient for them.",
+        "Adaptive immunity is the expensive addition, found only in vertebrates. That most of life manages without it is a good corrective to the assumption that the sophisticated part is the important part."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "layered-defence",
+      "q": [
+        "Does your skin know what it is keeping out?",
+        "Do innate defences identify what they are stopping?",
+        "On what basis does innate immunity discriminate?"
+      ],
+      "options": [
+        "No — it stops everything the same way",
+        "Yes, it recognises each germ",
+        "Only if you have met that germ before"
+      ],
+      "answer": 0,
+      "why": [
+        "Skin does not identify anything. It is a wall, and a wall works on whatever arrives. That is why it is so effective and why a burn or a cut is so dangerous.",
+        "Innate defences are non-specific. They act on broad features rather than identities, which is what lets them respond in minutes — and why breaching them, by a wound or a catheter, is such a common route to serious infection.",
+        "Pattern recognition rather than identification: receptors for conserved molecular features that pathogens cannot easily discard. This is the trade the system makes — speed and breadth for precision — and it is why the adaptive system exists to cover what gets through."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "This is why a burn is so dangerous. The wall is gone.",
+        "Severe burns kill by infection more often than by the injury itself, because the largest barrier you have is missing over a wide area. It is also why hand-washing does more for hospital infection rates than any drug: most of defence is keeping things out, and most of transmission is putting them where they can get in."
+      ]
+    }
+  ]
+}

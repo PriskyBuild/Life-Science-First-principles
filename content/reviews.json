@@ -737,6 +737,99 @@
     ],
     "from": "human-body/05"
   },
+  "layered-defence": {
+    "q": [
+      "Does your skin know what it is keeping out?",
+      "Do innate defences identify what they are stopping?",
+      "On what basis does innate immunity discriminate?"
+    ],
+    "options": [
+      "No — it stops everything the same way",
+      "Yes, it recognises each germ",
+      "Only if you have met that germ before"
+    ],
+    "answer": 0,
+    "why": [
+      "Skin does not identify anything. It is a wall, and a wall works on whatever arrives. That is why it is so effective and why a burn or a cut is so dangerous.",
+      "Innate defences are non-specific. They act on broad features rather than identities, which is what lets them respond in minutes — and why breaching them, by a wound or a catheter, is such a common route to serious infection.",
+      "Pattern recognition rather than identification: receptors for conserved molecular features that pathogens cannot easily discard. This is the trade the system makes — speed and breadth for precision — and it is why the adaptive system exists to cover what gets through."
+    ],
+    "from": "immunity/01"
+  },
+  "recognise-remember-respond": {
+    "q": [
+      "Were the right cells made because the germ arrived?",
+      "Are matching lymphocytes produced in response to the antigen?",
+      "In what sense is the antigen not instructive?"
+    ],
+    "options": [
+      "No — they were already there, and the germ picked them out",
+      "Yes, the body designs a cell to fit each germ",
+      "Yes, the germ teaches the cells what shape to be"
+    ],
+    "answer": 0,
+    "why": [
+      "The cells with the right shape were made at random, before the germ ever arrived. All the germ did was find them — and then they copied themselves.",
+      "The repertoire is generated in advance and randomly. Antigen selects from what already exists; it does not instruct anything to change. This is exactly the distinction you drew about antibiotic resistance, in a different system.",
+      "The instructive theory — antigen acting as a template for antibody shape — was the leading account into the 1950s and was displaced by clonal selection. The decisive consideration was the same one that settles the resistance question: the specificity exists before the encounter, and the encounter only amplifies it."
+    ],
+    "from": "immunity/02"
+  },
+  "vaccination-is-training": {
+    "q": [
+      "Does a vaccine kill germs?",
+      "Is a vaccine a treatment?",
+      "Why is calling a vaccine a medicine a category error?"
+    ],
+    "options": [
+      "No — it teaches your body to, before you meet any",
+      "Yes, that is what is in it",
+      "Yes, but only weakly"
+    ],
+    "answer": 0,
+    "why": [
+      "There is nothing in a vaccine that kills anything. It shows your body a shape, and your body gets ready. All the killing is done by you, later.",
+      "A vaccine contains no antimicrobial agent and treats no existing illness. It supplies an antigen so that clonal selection happens in advance, which is why it must be given before exposure to be useful.",
+      "Medicines act on a disease process; a vaccine acts on the immune system before there is any disease process. The distinction matters practically: it explains why vaccines are given to well people, why timing is everything, and why 'does it cure it?' is the wrong question to evaluate one by."
+    ],
+    "from": "immunity/03"
+  },
+  "herd-effect": {
+    "q": [
+      "Why does vaccinating you protect someone who cannot be vaccinated?",
+      "How does individual vaccination confer population-level protection?"
+    ],
+    "options": [
+      "Because a germ that cannot find a susceptible host stops spreading",
+      "Because immunity passes between people",
+      "Because it makes the germ weaker"
+    ],
+    "answer": 0,
+    "why": [
+      "Nothing passes from you to them. But a germ needs to keep finding people it can infect, and if enough people around it cannot be infected, the chain of transmission breaks before it reaches the person who is vulnerable.",
+      "Transmission requires each infection to produce at least one more. Raising the immune fraction reduces the effective reproduction number; once it falls below one, chains die out and the unvaccinated are protected by the absence of transmission rather than by any immunity of their own. This is why the threshold is a function of R₀ — around 95% for measles — and why coverage falling a few points can restore epidemics that were absent for decades."
+    ],
+    "from": "immunity/03"
+  },
+  "self-vs-nonself": {
+    "q": [
+      "Why does your body make cells that attack you at all?",
+      "Why are self-reactive lymphocytes produced in the first place?",
+      "Why is self-reactivity unavoidable given the mechanism?"
+    ],
+    "options": [
+      "Because the shapes are random, and random includes you",
+      "Because it is a mistake that should not happen",
+      "Because you have been infected by something"
+    ],
+    "answer": 0,
+    "why": [
+      "The shapes are made at random so that some of them will fit germs nobody has met. Random means random — some of them fit you instead. There is no way to have one without the other.",
+      "Randomness is what gives the repertoire its coverage, and randomness cannot be selective about what it happens to match. Self-reactive cells are a necessary by-product, which is why an entire screening organ exists to remove them.",
+      "It is a structural consequence, not an error. Any system generating specificity without prior knowledge of its targets must generate self-reactivity, and must therefore also implement a separate deletion step. The thymus is the cost of the strategy."
+    ],
+    "from": "immunity/04"
+  },
   "selection-needs-no-agent": {
     "q": [
       "Did any single beetle change colour?",

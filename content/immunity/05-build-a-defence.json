@@ -1,0 +1,129 @@
+{
+  "id": "immunity/05",
+  "module": "immunity",
+  "index": 4,
+  "title": "Build a Defence",
+  "specimen": "immune-stack",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Build the whole defence. Then something tries to get in, and you find out what you left out.",
+        "Assemble the complete system, then it gets challenged four ways. Each missing piece fails differently, and the failures are the lesson."
+      ],
+      "sub": [
+        "Every gap has a real disease attached to it.",
+        "Every one of these failures corresponds to a condition that exists in people."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Put each part in the job it does. Any part fits any slot, so the marking is on you.",
+        "Assign each component to its function. Placement is unconstrained; only the assignment is graded."
+      ],
+      "parts": [
+        { "id": "barrier", "label": "Barriers" },
+        { "id": "innate", "label": "Eating cells and inflammation" },
+        { "id": "clonal", "label": "Random receptors" },
+        { "id": "memory", "label": "Memory cells" },
+        { "id": "tolerance", "label": "Self-tolerance" }
+      ],
+      "slots": [
+        { "correct": "barrier", "label": ["Stops most things arriving at all"] },
+        { "correct": "innate", "label": ["Deals with what gets through, within minutes"] },
+        { "correct": "clonal", "label": ["Handles something never met before"] },
+        { "correct": "memory", "label": ["Makes the second encounter fast"] },
+        { "correct": "tolerance", "label": ["Stops all of it being aimed at you"] }
+      ],
+      "trials": [
+        {
+          "name": ["An ordinary day", "Routine exposure"],
+          "needs": ["barrier"],
+          "pass": ["Almost everything is stopped before it starts.", "The overwhelming majority of encounters are resolved at the barrier."],
+          "fail": ["Everything that touched you got in.", "Without barriers the load on every downstream system is impossible. This is what a severe burn does."]
+        },
+        {
+          "name": ["A cut that gets dirty", "Breach"],
+          "needs": ["barrier", "innate"],
+          "pass": ["Redness, swelling, and it is dealt with in hours.", "Inflammation and phagocytosis clear the breach within hours."],
+          "fail": ["The wound was open and nothing came to deal with it.", "Barriers without innate response: any breach becomes an unopposed infection. This is chronic granulomatous disease."]
+        },
+        {
+          "name": ["A virus nobody has ever seen", "Novel pathogen"],
+          "needs": ["barrier", "innate", "clonal"],
+          "pass": ["Some cells happened to fit it, and they multiplied.", "Pre-existing random specificities are selected and expanded."],
+          "fail": ["Nothing could recognise it, so nothing specific ever happened.", "Innate response only. It slows a novel pathogen and cannot clear one — which is what severe combined immunodeficiency looks like."]
+        },
+        {
+          "name": ["The same virus again next winter", "Re-exposure"],
+          "needs": ["barrier", "innate", "clonal", "memory"],
+          "pass": ["Cleared before you notice anything.", "Memory clones respond in hours rather than days; infection is subclinical."],
+          "fail": ["You got just as ill the second time.", "Without memory every encounter is a first encounter, and vaccination would be pointless."]
+        },
+        {
+          "name": ["Not attacking yourself", "Tolerance"],
+          "needs": ["barrier", "innate", "clonal", "memory", "tolerance"],
+          "pass": ["All that firepower, and none of it aimed at you.", "Self-reactive clones are deleted; the response stays directed outward."],
+          "fail": ["A superb immune system, attacking your own joints and nerves.", "Random receptors without deletion guarantees autoimmunity. The system works perfectly and destroys you."]
+        }
+      ],
+      "win": [
+        "Layered, fast, able to learn, and pointed away from you. That is an immune system.",
+        "Five components, five distinct failure modes, each corresponding to a real condition. That is what makes the arrangement necessary rather than merely typical."
+      ],
+      "lose": [
+        "Read which challenge failed — it names what was in the wrong job.",
+        "Each failed trial names the function that was not being performed. Reassign and re-test; the diagnosis is the point."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "It is layers. Each one handles what the one before it missed.",
+        "Defence is layered: barriers, then fast general response, then slow specific response, then memory — with tolerance running underneath all of it.",
+        "Innate and adaptive immunity are not alternatives but stages, differing in speed and specificity. The innate response also decides whether and how the adaptive one is engaged.",
+        "The layering is not merely sequential — it is instructive. Innate sensing determines which kind of adaptive response is mounted, which is why adjuvants exist: a purified antigen alone provokes little, because nothing has told the system there is a threat worth responding to."
+      ],
+      "sub": [
+        "And the clever part is the same trick as the beetles.",
+        "The adaptive layer is clonal selection: variation, heredity, differential success. You have now met that mechanism in three separate worlds.",
+        "Selection acting on beetles over generations, on bacteria over days, and on your own cells over a week — one mechanism, three timescales.",
+        "That recurrence is worth pausing on. A mechanism that turns up independently in population genetics, pharmacology and immunology is not a specialist fact about any of them; it is what happens whenever those three conditions hold, wherever they hold."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "layered-defence",
+      "q": [
+        "Why is having layers better than one very good defence?",
+        "What does layering buy that a single strong mechanism cannot?",
+        "Why is the innate/adaptive division not redundancy?"
+      ],
+      "options": [
+        "The fast one is not specific and the specific one is not fast",
+        "Because more is always better",
+        "Because each layer stops a different kind of germ"
+      ],
+      "answer": 0,
+      "why": [
+        "The quick defences do not know what they are fighting. The clever one takes about a week to get going. You need both, because you cannot wait a week and you cannot beat everything with a wall.",
+        "There is a direct trade between speed and specificity. Innate responses act in minutes and cannot be targeted; adaptive responses are exquisitely targeted and take days. Neither covers the other's gap, so the layering is necessary rather than merely prudent.",
+        "They occupy different points on the same trade-off, and they are coupled: innate sensing determines whether and how adaptive immunity engages. That coupling is why they are stages rather than parallel systems, and why an antigen without an innate danger signal produces almost no response."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Every one of those failures is a real illness that real people have.",
+        "Barrier failure is what makes burns lethal. Innate failure is chronic granulomatous disease. Adaptive failure is severe combined immunodeficiency, once survivable only inside a sterile chamber and now curable by gene therapy. Tolerance failure is every autoimmune disease there is. The architecture is not a diagram — it is a list of the ways people become ill."
+      ]
+    }
+  ]
+}

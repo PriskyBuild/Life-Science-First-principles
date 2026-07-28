@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "c497b67d5d5a";
+const VERSION = "9f9d9fc564d9";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -50,6 +50,11 @@ const PRECACHE = [
   "content/human-body/03-breathing-is-not-for-air.json",
   "content/human-body/04-the-longest-tube.json",
   "content/human-body/05-everything-talks-to-everything.json",
+  "content/immunity/01-the-army-with-no-general.json",
+  "content/immunity/02-recognise-remember-respond.json",
+  "content/immunity/03-how-a-vaccine-teaches.json",
+  "content/immunity/04-when-the-army-attacks-you.json",
+  "content/immunity/05-build-a-defence.json",
   "content/natural-selection/01-the-beetles-that-vanished.json",
   "content/natural-selection/02-fitness-is-not-strength.json",
   "content/natural-selection/03-the-peppered-moth.json",
