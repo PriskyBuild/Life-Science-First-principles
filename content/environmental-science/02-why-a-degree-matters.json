@@ -1,0 +1,135 @@
+{
+  "id": "environmental-science/02",
+  "module": "environmental-science",
+  "index": 1,
+  "title": "Why a Degree Matters",
+  "specimen": "energy-budget",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "The Earth takes in 340 units of sunlight and sends back 339. That missing one is the whole story.",
+        "Averaged over the whole planet, 340 watts of sunlight arrive on every square metre and about 339 leave again. The gap is roughly one watt, and everything else follows from it."
+      ],
+      "sub": [
+        "One part in three hundred. It does not sound like much.",
+        "A third of one percent — which is exactly why the argument is about arithmetic rather than about whether it sounds big."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "energy-balance",
+      "question": [
+        "What happens if slightly more energy arrives than leaves?",
+        "What is the consequence of a persistent, small radiative imbalance?"
+      ],
+      "options": [
+        "It builds up, and keeps building as long as the gap is there",
+        "Nothing — a small gap makes a small difference",
+        "The extra escapes some other way"
+      ],
+      "outcome": "It builds up, and keeps building as long as the gap is there",
+      "note": [
+        "Guess before you look.",
+        "Commit. The distinction that matters is between a rate and a total, and it is the same distinction as a leaking bath."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [1, 2],
+      "guided": true,
+      "label": "Follow the sunlight",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "340 units of sunlight arrive on every square metre, on average.",
+        "102 bounce straight back off clouds, ice and bright ground.",
+        "238 are absorbed and warm the planet.",
+        "About 237 are radiated back out to space as heat.",
+        "One unit stays. Every second. Everywhere."
+      ],
+      "t": [
+        "Follow the sunlight in and out. The numbers are real measurements.",
+        "These are measured values, not estimates. Follow the budget and find where it fails to balance."
+      ],
+      "after": [
+        "One unit out of 340 does not sound like anything. It does not have to.",
+        "A 0.3% imbalance, sustained. The size of the gap sets how fast, not whether — and the gap has been positive for as long as it has been measured."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [3, 4],
+      "guided": false,
+      "label": "What that imbalance adds up to",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "About 1 watt per square metre, measured by satellite and confirmed by ocean heat content.",
+        "Times the Earth's surface: roughly 5 × 10^14 square metres.",
+        "That is about 1.6 × 10^22 joules accumulating every year.",
+        "Equivalent to roughly eight Hiroshima-sized bombs per second, continuously.",
+        "Over 90% of it goes into the ocean, which is why the air warms more slowly than the physics alone would suggest."
+      ],
+      "t": [
+        "Work out what a one-watt imbalance amounts to when it runs everywhere, all the time.",
+        "Multiply the imbalance by the area and the time. The comparison at the end is not rhetoric — it is the arithmetic, and it is worth doing yourself before accepting it."
+      ],
+      "after": [
+        "A rate that small, integrated over a planet, is not small.",
+        "The energy is measured two independent ways — top-of-atmosphere satellite radiometry and ocean heat content from Argo floats — and they agree. That agreement is what makes the figure a measurement rather than a model output."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Some gases let sunlight in and slow heat on its way out. That is the greenhouse effect.",
+        "Carbon dioxide, water vapour and methane are transparent to incoming sunlight and absorb outgoing infrared. That asymmetry is the greenhouse effect, and without it the Earth would average about −18 °C.",
+        "Greenhouse gases absorb in the infrared and are near-transparent in the visible. The effect was measured by Tyndall in 1859 and the surface-temperature consequence estimated by Arrhenius in 1896 — this is old, laboratory-established physics.",
+        "The radiative properties of CO₂ are not in dispute anywhere: they are measured in the laboratory, used to design infrared instruments, and confirmed by satellite spectra showing exactly the predicted absorption bands. Doubling CO₂ adds about 3.7 W/m² — about 1% of incoming — and the contested questions are all downstream of that number, in how the climate system responds to it."
+      ],
+      "sub": [
+        "Without it the Earth would be frozen solid. The argument is about how much, not whether.",
+        "The effect keeps the planet habitable. What is debated is the size of the response to increasing it, not the existence of the mechanism.",
+        "That response depends on feedbacks — water vapour, clouds, ice — and cloud feedback remains the largest single uncertainty.",
+        "Estimates of climate sensitivity have sat in a broad range for decades, currently assessed as most likely 2.5–4 °C per doubling with clouds the dominant source of spread. Being precise about which parts are measured, which are inferred and which are projected is more useful than treating the whole subject as one claim to accept or reject."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "energy-balance",
+      "q": [
+        "Why does a tiny difference matter?",
+        "Why does a 0.3% imbalance have large consequences?",
+        "Why is the size of the imbalance the wrong thing to focus on?"
+      ],
+      "options": [
+        "Because it keeps adding up, everywhere, all the time",
+        "Because it gets bigger each year",
+        "Because small things are always dangerous"
+      ],
+      "answer": 0,
+      "why": [
+        "It is like a bath filling one drop a second. One drop is nothing. A drop a second for a year is a flood. The gap is small; the time and the size of the planet are not.",
+        "A rate is not a total. A small persistent imbalance integrates over the whole surface and over decades, and the accumulated energy is what changes anything — which is why arguing about whether one watt sounds like a lot is the wrong argument.",
+        "Because the imbalance is a flux and the consequence is its integral. The system also has enormous thermal inertia — over 90% of the accumulated energy is in the ocean — which means the response lags the forcing by decades, and the temperature at any moment reflects an imbalance sustained long before it."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Most of the extra heat has gone into the sea, which is why the sea is rising.",
+        "Water expands as it warms. Over 90% of the accumulated energy is in the ocean, so most sea-level rise so far is thermal expansion rather than melting ice — the water is simply taking up more room. That is also why the ocean keeps warming, and the sea keeps rising, for a long time after any change at the surface."
+      ]
+    }
+  ]
+}

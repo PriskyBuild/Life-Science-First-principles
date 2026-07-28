@@ -903,3 +903,28 @@ stomata (the maximum losing), and this one. It is worth stating as a rule rather
 it each time: **decide what the model demonstrates, write that lesson, and put the gap in the file
 header.** The failure mode it prevents is subtle — a lesson that is true, running on a model that
 does not show it, which no test catches because both halves are individually fine.
+
+### D60 — Where the `weigh` stage belongs outside origins
+*Environmental Science lesson 4.*
+
+`weigh` was built for the six origins lessons, and this is the first use outside them. Deciding
+where it applies turned out to be the interesting part.
+
+**Not on the physics.** Carbon dioxide's infrared absorption was measured by Tyndall in 1859, is
+used to design instruments, and shows up in satellite spectra exactly where predicted. Presenting
+that as two-sided would be false balance, which is its own dishonesty — a `weigh` stage on a
+settled measurement teaches a child that everything is a matter of opinion.
+
+**Yes on the response.** How fast to cut emissions, and at what cost to whom, is a question about
+values, discount rates and competing harms. There are serious people on both sides who agree
+entirely about the physics, and the stage says so explicitly in its `evidence` field: *both sides
+here accept the measurements.* Rapid reduction argues from lag and irreversibility;
+adaptation-first argues that wealth is what determines who survives bad weather, and that
+climate-disaster deaths have fallen sharply across a century of warming. Both get their real
+argument and their real prediction.
+
+The rule this establishes: **`weigh` goes where the disagreement actually is.** Applying it to
+settled measurement manufactures controversy; withholding it from a genuine values dispute
+smuggles one answer in as though it were a finding. Lesson 2 states the physics plainly and is
+precise about which parts are measured, which inferred and which projected — that precision is
+what makes it legitimate for lesson 4 to say the argument is elsewhere.

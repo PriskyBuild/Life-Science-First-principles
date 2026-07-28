@@ -1,0 +1,101 @@
+{
+  "id": "environmental-science/03",
+  "module": "environmental-science",
+  "index": 2,
+  "title": "Extinction Is Forever",
+  "specimen": "last-specimen",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Every other specimen you have collected could be built again. This one cannot.",
+        "Everything else in this course is a mechanism, and a mechanism can be rebuilt from a description. A species is a particular arrangement that took a very long time to arrive at, and there is no description sufficient to restore it."
+      ],
+      "sub": [
+        "That is the whole of this lesson.",
+        "The asymmetry between how long it takes to make and how long it takes to lose is the point."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "extinction-is-permanent",
+      "question": [
+        "A population drops to twenty individuals, then recovers to thousands. Is it fine?",
+        "A population passes through a severe bottleneck and then recovers in numbers. Has it recovered?"
+      ],
+      "options": [
+        "No — the variation it lost does not come back with the numbers",
+        "Yes, the numbers are what matter",
+        "Yes, as long as it can still breed"
+      ],
+      "outcome": "No — the variation it lost does not come back with the numbers",
+      "note": [
+        "Guess before you check it.",
+        "Commit. You already know what a population without variation cannot do."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "selection",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Turn variation off and try to make the population adapt. This is what a bottleneck leaves behind.",
+        "A bottleneck removes variation, not individuals — the individuals come back. Switch variation off and establish what a population in that state can and cannot do when conditions change."
+      ],
+      "params": { "task": "break", "bg": 0.85, "switches": true, "aspect": 0.82 },
+      "goal": [
+        "No variation, no adapting. The numbers were never the problem.",
+        "Without variation the population cannot track a changing environment at all. Recovery in numbers restores none of that, which is why a bottleneck is a permanent injury rather than a temporary one."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "When the last one dies, that is extinction, and nothing brings it back.",
+        "Extinction is the loss of the last individual, and it is irreversible in a way almost nothing else in biology is.",
+        "Extinction is irreversible because a species is not a design but a particular accumulated history — a combination of alleles assembled over millions of years and not recoverable from a specification.",
+        "It is also why bottlenecks matter long before extinction does. Cheetahs passed through one about 12,000 years ago and remain so genetically uniform that unrelated individuals accept skin grafts from each other. The population recovered in number and never recovered in variation, and it is now unusually vulnerable to any new disease."
+      ],
+      "sub": [
+        "Losing variation is losing the ability to change later.",
+        "The three conditions require variation. A population without it cannot respond to anything new, whatever its numbers.",
+        "Which is why conservation counts kinds and genetic diversity, not just heads.",
+        "De-extinction does not undo this. Recovering a genome from a preserved specimen produces one genotype, not a population — no variation, no behaviour learned from parents, and no ecosystem left that it fits into. The interesting objection to de-extinction is not that it is impossible but that it does not restore what was lost."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "extinction-is-permanent",
+      "q": [
+        "Why is a population that dropped very low still in trouble afterwards?",
+        "Why does numerical recovery not constitute recovery?",
+        "Why is lost genetic variation not restored by population growth?"
+      ],
+      "options": [
+        "The variation it lost is gone, and it cannot adapt without it",
+        "The animals remember being rare",
+        "It is not in trouble once the numbers are back"
+      ],
+      "answer": 0,
+      "why": [
+        "You have seen what happens to a population with no variation: nothing. It cannot change when the world does. Getting the numbers back does not get the differences back.",
+        "Numbers regrow from the survivors, so the population inherits only what those survivors happened to carry. Variation returns only by mutation, which is far slower than the growth in numbers — so the population is numerous and unable to adapt.",
+        "Mutation restores variation at a rate set by generation time and population size, which is orders of magnitude slower than demographic recovery. A bottlenecked population is therefore in a state that looks healthy by every count and is not, and this is why conservation genetics measures heterozygosity rather than headcount."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why saving a species early is so much easier than saving it late.",
+        "Once a population is small enough to be alarming, the variation is largely gone and no amount of protection restores it. Intervention while a species is still merely declining preserves something that intervention after the crash cannot — which is an unwelcome argument, because it asks for effort before the problem looks serious."
+      ]
+    }
+  ]
+}

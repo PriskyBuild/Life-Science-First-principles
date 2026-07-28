@@ -38,6 +38,12 @@
     "3": "ecology/04-remove-one-thing.json",
     "4": "ecology/05-build-a-food-web.json"
   },
+  "environmental-science": {
+    "0": "environmental-science/01-the-carbon-round-trip.json",
+    "1": "environmental-science/02-why-a-degree-matters.json",
+    "2": "environmental-science/03-extinction-is-forever.json",
+    "3": "environmental-science/04-fix-one-thing.json"
+  },
   "evolution": {
     "0": "evolution/01-what-would-change-your-mind.json",
     "1": "evolution/02-the-same-bones-in-different-jobs.json",

@@ -600,6 +600,82 @@
     ],
     "from": "ecology/05"
   },
+  "carbon-cycle": {
+    "q": [
+      "Why is burning coal different from a tree rotting?",
+      "Both release CO₂. Why are they treated differently?",
+      "Why does fossil carbon count differently from biological carbon?"
+    ],
+    "options": [
+      "The coal's carbon had been out of circulation for a hundred million years",
+      "Coal makes a different kind of carbon dioxide",
+      "There is no difference at all"
+    ],
+    "answer": 0,
+    "why": [
+      "A rotting tree gives back carbon it took from the air a few decades ago, so it goes round in a circle. Coal's carbon was put away before the dinosaurs, and burning it adds to the circle instead of going round it.",
+      "The molecule is identical; the reservoir is not. Biological carbon cycles within the fast pool on a timescale of years, so it roughly balances. Fossil carbon is a transfer from the slow pool into the fast one, and nothing returns it at a comparable rate.",
+      "It is a question of flux balance rather than chemistry. The fast cycle's enormous fluxes very nearly cancel; a comparatively small one-way transfer from the geological reservoir does not, and it is the net that accumulates. The isotopic signature confirms the source directly — fossil carbon is depleted in ¹³C and contains no ¹⁴C, and atmospheric CO₂ shows both changes."
+    ],
+    "from": "environmental-science/01"
+  },
+  "energy-balance": {
+    "q": [
+      "Why does a tiny difference matter?",
+      "Why does a 0.3% imbalance have large consequences?",
+      "Why is the size of the imbalance the wrong thing to focus on?"
+    ],
+    "options": [
+      "Because it keeps adding up, everywhere, all the time",
+      "Because it gets bigger each year",
+      "Because small things are always dangerous"
+    ],
+    "answer": 0,
+    "why": [
+      "It is like a bath filling one drop a second. One drop is nothing. A drop a second for a year is a flood. The gap is small; the time and the size of the planet are not.",
+      "A rate is not a total. A small persistent imbalance integrates over the whole surface and over decades, and the accumulated energy is what changes anything — which is why arguing about whether one watt sounds like a lot is the wrong argument.",
+      "Because the imbalance is a flux and the consequence is its integral. The system also has enormous thermal inertia — over 90% of the accumulated energy is in the ocean — which means the response lags the forcing by decades, and the temperature at any moment reflects an imbalance sustained long before it."
+    ],
+    "from": "environmental-science/02"
+  },
+  "extinction-is-permanent": {
+    "q": [
+      "Why is a population that dropped very low still in trouble afterwards?",
+      "Why does numerical recovery not constitute recovery?",
+      "Why is lost genetic variation not restored by population growth?"
+    ],
+    "options": [
+      "The variation it lost is gone, and it cannot adapt without it",
+      "The animals remember being rare",
+      "It is not in trouble once the numbers are back"
+    ],
+    "answer": 0,
+    "why": [
+      "You have seen what happens to a population with no variation: nothing. It cannot change when the world does. Getting the numbers back does not get the differences back.",
+      "Numbers regrow from the survivors, so the population inherits only what those survivors happened to carry. Variation returns only by mutation, which is far slower than the growth in numbers — so the population is numerous and unable to adapt.",
+      "Mutation restores variation at a rate set by generation time and population size, which is orders of magnitude slower than demographic recovery. A bottlenecked population is therefore in a state that looks healthy by every count and is not, and this is why conservation genetics measures heterozygosity rather than headcount."
+    ],
+    "from": "environmental-science/03"
+  },
+  "intervention-tradeoffs": {
+    "q": [
+      "What should you ask before changing something in an ecosystem?",
+      "What questions should precede an ecological intervention?",
+      "Which question does an irreversible intervention specifically require?"
+    ],
+    "options": [
+      "What is above it, what is below it, and can this be undone",
+      "Whether it will be popular",
+      "How much it will cost"
+    ],
+    "answer": 0,
+    "why": [
+      "Everything is joined to more than one thing, so the effect goes up and down from where you touched it. And if you cannot undo it, you had better be right the first time.",
+      "Trace upward and downward before acting, and treat reversibility as a separate question from likely benefit. An intervention that can be stopped needs only to be probably right; one that cannot needs to be right.",
+      "Reversibility deserves its own weight because it changes how much uncertainty is tolerable. Introducing an organism and building a dam are both irreversible in practice, and both have a long history of being assessed as though they were not — which is the specific error, rather than insufficient care in general."
+    ],
+    "from": "environmental-science/04"
+  },
   "testable-expectation": {
     "q": [
       "What makes an idea a good one to test?",

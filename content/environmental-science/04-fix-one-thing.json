@@ -1,0 +1,190 @@
+{
+  "id": "environmental-science/04",
+  "module": "environmental-science",
+  "index": 3,
+  "title": "Fix One Thing",
+  "specimen": "intervention-kit",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Australia had a beetle problem. So cane toads were brought in to eat them. The toads are now the problem.",
+        "In 1935 cane toads were released in Queensland to control a beetle. They barely touched the beetle, spread across a continent, and poison anything that tries to eat them. The problem they were brought in to solve is not the problem anyone discusses now."
+      ],
+      "sub": [
+        "Nobody was being stupid. They just fixed one thing.",
+        "This is not a story about carelessness. It is what happens when you act on a web while thinking about a chain."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "intervention-tradeoffs",
+      "question": [
+        "Why do fixes so often cause new problems?",
+        "Why do interventions in ecological systems so reliably produce unintended effects?"
+      ],
+      "options": [
+        "Everything is connected to more than one thing",
+        "People do not plan carefully enough",
+        "Nature always resists being helped"
+      ],
+      "outcome": "Everything is connected to more than one thing",
+      "note": [
+        "Guess before you look.",
+        "Commit. Note that the first option makes a prediction about which interventions go wrong, and the others do not."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Match each fix to what it actually did. Any part fits any slot, so it is on you.",
+        "Each of these was a real intervention. Match it to its actual consequence rather than its intention."
+      ],
+      "parts": [
+        { "id": "toad", "label": "Cane toads for beetles" },
+        { "id": "wolf", "label": "Wolves removed from Yellowstone" },
+        { "id": "cfc", "label": "CFCs banned" },
+        { "id": "dam", "label": "A river dammed for power" }
+      ],
+      "slots": [
+        { "correct": "toad", "label": ["Missed its target and poisoned the predators instead"] },
+        { "correct": "wolf", "label": ["Changed the vegetation two levels away"] },
+        { "correct": "cfc", "label": ["Worked, and the damage is measurably reversing"] },
+        { "correct": "dam", "label": ["Clean power, and the fish can no longer get upstream"] }
+      ],
+      "trials": [
+        {
+          "name": ["Think about what eats it", "One level up"],
+          "needs": ["toad"],
+          "pass": ["You checked what would eat the thing you introduced.", "Predator response considered — the failure mode that caught the cane toad."],
+          "fail": ["Nobody asked what would happen to the animals that tried to eat it.", "The toad's toxin killed native predators that had no evolutionary history with it. One level up was where the damage landed."]
+        },
+        {
+          "name": ["Think about what it eats", "One level down"],
+          "needs": ["toad", "wolf"],
+          "pass": ["You followed the effect downwards as well.", "Downward propagation considered — the cascade."],
+          "fail": ["The effect travelled down through a level nobody was watching.", "Removing a predator changes the vegetation. You met this two lessons ago and it is still the easiest effect to miss."]
+        },
+        {
+          "name": ["Check it can be undone", "Reversibility"],
+          "needs": ["toad", "wolf", "dam"],
+          "pass": ["You asked what happens if this turns out to be wrong.", "Reversibility assessed before committing."],
+          "fail": ["The dam is built and the river does not go back.", "Irreversible interventions must clear a much higher bar, because being wrong cannot be corrected. A dam is concrete; a released organism cannot be recalled."]
+        },
+        {
+          "name": ["Notice when it worked", "Success"],
+          "needs": ["toad", "wolf", "dam", "cfc"],
+          "pass": ["The ozone layer is recovering. Some fixes work.", "The Montreal Protocol worked: ozone depletion is measurably reversing, and it is the strongest evidence that coordinated action on an atmospheric problem is possible."],
+          "fail": ["You have learned only that everything backfires, which is not true.", "Concluding that intervention always fails is as wrong as assuming it always works — and the ozone case is the counter-example that keeps the lesson honest."]
+        }
+      ],
+      "win": [
+        "Look up, look down, ask if it can be undone — and remember that some fixes work.",
+        "Four questions, and the last one matters as much as the first three. A rule that says everything backfires would have blocked the Montreal Protocol too."
+      ],
+      "lose": [
+        "Read which one failed — it names the question that was not asked.",
+        "Each failed trial names the check that was skipped. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "intervention-tradeoffs",
+      "t": [
+        "People who agree about the science still disagree about what to do. Here is how each side reasons.",
+        "The physics from lesson 2 is not what is disputed here. What to do about it is a question about costs, risks and priorities, and reasonable people weigh those differently."
+      ],
+      "evidence": [
+        "Both sides here accept the measurements: carbon dioxide is rising, it absorbs infrared, and the planet is accumulating energy.",
+        "Common ground: the radiative physics, the measured rise in CO₂, and the measured energy imbalance. The disagreement is about response — its speed, its cost, and who bears it."
+      ],
+      "views": [
+        {
+          "who": "Rapid-reduction advocates",
+          "claim": [
+            "Cut emissions hard and fast, even though it is expensive.",
+            "Emissions should be reduced rapidly, accepting substantial near-term economic cost."
+          ],
+          "because": [
+            "The longer you wait the more heat is already stored, and some of the changes cannot be undone once they happen.",
+            "The system has decades of lag, so today's emissions commit the future regardless of what is done later. Some outcomes — ice sheet loss, ecosystem collapse — may be effectively irreversible, and irreversibility justifies paying more now than a simple cost comparison suggests."
+          ],
+          "predicts": [
+            "Waiting should turn out to cost more than acting early.",
+            "Delay should raise total cost, and damages should scale non-linearly rather than smoothly with warming."
+          ]
+        },
+        {
+          "who": "Adaptation-first advocates",
+          "claim": [
+            "Spend more on adapting, and on making poorer countries richer first.",
+            "Prioritise adaptation and development, since wealth is what determines who survives a changing climate."
+          ],
+          "because": [
+            "Being poor is what makes weather deadly. A rich country survives a flood that kills thousands in a poor one.",
+            "Deaths from climate-related disasters have fallen sharply over a century of warming, because wealth buys warning systems, sea walls and air conditioning. They argue rapid decarbonisation slows the development that reduces vulnerability, and that energy poverty kills now while warming kills later."
+          ],
+          "predicts": [
+            "Richer places should keep surviving bad weather better than poorer ones.",
+            "Vulnerability should track income more strongly than it tracks local warming, and adaptation spending should show better returns per pound than marginal abatement."
+          ]
+        }
+      ],
+      "ask": [
+        "Both want fewer people harmed. What could you measure that would tell you which spends the money better?",
+        "Both accept the physics and both want to minimise harm, so the disagreement is empirical and moral rather than scientific. Ask what evidence would move each side — and notice that a great deal of public argument here attacks a disagreement about the science that these two do not have."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Every fix does something you did not intend. The question is whether you looked.",
+        "Interventions in connected systems always have effects beyond their target. The useful discipline is not avoiding them but tracing them before acting.",
+        "Second-order effects are the rule rather than the exception in any system with more than one link per node — which is every ecosystem.",
+        "The four questions generalise well beyond ecology: what is upstream, what is downstream, can this be undone, and what does success look like. Any policy that cannot answer the third should face a much higher bar than one that can."
+      ],
+      "sub": [
+        "And some fixes really do work.",
+        "The ozone layer is recovering because of a treaty signed in 1987. That is a genuine success and it is worth knowing about.",
+        "Concluding that all intervention backfires is a different error, and just as expensive.",
+        "The Montreal Protocol worked because the problem had a small number of substitutable chemicals, a clear mechanism and identifiable manufacturers. Noting why it was tractable is more useful than either celebrating it or dismissing the comparison — it tells you what makes a problem solvable."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "intervention-tradeoffs",
+      "q": [
+        "What should you ask before changing something in an ecosystem?",
+        "What questions should precede an ecological intervention?",
+        "Which question does an irreversible intervention specifically require?"
+      ],
+      "options": [
+        "What is above it, what is below it, and can this be undone",
+        "Whether it will be popular",
+        "How much it will cost"
+      ],
+      "answer": 0,
+      "why": [
+        "Everything is joined to more than one thing, so the effect goes up and down from where you touched it. And if you cannot undo it, you had better be right the first time.",
+        "Trace upward and downward before acting, and treat reversibility as a separate question from likely benefit. An intervention that can be stopped needs only to be probably right; one that cannot needs to be right.",
+        "Reversibility deserves its own weight because it changes how much uncertainty is tolerable. Introducing an organism and building a dam are both irreversible in practice, and both have a long history of being assessed as though they were not — which is the specific error, rather than insufficient care in general."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The ozone layer is healing because people found out, agreed, and stopped.",
+        "CFC damage to the ozone layer was identified in the 1970s, the Montreal Protocol was signed in 1987, and the ozone hole is now measurably shrinking. It is the clearest example available of a global environmental problem being diagnosed and fixed — and understanding why that one was tractable, when others have not been, is more useful than treating it as either proof that action works or an exception that proves nothing."
+      ]
+    }
+  ]
+}
