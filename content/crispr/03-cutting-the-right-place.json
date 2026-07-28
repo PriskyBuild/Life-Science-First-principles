@@ -1,0 +1,101 @@
+{
+  "id": "crispr/03",
+  "module": "crispr",
+  "index": 2,
+  "title": "Cutting the Right Place",
+  "specimen": "target-lock",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Twenty letters usually names one place in three billion. Usually is not always.",
+        "A twenty-letter guide is expected to be unique in a human genome by a margin of about three hundred. But a genome is not a random sequence, and 'expected' is doing real work in that sentence."
+      ],
+      "sub": [
+        "And a guide will settle for close enough.",
+        "That is the actual problem: pairing tolerates mismatches, so near-matches can be cut too."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "targeting-accuracy",
+      "question": [
+        "What happens if a place in the genome matches 18 of your 20 letters?",
+        "What is the consequence of a site with two mismatches to the guide?"
+      ],
+      "options": [
+        "It might get cut too",
+        "Nothing — it has to match perfectly",
+        "The guide falls apart"
+      ],
+      "outcome": "It might get cut too",
+      "note": [
+        "Guess first.",
+        "Commit. Pairing is a matter of how strongly things stick, not a lock that either opens or does not."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "replication",
+      "guided": false,
+      "t": [
+        "Place the bases again — and this time watch how the wrong one is refused. That refusal is what specificity depends on.",
+        "The same pairing you used to copy a strand. Note that a wrong base is rejected because it does not fit — and that a sequence with only one or two wrong positions still fits almost as well."
+      ],
+      "params": { "task": "pair", "n": 18, "aspect": 0.62 },
+      "paramsByLevel": { "1": { "n": 12 }, "2": { "n": 14 } },
+      "goal": [
+        "Every letter had to match. Now imagine two of twenty being wrong — it would still mostly stick.",
+        "Perfect pairing at every position. The off-target problem is that near-perfect pairing is still strong pairing, and biology has no threshold that says 'close enough is not close enough'."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Cuts in the wrong place are called off-target edits.",
+        "An off-target edit is a cut at a site resembling the intended one. Guides tolerate mismatches, particularly away from the cutting end.",
+        "Off-target activity is sequence-dependent and predictable in part: mismatches near the PAM-proximal seed region are poorly tolerated, distal ones much better. Guides are therefore chosen computationally against the whole genome before use.",
+        "Detecting off-target cuts is harder than predicting them, and the assays — GUIDE-seq, CIRCLE-seq and others — disagree with each other. Reported off-target rates depend substantially on which method was used, which is an uncomfortable state of affairs for a technology being put into patients and is stated openly in the literature."
+      ],
+      "sub": [
+        "So the guide is chosen by searching the whole genome first.",
+        "Before any editing, candidate guides are checked against the entire genome for near-matches, and the one with fewest is used.",
+        "High-fidelity Cas9 variants have been engineered that discriminate mismatches far better, at some cost in on-target efficiency.",
+        "That is the same trade you met in DNA replication: fidelity is bought with rate, and the engineered variants pay for accuracy with activity. It recurs because it is not a quirk of any one system — checking takes time and effort wherever it happens."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "targeting-accuracy",
+      "q": [
+        "Why can the scissors cut in the wrong place at all?",
+        "Why does a 20-letter guide not guarantee a unique cut?",
+        "Why is pairing specificity a gradient rather than a threshold?"
+      ],
+      "options": [
+        "Nearly-matching still sticks well enough",
+        "The scissors sometimes malfunction",
+        "The genome moves around"
+      ],
+      "answer": 0,
+      "why": [
+        "Pairing is about how strongly things stick together, not a lock that only one key opens. Eighteen letters out of twenty still stick pretty well — well enough to cut, sometimes.",
+        "Binding strength falls gradually with mismatches rather than dropping to zero, so sites that are close but not identical can still be bound and cut. Nothing in the chemistry provides a sharp cut-off at 'perfect'.",
+        "Each base pair contributes a small amount of binding energy, so the total falls incrementally as mismatches accumulate. Specificity is therefore statistical, and the practical response is to choose guides whose nearest genomic near-match is as distant as possible — managing the gradient rather than escaping it."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "A cut in the wrong place could switch off a gene that stops cells growing.",
+        "The specific worry is a cut disabling a tumour suppressor, which would not show up for years. This is why approved therapies edit cells outside the body, where the result can be checked before anything is returned to the patient — and why editing inside a living person is a considerably harder approval problem than editing cells in a dish."
+      ]
+    }
+  ]
+}

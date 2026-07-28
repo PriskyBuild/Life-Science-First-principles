@@ -1,0 +1,109 @@
+{
+  "id": "biotechnology/02",
+  "module": "biotechnology",
+  "index": 1,
+  "title": "Copying DNA on Purpose",
+  "specimen": "thermal-cycler",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A swab picks up a few virus particles. An hour later there are hundreds of millions, and now you can see them.",
+        "A test swab may catch a handful of molecules — far too few for any instrument to detect. An hour later there are hundreds of millions of copies of exactly the sequence you were looking for, and nothing else was amplified."
+      ],
+      "sub": [
+        "Nothing was added except heat, cooling, and the same trick you already know.",
+        "The whole method is DNA's own copying mechanism, run deliberately in a tube."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "amplify-dna",
+      "question": [
+        "Start with one molecule and double it 30 times. How many do you have?",
+        "One template, thirty doublings. What is the yield?"
+      ],
+      "options": [
+        "About a billion",
+        "About a thousand",
+        "About thirty"
+      ],
+      "outcome": "About a billion",
+      "note": [
+        "Guess before you look. You have met this arithmetic before.",
+        "Commit. It is the same doubling you did with bacteria, run thirty times instead of seventy-two."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How many rounds of copying?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "10 rounds: about a thousand copies. Still invisible.",
+        "20 rounds: about a million.",
+        "25 rounds: 34 million.",
+        "30 rounds: over a billion — and that takes about an hour.",
+        "35 rounds: 34 billion. Long past the point of needing more."
+      ],
+      "t": [
+        "Each round doubles what you have. Watch how quickly that gets out of hand.",
+        "Ideal doubling each cycle. Real efficiency is nearer 1.8× than 2×, which after thirty cycles is 45 million rather than a billion — still ample, and worth knowing the textbook figure is the optimistic one."
+      ],
+      "after": [
+        "An hour, and a few molecules have become more than you could ever need.",
+        "Thirty cycles at roughly two minutes each. The reason it is an hour rather than a day is that the whole thing is just heating and cooling on a timer."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Copying DNA on purpose like this is called PCR.",
+        "The polymerase chain reaction: heat to separate the strands, cool so short primers stick to the sequence you want, and let polymerase copy. Repeat.",
+        "PCR. Heat denatures, cooling anneals sequence-specific primers, and a heat-stable polymerase extends. The primers are what make it selective — only the region between them is amplified.",
+        "The enabling piece was a polymerase that survives 95 °C, found in a bacterium living in a Yellowstone hot spring. Before Taq, the enzyme had to be replaced by hand every cycle. An organism nobody was studying for any applied reason made the whole method practical, which is the standard argument for curiosity-driven research and one of its better examples."
+      ],
+      "sub": [
+        "It is the ladder copying itself, done deliberately, over and over.",
+        "Nothing new is happening chemically. It is replication from the DNA module, run in a tube with a timer.",
+        "The primers are the clever part: they decide which stretch gets copied and everything else is ignored.",
+        "That selectivity is what makes PCR a test rather than merely an amplifier. You are not asking whether there is DNA present — you are asking whether one specific sequence is, and getting an answer from a handful of molecules."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "amplify-dna",
+      "q": [
+        "Why does PCR make so much so fast?",
+        "Why is amplification exponential rather than steady?",
+        "Why does exponential amplification make single-molecule detection possible?"
+      ],
+      "options": [
+        "Every copy becomes a template for the next round",
+        "The machine works very quickly",
+        "It starts with a lot of DNA"
+      ],
+      "answer": 0,
+      "why": [
+        "Each round copies everything you have, including the copies. So it doubles rather than adding — and thirty doublings from one molecule is a billion.",
+        "Products become templates, so the reaction compounds. Adding a fixed amount each cycle would give thirty copies; doubling gives a billion, and that difference is what lets a test detect what was never detectable directly.",
+        "Detection has a floor set by instrument sensitivity, and amplification raises the sample to meet it rather than lowering the floor. Because growth is exponential, the number of cycles needed scales only with the logarithm of how few molecules you started with — which is why the same protocol works from one copy or from a thousand."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is how a test finds a virus, and how a crime is solved from a single hair.",
+        "PCR underlies diagnostic testing, forensic identification, ancient DNA work and paternity testing. The sensitivity is also its main hazard: it will amplify a contaminant as faithfully as a sample, which is why forensic and diagnostic laboratories are built around preventing stray molecules rather than around the reaction itself."
+      ]
+    }
+  ]
+}

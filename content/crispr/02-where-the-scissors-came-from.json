@@ -1,0 +1,137 @@
+{
+  "id": "crispr/02",
+  "module": "crispr",
+  "index": 1,
+  "title": "Where the Scissors Came From",
+  "specimen": "phage-record",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Nobody invented this. Bacteria have been using it against viruses for billions of years.",
+        "CRISPR was not designed. It was found — an immune system bacteria have been running against viruses for a very long time, noticed by people studying something else entirely."
+      ],
+      "sub": [
+        "It was discovered by people studying salt-tolerant microbes and yoghurt cultures.",
+        "Nobody involved was looking for a gene-editing tool, and that is worth sitting with."
+      ]
+    },
+    {
+      "type": "predict",
+      "concept": "bacterial-origin",
+      "question": [
+        "Bacteria get infected by viruses too. What would a defence need to do?",
+        "What would a bacterial adaptive immune system require?"
+      ],
+      "options": [
+        "Keep a record of past attackers and recognise them again",
+        "Grow a thicker wall",
+        "Move away from the virus"
+      ],
+      "outcome": "Keep a record of past attackers and recognise them again",
+      "note": [
+        "Guess first.",
+        "Commit. You have met recognise-remember-respond before, in an animal. This is the same problem for something with no cells to spare."
+      ]
+    },
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put the steps of a bacterium's memory in order.",
+        "The CRISPR system in its native role. Match each step."
+      ],
+      "parts": [
+        {
+          "id": "capture",
+          "label": "Keep a piece of the virus"
+        },
+        {
+          "id": "store",
+          "label": "File it in a library"
+        },
+        {
+          "id": "copy",
+          "label": "Make guides from the library"
+        },
+        {
+          "id": "cut",
+          "label": "Cut anything that matches"
+        }
+      ],
+      "slots": [
+        {
+          "accepts": "capture",
+          "label": [
+            "Survive an attack and keep evidence",
+            "Acquisition: a fragment of the invader is retained"
+          ]
+        },
+        {
+          "accepts": "store",
+          "label": [
+            "Add it to the list of known enemies",
+            "The spacer is inserted into the CRISPR array"
+          ]
+        },
+        {
+          "accepts": "copy",
+          "label": [
+            "Turn the list into search terms",
+            "Array is transcribed and processed into guide RNAs"
+          ]
+        },
+        {
+          "accepts": "cut",
+          "label": [
+            "Destroy anything on the list",
+            "Interference: matching invader DNA is cleaved"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "name",
+      "t": [
+        "The library of past attackers is called a CRISPR array, and it is a bacterium's memory.",
+        "The CRISPR array is a genuine adaptive immune system: acquired, specific, heritable, and stored as sequence.",
+        "Acquisition, expression and interference — the same three phases as vertebrate adaptive immunity, implemented in DNA rather than in cell populations.",
+        "It differs from your immune system in one striking way: the memory is written into the genome and inherited by every descendant. A bacterium that survives an infection passes the immunity on, which is Lamarckian in form — acquired characteristics genuinely being inherited — and one of very few real instances."
+      ],
+      "sub": [
+        "The spacers are a record of what that bacterium's ancestors survived.",
+        "Reading the array tells you which viruses that lineage has met, in order, like tree rings.",
+        "Which is what made it recognisable: the sequences between the repeats matched known viruses, and that was the clue that solved it.",
+        "The array had been described in 1987 and sat unexplained for eighteen years. The insight in 2005 was that the spacers matched phage sequences — and the function fell out immediately. The data had been public the whole time; what was missing was the comparison."
+      ]
+    },
+    {
+      "type": "check",
+      "concept": "bacterial-origin",
+      "q": [
+        "What is CRISPR actually for, in a bacterium?",
+        "What is the native function of the CRISPR system?",
+        "In what sense is it an adaptive immune system?"
+      ],
+      "options": [
+        "Recognising and destroying viruses it has met before",
+        "Editing its own genes",
+        "Copying its DNA faster"
+      ],
+      "answer": 0,
+      "why": [
+        "It is a defence. The bacterium keeps a piece of every virus that attacked it, and uses those pieces to recognise and cut up the same virus next time.",
+        "Antiviral defence. Fragments of past invaders are stored as spacers and used to generate guides that destroy matching sequences on re-infection — acquisition, memory and specific response, which is what adaptive means.",
+        "It satisfies every criterion: the response is specific to a particular invader, it is acquired from experience rather than pre-existing, and it persists as memory. It is also heritable, which vertebrate adaptive immunity is not — the memory is in the genome rather than in a cell population."
+      ]
+    },
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The most powerful tool in biology came from people studying yoghurt.",
+        "The system was worked out substantially by researchers at a food company trying to stop viruses ruining yoghurt cultures. Nobody in that work was pursuing gene editing, and nobody could have proposed it as a goal. It is one of the better arguments for funding people to follow odd questions, and it is a more honest version of that argument than most, because the useful application was genuinely unforeseeable rather than merely unfashionable."
+      ]
+    }
+  ]
+}

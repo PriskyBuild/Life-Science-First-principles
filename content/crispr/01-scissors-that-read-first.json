@@ -1,0 +1,127 @@
+{
+  "id": "crispr/01",
+  "module": "crispr",
+  "index": 0,
+  "title": "Scissors That Read First",
+  "specimen": "guide-rna",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Three billion letters, and you need to cut at one particular place. How would you even find it?",
+        "You want to cut a genome at exactly one position out of three billion. The scissors have no eyes and no map, and they have to be right the first time."
+      ],
+      "sub": [
+        "You already know the only rule that could do this.",
+        "The mechanism is one you have operated already, in a different world."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "guided-cutting",
+      "question": [
+        "How could something find one exact spot in three billion letters?",
+        "What mechanism could locate a unique 20-letter sequence in a genome?"
+      ],
+      "options": [
+        "Carry a matching strand and let it pair with the target",
+        "Search the whole genome and compare as it goes",
+        "Cut everywhere and hope"
+      ],
+      "outcome": "Carry a matching strand and let it pair with the target",
+      "note": [
+        "Guess first. You have already used the rule this depends on.",
+        "Commit. A only pairs with T and C only with G, and you have already built a whole strand on that."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "replication",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "This is the same pairing you already did. A guide only sticks where the letters match.",
+        "The same rule as copying: each letter has exactly one partner. That is how a guide finds its target and nothing else."
+      ],
+      "params": { "task": "pair", "n": 14, "aspect": 0.62 },
+      "paramsByLevel": { "1": { "n": 10 } },
+      "goal": [
+        "Only the right letters stick. That is how the scissors know where they are.",
+        "Every position had exactly one correct partner and nothing else would stay. Run that rule over twenty letters and you have an address."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "levels": [3, 4],
+      "guided": false,
+      "label": "How long is the guide?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "5 letters: about 1,000 possible sequences. A human genome contains each one about three million times.",
+        "10 letters: about a million. Still roughly 3,000 matches in the genome.",
+        "15 letters: about a billion. A few matches.",
+        "20 letters: about a trillion. Far more than the genome has positions — usually unique.",
+        "Longer still: no more specific in practice, and harder to make."
+      ],
+      "t": [
+        "Work out how long a guide has to be before it names one place and no other.",
+        "Four letters per position, so specificity rises as 4^n against a genome of 3×10⁹ positions. Find where the two curves cross."
+      ],
+      "after": [
+        "Twenty letters is the answer, and it is arithmetic rather than biology.",
+        "4²⁰ ≈ 10¹² against 3×10⁹ positions, so a 20-mer is expected to be unique by a margin of about 300. That is why the guide is the length it is — and why 'usually unique' rather than 'always' is the honest phrasing."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The matching strand is called a guide, and it takes the scissors to the right place.",
+        "A guide RNA about twenty letters long pairs with the matching DNA sequence, and the nuclease attached to it cuts there.",
+        "CRISPR-Cas9: a guide RNA supplies the address by base pairing and Cas9 supplies the cut. The two functions are separate, which is why the address is reprogrammable.",
+        "Separating targeting from cutting is the whole reason this displaced everything before it. Earlier editing tools — zinc fingers, TALENs — needed a new protein engineered for every target, which took months. Here you change twenty letters of RNA, which takes a day and costs almost nothing."
+      ],
+      "sub": [
+        "The rule doing all the work is the one from DNA lesson 2.",
+        "A pairs with T, C pairs with G. That is the entire targeting mechanism, applied twenty times over.",
+        "Cas9 also requires a short adjacent motif in the DNA, which limits where you can aim and is a real constraint in practice.",
+        "The PAM requirement means not every sequence is targetable, and much of the subsequent engineering has gone into variants with relaxed requirements. Worth knowing because the popular account presents the tool as universal, and the constraint is one of the first things anyone doing it actually meets."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "guided-cutting",
+      "q": [
+        "How do the scissors know where to cut?",
+        "What determines the cut site?",
+        "Why is separating targeting from cutting the important design feature?"
+      ],
+      "options": [
+        "A guide strand pairs with the matching letters",
+        "The protein recognises the gene it is looking for",
+        "It cuts wherever the DNA is loose"
+      ],
+      "answer": 0,
+      "why": [
+        "It is the same pairing rule you used to copy DNA. The guide sticks only where every letter matches, and the scissors cut where the guide stopped.",
+        "Base pairing between a 20-letter guide RNA and the target strand. The protein does the cutting and has no sequence preference of its own beyond a short adjacent motif — the address is entirely in the RNA.",
+        "Because it makes the address a piece of data rather than a piece of engineering. Every previous targeted nuclease required designing a new protein per target; here the protein is constant and only the RNA changes, which is why the cost and time fell by orders of magnitude and why the technique spread as fast as it did."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The first CRISPR treatment was approved in 2023, for sickle-cell disease.",
+        "Casgevy edits a patient's own blood stem cells to switch fetal haemoglobin back on, compensating for the faulty adult version. It was approved in late 2023 — about eleven years after the technique was described. That is a very short interval, and it happened because the hard part had already been reduced to choosing twenty letters."
+      ]
+    }
+  ]
+}

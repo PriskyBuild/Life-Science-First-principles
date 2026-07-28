@@ -1,0 +1,156 @@
+{
+  "id": "crispr/04",
+  "module": "crispr",
+  "index": 3,
+  "title": "What Could Go Wrong",
+  "specimen": "off-target-log",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "In 2018 a scientist edited two babies before they were born. Nobody had agreed that was allowed.",
+        "He Jiankui edited the embryos of twin girls, born in 2018, to disable a gene used by HIV. He was imprisoned. The scientific reaction was near-universal condemnation — and the edits are in those children for life, and in any children they have."
+      ],
+      "sub": [
+        "That is the difference this lesson is about.",
+        "Editing a person and editing a person's descendants are not the same act."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "edit-consequences",
+      "question": [
+        "What is different about editing an embryo rather than a patient?",
+        "What distinguishes germline editing from somatic editing?"
+      ],
+      "options": [
+        "The change is in every cell, and is passed to their children",
+        "It is technically much harder",
+        "Nothing important — it is the same edit"
+      ],
+      "outcome": "The change is in every cell, and is passed to their children",
+      "note": [
+        "Guess first.",
+        "Commit. Note who has consented in each case, and who cannot."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Match each kind of edit to who it affects.",
+        "Two kinds of edit with very different reach. Match them."
+      ],
+      "parts": [
+        { "id": "somatic", "label": "Editing a patient's own cells" },
+        { "id": "germline", "label": "Editing an embryo" },
+        { "id": "consent", "label": "Consent" },
+        { "id": "reversible", "label": "Being able to stop" }
+      ],
+      "slots": [
+        { "accepts": "somatic", "label": ["Affects one person, who asked for it", "Somatic: confined to the treated individual"] },
+        { "accepts": "germline", "label": ["Affects that person and everyone descended from them", "Germline: heritable, present in all cells and all descendants"] },
+        { "accepts": "consent", "label": ["Possible for a patient, impossible for someone unborn", "Obtainable in one case and not in the other"] },
+        { "accepts": "reversible", "label": ["You can stop treating; you cannot un-edit a lineage", "Somatic edits end with the patient; germline edits do not"] }
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "edit-consequences",
+      "t": [
+        "Scientists who agree completely about how CRISPR works disagree about whether heritable editing should ever be allowed.",
+        "The technical facts are not disputed here. Whether heritable human editing should ever proceed is a question about consent, risk and what medicine is for."
+      ],
+      "evidence": [
+        "Everyone here agrees on the science: the edit works, it is not perfectly accurate, and in an embryo it is passed on for ever.",
+        "Common ground: germline edits are heritable, off-target effects are real and imperfectly detectable, and the technology will continue to improve. The disagreement is about whether improvement ever makes it acceptable."
+      ],
+      "views": [
+        {
+          "who": "Those who would permit it eventually",
+          "claim": [
+            "If it could safely stop a terrible inherited illness, refusing would be the harm.",
+            "Once safety is established, a blanket prohibition on preventing severe heritable disease is itself a decision with victims."
+          ],
+          "because": [
+            "Some families pass on illnesses that kill every generation. If you could stop that for good, saying no is also a choice.",
+            "They argue that we already accept irreversible decisions made for children who cannot consent — surgery, vaccination, upbringing — and that the relevant question is expected benefit rather than the presence of heredity. For conditions where embryo screening cannot help, editing is the only route."
+          ],
+          "predicts": [
+            "Accuracy should keep improving until the risk is smaller than the disease.",
+            "Off-target rates should continue to fall, and base and prime editing should reduce reliance on cutting at all."
+          ]
+        },
+        {
+          "who": "Those who would prohibit it outright",
+          "claim": [
+            "Some lines should not be crossed, however safe it gets.",
+            "Heritable modification of humans should be prohibited regardless of technical safety."
+          ],
+          "because": [
+            "Nobody can ask the people it will affect, because they do not exist yet, and the change never stops being passed on.",
+            "They argue consent is structurally impossible across generations; that safety cannot be demonstrated on a timescale shorter than the generations at risk; that embryo screening already prevents nearly all such conditions without editing; and that a permitted medical use has no stable boundary against enhancement."
+          ],
+          "predicts": [
+            "Once allowed for illness, it should start being used for things that are not illness.",
+            "Permitted indications should expand over time, and unforeseen effects should appear in generations after the edited one."
+          ]
+        }
+      ],
+      "ask": [
+        "Both are trying to prevent suffering. What would you want to know before deciding?",
+        "Notice that both positions are about consent and risk rather than about the biology, and that they make different empirical predictions — about whether accuracy improves enough, and about whether permitted uses stay bounded. Ask which of those you could actually check, and how long checking would take."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "An edit in an embryo is called a germline edit, and it never stops being passed on.",
+        "Germline editing alters every cell including the reproductive ones, so the change is inherited indefinitely. Somatic editing affects only the person treated.",
+        "The distinction is the central one in the ethics and in most national law: somatic therapy is broadly permitted and regulated as medicine, heritable editing is prohibited in most countries.",
+        "Roughly seventy countries prohibit heritable human editing, and the 2018 case produced near-unanimous condemnation and a prison sentence rather than a debate about whether it was premature. That near-unanimity is itself notable — it is one of the few places where a scientific community drew a line quickly and held it."
+      ],
+      "sub": [
+        "Which is why almost everywhere forbids it, and treating patients is allowed.",
+        "The approved sickle-cell therapy edits a patient's own blood cells. Nothing is inherited and the patient consented.",
+        "Screening embryos already prevents most heritable disease without editing anything, which narrows the cases where editing is the only option.",
+        "That narrowing matters for the argument: the genuinely hard cases — where both parents are homozygous for a severe recessive condition — are rare. Much of the debate is conducted as though the technology's main use would be preventing disease broadly, when screening already handles nearly all of that."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "edit-consequences",
+      "q": [
+        "Why is editing an embryo treated so differently?",
+        "Why is germline editing regulated differently from somatic editing?",
+        "What is the structural difference the regulation tracks?"
+      ],
+      "options": [
+        "Nobody affected by it can agree to it, and it never stops",
+        "It costs much more",
+        "It does not work as well"
+      ],
+      "answer": 0,
+      "why": [
+        "A patient can be told the risks and say yes. An embryo cannot, and neither can their children, or their grandchildren. The change carries on for ever and nobody it affects was ever asked.",
+        "Consent and permanence. Somatic edits are confined to a consenting patient and end with them; germline edits propagate indefinitely to people who cannot be consulted and cannot opt out.",
+        "It tracks who bears the risk relative to who accepted it. In somatic therapy those are the same person; in germline editing they diverge permanently and by construction. That divergence is why the argument does not dissolve as the technology becomes safer — safety addresses the magnitude of the risk and not who is bearing it unasked."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The hardest questions here are not scientific ones, and they will not be settled by better scissors.",
+        "Improving accuracy changes how large the risk is and changes nothing about who consented. That is worth carrying beyond this module: a great many disputes that look technical turn out, once you locate the actual disagreement, to be about who decides and who bears the cost — and those do not get resolved by better instruments."
+      ]
+    }
+  ]
+}

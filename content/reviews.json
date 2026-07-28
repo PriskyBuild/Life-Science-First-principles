@@ -151,6 +151,82 @@
     ],
     "from": "biomolecules/04"
   },
+  "cells-as-factories": {
+    "q": [
+      "Why does a bacterium read a human gene correctly?",
+      "Why is a human gene expressed by a bacterial host?",
+      "What makes cross-species expression possible at all?"
+    ],
+    "options": [
+      "The genetic code is essentially the same in everything alive",
+      "The gene is translated into bacterial first",
+      "Bacteria are closely related to humans"
+    ],
+    "answer": 0,
+    "why": [
+      "The same four letters mean the same things in a germ and in you. So a bacterium reading a human instruction is just reading — it has no way of knowing where it came from.",
+      "The code is near-universal, so the same triplets specify the same amino acids in both. Nothing is converted; the host machinery simply reads a sequence it can read.",
+      "It is a fact about shared inheritance rather than about similarity — bacteria and humans are about as distantly related as living things get, and the code is shared anyway. That universality across the whole of life is what makes it exploitable, and it is one of the observations any account of life's history has to accommodate."
+    ],
+    "from": "biotechnology/01"
+  },
+  "amplify-dna": {
+    "q": [
+      "Why does PCR make so much so fast?",
+      "Why is amplification exponential rather than steady?",
+      "Why does exponential amplification make single-molecule detection possible?"
+    ],
+    "options": [
+      "Every copy becomes a template for the next round",
+      "The machine works very quickly",
+      "It starts with a lot of DNA"
+    ],
+    "answer": 0,
+    "why": [
+      "Each round copies everything you have, including the copies. So it doubles rather than adding — and thirty doublings from one molecule is a billion.",
+      "Products become templates, so the reaction compounds. Adding a fixed amount each cycle would give thirty copies; doubling gives a billion, and that difference is what lets a test detect what was never detectable directly.",
+      "Detection has a floor set by instrument sensitivity, and amplification raises the sample to meet it rather than lowering the floor. Because growth is exponential, the number of cycles needed scales only with the logarithm of how few molecules you started with — which is why the same protocol works from one copy or from a thousand."
+    ],
+    "from": "biotechnology/02"
+  },
+  "read-a-genome": {
+    "q": [
+      "What is the hard part now that sequencing is cheap?",
+      "Where has the bottleneck moved?",
+      "Why did cheap sequencing not resolve the interpretation problem?"
+    ],
+    "options": [
+      "Working out what any of it means",
+      "Getting hold of enough DNA",
+      "Nothing — it is a solved problem"
+    ],
+    "answer": 0,
+    "why": [
+      "Reading the letters is now easy. Knowing what a particular change does to a person is not, and mostly we still cannot say.",
+      "Data generation outran interpretation. Most human genetic variants found in a clinical test are classed as of uncertain significance — the sequence is known and its consequence is not.",
+      "Because cost was never the limiting factor on understanding. Sequencing tells you the letters; connecting a variant to a phenotype requires population data, functional work and statistics, none of which got cheaper at the same rate. The gap has widened rather than closed, which is a general pattern when one step in a pipeline improves by orders of magnitude and the others do not."
+    ],
+    "from": "biotechnology/03"
+  },
+  "recombinant-protein": {
+    "q": [
+      "Why is recombinant insulin better than the animal kind?",
+      "What advantages does recombinant insulin have over extracted animal insulin?",
+      "Which of those advantages was the decisive one?"
+    ],
+    "options": [
+      "It is exactly human, and the supply is unlimited",
+      "It is stronger",
+      "It can be swallowed"
+    ],
+    "answer": 0,
+    "why": [
+      "Animal insulin is nearly right, and nearly right can make some people ill. And there is only as much of it as there are animals. Bacteria make the exact human version, and you can always grow more.",
+      "Sequence identity removes the immune reactions that animal insulin caused in some patients, and supply is limited only by fermenter capacity rather than by livestock numbers.",
+      "Supply, on the evidence. Immunological problems affected a minority; the supply constraint affected everyone and was structural — insulin availability was tied to the meat industry with no way to increase it independently. It is a useful reminder that the decisive advantage of a technology is often the unglamorous one."
+    ],
+    "from": "biotechnology/04"
+  },
   "cell-scale": {
     "q": [
       "How big is a cell?",
@@ -297,6 +373,82 @@
       "Error in a transcript is transient; error in the template is heritable. Compartmentalisation also creates a regulatory step between archive and product."
     ],
     "from": "cells/04"
+  },
+  "guided-cutting": {
+    "q": [
+      "How do the scissors know where to cut?",
+      "What determines the cut site?",
+      "Why is separating targeting from cutting the important design feature?"
+    ],
+    "options": [
+      "A guide strand pairs with the matching letters",
+      "The protein recognises the gene it is looking for",
+      "It cuts wherever the DNA is loose"
+    ],
+    "answer": 0,
+    "why": [
+      "It is the same pairing rule you used to copy DNA. The guide sticks only where every letter matches, and the scissors cut where the guide stopped.",
+      "Base pairing between a 20-letter guide RNA and the target strand. The protein does the cutting and has no sequence preference of its own beyond a short adjacent motif — the address is entirely in the RNA.",
+      "Because it makes the address a piece of data rather than a piece of engineering. Every previous targeted nuclease required designing a new protein per target; here the protein is constant and only the RNA changes, which is why the cost and time fell by orders of magnitude and why the technique spread as fast as it did."
+    ],
+    "from": "crispr/01"
+  },
+  "bacterial-origin": {
+    "q": [
+      "What is CRISPR actually for, in a bacterium?",
+      "What is the native function of the CRISPR system?",
+      "In what sense is it an adaptive immune system?"
+    ],
+    "options": [
+      "Recognising and destroying viruses it has met before",
+      "Editing its own genes",
+      "Copying its DNA faster"
+    ],
+    "answer": 0,
+    "why": [
+      "It is a defence. The bacterium keeps a piece of every virus that attacked it, and uses those pieces to recognise and cut up the same virus next time.",
+      "Antiviral defence. Fragments of past invaders are stored as spacers and used to generate guides that destroy matching sequences on re-infection — acquisition, memory and specific response, which is what adaptive means.",
+      "It satisfies every criterion: the response is specific to a particular invader, it is acquired from experience rather than pre-existing, and it persists as memory. It is also heritable, which vertebrate adaptive immunity is not — the memory is in the genome rather than in a cell population."
+    ],
+    "from": "crispr/02"
+  },
+  "targeting-accuracy": {
+    "q": [
+      "Why can the scissors cut in the wrong place at all?",
+      "Why does a 20-letter guide not guarantee a unique cut?",
+      "Why is pairing specificity a gradient rather than a threshold?"
+    ],
+    "options": [
+      "Nearly-matching still sticks well enough",
+      "The scissors sometimes malfunction",
+      "The genome moves around"
+    ],
+    "answer": 0,
+    "why": [
+      "Pairing is about how strongly things stick together, not a lock that only one key opens. Eighteen letters out of twenty still stick pretty well — well enough to cut, sometimes.",
+      "Binding strength falls gradually with mismatches rather than dropping to zero, so sites that are close but not identical can still be bound and cut. Nothing in the chemistry provides a sharp cut-off at 'perfect'.",
+      "Each base pair contributes a small amount of binding energy, so the total falls incrementally as mismatches accumulate. Specificity is therefore statistical, and the practical response is to choose guides whose nearest genomic near-match is as distant as possible — managing the gradient rather than escaping it."
+    ],
+    "from": "crispr/03"
+  },
+  "edit-consequences": {
+    "q": [
+      "Why is editing an embryo treated so differently?",
+      "Why is germline editing regulated differently from somatic editing?",
+      "What is the structural difference the regulation tracks?"
+    ],
+    "options": [
+      "Nobody affected by it can agree to it, and it never stops",
+      "It costs much more",
+      "It does not work as well"
+    ],
+    "answer": 0,
+    "why": [
+      "A patient can be told the risks and say yes. An embryo cannot, and neither can their children, or their grandchildren. The change carries on for ever and nobody it affects was ever asked.",
+      "Consent and permanence. Somatic edits are confined to a consenting patient and end with them; germline edits propagate indefinitely to people who cannot be consulted and cannot opt out.",
+      "It tracks who bears the risk relative to who accepted it. In somatic therapy those are the same person; in germline editing they diverge permanently and by construction. That divergence is why the argument does not dissolve as the technology becomes safer — safety addresses the magnitude of the risk and not who is bearing it unasked."
+    ],
+    "from": "crispr/04"
   },
   "one-cell-to-many": {
     "q": [

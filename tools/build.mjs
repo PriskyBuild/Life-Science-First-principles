@@ -87,6 +87,13 @@ for (const f of lessonFiles) {
 
   for (const [i, st] of lesson.stages.entries()) {
     if (!STAGE_TYPES.has(st.type)) where(`stage ${i}: unknown type "${st.type}"`);
+    /* A stray key is silent: the renderer ignores what it does not know, so a
+       typo'd field simply never appears and nothing reports it. I typed a key
+       containing Cyrillic characters into a CRISPR lesson and the build was
+       perfectly happy with it. Field names are ASCII identifiers here, always. */
+    for (const key of Object.keys(st)) {
+      if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(key)) where(`stage ${i}: field name "${key}" is not a plain identifier`);
+    }
     if (st.levels && st.levels.some((l) => l < 1 || l > 4)) where(`stage ${i}: levels out of range`);
     for (const key of ["t", "sub", "q", "why", "question", "note", "after", "evidence", "ask"]) {
       const v = st[key];

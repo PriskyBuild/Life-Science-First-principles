@@ -928,3 +928,41 @@ settled measurement manufactures controversy; withholding it from a genuine valu
 smuggles one answer in as though it were a finding. Lesson 2 states the physics plainly and is
 precise about which parts are measured, which inferred and which projected — that precision is
 what makes it legitimate for lesson 4 to say the argument is elsewhere.
+
+### D61 — A field name with Cyrillic characters in it, and nothing noticed
+*Caught by reading, not by any tool.*
+
+I typed a stray key — `"ию": []` — into a CRISPR lesson while writing it. The build passed. The
+renderer would have ignored it silently, because `RENDER` reads the fields it knows about and
+never looks at the rest.
+
+That is the most invisible defect class this format has: **a typo'd field name is not an error,
+it is an absence.** Misspell `why` and the check stage renders with no explanation, the build is
+satisfied, the browser suite is satisfied, and the only signal is a child reaching a question
+whose feedback is blank.
+
+The build now requires every stage field name to be a plain ASCII identifier, which catches the
+whole class rather than the one instance. Verified by reintroducing the bad key and watching the
+build reject it.
+
+A stricter version — an allow-list of known field names per stage type — would catch misspellings
+of real fields too, which this does not. That is the better check and it is deliberately not built
+yet: the allow-list has to be maintained alongside every new stage type, and getting it out of
+step would produce false failures on valid lessons. Worth doing when the format stops moving.
+
+### D62 — `weigh` used for a values dispute inside a technical module
+*CRISPR lesson 4, following D60.*
+
+Second use outside origins, and it confirms the D60 rule from the other direction. The technical
+facts about germline editing are not disputed by anyone: the edit is heritable, off-target effects
+are real, and accuracy will improve. What is disputed is whether improving accuracy ever makes it
+acceptable — and that turns on consent across generations, which no measurement settles.
+
+The two views make genuinely different empirical predictions, which is what keeps the stage from
+being a survey of opinions: one expects accuracy to improve until risk falls below the disease,
+the other expects permitted indications to expand once any are allowed. Both are checkable, slowly.
+
+The lesson's closing line is the transferable part, and it is why this stage is here rather than a
+paragraph asserting a conclusion: improving accuracy changes how large the risk is and changes
+nothing about who consented. A great many disputes that present as technical resolve, once the
+disagreement is actually located, into questions about who decides and who bears the cost.

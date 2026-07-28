@@ -1,0 +1,142 @@
+{
+  "id": "biotechnology/04",
+  "module": "biotechnology",
+  "index": 3,
+  "title": "Insulin From Bacteria",
+  "specimen": "recombinant-vial",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Before 1982, insulin came from the pancreases of pigs and cows. It took a tonne of them to treat one person for a year.",
+        "For sixty years diabetes was treated with insulin extracted from slaughterhouse pancreases — animal insulin, slightly the wrong sequence, in a supply chain tied to how much meat was being eaten."
+      ],
+      "sub": [
+        "Now it is made by bacteria, and it is exactly human.",
+        "This is the first recombinant drug, and it is the whole module in one product."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "recombinant-protein",
+      "question": [
+        "Why not just swallow insulin instead of injecting it?",
+        "Why must insulin be injected rather than taken orally?"
+      ],
+      "options": [
+        "It is a protein, and your gut takes proteins apart",
+        "It does not dissolve",
+        "It works faster by injection"
+      ],
+      "outcome": "It is a protein, and your gut takes proteins apart",
+      "note": [
+        "Guess first — you already know what a gut does to proteins.",
+        "Commit. The chemistry was solved in 1982 and the delivery problem was not."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Build the process. Any part fits any slot, so the marking is on you — and then it gets tested.",
+        "Assemble the manufacturing route. Placement is unconstrained; each omission produces a different and specific failure."
+      ],
+      "parts": [
+        { "id": "sequence", "label": "The human insulin sequence" },
+        { "id": "plasmid", "label": "A plasmid" },
+        { "id": "host", "label": "Bacteria" },
+        { "id": "select", "label": "Antibiotic selection" },
+        { "id": "purify", "label": "Purification" }
+      ],
+      "slots": [
+        { "correct": "sequence", "label": ["Says what to make"] },
+        { "correct": "plasmid", "label": ["Gets it into the cell"] },
+        { "correct": "host", "label": ["Makes it, and makes more of itself"] },
+        { "correct": "select", "label": ["Keeps only the cells that took it"] },
+        { "correct": "purify", "label": ["Separates the product from everything else"] }
+      ],
+      "trials": [
+        {
+          "name": ["Make the right molecule", "Specification"],
+          "needs": ["sequence"],
+          "pass": ["Human insulin, exactly.", "The correct human sequence is specified."],
+          "fail": ["You have a factory and nothing told it what to build.", "Without the sequence there is no product. Everything else is machinery."]
+        },
+        {
+          "name": ["Get the instruction inside", "Delivery"],
+          "needs": ["sequence", "plasmid", "host"],
+          "pass": ["The bacteria are reading it and making protein.", "The construct is taken up and expressed."],
+          "fail": ["A perfect sequence, sitting in a tube.", "A gene outside a cell makes nothing. It needs a vector and a host."]
+        },
+        {
+          "name": ["End up with a pure culture", "Selection"],
+          "needs": ["sequence", "plasmid", "host", "select"],
+          "pass": ["Only the cells carrying the gene survive to grow.", "Antibiotic selection enriches transformants to effectively 100%."],
+          "fail": ["Most of your bacteria never took it up and are just eating.", "Transformation efficiency is low. Without selection the culture is dominated by cells producing nothing."]
+        },
+        {
+          "name": ["Be safe to inject into a person", "Purity"],
+          "needs": ["sequence", "plasmid", "host", "select", "purify"],
+          "pass": ["Insulin, and nothing else from the bacterium.", "Product separated from host proteins and endotoxin to injectable standard."],
+          "fail": ["Insulin mixed with bacterial debris. That is not a medicine.", "Bacterial endotoxin causes severe reactions. Purification is not a finishing step — it is most of the manufacturing cost."]
+        }
+      ],
+      "win": [
+        "Unlimited, identical, human insulin — from something that has never had a pancreas.",
+        "All four hold. Note that the last one is where most of the real cost and difficulty sits, which is not where anyone expects."
+      ],
+      "lose": [
+        "Read which test failed — it names what was in the wrong job.",
+        "Each failed trial names the step that was not performed. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A protein made by putting its gene into something else is called recombinant.",
+        "Recombinant protein manufacture: express a human gene in a host organism, then purify the product. Insulin was the first, in 1982.",
+        "The advantages are supply, consistency and sequence identity. Animal insulin differs from human by one to three amino acids, which is enough to provoke immune responses in some patients.",
+        "It also decoupled supply from an unrelated industry. Animal insulin production was limited by how many cattle and pigs were slaughtered, so the treatment for a growing disease was tied to the meat trade — a constraint nobody chose and nobody could relieve. Recombinant production removed it entirely."
+      ],
+      "sub": [
+        "The bacterium has never had a pancreas and does not need one.",
+        "It reads the instruction and builds the protein. Nothing else about being a pancreas is required.",
+        "The same route now makes growth hormone, clotting factors, vaccines and most antibody drugs.",
+        "Clotting factor is the starkest case: haemophilia was treated with pooled donor plasma, and in the 1980s that route infected thousands of patients with HIV and hepatitis C. Recombinant factor removed the donor pool from the process, and with it that entire class of risk."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "recombinant-protein",
+      "q": [
+        "Why is recombinant insulin better than the animal kind?",
+        "What advantages does recombinant insulin have over extracted animal insulin?",
+        "Which of those advantages was the decisive one?"
+      ],
+      "options": [
+        "It is exactly human, and the supply is unlimited",
+        "It is stronger",
+        "It can be swallowed"
+      ],
+      "answer": 0,
+      "why": [
+        "Animal insulin is nearly right, and nearly right can make some people ill. And there is only as much of it as there are animals. Bacteria make the exact human version, and you can always grow more.",
+        "Sequence identity removes the immune reactions that animal insulin caused in some patients, and supply is limited only by fermenter capacity rather than by livestock numbers.",
+        "Supply, on the evidence. Immunological problems affected a minority; the supply constraint affected everyone and was structural — insulin availability was tied to the meat industry with no way to increase it independently. It is a useful reminder that the decisive advantage of a technology is often the unglamorous one."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The chemistry has been solved since 1982. Getting it to people who need it has not.",
+        "Recombinant insulin can be produced for a few dollars a vial, and many people who need it still cannot afford it. That gap is not a scientific problem and it will not be closed by a better molecule. Worth holding onto as this world continues: the hard part of a technology is frequently not the part that took the Nobel Prize."
+      ]
+    }
+  ]
+}

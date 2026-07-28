@@ -11,12 +11,25 @@
     "2": "biomolecules/03-why-oil-and-water-wont-mix.json",
     "3": "biomolecules/04-beads-that-fold-into-machines.json"
   },
+  "biotechnology": {
+    "0": "biotechnology/01-making-cells-work-for-you.json",
+    "1": "biotechnology/02-copying-dna-on-purpose.json",
+    "2": "biotechnology/03-reading-a-genome.json",
+    "3": "biotechnology/04-insulin-from-bacteria.json"
+  },
   "cells": {
     "0": "cells/01-city-in-a-speck.json",
     "1": "cells/02-the-wall-that-chooses.json",
     "2": "cells/03-the-power-plant.json",
     "3": "cells/04-the-instruction-room.json",
     "4": "cells/05-build-a-cell.json"
+  },
+  "crispr": {
+    "0": "crispr/01-scissors-that-read-first.json",
+    "1": "crispr/02-where-the-scissors-came-from.json",
+    "2": "crispr/03-cutting-the-right-place.json",
+    "3": "crispr/04-what-could-go-wrong.json",
+    "4": "crispr/05-edit-a-gene.json"
   },
   "development": {
     "0": "development/01-one-cell-becomes-an-animal.json",

@@ -1,0 +1,108 @@
+{
+  "id": "biotechnology/03",
+  "module": "biotechnology",
+  "index": 2,
+  "title": "Reading a Genome",
+  "specimen": "sequencer",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Reading one person's whole genome cost a hundred million dollars in 2001. It now costs about two hundred.",
+        "The first human genome cost roughly $100 million and took over a decade. The same read now costs a couple of hundred dollars and takes about a day."
+      ],
+      "sub": [
+        "That is a bigger fall than computers managed over the same years.",
+        "Half a million-fold, against roughly two thousand-fold for computing power. It is the fastest-falling cost in the history of measurement."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "read-a-genome",
+      "question": [
+        "What changes when reading a genome becomes cheap?",
+        "What follows from sequencing cost falling by five orders of magnitude?"
+      ],
+      "options": [
+        "You stop asking one question and start reading everything",
+        "Nothing much — it is the same information",
+        "It becomes less accurate"
+      ],
+      "outcome": "You stop asking one question and start reading everything",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what you would do differently if a measurement went from unaffordable to trivial."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "What it cost to read one genome",
+      "min": 0,
+      "max": 3,
+      "value": 0,
+      "captions": [
+        "2001: $100,000,000. One genome, thirteen years, an international consortium.",
+        "2007: $10,000,000. Still a research project in its own right.",
+        "2015: $1,500. Cheap enough to sequence a patient.",
+        "2023: about $200. Cheap enough to sequence a sample you are merely curious about."
+      ],
+      "t": [
+        "Watch what a genome cost to read, year by year.",
+        "Follow the cost curve, and note where the qualitative change happens — it is not where the cost is lowest, but where it stops being a reason not to."
+      ],
+      "after": [
+        "Once it is cheap, you sequence first and think afterwards. That changes what questions are askable.",
+        "The threshold that matters is where cost stops determining what gets measured. Below that, whole categories of question become answerable — including ones nobody would have proposed at the old price."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Working out the order of the letters is called sequencing.",
+        "Sequencing determines the order of bases. Modern methods read enormous numbers of short fragments in parallel and reassemble them computationally.",
+        "High-throughput sequencing reads millions of short fragments simultaneously; the assembly is a computational problem, which is why the field became as much bioinformatics as biology.",
+        "The shift from reading one sequence carefully to reading everything and sorting it out afterwards changed what biology is like to do. It also created a durable asymmetry: sequences accumulate far faster than anyone can work out what they do, so the bottleneck moved from data to interpretation and has stayed there."
+      ],
+      "sub": [
+        "You do not read it in one go. You read millions of tiny pieces and fit them together.",
+        "The fragments overlap, and overlapping is what lets software reconstruct the order.",
+        "It also removed the requirement to grow anything, which is what opened up the microbial world you could not culture.",
+        "Metagenomics — sequencing everything in a sample without isolating anything — revealed whole branches of life that a century of culturing had missed entirely. That is the same lesson as the microscope, one level along: the instrument decided what was knowable, and the limit was invisible from inside."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "read-a-genome",
+      "q": [
+        "What is the hard part now that sequencing is cheap?",
+        "Where has the bottleneck moved?",
+        "Why did cheap sequencing not resolve the interpretation problem?"
+      ],
+      "options": [
+        "Working out what any of it means",
+        "Getting hold of enough DNA",
+        "Nothing — it is a solved problem"
+      ],
+      "answer": 0,
+      "why": [
+        "Reading the letters is now easy. Knowing what a particular change does to a person is not, and mostly we still cannot say.",
+        "Data generation outran interpretation. Most human genetic variants found in a clinical test are classed as of uncertain significance — the sequence is known and its consequence is not.",
+        "Because cost was never the limiting factor on understanding. Sequencing tells you the letters; connecting a variant to a phenotype requires population data, functional work and statistics, none of which got cheaper at the same rate. The gap has widened rather than closed, which is a general pattern when one step in a pipeline improves by orders of magnitude and the others do not."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "A new virus can now be read within days of anyone noticing it.",
+        "The SARS-CoV-2 genome was sequenced and published within weeks of the first cases, and vaccine design began from that sequence alone — before anyone had the virus in most laboratories. The speed came directly from this cost curve, and it is the clearest case of a measurement becoming cheap enough to change what is possible rather than merely what is convenient."
+      ]
+    }
+  ]
+}

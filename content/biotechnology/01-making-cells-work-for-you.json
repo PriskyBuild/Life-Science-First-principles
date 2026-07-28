@@ -1,0 +1,106 @@
+{
+  "id": "biotechnology/01",
+  "module": "biotechnology",
+  "index": 0,
+  "title": "Making Cells Work for You",
+  "specimen": "host-cell",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Bread, cheese, beer and yoghurt are all made by microbes doing a job for us. We did that for thousands of years without knowing.",
+        "Fermentation predates any understanding of what was doing it by several thousand years. People were running microbial factories long before anyone could see a microbe."
+      ],
+      "sub": [
+        "Now we can choose what job they do.",
+        "The difference between then and now is not the microbes. It is that the instructions are editable."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "cells-as-factories",
+      "question": [
+        "Why use a living cell to make something instead of building it chemically?",
+        "What advantage does a cell have over a chemical synthesis route?"
+      ],
+      "options": [
+        "It builds itself, and then makes more of itself",
+        "Cells are cheaper to buy",
+        "Chemistry does not work on living molecules"
+      ],
+      "outcome": "It builds itself, and then makes more of itself",
+      "note": [
+        "Have a think first.",
+        "Commit. Ask what a factory would cost if it doubled itself every twenty minutes."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each part of turning a cell into a factory in the job it does.",
+        "Match each component of a recombinant expression system to its function."
+      ],
+      "parts": [
+        { "id": "gene", "label": "The gene you want" },
+        { "id": "vector", "label": "A ring of DNA to carry it" },
+        { "id": "host", "label": "A host cell" },
+        { "id": "marker", "label": "A selection marker" }
+      ],
+      "slots": [
+        { "accepts": "gene", "label": ["The instruction for the thing you want made", "The coding sequence for the product"] },
+        { "accepts": "vector", "label": ["Gets the instruction into the cell", "A plasmid: carries the insert and replicates in the host"] },
+        { "accepts": "host", "label": ["Does the actual building, and multiplies", "Provides transcription, translation and growth"] },
+        { "accepts": "marker", "label": ["Tells you which cells took it up", "Allows selection of successfully transformed cells"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Putting a gene from one thing into another is called recombinant DNA.",
+        "Recombinant DNA: a gene from one organism inserted into another, which then reads it as its own and makes the product.",
+        "The host reads the foreign gene because the genetic code is essentially universal. Nothing has to be translated between species — the same four letters and the same codon assignments.",
+        "That universality is what makes the whole field possible, and it is the same fact you met in DNA lesson 2. A human gene in a bacterium works because bacteria and humans share the alphabet and very nearly the whole coding convention, which is a fact about the history of life that biotechnology simply exploits."
+      ],
+      "sub": [
+        "The cell does not know the instruction is not its own.",
+        "There is no mechanism by which it could tell. A gene is a sequence, and the machinery reads sequences.",
+        "The selection marker matters more than it sounds: only a small fraction of cells take the plasmid up at all.",
+        "Transformation efficiency is low, so the marker — usually antibiotic resistance — is what turns a rare success into a pure culture. It is also a nice illustration of the selection you already know, applied deliberately: add the antibiotic and only the cells that took the plasmid survive to breed."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "cells-as-factories",
+      "q": [
+        "Why does a bacterium read a human gene correctly?",
+        "Why is a human gene expressed by a bacterial host?",
+        "What makes cross-species expression possible at all?"
+      ],
+      "options": [
+        "The genetic code is essentially the same in everything alive",
+        "The gene is translated into bacterial first",
+        "Bacteria are closely related to humans"
+      ],
+      "answer": 0,
+      "why": [
+        "The same four letters mean the same things in a germ and in you. So a bacterium reading a human instruction is just reading — it has no way of knowing where it came from.",
+        "The code is near-universal, so the same triplets specify the same amino acids in both. Nothing is converted; the host machinery simply reads a sequence it can read.",
+        "It is a fact about shared inheritance rather than about similarity — bacteria and humans are about as distantly related as living things get, and the code is shared anyway. That universality across the whole of life is what makes it exploitable, and it is one of the observations any account of life's history has to accommodate."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Nearly all the insulin in the world is now made by microbes with a human gene in them.",
+        "Before 1982 insulin was extracted from pig and cow pancreases — inconsistent, in limited supply, and immunologically imperfect. Recombinant human insulin replaced it almost completely within a decade. It was the first recombinant drug and it remains the clearest demonstration of the whole approach: an unlimited, identical, cheap supply of a human protein made by an organism that has never had a pancreas."
+      ]
+    }
+  ]
+}

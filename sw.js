@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "0f00dc713f86";
+const VERSION = "c68b9af5a45b";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -24,11 +24,20 @@ const PRECACHE = [
   "content/biomolecules/02-sugar-is-a-battery.json",
   "content/biomolecules/03-why-oil-and-water-wont-mix.json",
   "content/biomolecules/04-beads-that-fold-into-machines.json",
+  "content/biotechnology/01-making-cells-work-for-you.json",
+  "content/biotechnology/02-copying-dna-on-purpose.json",
+  "content/biotechnology/03-reading-a-genome.json",
+  "content/biotechnology/04-insulin-from-bacteria.json",
   "content/cells/01-city-in-a-speck.json",
   "content/cells/02-the-wall-that-chooses.json",
   "content/cells/03-the-power-plant.json",
   "content/cells/04-the-instruction-room.json",
   "content/cells/05-build-a-cell.json",
+  "content/crispr/01-scissors-that-read-first.json",
+  "content/crispr/02-where-the-scissors-came-from.json",
+  "content/crispr/03-cutting-the-right-place.json",
+  "content/crispr/04-what-could-go-wrong.json",
+  "content/crispr/05-edit-a-gene.json",
   "content/curriculum.json",
   "content/development/01-one-cell-becomes-an-animal.json",
   "content/development/02-where-is-the-instruction-for-leg.json",
