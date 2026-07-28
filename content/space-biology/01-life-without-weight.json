@@ -1,0 +1,130 @@
+{
+  "id": "space-biology/01",
+  "module": "space-biology",
+  "index": 0,
+  "title": "Life Without Weight",
+  "specimen": "microgravity-rig",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Astronauts float about and it looks like a holiday. Their bones are dissolving the whole time.",
+        "Six months in orbit costs roughly a tenth of the mineral in the hip. On Earth that much loss would take a decade of ageing."
+      ],
+      "sub": [
+        "Nothing is attacking them. Something has stopped.",
+        "Which is the interesting part: it is a loss of signal rather than an injury."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "life-without-gravity",
+      "question": [
+        "Why would bones get thinner when there is no gravity?",
+        "What is the mechanism by which weightlessness reduces bone density?"
+      ],
+      "options": [
+        "Bone is built to match what pushes on it, and nothing is pushing",
+        "There is no calcium in space food",
+        "Space is cold and cold weakens bone"
+      ],
+      "outcome": "Bone is built to match what pushes on it, and nothing is pushing",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what would have to be true for bone to be maintained at all — then ask what supplies that on Earth."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How hard does the crew train?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "No exercise: about 1 to 1.5% of the hip lost every single month.",
+        "Cycling every day: the heart stays strong and the hip keeps thinning.",
+        "An hour of pulling against weights: the loss slows, and does not stop.",
+        "Two hours a day on the resistance machine: bone density roughly holds.",
+        "The same machine, plus enough food and enough vitamin D: it holds, and sometimes gains."
+      ],
+      "t": [
+        "Slide from doing nothing to training properly, and watch what saves the bones.",
+        "The countermeasure history, in order. Note which intervention works and which one does not, and what distinguishes them."
+      ],
+      "after": [
+        "Cycling is hard work and it did not help. Pulling against something did.",
+        "Aerobic exercise loads the heart and not the skeleton. Resistive exercise loads the skeleton — and that, plus adequate energy intake and vitamin D, is what finally held bone density on the Station. Bone was never asking for gravity. It was asking for load."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Gravity was doing several jobs at once. Sort out which is which.",
+        "Weightlessness removes one thing and several systems change. Assign each change to the job that gravity was quietly performing."
+      ],
+      "parts": [
+        { "id": "load", "label": "Load on the skeleton" },
+        { "id": "pull", "label": "A downward pull on fluid" },
+        { "id": "effort", "label": "Effort needed to move" },
+        { "id": "up", "label": "A reliable direction called down" }
+      ],
+      "slots": [
+        { "correct": "load", "label": ["Gone: bone starts being taken apart"] },
+        { "correct": "pull", "label": ["Gone: faces puff up and eyes are pressed out of shape"] },
+        { "correct": "effort", "label": ["Gone: muscles that lift you are no longer needed"] },
+        { "correct": "up", "label": ["Gone: the balance organ in the ear reports nonsense for days"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Your body treats gravity as a message. Take the message away and it rebuilds itself smaller.",
+        "Bone continuously remodels in response to mechanical strain. Remove the strain and resorption outpaces formation, so density falls at about 1 to 1.5% per month in the load-bearing bones.",
+        "Cells called osteocytes, buried in the bone, sense strain and set the balance between the cells that build and the cells that dismantle. Unloading shifts that balance; the tissue is doing exactly what it is designed to do.",
+        "Spaceflight is therefore a natural experiment in what was load-bearing — physiologically as well as mechanically. The headward fluid shift flattens the back of the eye and swells the optic disc, a condition serious enough to constrain Mars mission planning; the vestibular system, deprived of a gravity vector, recalibrates over days. None of these are injuries. They are a body correctly adapting to conditions it was never specified for."
+      ],
+      "sub": [
+        "It is not damage. It is your body being economical.",
+        "Building bone is expensive, so the body only builds what it is being asked to hold up.",
+        "Which is why the countermeasure had to be load rather than a drug or a supplement.",
+        "It also explains why bone recovers incompletely on return: density comes back over a year or so, but the fine internal architecture that was dismantled is not fully rebuilt, and architecture is a large part of what makes bone strong. Recovering the mass is not the same as recovering the structure."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "life-without-gravity",
+      "q": [
+        "Why did cycling in orbit not save the astronauts' bones?",
+        "Why is resistive exercise effective against bone loss where aerobic exercise is not?",
+        "What does the countermeasure's success tell you about the signal bone responds to?"
+      ],
+      "options": [
+        "Bone responds to being pushed against, and cycling does not push on it",
+        "Cycling is not hard enough work",
+        "Cycling uses up too much calcium"
+      ],
+      "answer": 0,
+      "why": [
+        "Your bones are not counting how tired you are. They are measuring how hard something squashed them, and a bicycle in space squashes nothing.",
+        "The stimulus is mechanical strain in the bone itself, not cardiovascular effort. Cycling in free fall produces almost no skeletal loading, so the signal that maintains bone is still absent however hard the crew works.",
+        "It tells you the signal is local and mechanical rather than systemic. If bone loss were caused by something circulating — a hormone, a deficiency — then general exercise or a supplement would help. That resistive loading works, and only where it is applied, identifies strain at the tissue as the controlled variable."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Everything learned about astronauts' bones is being used on people who cannot get out of bed.",
+        "Bed rest studies and spaceflight are the same experiment run two ways, and both feed osteoporosis research directly. The finding that generalises is that the skeleton is maintained by use rather than by supply — which is why loading exercise, not calcium alone, is the standard advice for keeping bone on Earth."
+      ]
+    }
+  ]
+}

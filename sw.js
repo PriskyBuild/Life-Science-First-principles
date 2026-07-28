@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "c68b9af5a45b";
+const VERSION = "30f9c43d55de";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -43,6 +43,10 @@ const PRECACHE = [
   "content/development/02-where-is-the-instruction-for-leg.json",
   "content/development/03-the-same-toolkit-in-a-fly-and-in-you.json",
   "content/development/04-build-a-body-plan.json",
+  "content/disease/01-what-makes-you-ill.json",
+  "content/disease/02-how-something-spreads.json",
+  "content/disease/03-the-outbreak-detective.json",
+  "content/disease/04-why-some-diseases-vanish.json",
   "content/dna/01-two-metres-in-a-speck.json",
   "content/dna/02-the-four-letters.json",
   "content/dna/03-the-ladder-that-copies-itself.json",
@@ -62,6 +66,10 @@ const PRECACHE = [
   "content/evolution/03-the-order-in-the-rocks.json",
   "content/evolution/04-family-trees-written-in-dna.json",
   "content/evolution/05-how-much-can-change.json",
+  "content/future-biology/01-growing-an-organ.json",
+  "content/future-biology/02-bringing-back-the-dead.json",
+  "content/future-biology/03-should-we.json",
+  "content/future-biology/04-what-you-would-build.json",
   "content/genes/01-what-is-a-gene-for.json",
   "content/genes/02-same-book-different-pages.json",
   "content/genes/03-two-copies-of-everything.json",
@@ -77,6 +85,10 @@ const PRECACHE = [
   "content/immunity/03-how-a-vaccine-teaches.json",
   "content/immunity/04-when-the-army-attacks-you.json",
   "content/immunity/05-build-a-defence.json",
+  "content/medicine/01-finding-the-right-molecule.json",
+  "content/medicine/02-why-trials-have-two-groups.json",
+  "content/medicine/03-resistance.json",
+  "content/medicine/04-design-a-treatment.json",
   "content/microbiology/01-the-invisible-majority.json",
   "content/microbiology/02-fast-life.json",
   "content/microbiology/03-the-ones-that-live-in-you.json",
@@ -90,6 +102,10 @@ const PRECACHE = [
   "content/neuroscience/03-your-brain-edits-what-you-see.json",
   "content/neuroscience/04-memory-is-rebuilt-not-replayed.json",
   "content/neuroscience/05-wire-a-reflex.json",
+  "content/nutrition/01-food-is-two-things.json",
+  "content/nutrition/02-what-happens-to-a-sandwich.json",
+  "content/nutrition/03-the-vitamin-nobody-could-find.json",
+  "content/nutrition/04-why-diets-disagree.json",
   "content/plants/01-eating-light.json",
   "content/plants/02-the-plumbing-that-has-no-pump.json",
   "content/plants/03-why-leaves-are-flat.json",
@@ -101,6 +117,14 @@ const PRECACHE = [
   "content/proteins/04-when-folding-goes-wrong.json",
   "content/proteins/05-build-a-protein.json",
   "content/reviews.json",
+  "content/space-biology/01-life-without-weight.json",
+  "content/space-biology/02-could-anything-live-on-mars.json",
+  "content/space-biology/03-the-toughest-animal-alive.json",
+  "content/space-biology/04-pack-a-spaceship-garden.json",
+  "content/synthetic-biology/01-biology-as-parts.json",
+  "content/synthetic-biology/02-a-circuit-made-of-genes.json",
+  "content/synthetic-biology/03-the-smallest-possible-life.json",
+  "content/synthetic-biology/04-design-an-organism.json",
   "content/what-is-life/01-the-line-you-cannot-draw.json",
   "content/what-is-life/02-seven-rules-and-their-exceptions.json",
   "content/what-is-life/03-the-fire-that-isnt-alive.json",
@@ -126,6 +150,7 @@ const PRECACHE = [
   "js/sims/energy.js",
   "js/sims/folding.js",
   "js/sims/membrane.js",
+  "js/sims/outbreak.js",
   "js/sims/replication.js",
   "js/sims/selection.js",
   "js/sims/spike.js",

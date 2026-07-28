@@ -1,0 +1,179 @@
+{
+  "id": "future-biology/03",
+  "module": "future-biology",
+  "index": 2,
+  "title": "Should We?",
+  "specimen": "ethics-frame",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Everything in this world so far has answered the question 'can we?'. Not one of them answers 'should we?'.",
+        "Capability and permission are separate questions with separate methods. Conflating them is the commonest failure in the public argument about biotechnology, in both directions."
+      ],
+      "sub": [
+        "They are different questions, and only one of them is science.",
+        "No measurement has ever settled a question about what ought to be done."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Build the set of questions you would ask before making something. Any part fits any slot.",
+        "Assemble the frame, then apply it as a ladder. Each test asks how far your questions actually got you."
+      ],
+      "parts": [
+        { "id": "can", "label": "Can it be done?" },
+        { "id": "what", "label": "What is it for?" },
+        { "id": "who", "label": "Who carries the risk?" },
+        { "id": "undo", "label": "Can it be undone?" },
+        { "id": "decide", "label": "Who decides?" }
+      ],
+      "slots": [
+        { "correct": "can", "label": ["The question a laboratory can answer", "Establishes feasibility, and nothing else"] },
+        { "correct": "what", "label": ["What good it is supposed to do", "States the problem being solved, so success is definable"] },
+        { "correct": "who", "label": ["Who has to live with it if it goes wrong", "Separates those who benefit from those who bear the risk"] },
+        { "correct": "undo", "label": ["Whether you could stop it afterwards", "Determines how much uncertainty is tolerable"] },
+        { "correct": "decide", "label": ["Who is allowed to say yes", "Identifies whose consent legitimises the decision"] }
+      ],
+      "trials": [
+        {
+          "name": ["Work out whether it is possible", "Feasibility"],
+          "needs": ["can"],
+          "pass": ["You know whether it can be built.", "Technical feasibility established. This is the only rung that experiment settles."],
+          "fail": ["You are arguing about something that may not be possible at all.", "Debating the ethics of an impossibility is a common and expensive way to waste attention."]
+        },
+        {
+          "name": ["Work out whether it is worth doing", "Purpose"],
+          "needs": ["can", "what"],
+          "pass": ["You can say what problem it solves.", "A stated purpose makes the benefit assessable and failure recognisable."],
+          "fail": ["Something impressive, for no stated reason.", "Without a purpose there is no benefit to weigh against any cost, so no assessment is possible in principle."]
+        },
+        {
+          "name": ["Work out whether it is fair", "Distribution"],
+          "needs": ["can", "what", "who"],
+          "pass": ["You know who benefits and who takes the risk, and whether they are the same people.", "Benefit and risk are located. Where they fall on different people, consent becomes the central question."],
+          "fail": ["A good idea, paid for by somebody who never agreed to it.", "Most serious objections to a technology are objections to this asymmetry rather than to the technology."]
+        },
+        {
+          "name": ["Work out whether it is safe to be wrong", "Reversibility"],
+          "needs": ["can", "what", "who", "undo"],
+          "pass": ["If it turns out badly, it can be stopped.", "A reversible action needs only to be probably right. An irreversible one needs to be right."],
+          "fail": ["No way back, and you were not certain.", "Releasing an organism, editing a germline, removing a species: none can be recalled. Irreversibility raises the standard of evidence required, and it is routinely treated as a detail."]
+        },
+        {
+          "name": ["Work out whether it is yours to decide", "Authority"],
+          "needs": ["can", "what", "who", "undo", "decide"],
+          "pass": ["You know who has the standing to agree, and you asked them.", "Legitimate authority identified. For decisions affecting people who cannot be consulted, this is the hardest rung and the one most often skipped."],
+          "fail": ["The right answer, decided by the wrong person.", "A correct decision taken without standing is still a decision somebody else was entitled to make — and this is the objection that most often survives when all the technical ones have been answered."]
+        }
+      ],
+      "win": [
+        "Five questions, and only the first one is science. The other four are yours.",
+        "All five. Note the structure: capability is a precondition for the argument rather than a contribution to it. Everything that decides the case sits above the first rung."
+      ],
+      "lose": [
+        "Read which test failed — it names the question you skipped.",
+        "Each failed trial names the question that was not asked. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "ethics-of-capability",
+      "t": [
+        "Two groups of conservation biologists disagree about de-extinction. Neither of them doubts it can be done.",
+        "A live disagreement inside the field, between people who agree about all of the science in lesson 2. Read what each is actually claiming."
+      ],
+      "evidence": [
+        "Both sides agree on the facts you met last lesson: what comes back is an approximation, it is expensive, and most species died because their habitat did.",
+        "Common ground: the technical limits of genome recovery, the approximate nature of the product, the cost per attempt, and the fact that habitat loss drives extinction rates. Nothing empirical is in dispute here."
+      ],
+      "views": [
+        {
+          "who": "Conservation biologists who support the work (for example, Revive & Restore)",
+          "claim": [
+            "Build the tools. They are already saving animals that are still alive.",
+            "The techniques should be developed, because their principal near-term benefit is genetic rescue of living endangered populations."
+          ],
+          "because": [
+            "Frozen cells from animals that died decades ago have already put lost variety back into ferrets and wild horses. That part is not a hope, it happened.",
+            "Biobanked cells have produced living black-footed ferrets and Przewalski's horses carrying variation their populations had lost to inbreeding. They argue the capability generalises across species, that public interest in charismatic extinct animals raises money conventional conservation cannot, and that restoring lost ecological function is a legitimate aim in its own right."
+          ],
+          "predicts": [
+            "Money raised for mammoths should end up helping animals that are still here.",
+            "Investment should prove additional rather than diverted, and the techniques should continue producing results in living species before extinct ones."
+          ]
+        },
+        {
+          "who": "Conservation biologists who oppose it (for example, Bennett and colleagues, 2017)",
+          "claim": [
+            "Spend it on the places animals live, not on bringing back the ones already lost.",
+            "Resources should go to habitat protection, because that is what determines how many species survive."
+          ],
+          "because": [
+            "Most animals went extinct because their home was destroyed, and bringing the animal back does not bring the home back. And if people believe extinction can be undone, they may stop trying so hard to prevent it.",
+            "Their published analysis found that if de-extinction is funded from existing government conservation budgets, the net result is more species lost, because the same money spent on habitat protects more species per pound. They add a moral hazard argument: presenting extinction as reversible weakens the case for prevention, and prevention is far cheaper than any reversal."
+          ],
+          "predicts": [
+            "If people are told extinction can be undone, they should start caring less about preventing it.",
+            "Conservation funding should prove fungible in practice, and messaging about reversibility should measurably reduce stated support for preventive protection."
+          ]
+        }
+      ],
+      "ask": [
+        "Neither of them is arguing about whether it can be done. So what are they actually arguing about?",
+        "Two things are tangled together here, and they are not the same kind of question. Whether telling people a loss is reversible reduces their support for prevention is empirical — it can be, and has been, tested. Where a fixed budget ought to go is not; it depends on what you think conservation is for. Separating those two would improve the argument considerably, and neither side habitually does it."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Being able to do something is never a reason to do it. That is the whole of this lesson.",
+        "Capability establishes that a question is worth asking. It contributes nothing to the answer, because 'can' and 'ought' are different kinds of claim.",
+        "This is a formal point rather than a cautious one: no set of factual premises entails a conclusion about what should be done, without a premise about what is good. That missing premise is where every real disagreement lives.",
+        "Which is why arguments about biotechnology so often go nowhere. One side answers a 'should' question with evidence about safety; the other answers a 'can' question with a conviction about value; and both are annoyed. People reason towards the missing premise from genuinely different starting points — consequences, duties, rights, what a person or a society ought to be — and those starting points are not themselves scientific findings. Naming which one you are arguing from is the single most useful thing you can do in one of these arguments."
+      ],
+      "sub": [
+        "You can, and you still have to decide.",
+        "The laboratory hands you the first question answered and the other four untouched.",
+        "Notice how much public argument consists of answering a question the other person did not ask.",
+        "It is also why the reversibility question deserves separate weight rather than being folded into a general assessment of risk. A reversible decision can be made on the balance of evidence and corrected. An irreversible one cannot, and the appropriate response to uncertainty is therefore different in kind — not merely more caution, but a different standard of proof."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "ethics-of-capability",
+      "q": [
+        "Someone proves a thing can be built. What has that settled?",
+        "What does a demonstration of feasibility contribute to the question of whether to proceed?",
+        "Why is a factual premise alone insufficient to reach a conclusion about what ought to be done?"
+      ],
+      "options": [
+        "Only that it is possible — every other question is still open",
+        "That it should be built, since it works",
+        "Nothing at all; feasibility is irrelevant"
+      ],
+      "answer": 0,
+      "why": [
+        "Knowing you can do something tells you nothing about whether it is a good idea. It just means the question is now worth arguing about.",
+        "It settles the first of five questions and moves the debate from hypothetical to actual. Purpose, distribution of risk, reversibility and authority are untouched by it.",
+        "Because a conclusion about what ought to be done requires at least one premise about what is good or owed, and no experiment supplies one. Feasibility is necessary for the question to arise and contributes nothing to its answer — which is why the third option is wrong too."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "In 2018 a scientist edited two human embryos, and they were born. Almost nobody in the field thought he should have.",
+        "The technique worked in the narrow sense: the edits were made and the children were born. He was imprisoned, and the scientific reaction was near-unanimous condemnation — not because the biology was impossible, but because the edits were heritable and therefore irreversible, the medical need was disputable, the risk fell on people who could not consent, and no body with the standing to authorise it had. That is four of the five questions failed, by someone who had answered the first one."
+      ]
+    }
+  ]
+}

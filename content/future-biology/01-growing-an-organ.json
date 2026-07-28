@@ -1,0 +1,142 @@
+{
+  "id": "future-biology/01",
+  "module": "future-biology",
+  "index": 0,
+  "title": "Growing an Organ",
+  "specimen": "scaffold",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Cells will happily grow into whatever shape you give them. Making that shape thicker than a coin is the problem nobody has solved.",
+        "Tissue engineering works well up to a millimetre or two and then stops, for a reason that is geometric rather than biological."
+      ],
+      "sub": [
+        "Not the cells. Not the shape. The thickness.",
+        "The limit is set by how far a molecule of oxygen will diffuse before it is used up."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "grown-tissue",
+      "question": [
+        "Lab-grown skin works. Lab-grown hearts do not. What is the difference?",
+        "Why does tissue engineering succeed for thin tissues and fail for solid organs?"
+      ],
+      "options": [
+        "Thick tissue needs its own blood supply and thin tissue does not",
+        "Hearts are made of more complicated cells",
+        "Nobody has tried hard enough yet"
+      ],
+      "outcome": "Thick tissue needs its own blood supply and thin tissue does not",
+      "note": [
+        "Guess first.",
+        "Commit. Ask how far from a blood vessel a cell can be before it starves — the number is smaller than you expect."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Grow an organ. Any part fits any slot, so the marking is on you.",
+        "Assign each requirement to the job it does, then five tests of increasing severity. Placement is unconstrained."
+      ],
+      "parts": [
+        { "id": "cells", "label": "Living cells" },
+        { "id": "scaffold", "label": "A scaffold" },
+        { "id": "signals", "label": "Signals" },
+        { "id": "vessels", "label": "Blood vessels through it" },
+        { "id": "match", "label": "A match to the patient" }
+      ],
+      "slots": [
+        { "correct": "cells", "label": ["The living stuff it is actually made of"] },
+        { "correct": "scaffold", "label": ["The shape they grow into"] },
+        { "correct": "signals", "label": ["What tells each cell which kind to become"] },
+        { "correct": "vessels", "label": ["A route to every cell in the middle"] },
+        { "correct": "match", "label": ["Why the body does not attack it"] }
+      ],
+      "trials": [
+        {
+          "name": ["Grow a patch of skin", "Thin tissue"],
+          "needs": ["cells", "scaffold"],
+          "pass": ["Cells on a shape. Thin tissue genuinely works, and is used on patients.", "Cells seeded on a scaffold produce functional thin constructs. Engineered skin has been in clinical use for decades."],
+          "fail": ["Cells with no shape are a puddle; a shape with no cells is a plastic model.", "Both are necessary before there is anything to evaluate."]
+        },
+        {
+          "name": ["Make it the right kind of tissue", "Identity"],
+          "needs": ["cells", "scaffold", "signals"],
+          "pass": ["The cells became what you needed them to become.", "Differentiation cues determine cell fate; this is the development machinery, used deliberately."],
+          "fail": ["You grew a lump of cells that never decided what they were.", "Without positional and chemical cues, cells do not adopt the identities the tissue requires. This is the same signalling you met in Development."]
+        },
+        {
+          "name": ["Make it thicker than a coin", "Diffusion limit"],
+          "needs": ["cells", "scaffold", "signals", "vessels"],
+          "pass": ["There is a blood supply reaching the middle, so the middle stays alive.", "A perfusable vascular network keeps every cell within diffusion distance of a supply."],
+          "fail": ["The outside is alive and the middle starved. Oxygen only reaches about a fifth of a millimetre.", "Oxygen diffuses roughly 100 to 200 micrometres before it is exhausted. Beyond that the core becomes necrotic — which is the single reason solid organs are not yet made."]
+        },
+        {
+          "name": ["Put it in a person", "Rejection"],
+          "needs": ["cells", "scaffold", "signals", "vessels", "match"],
+          "pass": ["Built from the patient's own cells, so there is nothing foreign to attack.", "Autologous cells avoid alloimmune rejection, removing the need for lifelong immunosuppression."],
+          "fail": ["A working organ that the immune system destroys within days.", "This is the recognition problem from Immunity, viewed from the other side: the machinery that distinguishes self from non-self does not care that you built it on purpose."]
+        }
+      ],
+      "win": [
+        "Cells, shape, instructions, a blood supply and a body that accepts it. Test three is where the world actually is.",
+        "All four. Note where the real frontier sits: the first two are routine, the fourth is understood, and the third is unsolved. Vascularisation is the bottleneck for the whole field."
+      ],
+      "lose": [
+        "Read which test failed — it names what was missing.",
+        "Each failed trial names an unmet requirement. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Growing living tissue on a shape you designed is called tissue engineering.",
+        "Tissue engineering combines cells, a scaffold and differentiation signals to produce functional tissue. Thin constructs are clinical; thick ones are not.",
+        "The scaffold can be a synthetic polymer or a donor organ stripped of its cells, leaving the protein architecture and the vascular tree intact for reseeding. That approach solves the geometry problem by not designing the geometry.",
+        "It is worth being precise about the state of the field, because it is routinely overstated. Bladders, skin, cartilage and cornea have been engineered and implanted. Organoids — millimetre-scale kidney, gut and brain tissue grown from stem cells — are transforming what can be studied in a dish, and none of them are transplantable, precisely because they have no blood supply. No solid organ has been engineered and successfully transplanted in a person."
+      ],
+      "sub": [
+        "The hard part is plumbing.",
+        "Every cell has to be within about a fifth of a millimetre of a blood supply, and building that network is the unsolved problem.",
+        "Printing sacrificial channels and then dissolving them out is the most promising current approach, and it is not there yet.",
+        "This field also carries a cautionary case worth knowing. In the 2010s a surgeon implanted engineered tracheas into patients on the strength of results that were later found to have been misreported; most of the patients died, and he was convicted of criminal negligence. The medicine failed because the review did — which is a reason to read the follow-up data rather than the announcement, in this field particularly."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "grown-tissue",
+      "q": [
+        "Why can a lab grow skin but not a heart?",
+        "Why does the diffusion limit prevent solid-organ engineering?",
+        "Why does a decellularised scaffold address the problem differently?"
+      ],
+      "options": [
+        "Anything thick needs blood vessels built through it, and that has not been solved",
+        "Heart cells cannot be grown",
+        "There are not enough donors to copy from"
+      ],
+      "answer": 0,
+      "why": [
+        "Skin is thin enough that the cells in the middle can get what they need from the outside. A heart is not. Every cell deep inside needs its own delivery.",
+        "Oxygen diffuses only 100 to 200 micrometres through tissue. Anything thicker requires an internal vascular network, and fabricating a branching, perfusable network at capillary scale is unsolved.",
+        "Because it inherits the network instead of building it. Stripping a donor organ of its cells leaves the vascular tree intact down to the capillaries, so the geometry problem is transferred rather than solved — and the approach then needs a donor organ, which is the shortage it was meant to relieve."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Tissue grown from a patient's own cells is already being used to test their own drugs.",
+        "Organoids cannot be transplanted, and they can be dosed. Growing intestinal tissue from an individual with cystic fibrosis and testing candidate drugs on it directly predicts who will respond — which is a real clinical use for tissue that is too small to be an organ, arrived at by taking the limitation seriously rather than waiting for it to be solved."
+      ]
+    }
+  ]
+}

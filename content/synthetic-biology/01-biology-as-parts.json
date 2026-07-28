@@ -1,0 +1,106 @@
+{
+  "id": "synthetic-biology/01",
+  "module": "synthetic-biology",
+  "index": 0,
+  "title": "Biology as Parts",
+  "specimen": "part-registry",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "An engineer picks a resistor off a shelf and knows exactly what it will do. A biologist has never been able to do that.",
+        "Electronics works because a component behaves the same way in every circuit. Biology has never had that, and the whole of synthetic biology is an attempt to get it."
+      ],
+      "sub": [
+        "That difference is why building with biology is so much harder than it sounds.",
+        "It is not that the parts are complicated. It is that they are not the same twice."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "biology-as-parts",
+      "question": [
+        "What would you need before you could build with biological parts reliably?",
+        "What does engineering with biology require that biology does not naturally provide?"
+      ],
+      "options": [
+        "Parts that behave the same way whatever you connect them to",
+        "More powerful microscopes",
+        "Faster computers"
+      ],
+      "outcome": "Parts that behave the same way whatever you connect them to",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what an engineer assumes about a component without ever checking."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Put each standard part next to what it does.",
+        "Match each element of a genetic construct to its function."
+      ],
+      "parts": [
+        { "id": "promoter", "label": "Promoter" },
+        { "id": "rbs", "label": "Ribosome binding site" },
+        { "id": "coding", "label": "Coding sequence" },
+        { "id": "terminator", "label": "Terminator" }
+      ],
+      "slots": [
+        { "accepts": "promoter", "label": ["Decides when reading starts", "Controls when and how strongly the gene is transcribed"] },
+        { "accepts": "rbs", "label": ["Decides how much gets made", "Sets translation initiation rate"] },
+        { "accepts": "coding", "label": ["Says what to build", "Specifies the protein"] },
+        { "accepts": "terminator", "label": ["Says where to stop", "Ends transcription cleanly"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Making biological parts standard, so they work the same every time, is called synthetic biology.",
+        "Synthetic biology treats biological components as characterised, composable parts — the engineering discipline biology has never had.",
+        "The aspiration is abstraction: use a part by its specification without knowing its internals, as an electronic engineer does. Standard registries of characterised parts exist for exactly this.",
+        "The aspiration has proved much harder than the founders expected, and it is worth being honest about why. Parts interact through the host's shared resources — ribosomes, polymerase, energy — so adding a second circuit changes the behaviour of the first. That is a violation of the modularity assumption the whole approach rests on, and it is not a bug in any particular part."
+      ],
+      "sub": [
+        "It is a good idea that biology keeps resisting.",
+        "Parts characterised in one host frequently behave differently in another, or alongside something else.",
+        "This coupling is called retroactivity or host burden, and it is the central open problem in the field.",
+        "The response has been to build insulating devices and to characterise parts in context rather than in isolation — treating context-dependence as something to be measured rather than assumed away. Twenty years in, the field is more modest and more useful than its founding manifestos."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "biology-as-parts",
+      "q": [
+        "Why is building with biological parts harder than with electronic ones?",
+        "Why does modularity fail in biological circuits?",
+        "Why is host burden a structural rather than incidental problem?"
+      ],
+      "options": [
+        "The parts affect each other through the cell they share",
+        "Biological parts are too small",
+        "Nobody has written the specifications down"
+      ],
+      "answer": 0,
+      "why": [
+        "A resistor does not care what else is in the circuit. A gene does — everything in a cell shares the same machinery, so switching one thing on takes machinery away from everything else.",
+        "Parts compete for shared cellular resources, so adding one changes the behaviour of others. Modularity assumes components do not interact except through their declared connections, and in a cell they always do.",
+        "Because the resources are finite and common by construction. Every expressed construct draws on the same ribosome pool and energy budget, so coupling is a property of being in a cell rather than a flaw to be designed out. It can be reduced by insulation and by characterising in context; it cannot be eliminated."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The antimalarial artemisinin can now be brewed in yeast rather than farmed.",
+        "Producing artemisinic acid in engineered yeast took roughly 150 person-years and involved rebuilding a multi-step plant pathway in an organism that had never had one. It worked, and it is a fair measure of the field's real state: enormously impressive, and nothing like picking parts off a shelf."
+      ]
+    }
+  ]
+}

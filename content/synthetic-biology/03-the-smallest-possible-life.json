@@ -1,0 +1,109 @@
+{
+  "id": "synthetic-biology/03",
+  "module": "synthetic-biology",
+  "index": 2,
+  "title": "The Smallest Possible Life",
+  "specimen": "minimal-cell",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Take genes away from a bacterium one at a time until it stops living. How many are left?",
+        "A minimal genome has been built by stripping a bacterium down until removing anything more kills it. The number that remains is 473 genes — and roughly a fifth of them have no known function at all."
+      ],
+      "sub": [
+        "And we do not know what a fifth of them are for.",
+        "That is the interesting number, not the 473."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "minimal-genome",
+      "question": [
+        "You strip a cell to the fewest genes it can live with. What have you learned?",
+        "What does a minimal genome establish?"
+      ],
+      "options": [
+        "The shortest list of jobs that being alive requires",
+        "Which genes are the most important ones",
+        "Nothing — you have just broken a cell"
+      ],
+      "outcome": "The shortest list of jobs that being alive requires",
+      "note": [
+        "Guess first.",
+        "Commit. Note that 'essential' here means essential in a laboratory with unlimited food — which is a narrower claim than it sounds."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How many genes?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Human: about 20,000 protein-coding genes.",
+        "E. coli: about 4,400.",
+        "The smallest natural free-living bacterium: about 470.",
+        "JCVI-syn3.0, the built minimal cell: 473 genes, and it lives.",
+        "Of those 473, about 90 have no known function whatsoever."
+      ],
+      "t": [
+        "Work down from a human to the smallest thing that can live on its own.",
+        "Four orders of magnitude of gene count, and the interesting figure is the last one rather than the smallest."
+      ],
+      "after": [
+        "The smallest possible cell has been built, and a fifth of it is a mystery.",
+        "Those 90 genes are required — remove any and the cell dies — and nobody knows what they do. That is a much more honest summary of the state of the field than the headline number."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The fewest genes something can live with is called a minimal genome.",
+        "A minimal genome is the smallest gene set supporting independent life under favourable conditions. JCVI-syn3.0 has 473 and was assembled chemically.",
+        "Essentiality is conditional: these are the genes required in rich medium with no competition. A cell facing scarcity, predators or variable temperature needs a great many more.",
+        "That conditionality is why 'minimal' is a claim about an environment rather than about life. The stripped cell is a laboratory organism that would not survive an hour anywhere real — which makes it a superb tool for asking what a cell must do, and a poor model of what cells actually are."
+      ],
+      "sub": [
+        "About 90 of the 473 are essential and completely unexplained.",
+        "Take any one of them out and the cell dies. Nobody can say what job it was doing.",
+        "That is a striking admission from a field that can chemically synthesise an entire genome.",
+        "It is the clearest available measure of the gap between building and understanding. We can write a genome from scratch, boot it, and watch it divide — and still not know what a fifth of the necessary instructions are for."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "minimal-genome",
+      "q": [
+        "What does it mean that 90 essential genes have no known function?",
+        "How should the unexplained essential genes be interpreted?",
+        "What does that gap indicate about the state of the field?"
+      ],
+      "options": [
+        "We can build a cell without fully understanding one",
+        "Those genes are probably not really needed",
+        "The experiment was done badly"
+      ],
+      "answer": 0,
+      "why": [
+        "They must matter, because taking any of them out kills the cell. We just do not know what they do. Being able to build something is not the same as understanding it.",
+        "They are demonstrably necessary and functionally uncharacterised. Construction ability has outrun explanatory understanding, which is unusual — normally understanding comes first.",
+        "It marks a real and quantified gap: 19% of the minimum requirement for life is unexplained in the best-characterised system anyone has built. Most fields cannot state their ignorance that precisely, and being able to is a sign of maturity rather than of failure."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "A stripped-down cell is a clean chassis to build on.",
+        "A minimal cell has almost nothing competing for its resources, which is exactly what the modularity problem from lesson 1 needs. If a circuit behaves unpredictably because the host is doing a thousand other things, a host doing almost nothing else is the obvious response — and that, rather than curiosity about the minimum, is why the work was funded."
+      ]
+    }
+  ]
+}

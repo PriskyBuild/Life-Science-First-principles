@@ -1,0 +1,109 @@
+{
+  "id": "nutrition/04",
+  "module": "nutrition",
+  "index": 3,
+  "title": "Why Diets Disagree",
+  "specimen": "study-sieve",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Eggs are bad for you. Eggs are good for you. Both were headlines, and both cited real studies.",
+        "Nutrition advice reverses itself more often than any other field of health, and the reversals are usually reported from genuine published research. That reliability of contradiction is itself something to explain."
+      ],
+      "sub": [
+        "So the problem is not that people are lying.",
+        "It is that nutrition is unusually hard to study, for reasons worth knowing."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "evidence-in-nutrition",
+      "question": [
+        "Why is it so hard to find out whether a food is good for you?",
+        "What makes nutritional epidemiology unusually difficult?"
+      ],
+      "options": [
+        "People who eat differently differ in many other ways too",
+        "Nobody has done the research",
+        "Food science is not a real subject"
+      ],
+      "outcome": "People who eat differently differ in many other ways too",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what else is true of someone who eats a lot of vegetables."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How much can this study tell you?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "One person says it worked for them. Tells you almost nothing.",
+        "A survey: people who eat X are healthier. They also exercise more, smoke less and are richer.",
+        "A big survey that adjusts for those. Better — but only for the things anyone thought to measure.",
+        "A randomised trial: people assigned at random to eat X or not. Now the groups differ only in X.",
+        "Many randomised trials, agreeing. That is as good as it gets."
+      ],
+      "t": [
+        "Slide up the ladder from the weakest evidence to the strongest.",
+        "Each step removes a source of confounding. Note what randomisation does that adjustment cannot."
+      ],
+      "after": [
+        "Most nutrition headlines come from the second rung.",
+        "Randomised diet trials are expensive, short, and hard to blind — you cannot conceal from someone what they are eating. So most nutritional evidence is observational, and that is a structural limit rather than a lapse."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "When two things go together, that does not mean one caused the other.",
+        "Correlation is not causation, and in nutrition the confounders are unusually strong: diet tracks wealth, education, exercise and smoking.",
+        "Randomisation is what breaks confounding, because it distributes unmeasured differences evenly between groups. Statistical adjustment can only correct for what was measured.",
+        "That asymmetry is the crux. Adjustment handles known confounders; randomisation handles the unknown ones too, which is why a randomised trial is not merely a better observational study but a different kind of evidence. The famous reversals — hormone replacement therapy, beta-carotene, vitamin E — were all cases where large, careful observational findings did not survive randomisation."
+      ],
+      "sub": [
+        "People who eat well tend to do lots of other things well too.",
+        "Healthy-user bias: whatever is currently recommended is eaten by people who also follow other health advice, so it looks good regardless.",
+        "Which means a food can appear beneficial simply by being the fashionable choice at the time of the study.",
+        "It cuts both ways over time: as advice changes, the people eating a given food change with it, so the same food can generate opposite associations in different decades. That mechanism explains a great deal of the reversal without anyone having done bad science."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "evidence-in-nutrition",
+      "q": [
+        "People who eat more vegetables live longer. Do vegetables make you live longer?",
+        "What does an observed association between vegetable intake and longevity establish?",
+        "Why does adjusting for known confounders not settle it?"
+      ],
+      "options": [
+        "Maybe — but they also differ in many other ways",
+        "Yes, that is what the study shows",
+        "No, it proves nothing at all"
+      ],
+      "answer": 0,
+      "why": [
+        "People who eat lots of vegetables usually also exercise more, smoke less and have more money. Any of those could be doing it. The study cannot tell you which.",
+        "It establishes an association and is consistent with several explanations, including that vegetables help, that vegetable-eaters differ in other ways, or both. Note that the third option is also wrong — associations are real evidence, just weaker than they are usually reported to be.",
+        "Because adjustment only removes confounders you measured, and the list of ways diet tracks with everything else in someone's life is not closed. That is why randomisation matters: it balances the confounders nobody thought of, which is precisely the set that produced the historical reversals."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The most useful question about a health claim is what kind of study it came from.",
+        "Asking whether a finding came from someone's experience, a survey, or a randomised trial does more to calibrate belief than any amount of expertise in the subject. It also generalises: this is the same sieve for education research, economics and psychology, all of which have had the same kind of reversal for the same reason."
+      ]
+    }
+  ]
+}

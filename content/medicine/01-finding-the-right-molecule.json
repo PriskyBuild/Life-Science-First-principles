@@ -1,0 +1,166 @@
+{
+  "id": "medicine/01",
+  "module": "medicine",
+  "index": 0,
+  "title": "Finding the Right Molecule",
+  "specimen": "candidate-set",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "A molecule that sticks perfectly to the thing causing your illness is still useless if it cannot get to it.",
+        "Most drug candidates fail, and most of them fail after they have been shown to bind their target beautifully. Binding was never the hard part."
+      ],
+      "sub": [
+        "Most failures are about delivery, not chemistry.",
+        "Which is the same problem you met when a medicine had to cross a membrane."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "drug-must-reach-target",
+      "question": [
+        "What is the hardest part of making a medicine?",
+        "Where do most drug candidates fail?"
+      ],
+      "options": [
+        "Getting it to the right place in the body, intact",
+        "Finding something that binds the target",
+        "Manufacturing it cheaply"
+      ],
+      "outcome": "Getting it to the right place in the body, intact",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what a molecule has to survive between a mouth and a cell interior."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "membrane",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "A medicine has to get across the wall, just like everything else. Find the size that fits.",
+        "Same steric problem as the membrane lesson: the drug has to cross, and size decides. Find a setting that lets the right thing through."
+      ],
+      "params": { "kinds": 3, "pore": 2, "per": 12, "target": 0.5 },
+      "paramsByLevel": { "1": { "kinds": 2, "per": 10, "target": 0.4 } },
+      "goal": [
+        "Small enough to get in. That is half of what makes a medicine work.",
+        "It crossed. A compound that cannot do this fails however well it binds — which is most of them."
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Put each requirement in the job it does. Any part fits any slot, then it gets tested.",
+        "A candidate must clear every one of these. Assign each to what it guarantees; placement is unconstrained."
+      ],
+      "parts": [
+        { "id": "bind", "label": "Binds the target" },
+        { "id": "cross", "label": "Crosses membranes" },
+        { "id": "survive", "label": "Survives the gut and liver" },
+        { "id": "selective", "label": "Ignores everything else" },
+        { "id": "clear", "label": "Leaves again eventually" }
+      ],
+      "slots": [
+        { "correct": "bind", "label": ["Does something once it arrives"] },
+        { "correct": "cross", "label": ["Gets into the cell at all"] },
+        { "correct": "survive", "label": ["Is still itself by the time it gets there"] },
+        { "correct": "selective", "label": ["Does not do the same thing to twenty other proteins"] },
+        { "correct": "clear", "label": ["Does not accumulate until it poisons you"] }
+      ],
+      "trials": [
+        {
+          "name": ["Do anything at all", "Affinity"],
+          "needs": ["bind"],
+          "pass": ["It binds its target.", "Target engagement demonstrated."],
+          "fail": ["A molecule with no effect on anything.", "Without affinity there is no drug — this is the only step most people think about, and the easiest."]
+        },
+        {
+          "name": ["Reach the inside of a cell", "Permeability"],
+          "needs": ["bind", "cross"],
+          "pass": ["Small and greasy enough to cross.", "Adequate membrane permeability."],
+          "fail": ["Perfect binding, sitting outside the cell for ever.", "Most intracellular targets are unreachable by molecules that cannot cross a bilayer. Lipinski's rules are an empirical summary of what can."]
+        },
+        {
+          "name": ["Survive being swallowed", "Metabolic stability"],
+          "needs": ["bind", "cross", "survive"],
+          "pass": ["It gets past the gut and the liver intact.", "Adequate oral bioavailability and first-pass survival."],
+          "fail": ["The liver destroyed it before it reached the bloodstream.", "First-pass metabolism removes many otherwise excellent compounds. This is why some drugs can only be injected."]
+        },
+        {
+          "name": ["Not cause harm elsewhere", "Selectivity"],
+          "needs": ["bind", "cross", "survive", "selective"],
+          "pass": ["It hits its target and largely leaves the rest alone.", "Acceptable off-target profile."],
+          "fail": ["It works, and it also blocks a heart protein.", "Off-target activity is the commonest cause of late-stage failure, and hERG channel binding alone has killed a great many candidates."]
+        },
+        {
+          "name": ["Be safe to take twice", "Clearance"],
+          "needs": ["bind", "cross", "survive", "selective", "clear"],
+          "pass": ["It is eliminated between doses.", "Clearance permits repeat dosing without accumulation."],
+          "fail": ["Fine once. By the fourth dose it is at toxic concentration.", "A compound that is not cleared accumulates, so a safe single dose becomes an unsafe course."]
+        }
+      ],
+      "win": [
+        "Five requirements, all at once, in one molecule. That is why it takes so long.",
+        "All five simultaneously, in a single molecule, and each constraint narrows the chemical space the others left. That conjunction is the actual difficulty."
+      ],
+      "lose": [
+        "Read which test failed — it names the requirement that was missing.",
+        "Each failed trial names the property that was absent. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A medicine has to reach the thing it is meant to act on. That is usually the hard part.",
+        "Binding is necessary and nowhere near sufficient. A drug must also be absorbed, survive metabolism, reach the target tissue, be selective, and be cleared.",
+        "Pharmacokinetics — absorption, distribution, metabolism and excretion — kills far more candidates than pharmacodynamics does. The molecule has to be a good drug as well as a good binder.",
+        "Roughly nine in ten candidates entering clinical trials fail, and the majority of those had already demonstrated target engagement. Improved target identification has therefore not improved success rates much: the bottleneck was never finding something that binds."
+      ],
+      "sub": [
+        "Being right about the target is not the same as having a medicine.",
+        "You can know exactly which protein to block and have no way to reach it, and that situation is extremely common.",
+        "Which is why a great deal of drug discovery is chemistry to make a known binder deliverable.",
+        "The phrase for a target nobody can reach is 'undruggable', and it is a statement about delivery rather than about biology. KRAS was undruggable for forty years despite being one of the best-understood cancer targets — the biology was never the obstacle."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "drug-must-reach-target",
+      "q": [
+        "Why do most new medicines fail?",
+        "At what stage do most candidates fail, and why?",
+        "Why has better target biology not raised success rates much?"
+      ],
+      "options": [
+        "They cannot get where they need to go, or they do other things too",
+        "They do not bind their target",
+        "They are too expensive to make"
+      ],
+      "answer": 0,
+      "why": [
+        "Finding something that sticks to the right protein is the easy bit. Getting it into the body, past the liver, into the right cells, without doing anything else, is where nearly everything falls over.",
+        "Most fail on pharmacokinetics or toxicity, after target binding has been established. Absorption, metabolism, distribution and off-target effects are separate hurdles and a molecule must clear all of them at once.",
+        "Because target identification was never the binding constraint. Knowing which protein to block does not tell you that a molecule exists which binds it, crosses membranes, survives the liver, ignores everything else and clears — and that conjunction is what fails."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why a medicine costs so much and takes so long, even when the science is understood.",
+        "The scientific insight is usually the cheap part. Most of the cost and nearly all of the time goes into finding a molecule that satisfies five constraints simultaneously and then demonstrating it is safe — and most of that spending is on candidates that fail. Understanding the disease completely does not shorten it."
+      ]
+    }
+  ]
+}

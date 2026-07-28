@@ -1,0 +1,117 @@
+{
+  "id": "synthetic-biology/04",
+  "module": "synthetic-biology",
+  "index": 3,
+  "title": "Design an Organism",
+  "specimen": "designed-organism",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Design something that lives. Then find out what it does when nobody is watching it.",
+        "Specify an organism to do a job. Then five stress tests — and the last two are about what happens outside the laboratory, which is where designs are usually weakest."
+      ],
+      "sub": [
+        "The design questions are the easy half.",
+        "You met this shape in Environmental Science: look up, look down, ask if it can be undone."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Put each requirement in the job it does. Any part fits any slot.",
+        "Assign each element to what it guarantees. Placement is unconstrained; then five tests."
+      ],
+      "parts": [
+        { "id": "job", "label": "A defined job" },
+        { "id": "chassis", "label": "A host it can live in" },
+        { "id": "circuit", "label": "A circuit to control it" },
+        { "id": "burden", "label": "A check on the cost to the host" },
+        { "id": "contain", "label": "Containment" }
+      ],
+      "slots": [
+        { "correct": "job", "label": ["Says what it is meant to do"] },
+        { "correct": "chassis", "label": ["Something that can actually run it"] },
+        { "correct": "circuit", "label": ["Decides when it does it"] },
+        { "correct": "burden", "label": ["Checks the host can afford it"] },
+        { "correct": "contain", "label": ["Makes sure it cannot survive outside"] }
+      ],
+      "trials": [
+        {
+          "name": ["Do the job in a flask", "Function"],
+          "needs": ["job", "chassis", "circuit"],
+          "pass": ["It works under laboratory conditions.", "The construct performs its specified function in the host."],
+          "fail": ["Missing a job, a host, or the control over it.", "All three are needed before there is anything to test."]
+        },
+        {
+          "name": ["Still work after a hundred generations", "Evolutionary stability"],
+          "needs": ["job", "chassis", "circuit", "burden"],
+          "pass": ["The cost is low enough that broken copies do not take over.", "Low metabolic burden keeps loss-of-function mutants from outcompeting producers."],
+          "fail": ["Cells that broke the circuit grew faster and took over the flask.", "This is selection acting on YOUR design. A construct that costs the host anything is a fitness disadvantage, so any cell that loses it outgrows the rest — the machine you built is a target for the mechanism you learned in Change."]
+        },
+        {
+          "name": ["Not escape", "Containment"],
+          "needs": ["job", "chassis", "circuit", "burden", "contain"],
+          "pass": ["It cannot live outside the conditions you provide.", "Auxotrophy or a synthetic dependency confines it."],
+          "fail": ["It works, it is stable, and it is now in the river.", "Containment is designed in — usually by making the organism dependent on a chemical that does not exist in nature — because a released organism cannot be recalled."]
+        }
+      ],
+      "win": [
+        "It works, it stays working, and it cannot survive where you did not put it.",
+        "All three. The second is the one people forget, and it is the one that fails quietly over a fortnight rather than immediately."
+      ],
+      "lose": [
+        "Read which test failed — it names what was missing.",
+        "Each failed trial names the requirement that was unmet. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Anything you build into a living thing has to survive being alive.",
+        "An engineered organism evolves. If your construct costs the host anything, cells that lose it grow faster — so the design is under selection from the moment it works.",
+        "Evolutionary instability is the distinctive engineering problem of this field. A bridge does not mutate; a production strain does, and reverts to a non-producing state on a timescale of days.",
+        "It is the one respect in which biological engineering is categorically unlike every other kind. The response is to reduce burden, to couple the desired function to the host's survival so that losing it is fatal, and to accept that a strain has a working lifetime — which is a strange thing for a manufacturing process to have."
+      ],
+      "sub": [
+        "The thing you built is a cost to the cell, and cells that drop it win.",
+        "That is the three conditions from Change, acting on your design rather than on a beetle.",
+        "Which is why industrial strains are re-derived from frozen stock regularly rather than grown on indefinitely.",
+        "Coupling is the more elegant fix: engineer the product so the cell needs it, and losing the construct becomes lethal instead of advantageous. That turns selection from an adversary into an ally, and it is the design principle the field has converged on."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "design-then-test",
+      "q": [
+        "Why does an engineered organism stop working over time?",
+        "Why is a production strain evolutionarily unstable?",
+        "Why does coupling the product to survival solve it?"
+      ],
+      "options": [
+        "Cells that break your circuit grow faster and take over",
+        "The DNA wears out",
+        "The nutrients run out"
+      ],
+      "answer": 0,
+      "why": [
+        "Making your product costs the cell energy it could spend growing. Any cell that breaks the circuit grows a bit faster, and after enough generations those are all that is left. It is the beetles again, and your design is the thing being selected against.",
+        "Expression imposes metabolic burden, so loss-of-function mutants have higher fitness. Given mutation and enough generations they dominate — which is not a fault in the construct but the inevitable result of the three conditions applying to it.",
+        "Because it reverses the sign of the selection. If the cell cannot survive without producing, then losing the construct is lethal rather than advantageous, and the same mechanism that was destroying your design now maintains it. Working with selection rather than against it is the general lesson."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Engineered bacteria are being designed to break down plastic and to detect disease in the gut.",
+        "Both applications need everything in this lesson: a working circuit, a strain that does not revert, and containment that survives contact with the real world. The science is largely in place and the deployments are cautious — which, given that a released organism cannot be recalled, is the correct order to do it in."
+      ]
+    }
+  ]
+}

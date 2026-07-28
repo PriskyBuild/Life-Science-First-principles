@@ -37,6 +37,12 @@
     "2": "development/03-the-same-toolkit-in-a-fly-and-in-you.json",
     "3": "development/04-build-a-body-plan.json"
   },
+  "disease": {
+    "0": "disease/01-what-makes-you-ill.json",
+    "1": "disease/02-how-something-spreads.json",
+    "2": "disease/03-the-outbreak-detective.json",
+    "3": "disease/04-why-some-diseases-vanish.json"
+  },
   "dna": {
     "0": "dna/01-two-metres-in-a-speck.json",
     "1": "dna/02-the-four-letters.json",
@@ -64,6 +70,12 @@
     "3": "evolution/04-family-trees-written-in-dna.json",
     "4": "evolution/05-how-much-can-change.json"
   },
+  "future-biology": {
+    "0": "future-biology/01-growing-an-organ.json",
+    "1": "future-biology/02-bringing-back-the-dead.json",
+    "2": "future-biology/03-should-we.json",
+    "3": "future-biology/04-what-you-would-build.json"
+  },
   "genes": {
     "0": "genes/01-what-is-a-gene-for.json",
     "1": "genes/02-same-book-different-pages.json",
@@ -84,6 +96,12 @@
     "3": "immunity/04-when-the-army-attacks-you.json",
     "4": "immunity/05-build-a-defence.json"
   },
+  "medicine": {
+    "0": "medicine/01-finding-the-right-molecule.json",
+    "1": "medicine/02-why-trials-have-two-groups.json",
+    "2": "medicine/03-resistance.json",
+    "3": "medicine/04-design-a-treatment.json"
+  },
   "microbiology": {
     "0": "microbiology/01-the-invisible-majority.json",
     "1": "microbiology/02-fast-life.json",
@@ -103,6 +121,12 @@
     "3": "neuroscience/04-memory-is-rebuilt-not-replayed.json",
     "4": "neuroscience/05-wire-a-reflex.json"
   },
+  "nutrition": {
+    "0": "nutrition/01-food-is-two-things.json",
+    "1": "nutrition/02-what-happens-to-a-sandwich.json",
+    "2": "nutrition/03-the-vitamin-nobody-could-find.json",
+    "3": "nutrition/04-why-diets-disagree.json"
+  },
   "plants": {
     "0": "plants/01-eating-light.json",
     "1": "plants/02-the-plumbing-that-has-no-pump.json",
@@ -116,6 +140,18 @@
     "2": "proteins/03-the-enzyme-and-the-lock.json",
     "3": "proteins/04-when-folding-goes-wrong.json",
     "4": "proteins/05-build-a-protein.json"
+  },
+  "space-biology": {
+    "0": "space-biology/01-life-without-weight.json",
+    "1": "space-biology/02-could-anything-live-on-mars.json",
+    "2": "space-biology/03-the-toughest-animal-alive.json",
+    "3": "space-biology/04-pack-a-spaceship-garden.json"
+  },
+  "synthetic-biology": {
+    "0": "synthetic-biology/01-biology-as-parts.json",
+    "1": "synthetic-biology/02-a-circuit-made-of-genes.json",
+    "2": "synthetic-biology/03-the-smallest-possible-life.json",
+    "3": "synthetic-biology/04-design-an-organism.json"
   },
   "what-is-life": {
     "0": "what-is-life/01-the-line-you-cannot-draw.json",

@@ -1,0 +1,148 @@
+{
+  "id": "medicine/02",
+  "module": "medicine",
+  "index": 1,
+  "title": "Why Trials Have Two Groups",
+  "specimen": "control-arm",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Most people who take a medicine get better. Most people who take nothing also get better.",
+        "Most illnesses resolve on their own. So most people who take any treatment recover — which means recovery, on its own, is not evidence that a treatment did anything."
+      ],
+      "sub": [
+        "So how could you ever tell the difference?",
+        "You cannot, from one group. That is the entire reason the second group exists."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "controlled-trial",
+      "question": [
+        "A hundred people take a new medicine and ninety recover. Does it work?",
+        "Ninety of one hundred treated patients recover. What does that establish?"
+      ],
+      "options": [
+        "You cannot tell without knowing what happens without it",
+        "Yes, ninety percent is a good result",
+        "No, ten percent did not recover"
+      ],
+      "outcome": "You cannot tell without knowing what happens without it",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what number would have made you conclude it does not work."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Build a trial that could actually tell you something. Any part fits any slot.",
+        "Assemble a trial. Placement is unconstrained, then each omission fails in a specific and well-documented way."
+      ],
+      "parts": [
+        { "id": "control", "label": "A group that does not get it" },
+        { "id": "random", "label": "Assignment by chance" },
+        { "id": "blind", "label": "Nobody knows who got what" },
+        { "id": "prereg", "label": "Say in advance what you will measure" },
+        { "id": "size", "label": "Enough people" }
+      ],
+      "slots": [
+        { "correct": "control", "label": ["Shows what happens without the treatment"] },
+        { "correct": "random", "label": ["Stops the two groups differing in other ways"] },
+        { "correct": "blind", "label": ["Stops expectation changing the result"] },
+        { "correct": "prereg", "label": ["Stops you picking the flattering result afterwards"] },
+        { "correct": "size", "label": ["Stops chance looking like an effect"] }
+      ],
+      "trials": [
+        {
+          "name": ["Know what recovery looks like anyway", "Comparison"],
+          "needs": ["control"],
+          "pass": ["You can see what the treatment added.", "A comparator establishes the counterfactual."],
+          "fail": ["Ninety recovered and you have no idea whether that is good.", "Without a control there is no baseline, so no result can be interpreted at all."]
+        },
+        {
+          "name": ["Compare like with like", "Randomisation"],
+          "needs": ["control", "random"],
+          "pass": ["The groups differ only in the treatment.", "Random assignment balances known and unknown confounders."],
+          "fail": ["The doctors put the healthier patients in the treatment group, without meaning to.", "Allocation by judgement produces groups that differ systematically. This is why randomisation exists, and it is not an optional refinement."]
+        },
+        {
+          "name": ["Rule out expectation", "Blinding"],
+          "needs": ["control", "random", "blind"],
+          "pass": ["Neither patients nor assessors know who got the drug.", "Double blinding removes expectancy effects from both reporting and assessment."],
+          "fail": ["Everyone knew who got the real thing, and everyone reported accordingly.", "Unblinded trials systematically overestimate effects — the assessor's expectation is usually the larger problem, not the patient's."]
+        },
+        {
+          "name": ["Not find something by fishing", "Pre-specification"],
+          "needs": ["control", "random", "blind", "prereg"],
+          "pass": ["You said what you would measure before you looked.", "The primary outcome was specified in advance."],
+          "fail": ["No effect on what you meant to measure, so you reported the one that did move.", "Measure twenty things and one will reach significance by chance. Choosing afterwards is how a null result becomes a positive paper."]
+        },
+        {
+          "name": ["Distinguish an effect from luck", "Power"],
+          "needs": ["control", "random", "blind", "prereg", "size"],
+          "pass": ["Enough people that the difference means something.", "Adequately powered to detect the effect size of interest."],
+          "fail": ["Twelve people, a difference of two, and no way to tell if it is real.", "Underpowered trials produce unreliable results in both directions — and when they do find something, they overestimate how big it is."]
+        }
+      ],
+      "win": [
+        "Now a difference between the groups actually means the treatment did it.",
+        "All five. Each one closes a specific route by which a false conclusion gets reached, and every one of those routes has a history."
+      ],
+      "lose": [
+        "Read which test failed — it names what was missing.",
+        "Each failed trial names the safeguard that was absent and the error it admits. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The group that does not get the medicine is called the control group.",
+        "A randomised controlled trial compares a treated group with an untreated one, assigned by chance so the groups differ only in the treatment.",
+        "Randomisation is what makes the comparison causal. Blinding removes expectancy, pre-specification removes selective reporting, and adequate size removes chance.",
+        "Each element was added because of a specific historical failure, which is why the design looks over-engineered until you know the history. It is worth seeing as an accumulated list of ways people have been fooled, mostly in good faith, rather than as bureaucracy."
+      ],
+      "sub": [
+        "People given a dummy treatment often improve too. That is not nothing, and it is not the drug.",
+        "The placebo effect is real for reported symptoms and much weaker for measurable ones — it does not shrink a tumour.",
+        "Which is why 'people felt better' is a much weaker claim than 'the thing being measured changed'.",
+        "That distinction handles most alternative-medicine claims without needing to assess the mechanism at all. A treatment can reliably make people feel better and do nothing to the disease, and both halves of that can be true simultaneously."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "controlled-trial",
+      "q": [
+        "Why does a trial need a group that gets nothing?",
+        "What does a control group establish?",
+        "Why is randomisation necessary given that a control group exists?"
+      ],
+      "options": [
+        "To show what would have happened anyway",
+        "To save money on the medicine",
+        "To have someone to compare complaints with"
+      ],
+      "answer": 0,
+      "why": [
+        "Most people get better from most things eventually. Without a group that got nothing, you cannot tell whether the medicine helped or you just watched people recover.",
+        "It establishes the counterfactual — what would have happened without treatment. Any outcome in the treated group is uninterpretable without it, however good it looks.",
+        "A control group gives you a comparison; randomisation makes the comparison fair. Without it, whoever assigns patients will — usually unconsciously — put different sorts of patient in each group, and the difference you measure is that rather than the treatment."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Plenty of treatments that everyone was sure about turned out to do nothing, or harm.",
+        "Hormone replacement therapy was believed to protect against heart disease on strong observational evidence, and a randomised trial found the opposite. Routine oxygen after heart attacks, bed rest for back pain, and antiarrhythmics after myocardial infarction were all standard practice and all shown to harm. None of that was discoverable without controls, and all of it was believed by careful people."
+      ]
+    }
+  ]
+}

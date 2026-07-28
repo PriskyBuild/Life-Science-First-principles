@@ -1,0 +1,140 @@
+{
+  "id": "synthetic-biology/02",
+  "module": "synthetic-biology",
+  "index": 1,
+  "title": "A Circuit Made of Genes",
+  "specimen": "gene-switch",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Two genes, each switching the other off. That is enough to make a memory.",
+        "Take two genes and have each one repress the other. The result has two stable states and stays in whichever one you put it in — a one-bit memory, built from nothing but repression."
+      ],
+      "sub": [
+        "Nothing was added to store anything. It falls out of the arrangement.",
+        "The same shape as the feedback loop you built in Human Body, with the sign reversed."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "genetic-circuits",
+      "question": [
+        "Gene A switches off gene B, and gene B switches off gene A. What happens?",
+        "Two mutually repressing genes. What is the behaviour?"
+      ],
+      "options": [
+        "One wins and stays on — and it stays that way",
+        "They alternate for ever",
+        "Both settle at half"
+      ],
+      "outcome": "One wins and stays on — and it stays that way",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what happens to the loser once the winner is established."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Build circuits out of genes. Any part fits any slot, so the marking is on you.",
+        "Match each arrangement to the behaviour it produces. Placement is unconstrained, then each is tested."
+      ],
+      "parts": [
+        { "id": "toggle", "label": "Two genes repressing each other" },
+        { "id": "oscillator", "label": "Three repressors in a ring" },
+        { "id": "negative", "label": "A gene repressing itself" },
+        { "id": "sensor", "label": "A promoter that responds to a chemical" }
+      ],
+      "slots": [
+        { "correct": "toggle", "label": ["Remembers which state you put it in"] },
+        { "correct": "oscillator", "label": ["Never settles — it cycles"] },
+        { "correct": "negative", "label": ["Holds itself at a steady level"] },
+        { "correct": "sensor", "label": ["Reacts to something outside"] }
+      ],
+      "trials": [
+        {
+          "name": ["Notice anything at all", "Input"],
+          "needs": ["sensor"],
+          "pass": ["The circuit can detect a condition.", "An input maps an external signal to transcription."],
+          "fail": ["A circuit with nothing to respond to.", "Without an input the construct runs open-loop and computes nothing about the world."]
+        },
+        {
+          "name": ["Remember that it happened", "Memory"],
+          "needs": ["sensor", "toggle"],
+          "pass": ["A brief signal leaves a permanent change of state.", "The toggle latches: a transient input produces a persistent state."],
+          "fail": ["It notices and forgets immediately.", "Without a bistable element the output tracks the input and nothing persists."]
+        },
+        {
+          "name": ["Not drift all over the place", "Stability"],
+          "needs": ["sensor", "toggle", "negative"],
+          "pass": ["Levels are held steady by self-repression.", "Negative autoregulation reduces noise and speeds the response."],
+          "fail": ["The output swings wildly between cells.", "Unregulated expression is noisy. Negative autoregulation is the commonest motif in real genomes for exactly this reason."]
+        },
+        {
+          "name": ["Do something on a schedule", "Timing"],
+          "needs": ["sensor", "toggle", "negative", "oscillator"],
+          "pass": ["A repressilator gives it a clock.", "A ring of three repressors oscillates, supplying timing."],
+          "fail": ["It can react and remember and has no sense of time.", "Some behaviours need a period rather than a state. A ring of an odd number of repressors cannot settle, so it cycles."]
+        }
+      ],
+      "win": [
+        "Sense, remember, hold steady, and keep time — all from genes switching each other off.",
+        "Four behaviours from one operation. Note that nothing was added to any of them: memory, stability and rhythm are consequences of how the repression is wired."
+      ],
+      "lose": [
+        "Read which test failed — it names the arrangement that was missing.",
+        "Each failed trial names the motif that was absent. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Genes switching each other on and off make a circuit, and a circuit can compute.",
+        "Gene regulatory circuits perform logic, memory and timing. The toggle switch and the repressilator were both built in 2000 and started the field.",
+        "The behaviour comes from the topology rather than from the components: mutual repression gives bistability, an odd ring gives oscillation, self-repression gives stability. The same motifs appear throughout natural genomes.",
+        "That the same handful of network motifs recur across unrelated organisms — and were then rediscovered by engineers designing from scratch — is a strong hint that they are the small set of arrangements that produce useful behaviour, rather than accidents of history."
+      ],
+      "sub": [
+        "Your own cells are full of these, doing exactly the same jobs.",
+        "Development runs on circuits like this: a transient signal, latched into a permanent commitment. That is what a cell taking on an identity is.",
+        "The synthetic ones were built to test whether the natural ones were understood well enough to be predicted.",
+        "That was the real point of the 2000 papers. Building a working oscillator from scratch demonstrates the understanding in a way that describing a natural one cannot — and the first ones worked badly, which was itself informative about how much was still missing."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "genetic-circuits",
+      "q": [
+        "Where does the memory in a toggle switch come from?",
+        "What makes a two-gene mutual repressor bistable?",
+        "Why is the behaviour a property of topology rather than of the genes?"
+      ],
+      "options": [
+        "From the arrangement — whichever wins keeps the other switched off",
+        "From a molecule that stores the state",
+        "From the DNA sequence being changed"
+      ],
+      "answer": 0,
+      "why": [
+        "Nothing stores anything. Once one gene is winning it keeps the other switched off, and that keeps it winning. The state holds itself up.",
+        "Mutual repression makes each state self-reinforcing, so there are two stable arrangements and the system stays in whichever it was pushed into. No storage molecule and no sequence change is involved.",
+        "Because swapping in different repressors with similar strengths gives the same behaviour, while rewiring the same repressors differently changes it completely. The behaviour is carried by the connection pattern, which is why the motifs recur across organisms sharing no genes."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Engineered cells can now be built to detect a condition in the body and respond to it.",
+        "CAR-T cancer therapy is a circuit: a receptor that recognises a tumour marker, wired to a response. Newer designs add logic — respond only if two markers are present — precisely to reduce attacks on healthy tissue. That is a genetic circuit doing an AND gate inside a patient, and it exists because tumour markers are rarely unique to tumours."
+      ]
+    }
+  ]
+}

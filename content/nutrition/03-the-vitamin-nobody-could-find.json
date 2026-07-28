@@ -1,0 +1,109 @@
+{
+  "id": "nutrition/03",
+  "module": "nutrition",
+  "index": 2,
+  "title": "The Vitamin Nobody Could Find",
+  "specimen": "citrus-crate",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Scurvy killed more sailors than storms, battles and shipwrecks put together. The cure was known, forgotten, and found again several times.",
+        "Scurvy killed around two million sailors between 1500 and 1800 — more than every other cause at sea combined. The cure was discovered, written down, and lost again at least three times before it stuck."
+      ],
+      "sub": [
+        "The problem was never finding the cure. It was believing it.",
+        "That is the uncomfortable part, and it is the reason this lesson is here."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "essential-nutrients",
+      "question": [
+        "Scurvy comes from a diet with no fresh food. What kind of illness is that?",
+        "What category of disease is scurvy?"
+      ],
+      "options": [
+        "Something missing, rather than something caught",
+        "An infection picked up at sea",
+        "Something in the salt beef"
+      ],
+      "outcome": "Something missing, rather than something caught",
+      "note": [
+        "Guess first.",
+        "Commit. The second option was the mainstream view for a very long time, and it is not a stupid one — the disease clustered on ships."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "Follow the discovery",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "1747: Lind gives six pairs of sailors six different treatments. Only the citrus pair recover.",
+        "That is arguably the first controlled clinical trial anyone ever ran.",
+        "1795: the Navy adopts lemon juice. Scurvy nearly disappears from the fleet.",
+        "1860s: lemons are swapped for cheaper limes, which have far less of the active ingredient. Scurvy returns.",
+        "1932: vitamin C is finally identified. Nearly two hundred years after the cure worked."
+      ],
+      "t": [
+        "Follow what happened between knowing the cure and understanding it.",
+        "The cure preceded the explanation by 185 years, and was lost in the middle of that gap for a reason worth understanding."
+      ],
+      "after": [
+        "The cure worked for a century and a half before anyone knew why — and got lost anyway.",
+        "Without knowing the active ingredient, nobody could tell that limes were a weaker substitute. Understanding the mechanism is not needed to act, and it is needed to keep acting correctly when circumstances change."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Things your body needs and cannot make are called essential nutrients.",
+        "An essential nutrient is one an organism requires and cannot synthesise, so it has to come from food. Vitamin C is essential for us and not for a dog.",
+        "Essentiality is species-specific and reflects lost biosynthetic capacity. Humans, other primates and guinea pigs carry a broken gene for the final enzyme in vitamin C synthesis — the same gene you met in the shared-errors lesson.",
+        "The broken GULO pseudogene is why we need fruit and a dog does not, and it is the same molecular fact used as evidence in the DNA module. Worth noticing the connection: a nutritional requirement and a genomic scar are the same observation seen from two directions."
+      ],
+      "sub": [
+        "A dog makes its own vitamin C. You cannot, because the instruction is broken.",
+        "Most mammals synthesise it. The requirement is a consequence of an inherited fault rather than a general feature of animals.",
+        "So 'essential' says as much about the organism's history as about the nutrient.",
+        "That framing is useful in nutrition generally: a requirement is a statement about what a body cannot do, so the list of essential nutrients is a list of capabilities lost somewhere in the lineage rather than a list of things that are especially important."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "essential-nutrients",
+      "q": [
+        "Why did swapping lemons for limes bring scurvy back?",
+        "Why did the lime substitution fail?",
+        "Why could nobody detect the substitution's failure in advance?"
+      ],
+      "options": [
+        "Nobody knew what the active ingredient was, so nobody could measure it",
+        "The limes had gone off",
+        "Sailors refused to drink it"
+      ],
+      "answer": 0,
+      "why": [
+        "They thought any sour citrus would do. Limes have much less vitamin C than lemons, and since nobody knew what they were looking for, nobody could check.",
+        "The substitution looked equivalent on every property anyone could measure — both were sour citrus. Without knowing the active compound there was no assay, so a weaker substitute was indistinguishable until people started getting ill again.",
+        "Because the only available test was the disease itself, which appears months later. This is the general hazard of acting on an empirical finding without a mechanism: the finding tells you what worked, and cannot tell you which feature of it mattered — so any change is a gamble you cannot evaluate."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Lind's trial is the ancestor of every drug trial run since.",
+        "Six treatments, six matched pairs, same ship, same diet, same conditions. It is a controlled comparison in everything but name, and it is why he could see the answer when everyone before him could not. The idea that you learn by comparing rather than by observing is the single most productive idea in medicine, and it arrived on a ship in 1747."
+      ]
+    }
+  ]
+}

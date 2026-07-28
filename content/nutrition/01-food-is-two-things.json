@@ -1,0 +1,158 @@
+{
+  "id": "nutrition/01",
+  "module": "nutrition",
+  "index": 0,
+  "title": "Food Is Two Things",
+  "specimen": "fuel-and-bricks",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You could eat enough sugar to run on and still starve.",
+        "A diet supplying every calorie you need can still kill you, and the fact that those are separable is the whole of nutrition."
+      ],
+      "sub": [
+        "Food is doing two completely different jobs.",
+        "Counting one of them tells you nothing about the other."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "food-is-fuel-and-parts",
+      "question": [
+        "What is food for?",
+        "What functions does food serve?"
+      ],
+      "options": [
+        "Energy to run on, and materials to build with",
+        "Energy, and nothing else",
+        "Building materials, and nothing else"
+      ],
+      "outcome": "Energy to run on, and materials to build with",
+      "note": [
+        "Have a think first.",
+        "Commit. Note that you replace most of your own material continuously, which has to come from somewhere."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "energy",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Here is the fuel half. Get enough in to keep going.",
+        "The fuel side, as a stock and flow. Find a setting that keeps the supply steady."
+      ],
+      "params": { "doors": 3, "plants": 2, "hold": 16 },
+      "paramsByLevel": { "1": { "doors": 4, "hold": 12 } },
+      "goal": [
+        "Fuel in, fuel used, steady. That is half of what food does.",
+        "Steady supply. Note that nothing in this simulation is about building anything — it is the fuel half only."
+      ]
+    },
+
+    {
+      "type": "build",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Sort each thing food supplies into which job it is doing. Any part fits any slot.",
+        "Assign each component to its role. Several do both, and the marking follows the primary function."
+      ],
+      "parts": [
+        { "id": "carbs", "label": "Carbohydrate" },
+        { "id": "protein", "label": "Protein" },
+        { "id": "fat", "label": "Fat" },
+        { "id": "vitamins", "label": "Vitamins and minerals" }
+      ],
+      "slots": [
+        { "correct": "carbs", "label": ["Mostly fuel, and the quickest to use"] },
+        { "correct": "protein", "label": ["Mostly building material — broken into parts you rebuild with"] },
+        { "correct": "fat", "label": ["Fuel and store, and the membranes of every cell"] },
+        { "correct": "vitamins", "label": ["Neither fuel nor bulk material, and you die without them"] }
+      ],
+      "trials": [
+        {
+          "name": ["Have enough energy to move", "Fuel"],
+          "needs": ["carbs"],
+          "pass": ["There is fuel to run on.", "Caloric requirement met."],
+          "fail": ["Nothing to burn.", "Without an energy source nothing else can be maintained."]
+        },
+        {
+          "name": ["Repair and grow", "Materials"],
+          "needs": ["carbs", "protein"],
+          "pass": ["Amino acids to rebuild with.", "Nitrogen and amino acid supply for protein turnover."],
+          "fail": ["Plenty of energy and nothing to rebuild from.", "You replace your own protein continuously. Calories cannot substitute for the parts — this is kwashiorkor."]
+        },
+        {
+          "name": ["Have working membranes and a store", "Lipids"],
+          "needs": ["carbs", "protein", "fat"],
+          "pass": ["Membranes, insulation and a reserve.", "Structural lipids and energy reserve both supplied."],
+          "fail": ["No membrane material and no reserve for a lean day.", "Some fatty acids cannot be synthesised at all, and every cell boundary is made of them."]
+        },
+        {
+          "name": ["Not develop a deficiency disease", "Micronutrients"],
+          "needs": ["carbs", "protein", "fat", "vitamins"],
+          "pass": ["Nothing essential is missing.", "Micronutrient requirements met."],
+          "fail": ["Every calorie you need, and scurvy anyway.", "Micronutrients supply neither energy nor bulk, and their absence is lethal. This is exactly how a well-fed sailor died of scurvy."]
+        }
+      ],
+      "win": [
+        "Fuel, parts, membranes and the small things — all four, or it does not work.",
+        "All four. Note that only the first is measured by a calorie count, which is why calorie counting is a partial description of a diet."
+      ],
+      "lose": [
+        "Read which test failed — it names what was missing.",
+        "Each failed trial names the requirement that was unmet. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Food is fuel to burn and bricks to build with, and you need both.",
+        "Food supplies energy and materials. They are separate requirements and having plenty of one does not substitute for the other.",
+        "Macronutrients supply both energy and structure; micronutrients supply neither, and are required in milligrams. Adequacy has to be assessed separately on each axis.",
+        "This is why a calorie count is a partial description of a diet. It measures one of the two jobs and says nothing about the other — and the diseases of the second kind, from kwashiorkor to scurvy, occur in people consuming perfectly adequate calories."
+      ],
+      "sub": [
+        "You replace most of yourself continuously. That has to come from somewhere.",
+        "Protein turnover means you are rebuilding constantly, so the materials requirement is ongoing rather than only for growth.",
+        "Which is why a growing child and an adult have quite different requirements even at the same weight.",
+        "It is also why illness raises protein requirements sharply: repair and immune response both consume amino acids, so the demand rises exactly when appetite falls. That interaction causes more harm in hospital than most people expect."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "food-is-fuel-and-parts",
+      "q": [
+        "Could you starve while eating plenty of calories?",
+        "Is adequate energy intake sufficient nutrition?",
+        "Why is calorie adequacy independent of nutritional adequacy?"
+      ],
+      "options": [
+        "Yes — calories are only one of the two jobs food does",
+        "No, calories are what matter",
+        "Only if you were already ill"
+      ],
+      "answer": 0,
+      "why": [
+        "You can burn plenty and still have nothing to rebuild yourself out of, and nothing to supply the tiny amounts of things you cannot make. Sailors with full stomachs died of scurvy.",
+        "Energy and materials are separate requirements. Kwashiorkor is protein deficiency with adequate calories; scurvy is a micronutrient deficiency with adequate everything else. Both occur in people who are eating.",
+        "They are independent because the requirements are met by different components in different quantities — grams of macronutrient against milligrams of micronutrient — and no amount of one supplies the other. This is why food fortification works so well: adding milligrams of something to a staple corrects a deficiency without changing the diet at all."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Adding tiny amounts of iodine to salt stopped a major cause of preventable brain damage.",
+        "Iodine deficiency was the leading preventable cause of intellectual disability worldwide, and it is corrected by micrograms per day. Adding it to salt — changing nothing anyone eats or notices — has probably done more measurable good per pound spent than any other public health intervention. It works precisely because the materials requirement is separable from the energy one."
+      ]
+    }
+  ]
+}

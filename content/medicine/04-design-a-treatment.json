@@ -1,0 +1,129 @@
+{
+  "id": "medicine/04",
+  "module": "medicine",
+  "index": 3,
+  "title": "Design a Treatment",
+  "specimen": "treatment-plan",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Design a treatment. Getting the molecule right is about a quarter of it.",
+        "Take a treatment from molecule to patient. Everything you have met in this module is one requirement among five, and the last two are where most real failures happen."
+      ],
+      "sub": [
+        "The rest is delivery, proof, and not making it useless in five years.",
+        "Each of those has its own failure mode and its own history."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Put each part in the job it does. Any part fits any slot, so it is on you.",
+        "Assign each element to its function. Placement is unconstrained; then five stress tests, and one of them cannot be passed by better chemistry."
+      ],
+      "parts": [
+        { "id": "target", "label": "The right target" },
+        { "id": "molecule", "label": "A molecule that reaches it" },
+        { "id": "trial", "label": "A randomised controlled trial" },
+        { "id": "steward", "label": "Rules on how it is used" },
+        { "id": "access", "label": "A way for people to get it" }
+      ],
+      "slots": [
+        { "correct": "target", "label": ["Something that is actually causing the illness"] },
+        { "correct": "molecule", "label": ["Gets there, intact, and leaves again"] },
+        { "correct": "trial", "label": ["Shows it does more good than nothing"] },
+        { "correct": "steward", "label": ["Keeps it working for longer than five years"] },
+        { "correct": "access", "label": ["Reaches the people who need it"] }
+      ],
+      "trials": [
+        {
+          "name": ["Be aimed at the real cause", "Target"],
+          "needs": ["target"],
+          "pass": ["The target is genuinely driving the disease.", "The target is causal rather than merely correlated."],
+          "fail": ["You blocked something that turned out to be a bystander.", "A target that correlates with disease without causing it produces a drug that works beautifully and changes nothing — a very common and very expensive failure."]
+        },
+        {
+          "name": ["Reach it in a living person", "Delivery"],
+          "needs": ["target", "molecule"],
+          "pass": ["It arrives, intact, in the right tissue.", "Adequate pharmacokinetics."],
+          "fail": ["It works in a dish and nowhere else.", "Most candidates die here. Being right about the biology does not produce a deliverable molecule."]
+        },
+        {
+          "name": ["Prove it beats doing nothing", "Evidence"],
+          "needs": ["target", "molecule", "trial"],
+          "pass": ["A controlled trial shows a real effect.", "Randomised evidence of benefit over comparator."],
+          "fail": ["Everyone is sure it works and nobody has checked properly.", "Certainty without controls is exactly how bed rest, routine oxygen and antiarrhythmics became standard practice while causing harm."]
+        },
+        {
+          "name": ["Still work in ten years", "Stewardship"],
+          "needs": ["target", "molecule", "trial", "steward"],
+          "pass": ["Used narrowly, it keeps working.", "Usage restrictions slow the selection of resistance."],
+          "fail": ["Prescribed for everything, and useless within five years.", "This is the trial you cannot pass with better chemistry. Selection acts on the pathogen population and the only available lever is how much pressure is applied."]
+        },
+        {
+          "name": ["Actually help anybody", "Access"],
+          "needs": ["target", "molecule", "trial", "steward", "access"],
+          "pass": ["It reaches the people who need it.", "The treatment is available and affordable to the relevant population."],
+          "fail": ["A superb medicine that most people who need it cannot get.", "Insulin has existed for a century and people still ration it. A treatment nobody can obtain has the same clinical effect as one that was never invented."]
+        }
+      ],
+      "win": [
+        "Right target, deliverable molecule, proven, used carefully, and available. All five.",
+        "All five hold, and note that only the first two are scientific problems. The last three are why understanding a disease completely does not mean it is treated."
+      ],
+      "lose": [
+        "Read which test failed — it names what was in the wrong job.",
+        "Each failed trial names the requirement that was unmet. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "A medicine is not just a molecule. It is a molecule plus proof, plus rules, plus a way to get it.",
+        "Treatment is a system: a causal target, a deliverable molecule, controlled evidence, usage discipline and access. Failure at any point makes the rest worthless.",
+        "The scientific requirements are necessary and not sufficient. The last two are institutional problems, and they are the ones that determine how much good a treatment actually does.",
+        "It is worth being precise about which kind of problem you are looking at, because they need different work. A delivery failure needs chemists; a stewardship failure needs prescribing policy; an access failure needs pricing and supply chains. Treating all of them as 'we need more research' is the standard error and it wastes the effort."
+      ],
+      "sub": [
+        "The hardest parts are often not the scientific ones.",
+        "Insulin has been manufacturable since 1982 and people still ration it. That gap will not be closed by a better molecule.",
+        "Which is the note this module ends on, deliberately.",
+        "It is also the honest answer to why diseases with well-understood biology remain untreated. Tuberculosis is curable and kills over a million people a year. Nothing about that is a scientific mystery, and it is not solved by finding out more."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "risk-and-benefit",
+      "q": [
+        "Which part of making a treatment cannot be fixed by better chemistry?",
+        "Which requirement is immune to improved molecular design?",
+        "Why is stewardship structurally different from the other requirements?"
+      ],
+      "options": [
+        "Keeping it working — that depends on how it is used",
+        "Finding the right target",
+        "Getting the molecule into cells"
+      ],
+      "answer": 0,
+      "why": [
+        "You can make a better molecule to reach a target or to avoid side effects. You cannot make a molecule that stops bacteria from varying and passing things on. How long it keeps working depends on how much it gets used.",
+        "Resistance is driven by selection on the pathogen population, and the drug supplies only one of the three conditions. Better chemistry can improve every other requirement and cannot touch this one.",
+        "Because its determinants sit outside the molecule entirely — in prescribing behaviour, agricultural practice and how many doses are given worldwide. It is a collective-action problem wearing a scientific costume, and it responds to policy rather than to research."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Tuberculosis is curable and kills over a million people a year.",
+        "The drugs exist, they work, and the biology is well understood. The deaths come from diagnosis, supply, six-month treatment courses that are hard to complete, and resistance driven by incomplete ones. That is the shape of most remaining medical failure — not an unsolved science problem, but a solved one that has not reached people. Worth carrying with you: knowing how something works and fixing it are genuinely different achievements."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "id": "space-biology/02",
+  "module": "space-biology",
+  "index": 1,
+  "title": "Could Anything Live on Mars?",
+  "specimen": "habitability-card",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Nobody knows whether anything lives on Mars. But we can say exactly what it would need.",
+        "Habitability is a claim about conditions rather than about inhabitants — which makes it answerable from orbit, while the other question is not."
+      ],
+      "sub": [
+        "That is a smaller question, and it can actually be answered.",
+        "Separating the two is most of the discipline."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "habitability",
+      "question": [
+        "What would somewhere need before anything could live there?",
+        "What is the minimum set of conditions a place must supply?"
+      ],
+      "options": [
+        "Liquid water, something to eat, the right ingredients and shelter",
+        "Air you could breathe",
+        "A temperature close to Earth's"
+      ],
+      "outcome": "Liquid water, something to eat, the right ingredients and shelter",
+      "note": [
+        "Guess first.",
+        "Commit. Note that breathable air is a requirement of animals, not of life — for most of Earth's history there was none."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Build the card you would score a world with. Any part fits any slot, so the marking is on you.",
+        "Assemble the habitability criteria, then stress-test the card against a world. Placement is unconstrained."
+      ],
+      "parts": [
+        { "id": "water", "label": "Liquid water" },
+        { "id": "energy", "label": "An energy gradient" },
+        { "id": "chem", "label": "Carbon, nitrogen, phosphorus, sulphur" },
+        { "id": "shield", "label": "Shelter from radiation" },
+        { "id": "time", "label": "Stability over long periods" }
+      ],
+      "slots": [
+        { "correct": "water", "label": ["Something for chemistry to happen in"] },
+        { "correct": "energy", "label": ["A difference the cell can run downhill"] },
+        { "correct": "chem", "label": ["The atoms a body is actually built from"] },
+        { "correct": "shield", "label": ["Something between it and what would break it"] },
+        { "correct": "time", "label": ["Conditions that hold still long enough to matter"] }
+      ],
+      "trials": [
+        {
+          "name": ["Somewhere for the chemistry", "Solvent"],
+          "needs": ["water"],
+          "pass": ["There is liquid water, so molecules can meet.", "A liquid solvent permits transport and reaction; no known chemistry of life works in a solid or a near-vacuum."],
+          "fail": ["Frozen or boiled away. Nothing meets anything.", "Below the triple point water cannot be liquid at all — which is the state of most of the Martian surface, at about 6 millibars."]
+        },
+        {
+          "name": ["Something to run on", "Energy"],
+          "needs": ["water", "energy"],
+          "pass": ["There is a difference to exploit — light, or chemistry.", "A redox gradient or photon flux supplies free energy; without one, no metabolism is possible."],
+          "fail": ["Everything is already at equilibrium. There is nothing to eat.", "A system at equilibrium can do no work. Sunlight or rock-water chemistry are the two known supplies."]
+        },
+        {
+          "name": ["Something to be built out of", "Ingredients"],
+          "needs": ["water", "energy", "chem"],
+          "pass": ["Carbon and the rest are present.", "CHNOPS availability. Mars has all six, in the crust and the atmosphere."],
+          "fail": ["No carbon, no phosphorus, nothing to make a body from.", "Energy without material builds nothing. Phosphorus is the scarcest of the six in most settings."]
+        },
+        {
+          "name": ["Not being destroyed", "Shelter"],
+          "needs": ["water", "energy", "chem", "shield"],
+          "pass": ["Rock, ice or a magnetic field is in the way.", "A few metres of regolith or ice attenuates cosmic and solar radiation to survivable levels."],
+          "fail": ["The surface is sterilised faster than anything can repair itself.", "Mars has no global magnetic field and a thin atmosphere: surface dose is roughly 0.7 millisieverts a day, plus ultraviolet reaching the ground unfiltered."]
+        },
+        {
+          "name": ["Long enough to matter", "Time"],
+          "needs": ["water", "energy", "chem", "shield", "time"],
+          "pass": ["The conditions hold for long enough to be worth calling a habitat.", "Habitability is a duration as well as a state; a wet hour is not an environment."],
+          "fail": ["Everything was right, for one afternoon.", "Transient brines may be liquid for minutes at a time. That is a chemical event, not a habitat."]
+        }
+      ],
+      "win": [
+        "Water, food, ingredients, shelter and time. Score any world with those five.",
+        "All five. Now apply the card: the Martian surface fails on shelter and on time, and the subsurface — warmer, wetter, shielded by rock — passes every one of them on current evidence."
+      ],
+      "lose": [
+        "Read which test failed — it names what the world is missing.",
+        "Each failed trial names an unmet criterion. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "weigh",
+      "levels": [3, 4],
+      "concept": "habitability",
+      "t": [
+        "One rock from Mars has been argued about for thirty years. Here is how each side reads it.",
+        "ALH84001 is a Martian meteorite found in Antarctica. In 1996 a NASA team published it as evidence of past Martian life, and the argument that followed is a good specimen of how a biosignature claim is actually tested."
+      ],
+      "evidence": [
+        "Both sides are looking at the same rock and agree what is in it: carbonate globules, crystals of magnetite, certain carbon-based molecules, and shapes far too small to be bacteria as we know them.",
+        "Common ground: the meteorite is Martian, it is about four billion years old, and it contains carbonate globules, magnetite grains with unusual morphology, polycyclic aromatic hydrocarbons, and sub-100-nanometre features. The dispute is entirely about what produced them."
+      ],
+      "views": [
+        {
+          "who": "The 1996 NASA team (McKay and colleagues)",
+          "claim": [
+            "Taken together, these four things are best explained by life.",
+            "The features co-occur in a way that biological processes explain more economically than any single non-biological process."
+          ],
+          "because": [
+            "Each one on its own could happen without life. Finding all four in the same tiny spot is what made them think something had lived there.",
+            "Their argument was explicitly about co-location rather than any single feature: magnetite of a form bacteria make, organic molecules, carbonate and micron-scale textures, all within the same fracture zones. They held that no abiotic process was known to produce that combination together."
+          ],
+          "predicts": [
+            "Nobody should be able to make these magnetite crystals in a laboratory without life.",
+            "Abiotic synthesis should fail to reproduce the specific magnetite morphology and its association with the other features."
+          ]
+        },
+        {
+          "who": "Critics across several laboratories (including Golden, Bradley and others)",
+          "claim": [
+            "Every one of the four can be made without anything alive, so the rock does not settle it.",
+            "Each observation has an adequate abiotic explanation, so the evidence is insufficient to support the biological claim."
+          ],
+          "because": [
+            "The shapes are smaller than anything that could hold the machinery a cell needs. And Antarctic ice is full of Earth's own chemicals that could have soaked in.",
+            "Heating carbonate produces magnetite of comparable morphology; the sub-100-nanometre features are below the volume plausibly required for ribosomes and a genome; and the organic molecules are consistent with terrestrial contamination during 13,000 years in Antarctic ice or with abiotic synthesis."
+          ],
+          "predicts": [
+            "Someone should be able to make these crystals in a laboratory, with no life involved.",
+            "Controlled thermal decomposition of carbonate should yield magnetite matching the meteorite's, removing the need for a biological account."
+          ]
+        }
+      ],
+      "ask": [
+        "One side said it could not be done without life. The other said it could. What would you want to happen next?",
+        "Both sides named a test rather than merely disagreeing, which is what made this argument productive. Laboratory work through the 2000s did produce comparable magnetite abiotically, and most researchers now regard the biological interpretation as unsupported — while noting that unsupported is not the same as refuted. Ask yourself what evidence would settle it, and whether that evidence could come from a meteorite at all."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Whether somewhere could hold life is called habitability. It is not the same as whether anything is there.",
+        "Habitability is an assessment of conditions: solvent, energy, elements, shielding and duration. It is necessary for life and nowhere near sufficient.",
+        "Keeping the two questions apart is what makes the field tractable. Habitability can be measured remotely; inhabitation requires either a sample or an unambiguous biosignature, and no agreed unambiguous biosignature exists.",
+        "The Martian surface is currently assessed as habitable in the past and hostile now, with the subsurface remaining the live candidate. Two of the most-cited surface observations are still open: the seasonal methane Curiosity measures at Gale Crater has not been confirmed by the orbiter looking for it, and the radar-bright material read as a subglacial lake in 2018 has since been attributed by several groups to clays. Both remain unresolved, which is the ordinary condition of the field rather than a scandal."
+      ],
+      "sub": [
+        "Earth is the only place we know is inhabited. Everywhere else, we are scoring the conditions.",
+        "A habitable place with nothing living in it is entirely possible, and it would be an extremely interesting result.",
+        "It would sharpen the origins question considerably: conditions met, and no life. That is a datum either way.",
+        "This is why sample return matters more than another orbiter. The instruments that could settle a biosignature claim are too large to fly, and the history of ALH84001 shows how hard the claim is to settle even with the rock in hand and thirty years to look at it."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "habitability",
+      "q": [
+        "Why does the Martian surface fail the test when the ground beneath it might not?",
+        "Why is the Martian subsurface assessed as more habitable than the surface?",
+        "Which criterion does depth actually satisfy, and which does it not?"
+      ],
+      "options": [
+        "Rock blocks the radiation, and water can stay liquid down there",
+        "It is warmer nearer the middle of any planet",
+        "There is more air underground"
+      ],
+      "answer": 0,
+      "why": [
+        "The surface gets blasted with radiation and any water either freezes or boils away. A few metres down, the rock takes the hit and the pressure lets water stay water.",
+        "Depth supplies shielding and raises pressure and temperature enough for liquid water to persist. The same location also supplies chemical energy from water-rock reactions, which does not depend on sunlight.",
+        "Depth answers shielding, solvent stability and duration at once, and does not by itself answer energy — but the rock-water chemistry that comes with it does, which is why deep subsurface environments on Earth support life with no input from the surface at all."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The same five-box card is used on the moons of Jupiter and Saturn, and some of them score better than Mars.",
+        "Europa and Enceladus both have liquid water oceans under ice, both are shielded by kilometres of it, and Enceladus vents its ocean into space where a spacecraft has already flown through the plume and found salts and organic molecules. Applied consistently, the card sends you to the outer solar system — which is where the missions are now going."
+      ]
+    }
+  ]
+}

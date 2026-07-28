@@ -1,0 +1,153 @@
+{
+  "id": "future-biology/02",
+  "module": "future-biology",
+  "index": 1,
+  "title": "Bringing Back the Dead",
+  "specimen": "recovered-sequence",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "DNA falls apart at a rate you can measure. That single fact decides what can and cannot be brought back.",
+        "Ancient DNA degrades with a measurable half-life, so the question of which extinct species are recoverable has an arithmetic answer rather than an aspirational one."
+      ],
+      "sub": [
+        "It is not about how clever anyone is.",
+        "The limit is chemistry, and it was quantified from a pile of bird bones."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How long ago did it die?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "A museum specimen from 1900: the whole genome, easily read.",
+        "A mammoth frozen 40,000 years ago: nearly all of it, in short broken pieces.",
+        "A mammoth tooth in permafrost, over a million years old: fragments, and the oldest DNA anyone has ever read.",
+        "Two million years, from frozen Greenland mud: scraps, and only because it never thawed.",
+        "A dinosaur, 66 million years ago: nothing at all. There is no technique, because there is nothing left to read."
+      ],
+      "t": [
+        "Slide back through time and watch how much of the instructions survive.",
+        "The recovery limit, established empirically. Note that the last step is not a difficulty — it is an absence."
+      ],
+      "after": [
+        "The film was never going to happen, and now you know exactly why.",
+        "Measurements on hundreds of dated bones give a half-life of about 520 years for a short fragment under cool conditions. Applied forward, every bond is broken well before a million years at moderate temperature; permafrost extends it, and nothing extends it to 66 million."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Bring something back. Any part fits any slot, so the marking is on you.",
+        "Assign each requirement, then five tests. The last one is the one the field argues about."
+      ],
+      "parts": [
+        { "id": "sequence", "label": "A readable genome" },
+        { "id": "relative", "label": "A close living relative" },
+        { "id": "womb", "label": "Something to be born from" },
+        { "id": "habitat", "label": "Somewhere to live" },
+        { "id": "herd", "label": "Others of its kind" }
+      ],
+      "slots": [
+        { "correct": "sequence", "label": ["The instructions, recovered well enough to use"] },
+        { "correct": "relative", "label": ["A genome close enough to edit rather than write"] },
+        { "correct": "womb", "label": ["A body that can carry it to birth"] },
+        { "correct": "habitat", "label": ["A place that still has what it needs"] },
+        { "correct": "herd", "label": ["The animals it would have learned from"] }
+      ],
+      "trials": [
+        {
+          "name": ["Read the instructions", "Sequence"],
+          "needs": ["sequence"],
+          "pass": ["Enough of the genome has been recovered to work from.", "Sufficient coverage assembled from overlapping degraded fragments."],
+          "fail": ["Too little survives to reconstruct anything.", "Below a threshold of coverage, gaps cannot be bridged and the sequence is not usable."]
+        },
+        {
+          "name": ["Put them in something living", "Host genome"],
+          "needs": ["sequence", "relative"],
+          "pass": ["A close relative's genome is edited towards the extinct one.", "Targeted edits at loci of interest, in the closest extant genome available."],
+          "fail": ["Nobody can write a whole genome from scratch and boot it in an animal.", "Synthesis at that scale has been achieved only in bacteria. For an animal the only route is editing a relative."]
+        },
+        {
+          "name": ["Get it born", "Development"],
+          "needs": ["sequence", "relative", "womb"],
+          "pass": ["A surrogate carries it, or an artificial womb does.", "Somatic cell nuclear transfer into an enucleated egg, implanted in a surrogate of the related species."],
+          "fail": ["An edited cell in a dish is not an animal.", "This step is where almost every attempt has failed. The one extinct animal ever born — a Pyrenean ibex, in 2003 — lived for seven minutes."]
+        },
+        {
+          "name": ["Keep it alive", "Habitat"],
+          "needs": ["sequence", "relative", "womb", "habitat"],
+          "pass": ["The place it needs still exists.", "Habitat availability is a precondition, and for most extinct species it is the binding one."],
+          "fail": ["An animal with nowhere to be.", "Most species went extinct because their habitat did. Reversing the animal does not reverse the cause."]
+        },
+        {
+          "name": ["Have it actually be a mammoth", "Identity"],
+          "needs": ["sequence", "relative", "womb", "habitat", "herd"],
+          "pass": ["A population, raised by others of its kind.", "Behaviour in long-lived social species is culturally transmitted; a founder generation has nobody to learn from."],
+          "fail": ["You have an elephant with cold-weather genes and nobody to teach it how to be a mammoth.", "This is the honest description of what current approaches would produce: an edited elephant with some mammoth traits, raised without mammoth behaviour. Whether that counts is a definitional question, and it should be asked before the work rather than after."]
+        }
+      ],
+      "win": [
+        "Instructions, a relative, a birth, a home and a herd. Only the first three are technical problems.",
+        "All five. Note the shape of it: the biology is the tractable part. Habitat and transmitted behaviour are not solved by any amount of sequencing, and they are where the concept actually breaks."
+      ],
+      "lose": [
+        "Read which test failed — it names what was missing.",
+        "Each failed trial names an unmet requirement. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Trying to bring an extinct animal back is called de-extinction. What comes back is a very good copy.",
+        "De-extinction produces an approximation. The routes are back-breeding, cloning from an intact cell, and editing a close relative's genome — and only the third is available for anything long dead.",
+        "The recovered sequence is assembled from millions of short damaged fragments, mapped against a living relative's genome to work out where they go. That reference is doing a great deal of the work, so the result is partly the relative by construction.",
+        "This makes the word 'back' the contested part rather than the technique. An Asian elephant edited at several dozen loci for cold tolerance is a real and difficult achievement and is not a mammoth; it shares 99.6% of its genome with Asian elephants because it is one. Whether an approximation that fills the same ecological role counts as the species returning is a question about what a species is, and it is being answered implicitly by press release rather than explicitly by argument."
+      ],
+      "sub": [
+        "You cannot copy something you cannot read all of.",
+        "The gaps in an ancient genome get filled in from the nearest living relative, because there is nothing else to fill them from.",
+        "Which means the closer the relative, the better the result and the less of the extinct animal it contains.",
+        "The genuinely useful spin-off is not disputed by anyone: the same cloning and biobanking work has produced living black-footed ferrets and Przewalski's horses from decades-old frozen cells, adding genetic diversity to populations too inbred to recover on their own. That is de-extinction technique applied to species that are not extinct, and it is working."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "de-extinction",
+      "q": [
+        "Why can nobody bring back a dinosaur?",
+        "Why is 66 million years beyond any recovery technique?",
+        "Why does the reference genome make 'bringing back' an imprecise description?"
+      ],
+      "options": [
+        "DNA falls apart, and after that long there is none left to read",
+        "Dinosaur DNA is too complicated",
+        "No living relative is close enough"
+      ],
+      "answer": 0,
+      "why": [
+        "DNA breaks itself apart slowly no matter what you do. After a few million years there are no pieces left big enough to read, and after 66 million there is nothing at all.",
+        "The measured half-life implies complete fragmentation well within a few million years even in permafrost. There is no signal remaining to amplify, so the limit is the absence of material rather than the sensitivity of the method.",
+        "Because the gaps in a degraded genome are filled from the closest living relative, so a fraction of the reconstruction is that relative's sequence rather than the extinct animal's. The recovered genome is a mosaic whose composition depends on how much survived — which means the phrase describes a spectrum, not an event."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "The same techniques are keeping living species from going extinct in the first place.",
+        "Frozen cells from animals that died in the 1980s have produced living, breeding black-footed ferrets carrying genetic variation the surviving population had lost. That is the strongest argument the field has: whatever one concludes about mammoths, the tools are demonstrably useful on animals that are still here."
+      ]
+    }
+  ]
+}

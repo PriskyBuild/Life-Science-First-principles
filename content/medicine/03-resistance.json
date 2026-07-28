@@ -1,0 +1,101 @@
+{
+  "id": "medicine/03",
+  "module": "medicine",
+  "index": 2,
+  "title": "Resistance",
+  "specimen": "resistance-clock",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Every antibiotic ever made has started failing. Not one has been an exception.",
+        "Resistance has appeared to every antibacterial drug ever deployed, usually within a few years of introduction. There are no exceptions, and the reason there are none is that the mechanism does not depend on anything about the drug."
+      ],
+      "sub": [
+        "That is not bad luck. It is the same three conditions again.",
+        "You have run this machine four times already, on beetles, moths, immune cells and behaviour."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "resistance-is-selection",
+      "question": [
+        "Could a drug be designed that resistance never develops to?",
+        "Is a resistance-proof antimicrobial achievable in principle?"
+      ],
+      "options": [
+        "Not while it kills some and spares others, and survivors breed",
+        "Yes, with better chemistry",
+        "Yes, if the dose is high enough"
+      ],
+      "outcome": "Not while it kills some and spares others, and survivors breed",
+      "note": [
+        "Guess first.",
+        "Commit. Ask which of the three conditions a better molecule could remove."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "selection",
+      "guided": false,
+      "t": [
+        "The same machine as the beetles, with a drug doing the selecting. Try to break it.",
+        "Identical mechanism, different agent. Establish it, then remove one condition — and note that none of the three is a property of the drug."
+      ],
+      "params": { "task": "break", "bg": 0.9, "switches": true, "pressure": 0.85, "aspect": 0.82 },
+      "paramsByLevel": { "1": { "task": "watch", "switches": false, "n": 27 }, "2": { "task": "watch", "switches": false } },
+      "goal": [
+        "You can only stop it by taking away variation, heredity, or the difference in survival. A drug cannot do any of those.",
+        "The three conditions are properties of the bacterial population, not of the drug. No chemistry removes any of them, which is why the question of a resistance-proof antibiotic is not an engineering problem."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Resistance is natural selection with the medicine doing the choosing.",
+        "Antimicrobial resistance is selection: bacteria vary, the variation is heritable, and the drug makes survival depend on it. The outcome follows automatically.",
+        "The drug supplies only the third condition. Variation and heredity belong to the bacteria, so no property of the molecule can prevent resistance — only slow it.",
+        "Fleming said so in his 1945 Nobel lecture, before resistance was a clinical problem, because the mechanism made it inevitable. That is a prediction from theory, made in advance, and it was right — which is a better argument for taking the theory seriously than any retrospective explanation."
+      ],
+      "sub": [
+        "So the aim is never to prevent it. It is to slow it down.",
+        "Every measure — finishing courses, narrow spectrum, combinations, reducing agricultural use — buys time and none of them stops it.",
+        "Combinations work by requiring two rare events at once, which multiplies two small probabilities.",
+        "That is why tuberculosis and HIV are treated with three or four drugs simultaneously. Resistance to one is likely; resistance to four arising in the same organism is not, and the arithmetic of multiplying small probabilities is the whole of the strategy."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "resistance-is-selection",
+      "q": [
+        "Why can no drug be resistance-proof?",
+        "Why is resistance inevitable rather than a failure of drug design?",
+        "Which of the three conditions could chemistry remove?"
+      ],
+      "options": [
+        "The drug only supplies one of the three conditions; the bacteria supply the others",
+        "Because drugs are never strong enough",
+        "Because bacteria adapt on purpose"
+      ],
+      "answer": 0,
+      "why": [
+        "Bacteria already vary, and they already pass what they have to their offspring. All the drug adds is a reason for some to survive and others not. You cannot design away the first two.",
+        "Variation and heredity are properties of the bacterial population and exist before any drug arrives. The drug supplies only differential survival. No molecule can remove conditions it does not control.",
+        "None. That is the point of the question — chemistry acts only on the third condition, and removing it means the drug does not kill anything. The strongest version of the argument is that a drug which selects nothing is a drug that does nothing."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Resistant infections already kill more people a year than malaria.",
+        "Estimates put deaths directly attributable to antimicrobial resistance well over a million a year, with several million more where it contributed. Meanwhile few genuinely new classes have reached the clinic in decades, partly because a drug that should be used sparingly is a poor commercial proposition. The scientific problem and the economic one are different problems, and only one of them is being worked on hard."
+      ]
+    }
+  ]
+}

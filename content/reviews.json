@@ -543,6 +543,82 @@
     ],
     "from": "development/04"
   },
+  "causes-of-illness": {
+    "q": [
+      "Will an antibiotic help a cold?",
+      "Are antibiotics effective against viral infections?",
+      "Why does prescribing an antibiotic for a virus have a cost rather than merely no benefit?"
+    ],
+    "options": [
+      "No — a cold is a virus, and antibiotics only work on bacteria",
+      "Yes, it will shorten it",
+      "Only if you take it early enough"
+    ],
+    "answer": 0,
+    "why": [
+      "Antibiotics attack things bacteria have and viruses do not — like their cell walls. A virus has none of those, so there is nothing for the drug to attack.",
+      "They target bacterial structures and processes that viruses do not possess. There is no mechanism by which one could act on a virus, so timing makes no difference either.",
+      "Because the selection pressure is applied regardless of whether the drug helps. The bacteria in and on the patient are exposed, resistant ones survive, and resistance accumulates — so an ineffective prescription is not neutral, it spends a shared resource for nothing. That is the same mechanism you ran in the beetle simulation."
+    ],
+    "from": "disease/01"
+  },
+  "transmission-and-r0": {
+    "q": [
+      "Why does an epidemic stop before everyone has had it?",
+      "Why does an unchecked epidemic leave people uninfected?",
+      "Why does the epidemic end above rather than at the threshold?"
+    ],
+    "options": [
+      "Once enough people are immune, it cannot find new people fast enough",
+      "The germ gets weaker over time",
+      "Everyone does get it eventually"
+    ],
+    "answer": 0,
+    "why": [
+      "As more people have had it, an ill person meets fewer people who can catch it. Once each one passes it to less than one other, it dies out — and there are still plenty of people who never got it.",
+      "Transmission requires susceptible contacts. Once the susceptible fraction falls below 1/R₀, each case produces fewer than one further case and the outbreak declines — with a substantial fraction never infected.",
+      "Because infectious people are still present when the threshold is crossed, so transmission continues while R is below one and declining. That overshoot means the final size exceeds the threshold, which is why an unchecked epidemic infects considerably more people than herd immunity strictly requires — and why reaching immunity by infection costs far more cases than reaching it by vaccination."
+    ],
+    "from": "disease/02"
+  },
+  "outbreak-investigation": {
+    "q": [
+      "Did Snow know what caused cholera?",
+      "Did Snow's intervention depend on identifying the pathogen?",
+      "What does the case show about the relation between mechanism and action?"
+    ],
+    "options": [
+      "No — but he knew where it was coming from, and that was enough",
+      "Yes, he identified the bacterium",
+      "No, so his intervention did not really work"
+    ],
+    "answer": 0,
+    "why": [
+      "Nobody knew about the germ for another thirty years. He worked out where it was coming from by looking at who got ill, and taking the pump handle off stopped it.",
+      "The bacterium was not identified until 1884. Snow's argument was entirely about exposure patterns, and removing the exposure worked without any knowledge of what was being removed.",
+      "Mechanism and action are separable. Knowing the cause is sufficient for action and not necessary for it — identifying a removable exposure can be enough. That is why epidemiology functions as an independent discipline rather than an applied branch of microbiology, and why it usually gets there first."
+    ],
+    "from": "disease/03"
+  },
+  "eradication-conditions": {
+    "q": [
+      "Why can we not wipe out flu the way we did smallpox?",
+      "Which eradication condition does influenza fail?",
+      "Why is influenza structurally not an eradication candidate?"
+    ],
+    "options": [
+      "It changes constantly and lives in birds and pigs as well",
+      "It is not serious enough to bother",
+      "There is no vaccine for it"
+    ],
+    "answer": 0,
+    "why": [
+      "Flu changes its coat every year, so last year's vaccine stops matching. And it lives in birds and pigs, so even if every person were protected it would still be out there.",
+      "It fails two conditions at once: antigenic stability, which is why the vaccine is reformulated annually, and the absence of an animal reservoir — influenza circulates in wild birds and pigs permanently.",
+      "The reservoir alone is decisive. Antigenic drift makes control expensive and continuous; the reservoir makes eradication impossible in principle, because the pathogen persists in populations no campaign can vaccinate. Only one of those two can be engineered around."
+    ],
+    "from": "disease/04"
+  },
   "dna-packing": {
     "q": [
       "Why can the thread not just be squashed into a ball?",
@@ -946,6 +1022,82 @@
     ],
     "from": "evolution/05"
   },
+  "grown-tissue": {
+    "q": [
+      "Why can a lab grow skin but not a heart?",
+      "Why does the diffusion limit prevent solid-organ engineering?",
+      "Why does a decellularised scaffold address the problem differently?"
+    ],
+    "options": [
+      "Anything thick needs blood vessels built through it, and that has not been solved",
+      "Heart cells cannot be grown",
+      "There are not enough donors to copy from"
+    ],
+    "answer": 0,
+    "why": [
+      "Skin is thin enough that the cells in the middle can get what they need from the outside. A heart is not. Every cell deep inside needs its own delivery.",
+      "Oxygen diffuses only 100 to 200 micrometres through tissue. Anything thicker requires an internal vascular network, and fabricating a branching, perfusable network at capillary scale is unsolved.",
+      "Because it inherits the network instead of building it. Stripping a donor organ of its cells leaves the vascular tree intact down to the capillaries, so the geometry problem is transferred rather than solved — and the approach then needs a donor organ, which is the shortage it was meant to relieve."
+    ],
+    "from": "future-biology/01"
+  },
+  "de-extinction": {
+    "q": [
+      "Why can nobody bring back a dinosaur?",
+      "Why is 66 million years beyond any recovery technique?",
+      "Why does the reference genome make 'bringing back' an imprecise description?"
+    ],
+    "options": [
+      "DNA falls apart, and after that long there is none left to read",
+      "Dinosaur DNA is too complicated",
+      "No living relative is close enough"
+    ],
+    "answer": 0,
+    "why": [
+      "DNA breaks itself apart slowly no matter what you do. After a few million years there are no pieces left big enough to read, and after 66 million there is nothing at all.",
+      "The measured half-life implies complete fragmentation well within a few million years even in permafrost. There is no signal remaining to amplify, so the limit is the absence of material rather than the sensitivity of the method.",
+      "Because the gaps in a degraded genome are filled from the closest living relative, so a fraction of the reconstruction is that relative's sequence rather than the extinct animal's. The recovered genome is a mosaic whose composition depends on how much survived — which means the phrase describes a spectrum, not an event."
+    ],
+    "from": "future-biology/02"
+  },
+  "ethics-of-capability": {
+    "q": [
+      "Someone proves a thing can be built. What has that settled?",
+      "What does a demonstration of feasibility contribute to the question of whether to proceed?",
+      "Why is a factual premise alone insufficient to reach a conclusion about what ought to be done?"
+    ],
+    "options": [
+      "Only that it is possible — every other question is still open",
+      "That it should be built, since it works",
+      "Nothing at all; feasibility is irrelevant"
+    ],
+    "answer": 0,
+    "why": [
+      "Knowing you can do something tells you nothing about whether it is a good idea. It just means the question is now worth arguing about.",
+      "It settles the first of five questions and moves the debate from hypothetical to actual. Purpose, distribution of risk, reversibility and authority are untouched by it.",
+      "Because a conclusion about what ought to be done requires at least one premise about what is good or owed, and no experiment supplies one. Feasibility is necessary for the question to arise and contributes nothing to its answer — which is why the third option is wrong too."
+    ],
+    "from": "future-biology/03"
+  },
+  "designing-responsibly": {
+    "q": [
+      "What is the most important thing to be able to say about your own idea?",
+      "Which element of a proposal makes it assessable by anyone else?",
+      "Why is disconfirmability the load-bearing requirement rather than plausibility?"
+    ],
+    "options": [
+      "What would happen if it were wrong, and how you would find out",
+      "That it has never been done before",
+      "That you are confident it will work"
+    ],
+    "answer": 0,
+    "why": [
+      "Anyone can be sure. Being able to say what would change your mind is what makes an idea worth listening to, and it is what you have been practising the whole way through.",
+      "A stated disconfirming result makes the claim checkable independently of the person making it. Novelty and confidence are properties of the proposer; a test is a property of the proposal.",
+      "Because a plausible claim compatible with every outcome forbids nothing and therefore says nothing about the world. Disconfirmability is what makes a proposal a claim at all — and it is also what makes being wrong survivable, which is the practical reason to insist on it."
+    ],
+    "from": "future-biology/04"
+  },
   "gene-is-a-unit": {
     "q": [
       "What makes a gene a gene?",
@@ -1229,6 +1381,82 @@
     ],
     "from": "immunity/04"
   },
+  "drug-must-reach-target": {
+    "q": [
+      "Why do most new medicines fail?",
+      "At what stage do most candidates fail, and why?",
+      "Why has better target biology not raised success rates much?"
+    ],
+    "options": [
+      "They cannot get where they need to go, or they do other things too",
+      "They do not bind their target",
+      "They are too expensive to make"
+    ],
+    "answer": 0,
+    "why": [
+      "Finding something that sticks to the right protein is the easy bit. Getting it into the body, past the liver, into the right cells, without doing anything else, is where nearly everything falls over.",
+      "Most fail on pharmacokinetics or toxicity, after target binding has been established. Absorption, metabolism, distribution and off-target effects are separate hurdles and a molecule must clear all of them at once.",
+      "Because target identification was never the binding constraint. Knowing which protein to block does not tell you that a molecule exists which binds it, crosses membranes, survives the liver, ignores everything else and clears — and that conjunction is what fails."
+    ],
+    "from": "medicine/01"
+  },
+  "controlled-trial": {
+    "q": [
+      "Why does a trial need a group that gets nothing?",
+      "What does a control group establish?",
+      "Why is randomisation necessary given that a control group exists?"
+    ],
+    "options": [
+      "To show what would have happened anyway",
+      "To save money on the medicine",
+      "To have someone to compare complaints with"
+    ],
+    "answer": 0,
+    "why": [
+      "Most people get better from most things eventually. Without a group that got nothing, you cannot tell whether the medicine helped or you just watched people recover.",
+      "It establishes the counterfactual — what would have happened without treatment. Any outcome in the treated group is uninterpretable without it, however good it looks.",
+      "A control group gives you a comparison; randomisation makes the comparison fair. Without it, whoever assigns patients will — usually unconsciously — put different sorts of patient in each group, and the difference you measure is that rather than the treatment."
+    ],
+    "from": "medicine/02"
+  },
+  "resistance-is-selection": {
+    "q": [
+      "Why can no drug be resistance-proof?",
+      "Why is resistance inevitable rather than a failure of drug design?",
+      "Which of the three conditions could chemistry remove?"
+    ],
+    "options": [
+      "The drug only supplies one of the three conditions; the bacteria supply the others",
+      "Because drugs are never strong enough",
+      "Because bacteria adapt on purpose"
+    ],
+    "answer": 0,
+    "why": [
+      "Bacteria already vary, and they already pass what they have to their offspring. All the drug adds is a reason for some to survive and others not. You cannot design away the first two.",
+      "Variation and heredity are properties of the bacterial population and exist before any drug arrives. The drug supplies only differential survival. No molecule can remove conditions it does not control.",
+      "None. That is the point of the question — chemistry acts only on the third condition, and removing it means the drug does not kill anything. The strongest version of the argument is that a drug which selects nothing is a drug that does nothing."
+    ],
+    "from": "medicine/03"
+  },
+  "risk-and-benefit": {
+    "q": [
+      "Which part of making a treatment cannot be fixed by better chemistry?",
+      "Which requirement is immune to improved molecular design?",
+      "Why is stewardship structurally different from the other requirements?"
+    ],
+    "options": [
+      "Keeping it working — that depends on how it is used",
+      "Finding the right target",
+      "Getting the molecule into cells"
+    ],
+    "answer": 0,
+    "why": [
+      "You can make a better molecule to reach a target or to avoid side effects. You cannot make a molecule that stops bacteria from varying and passing things on. How long it keeps working depends on how much it gets used.",
+      "Resistance is driven by selection on the pathogen population, and the drug supplies only one of the three conditions. Better chemistry can improve every other requirement and cannot touch this one.",
+      "Because its determinants sit outside the molecule entirely — in prescribing behaviour, agricultural practice and how many doses are given worldwide. It is a collective-action problem wearing a scientific costume, and it responds to policy rather than to research."
+    ],
+    "from": "medicine/04"
+  },
   "invisible-majority": {
     "q": [
       "Why did nobody know about germs until 350 years ago?",
@@ -1402,25 +1630,6 @@
     ],
     "from": "natural-selection/02"
   },
-  "resistance-is-selection": {
-    "q": [
-      "Does the medicine make the germs resistant?",
-      "Does antibiotic exposure cause resistance mutations?",
-      "What did Luria and Delbrück's variance argument establish?"
-    ],
-    "options": [
-      "No — it kills the ones that were not, and the rest breed",
-      "Yes, it teaches them to resist",
-      "Yes, it damages their DNA and they change"
-    ],
-    "answer": 0,
-    "why": [
-      "The germs that could survive were already there before the medicine arrived. All the medicine did was clear away the competition.",
-      "Resistance is not induced. Some bacteria already carried it, at low frequency, and the drug removed everything else — leaving them the entire population to grow into.",
-      "That mutations arise independently of selection. The fluctuation test compared observed variance in resistant counts against what an induced response would predict; the observed variance was far too high, which is only explicable if mutations occurred before exposure, at random times during growth."
-    ],
-    "from": "natural-selection/04"
-  },
   "signals-are-electrical": {
     "q": [
       "How does your brain know something hurt a lot?",
@@ -1515,6 +1724,63 @@
       "The brain is informed, not consulted. It can modulate the reflex — you can suppress withdrawal deliberately, up to a point — but the loop closes without it, and that is what the architecture is for."
     ],
     "from": "neuroscience/05"
+  },
+  "food-is-fuel-and-parts": {
+    "q": [
+      "Could you starve while eating plenty of calories?",
+      "Is adequate energy intake sufficient nutrition?",
+      "Why is calorie adequacy independent of nutritional adequacy?"
+    ],
+    "options": [
+      "Yes — calories are only one of the two jobs food does",
+      "No, calories are what matter",
+      "Only if you were already ill"
+    ],
+    "answer": 0,
+    "why": [
+      "You can burn plenty and still have nothing to rebuild yourself out of, and nothing to supply the tiny amounts of things you cannot make. Sailors with full stomachs died of scurvy.",
+      "Energy and materials are separate requirements. Kwashiorkor is protein deficiency with adequate calories; scurvy is a micronutrient deficiency with adequate everything else. Both occur in people who are eating.",
+      "They are independent because the requirements are met by different components in different quantities — grams of macronutrient against milligrams of micronutrient — and no amount of one supplies the other. This is why food fortification works so well: adding milligrams of something to a staple corrects a deficiency without changing the diet at all."
+    ],
+    "from": "nutrition/01"
+  },
+  "essential-nutrients": {
+    "q": [
+      "Why did swapping lemons for limes bring scurvy back?",
+      "Why did the lime substitution fail?",
+      "Why could nobody detect the substitution's failure in advance?"
+    ],
+    "options": [
+      "Nobody knew what the active ingredient was, so nobody could measure it",
+      "The limes had gone off",
+      "Sailors refused to drink it"
+    ],
+    "answer": 0,
+    "why": [
+      "They thought any sour citrus would do. Limes have much less vitamin C than lemons, and since nobody knew what they were looking for, nobody could check.",
+      "The substitution looked equivalent on every property anyone could measure — both were sour citrus. Without knowing the active compound there was no assay, so a weaker substitute was indistinguishable until people started getting ill again.",
+      "Because the only available test was the disease itself, which appears months later. This is the general hazard of acting on an empirical finding without a mechanism: the finding tells you what worked, and cannot tell you which feature of it mattered — so any change is a gamble you cannot evaluate."
+    ],
+    "from": "nutrition/03"
+  },
+  "evidence-in-nutrition": {
+    "q": [
+      "People who eat more vegetables live longer. Do vegetables make you live longer?",
+      "What does an observed association between vegetable intake and longevity establish?",
+      "Why does adjusting for known confounders not settle it?"
+    ],
+    "options": [
+      "Maybe — but they also differ in many other ways",
+      "Yes, that is what the study shows",
+      "No, it proves nothing at all"
+    ],
+    "answer": 0,
+    "why": [
+      "People who eat lots of vegetables usually also exercise more, smoke less and have more money. Any of those could be doing it. The study cannot tell you which.",
+      "It establishes an association and is consistent with several explanations, including that vegetables help, that vegetable-eaters differ in other ways, or both. Note that the third option is also wrong — associations are real evidence, just weaker than they are usually reported to be.",
+      "Because adjustment only removes confounders you measured, and the list of ways diet tracks with everything else in someone's life is not closed. That is why randomisation matters: it balances the confounders nobody thought of, which is precisely the set that produced the historical reversals."
+    ],
+    "from": "nutrition/04"
   },
   "photosynthesis-is-building": {
     "q": [
@@ -1703,6 +1969,158 @@
       "Amyloid is a cross-β structure that is thermodynamically very stable and grows by recruiting monomers onto its ends. That is self-templating — which is why prion diseases are transmissible without any nucleic acid at all, a claim that took Prusiner a decade to get accepted."
     ],
     "from": "proteins/04"
+  },
+  "life-without-gravity": {
+    "q": [
+      "Why did cycling in orbit not save the astronauts' bones?",
+      "Why is resistive exercise effective against bone loss where aerobic exercise is not?",
+      "What does the countermeasure's success tell you about the signal bone responds to?"
+    ],
+    "options": [
+      "Bone responds to being pushed against, and cycling does not push on it",
+      "Cycling is not hard enough work",
+      "Cycling uses up too much calcium"
+    ],
+    "answer": 0,
+    "why": [
+      "Your bones are not counting how tired you are. They are measuring how hard something squashed them, and a bicycle in space squashes nothing.",
+      "The stimulus is mechanical strain in the bone itself, not cardiovascular effort. Cycling in free fall produces almost no skeletal loading, so the signal that maintains bone is still absent however hard the crew works.",
+      "It tells you the signal is local and mechanical rather than systemic. If bone loss were caused by something circulating — a hormone, a deficiency — then general exercise or a supplement would help. That resistive loading works, and only where it is applied, identifies strain at the tissue as the controlled variable."
+    ],
+    "from": "space-biology/01"
+  },
+  "habitability": {
+    "q": [
+      "Why does the Martian surface fail the test when the ground beneath it might not?",
+      "Why is the Martian subsurface assessed as more habitable than the surface?",
+      "Which criterion does depth actually satisfy, and which does it not?"
+    ],
+    "options": [
+      "Rock blocks the radiation, and water can stay liquid down there",
+      "It is warmer nearer the middle of any planet",
+      "There is more air underground"
+    ],
+    "answer": 0,
+    "why": [
+      "The surface gets blasted with radiation and any water either freezes or boils away. A few metres down, the rock takes the hit and the pressure lets water stay water.",
+      "Depth supplies shielding and raises pressure and temperature enough for liquid water to persist. The same location also supplies chemical energy from water-rock reactions, which does not depend on sunlight.",
+      "Depth answers shielding, solvent stability and duration at once, and does not by itself answer energy — but the rock-water chemistry that comes with it does, which is why deep subsurface environments on Earth support life with no input from the surface at all."
+    ],
+    "from": "space-biology/02"
+  },
+  "extremophiles": {
+    "q": [
+      "What does a tardigrade surviving space actually prove?",
+      "What does cryptobiosis establish about the requirements of life?",
+      "Why does the distinction between tolerance and suspension matter?"
+    ],
+    "options": [
+      "That life can be paused and restarted, not that it can run on nothing",
+      "That living things can survive anywhere",
+      "That tardigrades came from space"
+    ],
+    "answer": 0,
+    "why": [
+      "While it was in space it was not doing anything. It was a dried-out speck. The clever bit is that it started again afterwards.",
+      "Nothing metabolised under those conditions. The result bounds the conditions a suspended organism can be carried through, not the conditions under which metabolism is possible.",
+      "Because the two support completely different conclusions. Suspension says a state can be preserved and resumed, which is a claim about stability. Tolerance would say chemistry proceeds under those conditions, which nothing here demonstrates — and conflating them is how a real and useful finding gets reported as evidence that life needs almost nothing."
+    ],
+    "from": "space-biology/03"
+  },
+  "closed-life-support": {
+    "q": [
+      "Why must waste be processed on a spacecraft?",
+      "Why is waste processing not optional in a closed system?",
+      "Why does the matter-cycles principle become binding rather than merely true?"
+    ],
+    "options": [
+      "The nutrients the plants need are in it, and there are no others",
+      "It would smell bad",
+      "It takes up too much room"
+    ],
+    "answer": 0,
+    "why": [
+      "There is no shop. Every atom the plants need to grow is already on board, and most of it is in the waste. Not processing it means locking those atoms away for the rest of the trip.",
+      "Matter cycles because it has nowhere else to go. The elements plants require are finite and on board, so any nutrient not returned is permanently removed from circulation and the food loop closes down.",
+      "On Earth the same principle is true and slack — the reservoirs are enormous relative to any flux, so nothing binds on a human timescale. In a sealed vehicle the reservoirs are the size of what you launched, so the cycle time becomes a hard operational constraint rather than a background fact."
+    ],
+    "from": "space-biology/04"
+  },
+  "biology-as-parts": {
+    "q": [
+      "Why is building with biological parts harder than with electronic ones?",
+      "Why does modularity fail in biological circuits?",
+      "Why is host burden a structural rather than incidental problem?"
+    ],
+    "options": [
+      "The parts affect each other through the cell they share",
+      "Biological parts are too small",
+      "Nobody has written the specifications down"
+    ],
+    "answer": 0,
+    "why": [
+      "A resistor does not care what else is in the circuit. A gene does — everything in a cell shares the same machinery, so switching one thing on takes machinery away from everything else.",
+      "Parts compete for shared cellular resources, so adding one changes the behaviour of others. Modularity assumes components do not interact except through their declared connections, and in a cell they always do.",
+      "Because the resources are finite and common by construction. Every expressed construct draws on the same ribosome pool and energy budget, so coupling is a property of being in a cell rather than a flaw to be designed out. It can be reduced by insulation and by characterising in context; it cannot be eliminated."
+    ],
+    "from": "synthetic-biology/01"
+  },
+  "genetic-circuits": {
+    "q": [
+      "Where does the memory in a toggle switch come from?",
+      "What makes a two-gene mutual repressor bistable?",
+      "Why is the behaviour a property of topology rather than of the genes?"
+    ],
+    "options": [
+      "From the arrangement — whichever wins keeps the other switched off",
+      "From a molecule that stores the state",
+      "From the DNA sequence being changed"
+    ],
+    "answer": 0,
+    "why": [
+      "Nothing stores anything. Once one gene is winning it keeps the other switched off, and that keeps it winning. The state holds itself up.",
+      "Mutual repression makes each state self-reinforcing, so there are two stable arrangements and the system stays in whichever it was pushed into. No storage molecule and no sequence change is involved.",
+      "Because swapping in different repressors with similar strengths gives the same behaviour, while rewiring the same repressors differently changes it completely. The behaviour is carried by the connection pattern, which is why the motifs recur across organisms sharing no genes."
+    ],
+    "from": "synthetic-biology/02"
+  },
+  "minimal-genome": {
+    "q": [
+      "What does it mean that 90 essential genes have no known function?",
+      "How should the unexplained essential genes be interpreted?",
+      "What does that gap indicate about the state of the field?"
+    ],
+    "options": [
+      "We can build a cell without fully understanding one",
+      "Those genes are probably not really needed",
+      "The experiment was done badly"
+    ],
+    "answer": 0,
+    "why": [
+      "They must matter, because taking any of them out kills the cell. We just do not know what they do. Being able to build something is not the same as understanding it.",
+      "They are demonstrably necessary and functionally uncharacterised. Construction ability has outrun explanatory understanding, which is unusual — normally understanding comes first.",
+      "It marks a real and quantified gap: 19% of the minimum requirement for life is unexplained in the best-characterised system anyone has built. Most fields cannot state their ignorance that precisely, and being able to is a sign of maturity rather than of failure."
+    ],
+    "from": "synthetic-biology/03"
+  },
+  "design-then-test": {
+    "q": [
+      "Why does an engineered organism stop working over time?",
+      "Why is a production strain evolutionarily unstable?",
+      "Why does coupling the product to survival solve it?"
+    ],
+    "options": [
+      "Cells that break your circuit grow faster and take over",
+      "The DNA wears out",
+      "The nutrients run out"
+    ],
+    "answer": 0,
+    "why": [
+      "Making your product costs the cell energy it could spend growing. Any cell that breaks the circuit grows a bit faster, and after enough generations those are all that is left. It is the beetles again, and your design is the thing being selected against.",
+      "Expression imposes metabolic burden, so loss-of-function mutants have higher fitness. Given mutation and enough generations they dominate — which is not a fault in the construct but the inevitable result of the three conditions applying to it.",
+      "Because it reverses the sign of the selection. If the cell cannot survive without producing, then losing the construct is lethal rather than advantageous, and the same mechanism that was destroying your design now maintains it. Working with selection rather than against it is the general lesson."
+    ],
+    "from": "synthetic-biology/04"
   },
   "life-is-a-process": {
     "q": [

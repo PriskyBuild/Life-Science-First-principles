@@ -1,0 +1,106 @@
+{
+  "id": "disease/01",
+  "module": "disease",
+  "index": 0,
+  "title": "What Makes You Ill",
+  "specimen": "cause-sorter",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Scurvy, measles, sickle-cell and lung cancer are all illnesses. Not one of them is caused the same way as another.",
+        "Four diseases, four completely different kinds of cause: something missing, something caught, something inherited, and something breathed in. Treating them as one category is why medicine took so long to work."
+      ],
+      "sub": [
+        "So 'illness' is not one kind of thing.",
+        "Working out which kind you are looking at is most of a diagnosis."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "causes-of-illness",
+      "question": [
+        "Why does it matter which kind of cause an illness has?",
+        "Why is classifying the cause the first useful step?"
+      ],
+      "options": [
+        "Because the fix is completely different for each",
+        "Because some are more serious",
+        "It does not matter — you treat the symptoms"
+      ],
+      "outcome": "Because the fix is completely different for each",
+      "note": [
+        "Have a think first.",
+        "Commit. Note that an antibiotic helps exactly one of the four categories."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Sort each illness by what actually causes it.",
+        "Match each disease to its category of cause."
+      ],
+      "parts": [
+        { "id": "infection", "label": "Measles" },
+        { "id": "deficiency", "label": "Scurvy" },
+        { "id": "genetic", "label": "Sickle-cell" },
+        { "id": "environment", "label": "Lung cancer from smoking" }
+      ],
+      "slots": [
+        { "accepts": "infection", "label": ["Something got in", "Infectious: a pathogen"] },
+        { "accepts": "deficiency", "label": ["Something is missing", "Deficiency: a required nutrient absent"] },
+        { "accepts": "genetic", "label": ["It was in the instructions", "Genetic: an inherited variant"] },
+        { "accepts": "environment", "label": ["Something outside did damage", "Environmental: an external agent causing damage"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Illnesses come in kinds, and the kind tells you what might help.",
+        "Infectious, deficiency, genetic, environmental and degenerative — five broad categories, and the category determines what kind of intervention could possibly work.",
+        "The categories overlap: most common diseases have genetic susceptibility interacting with environmental exposure, and infection can be a cause of cancer. The classification is a starting point rather than a partition.",
+        "Germ theory's great achievement was separating the first category out, and its great distortion was that for fifty years afterwards people looked for a germ behind everything. Scurvy was thought infectious. So was pellagra, and Goldberger had to drink a patient's excretions to convince anyone otherwise — the categories are not obvious from the outside."
+      ],
+      "sub": [
+        "An antibiotic helps with exactly one of these, and does nothing for the rest.",
+        "That is worth stating plainly: antibiotics work on bacterial infection only, and not on viruses, deficiencies, inherited conditions or damage.",
+        "Which is why they are prescribed so often for things they cannot touch, and why that drives resistance for no benefit at all.",
+        "Roughly a third of antibiotic prescriptions in primary care are for conditions they cannot help — mostly viral. The cost is not merely waste: every prescription applies selection pressure, so a drug given for no benefit still buys resistance."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "causes-of-illness",
+      "q": [
+        "Will an antibiotic help a cold?",
+        "Are antibiotics effective against viral infections?",
+        "Why does prescribing an antibiotic for a virus have a cost rather than merely no benefit?"
+      ],
+      "options": [
+        "No — a cold is a virus, and antibiotics only work on bacteria",
+        "Yes, it will shorten it",
+        "Only if you take it early enough"
+      ],
+      "answer": 0,
+      "why": [
+        "Antibiotics attack things bacteria have and viruses do not — like their cell walls. A virus has none of those, so there is nothing for the drug to attack.",
+        "They target bacterial structures and processes that viruses do not possess. There is no mechanism by which one could act on a virus, so timing makes no difference either.",
+        "Because the selection pressure is applied regardless of whether the drug helps. The bacteria in and on the patient are exposed, resistant ones survive, and resistance accumulates — so an ineffective prescription is not neutral, it spends a shared resource for nothing. That is the same mechanism you ran in the beetle simulation."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "Working out what kind of thing you are dealing with is the first half of solving it.",
+        "The category determines what could possibly work: replace what is missing, kill what got in, manage what was inherited, remove what is doing damage. Most diagnostic error is not getting the specific disease wrong — it is being in the wrong category, and then every subsequent step is wasted however well executed."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "nutrition/02",
+  "module": "nutrition",
+  "index": 1,
+  "title": "What Happens to a Sandwich",
+  "specimen": "digest-trace",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "You eat bread and cheese. A day later some of it is you. None of it arrived as bread or cheese.",
+        "Nothing you eat is absorbed as what it was. A sandwich is dismantled to its component monomers before any of it crosses into you, and what gets built afterwards is yours."
+      ],
+      "sub": [
+        "Everything was taken apart first.",
+        "You have met the reason twice already — once as size, once as specification."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "digestion-is-disassembly",
+      "question": [
+        "Why does bread have to be broken down before you can use it?",
+        "Why is polymer breakdown necessary before absorption?"
+      ],
+      "options": [
+        "It is too big to cross, and it is built to somebody else's plan",
+        "It needs to be sterilised",
+        "It would taste wrong otherwise"
+      ],
+      "outcome": "It is too big to cross, and it is built to somebody else's plan",
+      "note": [
+        "Guess first — you know both halves of this already.",
+        "Commit. The size constraint came from the membrane; the specification constraint came from proteins."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": true,
+      "t": [
+        "Follow the sandwich down the tube. Put each step where it happens.",
+        "Match each stage of digestion to where it occurs."
+      ],
+      "parts": [
+        { "id": "chew", "label": "Chewing, and starch begins" },
+        { "id": "acid", "label": "Acid, and protein begins" },
+        { "id": "enzymes", "label": "The rest of the enzymes" },
+        { "id": "absorb", "label": "Absorption" }
+      ],
+      "slots": [
+        { "accepts": "chew", "label": ["Mouth", "Mouth: mechanical breakdown and salivary amylase"] },
+        { "accepts": "acid", "label": ["Stomach", "Stomach: acid denaturation and pepsin"] },
+        { "accepts": "enzymes", "label": ["First part of the small intestine", "Duodenum: pancreatic enzymes and bile"] },
+        { "accepts": "absorb", "label": ["Most of the small intestine", "Jejunum and ileum: nearly all absorption"] }
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Taking food apart into pieces small enough to cross is called digestion.",
+        "Digestion is hydrolysis: polymers cut back into the monomers they were built from — starch to glucose, protein to amino acids, fat to fatty acids.",
+        "It is the exact reverse of the polymerisation you met in Biomolecules, run by enzymes, and it reduces everything to a common currency of monomers.",
+        "That reduction to a common currency is why any organism can eat any other. Nothing about a cow's protein is retained; it becomes amino acids indistinguishable from those in a lentil, and you rebuild from the pool. Digestion is not purification and not extraction — it is standardisation."
+      ],
+      "sub": [
+        "Nothing you eat becomes part of you as it was.",
+        "You do not absorb a cow's proteins. You absorb amino acids and build your own.",
+        "Which is why an intact protein slipping across the barrier is exactly what the immune system treats as an intruder.",
+        "That is food allergy: the system is not malfunctioning, it is responding correctly to a protein that should never have arrived intact. It also explains why allergies cluster on the foods whose proteins most resist digestion — peanut, shellfish, egg."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "digestion-is-disassembly",
+      "q": [
+        "Why can insulin not be swallowed?",
+        "Why must protein drugs be injected?",
+        "Why is oral delivery of peptide drugs such a persistent problem?"
+      ],
+      "options": [
+        "It is a protein, and the gut takes proteins apart",
+        "It dissolves too slowly",
+        "It would be absorbed too fast"
+      ],
+      "answer": 0,
+      "why": [
+        "Your gut cannot tell the difference between insulin and any other protein. It takes it apart into amino acids, and amino acids do not do what insulin does.",
+        "The gut is built to dismantle proteins indiscriminately, and it has no way to recognise a therapeutic one. This is the delivery problem, not a chemistry problem — the drug has been available since 1982 and still requires a needle.",
+        "Because the barrier that keeps foreign proteins out is the same barrier a protein drug must cross, and it cannot be selectively relaxed. Enormous effort has gone into enteric coatings, absorption enhancers and enzyme inhibitors, and oral insulin remains largely unsolved — the two requirements are in direct opposition."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why your small intestine is folded until it has the surface area of a tennis court.",
+        "Absorption depends on area, so the tube is folded, the folds carry villi, and the villi carry microvilli — three levels turning a few metres into around 30 square metres. Coeliac disease damages that surface, and the consequence is malnutrition despite an adequate diet: the problem is not the food and not the tube, it is the area."
+      ]
+    }
+  ]
+}

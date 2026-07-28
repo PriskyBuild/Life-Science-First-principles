@@ -1,0 +1,109 @@
+{
+  "id": "space-biology/03",
+  "module": "space-biology",
+  "index": 2,
+  "title": "The Toughest Animal Alive",
+  "specimen": "tardigrade",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "There is an animal in your gutter that survives being frozen solid, boiled, and thrown into space.",
+        "Tardigrades tolerate temperatures near absolute zero, hard vacuum, and radiation doses thousands of times lethal for a human. They are also about half a millimetre long and live in moss."
+      ],
+      "sub": [
+        "And the way it does it is stranger than the list.",
+        "The trick is not toughness. That is the part worth getting right."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "extremophiles",
+      "question": [
+        "A tardigrade survives boiling and freezing and space. What is it doing while all that happens?",
+        "What is the physiological state during extreme tolerance?"
+      ],
+      "options": [
+        "Nothing at all — it has stopped completely",
+        "Repairing itself extremely fast",
+        "Running on a different kind of energy"
+      ],
+      "outcome": "Nothing at all — it has stopped completely",
+      "note": [
+        "Guess first.",
+        "Commit. Ask what a cell would have to keep doing to stay alive, and whether any of it is possible at −272 °C."
+      ]
+    },
+
+    {
+      "type": "slider",
+      "guided": true,
+      "label": "How bad does it get?",
+      "min": 0,
+      "max": 4,
+      "value": 0,
+      "captions": [
+        "Active in a film of water: it needs oxygen, food, and roughly the temperatures you do.",
+        "The water dries up. Over a few hours it pulls in its legs and shrinks into a barrel called a tun.",
+        "As a tun it survives years without water. Add a drop and it walks away.",
+        "Cooled to one degree above absolute zero, and it still revives.",
+        "Ten days in open space: the vacuum did not kill them. Full solar ultraviolet, on top of the vacuum, mostly did."
+      ],
+      "t": [
+        "Push the conditions from ordinary to impossible and watch what the animal does about it.",
+        "The tolerance envelope, in the order it was established. Note where the last caption stops being a success."
+      ],
+      "after": [
+        "It does not fight any of it. It switches itself off first.",
+        "The active animal is unremarkable — it drowns, starves and overheats like anything else its size. Everything on this slider is a property of the tun, and the tun is not a running organism."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Stopping completely and starting again later is called cryptobiosis. Hidden life.",
+        "Cryptobiosis is a reversible suspension of metabolism. Measured activity falls below a ten-thousandth of normal, which is to say below anything that can be detected at all.",
+        "Losing water is the trigger. As the animal dries, specialised disordered proteins turn the cytoplasm into a glass, immobilising everything inside it so that nothing can react, drift or unfold.",
+        "That glass is the whole mechanism, and it explains the shape of the results. A vitrified organism has no chemistry to disrupt, so temperature and pressure have little to act on — but ionising radiation and ultraviolet damage molecules directly, without needing metabolism, and those are exactly the exposures that kill tuns. Tardigrades also carry a protein that binds DNA and shields it, which reduces radiation damage but does not abolish it."
+      ],
+      "sub": [
+        "It is not asleep. Asleep is still doing things.",
+        "There is no heartbeat to slow down and no breathing to stop; the animal is chemically inert.",
+        "Which is why the question 'is a tun alive?' has no clean answer, and is a better question than it first appears.",
+        "It does not widen what life needs in order to run. A tardigrade in a moss cushion needs water, oxygen and food, exactly like anything else. What it can do is leave the running state and return, and that is a different claim — a much stranger one, and one with far more practical use."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "extremophiles",
+      "q": [
+        "What does a tardigrade surviving space actually prove?",
+        "What does cryptobiosis establish about the requirements of life?",
+        "Why does the distinction between tolerance and suspension matter?"
+      ],
+      "options": [
+        "That life can be paused and restarted, not that it can run on nothing",
+        "That living things can survive anywhere",
+        "That tardigrades came from space"
+      ],
+      "answer": 0,
+      "why": [
+        "While it was in space it was not doing anything. It was a dried-out speck. The clever bit is that it started again afterwards.",
+        "Nothing metabolised under those conditions. The result bounds the conditions a suspended organism can be carried through, not the conditions under which metabolism is possible.",
+        "Because the two support completely different conclusions. Suspension says a state can be preserved and resumed, which is a claim about stability. Tolerance would say chemistry proceeds under those conditions, which nothing here demonstrates — and conflating them is how a real and useful finding gets reported as evidence that life needs almost nothing."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "If you could dry a vaccine the way a tardigrade dries itself, it would not need a fridge.",
+        "The glass-forming proteins are being engineered into human cells and into stored biological material for exactly this reason. Vaccines that survive a warm supply chain would reach places refrigeration cannot, and the mechanism being copied was found in an animal living in moss."
+      ]
+    }
+  ]
+}

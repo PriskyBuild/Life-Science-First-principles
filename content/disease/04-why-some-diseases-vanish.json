@@ -1,0 +1,156 @@
+{
+  "id": "disease/04",
+  "module": "disease",
+  "index": 3,
+  "title": "Why Some Diseases Vanish",
+  "specimen": "eradication-kit",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "Smallpox killed about 300 million people in the twentieth century. It no longer exists anywhere.",
+        "Smallpox killed more people in the twentieth century than every war of that century combined. It has not infected anyone naturally since 1977, and it is the only human disease ever deliberately eradicated."
+      ],
+      "sub": [
+        "Only one. So why has nothing else followed?",
+        "The interesting question is not how smallpox was beaten but why the same effort has not worked twice."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "eradication-conditions",
+      "question": [
+        "What would make a disease impossible to wipe out?",
+        "What property would make eradication unachievable?"
+      ],
+      "options": [
+        "If it also lives in animals, so there is always somewhere to hide",
+        "If it spreads very quickly",
+        "If it makes people very ill"
+      ],
+      "outcome": "If it also lives in animals, so there is always somewhere to hide",
+      "note": [
+        "Guess first.",
+        "Commit. Ask where the pathogen could be while you are vaccinating every human."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "outbreak",
+      "guided": false,
+      "t": [
+        "Find the level of protection that stops it. Then make it more catchy and find it again.",
+        "Vaccination does not have to reach everyone — only enough that R falls below one. Find that level, then raise R₀ and find how sharply the requirement moves."
+      ],
+      "params": { "task": "threshold", "r0": 3, "catchy": true, "protect": true, "aspect": 0.6 },
+      "paramsByLevel": { "1": { "catchy": false, "r0": 3 }, "2": { "catchy": false, "r0": 3 } },
+      "goal": [
+        "You do not need everybody. But for a really catchy one you need nearly everybody.",
+        "The threshold is 1 − 1/R₀, so it climbs steeply with transmissibility: 50% at R₀ = 2, 67% at 3, and about 93% for measles."
+      ]
+    },
+
+    {
+      "type": "build",
+      "guided": false,
+      "t": [
+        "Work out which diseases can be wiped out. Any part fits any slot.",
+        "Match each property to what it does to an eradication campaign. Placement is unconstrained, then it is tested."
+      ],
+      "parts": [
+        { "id": "human", "label": "Infects only humans" },
+        { "id": "stable", "label": "Does not change its coat" },
+        { "id": "vaccine", "label": "A good vaccine exists" },
+        { "id": "visible", "label": "Obvious when someone has it" }
+      ],
+      "slots": [
+        { "correct": "human", "label": ["Nowhere for it to hide while you vaccinate"] },
+        { "correct": "stable", "label": ["The vaccine keeps working year after year"] },
+        { "correct": "vaccine", "label": ["You have something to give people"] },
+        { "correct": "visible", "label": ["You can find every case and ring-fence it"] }
+      ],
+      "trials": [
+        {
+          "name": ["Have anything to give people", "A vaccine"],
+          "needs": ["vaccine"],
+          "pass": ["There is a vaccine that works.", "An effective vaccine exists."],
+          "fail": ["No vaccine, no campaign. That is malaria's problem for a century.", "Without an effective vaccine there is no eradication tool, which is why malaria and HIV are not eradication candidates however much is spent."]
+        },
+        {
+          "name": ["Still work in ten years", "A stable target"],
+          "needs": ["vaccine", "stable"],
+          "pass": ["The vaccine still matches the pathogen.", "Antigenic stability means one vaccine keeps working."],
+          "fail": ["It changes its coat every year, so you are always behind.", "Influenza is reformulated annually because the target moves. You cannot eradicate something you have to chase."]
+        },
+        {
+          "name": ["Have nowhere left to hide", "No animal reservoir"],
+          "needs": ["vaccine", "stable", "human"],
+          "pass": ["Vaccinate the humans and it has nowhere to be.", "With no animal reservoir, eliminating human infection eliminates the pathogen."],
+          "fail": ["You vaccinated every person, and it came back out of the animals.", "Yellow fever lives in monkeys and rabies in many mammals. A reservoir makes eradication impossible in principle, not merely difficult."]
+        },
+        {
+          "name": ["Find the last cases", "Detectability"],
+          "needs": ["vaccine", "stable", "human", "visible"],
+          "pass": ["Every case is obvious, so the last ones can be chased down.", "Visible presentation allows surveillance and ring vaccination of the final chains."],
+          "fail": ["Most infections are silent, so you can never be sure it is gone.", "Polio's difficulty: most infections cause no symptoms, so the last chains of transmission are invisible. That is why polio has taken decades longer than smallpox despite a good vaccine."]
+        }
+      ],
+      "win": [
+        "Four things all true at once. Smallpox had all four, and almost nothing else does.",
+        "All four held for smallpox and hold for almost nothing else. The rarity of that combination is the answer to why it has happened once."
+      ],
+      "lose": [
+        "Read which test failed — it names the property that was missing.",
+        "Each failed trial names the condition that was not satisfied. Reassign and re-test."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "Wiping a disease out completely is called eradication, and it needs several things to be true at once.",
+        "Eradication requires an effective vaccine, a stable target, no animal reservoir, and detectable cases. All four, simultaneously.",
+        "Elimination is local and reversible; eradication is global and permanent. The conditions are demanding enough that only one human disease has met them.",
+        "Rinderpest, a cattle disease, is the second eradication of anything and it met the same conditions. The pattern is not that eradication is hard to organise — it is that the biology rarely permits it, and no amount of funding changes an animal reservoir."
+      ],
+      "sub": [
+        "Smallpox had all of them. Malaria has almost none.",
+        "Malaria has a mosquito vector, no highly effective vaccine until very recently, and a parasite with a complex life cycle. Effort was never the limiting factor.",
+        "Polio has three of the four and has taken thirty years longer, because most infections are silent.",
+        "The polio campaign is the clearest demonstration that the conditions are not negotiable. It has a good vaccine, no animal reservoir and a stable target — and the invisibility of most infections has kept the last one percent out of reach for three decades."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "eradication-conditions",
+      "q": [
+        "Why can we not wipe out flu the way we did smallpox?",
+        "Which eradication condition does influenza fail?",
+        "Why is influenza structurally not an eradication candidate?"
+      ],
+      "options": [
+        "It changes constantly and lives in birds and pigs as well",
+        "It is not serious enough to bother",
+        "There is no vaccine for it"
+      ],
+      "answer": 0,
+      "why": [
+        "Flu changes its coat every year, so last year's vaccine stops matching. And it lives in birds and pigs, so even if every person were protected it would still be out there.",
+        "It fails two conditions at once: antigenic stability, which is why the vaccine is reformulated annually, and the absence of an animal reservoir — influenza circulates in wild birds and pigs permanently.",
+        "The reservoir alone is decisive. Antigenic drift makes control expensive and continuous; the reservoir makes eradication impossible in principle, because the pathogen persists in populations no campaign can vaccinate. Only one of those two can be engineered around."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It tells you in advance which campaigns are worth starting.",
+        "Checking the four conditions before committing distinguishes a decades-long effort that can succeed from one that cannot, however well funded. It is also why the honest goal for most diseases is control rather than eradication — and saying so early is better than discovering it after thirty years."
+      ]
+    }
+  ]
+}

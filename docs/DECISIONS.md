@@ -966,3 +966,55 @@ The lesson's closing line is the transferable part, and it is why this stage is 
 paragraph asserting a conclusion: improving accuracy changes how large the risk is and changes
 nothing about who consented. A great many disputes that present as technical resolve, once the
 disagreement is actually located, into questions about who decides and who bears the cost.
+
+### D63 — The last twelve lessons added no new simulation, deliberately
+*Frontier: synthetic biology, space biology, future biology.*
+
+Twelve lessons closed the curriculum at 110, and not one of them shipped a new sim. Space biology
+lesson 4 reuses the tri-trophic web from Ecology as a closed life-support system; everything else
+is `build`, `slider`, `predict` and `weigh`.
+
+The temptation was real — a microgravity rig and a habitability scorer both sound like simulations.
+Neither survived the question the sim base contract forces: *what does the child change, and what
+moves that they could not have predicted?* A habitability scorer has one input and one output per
+criterion; that is a checklist with animation on it, and it would have cost 4 KB of the sim budget
+to teach nothing the `build` stage does not.
+
+The rule this settles: **a sim earns its place when the model's behaviour surprises the author.**
+Folding, spike, stomata and web all did — each one changed the lesson written against it (D51, D55,
+D57, D59). A model whose output you can state in a sentence before you build it should be a build
+stage, and the budget it does not spend is a page that loads.
+
+### D64 — Where the boss ladder is the lesson
+*`future-biology/03` and `/04`.*
+
+Both closing lessons use the same shape: five parts, and five trials each needing one more part
+than the last. In every previous use that ladder tested a system — air, then water, then food. Here
+it tests an argument: possible, then worth doing, then fair, then reversible, then authorised.
+
+It works for the same reason it worked on the spaceship garden. `needs` computes the verdict from
+what the child actually assembled, so a design missing its off-switch fails the reversibility trial
+by construction rather than by being told. The child discovers that capability is the *first* rung
+and not a contribution to any of the others, by watching four trials fail underneath a correct one.
+
+The risk was moralising, and the format is what prevents it: a trial states what breaks, not what
+the child ought to feel. `future-biology/04`'s win text is explicit that nothing in the boss checked
+whether the organism would work — which is the honest description of what the five questions do and
+do not cover.
+
+### D65 — `weigh` on a disagreement that was resolved, and saying so
+*`space-biology/02`, ALH84001.*
+
+D60 put `weigh` where the disagreement actually is. This is the first use where the disagreement has
+largely *closed* since it started, and the format had to hold that without either pretending the
+argument is still balanced or retro-fitting a verdict onto a stage designed not to deliver one.
+
+What made it work is that both views stated a test. The 1996 team predicted the magnetite could not
+be made abiotically; the critics predicted it could; laboratory work through the 2000s produced it.
+The `ask` reports that plainly, including that most researchers now regard the biological reading as
+unsupported — and then distinguishes unsupported from refuted, which is the actual state.
+
+So the rule extends: `weigh` is not only for open questions. It is for questions where the *reasoning
+on each side is worth operating*, and a dispute that was settled by a prediction coming true is the
+best possible demonstration of why stating one matters. A child who watches that happen has seen the
+mechanism, not been told about it.

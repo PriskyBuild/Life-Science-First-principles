@@ -33,6 +33,7 @@ const SIMS = {
   spike: () => import("../sims/spike.js"),
   stomata: () => import("../sims/stomata.js"),
   web: () => import("../sims/web.js"),
+  outbreak: () => import("../sims/outbreak.js"),
 };
 
 /** Level-indexed simulation parameters: one shared implementation, different

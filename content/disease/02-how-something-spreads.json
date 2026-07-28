@@ -1,0 +1,117 @@
+{
+  "id": "disease/02",
+  "module": "disease",
+  "index": 1,
+  "title": "How Something Spreads",
+  "specimen": "spread-model",
+  "stages": [
+    {
+      "type": "hook",
+      "t": [
+        "One person is ill. Whether that becomes an epidemic or nothing at all comes down to a single number.",
+        "The difference between one case and a national emergency is not luck. It is whether each infected person passes it to more than one other, and that ratio is a number you can estimate."
+      ],
+      "sub": [
+        "More than one, and it grows. Less than one, and it dies out.",
+        "Everything else — masks, vaccines, closures — is an attempt to move that number below one."
+      ]
+    },
+
+    {
+      "type": "predict",
+      "concept": "transmission-and-r0",
+      "question": [
+        "Each ill person infects exactly one other. What happens?",
+        "If every case produces exactly one further case, what is the outcome?"
+      ],
+      "options": [
+        "It ticks along without growing or dying out",
+        "It doubles each round",
+        "It stops immediately"
+      ],
+      "outcome": "It ticks along without growing or dying out",
+      "note": [
+        "Guess before you look.",
+        "Commit. One is the knife edge, and everything about control is about which side of it you are on."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "outbreak",
+      "levels": [1, 2],
+      "guided": true,
+      "t": [
+        "Watch one ill person turn into an outbreak, and watch it end.",
+        "One case in a thousand people. Watch it grow, peak and stop — and look at how many were never infected at all when it ended."
+      ],
+      "params": { "task": "spread", "r0": 3, "aspect": 0.6 },
+      "goal": [
+        "It ran out of steam before it ran out of people.",
+        "It ended with hundreds never infected. An epidemic stops when it can no longer find people easily, not when it has run out of them."
+      ]
+    },
+
+    {
+      "type": "sim",
+      "sim": "outbreak",
+      "levels": [3, 4],
+      "guided": false,
+      "t": [
+        "Change how catchy it is and watch what that does to the shape.",
+        "Vary R₀ and observe both the peak and the final size. Note that the final size rises steeply between 1 and 3 and then saturates — almost everyone is infected either way above about 4."
+      ],
+      "params": { "task": "spread", "r0": 3, "catchy": true, "aspect": 0.6 },
+      "goal": [
+        "A bigger number makes it faster and bigger, but there is a limit to how much worse it can get.",
+        "R₀ controls both speed and final size, but the two saturate differently — above about R₀ = 4 nearly everyone is infected regardless, and the remaining effect is on how fast."
+      ]
+    },
+
+    {
+      "type": "name",
+      "t": [
+        "The number of people each ill person passes it to is called R.",
+        "R₀ is the average number of new cases produced by one case in a fully susceptible population. Above one it grows; below one it dies out.",
+        "R₀ = β/γ — transmission rate over recovery rate. It is not a property of the pathogen alone but of the pathogen in a particular population with particular behaviour.",
+        "That last point is routinely lost. R₀ depends on contact rates, so the same virus has different R₀ in a crowded city and a rural village, and quoted values are population-specific estimates rather than constants. Measles is usually given as 12–18 and even that is a range across settings."
+      ],
+      "sub": [
+        "Below one and it dies out on its own. That is the whole aim.",
+        "Every control measure — vaccination, isolation, masks, closing schools — is an attempt to push R below one.",
+        "It falls on its own as people become immune, which is why epidemics end without anything being done.",
+        "The effective R falls as susceptibles are used up, so an unchecked epidemic ends by exhausting its own fuel. The overshoot is why: transmission continues past the threshold because there are still many infectious people, so the final size exceeds what the threshold alone would suggest."
+      ]
+    },
+
+    {
+      "type": "check",
+      "concept": "transmission-and-r0",
+      "q": [
+        "Why does an epidemic stop before everyone has had it?",
+        "Why does an unchecked epidemic leave people uninfected?",
+        "Why does the epidemic end above rather than at the threshold?"
+      ],
+      "options": [
+        "Once enough people are immune, it cannot find new people fast enough",
+        "The germ gets weaker over time",
+        "Everyone does get it eventually"
+      ],
+      "answer": 0,
+      "why": [
+        "As more people have had it, an ill person meets fewer people who can catch it. Once each one passes it to less than one other, it dies out — and there are still plenty of people who never got it.",
+        "Transmission requires susceptible contacts. Once the susceptible fraction falls below 1/R₀, each case produces fewer than one further case and the outbreak declines — with a substantial fraction never infected.",
+        "Because infectious people are still present when the threshold is crossed, so transmission continues while R is below one and declining. That overshoot means the final size exceeds the threshold, which is why an unchecked epidemic infects considerably more people than herd immunity strictly requires — and why reaching immunity by infection costs far more cases than reaching it by vaccination."
+      ]
+    },
+
+    {
+      "type": "apply",
+      "kicker": "Why this matters",
+      "t": [
+        "It is why closing schools or wearing masks works at all — each one takes a bit off that number.",
+        "No single measure has to stop transmission by itself. Each one removes some contacts, and they multiply: three measures each cutting transmission by a third take R from 3 to under 1 together. That is why control is usually a stack of partial measures rather than one decisive intervention, and why removing one can restore growth even though it never looked like it was doing much."
+      ]
+    }
+  ]
+}
