@@ -2,7 +2,7 @@
    lazily imported modules, which is why nothing below knows what a lesson is. */
 
 import { el } from "./el.js";
-import { icon as svgIcon, svgEl } from "./icons.js";
+import { icon as svgIcon, svgEl, svgOf } from "./icons.js";
 import { progress, reset, update } from "./state.js";
 import { LEVELS, DEPTH, prose, content, setLevels } from "./level.js";
 import { sfx, canSpeak } from "./audio.js";
@@ -233,6 +233,20 @@ function badgeShelf() {
           el("span", { class: "badge-why", text: b.why }))))));
 }
 
+/* The drawings arrive AFTER the shelf, never before it, and the shelf is fully
+   readable without them. A picture is the reward for collecting the thing; it is
+   not allowed to be a prerequisite for reading about it. One fetch, cached, and a
+   failure is silence rather than an empty screen. (D71) */
+let artPromise;
+function drawSpecimen(slot, id) {
+  artPromise ??= fetch("content/specimen-art.json").then((r) => r.json()).catch(() => ({}));
+  artPromise.then((art) => {
+    if (art[id] && slot.isConnected) {
+      slot.replaceChildren(svgOf(art[id], { cls: "specimen-art", box: 48 }));
+    }
+  });
+}
+
 function specimenShelf() {
   const all = allSpecimens();
   if (!all.length) return null;
@@ -244,7 +258,11 @@ function specimenShelf() {
     ]) }),
     el("ul", { class: "specimens" }, all.map(({ specimen, module }) => {
       const got = hasSpecimen(specimen.id);
+      // Only for collected ones: seeing the drawing IS the reveal.
+      const slot = got ? el("span", { class: "specimen-slot" }) : null;
+      if (slot) drawSpecimen(slot, specimen.id);
       return el("li", { class: `specimen${got ? " specimen--got" : ""}`, "data-world": module.worldId },
+        slot,
         el("span", { class: "specimen-title", text: got ? specimen.title : "Not collected" }),
         el("span", { class: "specimen-blurb", text: got ? pick(specimen.blurb) : `From ${module.title}` }),
         el("span", { class: "specimen-unlocks", text: got ? specimen.unlocks : "" }));

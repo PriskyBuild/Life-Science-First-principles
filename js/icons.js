@@ -24,18 +24,26 @@ const NS = "http://www.w3.org/2000/svg";
 
 /** Decorative by contract: aria-hidden, not focusable, inherits currentColor
     and em-based sizing from .icon in base.css. */
-export function icon(name, cls = "icon") {
-  const d = ICONS[name];
-  if (!d) throw new Error(`unknown icon "${name}"`);
+/** One place that builds an SVG, so the specimen drawings and the UI icons cannot
+    drift apart on the attributes that make them decorative and inheritable. */
+export function svgOf(ds, { cls = "icon", box = 24 } = {}) {
   const svg = document.createElementNS(NS, "svg");
-  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("viewBox", `0 0 ${box} ${box}`);
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
   svg.setAttribute("class", cls);
-  const path = document.createElementNS(NS, "path");
-  path.setAttribute("d", d);
-  svg.append(path);
+  for (const d of ds) {
+    const path = document.createElementNS(NS, "path");
+    path.setAttribute("d", d);
+    svg.append(path);
+  }
   return svg;
+}
+
+export function icon(name, cls = "icon") {
+  const d = ICONS[name];
+  if (!d) throw new Error(`unknown icon "${name}"`);
+  return svgOf([d], { cls });
 }
 
 export const svgEl = (tag) => document.createElementNS(NS, tag);

@@ -198,6 +198,37 @@ for (const f of lessonFiles) {
 
 writeFileSync(join(ROOT, "content/reviews.json"), JSON.stringify(reviews, null, 2) + "\n");
 
+/* --------------------------------------------------- specimen art (authored)
+   The drawings are hand-authored, unlike almost everything else under content/.
+   A consistent set is what stops line art reading as generated, and consistency
+   is not something to leave to the author's memory across 110 drawings — so the
+   rules are checked here rather than remembered. (D71) */
+{
+  const art = JSON.parse(readFileSync(join(ROOT, "content/specimen-art.json"), "utf8"));
+  const known = new Set(modules.flatMap((m) => (m.specimens ?? []).map((sp) => sp.id)));
+  for (const [id, paths] of Object.entries(art)) {
+    if (id.startsWith("_")) continue;                        // the system note
+    const where = (msg) => fail(`specimen-art "${id}": ${msg}`);
+    if (!known.has(id)) { where("no specimen with this id exists"); continue; }
+    if (!Array.isArray(paths) || !paths.length) { where("no paths"); continue; }
+    const all = paths.join("");
+    /* Relative commands are lowercase, and their numbers are deltas rather than
+       coordinates — which would make the grid check below meaningless. Absolute
+       only, so every number in the file really is a position. */
+    const rel = all.match(/[a-z]/);
+    if (rel) where(`relative path command "${rel[0]}" — absolute commands only`);
+    for (const n of all.match(/-?\d+(\.\d+)?/g) ?? []) {
+      if (Number(n) < -1 || Number(n) > 49) where(`coordinate ${n} is off the 48-unit grid`);
+    }
+    // A drawing that needs this much path data is a traced photograph, not a
+    // drawing that will read at 40 pixels next to twelve others.
+    if (all.length > 700) where(`${all.length} characters of path data (max 700)`);
+    if (/fill|gradient|stroke|opacity/i.test(all)) where("styling belongs in CSS, not in path data");
+  }
+  const drawn = Object.keys(art).filter((k) => !k.startsWith("_")).length;
+  console.log(`specimen art: ${drawn} of ${known.size} drawn`);
+}
+
 /* Which lessons actually exist, generated rather than hand-listed. A hardcoded
    set drifts the moment somebody adds a file, and the drift shows up as a link
    to a lesson that is not there. */

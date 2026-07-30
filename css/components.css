@@ -476,6 +476,14 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
   color: var(--ink-3); min-height: calc(var(--touch) + var(--s-4));
 }
 .specimen--got { border-style: solid; border-color: var(--w-line); background: var(--w-tint); color: var(--ink); }
+/* Drawn on a 48 grid, stroke only, in the world's own line colour — so one set of
+   paths serves six worlds and both themes with no second decision. */
+.specimen-slot:empty { display: none; }
+.specimen-art {
+  width: 3rem; height: 3rem; margin-bottom: var(--s-2);
+  fill: none; stroke: var(--w-line, currentColor); stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
 .specimen-title { font-weight: var(--weight-bold); font-family: var(--font-display); }
 .specimen--got .specimen-title { color: var(--w-text); }
 .specimen-blurb { font-size: var(--fs-sm); }

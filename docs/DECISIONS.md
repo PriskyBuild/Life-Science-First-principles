@@ -1263,3 +1263,58 @@ had waited for `serviceWorker.controller != null`, which only means *some* worke
 It now waits until nothing is installing or waiting, and fetch failures are ignored only inside the
 window the test deliberately created, and only that message class. Papering over the symptom would
 have hidden the next real error in that window.
+
+### D71 — Drawings for the specimens, and why not a science icon library
+*Asked for as "SVG of science that doesn't look AI generated".*
+
+The observation behind the request is correct and worth writing down: **what gives a generated site
+away is not that the icons are SVG, it is that they do not come from one hand.** Mixed stroke weights,
+a gradient on one and flat colour on the next, a flask beside a helix beside a rounded-corner arrow,
+each decorating a heading that needed no decoration. Nothing relating to anything.
+
+So the first answer was **no** to the thing that was asked for. This app has six UI icons, all tiny,
+all paired with a word, with a rule in `icons.js` that nothing is ever an icon alone. Adding a science
+icon library moves *towards* the look being avoided.
+
+The real hole was elsewhere: **110 specimens, every one of them text on a card.** They are the reward
+and the inventory — collect a ribosome in world 1, that is why you can build a protein in world 2 —
+and they had no picture. That is where art earns its place.
+
+**BioRender was checked rather than assumed, and ruled out.** Its free tier is academic-only,
+watermarked, and explicitly excludes apps and websites. A paid tier permits commercial use but
+requires a permanent "Created with BioRender.com" credit, and its terms cover using *your figures* —
+not lifting its assets out to ship as a product's interface. **NIH BioArt Source** is the clean
+alternative when a specimen needs real scientific illustration: drawn by NIH medical illustrators,
+public domain, no attribution, vector. Kept in reserve rather than used here, because mixing two hands
+is the failure being avoided.
+
+**The system, which is the whole product here rather than any one drawing.** 48-unit grid, safe area
+4..44. Stroke only — no fills, no gradients, no shadows. One weight, set in CSS not in the file. Round
+caps and joins. One object per specimen, centred, flat side-on, no perspective. Colour is the world's
+own `--w-line`, so **one set of paths serves six worlds and both themes with no second decision**, and
+a drawing that needs a second colour to read is a drawing that is too complicated.
+
+**The rules are checked by the build, not remembered by the author.** Consistency across 110 drawings
+is not something to leave to memory. Absolute path commands only — relative commands take deltas, not
+coordinates, which would make the grid check meaningless. Every number must be on the grid. 700
+characters of path data maximum, because more than that is a traced photograph that will not read at
+40 pixels beside twelve others. No styling in path data. Verified by breaking all three.
+
+**Thirteen drawn, and four of them were wrong the first time.** This is why the plan was one world
+before ninety-seven more. The mitochondrion and the nucleus came out nearly identical — two specimens
+that look the same is the worst failure a set can have. The flame in the flame jar read as a leaf,
+which is actively misleading in a lesson about fire *not* being alive. And the ribosome took four
+attempts: two stacked lobes read as a snowman, then adding the mRNA thread made it read
+unmistakably as a **duck**. It is now drawn as what it *does* — a machine straddling a tape with a
+chain coming out of it — which matches its own blurb, "the machine that follows instructions", and
+cannot be mistaken for an animal.
+
+**The art loads after the shelf and never before it.** One cached fetch, and a failure is silence. A
+picture is the reward for collecting something; it is not allowed to be a prerequisite for reading
+about it. There is a check that blocks the file and asserts the shelf is still complete.
+
+**One thing this surfaced that is not about art at all.** With thirteen collected, the shelf renders
+thirteen filled cards followed by **ninety-seven identical grey "Not collected" cards** — an enormous
+scroll of nothing, and the new drawings make the emptiness more conspicuous rather than less. That is
+a real design fault that predates this work, and it needs its own pass: group by world, collapse what
+is not yet reachable, or show a count instead of a card.

@@ -35,11 +35,13 @@ const browser = await chromium.launch(
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
 const page = await ctx.newPage();
 const errors = [];
-/* One test deliberately severs the network. A fetch that fails while the network
-   is intentionally cut is the test's own doing, not a defect — but ONLY that one
-   message class, and only inside that window, so a real error there still shows. */
-let offlineWindow = false;
-const expectedOffline = (t) => offlineWindow && /Failed to fetch|NetworkError|net::ERR/.test(t);
+/* Two tests deliberately break the network — one severs it entirely, one blocks a
+   single file to prove the shelf survives without it. A request that fails while
+   the test is holding the network down is the test's own doing, not a defect. Only
+   that message class, and only inside the window, so a real error still shows. */
+let breakingNetwork = false;
+const expectedOffline = (t) =>
+  breakingNetwork && /Failed to fetch|Failed to load resource|NetworkError|net::ERR/.test(t);
 page.on("console", (m) => {
   // One test throws on purpose to prove the loop survives it; its own log is
   // not a defect. Everything else is.
@@ -238,7 +240,7 @@ await page.waitForFunction(async () => {
   return !!navigator.serviceWorker?.controller && !!reg && !reg.installing && !reg.waiting;
 }, null, { timeout: 15000 }).catch(() => {});
 await page.waitForTimeout(300);
-offlineWindow = true;
+breakingNetwork = true;
 await ctx.setOffline(true);
 try {
   await page.reload({ waitUntil: "domcontentloaded" });
@@ -248,7 +250,7 @@ try {
   check("cold reload works with the network off", false, String(e).slice(0, 80));
 }
 await ctx.setOffline(false);
-offlineWindow = false;
+breakingNetwork = false;
 
 /* 13. Real contrast audit: not token pairs, but every rendered text node
    against the background it actually composites onto. This is what catches a
@@ -2522,6 +2524,64 @@ const mountSelection = (body) => page.evaluate(async (src) => {
   });
   check("finishing a lesson pays the completion bonus once, not once per click",
     paid.once > 0 && paid.afterFiveCalls === paid.once, JSON.stringify(paid));
+}
+
+/* ===================== phase 14: the specimen drawings ===================== */
+
+/* 84. A drawing is the reward for collecting the thing, so it must appear for a
+   collected specimen and NOT for an uncollected one — seeing it is the reveal.
+   And it must be drawn in the world's own colour rather than a colour baked into
+   the file, which is what lets one set of paths serve six worlds and two themes. */
+{
+  const got = ["scale-lens", "membrane", "nucleus"];
+  await openWith(freshSave({ level: 2, specimens: got }), "#/me");
+  await page.waitForSelector(".specimen--got", { timeout: 8000 });
+  await page.waitForSelector(".specimen-art", { timeout: 8000 });
+  const seen = await page.evaluate(() => ({
+    onGot: [...document.querySelectorAll(".specimen--got")]
+      .filter((li) => li.querySelector(".specimen-art")).length,
+    gotTotal: document.querySelectorAll(".specimen--got").length,
+    onMissing: [...document.querySelectorAll(".specimen:not(.specimen--got)")]
+      .filter((li) => li.querySelector(".specimen-art")).length,
+    stroke: getComputedStyle(document.querySelector(".specimen-art")).stroke,
+    fill: getComputedStyle(document.querySelector(".specimen-art")).fill,
+  }));
+  check("every collected specimen with art shows it",
+    seen.onGot === seen.gotTotal && seen.gotTotal === 3, JSON.stringify(seen));
+  check("an uncollected specimen shows no drawing — the reveal is the reward",
+    seen.onMissing === 0, `${seen.onMissing} leaked`);
+  check("the drawing takes the world's colour and is stroke-only",
+    seen.stroke !== "none" && seen.fill === "none", `stroke ${seen.stroke}, fill ${seen.fill}`);
+}
+
+/* 85. And the shelf must be complete without any art at all. A picture is a
+   reward, never a prerequisite for reading about the thing you collected. */
+{
+  /* Aborting the request is not enough: this is a PWA and the file is precached,
+     so the service worker answers it without touching the network — which is the
+     app being right and the test's premise being wrong. The worker has to go
+     first for "unreachable" to mean anything. */
+  await openWith(freshSave({ level: 2, specimens: ["scale-lens"] }), "#/me");
+  await page.evaluate(async () => {
+    const regs = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(regs.map((r) => r.unregister()));
+  });
+  breakingNetwork = true;
+  await page.route("**/specimen-art.json", (r) => r.abort());
+  await page.reload({ waitUntil: "networkidle" });
+  await page.waitForSelector(".specimen--got", { timeout: 8000 });
+  await page.waitForTimeout(400);
+  const readable = await page.evaluate(() => {
+    const li = document.querySelector(".specimen--got");
+    return { title: li.querySelector(".specimen-title")?.textContent ?? "",
+             unlocks: (li.querySelector(".specimen-unlocks")?.textContent ?? "").length,
+             art: li.querySelectorAll(".specimen-art").length };
+  });
+  check("with the art unreachable the shelf is still complete",
+    readable.title === "Scale Lens" && readable.unlocks > 0 && readable.art === 0,
+    JSON.stringify(readable));
+  await page.unroute("**/specimen-art.json");
+  breakingNetwork = false;
 }
 
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
