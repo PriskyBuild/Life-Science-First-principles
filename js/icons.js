@@ -15,6 +15,9 @@ export const ICONS = {
   lock: "M7 11V8a5 5 0 0110 0v3M5 11h14v10H5z",
   next: "M5 12h13M13 6l6 6-6 6",
   back: "M19 12H6M11 6l-6 6 6 6",
+  // speaker with two arcs / speaker with a bar: read-aloud on, and stop
+  read: "M4 9v6h3l5 4V5L7 9H4zM16 9a4 4 0 010 6M19 6a8 8 0 010 12",
+  stop: "M4 9v6h3l5 4V5L7 9H4zM17 10l4 4M21 10l-4 4",
 };
 
 const NS = "http://www.w3.org/2000/svg";

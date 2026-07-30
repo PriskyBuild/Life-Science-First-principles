@@ -4,7 +4,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { gzipSync } from "node:zlib";
-import { join, relative } from "node:path";
+import { join, relative, extname } from "node:path";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SKIP = new Set(["tools", "docs", "node_modules", ".git", ".github", "shots"]);
@@ -33,7 +33,17 @@ const DEV_ONLY = new Set([
   "package.json", "package-lock.json", "vercel.json", "_headers", "README.md", "LICENSE",
   "docs",
 ]);
-const files = walk().filter((f) => f !== "sw.js" && !f.endsWith(".woff") && !DEV_ONLY.has(f));
+/* A DENY list was the wrong shape and it cost the whole offline story. Two
+   throwaway diagnostic scripts sitting in the repo root got precached because
+   nothing named them; I then deleted them, so cache.addAll() 404'd, the service
+   worker install rejected, and the app stopped working offline entirely — with
+   no error anywhere until a browser test cut the network. (D68)
+
+   The rule is now positive: a file ships only if its extension is one this app
+   actually serves. Anything else in the tree — a scratch script, a bundle, a
+   log, a note — cannot reach a child's device by being forgotten about. */
+const SHIPPED = new Set([".html", ".js", ".css", ".json", ".webmanifest", ".woff2", ".png", ".svg", ".ico"]);
+const files = walk().filter((f) => f !== "sw.js" && SHIPPED.has(extname(f)) && !DEV_ONLY.has(f));
 const CSS_ORDER_FOR_BUDGET = ["css/worlds.css", "css/tokens.css", "css/base.css", "css/components.css"];
 
 /* --------------------------------------------------------- content lint */

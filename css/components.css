@@ -553,7 +553,20 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
 
 /* progress ticks: position without a percentage, which means nothing to a
    five-year-old and invites clock-watching in everyone else */
-.stage-progress { display: flex; }
+.stage-top { display: flex; align-items: center; gap: var(--s-3); }
+.stage-progress { display: flex; flex: 1 1 auto; min-width: 0; }
+/* Compact, and never icon-only: an icon with no word is a guessing game. */
+.read-btn {
+  display: inline-flex; align-items: center; gap: var(--s-2); white-space: nowrap;
+  flex: 0 0 auto; min-height: var(--touch); padding: var(--s-2) var(--s-4);
+  border: var(--clay-border) solid var(--w-line, var(--line));
+  border-radius: var(--r-pill); background: var(--surface); color: var(--ink);
+  font: inherit; font-size: var(--fs-sm); font-weight: var(--weight-bold);
+  /* Raised, because it is touchable. The affordance rule is tested in both
+     directions and it caught this button flat. */
+  box-shadow: var(--e1);
+}
+.read-btn[aria-pressed="true"] { background: var(--w-fill); box-shadow: var(--e2); }
 .stage-bar { display: flex; gap: 4px; flex: 1; }
 .tick { flex: 1; height: 6px; border-radius: 3px; background: var(--hairline); }
 .tick--done { background: var(--w-fill); }

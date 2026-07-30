@@ -6,6 +6,7 @@
 
 import { el, mount } from "../el.js";
 import { icon } from "../icons.js";
+import { sfx, readStage, stopSpeaking, voiceMode, canSpeak } from "../audio.js";
 import { pick, loadLesson, runner, conceptsOf, content } from "./runner.js";
 import { awardXp, completeLesson } from "../reward.js";
 import { recordLessonPerformance, levelNudge, acceptNudge, declineNudge } from "../level.js";
@@ -134,6 +135,7 @@ const RENDER = {
            what the objective was; `detail.say` is the simulation's own account
            of what THIS child actually did — which switch they threw, how many
            generations it took — and no string in the JSON can know that. */
+        sfx("right");
         mount(goal,
           el("span", { text: pick(s.goal) }),
           e.detail?.say ? el("span", { class: "stage-said", text: e.detail.say }) : null);
@@ -214,6 +216,7 @@ const RENDER = {
           ? pick(s.win) : pick(s.lose) }),
       );
       const won = results.filter((r) => r.survived).length;
+      sfx(won === results.length ? "right" : "wrong");
       spoken.textContent = won === results.length
         ? `All ${results.length} stresses survived. ${pick(s.win)}`
         : `${won} of ${results.length} stresses survived. ${results.filter((r) => !r.survived).map((r) => pick(r.name)).join(" and ")} failed.`;
@@ -287,6 +290,7 @@ const RENDER = {
       "data-why": pick(s.why),
     });
     q.addEventListener("fp:quiz", (e) => {
+      sfx(e.detail.correct ? "right" : "wrong");
       awardXp(e.detail.correct ? "retrievalHit" : "retrievalMiss", { concept: s.concept });
       ctx.tally?.(e.detail.correct);
       ctx.allowAdvance();
@@ -338,6 +342,25 @@ export async function lessonView(moduleId, indexStr) {
   const nextBtn = el("button", { class: "next-btn pressable", onclick: () => { walk.next(); draw(); } },
     el("span", { text: "Next" }), icon("next"));
 
+  /* One control per stage rather than a speaker beside every paragraph. A
+     five-year-old should not have to choose between four buttons, and the byte
+     cost of a per-block control is real. It reads the rendered stage, so no
+     stage renderer knows anything about audio. The Stop state is not optional:
+     WCAG 1.4.2 requires a stop for anything that starts playing by itself, and
+     auto-read at level 1 starts by itself. */
+  let reading = false;
+  const readBtn = el("button", { class: "read-btn pressable", onclick: () => {
+    if (reading) { stopSpeaking(); reading = false; } else reading = readStage(host, endRead);
+    paintRead();
+  } });
+  function paintRead() {
+    readBtn.replaceChildren(icon(reading ? "stop" : "read"),
+      el("span", { text: reading ? "Stop" : "Read to me" }));
+    readBtn.setAttribute("aria-pressed", String(reading));
+  }
+  function endRead() { reading = false; paintRead(); }
+  paintRead();
+
   const run = { hits: 0, misses: 0, helped: false };
   const ctx = {
     world: world?.id,
@@ -347,6 +370,8 @@ export async function lessonView(moduleId, indexStr) {
   };
 
   function draw() {
+    stopSpeaking();                 // never carry one stage's narration into the next
+    reading = false;
     if (walk.done) return finish();
     const s = walk.stage;
     mount(host, el("fp-stage", { class: "stage m-enter", "data-type": s.type }, RENDER[s.type](s, ctx)));
@@ -362,6 +387,9 @@ export async function lessonView(moduleId, indexStr) {
     nextBtn.querySelector("span").textContent = walk.index === walk.total - 1 ? "Finish" : "Next";
     host.querySelector(".stage")?.setAttribute("tabindex", "-1");
     host.querySelector(".stage")?.focus({ preventScroll: true });
+    readBtn.hidden = !canSpeak() || voiceMode() === "off";
+    if (voiceMode() === "auto") reading = readStage(host, endRead);
+    paintRead();
   }
 
   function finish() {
@@ -370,6 +398,7 @@ export async function lessonView(moduleId, indexStr) {
     // specimen, seed the schedule, flush. This is the moment the spacing engine
     // starts running for this child.
     completeLesson(moduleId, index, { concepts, specimen: lesson.specimen });
+    sfx("badge");
     recordLessonPerformance(run);
     celebrate();
     const nudge = levelNudge();
@@ -408,7 +437,7 @@ export async function lessonView(moduleId, indexStr) {
           } }, el("span", { text: "No, leave it" })))) : null,
       el("a", { class: "back pressable", href: `#/m/${moduleId}` }, icon("back"), el("span", { text: "Back to the module" }))));
     bar.replaceChildren();
-    backBtn.hidden = nextBtn.hidden = true;
+    backBtn.hidden = nextBtn.hidden = readBtn.hidden = true;
   }
 
   queueMicrotask(() => {
@@ -423,7 +452,12 @@ export async function lessonView(moduleId, indexStr) {
     el("a", { class: "back pressable", href: `#/m/${moduleId}` }, icon("back"), el("span", { text: mod.title })),
     el("h1", { class: "sr-only", text: lesson.title }),
     el("div", { class: "stage-wrap", "data-world": world.id },
-      el("div", { class: "stage-progress", role: "progressbar" }, bar),
+      /* The read control sits with the CONTENT it reads, not with Back and Next.
+         Three buttons wrapped the nav row onto three lines on a phone, and a
+         stop control below the fold is not a stop control — WCAG 1.4.2 wants it
+         findable, not merely present. */
+      el("div", { class: "stage-top" },
+        el("div", { class: "stage-progress", role: "progressbar" }, bar), readBtn),
       host,
       tutor,
       el("div", { class: "stage-nav" }, backBtn, nextBtn)),

@@ -16,6 +16,8 @@
 
    Light DOM, no shadow root, so design tokens and the level system apply. */
 
+import { sfx } from "../audio.js";
+
 const DRAG_THRESHOLD = 8;   // px before a press becomes a drag, so a shaky tap stays a tap
 
 /* `connectedCallback` fires on EVERY insertion, and this component moves
@@ -51,6 +53,7 @@ class Board extends HTMLElement {
   pickUp(item) {
     if (item === this.held) return this.drop();     // tapping the held item puts it back
     this.held = item;
+    sfx("pick");
     const open = this.slots.filter((s) => this.accepts(s, item) && !s.item).length;
     this.say(`${item.dataset.label} picked up. ${open} place${open === 1 ? "" : "s"} available.`);
     this.refresh();
@@ -81,6 +84,7 @@ class Board extends HTMLElement {
     item.placedIn = slot;
     slot.append(item);
     this.held = null;
+    sfx("drop");
     this.say(`${item.dataset.label} placed in ${slot.dataset.label}.`);
     this.refresh();
     this.dispatchEvent(new CustomEvent("fp:place", {

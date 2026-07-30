@@ -5,6 +5,7 @@ import { el } from "./el.js";
 import { icon as svgIcon, svgEl } from "./icons.js";
 import { progress, reset, update } from "./state.js";
 import { LEVELS, DEPTH, prose, content, setLevels } from "./level.js";
+import { sfx, canSpeak } from "./audio.js";
 import {
   worlds, getModule, getWorldOf, isComplete, isModuleUnlocked,
   isWorldUnlocked, worldProgress, lockReason, nextUp, completedCount, allSpecimens,
@@ -289,7 +290,24 @@ export function me() {
       { value: "", label: "Match my device" }, { value: "light", label: "Light" }, { value: "dark", label: "Dark" },
     ], progress.prefs.theme ?? "", (v) => setPref("theme", v)),
 
-    choiceGroup("Reading", "face", [
+    /* Sound defaults ON: it is synthesised, so it costs nothing to ship, and
+       the confirmation chime on switching it back on is the fastest way to know
+       what the setting does. Voice defaults are DERIVED from the prose dial
+       rather than fixed — see audio.js. There is no music control because there
+       is no music. */
+    choiceGroup("Sounds", "sound", [
+      { value: "", label: "On", hint: "Quiet clicks and chimes as you play" },
+      { value: "off", label: "Off" },
+    ], progress.prefs.sound ?? "", (v) => { setPref("sound", v); sfx("pick"); }),
+
+    canSpeak() ? choiceGroup("Reading aloud", "voice", [
+      { value: "", label: "Match my reading level", hint: "Reads by itself at level 1, on request above it" },
+      { value: "auto", label: "Always read to me" },
+      { value: "ask", label: "Only when I ask" },
+      { value: "off", label: "Never" },
+    ], progress.prefs.voice ?? "", (v) => setPref("voice", v)) : null,
+
+    choiceGroup("Letter shapes", "face", [
       { value: "", label: "Standard" },
       { value: "hyperlegible", label: "Easier to read", hint: "A font designed for low vision and dyslexia" },
     ], progress.prefs.face ?? "", (v) => setPref("face", v)),

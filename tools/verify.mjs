@@ -2282,6 +2282,114 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     `full P${r.full.P} H${r.full.H} -> no-top P${r.noTop.P} H${r.noTop.H}`);
 }
 
+/* ===================== phase 11: sound and voice ===================== */
+
+/* 76. Narration reads the SCREEN, not a script. The whole reason there are no
+   recorded clips is that a recording goes stale the moment I edit a lesson — so
+   the thing to prove is that the text spoken is assembled from the rendered
+   stage, in order, and that it excludes what must never be read: button labels,
+   the progress bar, and the screen-reader live regions (a live region read
+   aloud is the same sentence twice). */
+{
+  await openWith(freshSave({ level: 1 }), "#/l/what-is-life/0");
+  await page.waitForSelector(".stage");
+  const said = await page.evaluate(async () => {
+    const { proseOf } = await import("./js/audio.js");
+    return proseOf(document.querySelector(".stage"));
+  });
+  const onScreen = await page.locator(".stage-hook").textContent();
+  check("narration is assembled from the rendered stage", said.includes(onScreen.trim()), said.slice(0, 70));
+  check("narration leaves out controls and live regions",
+    !/Read to me|Stop|Next|Step \d+ of/.test(said), said.slice(0, 90));
+  // and the control it exposes is raised, because it is touchable
+  check("the read control is a raised, labelled button, not an icon",
+    await page.evaluate(() => {
+      const b = document.querySelector(".read-btn");
+      return !!b && /\w/.test(b.textContent) && getComputedStyle(b).boxShadow !== "none";
+    }));
+
+  // the check stage's options ARE the question for a child who cannot read them
+  await stepLesson(12, "predict");
+  const spoken = await page.evaluate(async () => {
+    const { proseOf } = await import("./js/audio.js");
+    return proseOf(document.querySelector(".stage"));
+  });
+  const opts = await page.evaluate(() =>
+    document.querySelector("[data-options]")?.dataset.options.split("|") ?? []);
+  check("a question is read with its options, not just the stem",
+    opts.length > 1 && opts.every((o) => spoken.includes(o)), `${opts.length} options`);
+}
+
+/* 77. Auto-read is derived from the PROSE dial, not a fixed default — level 1 is
+   five years old and largely cannot read the lesson at all, which is the whole
+   argument for narration existing. And anything that starts by itself needs a
+   stop: WCAG 1.4.2, non-negotiable at AA. */
+{
+  const state = async (lv, prefs = {}) => {
+    await openWith(freshSave({ level: lv, prefs }), "#/l/what-is-life/0");
+    await page.waitForSelector(".stage");
+    await page.waitForTimeout(150);
+    return page.evaluate(() => {
+      const b = document.querySelector(".read-btn");
+      return b ? { label: b.textContent.trim(), hidden: b.hidden, pressed: b.getAttribute("aria-pressed") } : null;
+    });
+  };
+  const l1 = await state(1), l3 = await state(3), off = await state(1, { voice: "off" });
+  check("level 1 starts reading by itself", l1?.pressed === "true", JSON.stringify(l1));
+  check("a stop control is showing while it reads by itself",
+    l1?.label === "Stop" && l1?.hidden === false, JSON.stringify(l1));
+  check("above level 1 it waits to be asked", l3?.pressed === "false" && l3?.label === "Read to me", JSON.stringify(l3));
+  check("turning the voice off hides the control", off?.hidden === true, JSON.stringify(off));
+}
+
+/* 78. Moving to the next stage must cancel the previous one's narration, or the
+   child hears stage 3 while looking at stage 4. */
+{
+  await openWith(freshSave({ level: 1 }), "#/l/what-is-life/0");
+  await page.waitForSelector(".stage");
+  const cancelled = await page.evaluate(async () => {
+    let cancels = 0;
+    const real = speechSynthesis.cancel.bind(speechSynthesis);
+    speechSynthesis.cancel = () => { cancels++; real(); };
+    document.querySelector(".next-btn").click();
+    await new Promise((r) => setTimeout(r, 120));
+    return cancels;
+  });
+  check("changing stage cancels the narration in flight", cancelled > 0, `cancel() called ${cancelled}x`);
+}
+
+/* 79. Effects are synthesised, so the proof is that no audio file ships and no
+   call can take a lesson down with it. A device with no audio output must be a
+   silent lesson, not a broken one. */
+{
+  const assets = await page.evaluate(() => performance.getEntriesByType("resource")
+    .map((r) => r.name).filter((n) => /\.(mp3|ogg|wav|m4a|opus|aac)(\?|$)/i.test(n)));
+  check("no audio files are shipped at all", assets.length === 0, assets.slice(0, 3).join(" "));
+  const threw = await page.evaluate(async () => {
+    const { sfx } = await import("./js/audio.js");
+    try {
+      for (const n of ["pick", "drop", "right", "wrong", "collect", "badge", "notasound"]) sfx(n);
+      return null;
+    } catch (e) { return e.message; }
+  });
+  check("a sound never throws, whatever the device", threw === null, threw ?? "");
+}
+
+/* 80. Sound is never the only channel for correctness. The colour rule from
+   phase 2 applied to a new modality: a deaf child must lose nothing. */
+{
+  await openWith(freshSave({ level: 2, prefs: { sound: "off" } }), "#/l/cells/0");
+  await page.waitForSelector(".stage");
+  await stepLesson(12, "check");
+  await page.locator(".quiz-option").nth(2).click();
+  const marks = await page.evaluate(() =>
+    [...document.querySelectorAll(".quiz-option")].map((b) => b.dataset.mark ?? ""));
+  const why = await page.locator(".quiz-why").textContent();
+  check("with sound off, correctness is still fully carried on screen",
+    marks.includes("correct") && marks.includes("chosen") && why.length > 40,
+    `${marks.join("|")} + ${why.length} chars`);
+}
+
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
 
 await browser.close();

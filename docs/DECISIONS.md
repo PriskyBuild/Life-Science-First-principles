@@ -1069,3 +1069,79 @@ bytes a child downloads. The narrative above is the right length; in the file it
 in the source now carry the *invariant* and a D-number, and the incident lives here, where nothing
 ships it. That is the general rule for this codebase from now on: the reason goes in the file, the
 story goes in DECISIONS.
+
+### D67 — Sound and voice, both weighing nothing
+*Asked for as a settings feature. One of the two turned out not to be a feature.*
+
+**The voice is not polish, it is a defect being closed.** Level 1 is ages five to seven, and the
+entire L1 track was gated behind reading fluency most five-year-olds do not have. I had written 110
+lessons whose youngest audience largely could not read them alone. That is the finding; everything
+else here is trim.
+
+**Why synthesis rather than recordings.** Recording the corpus is roughly 2,700 clips — 110 lessons
+× ~25 utterances × up to four level variants — tens of megabytes, and it breaks offline precaching.
+The disqualifying objection is not size though: **a recording freezes the content.** I have been
+editing lesson prose continuously, and every edit silently invalidates a clip, so the voice starts
+saying things the page does not, with nothing anywhere reporting it. `speechSynthesis` reads whatever
+the text says today, costs zero bytes, and works offline from OS voices.
+
+It also produced the best structural property of this work: `readStage()` walks the *rendered DOM*
+via a list of prose selectors, so **no stage renderer knows audio exists**. Adding a stage type does
+not add a narration task. The honest cost is that a specific voice cannot be guaranteed — the
+chooser expresses a preference over whatever the platform installed, and quality varies.
+
+**Defaults are derived, not fixed.** Auto-read is on at prose level 1 and off above it, because
+Mayer's redundancy principle cuts both ways: narration plus the same words on screen is *worse* than
+either alone for a reader, and irrelevant for a child who is not reading them. One dial, two correct
+behaviours. WCAG 1.4.2 then makes the stop control mandatory rather than optional, since auto-read
+starts by itself.
+
+**Effects are synthesised too** — an oscillator and a gain envelope, about 40 lines against 60-100 KB
+of files, six precache entries, a decode step and six assets to version. Two rules in the table
+itself: the envelope *is* the sound (a gain that jumps rather than ramps clicks audibly), and the
+wrong-answer tone is two soft descending notes at the lowest gain, not a buzzer. A punishing error
+sound teaches a five-year-old to stop guessing, which is precisely what predict-first exists to make
+them do.
+
+**No background music, on purpose.** Continuous music competes for the same phonological working
+memory the child is using to read and reason, it is the first setting people switch off, and for
+autistic and ADHD children it is frequently aversive. There is no control for it because there is
+nothing to control.
+
+**Two things the build and a screenshot caught, both worth recording.** First, I put the read control
+in the nav row beside Back and Next; on a 390 px phone three buttons wrapped onto three lines, and
+the stop control landed below the fold. A stop control you have to scroll to find does not satisfy
+1.4.2 in substance whatever it does on paper — it now sits at the top of the stage card, with the
+content it reads. Second, I edited `css/app.css` and the styling silently did nothing, because
+`app.css` is a *generated* concatenation. The generated-artefact list in this file exists precisely
+so that does not happen, and I did it anyway; the source is `css/components.css`.
+
+Eleven checks. The one that matters most asserts narration is assembled from the rendered stage and
+*excludes* control labels and live regions — a live region read aloud is the same sentence twice.
+
+### D68 — Two scratch files shipped to a child's device, then broke the app offline
+*Found by the offline test, three commits after I caused it.*
+
+I wrote two throwaway diagnostic scripts into the repo root, ran the build, and then deleted them.
+The build had precached both. `cache.addAll()` then requested two files that 404'd, the promise
+rejected, the service worker install failed, and **the app stopped working offline entirely** —
+silently, because a failed install leaves the previous worker in place until it doesn't.
+
+The bug is the shape of the filter. It was a DENY list: ship everything in the tree except these
+named exceptions. A deny list can only exclude what somebody thought of, so every scratch file, log,
+bundle and note is shipped by default and the only thing standing between a child's device and my
+working directory is my memory.
+
+It is now an ALLOW list on extension: `.html .js .css .json .webmanifest .woff2 .png .svg .ico`, and
+nothing else can reach a device by being forgotten about. Verified by dropping a stray `.mjs` in the
+root and confirming it stays out of the precache.
+
+Two things generalise. First, **a precache entry that 404s does not degrade the offline story, it
+deletes it** — one bad path takes every other file with it, which is an unusually high blast radius
+for an unusually easy mistake. Second, the test that caught this is the only one in the suite that
+cuts the network, and it caught the problem three commits late because I had been reading a green
+summary line rather than the failures. There were none to read; the run before this simply predated
+the mistake.
+
+I have also stopped writing scratch scripts into the repo root. They go in /tmp, where the build
+cannot see them.
