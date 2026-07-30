@@ -53,8 +53,22 @@ page.on("pageerror", (e) => { if (!expectedOffline(String(e))) errors.push(Strin
 
 await page.goto(BASE, { waitUntil: "networkidle" });
 
-// 1. level picker on a cold start
-check("cold start shows the level picker",
+/* 1. A cold start now says WHAT THIS IS before asking anything. It used to open
+   on the reading-level picker, which offered four sentences about cells to a
+   parent who had not been told what the thing was. Reported as "there is no
+   intro, so the context is bland when the page opens", and it was right. (D72) */
+check("cold start says what this is before asking anything",
+  (await page.locator("main h1").textContent()).length > 20
+  && await page.locator(".welcome-facts li").count() >= 3,
+  await page.locator("main h1").textContent());
+check("the front door names who owns it",
+  /©/.test(await page.locator(".owner-line").textContent()),
+  await page.locator(".owner-line").textContent());
+await page.locator("main .next-btn").click();
+await page.waitForSelector(".picker-card");
+
+// then the level picker
+check("handing over shows the level picker",
   (await page.locator("h1").textContent()) === "Which one feels right?");
 check("picker offers exactly 4 reading samples", await page.locator(".picker-card").count() === 4);
 
@@ -311,6 +325,9 @@ await page.waitForTimeout(600);
 await page.screenshot({ path: join(SHOTS, "module.png") });
 await page.evaluate(() => localStorage.clear());
 await page.goto(BASE, { waitUntil: "networkidle" });
+await page.waitForSelector(".welcome-h");
+await page.screenshot({ path: join(SHOTS, "welcome.png"), fullPage: true });
+await page.locator("main .next-btn").click();       // the front door comes first now
 await page.waitForSelector(".picker");
 await page.screenshot({ path: join(SHOTS, "picker.png") });
 
@@ -518,6 +535,53 @@ async function visibilityAudit(url, label) {
   check(`content is actually visible, not just present (${label})`, hidden.length === 0,
     hidden.slice(0, 2).join(" | "));
 }
+/* The front door, explicitly. Every audit in this file names its screens, so a
+   NEW screen is covered by nothing until somebody adds it — which is exactly how
+   a cream-on-cream button got through: present, sized, shadowed, unreadable. The
+   welcome screen only appears on a save with no level set, so it needs its own
+   visit rather than riding along on "#/" like the others. (D72) */
+{
+  await page.goto(BASE, { waitUntil: "domcontentloaded" });
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: "networkidle" });
+  await page.waitForSelector(".welcome-h", { timeout: 8000 });
+  await auditContrast("light welcome");
+  await affordanceRule("welcome");
+  const cta = await page.evaluate(() => {
+    const b = document.querySelector("main .next-btn");
+    const cs = getComputedStyle(b);
+    return { label: b.textContent.trim(), bg: cs.backgroundColor, fg: cs.color,
+             boxes: b.getClientRects().length };
+  });
+  check("the front door's only button is readable",
+    cta.boxes > 0 && cta.label.length > 4 && cta.bg !== "rgba(0, 0, 0, 0)",
+    JSON.stringify(cta));
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.reload({ waitUntil: "networkidle" });
+  await page.waitForSelector(".welcome-h", { timeout: 8000 });
+  await auditContrast("dark welcome");
+  await page.emulateMedia({ colorScheme: "light" });
+  // and it hands over to the level picker, once
+  await page.reload({ waitUntil: "networkidle" });
+  await page.locator("main .next-btn").click();
+  await page.waitForTimeout(300);
+  const handed = await page.evaluate(() => document.querySelector("main h1")?.textContent);
+  check("it hands over to the reading-level picker", handed === "Which one feels right?", handed);
+  await page.reload({ waitUntil: "networkidle" });
+  const again = await page.evaluate(() => document.querySelector("main h1")?.textContent);
+  check("and a parent is never shown it twice", again === "Which one feels right?", again);
+  /* Put the world back. This block clears storage to reach the front door, and
+     leaving it cleared sent every later test to the front door too. A test
+     restores what it disturbs. Written out longhand because the freshSave and
+     openWith helpers are declared further down the file than this runs. */
+  await page.evaluate(() => localStorage.setItem("fp.progress", JSON.stringify({
+    version: 2, prose: 2, content: 2, xp: 0, modules: {}, concepts: {},
+    specimens: [], ledger: [], recent: [], prefs: {},
+  })));
+  await page.reload({ waitUntil: "networkidle" });
+  await page.waitForSelector(".islands");
+}
+
 await visibilityAudit(BASE, "app");
 await visibilityAudit(BASE + "styleguide.html", "styleguide");
 await page.screenshot({ path: join(SHOTS, "styleguide.png") });
@@ -801,7 +865,10 @@ const engine = (fn, arg) => page.evaluate(async ([src, a]) => {
   return new Function("reward", "sched", "state", "arg", `return (${src})(reward, sched, state, arg);`)(reward, sched, state, a);
 }, [fn.toString(), arg]);
 
-await page.goto(BASE, { waitUntil: "networkidle" });
+/* A bare goto is no longer enough to reach the Atlas: a save with no level set
+   lands on the front door. openWith guarantees a level, which is what every test
+   from here on assumes. (D72) */
+await openWith(freshSave({ level: 2 }));
 await page.waitForSelector(".islands");
 
 /* 32. The economy refuses to pay for the things it must never pay for. */
@@ -1030,14 +1097,21 @@ async function stepLesson(maxSteps = 16, stopAt = null) {
 
 /* 44. The same stage reads at the child's level. */
 {
+  /* Measures the WHOLE hook, not the headline. The headline is deliberately one
+     sentence now, so its length says nothing about the level — this test failed
+     the moment the split landed, having bound itself to an element rather than to
+     the claim. The claim is that the prose differs by level, and the corpus-wide
+     version of it is asserted exactly in the build, where the content is. (D72) */
   const read = async (lv) => {
     await openWith(freshSave({ level: lv }), "#/l/cells/0");
     await page.waitForSelector(".stage-hook");
-    return (await page.locator(".stage-hook").textContent()).split(/\s+/).length;
+    return page.evaluate(() => [...document.querySelectorAll(".stage-hook, .stage-hook ~ .stage-lead")]
+      .map((n) => n.textContent).join(" ").trim());
   };
   const l1 = await read(1), l4 = await read(4);
-  check("the same stage is shorter for a five-year-old than a sixteen-year-old",
-    l1 < l4, `L1 ${l1} words, L4 ${l4} words`);
+  const w = (t) => t.split(/\s+/).length;
+  check("the same stage reads differently at five and at sixteen",
+    l1 !== l4 && w(l1) <= w(l4), `L1 ${w(l1)}w vs L4 ${w(l4)}w`);
 }
 
 /* 45. A wrong answer shows the mechanism, and carries a mark not just a hue. */

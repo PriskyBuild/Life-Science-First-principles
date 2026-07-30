@@ -10,6 +10,11 @@ const ROOT = new URL("..", import.meta.url).pathname;
 const SKIP = new Set(["tools", "docs", "node_modules", ".git", ".github", "shots"]);
 const problems = [];
 const fail = (m) => problems.push(m);
+/* A warning is a real defect that does not block a deploy. Kept separate from
+   fail() rather than downgraded into it, because the day a warning becomes
+   ignorable is the day it stops being read. Printed last, and counted. */
+const notes = [];
+const warn = (m) => notes.push(m);
 
 /* ------------------------------------------------------------------ walk */
 function walk(dir = ROOT, out = []) {
@@ -112,9 +117,26 @@ for (const f of lessonFiles) {
       if (v === undefined) continue;
       if (!Array.isArray(v)) { where(`stage ${i}: "${key}" must be an array of level variants`); continue; }
       if (!v[0]) where(`stage ${i}: "${key}" has no L1 variant`);
-      // A sentence a five-year-old cannot finish is not a hook.
-      else if (st.type === "hook" && key === "t" && v[0].split(/\s+/).length > 26) {
-        where(`stage ${i}: L1 hook is ${v[0].split(/\s+/).length} words (max 26)`);
+      /* A sentence a five-year-old cannot finish is not a hook — and neither is
+         one a sixteen-year-old cannot, which the first version of this rule
+         forgot. It tested v[0] only, so the youngest reader was protected and
+         every other level went unguarded: the median hook above level 1 was 29
+         words, the longest 44, all set as a display heading. A guard covering one
+         variant of four is not a guard. (D72)
+
+         The headline is now the first SENTENCE of the hook, so that is what gets
+         measured. A long hook made of short sentences is fine. One long sentence
+         is the thing that does not read. */
+      else if (st.type === "hook" && key === "t") {
+        for (const [lv, variant] of v.entries()) {
+          const words = variant.split(/(?<=[.!?])\s+/)[0].split(/\s+/).length;
+          const max = lv === 0 ? 20 : 25;
+          if (words > max) {
+            warn(`${f} stage ${i}: L${lv + 1} hook opens with a ${words}-word sentence `
+              + `(max ${max}) — the renderer can only split at a full stop, so this `
+              + `one needs a hand`);
+          }
+        }
       }
     }
     if (st.type === "sim") {
@@ -197,6 +219,25 @@ for (const f of lessonFiles) {
 }
 
 writeFileSync(join(ROOT, "content/reviews.json"), JSON.stringify(reviews, null, 2) + "\n");
+
+/* The level dial has to be real across the corpus, not just per lesson. Asserted
+   on the median rather than on any one hook, because a single lesson can honestly
+   have a short L4 and a long L1 — and a test pinned to one lesson is a test
+   pinned to a snapshot. (D72) */
+{
+  const words = (t) => t.split(/\s+/).length;
+  const per = [[], [], [], []];
+  for (const f of lessonFiles) {
+    const st = JSON.parse(readFileSync(join(ROOT, f), "utf8")).stages.find((x) => x.type === "hook");
+    if (!st?.t) continue;
+    for (const lv of [0, 1, 2, 3]) per[lv].push(words(st.t[Math.min(lv, st.t.length - 1)]));
+  }
+  const med = per.map((a) => a.sort((x, y) => x - y)[a.length >> 1] ?? 0);
+  if (!(med[0] < med[3])) {
+    fail(`hook length does not track the level dial: medians L1 ${med[0]}, L4 ${med[3]}`);
+  }
+  console.log(`hook length by level (median words): ${med.map((n, i) => `L${i + 1} ${n}`).join("  ")}`);
+}
 
 /* --------------------------------------------------- specimen art (authored)
    The drawings are hand-authored, unlike almost everything else under content/.
@@ -463,9 +504,13 @@ for (const [name, actual, limit] of budgets) {
 }
 console.log(`precache: ${files.length + 1} entries, version ${version}`);
 
+if (notes.length) {
+  console.log(`\n${notes.length} thing${notes.length === 1 ? "" : "s"} to hand-fix:`);
+  for (const n of notes) console.log("  ~ " + n);
+}
 if (problems.length) {
   console.error("\nFAILED:");
   for (const p of problems) console.error("  - " + p);
   process.exit(1);
 }
-console.log("ok");
+console.log(notes.length ? "\nok, with warnings" : "ok");

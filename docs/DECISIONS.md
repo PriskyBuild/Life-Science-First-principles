@@ -1318,3 +1318,62 @@ thirteen filled cards followed by **ninety-seven identical grey "Not collected" 
 scroll of nothing, and the new drawings make the emptiness more conspicuous rather than less. That is
 a real design fault that predates this work, and it needs its own pass: group by world, collapse what
 is not yet reachable, or show a count instead of a card.
+
+### D72 — "No intro, and the sentences don't register"
+*First real user feedback. Both halves were right, and neither was about dyslexia.*
+
+The report also asked whether the sentence style was a dyslexia accommodation. It was not — and saying
+so mattered, because the actual causes were findable and none of them were about reading ability.
+
+**No intro.** The first screen a homeschooling parent met was "Which one feels right?", offering four
+sentences *about cells* — a reading-level picker, before anything had said what the thing was. Then a
+screen titled "Atlas" reading "Twenty-five modules across six worlds", which is an inventory, not an
+invitation. There is now a front door, written for the adult, because the adult is who decides. It
+leads with the method — a child runs the experiment first, the name for it comes after — and it says
+plainly what happens where biology touches origins, because this audience will want to know before
+handing it over and finding out later would be a betrayal.
+
+**The sentences.** Three causes, measured rather than guessed.
+
+1. **The lesson's title was `sr-only`.** A blind child heard the name of the lesson; everybody else
+   got a page with no name on it. That alone was most of "no context when the page opens".
+2. **The headline was too long for the size it was set at.** Hooks averaged **29 words above level 1**,
+   longest 44, all rendered as a 32px display heading — eight lines of bold with nowhere to rest. The
+   renderer now takes the **first sentence** as the headline and drops the rest to body size, which
+   moves the median headline from **29 words to 14 with no content edited**. It fixed 100 of 110; the
+   remaining 10 are single long sentences the renderer cannot split, and the build now warns about
+   them by name.
+3. **My own word-count guard covered one variant of four.** It tested `v[0]` only, so the youngest
+   reader was protected and the level most people actually use had no limit at all. The same shape as
+   D69: a rule that silently covered a fraction of what it claimed to. It now checks every level, and
+   measures the first sentence, because that is what becomes the heading.
+
+**A warning tier exists now**, kept separate from `fail()` rather than folded into it. The day a
+warning becomes ignorable is the day it stops being read, so they print last, counted, and the build
+says "ok, with warnings".
+
+**Four self-inflicted faults on the way, all worth recording.**
+
+- **The front door's only button was invisible.** `.next-btn` paints itself from `--w-deep`, which only
+  exists inside `[data-world]`, so outside one it rendered cream text on a cream page: present, sized,
+  shadowed, unreadable. Every audit in the suite **names its screens by hand**, so a brand-new screen
+  is covered by nothing until somebody adds it. That is how it got through, and the welcome screen now
+  has its own contrast, affordance and readable-CTA checks.
+- **My new test cleared storage and left it cleared**, sending every later test to the front door —
+  nine failures from one tidy-up I did not do. A test restores what it disturbs.
+- **The suite's own first assertion was "cold start shows the level picker"** — a description of the
+  behaviour being changed. Tests that encode the current screen order break when the order improves;
+  that is not a fault, but it means the first test in the file needed rewriting to the new claim.
+- **A level test measured the wrong element.** "The same stage is shorter for a five-year-old than a
+  sixteen-year-old" read `.stage-hook`, which is now deliberately one sentence, so it failed the moment
+  the split landed. It had bound itself to an element rather than to the claim. The browser now
+  measures the whole hook, and the real claim — that hook length tracks the level dial across the
+  corpus — is asserted on the **median across all 110 lessons** in the build, where the content is.
+  Medians: L1 17, L2 29, L3 28, L4 29.
+
+**Ownership.** A publisher mark now sits on the front door with a copyright line, both from one
+constant so a correction is a one-line edit. The mark is raster and gradient-heavy — it reads at 176px
+and turns to coloured mush at 64 — so it belongs on the front door and the About surface, not in the
+28px header, and the flat vector mark stays there. Quantised to 96 colours: **13.5 KB against 92 KB,
+visually identical at every size used.** And the honest note: a logo does not claim ownership. A
+LICENSE file does, and there still isn't one.

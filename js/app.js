@@ -2,9 +2,9 @@
    works identically from a file server, a static host and the service worker. */
 
 import { progress, subscribe } from "./state.js";
-import { applyRoot, needsPicker } from "./level.js";
+import { applyRoot, needsPicker, needsWelcome } from "./level.js";
 import { loadCurriculum } from "./curriculum.js";
-import { atlas, module as moduleScreen, me, levelPicker } from "./screens.js";
+import { atlas, module as moduleScreen, me, levelPicker, welcome } from "./screens.js";
 import { mount } from "./el.js";
 
 const host = document.getElementById("main");
@@ -52,7 +52,10 @@ async function paint() {
   // must survive a repaint carry data-fk.
   const keep = document.activeElement?.closest?.("[data-fk]")?.dataset.fk;
 
-  const view = needsPicker() ? levelPicker : resolve();
+  /* Two gates before the router, in order: say what this is, then ask how the
+     words should read. Both are one-time and both override the hash, because a
+     cold start has nothing to route to yet. */
+  const view = needsWelcome() ? welcome : needsPicker() ? levelPicker : resolve();
   // A view may be async (lazily-imported lesson code). Awaiting it here keeps
   // every caller synchronous-looking and means there is exactly one paint path.
   mount(host, await view());

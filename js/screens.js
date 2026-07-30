@@ -16,6 +16,11 @@ import { BADGES, earnedBadges, hasSpecimen } from "./reward.js";
 
 const lvl = prose;   /* text variants are a reading decision, always */
 
+/* Ownership, in one place. Shown on the front door and under Me, and the only
+   two strings in the app that make a claim about who this belongs to. */
+export const OWNER = "© 2026 PriskyBuild";
+export const LICENCE = "All rights reserved";
+
 /** Text nodes carry variants and fall back to the nearest lower level, so
     content can ship with two variants and be refined later without a schema
     change. Blueprint 8.6. */
@@ -338,6 +343,54 @@ export function me() {
 }
 
 /* ---------------------------------------------------------------- level picker */
+/* ------------------------------------------------------------------ welcome
+   The front door, and it is written for the ADULT. A homeschooling parent is the
+   one deciding whether this gets used, and until now the first thing they saw was
+   "Which one feels right?" offering four sentences about cells — a reading-level
+   picker, before anything had said what the thing was. Real feedback, and fair.
+
+   It leads with the method rather than a slogan, because the method is the only
+   claim here that is unusual. And it says plainly what it does where biology
+   touches origins: this audience will want to know before handing it over, and
+   being surprised by that later would be a betrayal of their trust. */
+export function welcome() {
+  return [
+    el("img", { class: "owner-mark", src: "assets/publisher-mark.png",
+      width: 320, height: 320, alt: "", decoding: "async" }),
+    el("h1", { class: "welcome-h", text: "A child runs the experiment first. The name for it comes after." }),
+    el("p", { class: "lede", text:
+      "Every lesson opens with something they can operate — a simulation to break, a "
+      + "prediction they have to commit to, a thing to build. The word for what they "
+      + "have just seen arrives afterwards, never before. That order is the whole method." }),
+    el("ul", { class: "welcome-facts" },
+      [["110 lessons, six worlds",
+        "Cells and DNA, bodies and ecosystems, and where biology is going next."],
+       ["Five to sixteen, on two dials",
+        "Reading level and science level are set separately, so a strong reader can have "
+        + "gentle science, or the other way round."],
+       ["Yours, and private",
+        "It works with no internet after the first visit. No account, no advertising, and "
+        + "nothing about your child leaves the device."],
+       ["Where biology touches origins",
+        "The child handles the evidence first. Then both readings of it are set out side by "
+        + "side and attributed to the people who hold them. We say which is which. We do not "
+        + "tell your child what to conclude."],
+      ].map(([k, v]) => el("li", {},
+        el("span", { class: "welcome-k", text: k }),
+        el("span", { class: "welcome-v", text: v })))),
+    /* data-world is not decoration here. .next-btn paints itself from --w-deep,
+       which only exists inside a world, so outside one the button rendered cream
+       text on a cream page: present, sized, shadowed and invisible. (D72) */
+    el("button", { class: "next-btn pressable m-attend", "data-world": "discovery",
+      onclick: () => { setPref("greeted", "1"); location.hash = "#/"; } },
+      el("span", { text: "Hand it to your child" }), svgIcon("next")),
+    el("p", { class: "welcome-note", text:
+      "They choose how the words are written on the next screen. You can change it, and "
+      + "everything else, under Me." }),
+    el("p", { class: "owner-line", text: `${OWNER} · ${LICENCE}` }),
+  ];
+}
+
 export function levelPicker() {
   return [
     el("h1", { text: "Which one feels right?" }),

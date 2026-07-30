@@ -1252,6 +1252,8 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
 
 /* progress ticks: position without a percentage, which means nothing to a
    five-year-old and invites clock-watching in everyone else */
+/* The lesson's own name, above its progress bar. */
+.lesson-h { font-size: var(--fs-lg); margin-bottom: var(--s-3); }
 .stage-top { display: flex; align-items: center; gap: var(--s-3); }
 .stage-progress { display: flex; flex: 1 1 auto; min-width: 0; }
 /* Compact, and never icon-only: an icon with no word is a guessing game. */
@@ -1491,4 +1493,20 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
   min-width: var(--touch);
   font-family: var(--font-display); font-size: var(--fs-lg);
   border-color: var(--chip, var(--w-line)); color: var(--w-text);
+}
+
+/* ---- the front door. Read once, by an adult, before anything else. ---- */
+.owner-mark {
+  display: block; width: 8.5rem; height: 8.5rem; margin: 0 auto var(--s-4);
+  max-width: 40vw; height: auto;
+}
+.welcome-h { max-width: 22ch; }
+.welcome-facts { list-style: none; padding: 0; margin: var(--s-6) 0; display: grid; gap: var(--s-4); }
+.welcome-facts li { display: grid; gap: 2px; max-width: var(--measure); }
+.welcome-k { font-weight: var(--weight-bold); font-family: var(--font-display); color: var(--w-text, var(--ink)); }
+.welcome-v { color: var(--ink-2); }
+.welcome-note { margin-top: var(--s-3); font-size: var(--fs-sm); color: var(--ink-3); max-width: var(--measure); }
+.owner-line {
+  margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid var(--hairline);
+  font-size: var(--fs-xs); color: var(--ink-3); letter-spacing: .02em;
 }

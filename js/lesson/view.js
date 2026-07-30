@@ -67,11 +67,22 @@ const PROSE = {
     return [el("p", { class: "stage-kicker", text: "Check yourself" }), q];
   },
 
-  hook: (s) => [
-    el("p", { class: "stage-kicker", text: "Have a think" }),
-    el("h2", { class: "stage-hook", text: pick(s.t) }),
-    s.sub ? el("p", { class: "stage-sub", text: pick(s.sub) }) : null,
-  ],
+  /* First sentence headlines, the rest drops to body size. Hooks averaged 29
+     words above L1 and all of it was set at display size, which is why they "did
+     not register" — a typographic fault, not a reading one. Median headline: 29
+     words to 14, with no content edited. (D72) */
+  hook: (s) => {
+    const text = pick(s.t);
+    const cut = text.search(/(?<=[.!?])\s/);
+    const head = cut > 0 ? text.slice(0, cut) : text;
+    const rest = cut > 0 ? text.slice(cut).trim() : "";
+    return [
+      el("p", { class: "stage-kicker", text: "Have a think" }),
+      el("h2", { class: "stage-hook", text: head }),
+      rest ? el("p", { class: "stage-lead", text: rest }) : null,
+      s.sub ? el("p", { class: "stage-sub", text: pick(s.sub) }) : null,
+    ];
+  },
 
   /* The naming. On the guided track this arrives one stage after the
      exploration; on the open track the child has already got there. */
@@ -88,9 +99,8 @@ const PROSE = {
 
 };
 
-/* Stages that must be acted on before the child can move on. Everything else
-   advances freely — gating a paragraph behind a click teaches nothing and
-   just makes the lesson feel like a corridor. */
+/* Acted on before moving on. Gating a paragraph teaches nothing and makes the
+   lesson a corridor. */
 const GATED = new Set(["predict", "slider", "check", "sim", "build", "weigh"]);
 
 /* --------------------------------------------------------------------- view */
@@ -112,9 +122,7 @@ export async function lessonView(moduleId, indexStr) {
   const lesson = await loadLesson(path);
   const lv = content();           // stage filtering and sim complexity
   const walk = runner(lesson, lv);
-  /* Only the elements this child's path actually uses. A lesson with no build
-     stage never downloads the placement primitive, and the fork means a build
-     stage filtered out at L1 is not paid for at L1 either. */
+  // Only what this child's path uses; a filtered-out stage is not paid for. (D69)
   const RENDER = { ...PROSE, ...await loadParts(walk.stages.map((s) => s.type)) };
   loadHints();                    // warm the tutor's ladders while the child reads
   const host = el("div", { class: "stage-host" });
@@ -122,10 +130,8 @@ export async function lessonView(moduleId, indexStr) {
   const bar = el("div", { class: "stage-bar" });
   const backBtn = el("button", { class: "back pressable", onclick: () => { walk.back(); draw(); } },
     icon("back"), el("span", { text: "Back" }));
-  /* One handler whose behaviour comes from state. On the done screen this button
-     is the way OUT — it used to be hidden there and hidden did nothing (see
-     below), leaving a dead "Finish" next to a working link that said the same
-     thing. The child's thumb is already here, so this is where the exit goes. */
+  /* One handler, behaviour from state: on the done screen this button is the way
+     OUT. Two exits, one of them dead, is what made this read as broken. (D70) */
   const nextBtn = el("button", { class: "next-btn pressable", onclick: () => {
     if (walk.done) { location.hash = `#/m/${moduleId}`; return; }
     walk.next();
@@ -228,10 +234,7 @@ export async function lessonView(moduleId, indexStr) {
           } }, el("span", { text: "No, leave it" })))) : null,
     ));
     bar.replaceChildren();
-    /* Sprout too. There is nothing to be stuck on once the lesson is finished,
-       and an "I'm stuck" button on a well-done screen is an offer of help with
-       something that has already gone right. It only became visible here when
-       `hidden` started working — it had been "hidden" all along. (D70) */
+    // Sprout too: nothing to be stuck on once the lesson is done. (D70)
     backBtn.hidden = readBtn.hidden = tutor.hidden = true;
     nextBtn.disabled = false;
     nextBtn.classList.add("m-attend");
@@ -248,7 +251,8 @@ export async function lessonView(moduleId, indexStr) {
 
   return [
     el("a", { class: "back pressable", href: `#/m/${moduleId}` }, icon("back"), el("span", { text: mod.title })),
-    el("h1", { class: "sr-only", text: lesson.title }),
+    // Was sr-only: a blind child heard the lesson's name, nobody else did. (D72)
+    el("h1", { class: "lesson-h", text: lesson.title }),
     el("div", { class: "stage-wrap", "data-world": world.id },
       /* The read control sits with the CONTENT it reads, not with Back and Next.
          Three buttons wrapped the nav row onto three lines on a phone, and a

@@ -65,6 +65,9 @@ export function setLevels({ prose: pr, content: co } = {}) {
 /** True until the child has chosen. The picker asks them to pick the sentence
     that feels right — never to type their age. */
 export const needsPicker = () => progress.prose == null;
+/* The front door comes before the level picker, and only once. A parent who has
+   already read it should never be made to read it again. */
+export const needsWelcome = () => progress.prose == null && !progress.prefs?.greeted;
 
 /* ---------------------------------------------------------- the level nudge
    Self-selected difficulty skews upward: children pick the clever-sounding
