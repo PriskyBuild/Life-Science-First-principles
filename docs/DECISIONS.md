@@ -1145,3 +1145,59 @@ the mistake.
 
 I have also stopped writing scratch scripts into the repo root. They go in /tmp, where the build
 cannot see them.
+
+### D69 — The lesson budget was a sum, so it measured a cost no child ever paid
+*The stated next phase. It found two live bugs, not just a bad number.*
+
+The lesson tier was `sum(js/lesson/** + js/components/**)`. That is the exact defect the sim tier
+had already fixed and documented one screen further down the same file — and it sat there for eight
+phases because the sum stayed under the limit, so nothing ever asked what the number meant.
+
+It was not only mis-measured, it was mis-loaded. `view.js` imported all four custom elements
+statically, so **every lesson downloaded the placement primitive whether it had a build stage or
+not** — the largest of the four, unused by half the lessons. And `reviewView()` lived in `view.js`,
+so every lesson shipped the whole spaced-retrieval screen while every review shipped nine stage
+renderers it would never draw.
+
+**A tier is now the static import closure of its entry point, computed rather than listed.**
+Following static `import` and deliberately *not* following `import()` is the whole trick: `import()`
+is where one tier ends and the next begins, so the graph draws the boundary a person kept drawing
+wrong. Applied to the shell it reproduced the old hand-written number exactly, which is the check
+that the walker is right.
+
+**Two real bugs fell out of it.**
+
+The first is the one the byte count could never have found: seven of nine simulations render an
+`<fp-slider>` and **not one of them imported it.** They were free-riding on `view.js` loading it for
+every lesson, so the sim budget under-reported by 1.2 KB and — once the components became lazy — a
+lesson with no slider stage shipped a simulation whose control did not exist. A browser test caught
+it, not a number. A module must import what it renders, and seven modules now do.
+
+The second is that `js/components/predict.js` briefly became reachable from nothing at all. There is
+now a check in both directions: every part must be claimed by `PART_OF`, and every component must be
+reachable from some route's closure. Either gap is silent.
+
+**The split had to be measured, not assumed, and my first two attempts made things worse.**
+Six part modules came out *heavier* than one big file (19.8 KB against 19.5), because each file is a
+separate gzip stream and small files compress badly. So I counted what the content actually needs:
+`check` appears in 110 lessons of 110 and `predict` in 101, while `build` is in 52, `slider` 33, `sim`
+30 and `weigh` 10. Giving `check` its own module charges a hundred lessons a second stream to save
+nine a few hundred bytes. The four that vary travel with their part; the two that do not stay in the
+core. **Granularity is an empirical question about the content, not a matter of taste.**
+
+**The result, and the honest reading of it.** Routes now span 7.1 to 19.4 KB with a **median of
+14.3 KB**, against a flat 19.5 KB before — so the median lesson downloads 27% less. The worst route
+is `dna/02`, which has a build stage *and* a slider *and* a check, and it barely moved: it genuinely
+needs nearly all of it. A single headline number would have reported this phase as a failure, which
+is why the build now prints the spread.
+
+I did **not** raise the 20 KB limit to buy headroom. The metric got stricter and it still passes; the
+pressure that puts on the next always-loaded byte is the point of having a budget. What I added
+instead is the number that was missing: **`one lesson, all in`** — shell ∪ worst route ∪ worst sim
+stage, as a set union rather than a sum, because a lesson with a slider stage and a sim that renders
+one downloads that element once. It is 53.7 KB of 64 KB, and it is the first figure in this project
+that corresponds to something a child actually experiences. The three tier lines are now diagnostics
+that say *where* a regression landed; this one says whether it matters.
+
+Also gone: the `fp-stage` custom element. It existed to set `role="group"` on mount — a class and a
+registration for one attribute, which the call site can set itself. Eliminate before you move.

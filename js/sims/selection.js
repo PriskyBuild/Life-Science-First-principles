@@ -35,6 +35,7 @@
    untouched, and both motion modes drive the identical two-beat control. */
 
 import { Sim, token, say } from "./base.js";
+import "../components/slider.js";
 
 const COLS = 9;
 

@@ -12,6 +12,9 @@
    it is not the maximum of either slider. */
 
 import { Sim, token } from "./base.js";
+/* This sim renders one, so this module is what must import it: seven sims were
+   free-riding on view.js importing it for every lesson. (D69) */
+import "../components/slider.js";
 
 class Energy extends Sim {
   setup() {

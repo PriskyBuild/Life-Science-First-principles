@@ -32,6 +32,7 @@
    the cubic stays stable while model time runs fast enough to watch. */
 
 import { Sim, token, say } from "./base.js";
+import "../components/slider.js";
 
 const A = 0.7, B = 0.8, EPS = 0.08;
 const REST_V = -1.1994, REST_W = -0.6243;   // the fixed point, so it starts settled

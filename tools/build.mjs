@@ -4,7 +4,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
 import { gzipSync } from "node:zlib";
-import { join, relative, extname } from "node:path";
+import { join, relative, extname, dirname } from "node:path";
 
 const ROOT = new URL("..", import.meta.url).pathname;
 const SKIP = new Set(["tools", "docs", "node_modules", ".git", ".github", "shots"]);
@@ -89,11 +89,13 @@ const REQUIRED_PER_LEVEL = [
    on "any json under content" made the linter try to parse its own output. */
 const lessonFiles = files.filter((f) => /^content\/[^/]+\/[^/]+\.json$/.test(f));
 const reviews = {};
+const stageTypes = {};        // lesson id -> the stage types it contains, for the budget
 
 for (const f of lessonFiles) {
   const lesson = JSON.parse(readFileSync(join(ROOT, f), "utf8"));
   const where = (msg) => fail(`${f}: ${msg}`);
   if (!lesson.stages?.length) { where("no stages"); continue; }
+  stageTypes[lesson.id] = new Set(lesson.stages.map((st) => st.type));
 
   for (const [i, st] of lesson.stages.entries()) {
     if (!STAGE_TYPES.has(st.type)) where(`stage ${i}: unknown type "${st.type}"`);
@@ -232,22 +234,94 @@ const raw = (list) => list.reduce((n, p) => n + statSync(join(ROOT, p)).size, 0)
 // Shell JS is what boots the app. js/components/ and js/sims/ are lesson parts,
 // imported lazily by the lesson that needs them, so counting them against the
 // shell budget would report a cost no child on the Atlas actually pays.
-const shellJs = files.filter((f) => /^js\/[^/]+\.js$/.test(f));
+let shellJs = files.filter((f) => /^js\/[^/]+\.js$/.test(f));   // recomputed from the graph below
 /* Three separately-loaded tiers, so each budget reports a cost someone really
    pays. Simulations are imported per-stage: a child in lesson 1 never downloads
    the membrane physics, so counting it against the lesson budget would be a
    number nobody experiences. */
-const lessonJs = files.filter((f) => f.startsWith("js/lesson/") || f.startsWith("js/components/"));
+/* A TIER IS THE STATIC IMPORT CLOSURE OF ITS ENTRY POINT, computed rather than
+   listed. The hand-maintained list is what hid this phase's bug for eight
+   phases: view.js imported all four custom elements statically, so every lesson
+   downloaded the placement primitive whether it had a build stage or not, and
+   the budget cheerfully reported the union as though some child paid it.
+
+   Following static imports and NOT dynamic import() is the whole trick —
+   import() is exactly where one tier ends and the next begins, so the graph
+   draws the boundary that a person kept drawing wrong. (D69) */
+const STATIC_IMPORT = /(?:^|\n)\s*import\s+(?:[^'"]*?\bfrom\s+)?["']([^"']+)["']/g;
+function closure(entry) {
+  const seen = new Set();
+  (function walk1(f) {
+    if (seen.has(f)) return;
+    seen.add(f);
+    for (const [, spec] of readFileSync(join(ROOT, f), "utf8").matchAll(STATIC_IMPORT)) {
+      if (!spec.startsWith(".")) continue;                 // bare specifier: not ours
+      const rel = join(dirname(f), spec).split("\\").join("/");
+      if (files.includes(rel)) walk1(rel);
+      else fail(`${f} statically imports "${spec}", which is not a shipped file`);
+    }
+  })(entry);
+  return [...seen];
+}
+
+/* The shell is what booting costs. Everything a route imports on top of that is
+   what OPENING the route costs — so a tier is its closure MINUS the shell's,
+   because a child who is already looking at the Atlas has those bytes. */
+shellJs = closure("js/app.js");
+const shell = new Set(shellJs);
+const extra = (list) => [...new Set(list)].filter((f) => !shell.has(f));
+
+const componentFiles = files.filter((f) => f.startsWith("js/components/"));
+const { PART_OF } = await import(new URL("../js/lesson/parts.js", import.meta.url));
+const partFile = (name) => `js/lesson/parts/${name}.js`;
+/* A part nothing claims is a part nothing loads and no budget sees. Checked in
+   both directions, because either gap is silent — and the components are checked
+   through the parts that import them, which is the only path that loads them. */
+const partFiles = files.filter((f) => f.startsWith("js/lesson/parts/"));
+for (const [type, name] of Object.entries(PART_OF)) {
+  if (!partFiles.includes(partFile(name))) fail(`PART_OF maps "${type}" to a missing ${partFile(name)}`);
+}
+for (const f of partFiles) {
+  if (!Object.values(PART_OF).some((n) => partFile(n) === f)) {
+    fail(`${f} is not claimed by PART_OF in js/lesson/parts.js: nothing loads it and no budget sees it`);
+  }
+}
+const reached = new Set(["js/lesson/view.js", "js/lesson/review.js", ...partFiles].flatMap((f) => closure(f)));
+for (const f of componentFiles) {
+  if (!reached.has(f)) fail(`${f} is imported by no part and no route: nothing loads it and no budget sees it`);
+}
+
+/* The budget is the worst single VISIT: one route's closure plus the components
+   that route's content actually asks for. A lesson and the review flow are
+   different routes and neither is charged for the other. */
+const routes = [["review", extra(closure("js/lesson/review.js"))]];
+for (const [id, types] of Object.entries(stageTypes)) {
+  routes.push([id, extra([...closure("js/lesson/view.js"),
+    ...[...types].map((t) => PART_OF[t]).filter(Boolean).flatMap((n) => closure(partFile(n)))])]);
+}
+const [worstId, worstSet] = routes.reduce((a, b) => (sum(b[1]) > sum(a[1]) ? b : a));
+/* The spread, because the worst route alone hides the point of splitting: half
+   the lessons have no build stage and no longer pay 5 KB for the placement
+   primitive and its renderer. A single number would have reported no progress. */
+const routeSizes = routes.map(([, set]) => sum(set)).sort((a, b) => a - b);
+const kb = (n) => (n / 1024).toFixed(1);
+console.log(`lesson routes: ${routes.length}, ${kb(routeSizes[0])}-${kb(routeSizes.at(-1))} KB `
+  + `(median ${kb(routeSizes[routeSizes.length >> 1])} KB)`);
+
 /* A sim stage loads base.js plus ONE simulation, never all of them — so the sum
    was measuring a cost nobody pays, and with thirty more sims to write it would
    have failed the build on a number no child would ever download. The budget is
    the worst single stage: base plus the largest sim. */
 const simJs = files.filter((f) => f.startsWith("js/sims/"));
+/* By CLOSURE, not by file: seven sims render an <fp-slider>, and until this
+   phase not one of them imported it — they were free-riding on view.js loading
+   it for every lesson, so the sim budget under-reported by 1.2 KB and a lesson
+   with no slider stage shipped a broken simulation. (D69) */
 const simStage = () => {
-  const base = simJs.filter((f) => f === "js/sims/base.js");
   const worst = simJs.filter((f) => f !== "js/sims/base.js")
-    .sort((a, b) => gz(b) - gz(a)).slice(0, 1);
-  return [...base, ...worst];
+    .map((f) => extra(closure(f)))
+    .reduce((a, b) => (sum(b) > sum(a) ? b : a), []);
+  return extra([...closure("js/sims/base.js"), ...worst]);
 };
 const shellCss = CSS_ORDER_FOR_BUDGET;
 
@@ -268,8 +342,15 @@ const preloadFonts = files.filter((f) => f.includes("fonts/nunito"));
 
 const budgets = [
   ["shell JS (gz)", sum(shellJs), 25 * 1024],
-  ["lesson JS (gz, lazy)", sum(lessonJs), 20 * 1024],
+  [`lesson JS (gz, worst route: ${worstId})`, sum(worstSet), 20 * 1024],
   ["sim JS (gz, worst stage)", sum(simStage()), 20 * 1024],
+  /* The first number here that matches what a child actually downloads to play
+     a lesson: boot, plus the heaviest route, plus the heaviest simulation on it.
+     The three tiers above are diagnostics that say WHERE a regression landed;
+     this is the one that says whether it matters. */
+  // A UNION, not a sum: a lesson with a slider stage and a sim that renders one
+  // downloads that element once, and charging it twice would invent a cost.
+  ["one lesson, all in (gz)", sum([...new Set([...shellJs, ...worstSet, ...simStage()])]), 64 * 1024],
   ["shell CSS (gz)", sum(shellCss), 20 * 1024],
   ["preloaded fonts", raw(preloadFonts), 35 * 1024],
 ];

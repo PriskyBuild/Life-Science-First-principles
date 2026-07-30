@@ -27,6 +27,7 @@
    the pixels. The lesson's `name` stage says the rest in words. */
 
 import { Sim, token, say } from "./base.js";
+import "../components/slider.js";
 
 /* Letters are the redundant channel here, and a better one than shape: the
    base IS a letter, so nothing has to be looked up in a legend. */

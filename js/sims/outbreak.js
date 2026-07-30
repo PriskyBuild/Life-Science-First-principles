@@ -28,6 +28,7 @@
    slipped by a few points and nothing else changed. */
 
 import { Sim, token, say } from "./base.js";
+import "../components/slider.js";
 
 const N = 1000;
 const RATE = 12;          // model days per real second

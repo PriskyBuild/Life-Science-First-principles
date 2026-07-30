@@ -58,6 +58,9 @@ export function runner(lesson, lv = content()) {
   let i = 0;
   return {
     get stage() { return stages[i]; },
+    // The path THIS child will walk, so the loader can fetch exactly the
+    // custom elements it needs and no others.
+    get stages() { return stages; },
     get index() { return i; },
     get total() { return stages.length; },
     get done() { return i >= stages.length; },

@@ -13,7 +13,7 @@ const live = document.getElementById("live");
 /* Lesson code is imported only when a lesson route is hit, so a child on the
    Atlas never downloads the runner, the quiz component or the review flow. */
 const lazyLesson = (...args) => import("./lesson/view.js").then((m) => m.lessonView(...args));
-const lazyReview = () => import("./lesson/view.js").then((m) => m.reviewView());
+const lazyReview = () => import("./lesson/review.js").then((m) => m.reviewView());
 
 /* `live: true` marks a route that owns its own DOM across state changes.
    Without it, awarding XP mid-lesson dispatched fp:change, the subscriber

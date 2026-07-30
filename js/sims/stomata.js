@@ -25,6 +25,7 @@
    its logical extreme by opening only at night. */
 
 import { Sim, token, say } from "./base.js";
+import "../components/slider.js";
 
 class Stomata extends Sim {
   once() { this.best = 0; }

@@ -2390,6 +2390,64 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     `${marks.join("|")} + ${why.length} chars`);
 }
 
+/* ===================== phase 12: what one lesson costs ===================== */
+
+/* 81. A lesson downloads the parts its own stages need, and nothing else.
+   The tier budget was a SUM for eight phases, so it reported a cost no child
+   paid and hid the fact that view.js imported all four custom elements
+   statically — every lesson fetched the placement primitive whether it had a
+   build stage or not. A byte count cannot catch that; only watching the network
+   can. (D69) */
+{
+  const fetched = async (hash, wait, save = freshSave({ level: 2 })) => {
+    const seen = [];
+    const listen = (r) => seen.push(new URL(r.url()).pathname);
+    await page.goto(BASE, { waitUntil: "domcontentloaded" });
+    await setSave(save);
+    page.on("request", listen);
+    await page.goto(BASE + hash, { waitUntil: "networkidle" });
+    await page.reload({ waitUntil: "networkidle" });
+    await page.waitForSelector(wait, { timeout: 8000 });
+    await page.waitForTimeout(250);
+    page.off("request", listen);
+    return seen;
+  };
+
+  // cells/0 is hook, predict, slider, name, check, apply — no build stage
+  const noBuild = await fetched("#/l/cells/0", ".stage");
+  check("a lesson with no build stage never downloads the placement primitive",
+    !noBuild.some((u) => /components\/board\.js|parts\/build\.js/.test(u)),
+    noBuild.filter((u) => /board|build/.test(u)).join(", "));
+  check("it does download the parts it DOES use",
+    noBuild.some((u) => /components\/slider\.js/.test(u)) && noBuild.some((u) => /parts\/slider\.js/.test(u)),
+    noBuild.filter((u) => /parts\/|components\//.test(u)).map((u) => u.split("/").pop()).join(" "));
+  check("a lesson with no sim stage never downloads the sim renderer",
+    !noBuild.some((u) => /parts\/sim\.js/.test(u)), "");
+  check("no lesson downloads the weigh renderer unless it has one",
+    !noBuild.some((u) => /parts\/weigh\.js/.test(u)), "");
+
+  // dna/02 has a build stage, so it must fetch both the renderer and the element
+  const withBuild = await fetched("#/l/dna/1", ".stage");
+  check("a lesson with a build stage does download it",
+    withBuild.some((u) => /parts\/build\.js/.test(u)) && withBuild.some((u) => /components\/board\.js/.test(u)),
+    withBuild.filter((u) => /parts\/|components\//.test(u)).map((u) => u.split("/").pop()).join(" "));
+
+  /* The review flow was inside view.js, so every lesson shipped the whole
+     spaced-retrieval screen and every review shipped nine stage renderers. */
+  /* The review route needs something due or it renders the empty-queue notice.
+     These ids come from reviews.json, so the beats really exist. */
+  const due = {};
+  for (const c of ["form-follows-constraint", "surface-area-to-volume"]) {
+    due[c] = { step: 0, ease: 1, reps: 1, lapses: 0, due: Date.now() - 864e5, lastGrade: 1 };
+  }
+  const rev = await fetched("#/review", ".stage-host", freshSave({ level: 2, concepts: due }));
+  check("the review flow does not download the lesson runner",
+    !rev.some((u) => /lesson\/view\.js|parts\//.test(u)),
+    rev.filter((u) => /lesson\//.test(u)).map((u) => u.split("/").pop()).join(" "));
+  check("and a lesson does not download the review flow",
+    !noBuild.some((u) => /lesson\/review\.js/.test(u)), "");
+}
+
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
 
 await browser.close();

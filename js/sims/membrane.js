@@ -16,6 +16,7 @@
    and the whole thing narrates itself in a sentence. */
 
 import { Sim, token } from "./base.js";
+import "../components/slider.js";
 
 /* size is the only property that decides passage — bigger than the pore and it
    bounces. Shape is the redundant channel that makes colour non-load-bearing. */
