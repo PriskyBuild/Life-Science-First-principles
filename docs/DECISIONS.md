@@ -1018,3 +1018,54 @@ So the rule extends: `weigh` is not only for open questions. It is for questions
 on each side is worth operating*, and a dispute that was settled by a prediction coming true is the
 best possible demonstration of why stating one matters. A child who watches that happen has seen the
 mechanism, not been told about it.
+
+### D66 — A piece dropped in the wrong slot could not be taken out again
+*Reported by a user. It had been shipping since phase 4.*
+
+Tapping a placed piece did visibly nothing. No error, no console warning, and every existing
+placement test passed — because all of them placed a piece into an empty slot on a fresh page and
+stopped there. Nobody had tested the second gesture.
+
+Three defects, and the first is the one worth remembering.
+
+**`connectedCallback` fires on every insertion.** This component works by *moving* elements between
+the tray and the slots, so it fired again on every single placement, and the listener wiring ran
+again with it. After one move a placeable had two click handlers, and they cancelled out: handler
+one took the piece out of its slot, handler two picked it straight back up, and then the slot's own
+handler — a placed piece is a *child* of its slot, so both are on one tap's bubble path — put it
+back where it started. Three correct-looking pieces of code composing into a no-op.
+
+The fix is a `wired` flag, one line, applied at the top of every `connectedCallback`. But note the
+trap immediately below it: `Placeable.connectedCallback` called `super` and then added its own
+`pointerdown` listener *unconditionally*, so the guard protected the tap path while the drag path
+kept doubling. `Part.connectedCallback` now returns whether it wired, and the subclass gates on it.
+A guard that a subclass can walk around is not a guard.
+
+**Second: bubbling.** Each part now stops propagation on its own activation. A nested part owns its
+gesture; an ancestor that also handles it is handling the same gesture twice.
+
+**Third, found while in there:** the slot's `aria-label` was written once at connect, so every slot
+announced itself as "empty" for ever. A sighted child could see their answer and a screen-reader
+user could not. It is now rewritten in `refresh()`, alongside every other derived attribute — which
+is where it always belonged, and the reason it was wrong is that it was set in the one place that
+runs once.
+
+**The test is a call count, not an end state.** An even number of duplicate handlers cancels out and
+looks like a no-op; an odd number looks correct. Asserting "the piece ends up in the new slot" only
+catches half the cases. Asserting "one tap causes exactly one `pickUp` and no `place`" catches the
+class. Verified by reintroducing both defects and watching all four new checks fail.
+
+**And the general lesson, which is about the test suite rather than the component.** 198 checks, and
+this survived all of them because they tested the *first* interaction with everything. The state a
+component is in after one use is not the state a child meets — they meet the second tap, and the
+tenth. Wherever a component's behaviour depends on its own history, the test has to have a history
+too. I have gone looking for the same shape elsewhere: `fp-slider` and `fp-predict` do not move
+elements between parents, so neither re-enters `connectedCallback`; the sims mount once per stage.
+This was the only instance, and it was the one a child touches most.
+
+**Postscript on budget.** The first version of this fix pushed the lesson JS tier from 18.4 to 19.1
+KB against a 20 KB budget — entirely in comments, since nothing here is minified and comments are
+bytes a child downloads. The narrative above is the right length; in the file it was not. Comments
+in the source now carry the *invariant* and a D-number, and the incident lives here, where nothing
+ships it. That is the general rule for this codebase from now on: the reason goes in the file, the
+story goes in DECISIONS.

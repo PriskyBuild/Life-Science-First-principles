@@ -18,8 +18,15 @@
 
 const DRAG_THRESHOLD = 8;   // px before a press becomes a drag, so a shaky tap stays a tap
 
+/* `connectedCallback` fires on EVERY insertion, and this component moves
+   elements between tray and slots — so unguarded it adds a duplicate listener
+   per placement, and duplicate handlers cancel out. (D66) Setup runs once per
+   element; everything that changes lives in refresh(). */
+const wire = (el) => { if (el.wired) return false; el.wired = true; return true; };
+
 class Board extends HTMLElement {
   connectedCallback() {
+    if (!wire(this)) return;
     this.held = null;
     this.setAttribute("role", "group");
     if (this.dataset.label) this.setAttribute("aria-label", this.dataset.label);
@@ -107,6 +114,10 @@ class Board extends HTMLElement {
       // A slot that cannot take what you are holding is still focusable; it just
       // says so. Removing it from the tab order mid-gesture loses the keyboard user.
       slot.setAttribute("aria-disabled", String(valid === false));
+      /* Its name says what it holds, so it is rewritten here. Optional call:
+         in hand-written markup the board upgrades before its slots, so the
+         first refresh sees plain elements with no methods yet. (D66) */
+      slot.label?.();
     }
     this.toggleAttribute("data-holding", !!this.held);
   }
@@ -114,16 +125,22 @@ class Board extends HTMLElement {
 
 /* --- shared button-ish behaviour for the two interactive parts --- */
 class Part extends HTMLElement {
+  /** Returns whether it wired: a subclass must gate on it, or its own
+      addEventListener puts the duplicate straight back. (D66) */
   connectedCallback() {
+    if (!wire(this)) return false;
     this.setAttribute("role", "button");
     this.tabIndex = 0;
     this.classList.add("pressable");
+    /* A placed piece is a CHILD of its slot, so both see one tap. Each part
+       owns its activation and stops there, or the slot reverses it. (D66) */
     this.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.activate(); }
-      if (e.key === "Escape") this.board?.drop();
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); this.activate(); }
+      if (e.key === "Escape") { e.stopPropagation(); this.board?.drop(); }
     });
-    this.addEventListener("click", (e) => { e.preventDefault(); this.activate(); });
+    this.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); this.activate(); });
     this.label();
+    return true;
   }
   get board() { return this.closest("fp-board"); }
   label() {
@@ -134,14 +151,16 @@ class Part extends HTMLElement {
 
 class Placeable extends Part {
   connectedCallback() {
-    super.connectedCallback();
+    if (!super.connectedCallback()) return;
     this.addEventListener("pointerdown", (e) => this.startDrag(e));
   }
+  /* A placed piece taps back INTO the hand, not just out of its slot: two taps
+     to change an answer, and it returns to the tray so the hand is visible. */
   activate() {
     const board = this.board;
     if (!board) return;
-    if (this.placedIn && board.held !== this) board.unplace(this);
-    else board.pickUp(this);
+    if (this.placedIn && board.held !== this) board.unplace(this, { quiet: true });
+    board.pickUp(this);
   }
 
   /* Drag writes to the same pickUp/place calls a tap does. */
@@ -196,7 +215,8 @@ class Slot extends Part {
     const board = this.board;
     if (!board) return;
     if (board.held) board.place(this);
-    else if (this.item) board.pickUp(this.item);
+    // Tapping a full slot is the same gesture as tapping the piece in it.
+    else if (this.item) this.item.activate();
     else board.say(`${this.dataset.label} is empty. Pick something up first.`);
   }
 }

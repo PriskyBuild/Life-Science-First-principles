@@ -596,6 +596,103 @@ const boardState = () => page.evaluate(() =>
     /Membrane placed in Outer edge/.test(said), said);
 }
 
+/* 27b. A wrong answer must be changeable, and one gesture must cause exactly
+   one state transition.
+
+   Reported by a user, and it had been shipping the whole time: a piece dropped
+   in the wrong slot could not be taken out again. Tapping it did visibly
+   nothing, no error appeared anywhere, and every existing placement test passed
+   — because they all placed a piece into an empty slot and stopped there.
+
+   Two defects compounded. `connectedCallback` fires on every insertion and this
+   component works by MOVING elements between the tray and the slots, so each
+   placement re-ran setup and added a second click handler; and a placed piece
+   is a child of its slot, so one tap was also handled by the slot. Handler one
+   took the piece out, handler two picked it up, the slot put it back.
+
+   Counting calls per tap is the check rather than asserting an end state: an
+   even number of duplicate handlers cancels out and looks like a no-op, an odd
+   number looks correct. Only the count sees both. */
+{
+  await page.goto(SG, { waitUntil: "networkidle" });
+  await page.waitForSelector("fp-placeable");
+  const tally = await page.evaluate(() => {
+    const board = document.querySelector("fp-board");
+    const piece = document.querySelector('fp-placeable[data-id="nucleus"]');
+    const slot = document.querySelector('fp-slot[data-label="Control centre"]');
+    const n = { pickUp: 0, place: 0, unplace: 0 };
+    for (const m of Object.keys(n)) {                 // instance props shadow the prototype
+      const orig = board[m].bind(board);
+      board[m] = (...a) => { n[m]++; return orig(...a); };
+    }
+    piece.click(); slot.click();                      // place it
+    const placing = { ...n };
+    piece.click();                                    // now change the answer
+    return {
+      placing, after: { ...n },
+      held: board.held === piece,
+      slotNowEmpty: board.state["Control centre"] === null,
+      label: slot.getAttribute("aria-label"),
+    };
+  });
+  check("placement: one tap on a placed piece lifts it out, once",
+    tally.after.pickUp === tally.placing.pickUp + 1
+    && tally.after.place === tally.placing.place
+    && tally.held && tally.slotNowEmpty, JSON.stringify(tally));
+
+  // and it lands in the hand, so changing an answer is two taps rather than
+  // three — then straight into a different slot, which is the boss case where
+  // any part fits any slot and a misplacement is the child's to correct
+  const moved = await page.evaluate(() => {
+    document.querySelectorAll("fp-slot").forEach((s) => s.removeAttribute("data-accepts"));
+    const board = document.querySelector("fp-board");
+    document.querySelector('fp-placeable[data-id="nucleus"]').click();
+    document.querySelector('fp-slot[data-label="Control centre"]').click();
+    document.querySelector('fp-placeable[data-id="nucleus"]').click();
+    document.querySelector('fp-slot[data-label="Power plant"]').click();
+    return board.state;
+  });
+  check("placement: a piece moves from one slot to another",
+    moved["Power plant"] === "nucleus" && moved["Control centre"] === null, JSON.stringify(moved));
+
+  /* And the same defect one level down: `Placeable.connectedCallback` called
+     super and then added its pointerdown listener unconditionally, so the guard
+     protected the tap path and the drag path went on doubling. A drag has to be
+     tested on an ALREADY-PLACED piece — the existing drag test moves a piece
+     out of the tray on a fresh page, where there is only ever one listener. */
+  {
+    await page.goto(SG, { waitUntil: "networkidle" });
+    await page.waitForSelector("fp-placeable");
+    await page.evaluate(() => {
+      document.querySelectorAll("fp-slot").forEach((s) => s.removeAttribute("data-accepts"));
+      document.querySelector('fp-placeable[data-id="nucleus"]').click();
+      document.querySelector('fp-slot[data-label="Control centre"]').click();
+    });
+    const piece = page.locator('fp-placeable[data-id="nucleus"]');
+    await piece.scrollIntoViewIfNeeded();
+    const from = await piece.boundingBox();
+    const to = await page.locator('fp-slot[data-label="Outer edge"]').boundingBox();
+    await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(to.x + to.width / 2, to.y + to.height / 2, { steps: 12 });
+    await page.mouse.up();
+    const after = await boardState();
+    check("placement: a placed piece can be dragged to another slot",
+      after["Outer edge"] === "nucleus" && !after["Control centre"], JSON.stringify(after));
+  }
+
+  /* The slot's accessible name says what it holds, so it has to be rewritten
+     when that changes. It was set once at connect: every slot announced itself
+     as empty for ever, however full the board looked. */
+  check("placement: a filled slot announces what it holds", /holds Nucleus/.test(
+    await page.evaluate(() => {
+      const slot = document.querySelector('fp-slot[data-label="Control centre"]');
+      const piece = document.querySelector('fp-placeable[data-id="nucleus"]');
+      if (piece.placedIn !== slot) { piece.click(); slot.click(); }
+      return slot.getAttribute("aria-label");
+    })), "aria-label never updates after a placement");
+}
+
 /* 28. Slider: native semantics survive the wrapper, keyboard moves it. */
 {
   await page.goto(SG, { waitUntil: "networkidle" });
