@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>First Principles Life Sciences — watching a child use it</title>
+<style>
+  :root { --ink: #1a1a1a; --soft: #555; --line: #bbb; }
+  * { box-sizing: border-box; }
+  body {
+    font: 15px/1.55 "Helvetica Neue", Arial, sans-serif; color: var(--ink);
+    max-width: 760px; margin: 0 auto; padding: 32px 24px 64px;
+  }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 30px 0 10px; padding-bottom: 5px; border-bottom: 2px solid var(--ink); }
+  p.sub { color: var(--soft); margin: 0 0 6px; }
+  ol, ul { padding-left: 22px; margin: 8px 0; }
+  li { margin: 5px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: #f2f2f2; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+  code { font: 13px/1.4 ui-monospace, Menlo, Consolas, monospace; background: #f2f2f2; padding: 1px 4px; }
+  .box { display: inline-block; width: 13px; height: 13px; border: 1.5px solid var(--ink); margin-right: 7px; vertical-align: -2px; }
+  .watch li { margin: 9px 0; }
+  .watch b { display: block; font-weight: 600; }
+  .watch span { color: var(--soft); font-size: 14px; }
+  .rule { background: #f7f7f7; border-left: 4px solid var(--ink); padding: 10px 14px; margin: 14px 0; }
+  .write { border-bottom: 1px solid var(--line); height: 26px; }
+  .note { color: var(--soft); font-size: 13px; }
+  @media print {
+    body { padding: 0 12mm; max-width: none; font-size: 11.5pt; }
+    h2 { margin-top: 20px; }
+    .pagebreak { page-break-before: always; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Watching a child use it</h1>
+<p class="sub">One page to set up, one page to write on. Print both.</p>
+
+<h2>Before you start</h2>
+<ol>
+  <li><b>Open the app.</b> Use your web address if you have it published, or open the project folder
+      on your computer and run <code>python3 -m http.server 8000</code>, then go to
+      <code>http://localhost:8000</code>.</li>
+  <li><b>Set the two dials.</b> Tap <b>Me</b> in the top right. Set <i>How should the words be
+      written?</i> and <i>How deep should the science go?</i> using the table below. These are two
+      separate settings on purpose — a child can have simple words and hard science, or the reverse.</li>
+  <li><b>Check the sound is on.</b> Same screen: <b>Sounds</b> on, and <b>Reading aloud</b> left on
+      "Match my reading level". For a 5-to-7-year-old it will start reading each page out loud by
+      itself. That is deliberate.</li>
+</ol>
+
+<h2>Which lesson for which age</h2>
+<table>
+  <tr><th>Age</th><th>Set words to</th><th>Set science to</th><th>Open this lesson</th><th>Why this one</th></tr>
+  <tr>
+    <td>5–7</td><td>5 to 7</td><td>Just the idea</td>
+    <td><b>What is Life?</b><br>lesson 1<br><span class="note">#/l/what-is-life/0</span></td>
+    <td>The very first lesson, and it has a drag-and-drop activity — the part small fingers struggle with most.</td>
+  </tr>
+  <tr>
+    <td>8–10</td><td>8 to 10</td><td>The idea and why</td>
+    <td><b>Cells</b><br>lesson 2<br><span class="note">#/l/cells/1</span></td>
+    <td>Two working simulations. This is where you find out whether playing with something teaches it.</td>
+  </tr>
+  <tr>
+    <td>11–13</td><td>11 to 13</td><td>The mechanism</td>
+    <td><b>Natural Selection</b><br>lesson 1<br><span class="note">#/l/natural-selection/0</span></td>
+    <td>The child has to work out the answer from the simulation before anything is explained. That bet is strongest at this age.</td>
+  </tr>
+  <tr>
+    <td>14–16</td><td>14 to 16</td><td>The whole argument</td>
+    <td><b>Evolution</b><br>lesson 1<br><span class="note">#/l/evolution/0</span></td>
+    <td>This is one of the lessons that puts two sides of an argument next to each other. <b>Please read it yourself first</b> — you should approve how each position is described before a child sees it.</td>
+  </tr>
+</table>
+<p class="note">You can reach any lesson by tapping through the map, or by putting the short address
+after the site name — for example <code>…/#/l/cells/1</code>. One lesson takes roughly ten minutes,
+but that is a guess and one of the things I would like measured.</p>
+
+<h2>The one rule</h2>
+<div class="rule">
+  <b>Say nothing unless they ask you.</b> Do not point, do not hint, do not read it for them.
+  The most valuable thing you can find is the place a child gets stuck with no help — because that is
+  the only place I cannot guess at. If they ask you what to do, write down what they asked, then help.
+</div>
+
+<div class="pagebreak"></div>
+
+<h1>Watch sheet</h1>
+<p class="sub">One per child. Child's age: ____________ &nbsp; Lesson: ____________________ &nbsp; Minutes taken: __________</p>
+
+<h2>Nine things to watch</h2>
+<ul class="watch">
+  <li><span class="box"></span><b>Did they know what to touch, without being told?</b>
+      <span>Everything touchable looks raised, like a button. Everything flat is just to read. Did that land, or did they poke at the text?</span></li>
+  <li><span class="box"></span><b>Did they play with the simulation, or rush to press Next?</b>
+      <span>The whole design assumes a child will fiddle before being told the answer. If they hurry past it, the design is wrong, not the child.</span></li>
+  <li><span class="box"></span><b>At "Predict first", did they actually think?</b>
+      <span>Or did they tap any option to get the button unlocked? They are paid points either way, on purpose — but only if the guess is real does it teach.</span></li>
+  <li><span class="box"></span><b>Could they fix a wrong drag?</b>
+      <span>Put something in the wrong slot deliberately, and see whether the child can get it out again without help. This was broken until last week.</span></li>
+  <li><span class="box"></span><b>Ages 5–7 only: did they listen to the voice, or ignore it?</b>
+      <span>It reads each page aloud by itself. Did that help, get in the way, or get talked over?</span></li>
+  <li><span class="box"></span><b>Where did they get stuck — and did they find the helper?</b>
+      <span>A small character offers hints. It never gives the answer straight away. Did they notice it existed?</span></li>
+  <li><span class="box"></span><b>Did they finish?</b>
+      <span>If they stopped, write down the exact screen they stopped on. That is the single most useful line on this sheet.</span></li>
+  <li><span class="box"></span><b>Did they care about the reward?</b>
+      <span>Finishing collects a "specimen" — an object kept on a shelf and reused in later lessons. Did they look at it, or ignore it?</span></li>
+  <li><span class="box"></span><b>Any word you had to explain?</b>
+      <span>Write the exact word. Wording is the cheapest thing in the whole project to fix, and the easiest for me to get wrong.</span></li>
+</ul>
+
+<h2>What happened</h2>
+<div class="write"></div><div class="write"></div><div class="write"></div>
+<div class="write"></div><div class="write"></div><div class="write"></div>
+
+<h2>Where they got stuck (be exact)</h2>
+<div class="write"></div><div class="write"></div><div class="write"></div>
+
+<h2>Anything they said out loud</h2>
+<p class="note">Especially anything that sounded confused, bored, or surprised.</p>
+<div class="write"></div><div class="write"></div><div class="write"></div>
+
+<h2>Would they open it again tomorrow?</h2>
+<p><span class="box"></span> Yes, asked to &nbsp;&nbsp; <span class="box"></span> Yes, if suggested
+&nbsp;&nbsp; <span class="box"></span> Probably not &nbsp;&nbsp; <span class="box"></span> No</p>
+
+</body>
+</html>
