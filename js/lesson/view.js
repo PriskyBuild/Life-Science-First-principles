@@ -122,8 +122,15 @@ export async function lessonView(moduleId, indexStr) {
   const bar = el("div", { class: "stage-bar" });
   const backBtn = el("button", { class: "back pressable", onclick: () => { walk.back(); draw(); } },
     icon("back"), el("span", { text: "Back" }));
-  const nextBtn = el("button", { class: "next-btn pressable", onclick: () => { walk.next(); draw(); } },
-    el("span", { text: "Next" }), icon("next"));
+  /* One handler whose behaviour comes from state. On the done screen this button
+     is the way OUT — it used to be hidden there and hidden did nothing (see
+     below), leaving a dead "Finish" next to a working link that said the same
+     thing. The child's thumb is already here, so this is where the exit goes. */
+  const nextBtn = el("button", { class: "next-btn pressable", onclick: () => {
+    if (walk.done) { location.hash = `#/m/${moduleId}`; return; }
+    walk.next();
+    draw();
+  } }, el("span", { text: "Next" }), icon("next"));
 
   /* One control per stage rather than a speaker beside every paragraph. A
      five-year-old should not have to choose between four buttons, and the byte
@@ -219,9 +226,12 @@ export async function lessonView(moduleId, indexStr) {
             declineNudge();
             e.target.closest(".nudge").remove();
           } }, el("span", { text: "No, leave it" })))) : null,
-      el("a", { class: "back pressable", href: `#/m/${moduleId}` }, icon("back"), el("span", { text: "Back to the module" }))));
+    ));
     bar.replaceChildren();
-    backBtn.hidden = nextBtn.hidden = readBtn.hidden = true;
+    backBtn.hidden = readBtn.hidden = true;
+    nextBtn.disabled = false;
+    nextBtn.classList.add("m-attend");
+    mount(nextBtn, el("span", { text: `Back to ${mod.title}` }), icon("next"));
   }
 
   queueMicrotask(() => {

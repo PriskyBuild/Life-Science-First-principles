@@ -129,11 +129,19 @@ export const earnedBadges = (p = progress) => BADGES.filter((b) => b.earned(p));
     come last, and a caller that flushed and *then* seeded silently lost the
     schedule — which is exactly what happened the first time this was split. */
 export function completeLesson(moduleId, lessonIndex, { concepts = [], specimen = null } = {}) {
+  /* Read BEFORE the write, because the write is what makes it look done.
+     The completion bonus is paid once per lesson, ever. A dead Finish button was
+     calling this on every click and paying 12 XP each time — the exact thing
+     NEVER_PAID exists to prevent, arriving through a CSS bug rather than a bad
+     call site. This guard is conservative by design: `lessonsDone` is a
+     high-water mark, so finishing an EARLIER lesson after a later one pays no
+     bonus. Under-paying once is a much smaller wrong than being farmable. (D70) */
+  const alreadyDone = (progress.modules[moduleId]?.lessonsDone ?? 0) > lessonIndex;
   update((p) => {
     const m = (p.modules[moduleId] ??= { lessonsDone: 0 });
     m.lessonsDone = Math.max(m.lessonsDone, lessonIndex + 1);
   });
-  awardXp("lessonComplete");
+  if (!alreadyDone) awardXp("lessonComplete");
   if (specimen) collect(specimen);
   for (const c of concepts) seed(c);
   // Finishing a lesson is the one write a child would be genuinely upset to

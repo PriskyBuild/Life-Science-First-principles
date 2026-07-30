@@ -1201,3 +1201,42 @@ that say *where* a regression landed; this one says whether it matters.
 
 Also gone: the `fp-stage` custom element. It existed to set `role="group"` on mount — a class and a
 registration for one attribute, which the call site can set itself. Eliminate before you move.
+
+### D70 — "Finish doesn't do anything" was Finish paying you 12 XP a click
+*Reported by a user, who was being generous about it.*
+
+On the lesson-complete screen there was a link on the left saying "Back to the module" and a button on
+the right saying "Finish" that appeared to do nothing. `finish()` sets `nextBtn.hidden = true`, so it
+was supposed to be gone.
+
+**`hidden` was being ignored across the entire app.** The HTML attribute is only a UA-stylesheet rule,
+`[hidden] { display: none }`, and *any* author rule that sets `display` beats it. Every pill and
+button in this stylesheet sets `display: inline-flex`. So `el.hidden = true` set the attribute,
+changed nothing visually, and left the element clickable — while every test that asked `.hidden`
+returned `true` and agreed it was hidden.
+
+`[hidden] { display: none !important; }` now sits in base.css, the only `!important` in it. That is
+deliberate: it is not overriding a design decision, it is restoring the meaning of an HTML attribute
+that author styles silence by accident. There was already a `.tutor[hidden] { display: none }` rule
+further down — somebody hit this exact bug once, patched the instance, and left the class alone. That
+line is gone now.
+
+**The consequence was worse than a dead button.** Each press called `completeLesson()` again, which
+called `awardXp("lessonComplete")` again: 12 XP per click, unbounded. `NEVER_PAID` in reward.js exists
+to stop precisely this — paying for something other than learning — and it was bypassed not by a bad
+call site but by a CSS specificity rule two files away. **A guard at the call site does not protect an
+economy if the UI can call the same site repeatedly.** `completeLesson` now reads whether the lesson
+was already done *before* the write that marks it done, and pays the bonus once ever. The guard is
+deliberately conservative: `lessonsDone` is a high-water mark, so finishing an earlier lesson after a
+later one pays no bonus. Under-paying in a rare case is a far smaller wrong than being farmable.
+
+**And the fix the user actually asked for, which was the right one.** Two exits doing the same thing
+is what made this feel broken — a working link on the left, a dead button on the right. The button now
+*is* the exit: it reads "Back to Cells", it is where the child's thumb has been all lesson, and the
+duplicate link inside the card is gone. One handler, whose behaviour comes from state — a second
+listener assigned over the first would not have removed it, since `el()` attaches with
+`addEventListener`.
+
+Five checks. The one worth keeping longest is the general one: **nothing marked hidden may still be on
+screen**, asserted from computed style rather than from the attribute. Every test that trusted
+`.hidden` was confirming the app's own mistaken belief back to it.

@@ -729,7 +729,6 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
    opens itself. The nudge draws attention to the button; opening it is always
    the child's decision. ---- */
 .tutor { display: grid; gap: var(--s-2); justify-items: start; }
-.tutor[hidden] { display: none; }
 .tutor-ask {
   display: inline-flex; align-items: center; gap: var(--s-2);
   min-height: var(--touch); padding-inline: var(--s-4);

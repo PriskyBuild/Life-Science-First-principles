@@ -2448,6 +2448,60 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     !noBuild.some((u) => /lesson\/review\.js/.test(u)), "");
 }
 
+/* ===================== phase 13: the way out ===================== */
+
+/* 82. Reported by a user: "Finish doesn't do anything." It did something —
+   `hidden` was set on it and `hidden` was being ignored app-wide, because the
+   attribute is only a UA-stylesheet rule and every button here sets display in
+   an author rule. So a dead button sat next to a working link that said the same
+   thing, and each press called completeLesson again and paid the 12 XP bonus
+   once per click. Farmable XP through a CSS bug. (D70) */
+{
+  await openWith(freshSave({ level: 2 }), "#/l/cells/0");
+  await page.waitForSelector(".stage");
+  await stepLesson(16);
+  await page.waitForSelector(".stage--done");
+
+  const lying = await page.evaluate(() => [...document.querySelectorAll("[hidden]")]
+    .filter((n) => getComputedStyle(n).display !== "none")
+    .map((n) => n.className || n.tagName));
+  check("nothing marked hidden is still on screen", lying.length === 0, lying.join(", "));
+
+  const exits = await page.evaluate(() => ({
+    nav: [...document.querySelectorAll(".stage-nav button, .stage-nav a")]
+      .filter((b) => getComputedStyle(b).display !== "none").map((b) => b.textContent.trim()),
+    inCard: [...document.querySelectorAll(".stage--done a")].map((a) => a.textContent.trim()),
+  }));
+  check("the lesson-complete screen offers exactly one way out",
+    exits.nav.length === 1 && exits.inCard.length === 0, JSON.stringify(exits));
+  check("and the button says where it goes", /Cells/.test(exits.nav[0] ?? ""), exits.nav[0] ?? "(none)");
+
+  await page.locator(".next-btn").click();
+  await page.waitForTimeout(250);
+  check("pressing it returns to the module",
+    /#\/m\/cells$/.test(await page.evaluate(() => location.hash)),
+    await page.evaluate(() => location.hash));
+}
+
+/* 83. And the guard underneath it: the completion bonus is paid once per lesson,
+   ever. Tested on the real module rather than through the UI, because the UI can
+   only reach it one way and the next bug will not. */
+{
+  await openWith(freshSave({ level: 2 }));
+  await page.waitForSelector(".islands");
+  const paid = await page.evaluate(async () => {
+    const { completeLesson } = await import("./js/reward.js");
+    const { progress } = await import("./js/state.js");
+    const start = progress.xp;
+    completeLesson("cells", 0, { concepts: [], specimen: null });
+    const once = progress.xp - start;
+    for (let i = 0; i < 4; i++) completeLesson("cells", 0, { concepts: [], specimen: null });
+    return { once, afterFiveCalls: progress.xp - start };
+  });
+  check("finishing a lesson pays the completion bonus once, not once per click",
+    paid.once > 0 && paid.afterFiveCalls === paid.once, JSON.stringify(paid));
+}
+
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
 
 await browser.close();

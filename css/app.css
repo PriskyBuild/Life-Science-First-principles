@@ -495,6 +495,17 @@
 /* ===== css/base.css ===== */
 /* Reset, typography, focus, and the motion vocabulary. */
 
+/* `hidden` must win. The HTML attribute is only a UA-stylesheet rule, so ANY
+   author rule that sets display beats it — and every pill and button in here
+   sets display: inline-flex. So `el.hidden = true` left the element visible and
+   clickable, and a dead "Finish" button on the lesson-complete screen went on
+   paying the completion bonus once per click. (D70)
+
+   The `!important` is deliberate and is the one place in this stylesheet that
+   has one: it is not overriding a decision, it is restoring the meaning of an
+   HTML attribute that author styles accidentally silence. */
+[hidden] { display: none !important; }
+
 /* ---- fonts ----
    Nunito is preloaded (25.1 KB, two weights) and carries first paint.
    Baloo 2 is display-only and uses font-display:optional, so it NEVER blocks
@@ -1409,7 +1420,6 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
    opens itself. The nudge draws attention to the button; opening it is always
    the child's decision. ---- */
 .tutor { display: grid; gap: var(--s-2); justify-items: start; }
-.tutor[hidden] { display: none; }
 .tutor-ask {
   display: inline-flex; align-items: center; gap: var(--s-2);
   min-height: var(--touch); padding-inline: var(--s-4);
