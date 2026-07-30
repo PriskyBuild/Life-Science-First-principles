@@ -1240,3 +1240,26 @@ listener assigned over the first would not have removed it, since `el()` attache
 Five checks. The one worth keeping longest is the general one: **nothing marked hidden may still be on
 screen**, asserted from computed style rather than from the attribute. Every test that trusted
 `.hidden` was confirming the app's own mistaken belief back to it.
+
+**D70 postscript, and it is the more interesting half.** The user sent a screenshot of the *old*
+build, which sent me to look at the fixed screen — where I found Sprout's "I'm stuck" button still
+offering help on a finished lesson. It had been there all along; it only became visible to me once
+`hidden` started working.
+
+Then I wrote the check to catch it and **made the exact mistake D70 is about, inside the test written
+to catch that mistake.** The filter was `getComputedStyle(el).display !== "none"`, and a child of a
+hidden parent still reports its own display as `inline-flex` — so the test told me Sprout was visible
+after I had already hidden it. Both checks now use `getClientRects().length`, because an element that
+renders no boxes is not on screen whatever it believes about itself.
+
+The rule, stated so I stop rediscovering it: **do not ask an element what it thinks it is doing. Ask
+whether it is on screen.** The attribute, the computed style and the element's own opinion can all
+three agree and all three be wrong.
+
+**One flaky check found and made deterministic on the way past.** The offline test severs the network
+and reloads. It failed once with an unhandled "Failed to fetch", because a *new* service worker can
+still be installing when the network is cut — its precache would then fail against a dead network. It
+had waited for `serviceWorker.controller != null`, which only means *some* worker controls the page.
+It now waits until nothing is installing or waiting, and fetch failures are ignored only inside the
+window the test deliberately created, and only that message class. Papering over the symptom would
+have hidden the next real error in that window.

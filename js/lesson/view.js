@@ -228,7 +228,11 @@ export async function lessonView(moduleId, indexStr) {
           } }, el("span", { text: "No, leave it" })))) : null,
     ));
     bar.replaceChildren();
-    backBtn.hidden = readBtn.hidden = true;
+    /* Sprout too. There is nothing to be stuck on once the lesson is finished,
+       and an "I'm stuck" button on a well-done screen is an offer of help with
+       something that has already gone right. It only became visible here when
+       `hidden` started working — it had been "hidden" all along. (D70) */
+    backBtn.hidden = readBtn.hidden = tutor.hidden = true;
     nextBtn.disabled = false;
     nextBtn.classList.add("m-attend");
     mount(nextBtn, el("span", { text: `Back to ${mod.title}` }), icon("next"));

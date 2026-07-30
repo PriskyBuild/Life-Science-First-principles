@@ -35,12 +35,19 @@ const browser = await chromium.launch(
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
 const page = await ctx.newPage();
 const errors = [];
+/* One test deliberately severs the network. A fetch that fails while the network
+   is intentionally cut is the test's own doing, not a defect — but ONLY that one
+   message class, and only inside that window, so a real error there still shows. */
+let offlineWindow = false;
+const expectedOffline = (t) => offlineWindow && /Failed to fetch|NetworkError|net::ERR/.test(t);
 page.on("console", (m) => {
   // One test throws on purpose to prove the loop survives it; its own log is
   // not a defect. Everything else is.
-  if (m.type() === "error" && !/FP-BAD stopped/.test(m.text())) errors.push(m.text());
+  if (m.type() === "error" && !/FP-BAD stopped/.test(m.text()) && !expectedOffline(m.text())) {
+    errors.push(m.text());
+  }
 });
-page.on("pageerror", (e) => errors.push(String(e)));
+page.on("pageerror", (e) => { if (!expectedOffline(String(e))) errors.push(String(e)); });
 
 await page.goto(BASE, { waitUntil: "networkidle" });
 
@@ -222,9 +229,16 @@ check("completing What is Life? opens Cells", titles.includes("Cells"), titles.j
 
 // 12. offline: kill the network and reload
 await page.goto(BASE, { waitUntil: "networkidle" });
-await page.waitForFunction(() => navigator.serviceWorker?.controller != null, null, { timeout: 10000 })
-  .catch(() => {});
-await page.waitForTimeout(800);
+/* Not just "a worker controls the page": a NEW worker may still be installing,
+   and its precache addAll() would then hit the severed network and reject. Wait
+   until nothing is installing or waiting, or the test cuts the network out from
+   under its own service worker and fails intermittently on a slow machine. */
+await page.waitForFunction(async () => {
+  const reg = await navigator.serviceWorker?.getRegistration?.();
+  return !!navigator.serviceWorker?.controller && !!reg && !reg.installing && !reg.waiting;
+}, null, { timeout: 15000 }).catch(() => {});
+await page.waitForTimeout(300);
+offlineWindow = true;
 await ctx.setOffline(true);
 try {
   await page.reload({ waitUntil: "domcontentloaded" });
@@ -234,6 +248,7 @@ try {
   check("cold reload works with the network off", false, String(e).slice(0, 80));
 }
 await ctx.setOffline(false);
+offlineWindow = false;
 
 /* 13. Real contrast audit: not token pairs, but every rendered text node
    against the background it actually composites onto. This is what catches a
@@ -2463,18 +2478,25 @@ const mountSelection = (body) => page.evaluate(async (src) => {
   await page.waitForSelector(".stage--done");
 
   const lying = await page.evaluate(() => [...document.querySelectorAll("[hidden]")]
-    .filter((n) => getComputedStyle(n).display !== "none")
+    .filter((n) => n.getClientRects().length > 0)
     .map((n) => n.className || n.tagName));
   check("nothing marked hidden is still on screen", lying.length === 0, lying.join(", "));
 
-  const exits = await page.evaluate(() => ({
-    nav: [...document.querySelectorAll(".stage-nav button, .stage-nav a")]
-      .filter((b) => getComputedStyle(b).display !== "none").map((b) => b.textContent.trim()),
-    inCard: [...document.querySelectorAll(".stage--done a")].map((a) => a.textContent.trim()),
-  }));
-  check("the lesson-complete screen offers exactly one way out",
-    exits.nav.length === 1 && exits.inCard.length === 0, JSON.stringify(exits));
-  check("and the button says where it goes", /Cells/.test(exits.nav[0] ?? ""), exits.nav[0] ?? "(none)");
+  /* Every visible control on the screen, not just the nav row — the nav row is
+     not where the next stray control will be.
+
+     `getClientRects()`, NOT `getComputedStyle(el).display`. A child of a hidden
+     parent still reports its own display as inline-flex, so the first version of
+     this check reported Sprout's "I'm stuck" button as visible on a finished
+     lesson when it was not — I made the exact mistake D70 is about, inside the
+     test written to catch it. An element that renders no boxes is not on screen,
+     whatever it believes about itself. */
+  const exits = await page.evaluate(() =>
+    [...document.querySelectorAll(".stage-wrap button, .stage-wrap a")]
+      .filter((b) => b.getClientRects().length > 0).map((b) => b.textContent.trim()));
+  check("a finished lesson shows exactly one control, and it is the way out",
+    exits.length === 1, JSON.stringify(exits));
+  check("and it says where it goes", /Cells/.test(exits[0] ?? ""), exits[0] ?? "(none)");
 
   await page.locator(".next-btn").click();
   await page.waitForTimeout(250);
