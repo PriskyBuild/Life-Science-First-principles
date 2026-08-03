@@ -191,7 +191,12 @@ writeFileSync(join(ROOT, "content/reviews.json"), JSON.stringify(reviews, null, 
     if (!ids.has(id)) { where("no module with this id exists"); continue; }
     seen.add(id);
     if (!Array.isArray(paths) || !paths.length) { where("no paths"); continue; }
-    if (paths.length > 14) where(`${paths.length} paths — past fourteen it stops reading at 64px, which is the size it is used at`);
+    /* FORTY, NOT FOURTEEN. The first cap was a guess and it was the thing making
+       these read as an icon set rather than as drawings — the reference notebook
+       diagrams are thirty to forty strokes each. The real constraint is whether
+       it reads at 54px, which is a contact sheet's job to answer, not a number's.
+       Forty is a runaway guard: past it a drawing is trying to be a poster. (D83) */
+    if (paths.length > 40) where(`${paths.length} paths — past forty it is trying to be a poster, and this is drawn at 54px`);
 
     let lastFillAt = -1, firstStrokeAt = -1, coloured = false;
     for (const [i, entry] of paths.entries()) {

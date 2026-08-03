@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "1f9bf9657b5b";
+const VERSION = "b154a51013b5";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
