@@ -1673,3 +1673,46 @@ It is a lazy route, played once, and reachable again from Me — because childre
 liked, and taking it away is a small loss for no gain.
 
 275 of 275.
+
+### D82 — A drawing in every module card, and a red build I did not see
+*Asked for: the module boxes have a lot of empty space, fill it with hand-drawn coloured pictures like
+the notebook references. Two things came out of doing it, and the second one is mine.*
+
+**One drawing per module, in the module's own colours.** Same hand and same 48-unit grid as the specimen
+art, with one thing added: flat colour. A path is either a bare string (stroke only) or a `[d, role]`
+pair, and **no role names a colour** — `fill`, `deep` and `tint` resolve against the module's world
+palette, so a drawing inherits its hue and dark mode for nothing and cannot introduce a colour the
+palette generator never gated. `hatch` is a lighter stroke, which is what makes a drawn diagram read as
+drawn rather than filled in.
+
+**The first version rendered and could not be seen.** The largest shape in most drawings was filled with
+`--w-tint` — and a module card's background *is* the world tint, so the fill vanished into it exactly.
+Everything worked and nothing showed. Paper reads against every card state and the mid tone reads
+against all of them, so the rule is now: **the biggest shape carries the world's mid tone, the point of
+the drawing carries the deep tone, and paper white is only ever a hole or a highlight.** The line weight
+went from 2 to 2.6 in the same pass, because at the size these are used the thinner one read as an icon
+set, which is the opposite of the reference.
+
+A locked module's drawing greys out with the rest of its card. A preview is not a prize, and a colourful
+picture on a closed door draws the eye to the one thing a child cannot do.
+
+The drawings are a late fetch and a failure is silence — the same contract as the specimen art in D71,
+for the same reason. Every card's title, hook and status already say what it is; **a picture is worth
+having and is not allowed to be a prerequisite for reading.**
+
+The set is build-checked like the specimens: on the grid, absolute commands only, at most fourteen
+paths, fills before line work, and at least one colour. Proved by breaking each rule in turn.
+
+**And the part worth writing down properly.** The build had been FAILING since the opening landed in
+D81, on four custom properties the intro sets inline — and I did not see it, because I had been running
+`node tools/build.mjs | grep -E "shell JS|shell CSS"` to read the budget numbers and the grep threw the
+`FAILED:` line away. The browser suite was green, so nothing contradicted me. **I shipped D81 with a red
+build and pushed it.**
+
+The lesson is not "look at the output". It is that a filtered view of a gate is not the gate, and I had
+been reading a filter for several turns without noticing it had stopped containing the answer. The fix
+in the code is trivial — a `var()` with no fallback is an undefined property by the build's own rule,
+and these four now have fallbacks, which is also more robust because a value the script forgets to set
+no longer silently becomes zero. The fix in the habit is to run the gate and read what it says.
+
+275 of 275, and the build is green.

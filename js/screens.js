@@ -12,6 +12,23 @@ import {
 } from "./curriculum.js";
 import { due, dueCount, SESSION_CAP } from "./scheduler.js";
 
+/* MODULE DRAWINGS ARRIVE AFTER THE CARD, NEVER BEFORE IT. The Atlas is fully
+   readable with no art at all — every card's title, hook and status say what it
+   is — so the drawings are a late fetch and a failure is silence rather than a
+   hole. Same contract as the specimen art in D71, for the same reason: a picture
+   is worth having and is not allowed to be a prerequisite for reading. (D82) */
+let artPromise;
+function drawModule(slot, id) {
+  artPromise ??= fetch("content/module-art.json")
+    .then((r) => r.json())
+    .catch(() => { artPromise = null; return {}; });
+  artPromise.then((art) => {
+    if (art[id] && slot.isConnected) {
+      slot.replaceChildren(svgOf(art[id], { cls: "module-art", box: 48 }));
+    }
+  });
+}
+
 const lvl = prose;   /* text variants are a reading decision, always */
 
 /* Ownership, in one place. Shown on the front door and under Me, and the only
@@ -59,6 +76,9 @@ function moduleNode(m, world, next) {
     : isNext ? "Start here"
     : `${doneCount} of ${m.lessons} lessons`;
 
+  const art = el("span", { class: "node-art", "aria-hidden": "true" });
+  drawModule(art, m.id);
+
   const inner = [
     el("span", { class: "node-mark" }, svgIcon(done ? "done" : !open ? "lock" : "next")),
     el("span", { class: "node-body" },
@@ -68,6 +88,7 @@ function moduleNode(m, world, next) {
       isNext ? null : el("span", { class: "node-hook", text: pick(m.hook) }),
       // Status is text, never colour alone — 1 in 12 boys cannot use the colour.
       el("span", { class: "node-status", text: status })),
+    art,
   ];
 
   return el("li", { class: `node node--${state}`, "data-world": world.id },
@@ -120,11 +141,16 @@ export function atlas() {
           ? `${waiting} are due; ${SESSION_CAP} at a time is deliberate, so coming back after a month is not a punishment.`
           : "Testing yourself is worth more than reading it again — it is the strongest effect in the field." }),
         svgIcon("next", "icon icon--lg")) : null,
-    m ? el("a", { class: "continue pressable", href: `#/m/${m.id}`, "data-world": getWorldOf(m.id).id },
+    m ? (() => {
+      const art = el("span", { class: "continue-art", "aria-hidden": "true" });
+      drawModule(art, m.id);
+      return el("a", { class: "continue pressable", href: `#/m/${m.id}`, "data-world": getWorldOf(m.id).id },
         el("span", { class: "continue-kicker", text: progress.xp ? "Continue" : "Start here" }),
         el("span", { class: "continue-title", text: m.title }),
         el("span", { class: "continue-hook", text: pick(m.hook) }),
-        svgIcon("next", "icon icon--lg")) : null,
+        art,
+        svgIcon("next", "icon icon--lg"));
+    })() : null,
     el("div", { class: "islands" }, playableWorlds().map(island)),
     signpost(),
   ];
