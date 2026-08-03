@@ -3,6 +3,7 @@
   "module": "microbiology",
   "index": 2,
   "title": "The Ones That Live in You",
+  "principle": "The bacteria living on and in you are called your microbiome.",
   "specimen": "microbiome-swab",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That last part is the surprising half, and it took a long time to establish."
       ]
     },
-
     {
       "type": "predict",
       "concept": "microbiome",
@@ -35,7 +35,6 @@
         "Commit. Germ-free animals can be raised, which makes this an experiment rather than a thought experiment."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Each of these is a service performed by resident microbes rather than by you."
       ],
       "parts": [
-        { "id": "digest", "label": "Break down fibre" },
-        { "id": "vitamins", "label": "Make vitamins" },
-        { "id": "train", "label": "Train the immune system" },
-        { "id": "crowd", "label": "Occupy the space" }
+        {
+          "id": "digest",
+          "label": "Break down fibre"
+        },
+        {
+          "id": "vitamins",
+          "label": "Make vitamins"
+        },
+        {
+          "id": "train",
+          "label": "Train the immune system"
+        },
+        {
+          "id": "crowd",
+          "label": "Occupy the space"
+        }
       ],
       "slots": [
-        { "accepts": "digest", "label": ["You cannot digest it yourself", "Releases energy from plant material no human enzyme can break"] },
-        { "accepts": "vitamins", "label": ["You cannot make these either", "Supplies vitamin K and several B vitamins"] },
-        { "accepts": "train", "label": ["Teaches it what to ignore", "Calibrates immune tolerance during development"] },
-        { "accepts": "crowd", "label": ["Leaves no room for anything worse", "Competitive exclusion of pathogens"] }
+        {
+          "accepts": "digest",
+          "label": [
+            "You cannot digest it yourself",
+            "Releases energy from plant material no human enzyme can break"
+          ]
+        },
+        {
+          "accepts": "vitamins",
+          "label": [
+            "You cannot make these either",
+            "Supplies vitamin K and several B vitamins"
+          ]
+        },
+        {
+          "accepts": "train",
+          "label": [
+            "Teaches it what to ignore",
+            "Calibrates immune tolerance during development"
+          ]
+        },
+        {
+          "accepts": "crowd",
+          "label": [
+            "Leaves no room for anything worse",
+            "Competitive exclusion of pathogens"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "The evidence is suggestive rather than settled, and the popular version overstates it considerably. What is well established is that germ-free animals are abnormal; what is still contested is how much of the rise in allergy and autoimmunity in wealthy countries that explains."
       ]
     },
-
     {
       "type": "check",
       "concept": "microbiome",
@@ -93,7 +126,6 @@
         "It supplies metabolic capability absent from the host genome and participates in host development, which is a functional rather than a rhetorical sense of 'part of'. It is also why broad-spectrum antibiotics have consequences beyond the infection they treat: they are not selective about which community members they remove."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "nutrition",
   "index": 1,
   "title": "What Happens to a Sandwich",
+  "principle": "Taking food apart into pieces small enough to cross is called digestion.",
   "specimen": "digest-trace",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "You have met the reason twice already — once as size, once as specification."
       ]
     },
-
     {
       "type": "predict",
       "concept": "digestion-is-disassembly",
@@ -35,7 +35,6 @@
         "Commit. The size constraint came from the membrane; the specification constraint came from proteins."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Match each stage of digestion to where it occurs."
       ],
       "parts": [
-        { "id": "chew", "label": "Chewing, and starch begins" },
-        { "id": "acid", "label": "Acid, and protein begins" },
-        { "id": "enzymes", "label": "The rest of the enzymes" },
-        { "id": "absorb", "label": "Absorption" }
+        {
+          "id": "chew",
+          "label": "Chewing, and starch begins"
+        },
+        {
+          "id": "acid",
+          "label": "Acid, and protein begins"
+        },
+        {
+          "id": "enzymes",
+          "label": "The rest of the enzymes"
+        },
+        {
+          "id": "absorb",
+          "label": "Absorption"
+        }
       ],
       "slots": [
-        { "accepts": "chew", "label": ["Mouth", "Mouth: mechanical breakdown and salivary amylase"] },
-        { "accepts": "acid", "label": ["Stomach", "Stomach: acid denaturation and pepsin"] },
-        { "accepts": "enzymes", "label": ["First part of the small intestine", "Duodenum: pancreatic enzymes and bile"] },
-        { "accepts": "absorb", "label": ["Most of the small intestine", "Jejunum and ileum: nearly all absorption"] }
+        {
+          "accepts": "chew",
+          "label": [
+            "Mouth",
+            "Mouth: mechanical breakdown and salivary amylase"
+          ]
+        },
+        {
+          "accepts": "acid",
+          "label": [
+            "Stomach",
+            "Stomach: acid denaturation and pepsin"
+          ]
+        },
+        {
+          "accepts": "enzymes",
+          "label": [
+            "First part of the small intestine",
+            "Duodenum: pancreatic enzymes and bile"
+          ]
+        },
+        {
+          "accepts": "absorb",
+          "label": [
+            "Most of the small intestine",
+            "Jejunum and ileum: nearly all absorption"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "That is food allergy: the system is not malfunctioning, it is responding correctly to a protein that should never have arrived intact. It also explains why allergies cluster on the foods whose proteins most resist digestion — peanut, shellfish, egg."
       ]
     },
-
     {
       "type": "check",
       "concept": "digestion-is-disassembly",
@@ -93,7 +126,6 @@
         "Because the barrier that keeps foreign proteins out is the same barrier a protein drug must cross, and it cannot be selectively relaxed. Enormous effort has gone into enteric coatings, absorption enhancers and enzyme inhibitors, and oral insulin remains largely unsolved — the two requirements are in direct opposition."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

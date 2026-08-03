@@ -3,6 +3,7 @@
   "module": "ecology",
   "index": 4,
   "title": "Build a Food Web",
+  "principle": "A web survives losing things. A chain does not.",
   "specimen": "living-web",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Importance and abundance are different quantities, and this is where that stops being an abstraction."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -25,49 +25,154 @@
         "Assign each group to its role. Placement is unconstrained; then four losses, each of which fails differently."
       ],
       "parts": [
-        { "id": "producers", "label": "Plants" },
-        { "id": "herbivores", "label": "Plant eaters" },
-        { "id": "predators", "label": "Predators" },
-        { "id": "decomposers", "label": "Decomposers" },
-        { "id": "diversity", "label": "Several species per job" }
+        {
+          "id": "producers",
+          "label": "Plants"
+        },
+        {
+          "id": "herbivores",
+          "label": "Plant eaters"
+        },
+        {
+          "id": "predators",
+          "label": "Predators"
+        },
+        {
+          "id": "decomposers",
+          "label": "Decomposers"
+        },
+        {
+          "id": "diversity",
+          "label": "Several species per job"
+        }
       ],
       "slots": [
-        { "correct": "producers", "label": ["Brings the energy in from outside"] },
-        { "correct": "herbivores", "label": ["Moves energy up from the plants"] },
-        { "correct": "predators", "label": ["Keeps the plant eaters in check"] },
-        { "correct": "decomposers", "label": ["Puts the materials back"] },
-        { "correct": "diversity", "label": ["Gives every job a spare route"] }
+        {
+          "correct": "producers",
+          "label": [
+            "Brings the energy in from outside"
+          ]
+        },
+        {
+          "correct": "herbivores",
+          "label": [
+            "Moves energy up from the plants"
+          ]
+        },
+        {
+          "correct": "predators",
+          "label": [
+            "Keeps the plant eaters in check"
+          ]
+        },
+        {
+          "correct": "decomposers",
+          "label": [
+            "Puts the materials back"
+          ]
+        },
+        {
+          "correct": "diversity",
+          "label": [
+            "Gives every job a spare route"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Have any energy at all", "Primary production"],
-          "needs": ["producers"],
-          "pass": ["Sunlight enters the system.", "Energy enters via primary production."],
-          "fail": ["Nothing is bringing energy in. Everything starves.", "No producers, no input. Every other role is downstream of this one."]
+          "name": [
+            "Have any energy at all",
+            "Primary production"
+          ],
+          "needs": [
+            "producers"
+          ],
+          "pass": [
+            "Sunlight enters the system.",
+            "Energy enters via primary production."
+          ],
+          "fail": [
+            "Nothing is bringing energy in. Everything starves.",
+            "No producers, no input. Every other role is downstream of this one."
+          ]
         },
         {
-          "name": ["Get the energy upwards", "Transfer"],
-          "needs": ["producers", "herbivores"],
-          "pass": ["Plant energy reaches the levels above.", "Energy transfers from producers into consumers."],
-          "fail": ["All that energy, and nothing carrying it up.", "Production with no consumers supports nothing above the first level."]
+          "name": [
+            "Get the energy upwards",
+            "Transfer"
+          ],
+          "needs": [
+            "producers",
+            "herbivores"
+          ],
+          "pass": [
+            "Plant energy reaches the levels above.",
+            "Energy transfers from producers into consumers."
+          ],
+          "fail": [
+            "All that energy, and nothing carrying it up.",
+            "Production with no consumers supports nothing above the first level."
+          ]
         },
         {
-          "name": ["Not be eaten bare", "Regulation"],
-          "needs": ["producers", "herbivores", "predators"],
-          "pass": ["Grazing stays within what the plants can take.", "Predation holds herbivore density below the level that would suppress producers."],
-          "fail": ["The plant eaters ate everything and then starved.", "Unregulated herbivory collapses the producer level and then itself — which is the cascade you already watched happen."]
+          "name": [
+            "Not be eaten bare",
+            "Regulation"
+          ],
+          "needs": [
+            "producers",
+            "herbivores",
+            "predators"
+          ],
+          "pass": [
+            "Grazing stays within what the plants can take.",
+            "Predation holds herbivore density below the level that would suppress producers."
+          ],
+          "fail": [
+            "The plant eaters ate everything and then starved.",
+            "Unregulated herbivory collapses the producer level and then itself — which is the cascade you already watched happen."
+          ]
         },
         {
-          "name": ["Keep going for more than one round", "Nutrient cycling"],
-          "needs": ["producers", "herbivores", "predators", "decomposers"],
-          "pass": ["The materials go back and the plants can grow again.", "Nutrients are returned to producers and the system persists."],
-          "fail": ["Everything worked, once. Then the nutrients were all locked up in the dead.", "Energy flows through and is lost; matter must cycle. Without decomposers the nutrients accumulate in dead material and production stops within decades."]
+          "name": [
+            "Keep going for more than one round",
+            "Nutrient cycling"
+          ],
+          "needs": [
+            "producers",
+            "herbivores",
+            "predators",
+            "decomposers"
+          ],
+          "pass": [
+            "The materials go back and the plants can grow again.",
+            "Nutrients are returned to producers and the system persists."
+          ],
+          "fail": [
+            "Everything worked, once. Then the nutrients were all locked up in the dead.",
+            "Energy flows through and is lost; matter must cycle. Without decomposers the nutrients accumulate in dead material and production stops within decades."
+          ]
         },
         {
-          "name": ["Survive losing a species", "Redundancy"],
-          "needs": ["producers", "herbivores", "predators", "decomposers", "diversity"],
-          "pass": ["Something else does that job, and the web holds.", "Functional redundancy absorbs the loss; another species occupies the role."],
-          "fail": ["It worked perfectly until one species went, and then it unravelled.", "A web with one species per role is a chain wearing a web's diagram. The redundancy is the robustness — without it, every loss is a keystone loss."]
+          "name": [
+            "Survive losing a species",
+            "Redundancy"
+          ],
+          "needs": [
+            "producers",
+            "herbivores",
+            "predators",
+            "decomposers",
+            "diversity"
+          ],
+          "pass": [
+            "Something else does that job, and the web holds.",
+            "Functional redundancy absorbs the loss; another species occupies the role."
+          ],
+          "fail": [
+            "It worked perfectly until one species went, and then it unravelled.",
+            "A web with one species per role is a chain wearing a web's diagram. The redundancy is the robustness — without it, every loss is a keystone loss."
+          ]
         }
       ],
       "win": [
@@ -79,7 +184,6 @@
         "Each failed trial names the function that was not being performed. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -95,7 +199,6 @@
         "That non-linearity is the practically important part: a community can lose a great deal of diversity with no visible change in function, and then change abruptly when the last redundant route for some role is gone. Monitoring what a system does tells you very little about how close it is to not doing it."
       ]
     },
-
     {
       "type": "check",
       "concept": "food-web-stability",
@@ -116,7 +219,6 @@
         "Because redundancy is consumed before function is. Losses are absorbed with no measurable change until the last occupant of some role goes, and then the failure is abrupt. This is why monitoring ecosystem function is a poor early-warning system, and why diversity is worth protecting before anything appears to be wrong."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

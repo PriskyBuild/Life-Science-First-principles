@@ -3,6 +3,7 @@
   "module": "medicine",
   "index": 2,
   "title": "Resistance",
+  "principle": "Resistance is natural selection with the medicine doing the choosing.",
   "specimen": "resistance-clock",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "You have run this machine four times already, on beetles, moths, immune cells and behaviour."
       ]
     },
-
     {
       "type": "predict",
       "concept": "resistance-is-selection",
@@ -35,7 +35,6 @@
         "Commit. Ask which of the three conditions a better molecule could remove."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
@@ -44,14 +43,29 @@
         "The same machine as the beetles, with a drug doing the selecting. Try to break it.",
         "Identical mechanism, different agent. Establish it, then remove one condition — and note that none of the three is a property of the drug."
       ],
-      "params": { "task": "break", "bg": 0.9, "switches": true, "pressure": 0.85, "aspect": 0.82 },
-      "paramsByLevel": { "1": { "task": "watch", "switches": false, "n": 27 }, "2": { "task": "watch", "switches": false } },
+      "params": {
+        "task": "break",
+        "bg": 0.9,
+        "switches": true,
+        "pressure": 0.85,
+        "aspect": 0.82
+      },
+      "paramsByLevel": {
+        "1": {
+          "task": "watch",
+          "switches": false,
+          "n": 27
+        },
+        "2": {
+          "task": "watch",
+          "switches": false
+        }
+      },
       "goal": [
         "You can only stop it by taking away variation, heredity, or the difference in survival. A drug cannot do any of those.",
         "The three conditions are properties of the bacterial population, not of the drug. No chemistry removes any of them, which is why the question of a resistance-proof antibiotic is not an engineering problem."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -67,7 +81,6 @@
         "That is why tuberculosis and HIV are treated with three or four drugs simultaneously. Resistance to one is likely; resistance to four arising in the same organism is not, and the arithmetic of multiplying small probabilities is the whole of the strategy."
       ]
     },
-
     {
       "type": "check",
       "concept": "resistance-is-selection",
@@ -88,7 +101,6 @@
         "None. That is the point of the question — chemistry acts only on the third condition, and removing it means the drug does not kill anything. The strongest version of the argument is that a drug which selects nothing is a drug that does nothing."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

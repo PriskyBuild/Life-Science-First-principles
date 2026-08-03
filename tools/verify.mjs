@@ -2,7 +2,8 @@ import { chromium } from "playwright";
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
-import { mkdirSync, readFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 
 /* Repo-relative so this runs from a clone, in CI, on anyone's machine. */
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
@@ -32,7 +33,8 @@ const check = (name, pass, detail = "") => { results.push({ name, pass, detail }
 // Playwright resolves its own browser as normal.
 const browser = await chromium.launch(
   process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
-const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
+const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2,
+  acceptDownloads: true });   // the save-a-copy check downloads a real file
 const page = await ctx.newPage();
 /* ONE definition of "on screen", available to every page.evaluate in this file.
 
@@ -367,7 +369,18 @@ await page.waitForSelector(".picker");
 await page.screenshot({ path: join(SHOTS, "picker.png") });
 
 // 15. conditional children must vanish, not stringify
-// (the picker screenshot above cleared storage, so re-establish a level first)
+/* (the picker screenshot above cleared storage, so re-establish a level first)
+
+   LAND ON A FRESH DOCUMENT BEFORE WRITING THE SAVE. The app persists on a 500 ms
+   debounce, and the click that produced the picker left one pending — so writing
+   storage underneath a live document is a race against that timer, and the timer
+   wins often enough to matter. It bit the day the Me screen grew by one section
+   and the screenshot before this took forty milliseconds longer.
+
+   Navigating fires pagehide, which flushes, so by the time this write lands
+   nothing is in flight behind it. openWith() has done this since D72; this was
+   the last direct write that had not learned it. (D79) */
+await landed();
 await page.evaluate(() => localStorage.setItem("fp.progress",
   JSON.stringify({ version: 1, level: 2, xp: 0, modules: {}, concepts: {}, specimens: [], streak: { days: 0, last: null }, prefs: {} })));
 await page.goto(BASE + "#/m/what-is-life", { waitUntil: "networkidle" });
@@ -646,6 +659,7 @@ async function visibilityAudit(url, label) {
      leaving it cleared sent every later test to the front door too. A test
      restores what it disturbs. Written out longhand because the freshSave and
      openWith helpers are declared further down the file than this runs. */
+  await landed();                          // flush any pending write before overwriting (D79)
   await page.evaluate(() => localStorage.setItem("fp.progress", JSON.stringify({
     version: 2, prose: 2, content: 2, xp: 0, modules: {}, concepts: {},
     specimens: [], ledger: [], recent: [], prefs: {},
@@ -2800,6 +2814,70 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     await overlapAudit(`Atlas with reviews due, ${w}px`);
   }
   await page.setViewportSize({ width: 1280, height: 900 });
+}
+
+/* 89. A YEAR OF WORK SURVIVES A CLEARED BROWSER. Everything is stored on the
+   device and nowhere else, which is what keeps it private and is also exactly
+   why clearing browsing data used to erase it with no way back. The claim is
+   that a parent can save a file and hand it back, so the test saves the file,
+   genuinely wipes localStorage, and hands it back. (D79) */
+{
+  const full = freshSave({ level: 2, xp: 340, content: 3,
+    modules: { "what-is-life": { lessonsDone: 4 } },
+    specimens: ["scale-lens", "membrane", "nucleus"],
+    prefs: { theme: "dark", greeted: "1" } });
+  await openWith(full, "#/me");
+  await page.waitForSelector(".keep-row");
+
+  const [dl] = await Promise.all([
+    page.waitForEvent("download"),
+    page.locator(".keep-row .keep-btn").first().click(),
+  ]);
+  const file = await dl.path();
+  const saved = JSON.parse(readFileSync(file, "utf8"));
+  check("the save can be written to a file", saved.xp === 340 && saved.specimens.length === 3,
+    `${dl.suggestedFilename()} — xp ${saved.xp}`);
+  check("and the file is named so a parent can find it later",
+    /^first-principles-\d{4}-\d{2}-\d{2}\.json$/.test(dl.suggestedFilename()), dl.suggestedFilename());
+
+  // the disaster this exists for
+  await page.evaluate(() => localStorage.clear());
+  await openWith(freshSave({ level: 2, prefs: { greeted: "1" } }), "#/me");
+  await page.waitForSelector(".keep-row");
+  const before = await getSave();
+  check("clearing the browser really does erase it", before.xp === 0 && !before.specimens.length,
+    JSON.stringify({ xp: before.xp, specimens: before.specimens.length }));
+
+  await page.locator(".keep-row input[type=file]").setInputFiles(file);
+  await page.waitForTimeout(700);
+  const back = await getSave();
+  check("and handing the file back restores it exactly",
+    back.xp === 340 && back.specimens.length === 3 && back.prefs.theme === "dark" && back.content === 3,
+    JSON.stringify({ xp: back.xp, specimens: back.specimens.length, theme: back.prefs.theme, content: back.content }));
+
+  /* A HALF-APPLIED IMPORT IS WORSE THAN A REFUSED ONE. Parse and migrate in full
+     before writing anything, so a truncated or foreign file leaves the child
+     exactly as they were rather than partly overwritten. */
+  await openWith(full, "#/me");
+  await page.waitForSelector(".keep-row");
+  const junk = join(tmpdir(), "fp-not-a-save.json");
+  writeFileSync(junk, "{ this is not json ");
+  await page.locator(".keep-row input[type=file]").setInputFiles(junk);
+  await page.waitForTimeout(400);
+  const said = await page.locator("#keep-said").textContent();
+  check("a file that is not a save says so plainly", /not one of ours|not readable/i.test(said ?? ""),
+    (said ?? "").slice(0, 60));
+  check("and the child's progress is untouched by it", (await getSave()).xp === 340, "");
+
+  /* A save from a LATER version cannot be migrated backwards; pretending
+     otherwise would silently drop whatever the newer version knew about. */
+  const future = join(tmpdir(), "fp-from-the-future.json");
+  writeFileSync(future, JSON.stringify({ ...full, version: 99, xp: 1 }));
+  await page.locator(".keep-row input[type=file]").setInputFiles(future);
+  await page.waitForTimeout(400);
+  check("a save from a newer version is refused, not half-read",
+    /newer version/i.test(await page.locator("#keep-said").textContent() ?? "")
+      && (await getSave()).xp === 340, "");
 }
 
 check("no console errors anywhere", errors.length === 0,

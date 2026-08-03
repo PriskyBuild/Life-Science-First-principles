@@ -3,6 +3,7 @@
   "module": "disease",
   "index": 2,
   "title": "The Outbreak Detective",
+  "principle": "Studying who gets ill and why is called epidemiology.",
   "specimen": "case-map",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That gap — between identifying a cause and stopping a disease — is the whole of this lesson."
       ]
     },
-
     {
       "type": "predict",
       "concept": "outbreak-investigation",
@@ -35,7 +35,6 @@
         "Commit. Note that Snow's decisive evidence was not the cluster but the exceptions to it."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,49 +43,154 @@
         "Assemble the investigation. Placement is unconstrained, then it is tested — and one step is the one that actually convinced people."
       ],
       "parts": [
-        { "id": "define", "label": "Define what counts as a case" },
-        { "id": "map", "label": "Map where they are" },
-        { "id": "common", "label": "Find what cases share" },
-        { "id": "exceptions", "label": "Explain the exceptions" },
-        { "id": "act", "label": "Remove the source" }
+        {
+          "id": "define",
+          "label": "Define what counts as a case"
+        },
+        {
+          "id": "map",
+          "label": "Map where they are"
+        },
+        {
+          "id": "common",
+          "label": "Find what cases share"
+        },
+        {
+          "id": "exceptions",
+          "label": "Explain the exceptions"
+        },
+        {
+          "id": "act",
+          "label": "Remove the source"
+        }
       ],
       "slots": [
-        { "correct": "define", "label": ["Decide who you are counting, before you count"] },
-        { "correct": "map", "label": ["See whether they cluster"] },
-        { "correct": "common", "label": ["Find the thing every case did"] },
-        { "correct": "exceptions", "label": ["Account for the people who should have been ill and were not"] },
-        { "correct": "act", "label": ["Stop it, without waiting to be certain"] }
+        {
+          "correct": "define",
+          "label": [
+            "Decide who you are counting, before you count"
+          ]
+        },
+        {
+          "correct": "map",
+          "label": [
+            "See whether they cluster"
+          ]
+        },
+        {
+          "correct": "common",
+          "label": [
+            "Find the thing every case did"
+          ]
+        },
+        {
+          "correct": "exceptions",
+          "label": [
+            "Account for the people who should have been ill and were not"
+          ]
+        },
+        {
+          "correct": "act",
+          "label": [
+            "Stop it, without waiting to be certain"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Count the right people", "Case definition"],
-          "needs": ["define"],
-          "pass": ["Everyone is counting the same thing.", "A consistent case definition makes the counts comparable."],
-          "fail": ["Different people counted different things, and the pattern is noise.", "Without a case definition the data cannot be pooled or compared, and any cluster you find may be an artefact of who was counting."]
+          "name": [
+            "Count the right people",
+            "Case definition"
+          ],
+          "needs": [
+            "define"
+          ],
+          "pass": [
+            "Everyone is counting the same thing.",
+            "A consistent case definition makes the counts comparable."
+          ],
+          "fail": [
+            "Different people counted different things, and the pattern is noise.",
+            "Without a case definition the data cannot be pooled or compared, and any cluster you find may be an artefact of who was counting."
+          ]
         },
         {
-          "name": ["See the pattern", "Mapping"],
-          "needs": ["define", "map"],
-          "pass": ["The cases cluster around one point.", "Spatial clustering is visible and points somewhere."],
-          "fail": ["A list of cases with no pattern anyone can see.", "A table of addresses hides what a map shows immediately. The representation is not cosmetic."]
+          "name": [
+            "See the pattern",
+            "Mapping"
+          ],
+          "needs": [
+            "define",
+            "map"
+          ],
+          "pass": [
+            "The cases cluster around one point.",
+            "Spatial clustering is visible and points somewhere."
+          ],
+          "fail": [
+            "A list of cases with no pattern anyone can see.",
+            "A table of addresses hides what a map shows immediately. The representation is not cosmetic."
+          ]
         },
         {
-          "name": ["Find the shared exposure", "Common factor"],
-          "needs": ["define", "map", "common"],
-          "pass": ["They all drew water from the same pump.", "A common exposure is identified across cases."],
-          "fail": ["A cluster, and no idea what the people in it had in common.", "Clustering alone gives a location, not a cause. Something has to link the cases to a specific exposure."]
+          "name": [
+            "Find the shared exposure",
+            "Common factor"
+          ],
+          "needs": [
+            "define",
+            "map",
+            "common"
+          ],
+          "pass": [
+            "They all drew water from the same pump.",
+            "A common exposure is identified across cases."
+          ],
+          "fail": [
+            "A cluster, and no idea what the people in it had in common.",
+            "Clustering alone gives a location, not a cause. Something has to link the cases to a specific exposure."
+          ]
         },
         {
-          "name": ["Convince anybody", "The exceptions"],
-          "needs": ["define", "map", "common", "exceptions"],
-          "pass": ["The brewery workers drank beer and stayed well. The widow who liked that water died miles away.", "Negative and distant cases are accounted for, which is what turns a correlation into an argument."],
-          "fail": ["A good story that any sceptic can pick apart.", "Snow's strongest evidence was the exceptions: workhouse and brewery residents inside the cluster who were not ill, and a woman who died in Hampstead because she had the water delivered. Explaining what does NOT fit is what made it persuasive."]
+          "name": [
+            "Convince anybody",
+            "The exceptions"
+          ],
+          "needs": [
+            "define",
+            "map",
+            "common",
+            "exceptions"
+          ],
+          "pass": [
+            "The brewery workers drank beer and stayed well. The widow who liked that water died miles away.",
+            "Negative and distant cases are accounted for, which is what turns a correlation into an argument."
+          ],
+          "fail": [
+            "A good story that any sceptic can pick apart.",
+            "Snow's strongest evidence was the exceptions: workhouse and brewery residents inside the cluster who were not ill, and a woman who died in Hampstead because she had the water delivered. Explaining what does NOT fit is what made it persuasive."
+          ]
         },
         {
-          "name": ["Actually stop it", "Action"],
-          "needs": ["define", "map", "common", "exceptions", "act"],
-          "pass": ["The pump handle comes off and the outbreak ends.", "The exposure is removed while the causal question is still open."],
-          "fail": ["A beautiful analysis and people still dying.", "Waiting for certainty costs lives. Snow acted without knowing what cholera was, and was right."]
+          "name": [
+            "Actually stop it",
+            "Action"
+          ],
+          "needs": [
+            "define",
+            "map",
+            "common",
+            "exceptions",
+            "act"
+          ],
+          "pass": [
+            "The pump handle comes off and the outbreak ends.",
+            "The exposure is removed while the causal question is still open."
+          ],
+          "fail": [
+            "A beautiful analysis and people still dying.",
+            "Waiting for certainty costs lives. Snow acted without knowing what cholera was, and was right."
+          ]
         }
       ],
       "win": [
@@ -98,7 +202,6 @@
         "Each failed trial names the step that was skipped. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -114,7 +217,6 @@
         "It is also a caution in the other direction. Snow was resisted for years, partly because miasma theory explained the same data adequately and partly because his conclusion was inconvenient. Being right early is not the same as being believed early."
       ]
     },
-
     {
       "type": "check",
       "concept": "outbreak-investigation",
@@ -135,7 +237,6 @@
         "Mechanism and action are separable. Knowing the cause is sufficient for action and not necessary for it — identifying a removable exposure can be enough. That is why epidemiology functions as an independent discipline rather than an applied branch of microbiology, and why it usually gets there first."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

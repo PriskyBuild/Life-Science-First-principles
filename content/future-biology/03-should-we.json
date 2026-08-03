@@ -3,6 +3,7 @@
   "module": "future-biology",
   "index": 2,
   "title": "Should We?",
+  "principle": "Being able to do something is never a reason to do it.",
   "specimen": "ethics-frame",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "No measurement has ever settled a question about what ought to be done."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -25,49 +25,159 @@
         "Assemble the frame, then apply it as a ladder. Each test asks how far your questions actually got you."
       ],
       "parts": [
-        { "id": "can", "label": "Can it be done?" },
-        { "id": "what", "label": "What is it for?" },
-        { "id": "who", "label": "Who carries the risk?" },
-        { "id": "undo", "label": "Can it be undone?" },
-        { "id": "decide", "label": "Who decides?" }
+        {
+          "id": "can",
+          "label": "Can it be done?"
+        },
+        {
+          "id": "what",
+          "label": "What is it for?"
+        },
+        {
+          "id": "who",
+          "label": "Who carries the risk?"
+        },
+        {
+          "id": "undo",
+          "label": "Can it be undone?"
+        },
+        {
+          "id": "decide",
+          "label": "Who decides?"
+        }
       ],
       "slots": [
-        { "correct": "can", "label": ["The question a laboratory can answer", "Establishes feasibility, and nothing else"] },
-        { "correct": "what", "label": ["What good it is supposed to do", "States the problem being solved, so success is definable"] },
-        { "correct": "who", "label": ["Who has to live with it if it goes wrong", "Separates those who benefit from those who bear the risk"] },
-        { "correct": "undo", "label": ["Whether you could stop it afterwards", "Determines how much uncertainty is tolerable"] },
-        { "correct": "decide", "label": ["Who is allowed to say yes", "Identifies whose consent legitimises the decision"] }
+        {
+          "correct": "can",
+          "label": [
+            "The question a laboratory can answer",
+            "Establishes feasibility, and nothing else"
+          ]
+        },
+        {
+          "correct": "what",
+          "label": [
+            "What good it is supposed to do",
+            "States the problem being solved, so success is definable"
+          ]
+        },
+        {
+          "correct": "who",
+          "label": [
+            "Who has to live with it if it goes wrong",
+            "Separates those who benefit from those who bear the risk"
+          ]
+        },
+        {
+          "correct": "undo",
+          "label": [
+            "Whether you could stop it afterwards",
+            "Determines how much uncertainty is tolerable"
+          ]
+        },
+        {
+          "correct": "decide",
+          "label": [
+            "Who is allowed to say yes",
+            "Identifies whose consent legitimises the decision"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Work out whether it is possible", "Feasibility"],
-          "needs": ["can"],
-          "pass": ["You know whether it can be built.", "Technical feasibility established. This is the only rung that experiment settles."],
-          "fail": ["You are arguing about something that may not be possible at all.", "Debating the ethics of an impossibility is a common and expensive way to waste attention."]
+          "name": [
+            "Work out whether it is possible",
+            "Feasibility"
+          ],
+          "needs": [
+            "can"
+          ],
+          "pass": [
+            "You know whether it can be built.",
+            "Technical feasibility established. This is the only rung that experiment settles."
+          ],
+          "fail": [
+            "You are arguing about something that may not be possible at all.",
+            "Debating the ethics of an impossibility is a common and expensive way to waste attention."
+          ]
         },
         {
-          "name": ["Work out whether it is worth doing", "Purpose"],
-          "needs": ["can", "what"],
-          "pass": ["You can say what problem it solves.", "A stated purpose makes the benefit assessable and failure recognisable."],
-          "fail": ["Something impressive, for no stated reason.", "Without a purpose there is no benefit to weigh against any cost, so no assessment is possible in principle."]
+          "name": [
+            "Work out whether it is worth doing",
+            "Purpose"
+          ],
+          "needs": [
+            "can",
+            "what"
+          ],
+          "pass": [
+            "You can say what problem it solves.",
+            "A stated purpose makes the benefit assessable and failure recognisable."
+          ],
+          "fail": [
+            "Something impressive, for no stated reason.",
+            "Without a purpose there is no benefit to weigh against any cost, so no assessment is possible in principle."
+          ]
         },
         {
-          "name": ["Work out whether it is fair", "Distribution"],
-          "needs": ["can", "what", "who"],
-          "pass": ["You know who benefits and who takes the risk, and whether they are the same people.", "Benefit and risk are located. Where they fall on different people, consent becomes the central question."],
-          "fail": ["A good idea, paid for by somebody who never agreed to it.", "Most serious objections to a technology are objections to this asymmetry rather than to the technology."]
+          "name": [
+            "Work out whether it is fair",
+            "Distribution"
+          ],
+          "needs": [
+            "can",
+            "what",
+            "who"
+          ],
+          "pass": [
+            "You know who benefits and who takes the risk, and whether they are the same people.",
+            "Benefit and risk are located. Where they fall on different people, consent becomes the central question."
+          ],
+          "fail": [
+            "A good idea, paid for by somebody who never agreed to it.",
+            "Most serious objections to a technology are objections to this asymmetry rather than to the technology."
+          ]
         },
         {
-          "name": ["Work out whether it is safe to be wrong", "Reversibility"],
-          "needs": ["can", "what", "who", "undo"],
-          "pass": ["If it turns out badly, it can be stopped.", "A reversible action needs only to be probably right. An irreversible one needs to be right."],
-          "fail": ["No way back, and you were not certain.", "Releasing an organism, editing a germline, removing a species: none can be recalled. Irreversibility raises the standard of evidence required, and it is routinely treated as a detail."]
+          "name": [
+            "Work out whether it is safe to be wrong",
+            "Reversibility"
+          ],
+          "needs": [
+            "can",
+            "what",
+            "who",
+            "undo"
+          ],
+          "pass": [
+            "If it turns out badly, it can be stopped.",
+            "A reversible action needs only to be probably right. An irreversible one needs to be right."
+          ],
+          "fail": [
+            "No way back, and you were not certain.",
+            "Releasing an organism, editing a germline, removing a species: none can be recalled. Irreversibility raises the standard of evidence required, and it is routinely treated as a detail."
+          ]
         },
         {
-          "name": ["Work out whether it is yours to decide", "Authority"],
-          "needs": ["can", "what", "who", "undo", "decide"],
-          "pass": ["You know who has the standing to agree, and you asked them.", "Legitimate authority identified. For decisions affecting people who cannot be consulted, this is the hardest rung and the one most often skipped."],
-          "fail": ["The right answer, decided by the wrong person.", "A correct decision taken without standing is still a decision somebody else was entitled to make — and this is the objection that most often survives when all the technical ones have been answered."]
+          "name": [
+            "Work out whether it is yours to decide",
+            "Authority"
+          ],
+          "needs": [
+            "can",
+            "what",
+            "who",
+            "undo",
+            "decide"
+          ],
+          "pass": [
+            "You know who has the standing to agree, and you asked them.",
+            "Legitimate authority identified. For decisions affecting people who cannot be consulted, this is the hardest rung and the one most often skipped."
+          ],
+          "fail": [
+            "The right answer, decided by the wrong person.",
+            "A correct decision taken without standing is still a decision somebody else was entitled to make — and this is the objection that most often survives when all the technical ones have been answered."
+          ]
         }
       ],
       "win": [
@@ -79,10 +189,12 @@
         "Each failed trial names the question that was not asked. Reassign and re-test."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "ethics-of-capability",
       "t": [
         "Two groups of conservation biologists disagree about de-extinction. Neither of them doubts it can be done.",
@@ -129,7 +241,6 @@
         "Two things are tangled together here, and they are not the same kind of question. Whether telling people a loss is reversible reduces their support for prevention is empirical — it can be, and has been, tested. Where a fixed budget ought to go is not; it depends on what you think conservation is for. Separating those two would improve the argument considerably, and neither side habitually does it."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -145,7 +256,6 @@
         "It is also why the reversibility question deserves separate weight rather than being folded into a general assessment of risk. A reversible decision can be made on the balance of evidence and corrected. An irreversible one cannot, and the appropriate response to uncertainty is therefore different in kind — not merely more caution, but a different standard of proof."
       ]
     },
-
     {
       "type": "check",
       "concept": "ethics-of-capability",
@@ -166,7 +276,6 @@
         "Because a conclusion about what ought to be done requires at least one premise about what is good or owed, and no experiment supplies one. Feasibility is necessary for the question to arise and contributes nothing to its answer — which is why the third option is wrong too."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

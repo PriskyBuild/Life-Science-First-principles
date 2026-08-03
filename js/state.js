@@ -86,6 +86,51 @@ if (typeof addEventListener === "function") {
   addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden" && pending) flush(); });
 }
 
+/* ---------------------------------------------------------- taking it with you
+
+   A YEAR OF WORK LIVED IN ONE BROWSER'S SITE DATA AND THERE WAS NO WAY BACK.
+   Not a hypothetical: clearing cookies, switching laptops, a child moving to the
+   family desktop, a private window. Every one of those quietly erased the lot,
+   and the front door promises the opposite — that this is theirs.
+
+   No account, no server, no sync. A file. The parent saves it where they save
+   everything else and hands it back when they need to, which is a thing they
+   already know how to do and which cannot leak. (D79) */
+
+/** The whole save, as a JSON string, plus the name to give the file. */
+export function exportProgress() {
+  const stamp = new Date().toISOString().slice(0, 10);
+  return { name: `first-principles-${stamp}.json`, text: JSON.stringify(progress, null, 2) };
+}
+
+/** Replace the save from a file's text. Returns { ok, error } — never throws, and
+    never half-applies: it is parsed and migrated in full before anything is
+    written, so a truncated or foreign file leaves the child exactly as they were. */
+export function importProgress(text) {
+  let data;
+  try { data = JSON.parse(text); }
+  catch { return { ok: false, error: "That file is not one of ours — it is not readable as saved progress." }; }
+
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    return { ok: false, error: "That file does not look like saved progress." };
+  }
+  /* A save from a LATER version cannot be migrated backwards, and pretending
+     otherwise would silently drop whatever the newer version knew about. */
+  if ((data.version ?? 0) > VERSION) {
+    return { ok: false, error: "That file was saved by a newer version of the app. Update first, then load it." };
+  }
+  const migrated = migrate(data);
+  if (migrated.version !== VERSION || typeof migrated.modules !== "object") {
+    return { ok: false, error: "That file is saved progress, but too old to be read." };
+  }
+
+  for (const k of Object.keys(progress)) delete progress[k];
+  Object.assign(progress, migrated);
+  flush();
+  document.dispatchEvent(new CustomEvent("fp:change"));
+  return { ok: true };
+}
+
 /** Mutate, persist, announce. `fn` receives the live object. */
 export function update(fn) {
   fn(progress);

@@ -3,6 +3,7 @@
   "module": "future-biology",
   "index": 1,
   "title": "Bringing Back the Dead",
+  "principle": "Trying to bring an extinct animal back is called de-extinction.",
   "specimen": "recovered-sequence",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The limit is chemistry, and it was quantified from a pile of bird bones."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -40,7 +40,6 @@
         "Measurements on hundreds of dated bones give a half-life of about 520 years for a short fragment under cool conditions. Applied forward, every bond is broken well before a million years at moderate temperature; permafrost extends it, and nothing extends it to 66 million."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -49,49 +48,154 @@
         "Assign each requirement, then five tests. The last one is the one the field argues about."
       ],
       "parts": [
-        { "id": "sequence", "label": "A readable genome" },
-        { "id": "relative", "label": "A close living relative" },
-        { "id": "womb", "label": "Something to be born from" },
-        { "id": "habitat", "label": "Somewhere to live" },
-        { "id": "herd", "label": "Others of its kind" }
+        {
+          "id": "sequence",
+          "label": "A readable genome"
+        },
+        {
+          "id": "relative",
+          "label": "A close living relative"
+        },
+        {
+          "id": "womb",
+          "label": "Something to be born from"
+        },
+        {
+          "id": "habitat",
+          "label": "Somewhere to live"
+        },
+        {
+          "id": "herd",
+          "label": "Others of its kind"
+        }
       ],
       "slots": [
-        { "correct": "sequence", "label": ["The instructions, recovered well enough to use"] },
-        { "correct": "relative", "label": ["A genome close enough to edit rather than write"] },
-        { "correct": "womb", "label": ["A body that can carry it to birth"] },
-        { "correct": "habitat", "label": ["A place that still has what it needs"] },
-        { "correct": "herd", "label": ["The animals it would have learned from"] }
+        {
+          "correct": "sequence",
+          "label": [
+            "The instructions, recovered well enough to use"
+          ]
+        },
+        {
+          "correct": "relative",
+          "label": [
+            "A genome close enough to edit rather than write"
+          ]
+        },
+        {
+          "correct": "womb",
+          "label": [
+            "A body that can carry it to birth"
+          ]
+        },
+        {
+          "correct": "habitat",
+          "label": [
+            "A place that still has what it needs"
+          ]
+        },
+        {
+          "correct": "herd",
+          "label": [
+            "The animals it would have learned from"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Read the instructions", "Sequence"],
-          "needs": ["sequence"],
-          "pass": ["Enough of the genome has been recovered to work from.", "Sufficient coverage assembled from overlapping degraded fragments."],
-          "fail": ["Too little survives to reconstruct anything.", "Below a threshold of coverage, gaps cannot be bridged and the sequence is not usable."]
+          "name": [
+            "Read the instructions",
+            "Sequence"
+          ],
+          "needs": [
+            "sequence"
+          ],
+          "pass": [
+            "Enough of the genome has been recovered to work from.",
+            "Sufficient coverage assembled from overlapping degraded fragments."
+          ],
+          "fail": [
+            "Too little survives to reconstruct anything.",
+            "Below a threshold of coverage, gaps cannot be bridged and the sequence is not usable."
+          ]
         },
         {
-          "name": ["Put them in something living", "Host genome"],
-          "needs": ["sequence", "relative"],
-          "pass": ["A close relative's genome is edited towards the extinct one.", "Targeted edits at loci of interest, in the closest extant genome available."],
-          "fail": ["Nobody can write a whole genome from scratch and boot it in an animal.", "Synthesis at that scale has been achieved only in bacteria. For an animal the only route is editing a relative."]
+          "name": [
+            "Put them in something living",
+            "Host genome"
+          ],
+          "needs": [
+            "sequence",
+            "relative"
+          ],
+          "pass": [
+            "A close relative's genome is edited towards the extinct one.",
+            "Targeted edits at loci of interest, in the closest extant genome available."
+          ],
+          "fail": [
+            "Nobody can write a whole genome from scratch and boot it in an animal.",
+            "Synthesis at that scale has been achieved only in bacteria. For an animal the only route is editing a relative."
+          ]
         },
         {
-          "name": ["Get it born", "Development"],
-          "needs": ["sequence", "relative", "womb"],
-          "pass": ["A surrogate carries it, or an artificial womb does.", "Somatic cell nuclear transfer into an enucleated egg, implanted in a surrogate of the related species."],
-          "fail": ["An edited cell in a dish is not an animal.", "This step is where almost every attempt has failed. The one extinct animal ever born — a Pyrenean ibex, in 2003 — lived for seven minutes."]
+          "name": [
+            "Get it born",
+            "Development"
+          ],
+          "needs": [
+            "sequence",
+            "relative",
+            "womb"
+          ],
+          "pass": [
+            "A surrogate carries it, or an artificial womb does.",
+            "Somatic cell nuclear transfer into an enucleated egg, implanted in a surrogate of the related species."
+          ],
+          "fail": [
+            "An edited cell in a dish is not an animal.",
+            "This step is where almost every attempt has failed. The one extinct animal ever born — a Pyrenean ibex, in 2003 — lived for seven minutes."
+          ]
         },
         {
-          "name": ["Keep it alive", "Habitat"],
-          "needs": ["sequence", "relative", "womb", "habitat"],
-          "pass": ["The place it needs still exists.", "Habitat availability is a precondition, and for most extinct species it is the binding one."],
-          "fail": ["An animal with nowhere to be.", "Most species went extinct because their habitat did. Reversing the animal does not reverse the cause."]
+          "name": [
+            "Keep it alive",
+            "Habitat"
+          ],
+          "needs": [
+            "sequence",
+            "relative",
+            "womb",
+            "habitat"
+          ],
+          "pass": [
+            "The place it needs still exists.",
+            "Habitat availability is a precondition, and for most extinct species it is the binding one."
+          ],
+          "fail": [
+            "An animal with nowhere to be.",
+            "Most species went extinct because their habitat did. Reversing the animal does not reverse the cause."
+          ]
         },
         {
-          "name": ["Have it actually be a mammoth", "Identity"],
-          "needs": ["sequence", "relative", "womb", "habitat", "herd"],
-          "pass": ["A population, raised by others of its kind.", "Behaviour in long-lived social species is culturally transmitted; a founder generation has nobody to learn from."],
-          "fail": ["You have an elephant with cold-weather genes and nobody to teach it how to be a mammoth.", "This is the honest description of what current approaches would produce: an edited elephant with some mammoth traits, raised without mammoth behaviour. Whether that counts is a definitional question, and it should be asked before the work rather than after."]
+          "name": [
+            "Have it actually be a mammoth",
+            "Identity"
+          ],
+          "needs": [
+            "sequence",
+            "relative",
+            "womb",
+            "habitat",
+            "herd"
+          ],
+          "pass": [
+            "A population, raised by others of its kind.",
+            "Behaviour in long-lived social species is culturally transmitted; a founder generation has nobody to learn from."
+          ],
+          "fail": [
+            "You have an elephant with cold-weather genes and nobody to teach it how to be a mammoth.",
+            "This is the honest description of what current approaches would produce: an edited elephant with some mammoth traits, raised without mammoth behaviour. Whether that counts is a definitional question, and it should be asked before the work rather than after."
+          ]
         }
       ],
       "win": [
@@ -103,7 +207,6 @@
         "Each failed trial names an unmet requirement. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -119,7 +222,6 @@
         "The genuinely useful spin-off is not disputed by anyone: the same cloning and biobanking work has produced living black-footed ferrets and Przewalski's horses from decades-old frozen cells, adding genetic diversity to populations too inbred to recover on their own. That is de-extinction technique applied to species that are not extinct, and it is working."
       ]
     },
-
     {
       "type": "check",
       "concept": "de-extinction",
@@ -140,7 +242,6 @@
         "Because the gaps in a degraded genome are filled from the closest living relative, so a fraction of the reconstruction is that relative's sequence rather than the extinct animal's. The recovered genome is a mosaic whose composition depends on how much survived — which means the phrase describes a spectrum, not an event."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

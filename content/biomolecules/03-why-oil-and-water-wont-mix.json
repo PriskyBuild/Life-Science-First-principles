@@ -3,6 +3,7 @@
   "module": "biomolecules",
   "index": 2,
   "title": "Why Oil and Water Won't Mix",
+  "principle": "Water squeezes the oily bits together.",
   "specimen": "lipid-drop",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "No force separated them and nothing was arranged. Work out what did it."
       ]
     },
-
     {
       "type": "predict",
       "concept": "hydrophobic-effect",
@@ -35,39 +35,50 @@
         "Commit. The intuitive answer is the second, and it is not correct: the effect is driven from the water's side."
       ]
     },
-
     {
       "type": "sim",
       "sim": "folding",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "The round beads hate water. Bend the string and watch them find each other.",
         "Round beads are oily, square ones are happy in water. Fold the chain until the oily ones are together in the middle."
       ],
-      "params": { "seq": "PHHPPHHP", "target": 2, "aspect": 0.85 },
+      "params": {
+        "seq": "PHHPPHHP",
+        "target": 2,
+        "aspect": 0.85
+      },
       "goal": [
         "The oily ones ended up together in the middle. Nobody put them there.",
         "The oily beads gathered inside and the watery ones face out. Nothing arranged that — it is what the water leaves as the likeliest arrangement."
       ]
     },
-
     {
       "type": "sim",
       "sim": "folding",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "A longer chain. Find its best arrangement, and notice the oily ones always end up inside.",
         "Different sequence, same single rule. Find the best arrangement and note that the pattern of the result — buried oil, exposed polar — is invariant even though the shape is not."
       ],
-      "params": { "seq": "HHPPHPPHPPHH", "target": 4, "aspect": 0.85 },
+      "params": {
+        "seq": "HHPPHPPHPPHH",
+        "target": 4,
+        "aspect": 0.85
+      },
       "goal": [
         "Different shape, same idea: the oily bits go inside.",
         "Different geometry, identical principle. This is the same effect that makes a membrane, folds a protein, and splits your salad dressing."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -83,7 +94,6 @@
         "It is also why soap works: a molecule with an oily tail and a water-loving head can sit at the boundary and satisfy both, which is the whole of detergency and, not coincidentally, the whole of how a cell membrane assembles itself."
       ]
     },
-
     {
       "type": "check",
       "concept": "hydrophobic-effect",
@@ -104,7 +114,6 @@
         "The effect is entropic and lives in the water, not enthalpic and living in the oil. The clearest evidence is the temperature dependence: over a broad range hydrophobic association gets stronger as you warm it, which no ordinary attraction between two molecules does."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

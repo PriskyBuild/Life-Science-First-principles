@@ -3,6 +3,7 @@
   "module": "dna",
   "index": 2,
   "title": "The Ladder That Copies Itself",
+  "principle": "Copying DNA is called replication. Each new ladder keeps one old side.",
   "specimen": "replication-fork",
   "stages": [
     {
@@ -20,7 +21,6 @@
         "This is why the structure paper mattered more than any experiment that year: it explained heredity as a corollary of a shape."
       ]
     },
-
     {
       "type": "predict",
       "concept": "semiconservative-copying",
@@ -39,41 +39,63 @@
         "Commit. The answer follows from the previous lesson, not from anything new."
       ]
     },
-
     {
       "type": "sim",
       "sim": "replication",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "You be the copier. Look at the letter on top, then tap the one that goes with it.",
         "Take the polymerase's job. The template base is shown; place its partner. A wrong base will not stick."
       ],
-      "params": { "task": "pair", "n": 18, "aspect": 0.62 },
-      "paramsByLevel": { "1": { "n": 12 } },
+      "params": {
+        "task": "pair",
+        "n": 18,
+        "aspect": 0.62
+      },
+      "paramsByLevel": {
+        "1": {
+          "n": 12
+        }
+      },
       "goal": [
         "You copied the whole thing — and you never once had a choice.",
         "The whole strand copied, and every base was decided for you by the one opposite it."
       ]
     },
-
     {
       "type": "sim",
       "sim": "replication",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Now let the polymerase do it, and you set how fast. Find the fastest speed that still copies cleanly.",
         "The enzyme runs itself; you set the rate. Misincorporation climbs faster than rate does, so there is an optimum and it is not the maximum. Find it."
       ],
-      "params": { "task": "fidelity", "n": 40, "speed": 4, "allow": 1, "aspect": 0.62 },
-      "paramsByLevel": { "4": { "n": 60, "allow": 0 } },
+      "params": {
+        "task": "fidelity",
+        "n": 40,
+        "speed": 4,
+        "allow": 1,
+        "aspect": 0.62
+      },
+      "paramsByLevel": {
+        "4": {
+          "n": 60,
+          "allow": 0
+        }
+      },
       "goal": [
         "That speed works. Faster than that and mistakes start getting through.",
         "That is the working range. Fidelity is bought with time, which is the trade-off every real polymerase makes."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -89,7 +111,6 @@
         "The alternative models — conservative and dispersive — would each have produced a different density profile. That is what made the experiment decisive rather than merely suggestive."
       ]
     },
-
     {
       "type": "check",
       "concept": "semiconservative-copying",
@@ -110,7 +131,6 @@
         "One parental, one daughter strand. Conservative replication would have given two populations after one round — all-heavy and all-light — and dispersive would never have separated at all. The single intermediate band ruled out both."
       ]
     },
-
     {
       "type": "check",
       "concept": "base-pairing",
@@ -131,7 +151,6 @@
         "The specificity is geometric — a purine opposite a pyrimidine keeps every rung the same width, and the hydrogen-bond donors and acceptors only line up in the correct pairing. A wrong base is not forbidden by a rule; it physically does not fit."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

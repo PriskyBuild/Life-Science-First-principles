@@ -3,6 +3,7 @@
   "module": "synthetic-biology",
   "index": 1,
   "title": "A Circuit Made of Genes",
+  "principle": "Genes switching each other on and off make a circuit, and a circuit can compute.",
   "specimen": "gene-switch",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The same shape as the feedback loop you built in Human Body, with the sign reversed."
       ]
     },
-
     {
       "type": "predict",
       "concept": "genetic-circuits",
@@ -35,7 +35,6 @@
         "Commit. Ask what happens to the loser once the winner is established."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,41 +43,123 @@
         "Match each arrangement to the behaviour it produces. Placement is unconstrained, then each is tested."
       ],
       "parts": [
-        { "id": "toggle", "label": "Two genes repressing each other" },
-        { "id": "oscillator", "label": "Three repressors in a ring" },
-        { "id": "negative", "label": "A gene repressing itself" },
-        { "id": "sensor", "label": "A promoter that responds to a chemical" }
+        {
+          "id": "toggle",
+          "label": "Two genes repressing each other"
+        },
+        {
+          "id": "oscillator",
+          "label": "Three repressors in a ring"
+        },
+        {
+          "id": "negative",
+          "label": "A gene repressing itself"
+        },
+        {
+          "id": "sensor",
+          "label": "A promoter that responds to a chemical"
+        }
       ],
       "slots": [
-        { "correct": "toggle", "label": ["Remembers which state you put it in"] },
-        { "correct": "oscillator", "label": ["Never settles — it cycles"] },
-        { "correct": "negative", "label": ["Holds itself at a steady level"] },
-        { "correct": "sensor", "label": ["Reacts to something outside"] }
+        {
+          "correct": "toggle",
+          "label": [
+            "Remembers which state you put it in"
+          ]
+        },
+        {
+          "correct": "oscillator",
+          "label": [
+            "Never settles — it cycles"
+          ]
+        },
+        {
+          "correct": "negative",
+          "label": [
+            "Holds itself at a steady level"
+          ]
+        },
+        {
+          "correct": "sensor",
+          "label": [
+            "Reacts to something outside"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Notice anything at all", "Input"],
-          "needs": ["sensor"],
-          "pass": ["The circuit can detect a condition.", "An input maps an external signal to transcription."],
-          "fail": ["A circuit with nothing to respond to.", "Without an input the construct runs open-loop and computes nothing about the world."]
+          "name": [
+            "Notice anything at all",
+            "Input"
+          ],
+          "needs": [
+            "sensor"
+          ],
+          "pass": [
+            "The circuit can detect a condition.",
+            "An input maps an external signal to transcription."
+          ],
+          "fail": [
+            "A circuit with nothing to respond to.",
+            "Without an input the construct runs open-loop and computes nothing about the world."
+          ]
         },
         {
-          "name": ["Remember that it happened", "Memory"],
-          "needs": ["sensor", "toggle"],
-          "pass": ["A brief signal leaves a permanent change of state.", "The toggle latches: a transient input produces a persistent state."],
-          "fail": ["It notices and forgets immediately.", "Without a bistable element the output tracks the input and nothing persists."]
+          "name": [
+            "Remember that it happened",
+            "Memory"
+          ],
+          "needs": [
+            "sensor",
+            "toggle"
+          ],
+          "pass": [
+            "A brief signal leaves a permanent change of state.",
+            "The toggle latches: a transient input produces a persistent state."
+          ],
+          "fail": [
+            "It notices and forgets immediately.",
+            "Without a bistable element the output tracks the input and nothing persists."
+          ]
         },
         {
-          "name": ["Not drift all over the place", "Stability"],
-          "needs": ["sensor", "toggle", "negative"],
-          "pass": ["Levels are held steady by self-repression.", "Negative autoregulation reduces noise and speeds the response."],
-          "fail": ["The output swings wildly between cells.", "Unregulated expression is noisy. Negative autoregulation is the commonest motif in real genomes for exactly this reason."]
+          "name": [
+            "Not drift all over the place",
+            "Stability"
+          ],
+          "needs": [
+            "sensor",
+            "toggle",
+            "negative"
+          ],
+          "pass": [
+            "Levels are held steady by self-repression.",
+            "Negative autoregulation reduces noise and speeds the response."
+          ],
+          "fail": [
+            "The output swings wildly between cells.",
+            "Unregulated expression is noisy. Negative autoregulation is the commonest motif in real genomes for exactly this reason."
+          ]
         },
         {
-          "name": ["Do something on a schedule", "Timing"],
-          "needs": ["sensor", "toggle", "negative", "oscillator"],
-          "pass": ["A repressilator gives it a clock.", "A ring of three repressors oscillates, supplying timing."],
-          "fail": ["It can react and remember and has no sense of time.", "Some behaviours need a period rather than a state. A ring of an odd number of repressors cannot settle, so it cycles."]
+          "name": [
+            "Do something on a schedule",
+            "Timing"
+          ],
+          "needs": [
+            "sensor",
+            "toggle",
+            "negative",
+            "oscillator"
+          ],
+          "pass": [
+            "A repressilator gives it a clock.",
+            "A ring of three repressors oscillates, supplying timing."
+          ],
+          "fail": [
+            "It can react and remember and has no sense of time.",
+            "Some behaviours need a period rather than a state. A ring of an odd number of repressors cannot settle, so it cycles."
+          ]
         }
       ],
       "win": [
@@ -90,7 +171,6 @@
         "Each failed trial names the motif that was absent. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -106,7 +186,6 @@
         "That was the real point of the 2000 papers. Building a working oscillator from scratch demonstrates the understanding in a way that describing a natural one cannot — and the first ones worked badly, which was itself informative about how much was still missing."
       ]
     },
-
     {
       "type": "check",
       "concept": "genetic-circuits",
@@ -127,7 +206,6 @@
         "Because swapping in different repressors with similar strengths gives the same behaviour, while rewiring the same repressors differently changes it completely. The behaviour is carried by the connection pattern, which is why the motifs recur across organisms sharing no genes."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

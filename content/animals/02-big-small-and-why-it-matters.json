@@ -3,6 +3,7 @@
   "module": "animals",
   "index": 1,
   "title": "Big, Small, and Why It Matters",
+  "principle": "Surface grows by squaring. Volume grows by cubing.",
   "specimen": "scaling-rule",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Almost everything about an animal changes when you change how big it is, and the reason is arithmetic."
       ]
     },
-
     {
       "type": "predict",
       "concept": "surface-area-to-volume",
@@ -35,10 +35,12 @@
         "Commit. Area goes as the square of length and volume as the cube, which decides the whole lesson."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "Make the cube bigger",
       "min": 0,
@@ -59,10 +61,12 @@
         "Surface-to-volume went from 6 to 0.6 — a factor of ten — over a tenfold change in length. Everything an animal does through its surface is governed by that number."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "How big is the animal?",
       "min": 0,
@@ -85,7 +89,6 @@
         "A shrew must eat close to its own body weight daily and dies within hours of not eating; a large animal can fast for weeks. Note that the exponent is 0.75 rather than the 0.67 pure surface-area scaling predicts — the discrepancy is real, has been argued about since 1932, and is usually attributed to the geometry of distribution networks."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -101,7 +104,6 @@
         "That bound is roughly the size of a bumblebee bat or an Etruscan shrew, and both live at the edge — perpetually feeding, with heart rates over a thousand a minute. There is no warm-blooded animal smaller, and the reason is not that none evolved."
       ]
     },
-
     {
       "type": "check",
       "concept": "surface-area-to-volume",
@@ -122,7 +124,6 @@
         "It is a ratio problem rather than an absolute one. A shrew loses less heat in total than an elephant and vastly more per gram, and it is the per-gram figure that determines how hard the metabolism has to work. Kleiber's exponent of 0.75 sits between the 0.67 of pure surface scaling and the 1.0 of pure volume scaling, which is itself informative."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

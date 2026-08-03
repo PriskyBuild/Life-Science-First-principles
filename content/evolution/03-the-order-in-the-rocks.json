@@ -3,6 +3,7 @@
   "module": "evolution",
   "index": 2,
   "title": "The Order in the Rocks",
+  "principle": "The rocks come in layers, and the layers always come in the same order.",
   "specimen": "core-sample",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The ordering is the fact. What produced it is the question."
       ]
     },
-
     {
       "type": "predict",
       "concept": "fossil-order",
@@ -35,7 +35,6 @@
         "Commit. Then note which of the other two options each account below would have predicted."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -51,10 +50,12 @@
         "The pattern is a forbidden-outcome claim rather than a merely accommodating one, which is what makes it scientifically interesting regardless of what one concludes about its cause."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "fossil-order",
       "t": [
         "The layers are real and the order is real. Here is what each side says put them there.",
@@ -101,7 +102,6 @@
         "The accounts make different demands. Sorting by mobility and habitat predicts one pattern; succession in time predicts another — and the two come apart for organisms that could neither flee nor float, such as pollen, plants and burrowing animals. Ask what each side accepts as the strongest evidence against its own view, and whether it has one."
       ]
     },
-
     {
       "type": "check",
       "concept": "fossil-order",
@@ -122,7 +122,6 @@
         "Global consistency of relative order is the explanandum, because it is highly specific and would have been easy to violate. Both accounts on offer are attempts to supply a sorting mechanism for it, and both should be judged on how much they forbid."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

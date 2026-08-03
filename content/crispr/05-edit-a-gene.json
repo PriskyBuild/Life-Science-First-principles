@@ -3,6 +3,7 @@
   "module": "crispr",
   "index": 4,
   "title": "Edit a Gene",
+  "principle": "Cutting is the easy half. What the cell does next is the hard half.",
   "specimen": "edited-genome",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Not because it is difficult. Because nothing goes wrong immediately when you omit it."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -25,49 +25,154 @@
         "Assign each component to its function. Placement is unconstrained; then five stress tests."
       ],
       "parts": [
-        { "id": "target", "label": "The sequence to change" },
-        { "id": "guide", "label": "A 20-letter guide" },
-        { "id": "cas", "label": "The nuclease" },
-        { "id": "template", "label": "A repair template" },
-        { "id": "audit", "label": "A whole-genome off-target check" }
+        {
+          "id": "target",
+          "label": "The sequence to change"
+        },
+        {
+          "id": "guide",
+          "label": "A 20-letter guide"
+        },
+        {
+          "id": "cas",
+          "label": "The nuclease"
+        },
+        {
+          "id": "template",
+          "label": "A repair template"
+        },
+        {
+          "id": "audit",
+          "label": "A whole-genome off-target check"
+        }
       ],
       "slots": [
-        { "correct": "target", "label": ["Says which gene you mean"] },
-        { "correct": "guide", "label": ["Finds it by pairing"] },
-        { "correct": "cas", "label": ["Makes the cut"] },
-        { "correct": "template", "label": ["Says what to put back"] },
-        { "correct": "audit", "label": ["Checks nothing else was cut"] }
+        {
+          "correct": "target",
+          "label": [
+            "Says which gene you mean"
+          ]
+        },
+        {
+          "correct": "guide",
+          "label": [
+            "Finds it by pairing"
+          ]
+        },
+        {
+          "correct": "cas",
+          "label": [
+            "Makes the cut"
+          ]
+        },
+        {
+          "correct": "template",
+          "label": [
+            "Says what to put back"
+          ]
+        },
+        {
+          "correct": "audit",
+          "label": [
+            "Checks nothing else was cut"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Know what you are aiming at", "Target"],
-          "needs": ["target"],
-          "pass": ["A specific sequence, chosen deliberately.", "The intended locus is specified."],
-          "fail": ["You have scissors and no idea where to point them.", "Without a target sequence there is nothing to design a guide against."]
+          "name": [
+            "Know what you are aiming at",
+            "Target"
+          ],
+          "needs": [
+            "target"
+          ],
+          "pass": [
+            "A specific sequence, chosen deliberately.",
+            "The intended locus is specified."
+          ],
+          "fail": [
+            "You have scissors and no idea where to point them.",
+            "Without a target sequence there is nothing to design a guide against."
+          ]
         },
         {
-          "name": ["Find it among three billion letters", "Targeting"],
-          "needs": ["target", "guide"],
-          "pass": ["The guide pairs with it and nothing else nearby.", "Base pairing locates the site."],
-          "fail": ["You know the address and have no way of getting there.", "The nuclease has essentially no sequence preference of its own. Without a guide it is not a targeted tool at all."]
+          "name": [
+            "Find it among three billion letters",
+            "Targeting"
+          ],
+          "needs": [
+            "target",
+            "guide"
+          ],
+          "pass": [
+            "The guide pairs with it and nothing else nearby.",
+            "Base pairing locates the site."
+          ],
+          "fail": [
+            "You know the address and have no way of getting there.",
+            "The nuclease has essentially no sequence preference of its own. Without a guide it is not a targeted tool at all."
+          ]
         },
         {
-          "name": ["Actually change something", "Cutting"],
-          "needs": ["target", "guide", "cas"],
-          "pass": ["A double-strand break, exactly where you meant.", "Cleavage at the intended site."],
-          "fail": ["Perfect aim and nothing happened.", "Targeting without a nuclease binds and does not edit — which is useful for other purposes, and is not an edit."]
+          "name": [
+            "Actually change something",
+            "Cutting"
+          ],
+          "needs": [
+            "target",
+            "guide",
+            "cas"
+          ],
+          "pass": [
+            "A double-strand break, exactly where you meant.",
+            "Cleavage at the intended site."
+          ],
+          "fail": [
+            "Perfect aim and nothing happened.",
+            "Targeting without a nuclease binds and does not edit — which is useful for other purposes, and is not an edit."
+          ]
         },
         {
-          "name": ["Get the change you wanted, not just a broken gene", "Repair"],
-          "needs": ["target", "guide", "cas", "template"],
-          "pass": ["The cell repairs using your template.", "Homology-directed repair installs the intended sequence."],
-          "fail": ["The cell repaired it badly and the gene is simply broken now.", "Without a template the cell uses non-homologous end joining, which inserts or deletes a few bases at random. That disables a gene reliably — which is sometimes what you want, and is not the same as editing it."]
+          "name": [
+            "Get the change you wanted, not just a broken gene",
+            "Repair"
+          ],
+          "needs": [
+            "target",
+            "guide",
+            "cas",
+            "template"
+          ],
+          "pass": [
+            "The cell repairs using your template.",
+            "Homology-directed repair installs the intended sequence."
+          ],
+          "fail": [
+            "The cell repaired it badly and the gene is simply broken now.",
+            "Without a template the cell uses non-homologous end joining, which inserts or deletes a few bases at random. That disables a gene reliably — which is sometimes what you want, and is not the same as editing it."
+          ]
         },
         {
-          "name": ["Be sure nothing else got cut", "Audit"],
-          "needs": ["target", "guide", "cas", "template", "audit"],
-          "pass": ["The intended edit is there, and nothing else changed.", "Off-target screening across the genome confirms the edit is clean."],
-          "fail": ["A textbook edit, and you have no idea what else you cut.", "This is the failure that does not announce itself. A cut in a tumour suppressor would not show for years, and the edit would look like a complete success in the meantime."]
+          "name": [
+            "Be sure nothing else got cut",
+            "Audit"
+          ],
+          "needs": [
+            "target",
+            "guide",
+            "cas",
+            "template",
+            "audit"
+          ],
+          "pass": [
+            "The intended edit is there, and nothing else changed.",
+            "Off-target screening across the genome confirms the edit is clean."
+          ],
+          "fail": [
+            "A textbook edit, and you have no idea what else you cut.",
+            "This is the failure that does not announce itself. A cut in a tumour suppressor would not show for years, and the edit would look like a complete success in the meantime."
+          ]
         }
       ],
       "win": [
@@ -79,7 +184,6 @@
         "Each failed trial names the step that was not performed. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -95,7 +199,6 @@
         "That is worth noticing, because it is not what most people imagine gene therapy to be. Nothing was corrected — a different, already-present gene was un-silenced to compensate. Working out which achievable edit produces the wanted result is frequently more of the problem than the editing."
       ]
     },
-
     {
       "type": "check",
       "concept": "edit-consequences",
@@ -116,7 +219,6 @@
         "It is the general shape of a safety check: the cases where it was needed are exactly the cases you would not otherwise detect, so the check appears to add nothing every time it comes back clean. That is why safety steps get dropped, and why the argument for keeping them has to be made on expected cost rather than on observed benefit."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "proteins",
   "index": 2,
   "title": "The Enzyme and the Lock",
+  "principle": "A protein that speeds up a reaction is called an enzyme.",
   "specimen": "active-site",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "No extra energy is supplied and the products are identical. Something else has been altered."
       ]
     },
-
     {
       "type": "predict",
       "concept": "enzyme-specificity",
@@ -35,10 +35,12 @@
         "Commit. Note that heating would speed it up too — and would also cook the cell, which is the constraint that rules it out."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "Try each shape in the notch",
       "min": 0,
@@ -59,10 +61,12 @@
         "One substrate, one pocket. Specificity and catalysis come from the same feature."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "Temperature",
       "min": 0,
@@ -84,7 +88,6 @@
         "Collision frequency rises smoothly with temperature; denaturation is a cooperative transition that sets in sharply. The optimum is where the second overtakes the first — and unlike the first, it does not reverse on cooling."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -100,7 +103,6 @@
         "That constraint is absolute and worth holding onto: catalysis is kinetic. An enzyme accelerates approach to equilibrium in both directions equally, which is why the same enzyme often runs a pathway forwards and backwards depending only on concentrations."
       ]
     },
-
     {
       "type": "check",
       "concept": "enzyme-specificity",
@@ -121,7 +123,6 @@
         "Catalytic power comes from complementarity to the transition state, and complementarity is by definition exclusive. An enzyme that accepted many substrates would position none of them well enough to accelerate anything, so promiscuity and efficiency trade off directly."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
@@ -130,11 +131,13 @@
         "Competitive inhibition is one of the most productive strategies in pharmacology: statins occupy the active site of the enzyme that makes cholesterol, and many antivirals block the protease a virus needs to cut its own proteins apart. In both cases the drug is a shape designed to fit a pocket and do nothing once it is there."
       ]
     },
-
     {
       "type": "check",
       "concept": "denaturation",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "Why does activity fall above the optimum temperature?",
         "Why is the fall in activity above the optimum not simply the reverse of the rise?"

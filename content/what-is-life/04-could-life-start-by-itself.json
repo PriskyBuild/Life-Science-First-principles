@@ -3,6 +3,7 @@
   "module": "what-is-life",
   "index": 3,
   "title": "Could Life Start By Itself?",
+  "principle": "They made amino acids — the beads that proteins are made of.",
   "specimen": "spark-flask",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Nobody knows. That is not a dodge — it is the honest state of the field, and it is agreed on all sides."
       ]
     },
-
     {
       "type": "predict",
       "concept": "origin-of-life-unsolved",
@@ -35,7 +35,6 @@
         "Commit. Note that the popular account of this experiment and what it actually produced have drifted a long way apart."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -51,10 +50,12 @@
         "The RNA-world hypothesis addresses the chicken-and-egg problem of DNA needing proteins and proteins needing DNA, and it has laboratory support in ribozymes. Its difficulties — prebiotic ribose synthesis, nucleotide assembly, homochirality, and the fidelity threshold for replication — are openly discussed in the mainstream literature."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "chemistry-vs-information",
       "t": [
         "Everyone agrees nobody has done it. Here is what each side thinks that means.",
@@ -101,7 +102,6 @@
         "Both accounts are consistent with today's evidence, which is a warning sign that today's evidence is not the discriminator. So ask each: what result would you accept as decisive against yourself, and how long should 'not yet' be given before it becomes an excuse? Notice that the second question cuts both ways — an argument from a present gap is only as strong as the gap is permanent."
       ]
     },
-
     {
       "type": "check",
       "concept": "origin-of-life-unsolved",
@@ -122,7 +122,6 @@
         "This is worth being precise about, because it is misreported in both directions: popular accounts sometimes imply the problem is solved, and some critiques imply no progress has been made. Neither is accurate. Substantial partial results exist; a complete route does not."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

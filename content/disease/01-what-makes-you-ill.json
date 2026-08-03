@@ -3,6 +3,7 @@
   "module": "disease",
   "index": 0,
   "title": "What Makes You Ill",
+  "principle": "Illnesses come in kinds, and the kind tells you what might help.",
   "specimen": "cause-sorter",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Working out which kind you are looking at is most of a diagnosis."
       ]
     },
-
     {
       "type": "predict",
       "concept": "causes-of-illness",
@@ -35,7 +35,6 @@
         "Commit. Note that an antibiotic helps exactly one of the four categories."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Match each disease to its category of cause."
       ],
       "parts": [
-        { "id": "infection", "label": "Measles" },
-        { "id": "deficiency", "label": "Scurvy" },
-        { "id": "genetic", "label": "Sickle-cell" },
-        { "id": "environment", "label": "Lung cancer from smoking" }
+        {
+          "id": "infection",
+          "label": "Measles"
+        },
+        {
+          "id": "deficiency",
+          "label": "Scurvy"
+        },
+        {
+          "id": "genetic",
+          "label": "Sickle-cell"
+        },
+        {
+          "id": "environment",
+          "label": "Lung cancer from smoking"
+        }
       ],
       "slots": [
-        { "accepts": "infection", "label": ["Something got in", "Infectious: a pathogen"] },
-        { "accepts": "deficiency", "label": ["Something is missing", "Deficiency: a required nutrient absent"] },
-        { "accepts": "genetic", "label": ["It was in the instructions", "Genetic: an inherited variant"] },
-        { "accepts": "environment", "label": ["Something outside did damage", "Environmental: an external agent causing damage"] }
+        {
+          "accepts": "infection",
+          "label": [
+            "Something got in",
+            "Infectious: a pathogen"
+          ]
+        },
+        {
+          "accepts": "deficiency",
+          "label": [
+            "Something is missing",
+            "Deficiency: a required nutrient absent"
+          ]
+        },
+        {
+          "accepts": "genetic",
+          "label": [
+            "It was in the instructions",
+            "Genetic: an inherited variant"
+          ]
+        },
+        {
+          "accepts": "environment",
+          "label": [
+            "Something outside did damage",
+            "Environmental: an external agent causing damage"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "Roughly a third of antibiotic prescriptions in primary care are for conditions they cannot help — mostly viral. The cost is not merely waste: every prescription applies selection pressure, so a drug given for no benefit still buys resistance."
       ]
     },
-
     {
       "type": "check",
       "concept": "causes-of-illness",
@@ -93,7 +126,6 @@
         "Because the selection pressure is applied regardless of whether the drug helps. The bacteria in and on the patient are exposed, resistant ones survive, and resistance accumulates — so an ineffective prescription is not neutral, it spends a shared resource for nothing. That is the same mechanism you ran in the beetle simulation."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "environmental-science",
   "index": 1,
   "title": "Why a Degree Matters",
+  "principle": "Some gases let sunlight in and slow heat on its way out.",
   "specimen": "energy-budget",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "A third of one percent — which is exactly why the argument is about arithmetic rather than about whether it sounds big."
       ]
     },
-
     {
       "type": "predict",
       "concept": "energy-balance",
@@ -35,10 +35,12 @@
         "Commit. The distinction that matters is between a rate and a total, and it is the same distinction as a leaking bath."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "Follow the sunlight",
       "min": 0,
@@ -60,10 +62,12 @@
         "A 0.3% imbalance, sustained. The size of the gap sets how fast, not whether — and the gap has been positive for as long as it has been measured."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "What that imbalance adds up to",
       "min": 0,
@@ -85,7 +89,6 @@
         "The energy is measured two independent ways — top-of-atmosphere satellite radiometry and ocean heat content from Argo floats — and they agree. That agreement is what makes the figure a measurement rather than a model output."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -101,7 +104,6 @@
         "Estimates of climate sensitivity have sat in a broad range for decades, currently assessed as most likely 2.5–4 °C per doubling with clouds the dominant source of spread. Being precise about which parts are measured, which are inferred and which are projected is more useful than treating the whole subject as one claim to accept or reject."
       ]
     },
-
     {
       "type": "check",
       "concept": "energy-balance",
@@ -122,7 +124,6 @@
         "Because the imbalance is a flux and the consequence is its integral. The system also has enormous thermal inertia — over 90% of the accumulated energy is in the ocean — which means the response lags the forcing by decades, and the temperature at any moment reflects an imbalance sustained long before it."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

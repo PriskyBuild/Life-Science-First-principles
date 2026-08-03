@@ -3,6 +3,7 @@
   "module": "human-body",
   "index": 2,
   "title": "Breathing Is Not for Air",
+  "principle": "Breathing is mostly about getting carbon dioxide out.",
   "specimen": "gas-swap",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The signal you are feeling is a different molecule entirely."
       ]
     },
-
     {
       "type": "predict",
       "concept": "gas-exchange",
@@ -35,41 +35,67 @@
         "Commit. This is a genuinely dangerous piece of knowledge to lack, for reasons the apply stage gets to."
       ]
     },
-
     {
       "type": "sim",
       "sim": "membrane",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Gases cross into your blood exactly the way things crossed the cell wall. Make the holes big enough and watch it happen.",
         "Gas exchange is the same diffusion you already met. Set the holes and watch things cross from where there is more to where there is less."
       ],
-      "params": { "kinds": 3, "pore": 2, "per": 12, "target": 0.5 },
-      "paramsByLevel": { "1": { "kinds": 2, "per": 10, "target": 0.4 } },
+      "params": {
+        "kinds": 3,
+        "pore": 2,
+        "per": 12,
+        "target": 0.5
+      },
+      "paramsByLevel": {
+        "1": {
+          "kinds": 2,
+          "per": 10,
+          "target": 0.4
+        }
+      },
       "goal": [
         "Across it goes, with nothing pushing. That is how oxygen gets into you.",
         "Net movement from crowded to empty, with nothing doing any pushing. Your lungs do exactly this, and nothing else."
       ]
     },
-
     {
       "type": "sim",
       "sim": "membrane",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Two gases crossing in opposite directions at once. Find the setting that works for both.",
         "Bidirectional exchange down two opposing gradients simultaneously — oxygen inward, carbon dioxide outward. Find the configuration that satisfies both, and note that no active transport is involved anywhere."
       ],
-      "params": { "kinds": 5, "pore": 3, "per": 12, "temp": 1, "target": 0.55 },
-      "paramsByLevel": { "4": { "kinds": 6, "per": 14, "target": 0.6 } },
+      "params": {
+        "kinds": 5,
+        "pore": 3,
+        "per": 12,
+        "temp": 1,
+        "target": 0.55
+      },
+      "paramsByLevel": {
+        "4": {
+          "kinds": 6,
+          "per": 14,
+          "target": 0.6
+        }
+      },
       "goal": [
         "Both directions at once, and nothing spent any energy doing it.",
         "Two opposing net fluxes maintained simultaneously by nothing but two concentration gradients. Breathing costs energy; the exchange itself costs none."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -85,7 +111,6 @@
         "Alveolar walls are a single cell thick, and the total surface is around 70 m². Both numbers exist for the same reason: diffusion rate scales with area and inversely with distance, so the organ is optimised on exactly those two terms."
       ]
     },
-
     {
       "type": "check",
       "concept": "gas-exchange",
@@ -106,7 +131,6 @@
         "Net flux is proportional to the partial pressure gradient, and both ventilation and perfusion exist to maintain that gradient rather than to move the gas. Haemoglobin sharpens it further by binding oxygen and so keeping dissolved concentration low, which steepens the gradient it is diffusing down."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

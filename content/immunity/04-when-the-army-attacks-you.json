@@ -3,6 +3,7 @@
   "module": "immunity",
   "index": 3,
   "title": "When the Army Attacks You",
+  "principle": "Learning not to attack yourself is called tolerance.",
   "specimen": "self-marker",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "This is not a flaw in the design. It is an unavoidable consequence of how the design works."
       ]
     },
-
     {
       "type": "predict",
       "concept": "self-vs-nonself",
@@ -35,7 +35,6 @@
         "Commit. Note that the third option would require knowing in advance what is a germ, which is exactly what the system cannot do."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Roughly 98% of developing T cells are eliminated. That enormous wastage is the cost of generating specificity at random and then having to check it."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "Autoimmunity is therefore not the system malfunctioning in an alien way — it is the system doing exactly what it does, aimed at the wrong target. That is why treatment is so difficult: you cannot remove the capability without removing the defence."
       ]
     },
-
     {
       "type": "check",
       "concept": "self-vs-nonself",
@@ -96,7 +93,6 @@
         "It is a structural consequence, not an error. Any system generating specificity without prior knowledge of its targets must generate self-reactivity, and must therefore also implement a separate deletion step. The thymus is the cost of the strategy."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

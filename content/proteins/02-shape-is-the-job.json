@@ -3,6 +3,7 @@
   "module": "proteins",
   "index": 1,
   "title": "Shape Is the Job",
+  "principle": "What a protein does depends on the shape it is, not what it is made of.",
   "specimen": "shape-gauge",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Identical parts list, wildly different jobs. Only one thing can be carrying the difference."
       ]
     },
-
     {
       "type": "predict",
       "concept": "shape-is-function",
@@ -35,7 +35,6 @@
         "Commit. Everything in the protein is still present and still connected — only the arrangement has changed."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Composition unchanged from start to finish. Function is a property of the arrangement, not of the ingredients."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "Allostery makes the point sharply: binding at one site changes the shape at a distant one, so the molecule acts as a switch. Haemoglobin's cooperativity is exactly this, and it is why it can load oxygen in the lungs and release it in tissue."
       ]
     },
-
     {
       "type": "check",
       "concept": "shape-is-function",
@@ -96,7 +93,6 @@
         "The catalytic or binding site is an emergent property of the tertiary structure: residues far apart in sequence are brought together in space to form it. Unfolding separates them, and the site simply ceases to exist as a feature."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

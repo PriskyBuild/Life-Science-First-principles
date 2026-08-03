@@ -3,6 +3,7 @@
   "module": "plants",
   "index": 2,
   "title": "Why Leaves Are Flat",
+  "principle": "The holes are called stomata, and a plant opens and shuts them all day.",
   "specimen": "leaf-section",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "There is no setting that satisfies both, which is the whole of being a plant."
       ]
     },
-
     {
       "type": "predict",
       "concept": "leaf-is-a-tradeoff",
@@ -35,41 +35,64 @@
         "Commit. You are about to be able to check whether the maximum really does lose."
       ]
     },
-
     {
       "type": "sim",
       "sim": "stomata",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Open the holes and watch two things at once: the sugar going up, and the water going down.",
         "Set the aperture and watch both bars. You need enough sugar by the end of the day, with water left."
       ],
-      "params": { "aperture": 3, "target": 200, "aspect": 0.9 },
-      "paramsByLevel": { "1": { "target": 150 } },
+      "params": {
+        "aperture": 3,
+        "target": 200,
+        "aspect": 0.9
+      },
+      "paramsByLevel": {
+        "1": {
+          "target": 150
+        }
+      },
       "goal": [
         "Enough sugar, and still alive. Wide open would have made less, because the leaf dies first.",
         "Target reached with water in hand — and opening all the way would have produced LESS sugar, because the leaf dries out before the day is over."
       ]
     },
-
     {
       "type": "sim",
       "sim": "stomata",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Dry, windy air, and it gets much hotter in the middle of the day. One setting will not do.",
         "Higher evaporative demand, with a midday peak. Find out whether any fixed aperture works — and if not, what the plant should do instead."
       ],
-      "params": { "aperture": 4, "dry": 1.4, "heat": 1.2, "target": 200, "aspect": 0.9 },
-      "paramsByLevel": { "4": { "dry": 1.7, "heat": 1.5, "target": 220 } },
+      "params": {
+        "aperture": 4,
+        "dry": 1.4,
+        "heat": 1.2,
+        "target": 200,
+        "aspect": 0.9
+      },
+      "paramsByLevel": {
+        "4": {
+          "dry": 1.7,
+          "heat": 1.5,
+          "target": 220
+        }
+      },
       "goal": [
         "You had to shut it partway through. That is exactly what a real plant does.",
         "The best strategy was to close during the midday peak and reopen after — which is precisely what real stomata do, and why they are regulated continuously rather than set once."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -85,7 +108,6 @@
         "A flat leaf is the same optimisation solved in geometry rather than in behaviour: area up for light capture, thickness down for diffusion, and the cost is that a flat wet thing loses water faster than anything else its size. Cacti abandoned the leaf entirely rather than pay it."
       ]
     },
-
     {
       "type": "check",
       "concept": "leaf-is-a-tradeoff",
@@ -106,7 +128,6 @@
         "Photosynthesis saturates and transpiration does not. That asymmetry is what makes an intermediate optimal, and because the position of the optimum depends on humidity, wind and temperature, it has to be tracked rather than set — which is what guard cells are for."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

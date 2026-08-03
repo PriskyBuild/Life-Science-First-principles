@@ -3,6 +3,7 @@
   "module": "genes",
   "index": 3,
   "title": "Your Grandmother's Eyes",
+  "principle": "Someone who carries a broken copy without showing it is called a carrier.",
   "specimen": "pedigree-chart",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The way a trait moves through a family tells you what kind of trait it is, before you sequence anything."
       ]
     },
-
     {
       "type": "predict",
       "concept": "inheritance-patterns",
@@ -35,7 +35,6 @@
         "Commit. The previous lesson has already given you everything needed."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,17 +43,43 @@
         "Each pattern of inheritance leaves a distinctive signature in a family tree. Match them."
       ],
       "parts": [
-        { "id": "recessive", "label": "Needs two broken copies" },
-        { "id": "dominant", "label": "Needs only one" },
-        { "id": "xlinked", "label": "Carried on the X" }
+        {
+          "id": "recessive",
+          "label": "Needs two broken copies"
+        },
+        {
+          "id": "dominant",
+          "label": "Needs only one"
+        },
+        {
+          "id": "xlinked",
+          "label": "Carried on the X"
+        }
       ],
       "slots": [
-        { "accepts": "recessive", "label": ["Skips generations; parents unaffected", "Appears in siblings with unaffected parents; both sexes equally"] },
-        { "accepts": "dominant", "label": ["Shows in every generation", "Present in every generation, affected child always has an affected parent"] },
-        { "accepts": "xlinked", "label": ["Mostly boys, passed through mothers", "Predominantly males, transmitted through unaffected female carriers, never father to son"] }
+        {
+          "accepts": "recessive",
+          "label": [
+            "Skips generations; parents unaffected",
+            "Appears in siblings with unaffected parents; both sexes equally"
+          ]
+        },
+        {
+          "accepts": "dominant",
+          "label": [
+            "Shows in every generation",
+            "Present in every generation, affected child always has an affected parent"
+          ]
+        },
+        {
+          "accepts": "xlinked",
+          "label": [
+            "Mostly boys, passed through mothers",
+            "Predominantly males, transmitted through unaffected female carriers, never father to son"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -70,7 +95,6 @@
         "The distinction matters for reasoning about family history: absence of the phenotype in a generation is weak evidence about the genotype, and pedigrees are read with that asymmetry in mind."
       ]
     },
-
     {
       "type": "check",
       "concept": "inheritance-patterns",
@@ -91,11 +115,13 @@
         "Genotype and phenotype come apart here, which is precisely why the distinction is worth having. Nothing can jump a generation — transmission is strictly stepwise — so any apparent skip is an unexpressed carrier."
       ]
     },
-
     {
       "type": "check",
       "concept": "genotype-vs-phenotype",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "Why can a family tree tell you the pattern before any test?",
         "What licenses inferring a mode of inheritance from a pedigree alone?"
@@ -111,7 +137,6 @@
         "Pedigree analysis works by exclusion rather than accumulation. Each mode forbids particular transmissions — no male-to-male transmission for X-linked, no unaffected parent of an affected child for a fully penetrant dominant — so a single observation in the forbidden class eliminates a hypothesis outright. It is the same forbidden-outcome logic you met in the evidence lesson, applied to families."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

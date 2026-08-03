@@ -3,6 +3,7 @@
   "module": "neuroscience",
   "index": 2,
   "title": "Your Brain Edits What You See",
+  "principle": "What you see is not a picture of the world.",
   "specimen": "illusion-card",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "You do not see a gap. That is the part that needs explaining."
       ]
     },
-
     {
       "type": "predict",
       "concept": "perception-is-constructed",
@@ -35,7 +35,6 @@
         "Commit. The next stage has you demonstrate this on your own eye, so your answer is about to be tested."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "The thumb vanished and was replaced by plausible background rather than by darkness. Nothing reported the absence, because the filling-in happens before anything you can introspect on."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "Your eyes make several rapid movements a second and vision is suppressed during each one. Add it up and it is a substantial fraction of waking life spent not seeing, edited out so smoothly that the edit itself is undetectable from the inside."
       ]
     },
-
     {
       "type": "check",
       "concept": "perception-is-constructed",
@@ -96,7 +93,6 @@
         "The mapping from scene to retinal image loses information irreversibly, so recovering the scene is underdetermined and requires assumptions. Perception is the output of that inference. Illusions are not malfunctions — they are the inference machinery running correctly on input it was not built for."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "development",
   "index": 0,
   "title": "One Cell Becomes an Animal",
+  "principle": "Cells become different because of where they end up, not because they were told to.",
   "specimen": "first-division",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "There is no drawing of you anywhere. So what is there instead?"
       ]
     },
-
     {
       "type": "predict",
       "concept": "one-cell-to-many",
@@ -35,7 +35,6 @@
         "Commit. You already know every cell keeps the identical genome, which rules one of these straight out."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Nothing differentiated until there were distinguishable positions to occupy. Layers come first, and organs come from layers."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "Potency narrows as position resolves. Totipotent, then pluripotent, then multipotent, then committed — and each step is the loss of options rather than the loss of information."
       ]
     },
-
     {
       "type": "check",
       "concept": "one-cell-to-many",
@@ -96,7 +93,6 @@
         "Positional information is encoded in gradients and contacts, both strictly local. The remarkable part is that purely local rules produce a reproducible global arrangement, which is why development is the best worked example of emergence in biology."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "neuroscience",
   "index": 3,
   "title": "Memory Is Rebuilt, Not Replayed",
+  "principle": "Remembering rebuilds the memory, and then saves the rebuilt one.",
   "specimen": "recall-trace",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That has an uncomfortable consequence, and it is the opposite of what everyone assumes."
       ]
     },
-
     {
       "type": "predict",
       "concept": "memory-is-reconstructive",
@@ -35,7 +35,6 @@
         "Commit. The intuitive answer is the second, and the evidence goes the other way."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Retrieval is not read-only. The reconsolidated version replaces the original, so errors accumulate rather than being corrected."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "Confidence and accuracy are only weakly related, and both rise with rehearsal — so repeated telling makes a memory feel more certain while making it less faithful. That divergence is the single most practically important thing in this lesson."
       ]
     },
-
     {
       "type": "check",
       "concept": "memory-is-reconstructive",
@@ -96,11 +93,13 @@
         "They are tracking different things. Confidence tracks ease of retrieval, which rehearsal reliably improves; accuracy tracks correspondence to the event, which rehearsal can only degrade. Nothing in the system measures the second, so there is no internal signal that would tell you."
       ]
     },
-
     {
       "type": "check",
       "concept": "memory-is-reconstructive",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "Given all this, what is the best way to learn something?",
         "What does reconstructive memory imply about effective study?"
@@ -116,7 +115,6 @@
         "The testing effect follows directly: since retrieval reconsolidates, practising retrieval strengthens the trace far more than restudying does, and adding feedback corrects drift rather than compounding it. Re-reading raises fluency without raising accuracy, producing precisely the confidence–accuracy gap this lesson is about — and it is why this whole platform tests you on old material instead of letting you re-read it."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "evolution",
   "index": 0,
   "title": "What Would Change Your Mind?",
+  "principle": "There are two ways of knowing: watching it happen, and working it out from what is left.",
   "specimen": "two-lenses",
   "stages": [
     {
@@ -20,7 +21,6 @@
         "Method before content: what would make you change your mind, decided before you know which way the evidence falls."
       ]
     },
-
     {
       "type": "predict",
       "concept": "evidence-and-inference",
@@ -43,7 +43,6 @@
         "Commit before proceeding. Note that the third option is a live philosophical position, not a throwaway."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -59,7 +58,6 @@
         "The distinction matters most where the two are conflated. An inference presented as an observation borrows a certainty it has not earned; an observation dismissed as 'only inference' loses one it has."
       ]
     },
-
     {
       "type": "check",
       "concept": "testable-expectation",
@@ -82,10 +80,12 @@
         "A hypothesis is informative in proportion to what it rules out. Popper's asymmetry — that no number of confirmations establishes a universal claim while one clean falsification refutes it — is the strict form; in practice theories are compared on how much they forbid and how well they survive attempts to violate it."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "evidence-and-inference",
       "t": [
         "People who look at the very same rock sometimes reach different conclusions about it. Here is how each of them reasons.",
@@ -132,7 +132,6 @@
         "Both accounts fit the rock as described. So ask the question that separates them: what observation would each side accept as counting against its own position? An account that cannot answer that has stopped being testable — and the question applies with exactly equal force to both."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
@@ -143,7 +142,6 @@
         "It is also why 'were you there?' is a weaker challenge than it first appears — applied consistently it would dissolve criminal conviction, medical diagnosis and the reconstruction of yesterday. The serious version of the question is not whether the past is knowable but how much weight a particular inference can carry."
       ]
     },
-
     {
       "type": "check",
       "concept": "evidence-and-inference",

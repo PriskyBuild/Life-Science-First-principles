@@ -3,6 +3,7 @@
   "module": "disease",
   "index": 1,
   "title": "How Something Spreads",
+  "principle": "The number of people each ill person passes it to is called R.",
   "specimen": "spread-model",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Everything else — masks, vaccines, closures — is an attempt to move that number below one."
       ]
     },
-
     {
       "type": "predict",
       "concept": "transmission-and-r0",
@@ -35,39 +35,51 @@
         "Commit. One is the knife edge, and everything about control is about which side of it you are on."
       ]
     },
-
     {
       "type": "sim",
       "sim": "outbreak",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Watch one ill person turn into an outbreak, and watch it end.",
         "One case in a thousand people. Watch it grow, peak and stop — and look at how many were never infected at all when it ended."
       ],
-      "params": { "task": "spread", "r0": 3, "aspect": 0.6 },
+      "params": {
+        "task": "spread",
+        "r0": 3,
+        "aspect": 0.6
+      },
       "goal": [
         "It ran out of steam before it ran out of people.",
         "It ended with hundreds never infected. An epidemic stops when it can no longer find people easily, not when it has run out of them."
       ]
     },
-
     {
       "type": "sim",
       "sim": "outbreak",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Change how catchy it is and watch what that does to the shape.",
         "Vary R₀ and observe both the peak and the final size. Note that the final size rises steeply between 1 and 3 and then saturates — almost everyone is infected either way above about 4."
       ],
-      "params": { "task": "spread", "r0": 3, "catchy": true, "aspect": 0.6 },
+      "params": {
+        "task": "spread",
+        "r0": 3,
+        "catchy": true,
+        "aspect": 0.6
+      },
       "goal": [
         "A bigger number makes it faster and bigger, but there is a limit to how much worse it can get.",
         "R₀ controls both speed and final size, but the two saturate differently — above about R₀ = 4 nearly everyone is infected regardless, and the remaining effect is on how fast."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -83,7 +95,6 @@
         "The effective R falls as susceptibles are used up, so an unchecked epidemic ends by exhausting its own fuel. The overshoot is why: transmission continues past the threshold because there are still many infectious people, so the final size exceeds what the threshold alone would suggest."
       ]
     },
-
     {
       "type": "check",
       "concept": "transmission-and-r0",
@@ -104,7 +115,6 @@
         "Because infectious people are still present when the threshold is crossed, so transmission continues while R is below one and declining. That overshoot means the final size exceeds the threshold, which is why an unchecked epidemic infects considerably more people than herd immunity strictly requires — and why reaching immunity by infection costs far more cases than reaching it by vaccination."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

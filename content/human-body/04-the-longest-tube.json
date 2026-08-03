@@ -3,6 +3,7 @@
   "module": "human-body",
   "index": 3,
   "title": "The Longest Tube",
+  "principle": "Digestion is taking food apart into pieces small enough to cross the wall.",
   "specimen": "gut-tube",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Nothing has entered you until it crosses the gut wall, which is where the interesting part happens."
       ]
     },
-
     {
       "type": "predict",
       "concept": "digestion-is-disassembly",
@@ -35,7 +35,6 @@
         "Commit. You met the size constraint in the membrane and the design constraint in proteins."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Match each region of the gut to its function."
       ],
       "parts": [
-        { "id": "mouth", "label": "Mouth" },
-        { "id": "stomach", "label": "Stomach" },
-        { "id": "small", "label": "Small intestine" },
-        { "id": "large", "label": "Large intestine" }
+        {
+          "id": "mouth",
+          "label": "Mouth"
+        },
+        {
+          "id": "stomach",
+          "label": "Stomach"
+        },
+        {
+          "id": "small",
+          "label": "Small intestine"
+        },
+        {
+          "id": "large",
+          "label": "Large intestine"
+        }
       ],
       "slots": [
-        { "accepts": "mouth", "label": ["Breaks it into smaller lumps", "Mechanical breakdown, and starch digestion begins"] },
-        { "accepts": "stomach", "label": ["Acid, and starts on the proteins", "Acid denaturation and protein digestion"] },
-        { "accepts": "small", "label": ["Where almost everything gets absorbed", "Enzymatic completion and nearly all absorption"] },
-        { "accepts": "large", "label": ["Takes the water back", "Water reabsorption and the bacterial community"] }
+        {
+          "accepts": "mouth",
+          "label": [
+            "Breaks it into smaller lumps",
+            "Mechanical breakdown, and starch digestion begins"
+          ]
+        },
+        {
+          "accepts": "stomach",
+          "label": [
+            "Acid, and starts on the proteins",
+            "Acid denaturation and protein digestion"
+          ]
+        },
+        {
+          "accepts": "small",
+          "label": [
+            "Where almost everything gets absorbed",
+            "Enzymatic completion and nearly all absorption"
+          ]
+        },
+        {
+          "accepts": "large",
+          "label": [
+            "Takes the water back",
+            "Water reabsorption and the bacterial community"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "And why insulin has to be injected rather than swallowed. It is a protein, and the gut would take it apart into amino acids before it could do anything — the delivery problem, not the chemistry, is what kept it a needle for a century."
       ]
     },
-
     {
       "type": "check",
       "concept": "digestion-is-disassembly",
@@ -93,7 +126,6 @@
         "Reduction to monomers is what makes any food substitutable for any other. It is also why the process must be thorough: an intact protein crossing the barrier is precisely the signal the immune system treats as foreign, which is the basis of food allergy."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

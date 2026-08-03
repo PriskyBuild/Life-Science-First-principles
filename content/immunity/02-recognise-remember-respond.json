@@ -3,6 +3,7 @@
   "module": "immunity",
   "index": 1,
   "title": "Recognise, Remember, Respond",
+  "principle": "Your body makes millions of random shapes, then copies whichever ones fit.",
   "specimen": "antibody",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The genome is not large enough to hold a receptor for every possible target. Something else must be going on."
       ]
     },
-
     {
       "type": "predict",
       "concept": "recognise-remember-respond",
@@ -35,10 +35,12 @@
         "Commit. Note that the winning strategy here is the same one that produced the beetles."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "What happens next?",
       "min": 0,
@@ -60,10 +62,12 @@
         "Nothing was designed in response to the germ. The matching cells existed beforehand and were selected and amplified — which is a mechanism you have run before."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "Work out which mechanism this is",
       "min": 0,
@@ -85,7 +89,6 @@
         "It is Darwinian selection on a cell population, on a timescale of days. Burnet's 1957 clonal selection theory was an explicit application of the same three conditions, and it is why the immune system can meet a molecule that has never existed."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -101,7 +104,6 @@
         "Affinity maturation then runs a second round of the same process: memory B cells mutate their receptors at high rate and the best binders are selected again, so the response improves across encounters. Selection inside a body, over weeks, producing measurable optimisation."
       ]
     },
-
     {
       "type": "check",
       "concept": "recognise-remember-respond",
@@ -122,7 +124,6 @@
         "The instructive theory — antigen acting as a template for antibody shape — was the leading account into the 1950s and was displaced by clonal selection. The decisive consideration was the same one that settles the resistance question: the specificity exists before the encounter, and the encounter only amplifies it."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

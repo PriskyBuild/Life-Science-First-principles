@@ -3,6 +3,7 @@
   "module": "future-biology",
   "index": 0,
   "title": "Growing an Organ",
+  "principle": "Growing living tissue on a shape you designed is called tissue engineering.",
   "specimen": "scaffold",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The limit is set by how far a molecule of oxygen will diffuse before it is used up."
       ]
     },
-
     {
       "type": "predict",
       "concept": "grown-tissue",
@@ -35,7 +35,6 @@
         "Commit. Ask how far from a blood vessel a cell can be before it starves — the number is smaller than you expect."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,43 +43,137 @@
         "Assign each requirement to the job it does, then five tests of increasing severity. Placement is unconstrained."
       ],
       "parts": [
-        { "id": "cells", "label": "Living cells" },
-        { "id": "scaffold", "label": "A scaffold" },
-        { "id": "signals", "label": "Signals" },
-        { "id": "vessels", "label": "Blood vessels through it" },
-        { "id": "match", "label": "A match to the patient" }
+        {
+          "id": "cells",
+          "label": "Living cells"
+        },
+        {
+          "id": "scaffold",
+          "label": "A scaffold"
+        },
+        {
+          "id": "signals",
+          "label": "Signals"
+        },
+        {
+          "id": "vessels",
+          "label": "Blood vessels through it"
+        },
+        {
+          "id": "match",
+          "label": "A match to the patient"
+        }
       ],
       "slots": [
-        { "correct": "cells", "label": ["The living stuff it is actually made of"] },
-        { "correct": "scaffold", "label": ["The shape they grow into"] },
-        { "correct": "signals", "label": ["What tells each cell which kind to become"] },
-        { "correct": "vessels", "label": ["A route to every cell in the middle"] },
-        { "correct": "match", "label": ["Why the body does not attack it"] }
+        {
+          "correct": "cells",
+          "label": [
+            "The living stuff it is actually made of"
+          ]
+        },
+        {
+          "correct": "scaffold",
+          "label": [
+            "The shape they grow into"
+          ]
+        },
+        {
+          "correct": "signals",
+          "label": [
+            "What tells each cell which kind to become"
+          ]
+        },
+        {
+          "correct": "vessels",
+          "label": [
+            "A route to every cell in the middle"
+          ]
+        },
+        {
+          "correct": "match",
+          "label": [
+            "Why the body does not attack it"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Grow a patch of skin", "Thin tissue"],
-          "needs": ["cells", "scaffold"],
-          "pass": ["Cells on a shape. Thin tissue genuinely works, and is used on patients.", "Cells seeded on a scaffold produce functional thin constructs. Engineered skin has been in clinical use for decades."],
-          "fail": ["Cells with no shape are a puddle; a shape with no cells is a plastic model.", "Both are necessary before there is anything to evaluate."]
+          "name": [
+            "Grow a patch of skin",
+            "Thin tissue"
+          ],
+          "needs": [
+            "cells",
+            "scaffold"
+          ],
+          "pass": [
+            "Cells on a shape. Thin tissue genuinely works, and is used on patients.",
+            "Cells seeded on a scaffold produce functional thin constructs. Engineered skin has been in clinical use for decades."
+          ],
+          "fail": [
+            "Cells with no shape are a puddle; a shape with no cells is a plastic model.",
+            "Both are necessary before there is anything to evaluate."
+          ]
         },
         {
-          "name": ["Make it the right kind of tissue", "Identity"],
-          "needs": ["cells", "scaffold", "signals"],
-          "pass": ["The cells became what you needed them to become.", "Differentiation cues determine cell fate; this is the development machinery, used deliberately."],
-          "fail": ["You grew a lump of cells that never decided what they were.", "Without positional and chemical cues, cells do not adopt the identities the tissue requires. This is the same signalling you met in Development."]
+          "name": [
+            "Make it the right kind of tissue",
+            "Identity"
+          ],
+          "needs": [
+            "cells",
+            "scaffold",
+            "signals"
+          ],
+          "pass": [
+            "The cells became what you needed them to become.",
+            "Differentiation cues determine cell fate; this is the development machinery, used deliberately."
+          ],
+          "fail": [
+            "You grew a lump of cells that never decided what they were.",
+            "Without positional and chemical cues, cells do not adopt the identities the tissue requires. This is the same signalling you met in Development."
+          ]
         },
         {
-          "name": ["Make it thicker than a coin", "Diffusion limit"],
-          "needs": ["cells", "scaffold", "signals", "vessels"],
-          "pass": ["There is a blood supply reaching the middle, so the middle stays alive.", "A perfusable vascular network keeps every cell within diffusion distance of a supply."],
-          "fail": ["The outside is alive and the middle starved. Oxygen only reaches about a fifth of a millimetre.", "Oxygen diffuses roughly 100 to 200 micrometres before it is exhausted. Beyond that the core becomes necrotic — which is the single reason solid organs are not yet made."]
+          "name": [
+            "Make it thicker than a coin",
+            "Diffusion limit"
+          ],
+          "needs": [
+            "cells",
+            "scaffold",
+            "signals",
+            "vessels"
+          ],
+          "pass": [
+            "There is a blood supply reaching the middle, so the middle stays alive.",
+            "A perfusable vascular network keeps every cell within diffusion distance of a supply."
+          ],
+          "fail": [
+            "The outside is alive and the middle starved. Oxygen only reaches about a fifth of a millimetre.",
+            "Oxygen diffuses roughly 100 to 200 micrometres before it is exhausted. Beyond that the core becomes necrotic — which is the single reason solid organs are not yet made."
+          ]
         },
         {
-          "name": ["Put it in a person", "Rejection"],
-          "needs": ["cells", "scaffold", "signals", "vessels", "match"],
-          "pass": ["Built from the patient's own cells, so there is nothing foreign to attack.", "Autologous cells avoid alloimmune rejection, removing the need for lifelong immunosuppression."],
-          "fail": ["A working organ that the immune system destroys within days.", "This is the recognition problem from Immunity, viewed from the other side: the machinery that distinguishes self from non-self does not care that you built it on purpose."]
+          "name": [
+            "Put it in a person",
+            "Rejection"
+          ],
+          "needs": [
+            "cells",
+            "scaffold",
+            "signals",
+            "vessels",
+            "match"
+          ],
+          "pass": [
+            "Built from the patient's own cells, so there is nothing foreign to attack.",
+            "Autologous cells avoid alloimmune rejection, removing the need for lifelong immunosuppression."
+          ],
+          "fail": [
+            "A working organ that the immune system destroys within days.",
+            "This is the recognition problem from Immunity, viewed from the other side: the machinery that distinguishes self from non-self does not care that you built it on purpose."
+          ]
         }
       ],
       "win": [
@@ -92,7 +185,6 @@
         "Each failed trial names an unmet requirement. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -108,7 +200,6 @@
         "This field also carries a cautionary case worth knowing. In the 2010s a surgeon implanted engineered tracheas into patients on the strength of results that were later found to have been misreported; most of the patients died, and he was convicted of criminal negligence. The medicine failed because the review did — which is a reason to read the follow-up data rather than the announcement, in this field particularly."
       ]
     },
-
     {
       "type": "check",
       "concept": "grown-tissue",
@@ -129,7 +220,6 @@
         "Because it inherits the network instead of building it. Stripping a donor organ of its cells leaves the vascular tree intact down to the capillaries, so the geometry problem is transferred rather than solved — and the approach then needs a donor organ, which is the shortage it was meant to relieve."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

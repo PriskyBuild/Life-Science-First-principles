@@ -3,6 +3,7 @@
   "module": "cells",
   "index": 1,
   "title": "The Wall That Chooses",
+  "principle": "A wall with holes that pick and choose is called a membrane.",
   "specimen": "membrane",
   "stages": [
     {
@@ -20,7 +21,6 @@
         "Selectivity here is steric. Chemistry adds channels and pumps later; size alone gets you surprisingly far."
       ]
     },
-
     {
       "type": "predict",
       "concept": "membrane-selectivity",
@@ -30,7 +30,11 @@
         "Widening the pores changes what can cross. Predict the consequence.",
         "Pore radius is the only free parameter. Predict the effect on solute flux by species."
       ],
-      "options": ["Only the food", "The food and the poison", "Nothing changes"],
+      "options": [
+        "Only the food",
+        "The food and the poison",
+        "Nothing changes"
+      ],
       "outcome": "The food and the poison",
       "note": [
         "Have a guess. Nobody gets this one for free.",
@@ -39,41 +43,67 @@
         "State your prediction before manipulating the parameter; the anchoring is what makes the correction durable."
       ]
     },
-
     {
       "type": "sim",
       "sim": "membrane",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Move the slider. Try to get food inside and keep the poison out.",
         "Move the slider to change the hole size. Get the food in and keep the poison out."
       ],
-      "params": { "kinds": 3, "pore": 2, "per": 12, "target": 0.5 },
-      "paramsByLevel": { "1": { "kinds": 2, "per": 10, "target": 0.4 } },
+      "params": {
+        "kinds": 3,
+        "pore": 2,
+        "per": 12,
+        "target": 0.5
+      },
+      "paramsByLevel": {
+        "1": {
+          "kinds": 2,
+          "per": 10,
+          "target": 0.4
+        }
+      },
       "goal": [
         "You did it — the food got in and the poison stayed out.",
         "That is a working membrane: big enough for food, too small for poison."
       ]
     },
-
     {
       "type": "sim",
       "sim": "membrane",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Five molecules, one pore size, and waste that has to get out as well as food getting in. Find the setting that works — and notice there may not be one that is perfect.",
         "Six species, one steric parameter, and bidirectional requirements. Find the optimum, and notice that steric selectivity alone cannot satisfy every constraint at once. That gap is why channels and pumps exist."
       ],
-      "params": { "kinds": 5, "pore": 3, "per": 12, "temp": 1, "target": 0.55 },
-      "paramsByLevel": { "4": { "kinds": 6, "per": 14, "target": 0.6 } },
+      "params": {
+        "kinds": 5,
+        "pore": 3,
+        "per": 12,
+        "temp": 1,
+        "target": 0.55
+      },
+      "paramsByLevel": {
+        "4": {
+          "kinds": 6,
+          "per": 14,
+          "target": 0.6
+        }
+      },
       "goal": [
         "That is the best size — and it still is not perfect. Real cells cheat, and you will find out how.",
         "You found the steric optimum, and it still leaks. Real membranes add selectivity channels and active pumps precisely because size alone runs out."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -89,7 +119,6 @@
         "Net flux emerged from an unbiased random walk plus an initial concentration difference. No energy was spent; equilibrium, not transport, is the endpoint."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
@@ -100,7 +129,6 @@
         "Lipinski's rules are, at heart, an empirical summary of what crosses a bilayer. Most failed candidates fail on delivery, not on binding affinity."
       ]
     },
-
     {
       "type": "check",
       "concept": "membrane-selectivity",
@@ -110,7 +138,11 @@
         "What determined which molecules crossed the membrane?",
         "What is the selectivity mechanism at work here?"
       ],
-      "options": ["It was too big for the holes", "The cell pushed it away", "Poison cannot move"],
+      "options": [
+        "It was too big for the holes",
+        "The cell pushed it away",
+        "Poison cannot move"
+      ],
       "answer": 0,
       "why": [
         "The holes were big enough for food and too small for poison. Nothing pushed anything — the size did all the work.",
@@ -119,7 +151,6 @@
         "Steric exclusion alone. Both species executed the same unbiased random walk; only the pore geometry differed in outcome."
       ]
     },
-
     {
       "type": "check",
       "concept": "diffusion-is-passive",
@@ -129,7 +160,11 @@
         "What drove net movement of food into the cell?",
         "What accounts for the net inward flux of food?"
       ],
-      "options": ["It moved randomly and there was more room inside", "The cell sucked it in", "Food always moves towards cells"],
+      "options": [
+        "It moved randomly and there was more room inside",
+        "The cell sucked it in",
+        "Food always moves towards cells"
+      ],
       "answer": 0,
       "why": [
         "Every molecule wandered at random. There were more outside than inside, so more wandered in than out — until it evened up.",

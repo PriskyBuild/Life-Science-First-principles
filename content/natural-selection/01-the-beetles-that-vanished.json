@@ -3,6 +3,7 @@
   "module": "natural-selection",
   "index": 0,
   "title": "The Beetles That Vanished",
+  "principle": "This is called natural selection. Nobody chose.",
   "specimen": "pale-beetle",
   "stages": [
     {
@@ -20,7 +21,6 @@
         "The unit that changed is not the unit you are looking at. That displacement is the whole idea."
       ]
     },
-
     {
       "type": "predict",
       "concept": "selection-needs-no-agent",
@@ -43,41 +43,64 @@
         "Note which options require an agent and which require only differential mortality. That distinction is the lesson."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Move the ground to dark soil. Then send the bird, and let the ones that are left have babies. Do it again and again.",
         "Set the ground to something the beetles do not match. Then take turns: send the bird, let the survivors breed. Watch the line at the bottom."
       ],
-      "params": { "task": "watch", "bg": 0.85, "aspect": 0.78 },
-      "paramsByLevel": { "1": { "n": 27, "pressure": 0.85 } },
+      "params": {
+        "task": "watch",
+        "bg": 0.85,
+        "aspect": 0.78
+      },
+      "paramsByLevel": {
+        "1": {
+          "n": 27,
+          "pressure": 0.85
+        }
+      },
       "goal": [
         "The beetles match the ground now — and not one of them ever changed colour.",
         "The population matches its background, and no individual beetle changed. Only which beetles were left changed."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Three things have to be true for this to work, and they are on switches. Get it working first. Then switch exactly one off, run five generations, and see whether it still works.",
         "Three conditions are exposed as switches. Establish the effect with all three on, then remove precisely one, hold the other two, and run enough generations to distinguish a real halt from noise. Removing two at once will also stop it and will tell you nothing about why."
       ],
-      "params": { "task": "break", "bg": 0.85, "switches": true, "aspect": 0.82 },
-      "paramsByLevel": { "4": { "n": 45, "pressure": 0.7, "mutation": 0.05 } },
+      "params": {
+        "task": "break",
+        "bg": 0.85,
+        "switches": true,
+        "aspect": 0.82
+      },
+      "paramsByLevel": {
+        "4": {
+          "n": 45,
+          "pressure": 0.7,
+          "mutation": 0.05
+        }
+      },
       "goal": [
         "You stopped it. That is the important half.",
         "You found a condition that adaptation cannot do without. The other two are still there to try."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -93,7 +116,6 @@
         "Darwin took the term by analogy from artificial selection, where a breeder does choose. The analogy carried a chooser into a process that has none, and that borrowed implication has caused a century and a half of confusion."
       ]
     },
-
     {
       "type": "check",
       "concept": "selection-needs-no-agent",
@@ -116,11 +138,13 @@
         "Selection acts on individuals and changes populations. Confusing the two levels produces Lamarckian intuitions — the beetle striving and darkening — which the simulation rules out by construction: shade is assigned at hatching and never written to again."
       ]
     },
-
     {
       "type": "check",
       "concept": "three-conditions",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "You switched off 'babies like parents' and it stopped. Why?",
         "Removing heredity halted adaptation even though the predator still ate the mismatched beetles. Why?",
@@ -138,7 +162,6 @@
         "Differential mortality without transmission produces no cumulative change. Selection sorts a generation; heredity is what makes the sorting persist. Remove it and each generation is an independent sample — the population is culled every round and returns to the same mean every round."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
@@ -149,7 +172,6 @@
         "Resistance is not something bacteria develop in response to a drug; it is something a drug reveals and then amplifies. The variation is present beforehand at low frequency. This is also why resistance management is a selection problem — cycling, combination therapy, reduced agricultural use — rather than a chemistry problem."
       ]
     },
-
     {
       "type": "check",
       "concept": "selection-is-observed",

@@ -3,6 +3,7 @@
   "module": "genes",
   "index": 0,
   "title": "What Is a Gene For?",
+  "principle": "A gene is a stretch of the thread that has one job.",
   "specimen": "gene-tag",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Before you can read a genome you have to solve a problem nobody set out to create: where does one instruction end and the next begin?"
       ]
     },
-
     {
       "type": "predict",
       "concept": "gene-is-a-unit",
@@ -35,7 +35,6 @@
         "Commit. The solution is the same one a written language would reach for, which is a hint about what a genome is."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "The unit is not defined by length but by boundaries: a promoter that says where to begin, a coding stretch, and a stop. Everything else about a gene follows from that."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "Gene count correlates poorly with anything anyone expected it to. The complexity is in regulation and combination, not inventory — which is what the next lesson is about."
       ]
     },
-
     {
       "type": "check",
       "concept": "gene-is-a-unit",
@@ -96,7 +93,6 @@
         "The individuation is functional and regulatory rather than structural, which is exactly why the concept frays at the edges: overlapping reading frames, nested genes and alternative splicing all break the assumption that the genome partitions cleanly into units."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
@@ -105,7 +101,6 @@
         "Gene editing needs an address before it needs a tool. Locating boundaries precisely is what makes it possible to target a therapy at one gene and leave its neighbours alone — and getting the address wrong is the main risk in the whole field."
       ]
     },
-
     {
       "type": "check",
       "concept": "genotype-vs-phenotype",

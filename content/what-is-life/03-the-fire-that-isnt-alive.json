@@ -3,6 +3,7 @@
   "module": "what-is-life",
   "index": 2,
   "title": "The Fire That Isn't Alive",
+  "principle": "Getting energy out in small steps, on purpose, is called metabolism.",
   "specimen": "flame-jar",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "This is the sharpest test the seven signs face, and working out what is absent is the point of the lesson."
       ]
     },
-
     {
       "type": "predict",
       "concept": "metabolism-is-not-burning",
@@ -35,7 +35,6 @@
         "Commit. Two of these are serious answers and one is a red herring about temperature."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Two real differences: energy released in small captured steps rather than all at once, and a heritable specification of the system itself. Everything else was a draw."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "This is why fire is the sharpest counter-example available. It has metabolism-like behaviour with no coupling and reproduction-like behaviour with no heredity — and it isolates exactly the two properties that matter."
       ]
     },
-
     {
       "type": "check",
       "concept": "metabolism-is-not-burning",
@@ -96,11 +93,13 @@
         "Both are needed and neither is present. Without energy capture there is nothing to power maintenance; without heredity there is nothing to select on, so a fire cannot adapt in any generation, however many flames it lights."
       ]
     },
-
     {
       "type": "check",
       "concept": "life-is-a-process",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "Cells and fires run the same reaction on sugar. So what differs?",
         "Glucose oxidation has the same ΔG in a cell and in a flame. What differs?"
@@ -116,7 +115,6 @@
         "Reactants, products and free energy change are identical; only the path differs. Thermodynamics fixes the endpoints and says nothing about the route, which is precisely the freedom enzymes exploit — they cannot change what is possible, only how fast and in what steps, and the steps are where the energy gets captured."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

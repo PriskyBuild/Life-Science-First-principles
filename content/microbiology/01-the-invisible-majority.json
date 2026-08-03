@@ -3,6 +3,7 @@
   "module": "microbiology",
   "index": 0,
   "title": "The Invisible Majority",
+  "principle": "Living things too small to see are called microbes, and there are more of them than everything else put together.",
   "specimen": "microbe-scale",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Every explanation of disease before that date was constructed without the main cause of it."
       ]
     },
-
     {
       "type": "predict",
       "concept": "invisible-majority",
@@ -35,7 +35,6 @@
         "Commit. A human hair is about 70 micrometres and a typical bacterium about 1 to 2."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "The light microscope reaches bacteria and stops; viruses needed the electron microscope in the 1930s. Each instrument revealed a layer that had been there throughout."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "Your mitochondria and a plant's chloroplasts are captured bacteria, retained as organelles. Complex life did not invent its own power supply; it acquired one, and the evidence is that both still carry their own genomes."
       ]
     },
-
     {
       "type": "check",
       "concept": "invisible-majority",
@@ -96,7 +93,6 @@
         "The observation was gated entirely on optics, which is why the discovery arrives so suddenly and so completely once lens-making improves. It is a clean example of a whole domain of nature being inaccessible not for want of thought but for want of an instrument — and a reason to be careful about concluding that something does not exist."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

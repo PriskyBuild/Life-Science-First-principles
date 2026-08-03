@@ -3,6 +3,7 @@
   "module": "evolution",
   "index": 3,
   "title": "Family Trees Written in DNA",
+  "principle": "When the same broken bit turns up in the same place in two creatures, that is called a shared error.",
   "specimen": "sequence-reader",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The interesting question is not the missing ability. It is the presence of the broken instructions for it."
       ]
     },
-
     {
       "type": "predict",
       "concept": "shared-errors",
@@ -35,7 +35,6 @@
         "Commit. Note that shared correctness proves nothing here — everyone spells common words the same. It is the shared error that carries the weight."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -51,10 +50,12 @@
         "Roughly 8% of the human genome is retroviral in origin, and the insertion sites are shared with other primates in a nested pattern that matches the tree derived from anatomy."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "shared-errors",
       "t": [
         "The broken genes are really there, in the same places. Here is what each side makes of that.",
@@ -101,7 +102,6 @@
         "Test the reasoning on both sides. Does discovering a function for some retroviral insertions bear on why the insertion sites match position-for-position? And does congruence across gene trees follow from design, or is it compatible with any nested arrangement a designer chose? Ask each account what result it would count as a loss."
       ]
     },
-
     {
       "type": "check",
       "concept": "shared-errors",
@@ -122,7 +122,6 @@
         "It is an argument from the size of the outcome space. Convergence on function is expected under constraint; convergence on one particular lesion out of an enormous set of equally-disabling alternatives is not. This is why the argument targets shared derived defects specifically, and why demonstrating function in the sequence is the relevant counter-move."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "crispr",
   "index": 0,
   "title": "Scissors That Read First",
+  "principle": "The matching strand is called a guide, and it takes the scissors to the right place.",
   "specimen": "guide-rna",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The mechanism is one you have operated already, in a different world."
       ]
     },
-
     {
       "type": "predict",
       "concept": "guided-cutting",
@@ -35,27 +35,39 @@
         "Commit. A only pairs with T and C only with G, and you have already built a whole strand on that."
       ]
     },
-
     {
       "type": "sim",
       "sim": "replication",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "This is the same pairing you already did. A guide only sticks where the letters match.",
         "The same rule as copying: each letter has exactly one partner. That is how a guide finds its target and nothing else."
       ],
-      "params": { "task": "pair", "n": 14, "aspect": 0.62 },
-      "paramsByLevel": { "1": { "n": 10 } },
+      "params": {
+        "task": "pair",
+        "n": 14,
+        "aspect": 0.62
+      },
+      "paramsByLevel": {
+        "1": {
+          "n": 10
+        }
+      },
       "goal": [
         "Only the right letters stick. That is how the scissors know where they are.",
         "Every position had exactly one correct partner and nothing else would stay. Run that rule over twenty letters and you have an address."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "How long is the guide?",
       "min": 0,
@@ -77,7 +89,6 @@
         "4²⁰ ≈ 10¹² against 3×10⁹ positions, so a 20-mer is expected to be unique by a margin of about 300. That is why the guide is the length it is — and why 'usually unique' rather than 'always' is the honest phrasing."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -93,7 +104,6 @@
         "The PAM requirement means not every sequence is targetable, and much of the subsequent engineering has gone into variants with relaxed requirements. Worth knowing because the popular account presents the tool as universal, and the constraint is one of the first things anyone doing it actually meets."
       ]
     },
-
     {
       "type": "check",
       "concept": "guided-cutting",
@@ -114,7 +124,6 @@
         "Because it makes the address a piece of data rather than a piece of engineering. Every previous targeted nuclease required designing a new protein per target; here the protein is constant and only the RNA changes, which is why the cost and time fell by orders of magnitude and why the technique spread as fast as it did."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

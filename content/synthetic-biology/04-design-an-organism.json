@@ -3,6 +3,7 @@
   "module": "synthetic-biology",
   "index": 3,
   "title": "Design an Organism",
+  "principle": "Anything you build into a living thing has to survive being alive.",
   "specimen": "designed-organism",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "You met this shape in Environmental Science: look up, look down, ask if it can be undone."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -25,37 +25,119 @@
         "Assign each element to what it guarantees. Placement is unconstrained; then five tests."
       ],
       "parts": [
-        { "id": "job", "label": "A defined job" },
-        { "id": "chassis", "label": "A host it can live in" },
-        { "id": "circuit", "label": "A circuit to control it" },
-        { "id": "burden", "label": "A check on the cost to the host" },
-        { "id": "contain", "label": "Containment" }
+        {
+          "id": "job",
+          "label": "A defined job"
+        },
+        {
+          "id": "chassis",
+          "label": "A host it can live in"
+        },
+        {
+          "id": "circuit",
+          "label": "A circuit to control it"
+        },
+        {
+          "id": "burden",
+          "label": "A check on the cost to the host"
+        },
+        {
+          "id": "contain",
+          "label": "Containment"
+        }
       ],
       "slots": [
-        { "correct": "job", "label": ["Says what it is meant to do"] },
-        { "correct": "chassis", "label": ["Something that can actually run it"] },
-        { "correct": "circuit", "label": ["Decides when it does it"] },
-        { "correct": "burden", "label": ["Checks the host can afford it"] },
-        { "correct": "contain", "label": ["Makes sure it cannot survive outside"] }
+        {
+          "correct": "job",
+          "label": [
+            "Says what it is meant to do"
+          ]
+        },
+        {
+          "correct": "chassis",
+          "label": [
+            "Something that can actually run it"
+          ]
+        },
+        {
+          "correct": "circuit",
+          "label": [
+            "Decides when it does it"
+          ]
+        },
+        {
+          "correct": "burden",
+          "label": [
+            "Checks the host can afford it"
+          ]
+        },
+        {
+          "correct": "contain",
+          "label": [
+            "Makes sure it cannot survive outside"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Do the job in a flask", "Function"],
-          "needs": ["job", "chassis", "circuit"],
-          "pass": ["It works under laboratory conditions.", "The construct performs its specified function in the host."],
-          "fail": ["Missing a job, a host, or the control over it.", "All three are needed before there is anything to test."]
+          "name": [
+            "Do the job in a flask",
+            "Function"
+          ],
+          "needs": [
+            "job",
+            "chassis",
+            "circuit"
+          ],
+          "pass": [
+            "It works under laboratory conditions.",
+            "The construct performs its specified function in the host."
+          ],
+          "fail": [
+            "Missing a job, a host, or the control over it.",
+            "All three are needed before there is anything to test."
+          ]
         },
         {
-          "name": ["Still work after a hundred generations", "Evolutionary stability"],
-          "needs": ["job", "chassis", "circuit", "burden"],
-          "pass": ["The cost is low enough that broken copies do not take over.", "Low metabolic burden keeps loss-of-function mutants from outcompeting producers."],
-          "fail": ["Cells that broke the circuit grew faster and took over the flask.", "This is selection acting on YOUR design. A construct that costs the host anything is a fitness disadvantage, so any cell that loses it outgrows the rest — the machine you built is a target for the mechanism you learned in Change."]
+          "name": [
+            "Still work after a hundred generations",
+            "Evolutionary stability"
+          ],
+          "needs": [
+            "job",
+            "chassis",
+            "circuit",
+            "burden"
+          ],
+          "pass": [
+            "The cost is low enough that broken copies do not take over.",
+            "Low metabolic burden keeps loss-of-function mutants from outcompeting producers."
+          ],
+          "fail": [
+            "Cells that broke the circuit grew faster and took over the flask.",
+            "This is selection acting on YOUR design. A construct that costs the host anything is a fitness disadvantage, so any cell that loses it outgrows the rest — the machine you built is a target for the mechanism you learned in Change."
+          ]
         },
         {
-          "name": ["Not escape", "Containment"],
-          "needs": ["job", "chassis", "circuit", "burden", "contain"],
-          "pass": ["It cannot live outside the conditions you provide.", "Auxotrophy or a synthetic dependency confines it."],
-          "fail": ["It works, it is stable, and it is now in the river.", "Containment is designed in — usually by making the organism dependent on a chemical that does not exist in nature — because a released organism cannot be recalled."]
+          "name": [
+            "Not escape",
+            "Containment"
+          ],
+          "needs": [
+            "job",
+            "chassis",
+            "circuit",
+            "burden",
+            "contain"
+          ],
+          "pass": [
+            "It cannot live outside the conditions you provide.",
+            "Auxotrophy or a synthetic dependency confines it."
+          ],
+          "fail": [
+            "It works, it is stable, and it is now in the river.",
+            "Containment is designed in — usually by making the organism dependent on a chemical that does not exist in nature — because a released organism cannot be recalled."
+          ]
         }
       ],
       "win": [
@@ -67,7 +149,6 @@
         "Each failed trial names the requirement that was unmet. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -83,7 +164,6 @@
         "Coupling is the more elegant fix: engineer the product so the cell needs it, and losing the construct becomes lethal instead of advantageous. That turns selection from an adversary into an ally, and it is the design principle the field has converged on."
       ]
     },
-
     {
       "type": "check",
       "concept": "design-then-test",
@@ -104,7 +184,6 @@
         "Because it reverses the sign of the selection. If the cell cannot survive without producing, then losing the construct is lethal rather than advantageous, and the same mechanism that was destroying your design now maintains it. Working with selection rather than against it is the general lesson."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

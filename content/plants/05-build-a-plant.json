@@ -3,6 +3,7 @@
   "module": "plants",
   "index": 4,
   "title": "Build a Plant",
+  "principle": "Every part of a plant is an answer to being stuck in one place.",
   "specimen": "whole-plant",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Nothing here is new. What is new is that they all have to hold at once."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -25,43 +25,140 @@
         "Assign each structure to its function. Placement is unconstrained; the assignment is the whole of the marking."
       ],
       "parts": [
-        { "id": "roots", "label": "Roots" },
-        { "id": "xylem", "label": "Water tubes" },
-        { "id": "leaf", "label": "Flat leaves" },
-        { "id": "stomata", "label": "Adjustable pores" },
-        { "id": "flower", "label": "Flowers" }
+        {
+          "id": "roots",
+          "label": "Roots"
+        },
+        {
+          "id": "xylem",
+          "label": "Water tubes"
+        },
+        {
+          "id": "leaf",
+          "label": "Flat leaves"
+        },
+        {
+          "id": "stomata",
+          "label": "Adjustable pores"
+        },
+        {
+          "id": "flower",
+          "label": "Flowers"
+        }
       ],
       "slots": [
-        { "correct": "roots", "label": ["Collects water and holds it upright"] },
-        { "correct": "xylem", "label": ["Carries water up without a pump"] },
-        { "correct": "leaf", "label": ["Catches as much light as possible"] },
-        { "correct": "stomata", "label": ["Lets gas in, and can shut when it must"] },
-        { "correct": "flower", "label": ["Gets pollen to another plant"] }
+        {
+          "correct": "roots",
+          "label": [
+            "Collects water and holds it upright"
+          ]
+        },
+        {
+          "correct": "xylem",
+          "label": [
+            "Carries water up without a pump"
+          ]
+        },
+        {
+          "correct": "leaf",
+          "label": [
+            "Catches as much light as possible"
+          ]
+        },
+        {
+          "correct": "stomata",
+          "label": [
+            "Lets gas in, and can shut when it must"
+          ]
+        },
+        {
+          "correct": "flower",
+          "label": [
+            "Gets pollen to another plant"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["An ordinary sunny day", "Baseline"],
-          "needs": ["roots", "xylem", "leaf", "stomata"],
-          "pass": ["Water up, gas in, sugar made.", "Supply, transport, capture and exchange all functioning."],
-          "fail": ["One of the four links in the chain was missing, so nothing arrived.", "Any break in supply → transport → capture → exchange stops the whole sequence; the chain has no redundancy."]
+          "name": [
+            "An ordinary sunny day",
+            "Baseline"
+          ],
+          "needs": [
+            "roots",
+            "xylem",
+            "leaf",
+            "stomata"
+          ],
+          "pass": [
+            "Water up, gas in, sugar made.",
+            "Supply, transport, capture and exchange all functioning."
+          ],
+          "fail": [
+            "One of the four links in the chain was missing, so nothing arrived.",
+            "Any break in supply → transport → capture → exchange stops the whole sequence; the chain has no redundancy."
+          ]
         },
         {
-          "name": ["A hot afternoon", "Drought stress"],
-          "needs": ["roots", "xylem", "leaf", "stomata"],
-          "pass": ["The pores shut and the plant rides it out.", "Stomatal closure limits transpiration until evaporative demand falls."],
-          "fail": ["Nothing could close, so it dried out.", "Without adjustable aperture there is no response to changing demand — fixed pores are lethal on the first hot day."]
+          "name": [
+            "A hot afternoon",
+            "Drought stress"
+          ],
+          "needs": [
+            "roots",
+            "xylem",
+            "leaf",
+            "stomata"
+          ],
+          "pass": [
+            "The pores shut and the plant rides it out.",
+            "Stomatal closure limits transpiration until evaporative demand falls."
+          ],
+          "fail": [
+            "Nothing could close, so it dried out.",
+            "Without adjustable aperture there is no response to changing demand — fixed pores are lethal on the first hot day."
+          ]
         },
         {
-          "name": ["Growing in shade", "Low light"],
-          "needs": ["roots", "xylem", "leaf", "stomata"],
-          "pass": ["Broad flat leaves catch what light there is.", "Large intercepting area compensates for low irradiance."],
-          "fail": ["Too little surface to catch enough light.", "Without the area, capture falls below upkeep and the plant runs at a loss."]
+          "name": [
+            "Growing in shade",
+            "Low light"
+          ],
+          "needs": [
+            "roots",
+            "xylem",
+            "leaf",
+            "stomata"
+          ],
+          "pass": [
+            "Broad flat leaves catch what light there is.",
+            "Large intercepting area compensates for low irradiance."
+          ],
+          "fail": [
+            "Too little surface to catch enough light.",
+            "Without the area, capture falls below upkeep and the plant runs at a loss."
+          ]
         },
         {
-          "name": ["Reproducing at all", "Pollination"],
-          "needs": ["roots", "xylem", "leaf", "stomata", "flower"],
-          "pass": ["Pollen reaches another plant and there are seeds.", "Gametes are transferred and viable seed is set."],
-          "fail": ["A magnificent plant, alive, and the last of its line.", "Survival is not fitness. A plant that cannot reproduce has a fitness of zero however well it grows — which is the definition you met in Change."]
+          "name": [
+            "Reproducing at all",
+            "Pollination"
+          ],
+          "needs": [
+            "roots",
+            "xylem",
+            "leaf",
+            "stomata",
+            "flower"
+          ],
+          "pass": [
+            "Pollen reaches another plant and there are seeds.",
+            "Gametes are transferred and viable seed is set."
+          ],
+          "fail": [
+            "A magnificent plant, alive, and the last of its line.",
+            "Survival is not fitness. A plant that cannot reproduce has a fitness of zero however well it grows — which is the definition you met in Change."
+          ]
         }
       ],
       "win": [
@@ -73,7 +170,6 @@
         "Each failed trial names the function that was not being performed. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -89,7 +185,6 @@
         "Between pollen and seed a plant gets two chances at movement per generation, both delegated. Every fruit you have ever eaten is a bribe paid for the second one."
       ]
     },
-
     {
       "type": "check",
       "concept": "plant-systems",
@@ -110,7 +205,6 @@
         "Because it is the one function that cannot be performed locally. Feeding, drinking and defending can all be done in place; outcrossing cannot, so it must be delegated — to an animal, or to the wind, and both routes shape the flower entirely."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

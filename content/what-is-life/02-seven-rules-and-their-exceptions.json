@@ -3,6 +3,7 @@
   "module": "what-is-life",
   "index": 1,
   "title": "Seven Rules and Their Exceptions",
+  "principle": "Nothing is alive because of one sign.",
   "specimen": "checklist",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "A definition that fails at the edges is not necessarily a bad definition. But it is worth knowing where it fails."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -42,7 +42,6 @@
         "No single criterion is necessary and sufficient. Note the two kinds of failure: things that are alive and fail a test, and things that pass a test and are not alive."
       ]
     },
-
     {
       "type": "predict",
       "concept": "seven-signs",
@@ -61,7 +60,6 @@
         "Commit. The same structure appears in medical diagnosis, where no single symptom is decisive either."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -77,7 +75,6 @@
         "Cluster concepts do not have sharp boundaries and do not need them. The demand for a crisp definition is where the trouble starts, not the lack of one."
       ]
     },
-
     {
       "type": "check",
       "concept": "seven-signs",
@@ -98,7 +95,6 @@
         "Weight it as evidence rather than as a gate. This is why 'is a virus alive?' has no clean answer and does not need one — the useful question is which properties it has and which it lacks, and that question does have an answer."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

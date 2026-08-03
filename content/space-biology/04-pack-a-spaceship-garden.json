@@ -3,6 +3,7 @@
   "module": "space-biology",
   "index": 3,
   "title": "Pack a Spaceship Garden",
+  "principle": "A system where everything goes round and nothing comes in is called closed.",
   "specimen": "closed-system",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Which is the distinction you drew in Ecology: energy flows through, matter cycles."
       ]
     },
-
     {
       "type": "predict",
       "concept": "closed-life-support",
@@ -35,7 +35,6 @@
         "Commit. Ask what a person consumes in a day, then multiply by three years and by the crew."
       ]
     },
-
     {
       "type": "sim",
       "sim": "web",
@@ -44,13 +43,16 @@
         "A closed system is a food web with nothing coming in. Take a level out and see what happens.",
         "The same tri-trophic web from Ecology, standing in for a life-support system. Remove a level and watch how far the effect travels — because in a sealed vehicle there is no outside to buffer it."
       ],
-      "params": { "task": "cascade", "switches": true, "aspect": 0.85 },
+      "params": {
+        "task": "cascade",
+        "switches": true,
+        "aspect": 0.85
+      },
       "goal": [
         "One thing goes and everything else changes. On Earth something else would cover it. On a ship, nothing does.",
         "The cascade is the same one you measured before. What is different in a closed system is that there is no external input to absorb it — every effect is retained."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -59,49 +61,154 @@
         "Assign each element to what it closes. Placement is unconstrained, then it is stress-tested over three years."
       ],
       "parts": [
-        { "id": "plants", "label": "Plants" },
-        { "id": "water", "label": "Water recovery" },
-        { "id": "air", "label": "Carbon dioxide scrubbing" },
-        { "id": "waste", "label": "Waste processing" },
-        { "id": "spare", "label": "Redundancy" }
+        {
+          "id": "plants",
+          "label": "Plants"
+        },
+        {
+          "id": "water",
+          "label": "Water recovery"
+        },
+        {
+          "id": "air",
+          "label": "Carbon dioxide scrubbing"
+        },
+        {
+          "id": "waste",
+          "label": "Waste processing"
+        },
+        {
+          "id": "spare",
+          "label": "Redundancy"
+        }
       ],
       "slots": [
-        { "correct": "plants", "label": ["Makes food and oxygen out of light"] },
-        { "correct": "water", "label": ["Turns yesterday's sweat back into drinking water"] },
-        { "correct": "air", "label": ["Takes out what everyone breathes out"] },
-        { "correct": "waste", "label": ["Returns the nutrients so the plants can grow again"] },
-        { "correct": "spare", "label": ["Means one failure is not the end"] }
+        {
+          "correct": "plants",
+          "label": [
+            "Makes food and oxygen out of light"
+          ]
+        },
+        {
+          "correct": "water",
+          "label": [
+            "Turns yesterday's sweat back into drinking water"
+          ]
+        },
+        {
+          "correct": "air",
+          "label": [
+            "Takes out what everyone breathes out"
+          ]
+        },
+        {
+          "correct": "waste",
+          "label": [
+            "Returns the nutrients so the plants can grow again"
+          ]
+        },
+        {
+          "correct": "spare",
+          "label": [
+            "Means one failure is not the end"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Breathe for a week", "Air"],
-          "needs": ["air"],
-          "pass": ["Carbon dioxide is removed as fast as it is produced.", "CO₂ partial pressure held below the harmful threshold."],
-          "fail": ["Carbon dioxide builds up and the crew is unconscious in days.", "This is the fastest-acting failure by a wide margin — days, not weeks."]
+          "name": [
+            "Breathe for a week",
+            "Air"
+          ],
+          "needs": [
+            "air"
+          ],
+          "pass": [
+            "Carbon dioxide is removed as fast as it is produced.",
+            "CO₂ partial pressure held below the harmful threshold."
+          ],
+          "fail": [
+            "Carbon dioxide builds up and the crew is unconscious in days.",
+            "This is the fastest-acting failure by a wide margin — days, not weeks."
+          ]
         },
         {
-          "name": ["Drink for three years", "Water"],
-          "needs": ["air", "water"],
-          "pass": ["Water is recovered and reused.", "Closed-loop water recovery; the ISS already achieves over 90%."],
-          "fail": ["You would have to launch about a tonne of water per person.", "Water is the heaviest consumable. Recovery is what makes the mass budget close at all."]
+          "name": [
+            "Drink for three years",
+            "Water"
+          ],
+          "needs": [
+            "air",
+            "water"
+          ],
+          "pass": [
+            "Water is recovered and reused.",
+            "Closed-loop water recovery; the ISS already achieves over 90%."
+          ],
+          "fail": [
+            "You would have to launch about a tonne of water per person.",
+            "Water is the heaviest consumable. Recovery is what makes the mass budget close at all."
+          ]
         },
         {
-          "name": ["Eat for three years", "Food"],
-          "needs": ["air", "water", "plants"],
-          "pass": ["Plants produce food and oxygen together.", "Photosynthesis closes food and contributes to air simultaneously."],
-          "fail": ["Stored food for three years is more mass than you can launch.", "Food is the loop nobody has closed. No mission has yet grown a meaningful fraction of its own."]
+          "name": [
+            "Eat for three years",
+            "Food"
+          ],
+          "needs": [
+            "air",
+            "water",
+            "plants"
+          ],
+          "pass": [
+            "Plants produce food and oxygen together.",
+            "Photosynthesis closes food and contributes to air simultaneously."
+          ],
+          "fail": [
+            "Stored food for three years is more mass than you can launch.",
+            "Food is the loop nobody has closed. No mission has yet grown a meaningful fraction of its own."
+          ]
         },
         {
-          "name": ["Keep the plants growing", "Nutrients"],
-          "needs": ["air", "water", "plants", "waste"],
-          "pass": ["Waste is processed and the nutrients go back to the plants.", "Nutrient cycling closes the loop; matter cycles because it cannot leave."],
-          "fail": ["The plants grew once and then ran out of nutrients, which are all in the waste tank.", "Energy flows through and matter cycles. In a closed system, refusing to process waste means locking up the nutrients permanently."]
+          "name": [
+            "Keep the plants growing",
+            "Nutrients"
+          ],
+          "needs": [
+            "air",
+            "water",
+            "plants",
+            "waste"
+          ],
+          "pass": [
+            "Waste is processed and the nutrients go back to the plants.",
+            "Nutrient cycling closes the loop; matter cycles because it cannot leave."
+          ],
+          "fail": [
+            "The plants grew once and then ran out of nutrients, which are all in the waste tank.",
+            "Energy flows through and matter cycles. In a closed system, refusing to process waste means locking up the nutrients permanently."
+          ]
         },
         {
-          "name": ["Survive one thing breaking", "Redundancy"],
-          "needs": ["air", "water", "plants", "waste", "spare"],
-          "pass": ["One failure is survivable.", "Functional redundancy across the critical loops."],
-          "fail": ["A perfect system, and one pump failure kills everyone.", "This is the food-web lesson exactly: a system with one route per function is a chain, and every failure is fatal."]
+          "name": [
+            "Survive one thing breaking",
+            "Redundancy"
+          ],
+          "needs": [
+            "air",
+            "water",
+            "plants",
+            "waste",
+            "spare"
+          ],
+          "pass": [
+            "One failure is survivable.",
+            "Functional redundancy across the critical loops."
+          ],
+          "fail": [
+            "A perfect system, and one pump failure kills everyone.",
+            "This is the food-web lesson exactly: a system with one route per function is a chain, and every failure is fatal."
+          ]
         }
       ],
       "win": [
@@ -113,7 +220,6 @@
         "Each failed trial names the loop that was not closed. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -129,7 +235,6 @@
         "It is also the strongest available demonstration of how little is understood about ecosystem-scale fluxes. We can sequence a genome and cannot yet build a sealed room that keeps eight people alive for two years without intervention."
       ]
     },
-
     {
       "type": "check",
       "concept": "closed-life-support",
@@ -150,7 +255,6 @@
         "On Earth the same principle is true and slack — the reservoirs are enormous relative to any flux, so nothing binds on a human timescale. In a sealed vehicle the reservoirs are the size of what you launched, so the cycle time becomes a hard operational constraint rather than a background fact."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

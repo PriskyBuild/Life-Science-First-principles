@@ -3,6 +3,7 @@
   "module": "biotechnology",
   "index": 0,
   "title": "Making Cells Work for You",
+  "principle": "Putting a gene from one thing into another is called recombinant DNA.",
   "specimen": "host-cell",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The difference between then and now is not the microbes. It is that the instructions are editable."
       ]
     },
-
     {
       "type": "predict",
       "concept": "cells-as-factories",
@@ -35,7 +35,6 @@
         "Commit. Ask what a factory would cost if it doubled itself every twenty minutes."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Match each component of a recombinant expression system to its function."
       ],
       "parts": [
-        { "id": "gene", "label": "The gene you want" },
-        { "id": "vector", "label": "A ring of DNA to carry it" },
-        { "id": "host", "label": "A host cell" },
-        { "id": "marker", "label": "A selection marker" }
+        {
+          "id": "gene",
+          "label": "The gene you want"
+        },
+        {
+          "id": "vector",
+          "label": "A ring of DNA to carry it"
+        },
+        {
+          "id": "host",
+          "label": "A host cell"
+        },
+        {
+          "id": "marker",
+          "label": "A selection marker"
+        }
       ],
       "slots": [
-        { "accepts": "gene", "label": ["The instruction for the thing you want made", "The coding sequence for the product"] },
-        { "accepts": "vector", "label": ["Gets the instruction into the cell", "A plasmid: carries the insert and replicates in the host"] },
-        { "accepts": "host", "label": ["Does the actual building, and multiplies", "Provides transcription, translation and growth"] },
-        { "accepts": "marker", "label": ["Tells you which cells took it up", "Allows selection of successfully transformed cells"] }
+        {
+          "accepts": "gene",
+          "label": [
+            "The instruction for the thing you want made",
+            "The coding sequence for the product"
+          ]
+        },
+        {
+          "accepts": "vector",
+          "label": [
+            "Gets the instruction into the cell",
+            "A plasmid: carries the insert and replicates in the host"
+          ]
+        },
+        {
+          "accepts": "host",
+          "label": [
+            "Does the actual building, and multiplies",
+            "Provides transcription, translation and growth"
+          ]
+        },
+        {
+          "accepts": "marker",
+          "label": [
+            "Tells you which cells took it up",
+            "Allows selection of successfully transformed cells"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "Transformation efficiency is low, so the marker — usually antibiotic resistance — is what turns a rare success into a pure culture. It is also a nice illustration of the selection you already know, applied deliberately: add the antibiotic and only the cells that took the plasmid survive to breed."
       ]
     },
-
     {
       "type": "check",
       "concept": "cells-as-factories",
@@ -93,7 +126,6 @@
         "It is a fact about shared inheritance rather than about similarity — bacteria and humans are about as distantly related as living things get, and the code is shared anyway. That universality across the whole of life is what makes it exploitable, and it is one of the observations any account of life's history has to accommodate."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

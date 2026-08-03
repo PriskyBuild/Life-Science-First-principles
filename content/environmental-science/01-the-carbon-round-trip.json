@@ -3,6 +3,7 @@
   "module": "environmental-science",
   "index": 0,
   "title": "The Carbon Round Trip",
+  "principle": "Carbon going round between air, living things, oceans and rock is the carbon cycle.",
   "specimen": "carbon-tracer",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Energy flows through and is lost. Matter has nowhere to go, so it cycles."
       ]
     },
-
     {
       "type": "predict",
       "concept": "carbon-cycle",
@@ -35,7 +35,6 @@
         "Commit. Atoms are not created or destroyed by burning — the question is only where they end up and how fast."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "The transfer that matters is between reservoirs with very different residence times: fossil carbon locked away for a hundred million years is returned to the atmosphere in a moment, and the slow route back takes far longer than the release did."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "The ocean has absorbed roughly a quarter of what has been released, which slowed the atmospheric rise and acidified the surface ocean by about 0.1 pH units — a 30% increase in hydrogen ion concentration. It is the clearest case of a sink not being a disposal."
       ]
     },
-
     {
       "type": "check",
       "concept": "carbon-cycle",
@@ -96,7 +93,6 @@
         "It is a question of flux balance rather than chemistry. The fast cycle's enormous fluxes very nearly cancel; a comparatively small one-way transfer from the geological reservoir does not, and it is the net that accumulates. The isotopic signature confirms the source directly — fossil carbon is depleted in ¹³C and contains no ¹⁴C, and atmospheric CO₂ shows both changes."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

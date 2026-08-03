@@ -3,6 +3,7 @@
   "module": "biotechnology",
   "index": 1,
   "title": "Copying DNA on Purpose",
+  "principle": "Copying DNA on purpose like this is called PCR.",
   "specimen": "thermal-cycler",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The whole method is DNA's own copying mechanism, run deliberately in a tube."
       ]
     },
-
     {
       "type": "predict",
       "concept": "amplify-dna",
@@ -35,7 +35,6 @@
         "Commit. It is the same doubling you did with bacteria, run thirty times instead of seventy-two."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Thirty cycles at roughly two minutes each. The reason it is an hour rather than a day is that the whole thing is just heating and cooling on a timer."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "That selectivity is what makes PCR a test rather than merely an amplifier. You are not asking whether there is DNA present — you are asking whether one specific sequence is, and getting an answer from a handful of molecules."
       ]
     },
-
     {
       "type": "check",
       "concept": "amplify-dna",
@@ -96,7 +93,6 @@
         "Detection has a floor set by instrument sensitivity, and amplification raises the sample to meet it rather than lowering the floor. Because growth is exponential, the number of cycles needed scales only with the logarithm of how few molecules you started with — which is why the same protocol works from one copy or from a thousand."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

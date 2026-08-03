@@ -3,6 +3,7 @@
   "module": "dna",
   "index": 0,
   "title": "Two Metres in a Speck",
+  "principle": "The thread is called DNA. Wound up tight, it makes a chromosome.",
   "specimen": "packing-spool",
   "stages": [
     {
@@ -20,7 +21,6 @@
         "Any solution that is merely compact is wrong; it has to be compact AND locally unpackable."
       ]
     },
-
     {
       "type": "predict",
       "concept": "dna-packing",
@@ -39,10 +39,12 @@
         "Commit first — and notice that two of these would make the thread impossible to use afterwards."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "Wind it up",
       "min": 0,
@@ -64,10 +66,12 @@
         "Each level winds the one beneath it, so the shortening multiplies rather than adds. That is why five steps are enough."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "Levels of coiling",
       "min": 0,
@@ -89,7 +93,6 @@
         "×10,000 overall. The critical property is not the ratio but that it is locally reversible: a cell unwinds the region it needs and leaves the rest condensed, which is how packing and access coexist."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -105,7 +108,6 @@
         "Condensation is itself regulatory. Densely packed regions are largely silent, so how tightly a stretch is wound is part of how a cell decides what it is."
       ]
     },
-
     {
       "type": "check",
       "concept": "dna-packing",
@@ -126,7 +128,6 @@
         "Compaction and accessibility are competing requirements, and the hierarchical solution satisfies both: each level can be locally relaxed without disturbing the others. A tangle would satisfy the first requirement and destroy the second."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
@@ -135,7 +136,6 @@
         "Karyotyping — photographing condensed chromosomes and counting them — detects whole-chromosome abnormalities, and it works precisely because condensation makes them visible. It is one of the oldest genetic tests still in routine use."
       ]
     },
-
     {
       "type": "check",
       "concept": "chromosome-structure",

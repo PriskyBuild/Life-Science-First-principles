@@ -3,6 +3,7 @@
   "module": "environmental-science",
   "index": 2,
   "title": "Extinction Is Forever",
+  "principle": "When the last one dies, that is extinction, and nothing brings it back.",
   "specimen": "last-specimen",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The asymmetry between how long it takes to make and how long it takes to lose is the point."
       ]
     },
-
     {
       "type": "predict",
       "concept": "extinction-is-permanent",
@@ -35,23 +35,29 @@
         "Commit. You already know what a population without variation cannot do."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Turn variation off and try to make the population adapt. This is what a bottleneck leaves behind.",
         "A bottleneck removes variation, not individuals — the individuals come back. Switch variation off and establish what a population in that state can and cannot do when conditions change."
       ],
-      "params": { "task": "break", "bg": 0.85, "switches": true, "aspect": 0.82 },
+      "params": {
+        "task": "break",
+        "bg": 0.85,
+        "switches": true,
+        "aspect": 0.82
+      },
       "goal": [
         "No variation, no adapting. The numbers were never the problem.",
         "Without variation the population cannot track a changing environment at all. Recovery in numbers restores none of that, which is why a bottleneck is a permanent injury rather than a temporary one."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -67,7 +73,6 @@
         "De-extinction does not undo this. Recovering a genome from a preserved specimen produces one genotype, not a population — no variation, no behaviour learned from parents, and no ecosystem left that it fits into. The interesting objection to de-extinction is not that it is impossible but that it does not restore what was lost."
       ]
     },
-
     {
       "type": "check",
       "concept": "extinction-is-permanent",
@@ -88,7 +93,6 @@
         "Mutation restores variation at a rate set by generation time and population size, which is orders of magnitude slower than demographic recovery. A bottlenecked population is therefore in a state that looks healthy by every count and is not, and this is why conservation genetics measures heterozygosity rather than headcount."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

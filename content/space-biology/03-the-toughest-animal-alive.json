@@ -3,6 +3,7 @@
   "module": "space-biology",
   "index": 2,
   "title": "The Toughest Animal Alive",
+  "principle": "Stopping completely and starting again later is called cryptobiosis.",
   "specimen": "tardigrade",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The trick is not toughness. That is the part worth getting right."
       ]
     },
-
     {
       "type": "predict",
       "concept": "extremophiles",
@@ -35,7 +35,6 @@
         "Commit. Ask what a cell would have to keep doing to stay alive, and whether any of it is possible at −272 °C."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "The active animal is unremarkable — it drowns, starves and overheats like anything else its size. Everything on this slider is a property of the tun, and the tun is not a running organism."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "It does not widen what life needs in order to run. A tardigrade in a moss cushion needs water, oxygen and food, exactly like anything else. What it can do is leave the running state and return, and that is a different claim — a much stranger one, and one with far more practical use."
       ]
     },
-
     {
       "type": "check",
       "concept": "extremophiles",
@@ -96,7 +93,6 @@
         "Because the two support completely different conclusions. Suspension says a state can be preserved and resumed, which is a claim about stability. Tolerance would say chemistry proceeds under those conditions, which nothing here demonstrates — and conflating them is how a real and useful finding gets reported as evidence that life needs almost nothing."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

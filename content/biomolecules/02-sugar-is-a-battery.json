@@ -3,6 +3,7 @@
   "module": "biomolecules",
   "index": 1,
   "title": "Sugar Is a Battery",
+  "principle": "Sugar is a store. The energy is locked in the bonds until something breaks them.",
   "specimen": "glucose-ring",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Both halves of that need explaining: where it is, and why it does not simply leave."
       ]
     },
-
     {
       "type": "predict",
       "concept": "sugar-is-stored-energy",
@@ -35,41 +35,65 @@
         "Commit. Note that the sugar is not hot, which rules out one of these immediately."
       ]
     },
-
     {
       "type": "sim",
       "sim": "energy",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Let some sugar in and see how long the cell can keep going.",
         "Open the food doors and add power plants. Find a setting that keeps the cell alive."
       ],
-      "params": { "doors": 3, "plants": 2, "hold": 16 },
-      "paramsByLevel": { "1": { "doors": 4, "plants": 2, "hold": 12 } },
+      "params": {
+        "doors": 3,
+        "plants": 2,
+        "hold": 16
+      },
+      "paramsByLevel": {
+        "1": {
+          "doors": 4,
+          "plants": 2,
+          "hold": 12
+        }
+      },
       "goal": [
         "Sugar came in and the cell kept running. That is what the energy was for.",
         "Steady. The sugar was not doing anything until something took it apart — which is the whole point of storing energy in bonds."
       ]
     },
-
     {
       "type": "sim",
       "sim": "energy",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "More power plants is not simply better. Find out why, and find the best setting.",
         "Each power plant has an upkeep of its own, and demand rises partway through. There is an optimum and it is not the maximum of either control."
       ],
-      "params": { "doors": 3, "plants": 2, "spike": 2, "hold": 20 },
-      "paramsByLevel": { "4": { "spike": 3, "upkeep": 0.8, "hold": 24 } },
+      "params": {
+        "doors": 3,
+        "plants": 2,
+        "spike": 2,
+        "hold": 20
+      },
+      "paramsByLevel": {
+        "4": {
+          "spike": 3,
+          "upkeep": 0.8,
+          "hold": 24
+        }
+      },
       "goal": [
         "That is the best setting — and it is not the biggest one.",
         "Found it. Capacity costs upkeep, so the optimum sits below the maximum of both controls. That shape of answer recurs everywhere in biology."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -85,7 +109,6 @@
         "Plants store it as starch — the same glucose, joined so it packs and stays put. Cellulose is the same monomer again, joined the other way up, and almost no animal can digest it. Identical parts, different linkage, entirely different substance."
       ]
     },
-
     {
       "type": "check",
       "concept": "sugar-is-stored-energy",
@@ -106,7 +129,6 @@
         "The reaction is strongly favourable and extremely slow, which is the definition of kinetic stability. Enzymes lower the activation barrier without altering ΔG, so they change the rate and never the yield — the same amount of energy is available whether it is burnt or respired."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

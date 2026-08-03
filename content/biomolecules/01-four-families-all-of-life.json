@@ -3,6 +3,7 @@
   "module": "biomolecules",
   "index": 0,
   "title": "Four Families, All of Life",
+  "principle": "The four families are carbohydrates, lipids, proteins and nucleic acids.",
   "specimen": "family-key",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The parts list is astonishingly short, and it is the same list everywhere."
       ]
     },
-
     {
       "type": "predict",
       "concept": "polymers-from-monomers",
@@ -35,7 +35,6 @@
         "Commit. You met the same argument about a four-letter alphabet, and it is the same argument."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Match each monomer to the polymer it builds."
       ],
       "parts": [
-        { "id": "sugar", "label": "A sugar" },
-        { "id": "fatty", "label": "A fatty acid" },
-        { "id": "amino", "label": "An amino acid" },
-        { "id": "nucleotide", "label": "A nucleotide" }
+        {
+          "id": "sugar",
+          "label": "A sugar"
+        },
+        {
+          "id": "fatty",
+          "label": "A fatty acid"
+        },
+        {
+          "id": "amino",
+          "label": "An amino acid"
+        },
+        {
+          "id": "nucleotide",
+          "label": "A nucleotide"
+        }
       ],
       "slots": [
-        { "accepts": "sugar", "label": ["Makes starch, and the walls of plants", "Builds carbohydrates: starch, glycogen, cellulose"] },
-        { "accepts": "fatty", "label": ["Makes fats and the wall round a cell", "Builds lipids: stores, membranes, insulation"] },
-        { "accepts": "amino", "label": ["Makes proteins — the machines", "Builds proteins: enzymes, structure, signals"] },
-        { "accepts": "nucleotide", "label": ["Makes the instructions", "Builds nucleic acids: DNA and RNA"] }
+        {
+          "accepts": "sugar",
+          "label": [
+            "Makes starch, and the walls of plants",
+            "Builds carbohydrates: starch, glycogen, cellulose"
+          ]
+        },
+        {
+          "accepts": "fatty",
+          "label": [
+            "Makes fats and the wall round a cell",
+            "Builds lipids: stores, membranes, insulation"
+          ]
+        },
+        {
+          "accepts": "amino",
+          "label": [
+            "Makes proteins — the machines",
+            "Builds proteins: enzymes, structure, signals"
+          ]
+        },
+        {
+          "accepts": "nucleotide",
+          "label": [
+            "Makes the instructions",
+            "Builds nucleic acids: DNA and RNA"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "That makes 'lipid' the only one of the four defined by what it does in water rather than what it is made of, which is worth noticing: the category exists because the hydrophobic effect matters that much."
       ]
     },
-
     {
       "type": "check",
       "concept": "polymers-from-monomers",
@@ -93,7 +126,6 @@
         "This is the same argument as the four-letter alphabet in DNA, and it generalises: capacity scales exponentially with length and only linearly with alphabet size, so the interesting constraints are always on length, error rate and assembly cost rather than on the parts list."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

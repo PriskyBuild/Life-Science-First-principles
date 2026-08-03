@@ -3,6 +3,7 @@
   "module": "plants",
   "index": 0,
   "title": "Eating Light",
+  "principle": "Making food out of air and light is called photosynthesis.",
   "specimen": "chloroplast",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The answer was got wrong for two thousand years, and settling it took one careful experiment."
       ]
     },
-
     {
       "type": "predict",
       "concept": "photosynthesis-is-building",
@@ -35,7 +35,6 @@
         "Commit. Van Helmont weighed a willow and its pot for five years in the 1640s and concluded it was the water — which was closer than the received view and still wrong."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Dry mass is roughly half carbon, and every carbon atom arrived as atmospheric CO₂. The soil supplies minerals in small quantities and almost none of the bulk."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "The Great Oxidation Event was a mass extinction caused by pollution — oxygen is corrosive, and the anaerobic life it poisoned had no defence. Everything that breathes it now descends from whatever survived."
       ]
     },
-
     {
       "type": "check",
       "concept": "photosynthesis-is-building",
@@ -96,7 +93,6 @@
         "The soil supplies nitrogen, phosphorus and trace elements in small amounts; the bulk is atmospheric carbon fixed by the Calvin cycle. This is also why afforestation is a carbon sink in a literal rather than metaphorical sense — the carbon is structurally in the tree."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

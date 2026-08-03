@@ -3,6 +3,7 @@
   "module": "dna",
   "index": 4,
   "title": "Reading Without Tangling",
+  "principle": "The twist-reliever really does cut the strand, let it spin, and join it up again.",
   "specimen": "unwinder",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "DNA is a double helix, so every fork has this problem, every time. Something has to deal with the twist."
       ]
     },
-
     {
       "type": "predict",
       "concept": "chromosome-structure",
@@ -35,7 +35,6 @@
         "Commit. The actual solution involves deliberately breaking the molecule the cell most needs intact."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,41 +43,127 @@
         "Assemble the replication fork: give each protein the job it does."
       ],
       "parts": [
-        { "id": "helicase", "label": "Unzipper" },
-        { "id": "topo", "label": "Twist-reliever" },
-        { "id": "polymerase", "label": "Copier" },
-        { "id": "ligase", "label": "Joiner" }
+        {
+          "id": "helicase",
+          "label": "Unzipper"
+        },
+        {
+          "id": "topo",
+          "label": "Twist-reliever"
+        },
+        {
+          "id": "polymerase",
+          "label": "Copier"
+        },
+        {
+          "id": "ligase",
+          "label": "Joiner"
+        }
       ],
       "slots": [
-        { "correct": "helicase", "label": ["Splits the two sides apart", "Separates the strands at the fork"] },
-        { "correct": "topo", "label": ["Deals with the twist piling up", "Relieves supercoiling ahead of the fork"] },
-        { "correct": "polymerase", "label": ["Puts the new letters in", "Adds bases against the template"] },
-        { "correct": "ligase", "label": ["Sticks the pieces together", "Seals the gaps between fragments"] }
+        {
+          "correct": "helicase",
+          "label": [
+            "Splits the two sides apart",
+            "Separates the strands at the fork"
+          ]
+        },
+        {
+          "correct": "topo",
+          "label": [
+            "Deals with the twist piling up",
+            "Relieves supercoiling ahead of the fork"
+          ]
+        },
+        {
+          "correct": "polymerase",
+          "label": [
+            "Puts the new letters in",
+            "Adds bases against the template"
+          ]
+        },
+        {
+          "correct": "ligase",
+          "label": [
+            "Sticks the pieces together",
+            "Seals the gaps between fragments"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Open the strands", "Strand separation"],
-          "needs": ["helicase"],
-          "pass": ["The two sides come apart.", "The duplex opens at the fork."],
-          "fail": ["Nothing opened, so nothing could be copied.", "Without a helicase the duplex never opens and no template is exposed."]
+          "name": [
+            "Open the strands",
+            "Strand separation"
+          ],
+          "needs": [
+            "helicase"
+          ],
+          "pass": [
+            "The two sides come apart.",
+            "The duplex opens at the fork."
+          ],
+          "fail": [
+            "Nothing opened, so nothing could be copied.",
+            "Without a helicase the duplex never opens and no template is exposed."
+          ]
         },
         {
-          "name": ["Keep going past the first turn", "Sustained progression"],
-          "needs": ["helicase", "topo"],
-          "pass": ["The twist gets released, so the fork keeps moving.", "Supercoiling is relieved and the fork continues."],
-          "fail": ["It opened, then jammed solid on its own twist.", "The fork stalled: torsional stress ahead of it made further unwinding impossible."]
+          "name": [
+            "Keep going past the first turn",
+            "Sustained progression"
+          ],
+          "needs": [
+            "helicase",
+            "topo"
+          ],
+          "pass": [
+            "The twist gets released, so the fork keeps moving.",
+            "Supercoiling is relieved and the fork continues."
+          ],
+          "fail": [
+            "It opened, then jammed solid on its own twist.",
+            "The fork stalled: torsional stress ahead of it made further unwinding impossible."
+          ]
         },
         {
-          "name": ["Actually copy it", "Synthesis"],
-          "needs": ["helicase", "topo", "polymerase"],
-          "pass": ["New letters go in against the old ones.", "The daughter strand is synthesised against the template."],
-          "fail": ["The strands were open and nothing wrote anything.", "Template exposed, no synthesis — separation alone copies nothing."]
+          "name": [
+            "Actually copy it",
+            "Synthesis"
+          ],
+          "needs": [
+            "helicase",
+            "topo",
+            "polymerase"
+          ],
+          "pass": [
+            "New letters go in against the old ones.",
+            "The daughter strand is synthesised against the template."
+          ],
+          "fail": [
+            "The strands were open and nothing wrote anything.",
+            "Template exposed, no synthesis — separation alone copies nothing."
+          ]
         },
         {
-          "name": ["End up with one continuous strand", "Continuity"],
-          "needs": ["helicase", "topo", "polymerase", "ligase"],
-          "pass": ["The pieces are sealed into one whole strand.", "Fragments are joined into a continuous daughter strand."],
-          "fail": ["You got the letters right and left it in pieces.", "Correct sequence, unsealed: one strand is built in fragments and stays fragmented without a ligase."]
+          "name": [
+            "End up with one continuous strand",
+            "Continuity"
+          ],
+          "needs": [
+            "helicase",
+            "topo",
+            "polymerase",
+            "ligase"
+          ],
+          "pass": [
+            "The pieces are sealed into one whole strand.",
+            "Fragments are joined into a continuous daughter strand."
+          ],
+          "fail": [
+            "You got the letters right and left it in pieces.",
+            "Correct sequence, unsealed: one strand is built in fragments and stays fragmented without a ligase."
+          ]
         }
       ],
       "win": [
@@ -90,7 +175,6 @@
         "Read which trial failed: each names the job that was not being done. Move the part and test again."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -106,7 +190,6 @@
         "That transient covalent intermediate is also a drug target: several antibiotics and chemotherapies work by trapping topoisomerase mid-reaction, so the break is made and never resealed."
       ]
     },
-
     {
       "type": "check",
       "concept": "chromosome-structure",
@@ -127,7 +210,6 @@
         "The linking number of a closed or anchored duplex is topologically invariant, so local unwinding must be compensated somewhere. That is a mathematical constraint rather than a mechanical inconvenience, which is why the solution has to involve breaking the backbone rather than pulling harder."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

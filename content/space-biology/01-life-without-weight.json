@@ -3,6 +3,7 @@
   "module": "space-biology",
   "index": 0,
   "title": "Life Without Weight",
+  "principle": "Your body treats gravity as a message.",
   "specimen": "microgravity-rig",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Which is the interesting part: it is a loss of signal rather than an injury."
       ]
     },
-
     {
       "type": "predict",
       "concept": "life-without-gravity",
@@ -35,7 +35,6 @@
         "Commit. Ask what would have to be true for bone to be maintained at all — then ask what supplies that on Earth."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Aerobic exercise loads the heart and not the skeleton. Resistive exercise loads the skeleton — and that, plus adequate energy intake and vitamin D, is what finally held bone density on the Station. Bone was never asking for gravity. It was asking for load."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -68,19 +66,50 @@
         "Weightlessness removes one thing and several systems change. Assign each change to the job that gravity was quietly performing."
       ],
       "parts": [
-        { "id": "load", "label": "Load on the skeleton" },
-        { "id": "pull", "label": "A downward pull on fluid" },
-        { "id": "effort", "label": "Effort needed to move" },
-        { "id": "up", "label": "A reliable direction called down" }
+        {
+          "id": "load",
+          "label": "Load on the skeleton"
+        },
+        {
+          "id": "pull",
+          "label": "A downward pull on fluid"
+        },
+        {
+          "id": "effort",
+          "label": "Effort needed to move"
+        },
+        {
+          "id": "up",
+          "label": "A reliable direction called down"
+        }
       ],
       "slots": [
-        { "correct": "load", "label": ["Gone: bone starts being taken apart"] },
-        { "correct": "pull", "label": ["Gone: faces puff up and eyes are pressed out of shape"] },
-        { "correct": "effort", "label": ["Gone: muscles that lift you are no longer needed"] },
-        { "correct": "up", "label": ["Gone: the balance organ in the ear reports nonsense for days"] }
+        {
+          "correct": "load",
+          "label": [
+            "Gone: bone starts being taken apart"
+          ]
+        },
+        {
+          "correct": "pull",
+          "label": [
+            "Gone: faces puff up and eyes are pressed out of shape"
+          ]
+        },
+        {
+          "correct": "effort",
+          "label": [
+            "Gone: muscles that lift you are no longer needed"
+          ]
+        },
+        {
+          "correct": "up",
+          "label": [
+            "Gone: the balance organ in the ear reports nonsense for days"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -96,7 +125,6 @@
         "It also explains why bone recovers incompletely on return: density comes back over a year or so, but the fine internal architecture that was dismantled is not fully rebuilt, and architecture is a large part of what makes bone strong. Recovering the mass is not the same as recovering the structure."
       ]
     },
-
     {
       "type": "check",
       "concept": "life-without-gravity",
@@ -117,7 +145,6 @@
         "It tells you the signal is local and mechanical rather than systemic. If bone loss were caused by something circulating — a hormone, a deficiency — then general exercise or a supplement would help. That resistive loading works, and only where it is applied, identifies strain at the tissue as the controlled variable."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

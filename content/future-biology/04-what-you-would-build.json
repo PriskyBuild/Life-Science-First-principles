@@ -3,6 +3,7 @@
   "module": "future-biology",
   "index": 3,
   "title": "What You Would Build",
+  "principle": "Being able to say how you would find out you were wrong is the whole thing.",
   "specimen": "your-design",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "A design nobody can check is not a design. It is an announcement."
       ]
     },
-
     {
       "type": "predict",
       "concept": "designing-responsibly",
@@ -35,7 +35,6 @@
         "Commit. Every measurement in this whole curriculum had this property; that is why they were worth doing."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,49 +43,154 @@
         "Assemble what a defensible proposal requires, then five tests. Nothing here checks whether the organism would work — only whether you could justify building it."
       ],
       "parts": [
-        { "id": "purpose", "label": "A problem worth solving" },
-        { "id": "mechanism", "label": "Something in biology that could do it" },
-        { "id": "test", "label": "A way to tell whether it worked" },
-        { "id": "stop", "label": "A way to stop it" },
-        { "id": "asked", "label": "The people you asked first" }
+        {
+          "id": "purpose",
+          "label": "A problem worth solving"
+        },
+        {
+          "id": "mechanism",
+          "label": "Something in biology that could do it"
+        },
+        {
+          "id": "test",
+          "label": "A way to tell whether it worked"
+        },
+        {
+          "id": "stop",
+          "label": "A way to stop it"
+        },
+        {
+          "id": "asked",
+          "label": "The people you asked first"
+        }
       ],
       "slots": [
-        { "correct": "purpose", "label": ["Why anyone should want this at all"] },
-        { "correct": "mechanism", "label": ["The part that has to actually be true about living things"] },
-        { "correct": "test", "label": ["What result would prove you wrong"] },
-        { "correct": "stop", "label": ["What you would do if it went badly"] },
-        { "correct": "asked", "label": ["Who agreed that you could"] }
+        {
+          "correct": "purpose",
+          "label": [
+            "Why anyone should want this at all"
+          ]
+        },
+        {
+          "correct": "mechanism",
+          "label": [
+            "The part that has to actually be true about living things"
+          ]
+        },
+        {
+          "correct": "test",
+          "label": [
+            "What result would prove you wrong"
+          ]
+        },
+        {
+          "correct": "stop",
+          "label": [
+            "What you would do if it went badly"
+          ]
+        },
+        {
+          "correct": "asked",
+          "label": [
+            "Who agreed that you could"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Say what it is for", "Purpose"],
-          "needs": ["purpose"],
-          "pass": ["There is a problem, and this is aimed at it.", "A stated problem makes benefit assessable and success definable."],
-          "fail": ["Something clever, aimed at nothing.", "Without a stated problem there is no criterion for success, so nothing can be evaluated."]
+          "name": [
+            "Say what it is for",
+            "Purpose"
+          ],
+          "needs": [
+            "purpose"
+          ],
+          "pass": [
+            "There is a problem, and this is aimed at it.",
+            "A stated problem makes benefit assessable and success definable."
+          ],
+          "fail": [
+            "Something clever, aimed at nothing.",
+            "Without a stated problem there is no criterion for success, so nothing can be evaluated."
+          ]
         },
         {
-          "name": ["Say how it would work", "Mechanism"],
-          "needs": ["purpose", "mechanism"],
-          "pass": ["A real mechanism, of the kind you have been taking apart all the way through.", "A specified mechanism grounded in known biology, which makes the proposal checkable by someone else."],
-          "fail": ["A wish with no machinery under it.", "A proposal with no mechanism cannot be criticised, which is a defect rather than a strength."]
+          "name": [
+            "Say how it would work",
+            "Mechanism"
+          ],
+          "needs": [
+            "purpose",
+            "mechanism"
+          ],
+          "pass": [
+            "A real mechanism, of the kind you have been taking apart all the way through.",
+            "A specified mechanism grounded in known biology, which makes the proposal checkable by someone else."
+          ],
+          "fail": [
+            "A wish with no machinery under it.",
+            "A proposal with no mechanism cannot be criticised, which is a defect rather than a strength."
+          ]
         },
         {
-          "name": ["Say how you would know", "Test"],
-          "needs": ["purpose", "mechanism", "test"],
-          "pass": ["You named a result that would prove you wrong.", "A falsifiable prediction. This is the rung the whole curriculum has been rehearsing."],
-          "fail": ["Nothing could ever show this was a bad idea, which is the problem with it.", "A design compatible with every outcome makes no claim about the world and cannot be evaluated by anyone, including you."]
+          "name": [
+            "Say how you would know",
+            "Test"
+          ],
+          "needs": [
+            "purpose",
+            "mechanism",
+            "test"
+          ],
+          "pass": [
+            "You named a result that would prove you wrong.",
+            "A falsifiable prediction. This is the rung the whole curriculum has been rehearsing."
+          ],
+          "fail": [
+            "Nothing could ever show this was a bad idea, which is the problem with it.",
+            "A design compatible with every outcome makes no claim about the world and cannot be evaluated by anyone, including you."
+          ]
         },
         {
-          "name": ["Say how to stop it", "Reversibility"],
-          "needs": ["purpose", "mechanism", "test", "stop"],
-          "pass": ["If it goes wrong, there is a way back.", "A defined off-switch — containment, dependency, or a bounded deployment — keeps the required standard of evidence proportionate."],
-          "fail": ["It works, and if it turns out to be a mistake, that is permanent.", "Irreversibility raises the standard of proof rather than merely warranting more care. Design the stop before the start."]
+          "name": [
+            "Say how to stop it",
+            "Reversibility"
+          ],
+          "needs": [
+            "purpose",
+            "mechanism",
+            "test",
+            "stop"
+          ],
+          "pass": [
+            "If it goes wrong, there is a way back.",
+            "A defined off-switch — containment, dependency, or a bounded deployment — keeps the required standard of evidence proportionate."
+          ],
+          "fail": [
+            "It works, and if it turns out to be a mistake, that is permanent.",
+            "Irreversibility raises the standard of proof rather than merely warranting more care. Design the stop before the start."
+          ]
         },
         {
-          "name": ["Say who you asked", "Authority"],
-          "needs": ["purpose", "mechanism", "test", "stop", "asked"],
-          "pass": ["The people who have to live with it were asked, and agreed.", "Those bearing the risk consented, or a body with standing to decide for them authorised it."],
-          "fail": ["A careful, testable, reversible plan that nobody agreed to.", "The last rung is not a formality. It is the objection that survives after every technical answer has been given."]
+          "name": [
+            "Say who you asked",
+            "Authority"
+          ],
+          "needs": [
+            "purpose",
+            "mechanism",
+            "test",
+            "stop",
+            "asked"
+          ],
+          "pass": [
+            "The people who have to live with it were asked, and agreed.",
+            "Those bearing the risk consented, or a body with standing to decide for them authorised it."
+          ],
+          "fail": [
+            "A careful, testable, reversible plan that nobody agreed to.",
+            "The last rung is not a formality. It is the objection that survives after every technical answer has been given."
+          ]
         }
       ],
       "win": [
@@ -98,7 +202,6 @@
         "Each failed trial names an unmet requirement. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -114,7 +217,6 @@
         "And it is not a claim that this method answers every question worth asking. It answers questions about how things behave, extremely well, and it has nothing to say about what any of it is for. Knowing precisely where the method stops is part of using it honestly — and that boundary, rather than any particular finding, is where the most interesting arguments in this whole curriculum have been."
       ]
     },
-
     {
       "type": "check",
       "concept": "designing-responsibly",
@@ -135,7 +237,6 @@
         "Because a plausible claim compatible with every outcome forbids nothing and therefore says nothing about the world. Disconfirmability is what makes a proposal a claim at all — and it is also what makes being wrong survivable, which is the practical reason to insist on it."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

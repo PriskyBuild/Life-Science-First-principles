@@ -3,6 +3,7 @@
   "module": "neuroscience",
   "index": 4,
   "title": "Wire a Reflex",
+  "principle": "A loop like this is called a reflex arc, and your brain is not in it.",
   "specimen": "reflex-arc",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Which means the decision was taken somewhere else, by something with no brain in it."
       ]
     },
-
     {
       "type": "predict",
       "concept": "reflex-arc",
@@ -35,7 +35,6 @@
         "Commit. Note that the distance to the brain and back is roughly a metre and a half."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,51 +43,166 @@
         "Assemble the reflex arc. Placement is unconstrained; each misassignment fails a specific and different test."
       ],
       "parts": [
-        { "id": "sensor", "label": "Heat sensor" },
-        { "id": "sensory", "label": "Sensory neuron" },
-        { "id": "inter", "label": "Interneuron in the cord" },
-        { "id": "motor", "label": "Motor neuron" },
-        { "id": "muscle", "label": "Muscle" },
-        { "id": "brain", "label": "Signal onward to the brain" }
+        {
+          "id": "sensor",
+          "label": "Heat sensor"
+        },
+        {
+          "id": "sensory",
+          "label": "Sensory neuron"
+        },
+        {
+          "id": "inter",
+          "label": "Interneuron in the cord"
+        },
+        {
+          "id": "motor",
+          "label": "Motor neuron"
+        },
+        {
+          "id": "muscle",
+          "label": "Muscle"
+        },
+        {
+          "id": "brain",
+          "label": "Signal onward to the brain"
+        }
       ],
       "slots": [
-        { "correct": "sensor", "label": ["Notices the heat"] },
-        { "correct": "sensory", "label": ["Carries it inward to the spinal cord"] },
-        { "correct": "inter", "label": ["Turns it straight round, without asking anyone"] },
-        { "correct": "motor", "label": ["Carries the order back out"] },
-        { "correct": "muscle", "label": ["Actually moves the hand"] },
-        { "correct": "brain", "label": ["Tells you about it afterwards"] }
+        {
+          "correct": "sensor",
+          "label": [
+            "Notices the heat"
+          ]
+        },
+        {
+          "correct": "sensory",
+          "label": [
+            "Carries it inward to the spinal cord"
+          ]
+        },
+        {
+          "correct": "inter",
+          "label": [
+            "Turns it straight round, without asking anyone"
+          ]
+        },
+        {
+          "correct": "motor",
+          "label": [
+            "Carries the order back out"
+          ]
+        },
+        {
+          "correct": "muscle",
+          "label": [
+            "Actually moves the hand"
+          ]
+        },
+        {
+          "correct": "brain",
+          "label": [
+            "Tells you about it afterwards"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Notice the heat", "Transduction"],
-          "needs": ["sensor"],
-          "pass": ["The heat becomes a signal.", "The stimulus is transduced into action potentials."],
-          "fail": ["Your hand is burning and nothing has registered.", "No transducer, no signal. Congenital insensitivity to pain is exactly this, and it is dangerous rather than enviable."]
+          "name": [
+            "Notice the heat",
+            "Transduction"
+          ],
+          "needs": [
+            "sensor"
+          ],
+          "pass": [
+            "The heat becomes a signal.",
+            "The stimulus is transduced into action potentials."
+          ],
+          "fail": [
+            "Your hand is burning and nothing has registered.",
+            "No transducer, no signal. Congenital insensitivity to pain is exactly this, and it is dangerous rather than enviable."
+          ]
         },
         {
-          "name": ["Get the message inside", "Afferent path"],
-          "needs": ["sensor", "sensory"],
-          "pass": ["It reaches the spinal cord.", "The afferent fibre delivers it to the cord."],
-          "fail": ["It was detected and went nowhere.", "Detection without conduction changes nothing."]
+          "name": [
+            "Get the message inside",
+            "Afferent path"
+          ],
+          "needs": [
+            "sensor",
+            "sensory"
+          ],
+          "pass": [
+            "It reaches the spinal cord.",
+            "The afferent fibre delivers it to the cord."
+          ],
+          "fail": [
+            "It was detected and went nowhere.",
+            "Detection without conduction changes nothing."
+          ]
         },
         {
-          "name": ["Decide without waiting", "Local switching"],
-          "needs": ["sensor", "sensory", "inter"],
-          "pass": ["The cord turns it round on the spot.", "The interneuron closes the loop locally, without cortical involvement."],
-          "fail": ["The message went all the way to the brain and back, and you are already burnt.", "Routing through the brain costs the round trip — and this circuit exists precisely to avoid paying it."]
+          "name": [
+            "Decide without waiting",
+            "Local switching"
+          ],
+          "needs": [
+            "sensor",
+            "sensory",
+            "inter"
+          ],
+          "pass": [
+            "The cord turns it round on the spot.",
+            "The interneuron closes the loop locally, without cortical involvement."
+          ],
+          "fail": [
+            "The message went all the way to the brain and back, and you are already burnt.",
+            "Routing through the brain costs the round trip — and this circuit exists precisely to avoid paying it."
+          ]
         },
         {
-          "name": ["Actually move", "Efferent path and effector"],
-          "needs": ["sensor", "sensory", "inter", "motor", "muscle"],
-          "pass": ["The hand pulls away.", "The efferent signal reaches the muscle and withdrawal occurs."],
-          "fail": ["A perfect decision that nothing carried out.", "A circuit that decides and cannot act is not a reflex."]
+          "name": [
+            "Actually move",
+            "Efferent path and effector"
+          ],
+          "needs": [
+            "sensor",
+            "sensory",
+            "inter",
+            "motor",
+            "muscle"
+          ],
+          "pass": [
+            "The hand pulls away.",
+            "The efferent signal reaches the muscle and withdrawal occurs."
+          ],
+          "fail": [
+            "A perfect decision that nothing carried out.",
+            "A circuit that decides and cannot act is not a reflex."
+          ]
         },
         {
-          "name": ["Learn not to do it again", "Ascending pathway"],
-          "needs": ["sensor", "sensory", "inter", "motor", "muscle", "brain"],
-          "pass": ["You feel it a moment later, and you remember.", "The ascending signal produces the conscious percept, and with it learning."],
-          "fail": ["Your hand moved and you never knew why. You would do it again tomorrow.", "Reflex without perception protects you this once and teaches you nothing. The brain is not in the loop, but it does need to be told."]
+          "name": [
+            "Learn not to do it again",
+            "Ascending pathway"
+          ],
+          "needs": [
+            "sensor",
+            "sensory",
+            "inter",
+            "motor",
+            "muscle",
+            "brain"
+          ],
+          "pass": [
+            "You feel it a moment later, and you remember.",
+            "The ascending signal produces the conscious percept, and with it learning."
+          ],
+          "fail": [
+            "Your hand moved and you never knew why. You would do it again tomorrow.",
+            "Reflex without perception protects you this once and teaches you nothing. The brain is not in the loop, but it does need to be told."
+          ]
         }
       ],
       "win": [
@@ -100,7 +214,6 @@
         "Each failed trial names the missing function. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -116,7 +229,6 @@
         "Which is why reflex testing survives in an era of scanners: it is a functional test of a specific circuit, and it tells you something an image does not — whether the wiring works, not merely whether it is present."
       ]
     },
-
     {
       "type": "check",
       "concept": "reflex-arc",
@@ -137,7 +249,6 @@
         "The brain is informed, not consulted. It can modulate the reflex — you can suppress withdrawal deliberately, up to a point — but the loop closes without it, and that is what the architecture is for."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

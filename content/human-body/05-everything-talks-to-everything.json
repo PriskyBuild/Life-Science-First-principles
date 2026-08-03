@@ -3,6 +3,7 @@
   "module": "human-body",
   "index": 4,
   "title": "Everything Talks to Everything",
+  "principle": "Keeping things steady like this is called homeostasis.",
   "specimen": "signal-web",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "No decision was taken anywhere. Work out what the arrangement must be for that to happen."
       ]
     },
-
     {
       "type": "predict",
       "concept": "systems-interact",
@@ -35,7 +35,6 @@
         "Commit. The mechanism is the same one a thermostat uses, and it needs no intelligence anywhere in it."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,41 +43,123 @@
         "Assemble the baroreflex. Placement is unconstrained; each misassignment fails a specific test."
       ],
       "parts": [
-        { "id": "sensor", "label": "Pressure sensor" },
-        { "id": "nerve", "label": "Nerve to the brainstem" },
-        { "id": "effector", "label": "Heart and vessels" },
-        { "id": "feedback", "label": "The return signal" }
+        {
+          "id": "sensor",
+          "label": "Pressure sensor"
+        },
+        {
+          "id": "nerve",
+          "label": "Nerve to the brainstem"
+        },
+        {
+          "id": "effector",
+          "label": "Heart and vessels"
+        },
+        {
+          "id": "feedback",
+          "label": "The return signal"
+        }
       ],
       "slots": [
-        { "correct": "sensor", "label": ["Notices the pressure has dropped"] },
-        { "correct": "nerve", "label": ["Carries the news, fast"] },
-        { "correct": "effector", "label": ["Does something about it"] },
-        { "correct": "feedback", "label": ["Reports back so it knows when to stop"] }
+        {
+          "correct": "sensor",
+          "label": [
+            "Notices the pressure has dropped"
+          ]
+        },
+        {
+          "correct": "nerve",
+          "label": [
+            "Carries the news, fast"
+          ]
+        },
+        {
+          "correct": "effector",
+          "label": [
+            "Does something about it"
+          ]
+        },
+        {
+          "correct": "feedback",
+          "label": [
+            "Reports back so it knows when to stop"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Notice anything at all", "Detection"],
-          "needs": ["sensor"],
-          "pass": ["The drop in pressure is detected.", "The stimulus is transduced into a signal."],
-          "fail": ["Pressure fell and nothing registered it.", "No sensor, no signal. A correction cannot begin."]
+          "name": [
+            "Notice anything at all",
+            "Detection"
+          ],
+          "needs": [
+            "sensor"
+          ],
+          "pass": [
+            "The drop in pressure is detected.",
+            "The stimulus is transduced into a signal."
+          ],
+          "fail": [
+            "Pressure fell and nothing registered it.",
+            "No sensor, no signal. A correction cannot begin."
+          ]
         },
         {
-          "name": ["React in time", "Speed"],
-          "needs": ["sensor", "nerve"],
-          "pass": ["The message arrives within a heartbeat.", "Neural conduction delivers the signal in well under a second."],
-          "fail": ["It was noticed and the news went nowhere fast enough.", "Detected but not conducted: hormonal signalling alone takes seconds to minutes, and you would already be on the floor."]
+          "name": [
+            "React in time",
+            "Speed"
+          ],
+          "needs": [
+            "sensor",
+            "nerve"
+          ],
+          "pass": [
+            "The message arrives within a heartbeat.",
+            "Neural conduction delivers the signal in well under a second."
+          ],
+          "fail": [
+            "It was noticed and the news went nowhere fast enough.",
+            "Detected but not conducted: hormonal signalling alone takes seconds to minutes, and you would already be on the floor."
+          ]
         },
         {
-          "name": ["Actually fix it", "Correction"],
-          "needs": ["sensor", "nerve", "effector"],
-          "pass": ["Heart rate up, vessels tighten, pressure recovers.", "Heart rate and vascular tone rise; arterial pressure is restored."],
-          "fail": ["A perfect alarm and nobody acting on it.", "Signal without an effector changes nothing. Sensing is not regulating."]
+          "name": [
+            "Actually fix it",
+            "Correction"
+          ],
+          "needs": [
+            "sensor",
+            "nerve",
+            "effector"
+          ],
+          "pass": [
+            "Heart rate up, vessels tighten, pressure recovers.",
+            "Heart rate and vascular tone rise; arterial pressure is restored."
+          ],
+          "fail": [
+            "A perfect alarm and nobody acting on it.",
+            "Signal without an effector changes nothing. Sensing is not regulating."
+          ]
         },
         {
-          "name": ["Know when to stop", "Feedback"],
-          "needs": ["sensor", "nerve", "effector", "feedback"],
-          "pass": ["It corrects and then settles.", "The correction is fed back, so the response scales down as the error closes."],
-          "fail": ["It overcorrected and kept going. Your pressure swings instead of settling.", "Open loop: without feedback the response does not know the error has closed, so it overshoots and oscillates. That is not a small flaw — it is why open-loop control is unusable here."]
+          "name": [
+            "Know when to stop",
+            "Feedback"
+          ],
+          "needs": [
+            "sensor",
+            "nerve",
+            "effector",
+            "feedback"
+          ],
+          "pass": [
+            "It corrects and then settles.",
+            "The correction is fed back, so the response scales down as the error closes."
+          ],
+          "fail": [
+            "It overcorrected and kept going. Your pressure swings instead of settling.",
+            "Open loop: without feedback the response does not know the error has closed, so it overshoots and oscillates. That is not a small flaw — it is why open-loop control is unusable here."
+          ]
         }
       ],
       "win": [
@@ -90,7 +171,6 @@
         "Each failure names the element that was absent. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -106,7 +186,6 @@
         "Which is why homeostatic failure is so often oscillation rather than simple absence: a loop with damaged feedback does not stop working, it starts hunting, and a system that swings is frequently more dangerous than one that has merely stopped."
       ]
     },
-
     {
       "type": "check",
       "concept": "systems-interact",
@@ -127,7 +206,6 @@
         "The controlled variable is the same one being sensed, which is what closes the loop and makes the correction self-limiting. Open loop, the output is independent of the result, so any disturbance or drift accumulates. Baroreflex failure produces exactly this clinically: pressure that swings wildly rather than pressure that is simply low."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

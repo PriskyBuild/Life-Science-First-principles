@@ -3,6 +3,7 @@
   "module": "immunity",
   "index": 4,
   "title": "Build a Defence",
+  "principle": "It is layers. Each one handles what the one before it missed.",
   "specimen": "immune-stack",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Every one of these failures corresponds to a condition that exists in people."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -25,49 +25,154 @@
         "Assign each component to its function. Placement is unconstrained; only the assignment is graded."
       ],
       "parts": [
-        { "id": "barrier", "label": "Barriers" },
-        { "id": "innate", "label": "Eating cells and inflammation" },
-        { "id": "clonal", "label": "Random receptors" },
-        { "id": "memory", "label": "Memory cells" },
-        { "id": "tolerance", "label": "Self-tolerance" }
+        {
+          "id": "barrier",
+          "label": "Barriers"
+        },
+        {
+          "id": "innate",
+          "label": "Eating cells and inflammation"
+        },
+        {
+          "id": "clonal",
+          "label": "Random receptors"
+        },
+        {
+          "id": "memory",
+          "label": "Memory cells"
+        },
+        {
+          "id": "tolerance",
+          "label": "Self-tolerance"
+        }
       ],
       "slots": [
-        { "correct": "barrier", "label": ["Stops most things arriving at all"] },
-        { "correct": "innate", "label": ["Deals with what gets through, within minutes"] },
-        { "correct": "clonal", "label": ["Handles something never met before"] },
-        { "correct": "memory", "label": ["Makes the second encounter fast"] },
-        { "correct": "tolerance", "label": ["Stops all of it being aimed at you"] }
+        {
+          "correct": "barrier",
+          "label": [
+            "Stops most things arriving at all"
+          ]
+        },
+        {
+          "correct": "innate",
+          "label": [
+            "Deals with what gets through, within minutes"
+          ]
+        },
+        {
+          "correct": "clonal",
+          "label": [
+            "Handles something never met before"
+          ]
+        },
+        {
+          "correct": "memory",
+          "label": [
+            "Makes the second encounter fast"
+          ]
+        },
+        {
+          "correct": "tolerance",
+          "label": [
+            "Stops all of it being aimed at you"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["An ordinary day", "Routine exposure"],
-          "needs": ["barrier"],
-          "pass": ["Almost everything is stopped before it starts.", "The overwhelming majority of encounters are resolved at the barrier."],
-          "fail": ["Everything that touched you got in.", "Without barriers the load on every downstream system is impossible. This is what a severe burn does."]
+          "name": [
+            "An ordinary day",
+            "Routine exposure"
+          ],
+          "needs": [
+            "barrier"
+          ],
+          "pass": [
+            "Almost everything is stopped before it starts.",
+            "The overwhelming majority of encounters are resolved at the barrier."
+          ],
+          "fail": [
+            "Everything that touched you got in.",
+            "Without barriers the load on every downstream system is impossible. This is what a severe burn does."
+          ]
         },
         {
-          "name": ["A cut that gets dirty", "Breach"],
-          "needs": ["barrier", "innate"],
-          "pass": ["Redness, swelling, and it is dealt with in hours.", "Inflammation and phagocytosis clear the breach within hours."],
-          "fail": ["The wound was open and nothing came to deal with it.", "Barriers without innate response: any breach becomes an unopposed infection. This is chronic granulomatous disease."]
+          "name": [
+            "A cut that gets dirty",
+            "Breach"
+          ],
+          "needs": [
+            "barrier",
+            "innate"
+          ],
+          "pass": [
+            "Redness, swelling, and it is dealt with in hours.",
+            "Inflammation and phagocytosis clear the breach within hours."
+          ],
+          "fail": [
+            "The wound was open and nothing came to deal with it.",
+            "Barriers without innate response: any breach becomes an unopposed infection. This is chronic granulomatous disease."
+          ]
         },
         {
-          "name": ["A virus nobody has ever seen", "Novel pathogen"],
-          "needs": ["barrier", "innate", "clonal"],
-          "pass": ["Some cells happened to fit it, and they multiplied.", "Pre-existing random specificities are selected and expanded."],
-          "fail": ["Nothing could recognise it, so nothing specific ever happened.", "Innate response only. It slows a novel pathogen and cannot clear one — which is what severe combined immunodeficiency looks like."]
+          "name": [
+            "A virus nobody has ever seen",
+            "Novel pathogen"
+          ],
+          "needs": [
+            "barrier",
+            "innate",
+            "clonal"
+          ],
+          "pass": [
+            "Some cells happened to fit it, and they multiplied.",
+            "Pre-existing random specificities are selected and expanded."
+          ],
+          "fail": [
+            "Nothing could recognise it, so nothing specific ever happened.",
+            "Innate response only. It slows a novel pathogen and cannot clear one — which is what severe combined immunodeficiency looks like."
+          ]
         },
         {
-          "name": ["The same virus again next winter", "Re-exposure"],
-          "needs": ["barrier", "innate", "clonal", "memory"],
-          "pass": ["Cleared before you notice anything.", "Memory clones respond in hours rather than days; infection is subclinical."],
-          "fail": ["You got just as ill the second time.", "Without memory every encounter is a first encounter, and vaccination would be pointless."]
+          "name": [
+            "The same virus again next winter",
+            "Re-exposure"
+          ],
+          "needs": [
+            "barrier",
+            "innate",
+            "clonal",
+            "memory"
+          ],
+          "pass": [
+            "Cleared before you notice anything.",
+            "Memory clones respond in hours rather than days; infection is subclinical."
+          ],
+          "fail": [
+            "You got just as ill the second time.",
+            "Without memory every encounter is a first encounter, and vaccination would be pointless."
+          ]
         },
         {
-          "name": ["Not attacking yourself", "Tolerance"],
-          "needs": ["barrier", "innate", "clonal", "memory", "tolerance"],
-          "pass": ["All that firepower, and none of it aimed at you.", "Self-reactive clones are deleted; the response stays directed outward."],
-          "fail": ["A superb immune system, attacking your own joints and nerves.", "Random receptors without deletion guarantees autoimmunity. The system works perfectly and destroys you."]
+          "name": [
+            "Not attacking yourself",
+            "Tolerance"
+          ],
+          "needs": [
+            "barrier",
+            "innate",
+            "clonal",
+            "memory",
+            "tolerance"
+          ],
+          "pass": [
+            "All that firepower, and none of it aimed at you.",
+            "Self-reactive clones are deleted; the response stays directed outward."
+          ],
+          "fail": [
+            "A superb immune system, attacking your own joints and nerves.",
+            "Random receptors without deletion guarantees autoimmunity. The system works perfectly and destroys you."
+          ]
         }
       ],
       "win": [
@@ -79,7 +184,6 @@
         "Each failed trial names the function that was not being performed. Reassign and re-test; the diagnosis is the point."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -95,7 +199,6 @@
         "That recurrence is worth pausing on. A mechanism that turns up independently in population genetics, pharmacology and immunology is not a specialist fact about any of them; it is what happens whenever those three conditions hold, wherever they hold."
       ]
     },
-
     {
       "type": "check",
       "concept": "layered-defence",
@@ -116,7 +219,6 @@
         "They occupy different points on the same trade-off, and they are coupled: innate sensing determines whether and how adaptive immunity engages. That coupling is why they are stages rather than parallel systems, and why an antigen without an innate danger signal produces almost no response."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

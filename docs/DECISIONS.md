@@ -1485,3 +1485,87 @@ generations was a weighted coin, and it came up tails. The claim has nothing to 
 generations adaptation takes; it is that the goal fires once. It now runs *until* the goal is met, with
 a cap as a runaway guard rather than a deadline. The same lesson as D52, in a different costume:
 **assert the rule, never the outcome of a random process.**
+
+### D79 — Rebuilding the foundations, taking only what was actually better
+*After putting the bare one-sentence prompt to a fresh model and reading the plan
+it produced. The stack it chose — React, Vite, Tailwind, eighteen dependencies,
+85 KB — would have been a straight regression here. Four things in it were not.*
+
+**The shape is declared now, not asserted.** Thirty-odd `if` statements inside
+build.mjs became `tools/schema.mjs`, a table. Every one of those conditionals was
+there for a reason and none were wrong, but a pile of conditionals has three
+faults a declaration does not: nobody can read it, it only ever says no, and a new
+stage type means new code rather than a new row. **The consequence that matters is
+that the shape now ENUMERATES the fields**, so a field it does not list is an
+error instead of silence — which is how a Cyrillic key once survived in a CRISPR
+lesson. Rules that genuinely are not about shape stayed as code next to their
+stage type; pretending everything is declarative would be a lie told for tidiness.
+
+Turning it on found two things in the first thirty seconds. `views[].predicts` was
+undeclared — the field the weigh renderer's own comment calls "the field that does
+the work", because a disagreement stated as two beliefs is a stand-off in which a
+child can only pick a side, and stated as two sets of expectations it becomes
+something a person can go and check. It is required now. And a lesson's `id` is
+`<module>/<NN>`, a derived value that was being typed by hand: a lesson could
+claim index 3, call itself `.../02`, and nothing anywhere would say so.
+
+**`principle` is a real field.** The one sentence a lesson exists to install was
+already being written — it is the first variant of the naming stage — but it was
+buried inside a render target, so nothing could read it. Backfilled across all 110
+and capped at 34 words. **If you cannot write this sentence, the lesson does not
+have a point yet**, and now the build is the thing that asks.
+
+**Types, with no build step and no shipped bytes.** TypeScript is a dev
+dependency used as a reader: `tsc --noEmit` over JSDoc in plain `.js` files, and
+the browser goes on loading the same untouched modules. `npm run dev` is still a
+static file server. This is the half of the other plan worth taking.
+
+It found 260 things, of which 173 were in the browser test harness — whose
+`page.evaluate()` bodies run in the page's realm, not Node's, so a checker with
+the DOM lib on is wrong in both directions there. Excluded, with the reason
+written down. **Seventy-nine remained in shipped code, and the response to that
+number is the interesting part.** Fixing all seventy-nine in an afternoon means
+seventy-nine unreviewed changes to code that works. Leaving the check out of
+`npm run check` means it never runs and the number quietly becomes a hundred and
+fifty. So the number is recorded and **the only rule is that it may not go up** —
+a new module arrives clean or it does not arrive, and old ones get typed when
+someone is already in there for another reason. There is no ignore list, and a
+`@ts-ignore` in shipped code fails the run outright: **a suppression is a finding
+you have agreed to stop seeing.**
+
+It has already paid for itself once. `Placeable.connectedCallback` returned
+nothing while the base it overrides returns a boolean — so a third class
+extending it would have called `super`, received `undefined`, and silently
+declined to wire itself up. That is exactly the D66 fault, a guard a subclass can
+walk around, sitting latent and waiting for the next component. Nothing else in
+the project could see it.
+
+**A child's year now survives a cleared browser.** Everything is stored on the
+device and nowhere else, which is what keeps it private and is also precisely why
+clearing browsing data erased it with no way back — a real event for a family that
+switches laptops, uses a private window, or tidies up. No account, no server, no
+sync: a file the parent saves where they save everything else. It is parsed and
+migrated in full before anything is written, so a truncated or foreign file leaves
+the child exactly as they were, and **a save from a newer version is refused rather
+than half-read**, because migrating backwards would silently drop whatever the
+newer version knew. The test saves the file, genuinely wipes localStorage, and
+hands it back.
+
+**What was rejected, and why.** Per-lesson `prerequisites` was on the list and is
+not in the schema. Modules already gate, and lessons within a module are ordered
+by index — so the field would be either always empty or a second copy of the
+ordering, and a second source of truth that nothing compares is worse than one.
+Eliminate before you add. Also rejected: the analytics. Two cookieless numbers is
+a reasonable thing to want and it contradicts the sentence on our own front door
+that says nothing about your child leaves the device. The front door wins.
+
+**And one more flake, found by growing a screen by one section.** The harness
+wrote localStorage underneath a live document while the app had a 500 ms debounced
+write pending, and lost the race — intermittently, and only once the Me screen got
+big enough that the screenshot before it took forty milliseconds longer.
+`openWith()` has landed on a fresh document before writing since D72, because
+navigating fires `pagehide` and flushes; two direct writes had never learned it.
+**A test that races the code it is testing will pass until the day the code gets
+slightly slower.**
+
+261 of 261 pass.

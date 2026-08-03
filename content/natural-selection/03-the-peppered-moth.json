@@ -3,6 +3,7 @@
   "module": "natural-selection",
   "index": 2,
   "title": "The Peppered Moth",
+  "principle": "This really happened, and people wrote the numbers down.",
   "specimen": "moth-pair",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "This is the lesson where the mechanism stops being a model and becomes a measurement."
       ]
     },
-
     {
       "type": "predict",
       "concept": "selection-is-observed",
@@ -35,41 +35,64 @@
         "Commit. The second option is the Lamarckian answer, and separating it from the first is the whole point of the last two lessons."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Start with pale ground, like clean bark. Get the moths matching. Then darken the ground, the way soot did.",
         "Run it on a pale background first, then darken it partway through — that is the industrial revolution, at speed."
       ],
-      "params": { "task": "watch", "bg": 0.15, "aspect": 0.78 },
-      "paramsByLevel": { "1": { "n": 27, "pressure": 0.85 } },
+      "params": {
+        "task": "watch",
+        "bg": 0.15,
+        "aspect": 0.78
+      },
+      "paramsByLevel": {
+        "1": {
+          "n": 27,
+          "pressure": 0.85
+        }
+      },
       "goal": [
         "The population followed the ground. That is exactly what the real moths did.",
         "The population tracked the background. In the real woods it took about fifty years, and it was counted the whole way."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "The switches are back. Then the Clean Air Acts happened and the bark got pale again — try running it backwards.",
         "Conditions exposed again. After the Clean Air Acts the trunks lightened and the dark form declined just as fast. Reproduce that reversal, and satisfy yourself it needs no new mechanism."
       ],
-      "params": { "task": "break", "bg": 0.15, "switches": true, "aspect": 0.82 },
-      "paramsByLevel": { "4": { "n": 45, "pressure": 0.7, "mutation": 0.05 } },
+      "params": {
+        "task": "break",
+        "bg": 0.15,
+        "switches": true,
+        "aspect": 0.82
+      },
+      "paramsByLevel": {
+        "4": {
+          "n": 45,
+          "pressure": 0.7,
+          "mutation": 0.05
+        }
+      },
       "goal": [
         "It goes both ways, with the same three conditions. Nothing new was needed.",
         "The reversal required no additional mechanism — only the background changing back. A theory that predicts the return trip as well as the outward one is doing real work."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -85,7 +108,6 @@
         "That last point is the load-bearing one: the variation preceded the environmental change. Had the dark form appeared only after the trunks darkened, this would be evidence for something else entirely."
       ]
     },
-
     {
       "type": "check",
       "concept": "selection-is-observed",
@@ -106,7 +128,6 @@
         "Because it distinguishes selection from a directed response to the environment. Variation arising before the pressure is the signature of selection; variation arising in response to it would be Lamarckian, and that is precisely what Luria and Delbrück ruled out for bacteria in 1943."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

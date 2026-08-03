@@ -3,6 +3,7 @@
   "module": "microbiology",
   "index": 3,
   "title": "Growing Something You Cannot See",
+  "principle": "Growing them on purpose is called culturing, and each spot is a colony.",
   "specimen": "culture-plate",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That correspondence is what turns an invisible problem into a countable one."
       ]
     },
-
     {
       "type": "predict",
       "concept": "culture-and-count",
@@ -35,7 +35,6 @@
         "Commit. Note the difference between the first two options: one is about the plate, one is about the sample."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,37 +43,118 @@
         "Assign each technique to its purpose, then the method is tested. Each omission produces a specific and different failure."
       ],
       "parts": [
-        { "id": "sterile", "label": "Sterilise everything first" },
-        { "id": "medium", "label": "Food it can grow on" },
-        { "id": "dilute", "label": "Dilute the sample" },
-        { "id": "spread", "label": "Spread it thinly" },
-        { "id": "count", "label": "Count the spots" }
+        {
+          "id": "sterile",
+          "label": "Sterilise everything first"
+        },
+        {
+          "id": "medium",
+          "label": "Food it can grow on"
+        },
+        {
+          "id": "dilute",
+          "label": "Dilute the sample"
+        },
+        {
+          "id": "spread",
+          "label": "Spread it thinly"
+        },
+        {
+          "id": "count",
+          "label": "Count the spots"
+        }
       ],
       "slots": [
-        { "correct": "sterile", "label": ["Makes sure nothing was there already"] },
-        { "correct": "medium", "label": ["Gives it something to grow on"] },
-        { "correct": "dilute", "label": ["Stops it being a solid lawn"] },
-        { "correct": "spread", "label": ["Keeps each spot separate from its neighbours"] },
-        { "correct": "count", "label": ["Turns spots back into a number"] }
+        {
+          "correct": "sterile",
+          "label": [
+            "Makes sure nothing was there already"
+          ]
+        },
+        {
+          "correct": "medium",
+          "label": [
+            "Gives it something to grow on"
+          ]
+        },
+        {
+          "correct": "dilute",
+          "label": [
+            "Stops it being a solid lawn"
+          ]
+        },
+        {
+          "correct": "spread",
+          "label": [
+            "Keeps each spot separate from its neighbours"
+          ]
+        },
+        {
+          "correct": "count",
+          "label": [
+            "Turns spots back into a number"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Know the result came from your sample", "Sterility"],
-          "needs": ["sterile", "medium"],
-          "pass": ["Nothing grew that you did not put there.", "The plate was sterile before inoculation, so growth is attributable to the sample."],
-          "fail": ["Something grew, and you have no idea where it came from.", "Without sterile technique the result is uninterpretable — you cannot distinguish sample from contaminant."]
+          "name": [
+            "Know the result came from your sample",
+            "Sterility"
+          ],
+          "needs": [
+            "sterile",
+            "medium"
+          ],
+          "pass": [
+            "Nothing grew that you did not put there.",
+            "The plate was sterile before inoculation, so growth is attributable to the sample."
+          ],
+          "fail": [
+            "Something grew, and you have no idea where it came from.",
+            "Without sterile technique the result is uninterpretable — you cannot distinguish sample from contaminant."
+          ]
         },
         {
-          "name": ["Get separate spots rather than a smear", "Separation"],
-          "needs": ["sterile", "medium", "dilute", "spread"],
-          "pass": ["Individual colonies, each from one cell.", "Discrete colonies, each a clone of a single founding cell."],
-          "fail": ["A solid lawn of growth. You can see it and you cannot count it.", "Too concentrated: colonies merge and the one-cell-one-colony correspondence is lost, so nothing can be counted."]
+          "name": [
+            "Get separate spots rather than a smear",
+            "Separation"
+          ],
+          "needs": [
+            "sterile",
+            "medium",
+            "dilute",
+            "spread"
+          ],
+          "pass": [
+            "Individual colonies, each from one cell.",
+            "Discrete colonies, each a clone of a single founding cell."
+          ],
+          "fail": [
+            "A solid lawn of growth. You can see it and you cannot count it.",
+            "Too concentrated: colonies merge and the one-cell-one-colony correspondence is lost, so nothing can be counted."
+          ]
         },
         {
-          "name": ["Say how many were in the original sample", "Quantification"],
-          "needs": ["sterile", "medium", "dilute", "spread", "count"],
-          "pass": ["Spots times the dilution gives you the number you started with.", "Colony count multiplied by the dilution factor recovers the original concentration."],
-          "fail": ["You grew it beautifully and cannot say how much there was.", "Without counting and the dilution factor the procedure is qualitative — it detects, and it does not measure."]
+          "name": [
+            "Say how many were in the original sample",
+            "Quantification"
+          ],
+          "needs": [
+            "sterile",
+            "medium",
+            "dilute",
+            "spread",
+            "count"
+          ],
+          "pass": [
+            "Spots times the dilution gives you the number you started with.",
+            "Colony count multiplied by the dilution factor recovers the original concentration."
+          ],
+          "fail": [
+            "You grew it beautifully and cannot say how much there was.",
+            "Without counting and the dilution factor the procedure is qualitative — it detects, and it does not measure."
+          ]
         }
       ],
       "win": [
@@ -86,7 +166,6 @@
         "Each failed trial names the step that was not being performed. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -102,7 +181,6 @@
         "Metagenomics — sequencing everything in a sample without culturing it — revealed whole branches of life that had been invisible to the older method. It is the same lesson as the microscope, one level along: the instrument decided what could be known, and nobody could see the boundary from inside."
       ]
     },
-
     {
       "type": "check",
       "concept": "culture-and-count",
@@ -123,7 +201,6 @@
         "The one-cell-one-colony correspondence is the entire basis of the count, and it breaks when colonies merge. This is why plates are counted only in a specific range — typically 30 to 300 — with anything denser being reported as too numerous to count rather than estimated."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

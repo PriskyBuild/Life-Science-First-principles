@@ -3,6 +3,7 @@
   "module": "neuroscience",
   "index": 1,
   "title": "The Gap That Matters",
+  "principle": "The gap is called a synapse, and the chemical that crosses it is a neurotransmitter.",
   "specimen": "synapse",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "A continuous wire would be faster and simpler. So the gap is doing something."
       ]
     },
-
     {
       "type": "predict",
       "concept": "synapse-is-a-gap",
@@ -35,7 +35,6 @@
         "Commit. Ask what you could adjust at a gap that you could not adjust in a wire."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,21 +43,65 @@
         "Assemble the synapse: each component in the job it does."
       ],
       "parts": [
-        { "id": "arrive", "label": "Signal arrives" },
-        { "id": "release", "label": "Chemical released" },
-        { "id": "cross", "label": "It drifts across" },
-        { "id": "receive", "label": "Receptors catch it" },
-        { "id": "clear", "label": "The gap is cleared" }
+        {
+          "id": "arrive",
+          "label": "Signal arrives"
+        },
+        {
+          "id": "release",
+          "label": "Chemical released"
+        },
+        {
+          "id": "cross",
+          "label": "It drifts across"
+        },
+        {
+          "id": "receive",
+          "label": "Receptors catch it"
+        },
+        {
+          "id": "clear",
+          "label": "The gap is cleared"
+        }
       ],
       "slots": [
-        { "accepts": "arrive", "label": ["The spike reaches the end", "Action potential reaches the terminal"] },
-        { "accepts": "release", "label": ["Little packets are let out", "Vesicles fuse and release transmitter"] },
-        { "accepts": "cross", "label": ["It floats over the gap", "Transmitter diffuses across the cleft"] },
-        { "accepts": "receive", "label": ["The next cell catches it", "Receptors bind it on the far side"] },
-        { "accepts": "clear", "label": ["It gets mopped up straight away", "Transmitter is removed, ending the signal"] }
+        {
+          "accepts": "arrive",
+          "label": [
+            "The spike reaches the end",
+            "Action potential reaches the terminal"
+          ]
+        },
+        {
+          "accepts": "release",
+          "label": [
+            "Little packets are let out",
+            "Vesicles fuse and release transmitter"
+          ]
+        },
+        {
+          "accepts": "cross",
+          "label": [
+            "It floats over the gap",
+            "Transmitter diffuses across the cleft"
+          ]
+        },
+        {
+          "accepts": "receive",
+          "label": [
+            "The next cell catches it",
+            "Receptors bind it on the far side"
+          ]
+        },
+        {
+          "accepts": "clear",
+          "label": [
+            "It gets mopped up straight away",
+            "Transmitter is removed, ending the signal"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -74,7 +117,6 @@
         "Changing synaptic strength with use is the physical basis of learning. A brain that was hard-wired could compute, but it could not learn — so the gap is not a compromise, it is the whole reason the system is modifiable."
       ]
     },
-
     {
       "type": "check",
       "concept": "synapse-is-a-gap",
@@ -95,7 +137,6 @@
         "It costs perhaps half a millisecond and buys plasticity, inhibition and signal inversion. Electrical synapses do exist and are faster — they are used where speed matters more than modifiability, such as escape reflexes — which is the clearest evidence that the chemical one is a deliberate trade rather than a limitation."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

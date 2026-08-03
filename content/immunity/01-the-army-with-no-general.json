@@ -3,6 +3,7 @@
   "module": "immunity",
   "index": 0,
   "title": "The Army With No General",
+  "principle": "The first defences do not know what they are fighting.",
   "specimen": "barrier-set",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Most of the defending happens before anything clever gets involved."
       ]
     },
-
     {
       "type": "predict",
       "concept": "layered-defence",
@@ -35,7 +35,6 @@
         "Commit. The clever part is famous, and it is not where most of the work happens."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Each of these stops things without identifying them. Match them up."
       ],
       "parts": [
-        { "id": "skin", "label": "Skin" },
-        { "id": "mucus", "label": "Mucus" },
-        { "id": "acid", "label": "Stomach acid" },
-        { "id": "fever", "label": "Fever" }
+        {
+          "id": "skin",
+          "label": "Skin"
+        },
+        {
+          "id": "mucus",
+          "label": "Mucus"
+        },
+        {
+          "id": "acid",
+          "label": "Stomach acid"
+        },
+        {
+          "id": "fever",
+          "label": "Fever"
+        }
       ],
       "slots": [
-        { "accepts": "skin", "label": ["A wall nothing can walk through", "A physical barrier: dead, dry, and continuously shed"] },
-        { "accepts": "mucus", "label": ["Sticky stuff that traps things", "Traps particles and sweeps them out"] },
-        { "accepts": "acid", "label": ["A bath that kills most things you swallow", "pH around 1.5 — lethal to most swallowed organisms"] },
-        { "accepts": "fever", "label": ["Making yourself too hot for them", "Raises temperature past many pathogens' optimum"] }
+        {
+          "accepts": "skin",
+          "label": [
+            "A wall nothing can walk through",
+            "A physical barrier: dead, dry, and continuously shed"
+          ]
+        },
+        {
+          "accepts": "mucus",
+          "label": [
+            "Sticky stuff that traps things",
+            "Traps particles and sweeps them out"
+          ]
+        },
+        {
+          "accepts": "acid",
+          "label": [
+            "A bath that kills most things you swallow",
+            "pH around 1.5 — lethal to most swallowed organisms"
+          ]
+        },
+        {
+          "accepts": "fever",
+          "label": [
+            "Making yourself too hot for them",
+            "Raises temperature past many pathogens' optimum"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "Adaptive immunity is the expensive addition, found only in vertebrates. That most of life manages without it is a good corrective to the assumption that the sophisticated part is the important part."
       ]
     },
-
     {
       "type": "check",
       "concept": "layered-defence",
@@ -93,7 +126,6 @@
         "Pattern recognition rather than identification: receptors for conserved molecular features that pathogens cannot easily discard. This is the trade the system makes — speed and breadth for precision — and it is why the adaptive system exists to cover what gets through."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

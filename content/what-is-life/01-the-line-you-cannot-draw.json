@@ -3,6 +3,7 @@
   "module": "what-is-life",
   "index": 0,
   "title": "The Line You Cannot Draw",
+  "principle": "Being alive is something a thing does, not something it is made of.",
   "specimen": "sorting-tray",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The hard cases are where the definition actually lives."
       ]
     },
-
     {
       "type": "predict",
       "concept": "boundary-cases",
@@ -35,7 +35,6 @@
         "Commit. A seed can sit for a thousand years and then grow, which is a fact any answer has to survive."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Sort each specimen. Two of them are meant to be difficult."
       ],
       "parts": [
-        { "id": "beetle", "label": "A beetle" },
-        { "id": "stone", "label": "A stone" },
-        { "id": "seed", "label": "A dry seed" },
-        { "id": "fire", "label": "A fire" }
+        {
+          "id": "beetle",
+          "label": "A beetle"
+        },
+        {
+          "id": "stone",
+          "label": "A stone"
+        },
+        {
+          "id": "seed",
+          "label": "A dry seed"
+        },
+        {
+          "id": "fire",
+          "label": "A fire"
+        }
       ],
       "slots": [
-        { "correct": "beetle", "label": ["Alive, and obviously so", "Uncontroversially alive"] },
-        { "correct": "stone", "label": ["Not alive, and obviously not", "Uncontroversially not alive"] },
-        { "correct": "seed", "label": ["Alive, but doing nothing", "Alive but metabolically arrested"] },
-        { "correct": "fire", "label": ["Does living things, but is not alive", "Behaves like life without being it"] }
+        {
+          "correct": "beetle",
+          "label": [
+            "Alive, and obviously so",
+            "Uncontroversially alive"
+          ]
+        },
+        {
+          "correct": "stone",
+          "label": [
+            "Not alive, and obviously not",
+            "Uncontroversially not alive"
+          ]
+        },
+        {
+          "correct": "seed",
+          "label": [
+            "Alive, but doing nothing",
+            "Alive but metabolically arrested"
+          ]
+        },
+        {
+          "correct": "fire",
+          "label": [
+            "Does living things, but is not alive",
+            "Behaves like life without being it"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "This is why the boundary cases are genuinely hard rather than merely unsettled: if life is a process, then something can have some of the process and not the rest, and there is no fact of the matter waiting to be discovered."
       ]
     },
-
     {
       "type": "check",
       "concept": "life-is-a-process",
@@ -93,7 +126,6 @@
         "Movement is a poor criterion — a tree does not move and is alive, a river does and is not. The property that does the work is self-maintenance: living systems expend energy to hold themselves away from equilibrium, and stop being alive precisely when they stop."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

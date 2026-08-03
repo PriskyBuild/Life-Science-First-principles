@@ -6,7 +6,7 @@
 
 import { el, mount } from "./el.js";
 import { icon as svgIcon, svgOf } from "./icons.js";
-import { progress, reset, setPref } from "./state.js";
+import { progress, reset, setPref, exportProgress, importProgress } from "./state.js";
 import { LEVELS, DEPTH, prose, content, setLevels } from "./level.js";
 import { specimensByWorld, completedCount } from "./curriculum.js";
 import { BADGES, earnedBadges, hasSpecimen } from "./reward.js";
@@ -165,11 +165,63 @@ export function me() {
       { value: "hyperlegible", label: "Easier to read", hint: "A font designed for low vision and dyslexia" },
     ], progress.prefs.face ?? "", (v) => setPref("face", v)),
 
+    /* KEEPING IT. Written for the parent, not the child — it is a filing task and
+       it belongs in the same register as the licence line. The Erase button sits
+       directly below, which is deliberate: the way to make a destructive control
+       safe is to put the undo next to it, not a second confirmation on top of it. */
+    el("section", { class: "shelf" },
+      el("h2", { text: "Keeping it" }),
+      el("p", { class: "shelf-note", text:
+        "Everything is stored in this browser and nowhere else. That is what keeps it private, "
+        + "and it also means clearing your browsing data erases it. Save a copy." }),
+      el("div", { class: "keep-row" },
+        el("button", { class: "pressable keep-btn", onclick: saveFile }, "Save a copy"),
+        el("label", { class: "pressable keep-btn" },
+          el("span", { text: "Load a copy" }),
+          el("input", { type: "file", accept: "application/json,.json", class: "sr-only",
+            onchange: (e) => loadFile(e.currentTarget) }))),
+      el("p", { class: "notice notice--soft", id: "keep-said", hidden: true })),
+
     el("button", {
       class: "danger pressable",
       onclick: () => { if (confirm("Erase all progress? This cannot be undone.")) { reset(); location.hash = "#/"; } },
     }, "Erase all progress"),
   ];
+}
+
+function said(text, bad = false) {
+  const p = document.getElementById("keep-said");
+  if (!p) return;
+  p.textContent = text;
+  p.hidden = false;
+  p.classList.toggle("notice--wrong", bad);
+}
+
+function saveFile() {
+  const { name, text } = exportProgress();
+  const url = URL.createObjectURL(new Blob([text], { type: "application/json" }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: name });
+  a.click();
+  /* Revoking immediately can beat the download on some browsers; one turn of the
+     event loop is enough and the object is small either way. */
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  said(`Saved as ${name}. Keep it somewhere you keep things.`);
+}
+
+function loadFile(input) {
+  const file = input.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onerror = () => said("That file could not be read.", true);
+  reader.onload = () => {
+    const r = importProgress(String(reader.result));
+    input.value = "";                        // so the same file can be chosen twice
+    if (!r.ok) return said(r.error, true);
+    /* Everything on screen was drawn from the old save, including the two level
+       dials. Repaint from the top rather than patching pieces of it. */
+    location.hash = "#/";
+  };
+  reader.readAsText(file);
 }
 
 /* ---------------------------------------------------------------- level picker */

@@ -3,6 +3,7 @@
   "module": "plants",
   "index": 3,
   "title": "Flowers Are Advertisements",
+  "principle": "A flower is an advert with a payment attached.",
   "specimen": "flower-model",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Flowers are not decoration. They are a contract."
       ]
     },
-
     {
       "type": "predict",
       "concept": "pollination-is-a-deal",
@@ -35,7 +35,6 @@
         "Commit. Ask who the advertisement is aimed at — it is emphatically not us."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Each of these is aimed at a particular pollinator. Work out which."
       ],
       "parts": [
-        { "id": "bee", "label": "Bees" },
-        { "id": "bird", "label": "Birds" },
-        { "id": "moth", "label": "Night moths" },
-        { "id": "fly", "label": "Flies" }
+        {
+          "id": "bee",
+          "label": "Bees"
+        },
+        {
+          "id": "bird",
+          "label": "Birds"
+        },
+        {
+          "id": "moth",
+          "label": "Night moths"
+        },
+        {
+          "id": "fly",
+          "label": "Flies"
+        }
       ],
       "slots": [
-        { "accepts": "bee", "label": ["Blue and yellow, with landing marks", "Blue-yellow, ultraviolet nectar guides, a landing platform"] },
-        { "accepts": "bird", "label": ["Bright red, no smell, lots of nectar", "Red, scentless, copious dilute nectar, tubular"] },
-        { "accepts": "moth", "label": ["White, and only smells at night", "White, strongly scented after dusk, long nectar spur"] },
-        { "accepts": "fly", "label": ["Smells like rotting meat", "Dull red-brown, carrion-scented, no nectar reward"] }
+        {
+          "accepts": "bee",
+          "label": [
+            "Blue and yellow, with landing marks",
+            "Blue-yellow, ultraviolet nectar guides, a landing platform"
+          ]
+        },
+        {
+          "accepts": "bird",
+          "label": [
+            "Bright red, no smell, lots of nectar",
+            "Red, scentless, copious dilute nectar, tubular"
+          ]
+        },
+        {
+          "accepts": "moth",
+          "label": [
+            "White, and only smells at night",
+            "White, strongly scented after dusk, long nectar spur"
+          ]
+        },
+        {
+          "accepts": "fly",
+          "label": [
+            "Smells like rotting meat",
+            "Dull red-brown, carrion-scented, no nectar reward"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "Which is a useful correction to the assumption that flowers are beautiful. They are signals optimised for a receiver with different eyes from ours, and we are eavesdropping on an advertisement not addressed to us."
       ]
     },
-
     {
       "type": "check",
       "concept": "pollination-is-a-deal",
@@ -93,7 +126,6 @@
         "It is evidence read backwards: the flower's advertisement tells you what its intended customer can perceive. Convergence on the same combination across unrelated plant families on different continents is the strongest form of that argument — the same receiver produces the same signal wherever the relationship arises."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

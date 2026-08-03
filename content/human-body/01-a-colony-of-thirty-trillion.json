@@ -3,6 +3,7 @@
   "module": "human-body",
   "index": 0,
   "title": "A Colony of Thirty Trillion",
+  "principle": "Lots of the same cells together make a tissue.",
   "specimen": "cell-census",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "There is no cell in charge, and no cell that can see the whole."
       ]
     },
-
     {
       "type": "predict",
       "concept": "colony-of-cells",
@@ -35,7 +35,6 @@
         "Commit. Your brain has no connection to the great majority of your cells, which rules one of these out."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Each level's behaviour comes from the level below following local rules. There is no step where central control appears."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "The ratio was long quoted as ten to one and is closer to one to one on current estimates. The bacteria are not passengers: germ-free animals develop abnormal immune systems, so the colony is part of the organism in a functional sense."
       ]
     },
-
     {
       "type": "check",
       "concept": "colony-of-cells",
@@ -96,7 +93,6 @@
         "It is distributed control with no controller — the same class of system as the beetle population, and the same reason it is counter-intuitive. Order at the top does not require an orderer, only rules at the bottom and a lot of iterations."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

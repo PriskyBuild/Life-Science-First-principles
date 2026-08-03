@@ -3,6 +3,7 @@
 
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
+import { checkLesson } from "./schema.mjs";
 import { gzipSync } from "node:zlib";
 import { join, relative, extname, dirname } from "node:path";
 
@@ -102,89 +103,19 @@ for (const f of lessonFiles) {
   if (!lesson.stages?.length) { where("no stages"); continue; }
   stageTypes[lesson.id] = new Set(lesson.stages.map((st) => st.type));
 
-  for (const [i, st] of lesson.stages.entries()) {
-    if (!STAGE_TYPES.has(st.type)) where(`stage ${i}: unknown type "${st.type}"`);
-    /* A stray key is silent: the renderer ignores what it does not know, so a
-       typo'd field simply never appears and nothing reports it. I typed a key
-       containing Cyrillic characters into a CRISPR lesson and the build was
-       perfectly happy with it. Field names are ASCII identifiers here, always. */
-    for (const key of Object.keys(st)) {
-      if (!/^[a-zA-Z][a-zA-Z0-9]*$/.test(key)) where(`stage ${i}: field name "${key}" is not a plain identifier`);
-    }
-    if (st.levels && st.levels.some((l) => l < 1 || l > 4)) where(`stage ${i}: levels out of range`);
-    for (const key of ["t", "sub", "q", "why", "question", "note", "after", "evidence", "ask"]) {
-      const v = st[key];
-      if (v === undefined) continue;
-      if (!Array.isArray(v)) { where(`stage ${i}: "${key}" must be an array of level variants`); continue; }
-      if (!v[0]) where(`stage ${i}: "${key}" has no L1 variant`);
-      /* A sentence a five-year-old cannot finish is not a hook — and neither is
-         one a sixteen-year-old cannot, which the first version of this rule
-         forgot. It tested v[0] only, so the youngest reader was protected and
-         every other level went unguarded: the median hook above level 1 was 29
-         words, the longest 44, all set as a display heading. A guard covering one
-         variant of four is not a guard. (D72)
+  /* THE SHAPE IS DECLARED, NOT ASSERTED. Everything that used to be thirty-odd
+     conditionals here now lives in tools/schema.mjs as a table an author can
+     read, and the walk reports against it. The one thing that changed in kind:
+     a field the shape does not list is now an error rather than silence. (D79) */
+  checkLesson(lesson, (msg, level) => (level === "warn" ? warn(`${f}: ${msg}`) : fail(`${f}: ${msg}`)),
+    { sims: REGISTERED_SIMS });
 
-         The headline is now the first SENTENCE of the hook, so that is what gets
-         measured. A long hook made of short sentences is fine. One long sentence
-         is the thing that does not read. */
-      else if (st.type === "hook" && key === "t") {
-        for (const [lv, variant] of v.entries()) {
-          const words = variant.split(/(?<=[.!?])\s+/)[0].split(/\s+/).length;
-          const max = lv === 0 ? 20 : 25;
-          if (words > max) {
-            warn(`${f} stage ${i}: L${lv + 1} hook opens with a ${words}-word sentence `
-              + `(max ${max}) — the renderer can only split at a full stop, so this `
-              + `one needs a hand`);
-          }
-        }
-      }
-    }
-    if (st.type === "sim") {
-      if (!REGISTERED_SIMS.has(st.sim)) where(`stage ${i}: no simulation named "${st.sim}" in js/sims/`);
-      if (!st.goal) where(`stage ${i}: a sim stage needs a goal message`);
-    }
-    if (st.type === "build") {
-      if (!st.parts?.length || !st.slots?.length) where(`stage ${i}: a build stage needs parts and slots`);
-      const ids = new Set((st.parts ?? []).map((x) => x.id));
-      for (const slot of st.slots ?? []) {
-        for (const a of String(slot.accepts ?? "").split(/\s+/).filter(Boolean)) {
-          if (!ids.has(a)) where(`stage ${i}: slot accepts "${a}", which is not one of the parts`);
-        }
-        // Every slot needs a right answer, whether or not placement is constrained.
-        const correct = slot.correct ?? slot.accepts;
-        if (!correct) where(`stage ${i}: a slot needs "correct" (or "accepts") so the build can be marked`);
-        else if (!ids.has(correct)) where(`stage ${i}: slot's correct part "${correct}" is not one of the parts`);
-      }
-      // A boss whose slots all constrain placement can only ever be won.
-      if (st.trials && (st.slots ?? []).every((sl) => sl.accepts)) {
-        where(`stage ${i}: every slot constrains what may be dropped, so a complete build is always correct and the trials cannot fail`);
-      }
-      // A trial that needs a part the child was never given is unwinnable.
-      for (const t of st.trials ?? []) {
-        for (const n of t.needs ?? []) if (!ids.has(n)) where(`stage ${i}: trial "${t.name?.[0]}" needs "${n}", which is not a part`);
-      }
-    }
-    /* A weigh stage carries interpretations that this product does not itself
-       assert, so the one thing it may never do is present one unattributed.
-       "Labelled, not smuggled" is a rule about the format, not a habit of the
-       author, which means the build has to be the thing that enforces it. */
-    if (st.type === "weigh") {
-      if (!Array.isArray(st.views) || st.views.length < 2) {
-        where(`stage ${i}: a weigh stage needs at least two views — one view is an assertion, not a weighing`);
-      }
-      for (const [j, v] of (st.views ?? []).entries()) {
-        if (!v.who?.trim()) where(`stage ${i}, view ${j}: no "who" — an interpretation must say whose it is`);
-        if (!Array.isArray(v.claim) || !v.claim[0]) where(`stage ${i}, view ${j}: "claim" needs an L1 variant`);
-        if (!Array.isArray(v.because) || !v.because[0]) where(`stage ${i}, view ${j}: "because" needs an L1 variant — a view without its reasoning is a label`);
-      }
-    }
-    if (st.type === "check") {
-      if (!st.concept) where(`stage ${i}: a check must name the concept it tests`);
-      if (st.answer == null || !st.options?.length) where(`stage ${i}: check needs options and an answer index`);
-      else if (st.answer >= st.options.length) where(`stage ${i}: answer index out of range`);
-      else if (st.concept && !reviews[st.concept]) {
-        reviews[st.concept] = { q: st.q, options: st.options, answer: st.answer, why: st.why, from: lesson.id };
-      }
+  // The review beats are lifted from the checks themselves, so a beat can never
+  // drift from the question it came from.
+  for (const st of lesson.stages) {
+    if (st.type === "check" && st.concept && !reviews[st.concept]) {
+      reviews[st.concept] = { q: st.q, options: st.options, answer: st.answer, why: st.why,
+        fb: st.fb, from: lesson.id };
     }
   }
 

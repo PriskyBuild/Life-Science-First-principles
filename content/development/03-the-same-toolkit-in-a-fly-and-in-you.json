@@ -3,6 +3,7 @@
   "module": "development",
   "index": 2,
   "title": "The Same Toolkit in a Fly and in You",
+  "principle": "These are Hox genes. They do not build anything — they say what goes where.",
   "specimen": "hox-set",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That tells you something about how the instructions are organised."
       ]
     },
-
     {
       "type": "predict",
       "concept": "conserved-toolkit",
@@ -35,7 +35,6 @@
         "Commit. The structure was built correctly, which is the clue — the error was in the addressing, not the construction."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "These genes are arranged along the chromosome in the same order as the body parts they specify. Match them up."
       ],
       "parts": [
-        { "id": "head", "label": "Gene 1" },
-        { "id": "thorax", "label": "Gene 3" },
-        { "id": "abdomen", "label": "Gene 7" },
-        { "id": "tail", "label": "Gene 9" }
+        {
+          "id": "head",
+          "label": "Gene 1"
+        },
+        {
+          "id": "thorax",
+          "label": "Gene 3"
+        },
+        {
+          "id": "abdomen",
+          "label": "Gene 7"
+        },
+        {
+          "id": "tail",
+          "label": "Gene 9"
+        }
       ],
       "slots": [
-        { "accepts": "head", "label": ["The head end", "Anterior: head"] },
-        { "accepts": "thorax", "label": ["Just behind the head", "Thorax"] },
-        { "accepts": "abdomen", "label": ["The middle", "Abdomen"] },
-        { "accepts": "tail", "label": ["The tail end", "Posterior"] }
+        {
+          "accepts": "head",
+          "label": [
+            "The head end",
+            "Anterior: head"
+          ]
+        },
+        {
+          "accepts": "thorax",
+          "label": [
+            "Just behind the head",
+            "Thorax"
+          ]
+        },
+        {
+          "accepts": "abdomen",
+          "label": [
+            "The middle",
+            "Abdomen"
+          ]
+        },
+        {
+          "accepts": "tail",
+          "label": [
+            "The tail end",
+            "Posterior"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "The toolkit's conservation was the founding surprise of evolutionary developmental biology in the 1980s. The expectation had been that different body plans required different genes; what was found was the same small set of genes deployed differently — which shifted the emphasis from inventing genes to redeploying them."
       ]
     },
-
     {
       "type": "check",
       "concept": "conserved-toolkit",
@@ -93,11 +126,13 @@
         "Because the addressing and the construction are separate systems. A homeotic mutation misaddresses a fully intact construction programme, which is why the result is a perfect structure in the wrong location rather than a malformed one in the right place. That separation is itself the discovery."
       ]
     },
-
     {
       "type": "check",
       "concept": "differentiation",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "Why is the same toolkit in a fly and in a human interesting?",
         "What made the conservation of the developmental toolkit surprising?"
@@ -113,7 +148,6 @@
         "The pre-genomic expectation was that morphological disparity required genetic disparity. What was found instead was a small, highly conserved regulatory toolkit used combinatorially. That relocated the explanation of body-plan difference from gene content to gene regulation, and it is the reason evo-devo exists as a field."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

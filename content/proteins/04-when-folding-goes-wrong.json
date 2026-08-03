@@ -3,6 +3,7 @@
   "module": "proteins",
   "index": 3,
   "title": "When Folding Goes Wrong",
+  "principle": "The cell has helpers that stop proteins folding wrong.",
   "specimen": "chaperone",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "A wrong shape that is more stable than the right shape is a different kind of problem from a mistake."
       ]
     },
-
     {
       "type": "predict",
       "concept": "misfolding-disease",
@@ -35,39 +35,50 @@
         "Commit. The answer is why a single misfolded molecule can matter at all."
       ]
     },
-
     {
       "type": "sim",
       "sim": "folding",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Fold this one and see how easy it is to get stuck somewhere that is nearly right but not right.",
         "Fold this chain to its best shape. Notice how many arrangements are close to the answer without being it."
       ],
-      "params": { "seq": "PHHPPHHPPHHP", "target": 3, "aspect": 0.85 },
+      "params": {
+        "seq": "PHHPPHHPPHHP",
+        "target": 3,
+        "aspect": 0.85
+      },
       "goal": [
         "You got there. But there were plenty of nearly-right shapes on the way.",
         "Found it. The point is how many almost-right arrangements you passed through — a real chain has vastly more."
       ]
     },
-
     {
       "type": "sim",
       "sim": "folding",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Find this one's best fold. Then count how many bends you needed, and think about a real protein with three hundred beads.",
         "Reach the optimum, then consider the scaling. This chain has 12 residues and a handful of moves; a real protein has hundreds, and cannot search them all."
       ],
-      "params": { "seq": "HHPPHPPHPPHH", "target": 4, "aspect": 0.85 },
+      "params": {
+        "seq": "HHPPHPPHPPHH",
+        "target": 4,
+        "aspect": 0.85
+      },
       "goal": [
         "Found it — and you had to search. A real protein cannot search, so it must not need to.",
         "Levinthal's paradox in miniature: a 100-residue chain sampling every conformation would take longer than the universe has existed, yet folding takes milliseconds. The resolution is that folding is a funnel, not a search — the landscape is biased toward the native state from everywhere on it."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -83,7 +94,6 @@
         "That waste is the price of speed. Translation running fast enough to be useful produces a substantial defective fraction, and it is cheaper to destroy them than to slow everything down — the same fidelity-versus-rate trade you met in replication."
       ]
     },
-
     {
       "type": "check",
       "concept": "misfolding-disease",
@@ -104,7 +114,6 @@
         "Amyloid is a cross-β structure that is thermodynamically very stable and grows by recruiting monomers onto its ends. That is self-templating — which is why prion diseases are transmissible without any nucleic acid at all, a claim that took Prusiner a decade to get accepted."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

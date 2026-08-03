@@ -1,0 +1,44 @@
+{
+  "//": [
+    "TYPES WITHOUT A BUILD STEP. TypeScript is a dev dependency here, never a",
+    "compiler: `tsc --noEmit` reads the JSDoc in plain .js files and reports, and",
+    "the browser goes on loading the same untouched modules it always did. Zero",
+    "bytes shipped, zero runtime dependencies, and `npm run dev` is still a static",
+    "file server. This is the half of Fable's plan worth taking. (D79)",
+    "",
+    "strict is off ON PURPOSE, for now. Turning it on across thirty-five modules",
+    "that were written without it produces hundreds of findings in one go, which",
+    "is the reliable way to make a checker something people switch off. The list",
+    "below is what is on today; each line is meant to move to true, one at a time,",
+    "with the findings fixed rather than suppressed."
+  ],
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": false,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["js/**/*.js", "tools/build.mjs", "tools/schema.mjs", "tools/types.d.ts", "sw.js"],
+
+  "//exclude": [
+    "The browser test harness is deliberately not checked. Its page.evaluate()",
+    "bodies are strings of code that run in the PAGE's realm, not Node's — so a",
+    "checker with the DOM lib on reports false positives in both directions, and",
+    "173 of the 260 findings on the first run came from exactly that. Checking it",
+    "would teach us to ignore the checker, which is the only outcome worth avoiding."
+  ],
+  "exclude": ["node_modules", "tools/verify.mjs", "tools/preview.mjs", "tools/lighthouse.mjs"]
+}

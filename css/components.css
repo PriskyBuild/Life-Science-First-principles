@@ -463,6 +463,18 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
 .badge-why { display: block; font-size: var(--fs-sm); color: var(--ink-3); }
 .badge--earned .badge-why { color: var(--ink-2); }
 
+/* Keeping it: two controls that read as one pair, because saving and loading are
+   one habit. The file input is a <label> wrapping a visually hidden <input>, so
+   it is a real control with real keyboard behaviour rather than a button faking
+   one. */
+.keep-row { display: flex; gap: var(--s-3); flex-wrap: wrap; margin-bottom: var(--s-3); }
+.keep-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--touch); padding: var(--s-3) var(--s-5);
+  border-radius: var(--r-pill); border: var(--clay-border) solid var(--w-line, var(--hairline));
+  background: var(--surface); color: var(--ink); box-shadow: var(--e1);
+  font: inherit; font-weight: var(--weight-bold); cursor: pointer;
+}
 .shelf-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-3); }
 .shelf-count { font-weight: var(--weight-bold); color: var(--ink-3); font-size: var(--fs-sm); }
 .shelf-world { margin-top: var(--s-3); }

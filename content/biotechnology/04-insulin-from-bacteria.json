@@ -3,6 +3,7 @@
   "module": "biotechnology",
   "index": 3,
   "title": "Insulin From Bacteria",
+  "principle": "A protein made by putting its gene into something else is called recombinant.",
   "specimen": "recombinant-vial",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "This is the first recombinant drug, and it is the whole module in one product."
       ]
     },
-
     {
       "type": "predict",
       "concept": "recombinant-protein",
@@ -35,7 +35,6 @@
         "Commit. The chemistry was solved in 1982 and the delivery problem was not."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,43 +43,136 @@
         "Assemble the manufacturing route. Placement is unconstrained; each omission produces a different and specific failure."
       ],
       "parts": [
-        { "id": "sequence", "label": "The human insulin sequence" },
-        { "id": "plasmid", "label": "A plasmid" },
-        { "id": "host", "label": "Bacteria" },
-        { "id": "select", "label": "Antibiotic selection" },
-        { "id": "purify", "label": "Purification" }
+        {
+          "id": "sequence",
+          "label": "The human insulin sequence"
+        },
+        {
+          "id": "plasmid",
+          "label": "A plasmid"
+        },
+        {
+          "id": "host",
+          "label": "Bacteria"
+        },
+        {
+          "id": "select",
+          "label": "Antibiotic selection"
+        },
+        {
+          "id": "purify",
+          "label": "Purification"
+        }
       ],
       "slots": [
-        { "correct": "sequence", "label": ["Says what to make"] },
-        { "correct": "plasmid", "label": ["Gets it into the cell"] },
-        { "correct": "host", "label": ["Makes it, and makes more of itself"] },
-        { "correct": "select", "label": ["Keeps only the cells that took it"] },
-        { "correct": "purify", "label": ["Separates the product from everything else"] }
+        {
+          "correct": "sequence",
+          "label": [
+            "Says what to make"
+          ]
+        },
+        {
+          "correct": "plasmid",
+          "label": [
+            "Gets it into the cell"
+          ]
+        },
+        {
+          "correct": "host",
+          "label": [
+            "Makes it, and makes more of itself"
+          ]
+        },
+        {
+          "correct": "select",
+          "label": [
+            "Keeps only the cells that took it"
+          ]
+        },
+        {
+          "correct": "purify",
+          "label": [
+            "Separates the product from everything else"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Make the right molecule", "Specification"],
-          "needs": ["sequence"],
-          "pass": ["Human insulin, exactly.", "The correct human sequence is specified."],
-          "fail": ["You have a factory and nothing told it what to build.", "Without the sequence there is no product. Everything else is machinery."]
+          "name": [
+            "Make the right molecule",
+            "Specification"
+          ],
+          "needs": [
+            "sequence"
+          ],
+          "pass": [
+            "Human insulin, exactly.",
+            "The correct human sequence is specified."
+          ],
+          "fail": [
+            "You have a factory and nothing told it what to build.",
+            "Without the sequence there is no product. Everything else is machinery."
+          ]
         },
         {
-          "name": ["Get the instruction inside", "Delivery"],
-          "needs": ["sequence", "plasmid", "host"],
-          "pass": ["The bacteria are reading it and making protein.", "The construct is taken up and expressed."],
-          "fail": ["A perfect sequence, sitting in a tube.", "A gene outside a cell makes nothing. It needs a vector and a host."]
+          "name": [
+            "Get the instruction inside",
+            "Delivery"
+          ],
+          "needs": [
+            "sequence",
+            "plasmid",
+            "host"
+          ],
+          "pass": [
+            "The bacteria are reading it and making protein.",
+            "The construct is taken up and expressed."
+          ],
+          "fail": [
+            "A perfect sequence, sitting in a tube.",
+            "A gene outside a cell makes nothing. It needs a vector and a host."
+          ]
         },
         {
-          "name": ["End up with a pure culture", "Selection"],
-          "needs": ["sequence", "plasmid", "host", "select"],
-          "pass": ["Only the cells carrying the gene survive to grow.", "Antibiotic selection enriches transformants to effectively 100%."],
-          "fail": ["Most of your bacteria never took it up and are just eating.", "Transformation efficiency is low. Without selection the culture is dominated by cells producing nothing."]
+          "name": [
+            "End up with a pure culture",
+            "Selection"
+          ],
+          "needs": [
+            "sequence",
+            "plasmid",
+            "host",
+            "select"
+          ],
+          "pass": [
+            "Only the cells carrying the gene survive to grow.",
+            "Antibiotic selection enriches transformants to effectively 100%."
+          ],
+          "fail": [
+            "Most of your bacteria never took it up and are just eating.",
+            "Transformation efficiency is low. Without selection the culture is dominated by cells producing nothing."
+          ]
         },
         {
-          "name": ["Be safe to inject into a person", "Purity"],
-          "needs": ["sequence", "plasmid", "host", "select", "purify"],
-          "pass": ["Insulin, and nothing else from the bacterium.", "Product separated from host proteins and endotoxin to injectable standard."],
-          "fail": ["Insulin mixed with bacterial debris. That is not a medicine.", "Bacterial endotoxin causes severe reactions. Purification is not a finishing step — it is most of the manufacturing cost."]
+          "name": [
+            "Be safe to inject into a person",
+            "Purity"
+          ],
+          "needs": [
+            "sequence",
+            "plasmid",
+            "host",
+            "select",
+            "purify"
+          ],
+          "pass": [
+            "Insulin, and nothing else from the bacterium.",
+            "Product separated from host proteins and endotoxin to injectable standard."
+          ],
+          "fail": [
+            "Insulin mixed with bacterial debris. That is not a medicine.",
+            "Bacterial endotoxin causes severe reactions. Purification is not a finishing step — it is most of the manufacturing cost."
+          ]
         }
       ],
       "win": [
@@ -92,7 +184,6 @@
         "Each failed trial names the step that was not performed. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -108,7 +199,6 @@
         "Clotting factor is the starkest case: haemophilia was treated with pooled donor plasma, and in the 1980s that route infected thousands of patients with HIV and hepatitis C. Recombinant factor removed the donor pool from the process, and with it that entire class of risk."
       ]
     },
-
     {
       "type": "check",
       "concept": "recombinant-protein",
@@ -129,7 +219,6 @@
         "Supply, on the evidence. Immunological problems affected a minority; the supply constraint affected everyone and was structural — insulin availability was tied to the meat industry with no way to increase it independently. It is a useful reminder that the decisive advantage of a technology is often the unglamorous one."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

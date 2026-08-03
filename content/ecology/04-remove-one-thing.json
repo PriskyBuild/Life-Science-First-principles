@@ -3,6 +3,7 @@
   "module": "ecology",
   "index": 3,
   "title": "Remove One Thing",
+  "principle": "An effect that travels down through the levels is called a trophic cascade.",
   "specimen": "keystone",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "So the effect travelled through something, and that something is the lesson."
       ]
     },
-
     {
       "type": "predict",
       "concept": "keystone-effects",
@@ -35,7 +35,6 @@
         "Commit. Then check it in the simulation rather than taking my word for it."
       ]
     },
-
     {
       "type": "sim",
       "sim": "web",
@@ -44,13 +43,16 @@
         "Let the whole web settle. Then take the hunters away and let it settle again. Compare the plants.",
         "Run the full web to equilibrium and note all three numbers. Then remove the top level, re-run, and compare — particularly the level you did not touch."
       ],
-      "params": { "task": "cascade", "switches": true, "aspect": 0.85 },
+      "params": {
+        "task": "cascade",
+        "switches": true,
+        "aspect": 0.85
+      },
       "goal": [
         "The plants collapsed, and you never touched the plants.",
         "Plants fell sharply after a removal two levels above them. The effect travelled down through a level that was never manipulated."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -66,7 +68,6 @@
         "Paine's experiment is the reason the concept exists as science rather than intuition: he did the removal deliberately, on a real shore, and the community collapsed to a mussel monoculture. The starfish was neither abundant nor conspicuous, which is precisely the point — importance and abundance are different quantities."
       ]
     },
-
     {
       "type": "check",
       "concept": "keystone-effects",
@@ -87,7 +88,6 @@
         "Because each level suppresses the one below it. Removing a suppressor releases its prey, which suppresses the next level down, so the sign flips at every step. That alternation predicts what happens when you remove a herbivore instead — plants should rise — and it does, which is what makes the account testable."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

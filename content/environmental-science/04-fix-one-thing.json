@@ -3,6 +3,7 @@
   "module": "environmental-science",
   "index": 3,
   "title": "Fix One Thing",
+  "principle": "Every fix does something you did not intend.",
   "specimen": "intervention-kit",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "This is not a story about carelessness. It is what happens when you act on a web while thinking about a chain."
       ]
     },
-
     {
       "type": "predict",
       "concept": "intervention-tradeoffs",
@@ -35,7 +35,6 @@
         "Commit. Note that the first option makes a prediction about which interventions go wrong, and the others do not."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,41 +43,123 @@
         "Each of these was a real intervention. Match it to its actual consequence rather than its intention."
       ],
       "parts": [
-        { "id": "toad", "label": "Cane toads for beetles" },
-        { "id": "wolf", "label": "Wolves removed from Yellowstone" },
-        { "id": "cfc", "label": "CFCs banned" },
-        { "id": "dam", "label": "A river dammed for power" }
+        {
+          "id": "toad",
+          "label": "Cane toads for beetles"
+        },
+        {
+          "id": "wolf",
+          "label": "Wolves removed from Yellowstone"
+        },
+        {
+          "id": "cfc",
+          "label": "CFCs banned"
+        },
+        {
+          "id": "dam",
+          "label": "A river dammed for power"
+        }
       ],
       "slots": [
-        { "correct": "toad", "label": ["Missed its target and poisoned the predators instead"] },
-        { "correct": "wolf", "label": ["Changed the vegetation two levels away"] },
-        { "correct": "cfc", "label": ["Worked, and the damage is measurably reversing"] },
-        { "correct": "dam", "label": ["Clean power, and the fish can no longer get upstream"] }
+        {
+          "correct": "toad",
+          "label": [
+            "Missed its target and poisoned the predators instead"
+          ]
+        },
+        {
+          "correct": "wolf",
+          "label": [
+            "Changed the vegetation two levels away"
+          ]
+        },
+        {
+          "correct": "cfc",
+          "label": [
+            "Worked, and the damage is measurably reversing"
+          ]
+        },
+        {
+          "correct": "dam",
+          "label": [
+            "Clean power, and the fish can no longer get upstream"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Think about what eats it", "One level up"],
-          "needs": ["toad"],
-          "pass": ["You checked what would eat the thing you introduced.", "Predator response considered — the failure mode that caught the cane toad."],
-          "fail": ["Nobody asked what would happen to the animals that tried to eat it.", "The toad's toxin killed native predators that had no evolutionary history with it. One level up was where the damage landed."]
+          "name": [
+            "Think about what eats it",
+            "One level up"
+          ],
+          "needs": [
+            "toad"
+          ],
+          "pass": [
+            "You checked what would eat the thing you introduced.",
+            "Predator response considered — the failure mode that caught the cane toad."
+          ],
+          "fail": [
+            "Nobody asked what would happen to the animals that tried to eat it.",
+            "The toad's toxin killed native predators that had no evolutionary history with it. One level up was where the damage landed."
+          ]
         },
         {
-          "name": ["Think about what it eats", "One level down"],
-          "needs": ["toad", "wolf"],
-          "pass": ["You followed the effect downwards as well.", "Downward propagation considered — the cascade."],
-          "fail": ["The effect travelled down through a level nobody was watching.", "Removing a predator changes the vegetation. You met this two lessons ago and it is still the easiest effect to miss."]
+          "name": [
+            "Think about what it eats",
+            "One level down"
+          ],
+          "needs": [
+            "toad",
+            "wolf"
+          ],
+          "pass": [
+            "You followed the effect downwards as well.",
+            "Downward propagation considered — the cascade."
+          ],
+          "fail": [
+            "The effect travelled down through a level nobody was watching.",
+            "Removing a predator changes the vegetation. You met this two lessons ago and it is still the easiest effect to miss."
+          ]
         },
         {
-          "name": ["Check it can be undone", "Reversibility"],
-          "needs": ["toad", "wolf", "dam"],
-          "pass": ["You asked what happens if this turns out to be wrong.", "Reversibility assessed before committing."],
-          "fail": ["The dam is built and the river does not go back.", "Irreversible interventions must clear a much higher bar, because being wrong cannot be corrected. A dam is concrete; a released organism cannot be recalled."]
+          "name": [
+            "Check it can be undone",
+            "Reversibility"
+          ],
+          "needs": [
+            "toad",
+            "wolf",
+            "dam"
+          ],
+          "pass": [
+            "You asked what happens if this turns out to be wrong.",
+            "Reversibility assessed before committing."
+          ],
+          "fail": [
+            "The dam is built and the river does not go back.",
+            "Irreversible interventions must clear a much higher bar, because being wrong cannot be corrected. A dam is concrete; a released organism cannot be recalled."
+          ]
         },
         {
-          "name": ["Notice when it worked", "Success"],
-          "needs": ["toad", "wolf", "dam", "cfc"],
-          "pass": ["The ozone layer is recovering. Some fixes work.", "The Montreal Protocol worked: ozone depletion is measurably reversing, and it is the strongest evidence that coordinated action on an atmospheric problem is possible."],
-          "fail": ["You have learned only that everything backfires, which is not true.", "Concluding that intervention always fails is as wrong as assuming it always works — and the ozone case is the counter-example that keeps the lesson honest."]
+          "name": [
+            "Notice when it worked",
+            "Success"
+          ],
+          "needs": [
+            "toad",
+            "wolf",
+            "dam",
+            "cfc"
+          ],
+          "pass": [
+            "The ozone layer is recovering. Some fixes work.",
+            "The Montreal Protocol worked: ozone depletion is measurably reversing, and it is the strongest evidence that coordinated action on an atmospheric problem is possible."
+          ],
+          "fail": [
+            "You have learned only that everything backfires, which is not true.",
+            "Concluding that intervention always fails is as wrong as assuming it always works — and the ozone case is the counter-example that keeps the lesson honest."
+          ]
         }
       ],
       "win": [
@@ -90,10 +171,12 @@
         "Each failed trial names the check that was skipped. Reassign and re-test."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "intervention-tradeoffs",
       "t": [
         "People who agree about the science still disagree about what to do. Here is how each side reasons.",
@@ -140,7 +223,6 @@
         "Both accept the physics and both want to minimise harm, so the disagreement is empirical and moral rather than scientific. Ask what evidence would move each side — and notice that a great deal of public argument here attacks a disagreement about the science that these two do not have."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -156,7 +238,6 @@
         "The Montreal Protocol worked because the problem had a small number of substitutable chemicals, a clear mechanism and identifiable manufacturers. Noting why it was tractable is more useful than either celebrating it or dismissing the comparison — it tells you what makes a problem solvable."
       ]
     },
-
     {
       "type": "check",
       "concept": "intervention-tradeoffs",
@@ -177,7 +258,6 @@
         "Reversibility deserves its own weight because it changes how much uncertainty is tolerable. Introducing an organism and building a dam are both irreversible in practice, and both have a long history of being assessed as though they were not — which is the specific error, rather than insufficient care in general."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "development",
   "index": 3,
   "title": "Build a Body Plan",
+  "principle": "Building a body is done by local rules, and part of it is taking things away.",
   "specimen": "body-blueprint",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Each omission produces a different and diagnosable failure, which is what makes this a test."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -25,49 +25,154 @@
         "Assign each mechanism to its role. Placement is unconstrained — only the assignment is graded."
       ],
       "parts": [
-        { "id": "division", "label": "Cell division" },
-        { "id": "gradient", "label": "A morphogen gradient" },
-        { "id": "hox", "label": "Hox genes" },
-        { "id": "expression", "label": "Selective gene reading" },
-        { "id": "death", "label": "Programmed cell death" }
+        {
+          "id": "division",
+          "label": "Cell division"
+        },
+        {
+          "id": "gradient",
+          "label": "A morphogen gradient"
+        },
+        {
+          "id": "hox",
+          "label": "Hox genes"
+        },
+        {
+          "id": "expression",
+          "label": "Selective gene reading"
+        },
+        {
+          "id": "death",
+          "label": "Programmed cell death"
+        }
       ],
       "slots": [
-        { "correct": "division", "label": ["Makes enough cells to work with"] },
-        { "correct": "gradient", "label": ["Tells each cell where it is"] },
-        { "correct": "hox", "label": ["Says what kind of thing to build there"] },
-        { "correct": "expression", "label": ["Makes cells actually different from each other"] },
-        { "correct": "death", "label": ["Removes what is not wanted"] }
+        {
+          "correct": "division",
+          "label": [
+            "Makes enough cells to work with"
+          ]
+        },
+        {
+          "correct": "gradient",
+          "label": [
+            "Tells each cell where it is"
+          ]
+        },
+        {
+          "correct": "hox",
+          "label": [
+            "Says what kind of thing to build there"
+          ]
+        },
+        {
+          "correct": "expression",
+          "label": [
+            "Makes cells actually different from each other"
+          ]
+        },
+        {
+          "correct": "death",
+          "label": [
+            "Removes what is not wanted"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Have something to build with", "Proliferation"],
-          "needs": ["division"],
-          "pass": ["Enough cells to make an animal out of.", "A sufficient cell population exists."],
-          "fail": ["One cell is not a body plan.", "Without proliferation there is no field of cells for any pattern to be imposed on."]
+          "name": [
+            "Have something to build with",
+            "Proliferation"
+          ],
+          "needs": [
+            "division"
+          ],
+          "pass": [
+            "Enough cells to make an animal out of.",
+            "A sufficient cell population exists."
+          ],
+          "fail": [
+            "One cell is not a body plan.",
+            "Without proliferation there is no field of cells for any pattern to be imposed on."
+          ]
         },
         {
-          "name": ["Know which end is which", "Axis"],
-          "needs": ["division", "gradient"],
-          "pass": ["There is a front and a back.", "A polarity axis is established and readable."],
-          "fail": ["A featureless ball of cells. Nothing has a position.", "No gradient, no coordinate. Every cell is in the same situation as every other, so nothing can differ systematically."]
+          "name": [
+            "Know which end is which",
+            "Axis"
+          ],
+          "needs": [
+            "division",
+            "gradient"
+          ],
+          "pass": [
+            "There is a front and a back.",
+            "A polarity axis is established and readable."
+          ],
+          "fail": [
+            "A featureless ball of cells. Nothing has a position.",
+            "No gradient, no coordinate. Every cell is in the same situation as every other, so nothing can differ systematically."
+          ]
         },
         {
-          "name": ["Build the right thing in each place", "Identity"],
-          "needs": ["division", "gradient", "hox"],
-          "pass": ["Head structures at the head end, and so on.", "Regional identity is assigned along the axis."],
-          "fail": ["Every cell knew where it was and built the same thing anyway.", "Position without identity: a coordinate nothing reads. Structures form, in the same form everywhere."]
+          "name": [
+            "Build the right thing in each place",
+            "Identity"
+          ],
+          "needs": [
+            "division",
+            "gradient",
+            "hox"
+          ],
+          "pass": [
+            "Head structures at the head end, and so on.",
+            "Regional identity is assigned along the axis."
+          ],
+          "fail": [
+            "Every cell knew where it was and built the same thing anyway.",
+            "Position without identity: a coordinate nothing reads. Structures form, in the same form everywhere."
+          ]
         },
         {
-          "name": ["Make cells that are actually different", "Differentiation"],
-          "needs": ["division", "gradient", "hox", "expression"],
-          "pass": ["Nerve, muscle and skin, all from the same genome.", "Distinct cell types arise from one genome by selective expression."],
-          "fail": ["Correctly labelled regions, all made of identical cells.", "Identity assigned but never executed: without selective expression the labels change nothing about the cells."]
+          "name": [
+            "Make cells that are actually different",
+            "Differentiation"
+          ],
+          "needs": [
+            "division",
+            "gradient",
+            "hox",
+            "expression"
+          ],
+          "pass": [
+            "Nerve, muscle and skin, all from the same genome.",
+            "Distinct cell types arise from one genome by selective expression."
+          ],
+          "fail": [
+            "Correctly labelled regions, all made of identical cells.",
+            "Identity assigned but never executed: without selective expression the labels change nothing about the cells."
+          ]
         },
         {
-          "name": ["Have separate fingers", "Sculpting"],
-          "needs": ["division", "gradient", "hox", "expression", "death"],
-          "pass": ["The webbing between them is removed on purpose.", "Interdigital tissue is cleared by programmed cell death."],
-          "fail": ["A working hand, with the fingers still joined together.", "Everything correct and nothing removed. Your fingers are separated by cells being deliberately destroyed — building alone does not get you there."]
+          "name": [
+            "Have separate fingers",
+            "Sculpting"
+          ],
+          "needs": [
+            "division",
+            "gradient",
+            "hox",
+            "expression",
+            "death"
+          ],
+          "pass": [
+            "The webbing between them is removed on purpose.",
+            "Interdigital tissue is cleared by programmed cell death."
+          ],
+          "fail": [
+            "A working hand, with the fingers still joined together.",
+            "Everything correct and nothing removed. Your fingers are separated by cells being deliberately destroyed — building alone does not get you there."
+          ]
         }
       ],
       "win": [
@@ -79,7 +184,6 @@
         "Each failed trial names the mechanism that was not in place. Reassign and re-test; the diagnosis is the lesson."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -95,7 +199,6 @@
         "It is also why the genome is badly described as a blueprint. A blueprint maps one-to-one onto the thing built; a genome specifies processes whose outcome depends on their own execution. Recipe is closer, and even that flatters it."
       ]
     },
-
     {
       "type": "check",
       "concept": "body-plan",
@@ -116,7 +219,6 @@
         "It shows that development is subtractive as well as additive, and that removal is instructed rather than incidental. Where the instruction fails, the digits remain joined — which is exactly what simple syndactyly is."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

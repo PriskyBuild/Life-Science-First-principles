@@ -3,6 +3,7 @@
   "module": "crispr",
   "index": 3,
   "title": "What Could Go Wrong",
+  "principle": "An edit in an embryo is called a germline edit, and it never stops being passed on.",
   "specimen": "off-target-log",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Editing a person and editing a person's descendants are not the same act."
       ]
     },
-
     {
       "type": "predict",
       "concept": "edit-consequences",
@@ -35,7 +35,6 @@
         "Commit. Note who has consented in each case, and who cannot."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,22 +43,60 @@
         "Two kinds of edit with very different reach. Match them."
       ],
       "parts": [
-        { "id": "somatic", "label": "Editing a patient's own cells" },
-        { "id": "germline", "label": "Editing an embryo" },
-        { "id": "consent", "label": "Consent" },
-        { "id": "reversible", "label": "Being able to stop" }
+        {
+          "id": "somatic",
+          "label": "Editing a patient's own cells"
+        },
+        {
+          "id": "germline",
+          "label": "Editing an embryo"
+        },
+        {
+          "id": "consent",
+          "label": "Consent"
+        },
+        {
+          "id": "reversible",
+          "label": "Being able to stop"
+        }
       ],
       "slots": [
-        { "accepts": "somatic", "label": ["Affects one person, who asked for it", "Somatic: confined to the treated individual"] },
-        { "accepts": "germline", "label": ["Affects that person and everyone descended from them", "Germline: heritable, present in all cells and all descendants"] },
-        { "accepts": "consent", "label": ["Possible for a patient, impossible for someone unborn", "Obtainable in one case and not in the other"] },
-        { "accepts": "reversible", "label": ["You can stop treating; you cannot un-edit a lineage", "Somatic edits end with the patient; germline edits do not"] }
+        {
+          "accepts": "somatic",
+          "label": [
+            "Affects one person, who asked for it",
+            "Somatic: confined to the treated individual"
+          ]
+        },
+        {
+          "accepts": "germline",
+          "label": [
+            "Affects that person and everyone descended from them",
+            "Germline: heritable, present in all cells and all descendants"
+          ]
+        },
+        {
+          "accepts": "consent",
+          "label": [
+            "Possible for a patient, impossible for someone unborn",
+            "Obtainable in one case and not in the other"
+          ]
+        },
+        {
+          "accepts": "reversible",
+          "label": [
+            "You can stop treating; you cannot un-edit a lineage",
+            "Somatic edits end with the patient; germline edits do not"
+          ]
+        }
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "edit-consequences",
       "t": [
         "Scientists who agree completely about how CRISPR works disagree about whether heritable editing should ever be allowed.",
@@ -106,7 +143,6 @@
         "Notice that both positions are about consent and risk rather than about the biology, and that they make different empirical predictions — about whether accuracy improves enough, and about whether permitted uses stay bounded. Ask which of those you could actually check, and how long checking would take."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -122,7 +158,6 @@
         "That narrowing matters for the argument: the genuinely hard cases — where both parents are homozygous for a severe recessive condition — are rare. Much of the debate is conducted as though the technology's main use would be preventing disease broadly, when screening already handles nearly all of that."
       ]
     },
-
     {
       "type": "check",
       "concept": "edit-consequences",
@@ -143,7 +178,6 @@
         "It tracks who bears the risk relative to who accepted it. In somatic therapy those are the same person; in germline editing they diverge permanently and by construction. That divergence is why the argument does not dissolve as the technology becomes safer — safety addresses the magnitude of the risk and not who is bearing it unasked."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

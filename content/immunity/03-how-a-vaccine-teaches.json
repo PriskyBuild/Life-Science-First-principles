@@ -3,6 +3,7 @@
   "module": "immunity",
   "index": 2,
   "title": "How a Vaccine Teaches",
+  "principle": "A vaccine is practice. It shows your body the shape, and your body remembers it.",
   "specimen": "vaccine-vial",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "It is a training exercise, and understanding that is most of understanding why it works."
       ]
     },
-
     {
       "type": "predict",
       "concept": "vaccination-is-training",
@@ -35,51 +35,135 @@
         "Commit. The distinction between the second and third options is worth being precise about."
       ]
     },
-
     {
       "type": "build",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Put each kind of vaccine next to what it actually contains. Any part fits any slot.",
         "Match each platform to its content. Placement is unconstrained, so the assignment is the whole of the marking."
       ],
       "parts": [
-        { "id": "live", "label": "Live attenuated" },
-        { "id": "killed", "label": "Inactivated" },
-        { "id": "subunit", "label": "Subunit" },
-        { "id": "mrna", "label": "mRNA" }
+        {
+          "id": "live",
+          "label": "Live attenuated"
+        },
+        {
+          "id": "killed",
+          "label": "Inactivated"
+        },
+        {
+          "id": "subunit",
+          "label": "Subunit"
+        },
+        {
+          "id": "mrna",
+          "label": "mRNA"
+        }
       ],
       "slots": [
-        { "correct": "live", "label": ["A weakened version that still replicates"] },
-        { "correct": "killed", "label": ["The whole organism, unable to replicate"] },
-        { "correct": "subunit", "label": ["One protein from its surface, and nothing else"] },
-        { "correct": "mrna", "label": ["Instructions for making that protein yourself"] }
+        {
+          "correct": "live",
+          "label": [
+            "A weakened version that still replicates"
+          ]
+        },
+        {
+          "correct": "killed",
+          "label": [
+            "The whole organism, unable to replicate"
+          ]
+        },
+        {
+          "correct": "subunit",
+          "label": [
+            "One protein from its surface, and nothing else"
+          ]
+        },
+        {
+          "correct": "mrna",
+          "label": [
+            "Instructions for making that protein yourself"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Be recognised at all", "Immunogenicity"],
-          "needs": ["subunit"],
-          "pass": ["A surface protein is enough to be recognised.", "A single antigen is sufficient to select and expand the matching clones."],
-          "fail": ["Nothing was presented that could be recognised.", "No antigen, no clonal selection. Nothing is learned."]
+          "name": [
+            "Be recognised at all",
+            "Immunogenicity"
+          ],
+          "needs": [
+            "subunit"
+          ],
+          "pass": [
+            "A surface protein is enough to be recognised.",
+            "A single antigen is sufficient to select and expand the matching clones."
+          ],
+          "fail": [
+            "Nothing was presented that could be recognised.",
+            "No antigen, no clonal selection. Nothing is learned."
+          ]
         },
         {
-          "name": ["Work without needing a cold chain everywhere", "Stability"],
-          "needs": ["subunit", "killed"],
-          "pass": ["Inactivated preparations are robust enough to move around.", "Inactivated and subunit preparations tolerate transport far better than live ones."],
-          "fail": ["It worked in the lab and not in the field.", "A vaccine that cannot survive the journey protects nobody. Deployment is part of efficacy."]
+          "name": [
+            "Work without needing a cold chain everywhere",
+            "Stability"
+          ],
+          "needs": [
+            "subunit",
+            "killed"
+          ],
+          "pass": [
+            "Inactivated preparations are robust enough to move around.",
+            "Inactivated and subunit preparations tolerate transport far better than live ones."
+          ],
+          "fail": [
+            "It worked in the lab and not in the field.",
+            "A vaccine that cannot survive the journey protects nobody. Deployment is part of efficacy."
+          ]
         },
         {
-          "name": ["Give strong, long-lasting memory", "Durability"],
-          "needs": ["subunit", "killed", "live"],
-          "pass": ["A replicating attenuated strain gives the strongest response.", "Live attenuated platforms generally produce the most durable immunity, often lifelong from one or two doses."],
-          "fail": ["Protection that fades and needs boosting constantly.", "Non-replicating antigens usually give weaker, shorter memory — which is a real cost, not a footnote."]
+          "name": [
+            "Give strong, long-lasting memory",
+            "Durability"
+          ],
+          "needs": [
+            "subunit",
+            "killed",
+            "live"
+          ],
+          "pass": [
+            "A replicating attenuated strain gives the strongest response.",
+            "Live attenuated platforms generally produce the most durable immunity, often lifelong from one or two doses."
+          ],
+          "fail": [
+            "Protection that fades and needs boosting constantly.",
+            "Non-replicating antigens usually give weaker, shorter memory — which is a real cost, not a footnote."
+          ]
         },
         {
-          "name": ["Be redesigned in weeks when the germ changes", "Speed"],
-          "needs": ["subunit", "killed", "live", "mrna"],
-          "pass": ["Change the sequence and the vaccine is redesigned.", "An mRNA platform is reprogrammed by editing a sequence, so redesign takes days rather than months."],
-          "fail": ["The germ changed and the vaccine took a year to catch up.", "Growing and inactivating an organism is slow. Against a fast-changing pathogen, manufacturing speed is itself a form of efficacy."]
+          "name": [
+            "Be redesigned in weeks when the germ changes",
+            "Speed"
+          ],
+          "needs": [
+            "subunit",
+            "killed",
+            "live",
+            "mrna"
+          ],
+          "pass": [
+            "Change the sequence and the vaccine is redesigned.",
+            "An mRNA platform is reprogrammed by editing a sequence, so redesign takes days rather than months."
+          ],
+          "fail": [
+            "The germ changed and the vaccine took a year to catch up.",
+            "Growing and inactivating an organism is slow. Against a fast-changing pathogen, manufacturing speed is itself a form of efficacy."
+          ]
         }
       ],
       "win": [
@@ -91,7 +175,6 @@
         "Each failed trial names the property that platform supplies. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -107,7 +190,6 @@
         "That is herd immunity, and it is a property of populations rather than individuals — which is why the threshold depends on how transmissible the pathogen is. Measles, with an R₀ near 15, needs roughly 95% coverage; less transmissible diseases need less."
       ]
     },
-
     {
       "type": "check",
       "concept": "vaccination-is-training",
@@ -128,11 +210,13 @@
         "Medicines act on a disease process; a vaccine acts on the immune system before there is any disease process. The distinction matters practically: it explains why vaccines are given to well people, why timing is everything, and why 'does it cure it?' is the wrong question to evaluate one by."
       ]
     },
-
     {
       "type": "check",
       "concept": "herd-effect",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "Why does vaccinating you protect someone who cannot be vaccinated?",
         "How does individual vaccination confer population-level protection?"
@@ -148,7 +232,6 @@
         "Transmission requires each infection to produce at least one more. Raising the immune fraction reduces the effective reproduction number; once it falls below one, chains die out and the unvaccinated are protected by the absence of transmission rather than by any immunity of their own. This is why the threshold is a function of R₀ — around 95% for measles — and why coverage falling a few points can restore epidemics that were absent for decades."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

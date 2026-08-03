@@ -3,6 +3,7 @@
   "module": "development",
   "index": 1,
   "title": "Where Is the Instruction for 'Leg'?",
+  "principle": "A chemical that tells a cell where it is is called a morphogen.",
   "specimen": "gradient-strip",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The problem is to encode a coordinate in something a cell can actually detect."
       ]
     },
-
     {
       "type": "predict",
       "concept": "positional-information",
@@ -35,10 +35,12 @@
         "Commit. You have already watched the mechanism that makes this possible, in the very first simulation."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "How far from the end?",
       "min": 0,
@@ -60,24 +62,37 @@
         "Five distinct outcomes from one substance. The information is in the concentration, so a smooth gradient produces discrete parts."
       ]
     },
-
     {
       "type": "sim",
       "sim": "membrane",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "A gradient is just diffusion from a source. Run it again and watch a difference turn into a slope.",
         "The gradient is nothing more exotic than the diffusion you met in Cells: a source at one end, unbiased random motion, and a stable concentration profile. Confirm it needs nothing else."
       ],
-      "params": { "kinds": 5, "pore": 3, "per": 12, "temp": 1, "target": 0.55 },
-      "paramsByLevel": { "4": { "kinds": 6, "per": 14, "target": 0.6 } },
+      "params": {
+        "kinds": 5,
+        "pore": 3,
+        "per": 12,
+        "temp": 1,
+        "target": 0.55
+      },
+      "paramsByLevel": {
+        "4": {
+          "kinds": 6,
+          "per": 14,
+          "target": 0.6
+        }
+      },
       "goal": [
         "A slope, made by nothing but random movement from a source.",
         "A stable spatial profile produced by unbiased diffusion from a localised source. No mechanism reads out position — position simply is the concentration."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -93,7 +108,6 @@
         "That graft experiment is the decisive one: it shows the gradient is instructive rather than merely correlated. Doubling the source doubles the pattern, which no descriptive account predicts and this one requires."
       ]
     },
-
     {
       "type": "check",
       "concept": "positional-information",
@@ -114,7 +128,6 @@
         "Thresholds plus downstream gene networks that sharpen boundaries by mutual repression. The gradient supplies approximate position; cross-repression between the genes it switches on converts fuzzy edges into crisp ones — which is why real boundaries are far sharper than the gradient that specifies them."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

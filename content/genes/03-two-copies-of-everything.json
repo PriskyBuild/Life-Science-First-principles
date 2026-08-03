@@ -3,6 +3,7 @@
   "module": "genes",
   "index": 2,
   "title": "Two Copies of Everything",
+  "principle": "A copy that still works even when the other is broken is called dominant.",
   "specimen": "allele-pair",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "There is no vote and no averaging. What actually happens is stranger and simpler."
       ]
     },
-
     {
       "type": "predict",
       "concept": "dominance",
@@ -35,59 +35,144 @@
         "Commit. The everyday framing of 'strong' and 'weak' genes gets this badly wrong, and the correct answer is more mechanical."
       ]
     },
-
     {
       "type": "build",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Put each pair of copies with what you would end up with.",
         "Match each pair of alleles to the result."
       ],
       "parts": [
-        { "id": "works", "label": "It works" },
-        { "id": "still-works", "label": "It still works" },
-        { "id": "broken", "label": "It does not work" }
+        {
+          "id": "works",
+          "label": "It works"
+        },
+        {
+          "id": "still-works",
+          "label": "It still works"
+        },
+        {
+          "id": "broken",
+          "label": "It does not work"
+        }
       ],
       "slots": [
-        { "accepts": "works", "label": ["Two working copies", "Both copies working"] },
-        { "accepts": "still-works", "label": ["One working, one broken", "One working, one broken"] },
-        { "accepts": "broken", "label": ["Two broken copies", "Both copies broken"] }
+        {
+          "accepts": "works",
+          "label": [
+            "Two working copies",
+            "Both copies working"
+          ]
+        },
+        {
+          "accepts": "still-works",
+          "label": [
+            "One working, one broken",
+            "One working, one broken"
+          ]
+        },
+        {
+          "accepts": "broken",
+          "label": [
+            "Two broken copies",
+            "Both copies broken"
+          ]
+        }
       ]
     },
-
     {
       "type": "build",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Any answer fits any slot here, so the marking is on you. Work out each cross.",
         "Placement is unconstrained. Predict the phenotype ratio for each cross, given that the working allele is dominant."
       ],
       "parts": [
-        { "id": "all-affected", "label": "All affected" },
-        { "id": "none-affected", "label": "None affected" },
-        { "id": "quarter", "label": "One in four affected" },
-        { "id": "half", "label": "One in two affected" }
+        {
+          "id": "all-affected",
+          "label": "All affected"
+        },
+        {
+          "id": "none-affected",
+          "label": "None affected"
+        },
+        {
+          "id": "quarter",
+          "label": "One in four affected"
+        },
+        {
+          "id": "half",
+          "label": "One in two affected"
+        }
       ],
       "slots": [
-        { "correct": "none-affected", "label": ["Both parents carry two working copies"] },
-        { "correct": "quarter", "label": ["Both parents carry one working and one broken copy"] },
-        { "correct": "half", "label": ["One parent has two broken copies, the other has one of each"] },
-        { "correct": "all-affected", "label": ["Both parents carry two broken copies"] }
+        {
+          "correct": "none-affected",
+          "label": [
+            "Both parents carry two working copies"
+          ]
+        },
+        {
+          "correct": "quarter",
+          "label": [
+            "Both parents carry one working and one broken copy"
+          ]
+        },
+        {
+          "correct": "half",
+          "label": [
+            "One parent has two broken copies, the other has one of each"
+          ]
+        },
+        {
+          "correct": "all-affected",
+          "label": [
+            "Both parents carry two broken copies"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Two carriers have a child", "Carrier × carrier"],
-          "needs": ["quarter"],
-          "pass": ["One in four. That is why healthy parents can have an affected child.", "1 in 4 affected — the classic recessive ratio, and why two unaffected carriers can have an affected child."],
-          "fail": ["Not right. Each parent has one broken copy to pass on, so work out the four combinations.", "Reconsider: each parent transmits one of two alleles independently, giving four equally likely combinations."]
+          "name": [
+            "Two carriers have a child",
+            "Carrier × carrier"
+          ],
+          "needs": [
+            "quarter"
+          ],
+          "pass": [
+            "One in four. That is why healthy parents can have an affected child.",
+            "1 in 4 affected — the classic recessive ratio, and why two unaffected carriers can have an affected child."
+          ],
+          "fail": [
+            "Not right. Each parent has one broken copy to pass on, so work out the four combinations.",
+            "Reconsider: each parent transmits one of two alleles independently, giving four equally likely combinations."
+          ]
         },
         {
-          "name": ["An affected parent and a carrier", "Affected × carrier"],
-          "needs": ["half"],
-          "pass": ["Half. The affected parent can only pass on a broken copy.", "1 in 2 — the affected parent transmits a broken allele with certainty, so the outcome rests entirely on the carrier."],
-          "fail": ["Not right. One parent has nothing but broken copies to give.", "Reconsider: a homozygote has only one allele to transmit, which collapses the cross to a single coin flip."]
+          "name": [
+            "An affected parent and a carrier",
+            "Affected × carrier"
+          ],
+          "needs": [
+            "half"
+          ],
+          "pass": [
+            "Half. The affected parent can only pass on a broken copy.",
+            "1 in 2 — the affected parent transmits a broken allele with certainty, so the outcome rests entirely on the carrier."
+          ],
+          "fail": [
+            "Not right. One parent has nothing but broken copies to give.",
+            "Reconsider: a homozygote has only one allele to transmit, which collapses the cross to a single coin flip."
+          ]
         }
       ],
       "win": [
@@ -99,7 +184,6 @@
         "Read the failed trial: each names the step in the reasoning to revisit, and you can reassign and test again."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -115,7 +199,6 @@
         "The 'strong gene beats weak gene' framing is not a simplification of this, it is a different and wrong theory. It predicts blending, which is the thing Mendel's ratios ruled out."
       ]
     },
-
     {
       "type": "check",
       "concept": "dominance",
@@ -136,7 +219,6 @@
         "Dominance is a consequence of the shape of the dose-response curve. Most enzymes operate well above the level at which output limits flux, so halving them changes nothing measurable. Where flux is dose-sensitive you get haploinsufficiency instead, and the same class of mutation becomes dominant."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

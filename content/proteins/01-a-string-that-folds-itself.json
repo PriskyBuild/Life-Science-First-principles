@@ -3,6 +3,7 @@
   "module": "proteins",
   "index": 0,
   "title": "A String That Folds Itself",
+  "principle": "The order of the beads decides the shape.",
   "specimen": "folding-rig",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The shape is not stored anywhere. That is the thing to explain."
       ]
     },
-
     {
       "type": "predict",
       "concept": "sequence-determines-fold",
@@ -35,39 +35,50 @@
         "Commit. Anfinsen tested this by unfolding a protein completely and letting go — the result decided the question."
       ]
     },
-
     {
       "type": "sim",
       "sim": "folding",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Some beads hate water and some like it. Bend the string until the water-hating ones are all touching in the middle.",
         "The round beads are oily and the square ones are happy in water. Fold the chain so the oily ones end up together, tucked inside."
       ],
-      "params": { "seq": "PHHPPHHP", "target": 2, "aspect": 0.85 },
+      "params": {
+        "seq": "PHHPPHHP",
+        "target": 2,
+        "aspect": 0.85
+      },
       "goal": [
         "The oily beads are hidden in the middle and the watery ones are on the outside. That is a folded protein.",
         "Oily residues buried, water-loving residues facing out. That is the shape, and nothing chose it — it is just the arrangement nothing beats."
       ]
     },
-
     {
       "type": "sim",
       "sim": "folding",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "A different sequence. Find its best fold — and notice it is a different shape from the last one.",
         "Same rule, different sequence. Find the optimum, then compare the shape you get with the one the previous chain gave. Nothing about the rule changed."
       ],
-      "params": { "seq": "HHPPHPPHPPHH", "target": 4, "aspect": 0.85 },
+      "params": {
+        "seq": "HHPPHPPHPPHH",
+        "target": 4,
+        "aspect": 0.85
+      },
       "goal": [
         "A different string, a different best shape. The order of the beads is the only thing that changed.",
         "Different optimum, different geometry, identical physics. The sequence is the only input — which is exactly why it is called the primary structure."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -83,7 +94,6 @@
         "It is entropic rather than energetic in origin, which is counter-intuitive: burying a hydrophobic side chain releases the ordered water shell around it, and the entropy gained by that water is what pays for the fold."
       ]
     },
-
     {
       "type": "check",
       "concept": "sequence-determines-fold",
@@ -104,7 +114,6 @@
         "The encoding is implicit rather than explicit. The genome stores a one-dimensional string and the three-dimensional structure is computed by physics at run time — which is precisely why predicting structure from sequence was an unsolved problem for fifty years."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "natural-selection",
   "index": 3,
   "title": "Why Antibiotics Stop Working",
+  "principle": "Resistance is natural selection, with the medicine doing the choosing.",
   "specimen": "resistant-strain",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "You have everything you need to answer this without being told."
       ]
     },
-
     {
       "type": "predict",
       "concept": "resistance-is-selection",
@@ -35,7 +35,6 @@
         "Commit. Note which option requires bacteria to respond to the drug, and which requires only that some already differed."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
@@ -44,14 +43,29 @@
         "This is the same machine as the beetles, running in a hospital instead of a wood. Break it if you can.",
         "Identical mechanism, different substrate: the drug supplies the differential survival. Establish it, then remove one condition and confirm it stops."
       ],
-      "params": { "task": "break", "bg": 0.9, "switches": true, "pressure": 0.85, "aspect": 0.82 },
-      "paramsByLevel": { "1": { "task": "watch", "switches": false, "n": 27 }, "2": { "task": "watch", "switches": false } },
+      "params": {
+        "task": "break",
+        "bg": 0.9,
+        "switches": true,
+        "pressure": 0.85,
+        "aspect": 0.82
+      },
+      "paramsByLevel": {
+        "1": {
+          "task": "watch",
+          "switches": false,
+          "n": 27
+        },
+        "2": {
+          "task": "watch",
+          "switches": false
+        }
+      },
       "goal": [
         "Same three conditions, same result. Germs are just faster.",
         "The same three conditions, in a species with a twenty-minute generation time. What took the moths fifty years takes bacteria a fortnight."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -60,43 +74,133 @@
         "Resistance management is a selection problem, not a chemistry problem. Assign each intervention to its real effect — placement is unconstrained, so the marking is on you."
       ],
       "parts": [
-        { "id": "finish", "label": "Finish the course" },
-        { "id": "narrow", "label": "Use a narrow drug" },
-        { "id": "farm", "label": "Stop routine farm use" },
-        { "id": "combo", "label": "Use two drugs at once" },
-        { "id": "new", "label": "Find new drugs" }
+        {
+          "id": "finish",
+          "label": "Finish the course"
+        },
+        {
+          "id": "narrow",
+          "label": "Use a narrow drug"
+        },
+        {
+          "id": "farm",
+          "label": "Stop routine farm use"
+        },
+        {
+          "id": "combo",
+          "label": "Use two drugs at once"
+        },
+        {
+          "id": "new",
+          "label": "Find new drugs"
+        }
       ],
       "slots": [
-        { "correct": "finish", "label": ["Kills the hardest ones instead of leaving them"] },
-        { "correct": "narrow", "label": ["Selects on fewer species at a time"] },
-        { "correct": "farm", "label": ["Removes the largest source of pressure"] },
-        { "correct": "combo", "label": ["Needs two rare mutations at once, not one"] },
-        { "correct": "new", "label": ["Buys time; does not solve anything"] }
+        {
+          "correct": "finish",
+          "label": [
+            "Kills the hardest ones instead of leaving them"
+          ]
+        },
+        {
+          "correct": "narrow",
+          "label": [
+            "Selects on fewer species at a time"
+          ]
+        },
+        {
+          "correct": "farm",
+          "label": [
+            "Removes the largest source of pressure"
+          ]
+        },
+        {
+          "correct": "combo",
+          "label": [
+            "Needs two rare mutations at once, not one"
+          ]
+        },
+        {
+          "correct": "new",
+          "label": [
+            "Buys time; does not solve anything"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Stop leaving survivors in one patient", "Complete eradication"],
-          "needs": ["finish"],
-          "pass": ["The hardest-to-kill ones do not get to breed.", "The least susceptible organisms are eliminated rather than enriched."],
-          "fail": ["Stopping early leaves exactly the ones the drug struggled with.", "Sub-eradicative exposure enriches for reduced susceptibility — the worst possible selection regime."]
+          "name": [
+            "Stop leaving survivors in one patient",
+            "Complete eradication"
+          ],
+          "needs": [
+            "finish"
+          ],
+          "pass": [
+            "The hardest-to-kill ones do not get to breed.",
+            "The least susceptible organisms are eliminated rather than enriched."
+          ],
+          "fail": [
+            "Stopping early leaves exactly the ones the drug struggled with.",
+            "Sub-eradicative exposure enriches for reduced susceptibility — the worst possible selection regime."
+          ]
         },
         {
-          "name": ["Not select on everything else in the patient", "Spectrum"],
-          "needs": ["finish", "narrow"],
-          "pass": ["Only the target species is under pressure.", "Selection pressure is confined to the intended organism."],
-          "fail": ["A broad drug selects for resistance in bacteria that were not the problem.", "Broad-spectrum exposure applies pressure to the entire commensal population, which then serves as a resistance reservoir."]
+          "name": [
+            "Not select on everything else in the patient",
+            "Spectrum"
+          ],
+          "needs": [
+            "finish",
+            "narrow"
+          ],
+          "pass": [
+            "Only the target species is under pressure.",
+            "Selection pressure is confined to the intended organism."
+          ],
+          "fail": [
+            "A broad drug selects for resistance in bacteria that were not the problem.",
+            "Broad-spectrum exposure applies pressure to the entire commensal population, which then serves as a resistance reservoir."
+          ]
         },
         {
-          "name": ["Address where most of it is actually used", "Scale"],
-          "needs": ["finish", "narrow", "farm"],
-          "pass": ["The largest source of pressure is removed.", "Agricultural use, historically the majority of consumption by mass, is addressed."],
-          "fail": ["Perfect prescribing, and most of the world's antibiotics still go into livestock.", "Clinical stewardship alone leaves the dominant term untouched."]
+          "name": [
+            "Address where most of it is actually used",
+            "Scale"
+          ],
+          "needs": [
+            "finish",
+            "narrow",
+            "farm"
+          ],
+          "pass": [
+            "The largest source of pressure is removed.",
+            "Agricultural use, historically the majority of consumption by mass, is addressed."
+          ],
+          "fail": [
+            "Perfect prescribing, and most of the world's antibiotics still go into livestock.",
+            "Clinical stewardship alone leaves the dominant term untouched."
+          ]
         },
         {
-          "name": ["Make resistance need two lucky breaks, not one", "Combination"],
-          "needs": ["finish", "narrow", "farm", "combo"],
-          "pass": ["One mutation is not enough any more.", "Requiring simultaneous resistance to two agents multiplies two small probabilities."],
-          "fail": ["A single mutation is still enough to escape.", "Monotherapy needs one rare event. This is exactly why TB and HIV are treated with combinations."]
+          "name": [
+            "Make resistance need two lucky breaks, not one",
+            "Combination"
+          ],
+          "needs": [
+            "finish",
+            "narrow",
+            "farm",
+            "combo"
+          ],
+          "pass": [
+            "One mutation is not enough any more.",
+            "Requiring simultaneous resistance to two agents multiplies two small probabilities."
+          ],
+          "fail": [
+            "A single mutation is still enough to escape.",
+            "Monotherapy needs one rare event. This is exactly why TB and HIV are treated with combinations."
+          ]
         }
       ],
       "win": [
@@ -108,7 +212,6 @@
         "Each failed trial names the effect that was not being achieved. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -124,7 +227,6 @@
         "Their reasoning is worth knowing: if resistance arose in response to the phage, colony counts would follow a Poisson distribution; if it arose beforehand by chance, the variance would be far larger because early mutations produce large clones. The variance was enormous. The distinction was settled by a distribution."
       ]
     },
-
     {
       "type": "check",
       "concept": "resistance-is-selection",
@@ -145,7 +247,6 @@
         "That mutations arise independently of selection. The fluctuation test compared observed variance in resistant counts against what an induced response would predict; the observed variance was far too high, which is only explicable if mutations occurred before exposure, at random times during growth."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

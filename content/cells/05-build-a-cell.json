@@ -3,6 +3,7 @@
   "module": "cells",
   "index": 4,
   "title": "Build a Cell",
+  "principle": "Four parts. Take any one away and it stops being alive.",
   "specimen": "ribosome",
   "stages": [
     {
@@ -29,7 +30,11 @@
         "Which single component is dispensable in a minimal cell?",
         "Is minimal viability achievable with any proper subset of these components?"
       ],
-      "options": ["None of them", "The power plant", "The wall"],
+      "options": [
+        "None of them",
+        "The power plant",
+        "The wall"
+      ],
       "outcome": "None of them",
       "note": [
         "Guess first, then find out.",
@@ -40,9 +45,17 @@
     },
     {
       "type": "build",
-      "levels": [1, 2, 3, 4],
+      "levels": [
+        1,
+        2,
+        3,
+        4
+      ],
       "guided": false,
-      "trialsTitle": ["Now we try to break it", "Stress test"],
+      "trialsTitle": [
+        "Now we try to break it",
+        "Stress test"
+      ],
       "t": [
         "Put every part in its place. Then we test it.",
         "Place every part in the job it does. Then the cell faces three stresses.",
@@ -50,35 +63,107 @@
         "Assemble the minimal set, then observe which stresses it survives and which it does not."
       ],
       "parts": [
-        { "id": "membrane", "label": "Membrane" },
-        { "id": "mito", "label": "Mitochondrion" },
-        { "id": "nucleus", "label": "Nucleus" },
-        { "id": "ribosome", "label": "Ribosome" }
+        {
+          "id": "membrane",
+          "label": "Membrane"
+        },
+        {
+          "id": "mito",
+          "label": "Mitochondrion"
+        },
+        {
+          "id": "nucleus",
+          "label": "Nucleus"
+        },
+        {
+          "id": "ribosome",
+          "label": "Ribosome"
+        }
       ],
       "slots": [
-        { "correct": "membrane", "label": ["Keeps things out", "Decides what gets in and out"] },
-        { "correct": "mito", "label": ["Makes the energy", "Converts food into usable energy"] },
-        { "correct": "nucleus", "label": ["Keeps the instructions", "Stores and protects the genome"] },
-        { "correct": "ribosome", "label": ["Builds the parts", "Reads the message and builds protein"] }
+        {
+          "correct": "membrane",
+          "label": [
+            "Keeps things out",
+            "Decides what gets in and out"
+          ]
+        },
+        {
+          "correct": "mito",
+          "label": [
+            "Makes the energy",
+            "Converts food into usable energy"
+          ]
+        },
+        {
+          "correct": "nucleus",
+          "label": [
+            "Keeps the instructions",
+            "Stores and protects the genome"
+          ]
+        },
+        {
+          "correct": "ribosome",
+          "label": [
+            "Builds the parts",
+            "Reads the message and builds protein"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Poison in the water", "Poison in the surroundings"],
-          "needs": ["membrane"],
-          "pass": ["The wall kept it out.", "Steric exclusion at the membrane: the toxin never got in."],
-          "fail": ["Nothing stopped it getting in.", "With no boundary there is no selectivity, and the toxin entered freely."]
+          "name": [
+            "Poison in the water",
+            "Poison in the surroundings"
+          ],
+          "needs": [
+            "membrane"
+          ],
+          "pass": [
+            "The wall kept it out.",
+            "Steric exclusion at the membrane: the toxin never got in."
+          ],
+          "fail": [
+            "Nothing stopped it getting in.",
+            "With no boundary there is no selectivity, and the toxin entered freely."
+          ]
         },
         {
-          "name": ["No food for a while", "Starvation"],
-          "needs": ["mito", "membrane"],
-          "pass": ["It burned its reserves and held on.", "Stored substrate was oxidised to ATP fast enough to cover demand."],
-          "fail": ["Nothing could turn the reserves into energy.", "Without oxidative capacity, reserves are inert: ATP demand goes unmet within seconds."]
+          "name": [
+            "No food for a while",
+            "Starvation"
+          ],
+          "needs": [
+            "mito",
+            "membrane"
+          ],
+          "pass": [
+            "It burned its reserves and held on.",
+            "Stored substrate was oxidised to ATP fast enough to cover demand."
+          ],
+          "fail": [
+            "Nothing could turn the reserves into energy.",
+            "Without oxidative capacity, reserves are inert: ATP demand goes unmet within seconds."
+          ]
         },
         {
-          "name": ["Something broke and needed replacing", "Damage requiring repair"],
-          "needs": ["nucleus", "ribosome", "mito"],
-          "pass": ["It read the instructions and built a new one.", "Transcript out, ribosome reads it, replacement protein synthesised — powered by ATP."],
-          "fail": ["It had no way to make a replacement.", "Repair needs the instruction, the machinery to read it, and the energy to run it. Missing any one and the damage is permanent."]
+          "name": [
+            "Something broke and needed replacing",
+            "Damage requiring repair"
+          ],
+          "needs": [
+            "nucleus",
+            "ribosome",
+            "mito"
+          ],
+          "pass": [
+            "It read the instructions and built a new one.",
+            "Transcript out, ribosome reads it, replacement protein synthesised — powered by ATP."
+          ],
+          "fail": [
+            "It had no way to make a replacement.",
+            "Repair needs the instruction, the machinery to read it, and the energy to run it. Missing any one and the damage is permanent."
+          ]
         }
       ],
       "win": [
@@ -124,7 +209,11 @@
         "Why do component failures produce effects that look unrelated?",
         "Why is the failure signature of a missing component broader than its stated function?"
       ],
-      "options": ["Because the parts all depend on each other", "Because the parts are fragile", "Because the tests were unfair"],
+      "options": [
+        "Because the parts all depend on each other",
+        "Because the parts are fragile",
+        "Because the tests were unfair"
+      ],
       "answer": 0,
       "why": [
         "Repair needed the instructions AND the builder AND the energy. Take away any one and repair stops, even though only one part is missing.",

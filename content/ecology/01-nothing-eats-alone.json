@@ -3,6 +3,7 @@
   "module": "ecology",
   "index": 0,
   "title": "Nothing Eats Alone",
+  "principle": "All those lines together are called a food web.",
   "specimen": "food-link",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The neat food chain in most textbooks is a simplification that removes the property that matters."
       ]
     },
-
     {
       "type": "predict",
       "concept": "nothing-eats-alone",
@@ -35,7 +35,6 @@
         "Commit. Note that the specialist really is better at its one job, which is what makes this a trade-off rather than an obvious answer."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Every organism occupies a position defined by what it eats and what eats it. Place them."
       ],
       "parts": [
-        { "id": "grass", "label": "Grass" },
-        { "id": "rabbit", "label": "Rabbit" },
-        { "id": "fox", "label": "Fox" },
-        { "id": "fungus", "label": "Fungus" }
+        {
+          "id": "grass",
+          "label": "Grass"
+        },
+        {
+          "id": "rabbit",
+          "label": "Rabbit"
+        },
+        {
+          "id": "fox",
+          "label": "Fox"
+        },
+        {
+          "id": "fungus",
+          "label": "Fungus"
+        }
       ],
       "slots": [
-        { "accepts": "grass", "label": ["Makes its own food from light", "Producer: fixes energy from sunlight"] },
-        { "accepts": "rabbit", "label": ["Eats the ones that make food", "Primary consumer: eats producers"] },
-        { "accepts": "fox", "label": ["Eats the ones that eat plants", "Secondary consumer: eats primary consumers"] },
-        { "accepts": "fungus", "label": ["Eats whatever has died, and gives it back", "Decomposer: returns nutrients to the producers"] }
+        {
+          "accepts": "grass",
+          "label": [
+            "Makes its own food from light",
+            "Producer: fixes energy from sunlight"
+          ]
+        },
+        {
+          "accepts": "rabbit",
+          "label": [
+            "Eats the ones that make food",
+            "Primary consumer: eats producers"
+          ]
+        },
+        {
+          "accepts": "fox",
+          "label": [
+            "Eats the ones that eat plants",
+            "Secondary consumer: eats primary consumers"
+          ]
+        },
+        {
+          "accepts": "fungus",
+          "label": [
+            "Eats whatever has died, and gives it back",
+            "Decomposer: returns nutrients to the producers"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "Without decomposition the nutrients would all end up locked in dead material within a few decades and productivity would stop. It is the least visible part of every ecosystem and the one whose removal would be fastest to matter."
       ]
     },
-
     {
       "type": "check",
       "concept": "nothing-eats-alone",
@@ -93,7 +126,6 @@
         "It discards redundancy, which is the property that determines robustness. That makes the chain actively misleading rather than merely simplified: it predicts fragility that is usually absent, and it gives no way to identify the cases — keystone species — where the fragility is real."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

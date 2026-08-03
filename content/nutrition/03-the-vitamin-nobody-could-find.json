@@ -3,6 +3,7 @@
   "module": "nutrition",
   "index": 2,
   "title": "The Vitamin Nobody Could Find",
+  "principle": "Things your body needs and cannot make are called essential nutrients.",
   "specimen": "citrus-crate",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That is the uncomfortable part, and it is the reason this lesson is here."
       ]
     },
-
     {
       "type": "predict",
       "concept": "essential-nutrients",
@@ -35,7 +35,6 @@
         "Commit. The second option was the mainstream view for a very long time, and it is not a stupid one — the disease clustered on ships."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Without knowing the active ingredient, nobody could tell that limes were a weaker substitute. Understanding the mechanism is not needed to act, and it is needed to keep acting correctly when circumstances change."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "That framing is useful in nutrition generally: a requirement is a statement about what a body cannot do, so the list of essential nutrients is a list of capabilities lost somewhere in the lineage rather than a list of things that are especially important."
       ]
     },
-
     {
       "type": "check",
       "concept": "essential-nutrients",
@@ -96,7 +93,6 @@
         "Because the only available test was the disease itself, which appears months later. This is the general hazard of acting on an empirical finding without a mechanism: the finding tells you what worked, and cannot tell you which feature of it mattered — so any change is a gamble you cannot evaluate."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

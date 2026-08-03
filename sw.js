@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "6321feb3d546";
+const VERSION = "d19d04dc80a6";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -169,6 +169,7 @@ const PRECACHE = [
   "js/sims/stomata.js",
   "js/sims/web.js",
   "js/state.js",
+  "jsconfig.json",
   "manifest.webmanifest"
 ];
 /* __PRECACHE_END__ */

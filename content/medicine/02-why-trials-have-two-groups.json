@@ -3,6 +3,7 @@
   "module": "medicine",
   "index": 1,
   "title": "Why Trials Have Two Groups",
+  "principle": "The group that does not get the medicine is called the control group.",
   "specimen": "control-arm",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "You cannot, from one group. That is the entire reason the second group exists."
       ]
     },
-
     {
       "type": "predict",
       "concept": "controlled-trial",
@@ -35,7 +35,6 @@
         "Commit. Ask what number would have made you conclude it does not work."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,49 +43,154 @@
         "Assemble a trial. Placement is unconstrained, then each omission fails in a specific and well-documented way."
       ],
       "parts": [
-        { "id": "control", "label": "A group that does not get it" },
-        { "id": "random", "label": "Assignment by chance" },
-        { "id": "blind", "label": "Nobody knows who got what" },
-        { "id": "prereg", "label": "Say in advance what you will measure" },
-        { "id": "size", "label": "Enough people" }
+        {
+          "id": "control",
+          "label": "A group that does not get it"
+        },
+        {
+          "id": "random",
+          "label": "Assignment by chance"
+        },
+        {
+          "id": "blind",
+          "label": "Nobody knows who got what"
+        },
+        {
+          "id": "prereg",
+          "label": "Say in advance what you will measure"
+        },
+        {
+          "id": "size",
+          "label": "Enough people"
+        }
       ],
       "slots": [
-        { "correct": "control", "label": ["Shows what happens without the treatment"] },
-        { "correct": "random", "label": ["Stops the two groups differing in other ways"] },
-        { "correct": "blind", "label": ["Stops expectation changing the result"] },
-        { "correct": "prereg", "label": ["Stops you picking the flattering result afterwards"] },
-        { "correct": "size", "label": ["Stops chance looking like an effect"] }
+        {
+          "correct": "control",
+          "label": [
+            "Shows what happens without the treatment"
+          ]
+        },
+        {
+          "correct": "random",
+          "label": [
+            "Stops the two groups differing in other ways"
+          ]
+        },
+        {
+          "correct": "blind",
+          "label": [
+            "Stops expectation changing the result"
+          ]
+        },
+        {
+          "correct": "prereg",
+          "label": [
+            "Stops you picking the flattering result afterwards"
+          ]
+        },
+        {
+          "correct": "size",
+          "label": [
+            "Stops chance looking like an effect"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Know what recovery looks like anyway", "Comparison"],
-          "needs": ["control"],
-          "pass": ["You can see what the treatment added.", "A comparator establishes the counterfactual."],
-          "fail": ["Ninety recovered and you have no idea whether that is good.", "Without a control there is no baseline, so no result can be interpreted at all."]
+          "name": [
+            "Know what recovery looks like anyway",
+            "Comparison"
+          ],
+          "needs": [
+            "control"
+          ],
+          "pass": [
+            "You can see what the treatment added.",
+            "A comparator establishes the counterfactual."
+          ],
+          "fail": [
+            "Ninety recovered and you have no idea whether that is good.",
+            "Without a control there is no baseline, so no result can be interpreted at all."
+          ]
         },
         {
-          "name": ["Compare like with like", "Randomisation"],
-          "needs": ["control", "random"],
-          "pass": ["The groups differ only in the treatment.", "Random assignment balances known and unknown confounders."],
-          "fail": ["The doctors put the healthier patients in the treatment group, without meaning to.", "Allocation by judgement produces groups that differ systematically. This is why randomisation exists, and it is not an optional refinement."]
+          "name": [
+            "Compare like with like",
+            "Randomisation"
+          ],
+          "needs": [
+            "control",
+            "random"
+          ],
+          "pass": [
+            "The groups differ only in the treatment.",
+            "Random assignment balances known and unknown confounders."
+          ],
+          "fail": [
+            "The doctors put the healthier patients in the treatment group, without meaning to.",
+            "Allocation by judgement produces groups that differ systematically. This is why randomisation exists, and it is not an optional refinement."
+          ]
         },
         {
-          "name": ["Rule out expectation", "Blinding"],
-          "needs": ["control", "random", "blind"],
-          "pass": ["Neither patients nor assessors know who got the drug.", "Double blinding removes expectancy effects from both reporting and assessment."],
-          "fail": ["Everyone knew who got the real thing, and everyone reported accordingly.", "Unblinded trials systematically overestimate effects — the assessor's expectation is usually the larger problem, not the patient's."]
+          "name": [
+            "Rule out expectation",
+            "Blinding"
+          ],
+          "needs": [
+            "control",
+            "random",
+            "blind"
+          ],
+          "pass": [
+            "Neither patients nor assessors know who got the drug.",
+            "Double blinding removes expectancy effects from both reporting and assessment."
+          ],
+          "fail": [
+            "Everyone knew who got the real thing, and everyone reported accordingly.",
+            "Unblinded trials systematically overestimate effects — the assessor's expectation is usually the larger problem, not the patient's."
+          ]
         },
         {
-          "name": ["Not find something by fishing", "Pre-specification"],
-          "needs": ["control", "random", "blind", "prereg"],
-          "pass": ["You said what you would measure before you looked.", "The primary outcome was specified in advance."],
-          "fail": ["No effect on what you meant to measure, so you reported the one that did move.", "Measure twenty things and one will reach significance by chance. Choosing afterwards is how a null result becomes a positive paper."]
+          "name": [
+            "Not find something by fishing",
+            "Pre-specification"
+          ],
+          "needs": [
+            "control",
+            "random",
+            "blind",
+            "prereg"
+          ],
+          "pass": [
+            "You said what you would measure before you looked.",
+            "The primary outcome was specified in advance."
+          ],
+          "fail": [
+            "No effect on what you meant to measure, so you reported the one that did move.",
+            "Measure twenty things and one will reach significance by chance. Choosing afterwards is how a null result becomes a positive paper."
+          ]
         },
         {
-          "name": ["Distinguish an effect from luck", "Power"],
-          "needs": ["control", "random", "blind", "prereg", "size"],
-          "pass": ["Enough people that the difference means something.", "Adequately powered to detect the effect size of interest."],
-          "fail": ["Twelve people, a difference of two, and no way to tell if it is real.", "Underpowered trials produce unreliable results in both directions — and when they do find something, they overestimate how big it is."]
+          "name": [
+            "Distinguish an effect from luck",
+            "Power"
+          ],
+          "needs": [
+            "control",
+            "random",
+            "blind",
+            "prereg",
+            "size"
+          ],
+          "pass": [
+            "Enough people that the difference means something.",
+            "Adequately powered to detect the effect size of interest."
+          ],
+          "fail": [
+            "Twelve people, a difference of two, and no way to tell if it is real.",
+            "Underpowered trials produce unreliable results in both directions — and when they do find something, they overestimate how big it is."
+          ]
         }
       ],
       "win": [
@@ -98,7 +202,6 @@
         "Each failed trial names the safeguard that was absent and the error it admits. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -114,7 +217,6 @@
         "That distinction handles most alternative-medicine claims without needing to assess the mechanism at all. A treatment can reliably make people feel better and do nothing to the disease, and both halves of that can be true simultaneously."
       ]
     },
-
     {
       "type": "check",
       "concept": "controlled-trial",
@@ -135,7 +237,6 @@
         "A control group gives you a comparison; randomisation makes the comparison fair. Without it, whoever assigns patients will — usually unconsciously — put different sorts of patient in each group, and the difference you measure is that rather than the treatment."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "dna",
   "index": 1,
   "title": "The Four Letters",
+  "principle": "The four letters are A, T, C and G.",
   "specimen": "base-set",
   "stages": [
     {
@@ -20,7 +21,6 @@
         "Information capacity is set by alphabet size and string length together, and the second term is doing nearly all the work."
       ]
     },
-
     {
       "type": "predict",
       "concept": "four-letters",
@@ -39,7 +39,6 @@
         "Commit. A computer manages with two, which is a hint about which term matters."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -63,7 +62,6 @@
         "Every letter you add multiplies the possibilities by four. Your genome is three billion letters long — the number of possible sequences that length is beyond any use for a number."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -79,51 +77,122 @@
         "Chargaff noticed the ratios A=T and C=G years before anyone knew why. The explanation, when it arrived, was the structure — and it carried the copying mechanism with it."
       ]
     },
-
     {
       "type": "build",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Put each letter next to the one it holds hands with.",
         "Match each base with its partner."
       ],
       "parts": [
-        { "id": "T", "label": "T" },
-        { "id": "A", "label": "A" },
-        { "id": "G", "label": "G" },
-        { "id": "C", "label": "C" }
+        {
+          "id": "T",
+          "label": "T"
+        },
+        {
+          "id": "A",
+          "label": "A"
+        },
+        {
+          "id": "G",
+          "label": "G"
+        },
+        {
+          "id": "C",
+          "label": "C"
+        }
       ],
       "slots": [
-        { "accepts": "T", "label": ["Goes with A", "Partner of A"] },
-        { "accepts": "A", "label": ["Goes with T", "Partner of T"] },
-        { "accepts": "G", "label": ["Goes with C", "Partner of C"] },
-        { "accepts": "C", "label": ["Goes with G", "Partner of G"] }
+        {
+          "accepts": "T",
+          "label": [
+            "Goes with A",
+            "Partner of A"
+          ]
+        },
+        {
+          "accepts": "A",
+          "label": [
+            "Goes with T",
+            "Partner of T"
+          ]
+        },
+        {
+          "accepts": "G",
+          "label": [
+            "Goes with C",
+            "Partner of C"
+          ]
+        },
+        {
+          "accepts": "C",
+          "label": [
+            "Goes with G",
+            "Partner of G"
+          ]
+        }
       ]
     },
-
     {
       "type": "build",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Any base will go in any slot here, so getting it right is up to you.",
         "Placement is unconstrained — any base fits any position, and only the assignment is graded. Pair them correctly."
       ],
       "parts": [
-        { "id": "T", "label": "T" },
-        { "id": "A", "label": "A" },
-        { "id": "G", "label": "G" },
-        { "id": "C", "label": "C" }
+        {
+          "id": "T",
+          "label": "T"
+        },
+        {
+          "id": "A",
+          "label": "A"
+        },
+        {
+          "id": "G",
+          "label": "G"
+        },
+        {
+          "id": "C",
+          "label": "C"
+        }
       ],
       "slots": [
-        { "correct": "T", "label": ["Pairs with A"] },
-        { "correct": "A", "label": ["Pairs with T"] },
-        { "correct": "G", "label": ["Pairs with C"] },
-        { "correct": "C", "label": ["Pairs with G"] }
+        {
+          "correct": "T",
+          "label": [
+            "Pairs with A"
+          ]
+        },
+        {
+          "correct": "A",
+          "label": [
+            "Pairs with T"
+          ]
+        },
+        {
+          "correct": "G",
+          "label": [
+            "Pairs with C"
+          ]
+        },
+        {
+          "correct": "C",
+          "label": [
+            "Pairs with G"
+          ]
+        }
       ]
     },
-
     {
       "type": "check",
       "concept": "four-letters",
@@ -144,7 +213,6 @@
         "This is why binary is not a limitation for computers either. The alphabet sets bits per symbol — two for DNA — and the length does the rest. The interesting constraints on genomes are error rate and replication cost, not vocabulary."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
@@ -153,7 +221,6 @@
         "Universality is what makes biotechnology possible at all: a human insulin gene placed in E. coli is read correctly, because the alphabet and very nearly the whole coding convention are shared. Nothing has to be translated."
       ]
     },
-
     {
       "type": "check",
       "concept": "base-pairing",
@@ -162,7 +229,11 @@
         "Which base pairs with cytosine?",
         "What is the complement of cytosine?"
       ],
-      "options": ["G", "A", "T"],
+      "options": [
+        "G",
+        "A",
+        "T"
+      ],
       "answer": 0,
       "why": [
         "C always goes with G, and A always goes with T. Never any other way round.",

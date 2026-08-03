@@ -3,6 +3,7 @@
   "module": "space-biology",
   "index": 1,
   "title": "Could Anything Live on Mars?",
+  "principle": "Whether somewhere could hold life is called habitability.",
   "specimen": "habitability-card",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Separating the two is most of the discipline."
       ]
     },
-
     {
       "type": "predict",
       "concept": "habitability",
@@ -35,7 +35,6 @@
         "Commit. Note that breathable air is a requirement of animals, not of life — for most of Earth's history there was none."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -44,49 +43,154 @@
         "Assemble the habitability criteria, then stress-test the card against a world. Placement is unconstrained."
       ],
       "parts": [
-        { "id": "water", "label": "Liquid water" },
-        { "id": "energy", "label": "An energy gradient" },
-        { "id": "chem", "label": "Carbon, nitrogen, phosphorus, sulphur" },
-        { "id": "shield", "label": "Shelter from radiation" },
-        { "id": "time", "label": "Stability over long periods" }
+        {
+          "id": "water",
+          "label": "Liquid water"
+        },
+        {
+          "id": "energy",
+          "label": "An energy gradient"
+        },
+        {
+          "id": "chem",
+          "label": "Carbon, nitrogen, phosphorus, sulphur"
+        },
+        {
+          "id": "shield",
+          "label": "Shelter from radiation"
+        },
+        {
+          "id": "time",
+          "label": "Stability over long periods"
+        }
       ],
       "slots": [
-        { "correct": "water", "label": ["Something for chemistry to happen in"] },
-        { "correct": "energy", "label": ["A difference the cell can run downhill"] },
-        { "correct": "chem", "label": ["The atoms a body is actually built from"] },
-        { "correct": "shield", "label": ["Something between it and what would break it"] },
-        { "correct": "time", "label": ["Conditions that hold still long enough to matter"] }
+        {
+          "correct": "water",
+          "label": [
+            "Something for chemistry to happen in"
+          ]
+        },
+        {
+          "correct": "energy",
+          "label": [
+            "A difference the cell can run downhill"
+          ]
+        },
+        {
+          "correct": "chem",
+          "label": [
+            "The atoms a body is actually built from"
+          ]
+        },
+        {
+          "correct": "shield",
+          "label": [
+            "Something between it and what would break it"
+          ]
+        },
+        {
+          "correct": "time",
+          "label": [
+            "Conditions that hold still long enough to matter"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Somewhere for the chemistry", "Solvent"],
-          "needs": ["water"],
-          "pass": ["There is liquid water, so molecules can meet.", "A liquid solvent permits transport and reaction; no known chemistry of life works in a solid or a near-vacuum."],
-          "fail": ["Frozen or boiled away. Nothing meets anything.", "Below the triple point water cannot be liquid at all — which is the state of most of the Martian surface, at about 6 millibars."]
+          "name": [
+            "Somewhere for the chemistry",
+            "Solvent"
+          ],
+          "needs": [
+            "water"
+          ],
+          "pass": [
+            "There is liquid water, so molecules can meet.",
+            "A liquid solvent permits transport and reaction; no known chemistry of life works in a solid or a near-vacuum."
+          ],
+          "fail": [
+            "Frozen or boiled away. Nothing meets anything.",
+            "Below the triple point water cannot be liquid at all — which is the state of most of the Martian surface, at about 6 millibars."
+          ]
         },
         {
-          "name": ["Something to run on", "Energy"],
-          "needs": ["water", "energy"],
-          "pass": ["There is a difference to exploit — light, or chemistry.", "A redox gradient or photon flux supplies free energy; without one, no metabolism is possible."],
-          "fail": ["Everything is already at equilibrium. There is nothing to eat.", "A system at equilibrium can do no work. Sunlight or rock-water chemistry are the two known supplies."]
+          "name": [
+            "Something to run on",
+            "Energy"
+          ],
+          "needs": [
+            "water",
+            "energy"
+          ],
+          "pass": [
+            "There is a difference to exploit — light, or chemistry.",
+            "A redox gradient or photon flux supplies free energy; without one, no metabolism is possible."
+          ],
+          "fail": [
+            "Everything is already at equilibrium. There is nothing to eat.",
+            "A system at equilibrium can do no work. Sunlight or rock-water chemistry are the two known supplies."
+          ]
         },
         {
-          "name": ["Something to be built out of", "Ingredients"],
-          "needs": ["water", "energy", "chem"],
-          "pass": ["Carbon and the rest are present.", "CHNOPS availability. Mars has all six, in the crust and the atmosphere."],
-          "fail": ["No carbon, no phosphorus, nothing to make a body from.", "Energy without material builds nothing. Phosphorus is the scarcest of the six in most settings."]
+          "name": [
+            "Something to be built out of",
+            "Ingredients"
+          ],
+          "needs": [
+            "water",
+            "energy",
+            "chem"
+          ],
+          "pass": [
+            "Carbon and the rest are present.",
+            "CHNOPS availability. Mars has all six, in the crust and the atmosphere."
+          ],
+          "fail": [
+            "No carbon, no phosphorus, nothing to make a body from.",
+            "Energy without material builds nothing. Phosphorus is the scarcest of the six in most settings."
+          ]
         },
         {
-          "name": ["Not being destroyed", "Shelter"],
-          "needs": ["water", "energy", "chem", "shield"],
-          "pass": ["Rock, ice or a magnetic field is in the way.", "A few metres of regolith or ice attenuates cosmic and solar radiation to survivable levels."],
-          "fail": ["The surface is sterilised faster than anything can repair itself.", "Mars has no global magnetic field and a thin atmosphere: surface dose is roughly 0.7 millisieverts a day, plus ultraviolet reaching the ground unfiltered."]
+          "name": [
+            "Not being destroyed",
+            "Shelter"
+          ],
+          "needs": [
+            "water",
+            "energy",
+            "chem",
+            "shield"
+          ],
+          "pass": [
+            "Rock, ice or a magnetic field is in the way.",
+            "A few metres of regolith or ice attenuates cosmic and solar radiation to survivable levels."
+          ],
+          "fail": [
+            "The surface is sterilised faster than anything can repair itself.",
+            "Mars has no global magnetic field and a thin atmosphere: surface dose is roughly 0.7 millisieverts a day, plus ultraviolet reaching the ground unfiltered."
+          ]
         },
         {
-          "name": ["Long enough to matter", "Time"],
-          "needs": ["water", "energy", "chem", "shield", "time"],
-          "pass": ["The conditions hold for long enough to be worth calling a habitat.", "Habitability is a duration as well as a state; a wet hour is not an environment."],
-          "fail": ["Everything was right, for one afternoon.", "Transient brines may be liquid for minutes at a time. That is a chemical event, not a habitat."]
+          "name": [
+            "Long enough to matter",
+            "Time"
+          ],
+          "needs": [
+            "water",
+            "energy",
+            "chem",
+            "shield",
+            "time"
+          ],
+          "pass": [
+            "The conditions hold for long enough to be worth calling a habitat.",
+            "Habitability is a duration as well as a state; a wet hour is not an environment."
+          ],
+          "fail": [
+            "Everything was right, for one afternoon.",
+            "Transient brines may be liquid for minutes at a time. That is a chemical event, not a habitat."
+          ]
         }
       ],
       "win": [
@@ -98,10 +202,12 @@
         "Each failed trial names an unmet criterion. Reassign and re-test."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "habitability",
       "t": [
         "One rock from Mars has been argued about for thirty years. Here is how each side reads it.",
@@ -148,7 +254,6 @@
         "Both sides named a test rather than merely disagreeing, which is what made this argument productive. Laboratory work through the 2000s did produce comparable magnetite abiotically, and most researchers now regard the biological interpretation as unsupported — while noting that unsupported is not the same as refuted. Ask yourself what evidence would settle it, and whether that evidence could come from a meteorite at all."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -164,7 +269,6 @@
         "This is why sample return matters more than another orbiter. The instruments that could settle a biosignature claim are too large to fly, and the history of ALH84001 shows how hard the claim is to settle even with the rock in hand and thirty years to look at it."
       ]
     },
-
     {
       "type": "check",
       "concept": "habitability",
@@ -185,7 +289,6 @@
         "Depth answers shielding, solvent stability and duration at once, and does not by itself answer energy — but the rock-water chemistry that comes with it does, which is why deep subsurface environments on Earth support life with no input from the surface at all."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

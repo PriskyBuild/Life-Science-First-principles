@@ -3,6 +3,7 @@
   "module": "animals",
   "index": 2,
   "title": "How to Move Without Wheels",
+  "principle": "A wheel needs to spin all the way round, and nothing living can do that.",
   "specimen": "gait-set",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Both halves turn out to be partly true, and the second is the more interesting."
       ]
     },
-
     {
       "type": "predict",
       "concept": "locomotion-tradeoffs",
@@ -35,7 +35,6 @@
         "Commit. Ask what a rotating part could not be connected to."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Each of these is the best answer to a particular problem. Match them."
       ],
       "parts": [
-        { "id": "run", "label": "Running" },
-        { "id": "swim", "label": "Swimming" },
-        { "id": "fly", "label": "Flying" },
-        { "id": "burrow", "label": "Burrowing" }
+        {
+          "id": "run",
+          "label": "Running"
+        },
+        {
+          "id": "swim",
+          "label": "Swimming"
+        },
+        {
+          "id": "fly",
+          "label": "Flying"
+        },
+        {
+          "id": "burrow",
+          "label": "Burrowing"
+        }
       ],
       "slots": [
-        { "accepts": "run", "label": ["Fast over open ground, cheap to start", "High speed over firm terrain, low startup cost"] },
-        { "accepts": "swim", "label": ["Cheapest of all per distance", "Lowest energy cost per unit distance — the medium supports the weight"] },
-        { "accepts": "fly", "label": ["Fastest, and by far the most expensive", "Highest speed, highest energetic cost per unit time"] },
-        { "accepts": "burrow", "label": ["Slowest, and nothing can follow you", "Very slow, very costly, and almost perfect concealment"] }
+        {
+          "accepts": "run",
+          "label": [
+            "Fast over open ground, cheap to start",
+            "High speed over firm terrain, low startup cost"
+          ]
+        },
+        {
+          "accepts": "swim",
+          "label": [
+            "Cheapest of all per distance",
+            "Lowest energy cost per unit distance — the medium supports the weight"
+          ]
+        },
+        {
+          "accepts": "fly",
+          "label": [
+            "Fastest, and by far the most expensive",
+            "Highest speed, highest energetic cost per unit time"
+          ]
+        },
+        {
+          "accepts": "burrow",
+          "label": [
+            "Slowest, and nothing can follow you",
+            "Very slow, very costly, and almost perfect concealment"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "That is a useful general caution about 'why has evolution not done X'. The answer is usually one of three things: it is developmentally unreachable, it is not actually advantageous in the relevant environment, or it has happened and you have not looked. Wheels are the first two at once."
       ]
     },
-
     {
       "type": "check",
       "concept": "locomotion-tradeoffs",
@@ -93,7 +126,6 @@
         "Cost of transport separates into supporting weight and overcoming resistance. Buoyancy nearly eliminates the first term, and although drag in water is much higher than in air, the elimination outweighs it at the speeds animals actually use. Flight is the opposite case: it must pay for support continuously, which is why it is the most expensive per unit time and yet efficient per unit distance."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "synthetic-biology",
   "index": 2,
   "title": "The Smallest Possible Life",
+  "principle": "The fewest genes something can live with is called a minimal genome.",
   "specimen": "minimal-cell",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That is the interesting number, not the 473."
       ]
     },
-
     {
       "type": "predict",
       "concept": "minimal-genome",
@@ -35,7 +35,6 @@
         "Commit. Note that 'essential' here means essential in a laboratory with unlimited food — which is a narrower claim than it sounds."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Those 90 genes are required — remove any and the cell dies — and nobody knows what they do. That is a much more honest summary of the state of the field than the headline number."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "It is the clearest available measure of the gap between building and understanding. We can write a genome from scratch, boot it, and watch it divide — and still not know what a fifth of the necessary instructions are for."
       ]
     },
-
     {
       "type": "check",
       "concept": "minimal-genome",
@@ -96,7 +93,6 @@
         "It marks a real and quantified gap: 19% of the minimum requirement for life is unexplained in the best-characterised system anyone has built. Most fields cannot state their ignorance that precisely, and being able to is a sign of maturity rather than of failure."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

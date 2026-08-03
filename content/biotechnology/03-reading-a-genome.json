@@ -3,6 +3,7 @@
   "module": "biotechnology",
   "index": 2,
   "title": "Reading a Genome",
+  "principle": "Working out the order of the letters is called sequencing.",
   "specimen": "sequencer",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Half a million-fold, against roughly two thousand-fold for computing power. It is the fastest-falling cost in the history of measurement."
       ]
     },
-
     {
       "type": "predict",
       "concept": "read-a-genome",
@@ -35,7 +35,6 @@
         "Commit. Ask what you would do differently if a measurement went from unaffordable to trivial."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -58,7 +57,6 @@
         "The threshold that matters is where cost stops determining what gets measured. Below that, whole categories of question become answerable — including ones nobody would have proposed at the old price."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -74,7 +72,6 @@
         "Metagenomics — sequencing everything in a sample without isolating anything — revealed whole branches of life that a century of culturing had missed entirely. That is the same lesson as the microscope, one level along: the instrument decided what was knowable, and the limit was invisible from inside."
       ]
     },
-
     {
       "type": "check",
       "concept": "read-a-genome",
@@ -95,7 +92,6 @@
         "Because cost was never the limiting factor on understanding. Sequencing tells you the letters; connecting a variant to a phenotype requires population data, functional work and statistics, none of which got cheaper at the same rate. The gap has widened rather than closed, which is a general pattern when one step in a pipeline improves by orders of magnitude and the others do not."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

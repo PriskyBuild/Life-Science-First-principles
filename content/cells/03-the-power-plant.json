@@ -3,6 +3,7 @@
   "module": "cells",
   "index": 2,
   "title": "The Power Plant",
+  "principle": "The power plants are called mitochondria.",
   "specimen": "mitochondrion",
   "stages": [
     {
@@ -29,7 +30,11 @@
         "You control glucose supply and mitochondrial number. Predict the effect of maximising mitochondria.",
         "Predict the response of net ATP to increasing mitochondrial density at fixed substrate supply."
       ],
-      "options": ["More is always better", "There is a best number, and more than that is worse", "It makes no difference"],
+      "options": [
+        "More is always better",
+        "There is a best number, and more than that is worse",
+        "It makes no difference"
+      ],
       "outcome": "There is a best number, and more than that is worse",
       "note": [
         "Have a guess before you try it.",
@@ -41,14 +46,29 @@
     {
       "type": "sim",
       "sim": "energy",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Move the sliders. Try to keep the energy bar from hitting the bottom.",
         "Two sliders: how much food gets in, and how many power plants burn it. Keep the energy up for twenty seconds."
       ],
-      "params": { "doors": 3, "plants": 2, "demand": 3, "upkeep": 0.5, "hold": 14 },
-      "paramsByLevel": { "1": { "demand": 2.4, "upkeep": 0.35, "hold": 10 } },
+      "params": {
+        "doors": 3,
+        "plants": 2,
+        "demand": 3,
+        "upkeep": 0.5,
+        "hold": 14
+      },
+      "paramsByLevel": {
+        "1": {
+          "demand": 2.4,
+          "upkeep": 0.35,
+          "hold": 10
+        }
+      },
       "goal": [
         "You kept it going. Notice the bar never sat still — it never does.",
         "Held steady. Notice the line never flattens: the cell is spending and remaking the whole time."
@@ -57,14 +77,31 @@
     {
       "type": "sim",
       "sim": "energy",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Each power plant costs something to run, and partway through the demand goes up. Find the setting that survives the change — not just the one that works now.",
         "Mitochondria carry their own maintenance cost, and demand steps up at twelve seconds. Find the configuration robust to the step, not the one optimal before it."
       ],
-      "params": { "doors": 3, "plants": 2, "demand": 3.4, "upkeep": 0.7, "spike": 1.6, "hold": 18 },
-      "paramsByLevel": { "4": { "demand": 3.8, "upkeep": 0.85, "spike": 2.2, "hold": 22 } },
+      "params": {
+        "doors": 3,
+        "plants": 2,
+        "demand": 3.4,
+        "upkeep": 0.7,
+        "spike": 1.6,
+        "hold": 18
+      },
+      "paramsByLevel": {
+        "4": {
+          "demand": 3.8,
+          "upkeep": 0.85,
+          "spike": 2.2,
+          "hold": 22
+        }
+      },
       "goal": [
         "That setting rode out the change. Too few and you starve; too many and the upkeep eats you.",
         "Robust to the step. The optimum sits between substrate limitation and maintenance cost — which is why cells regulate mitochondrial number rather than maximising it."
@@ -104,7 +141,11 @@
         "Why is ATP level always changing even at steady state?",
         "Why is a constant ATP pool not evidence of a static system?"
       ],
-      "options": ["Because energy is being made and spent all the time", "Because the cell stores energy up", "Because the sliders were moving"],
+      "options": [
+        "Because energy is being made and spent all the time",
+        "Because the cell stores energy up",
+        "Because the sliders were moving"
+      ],
       "answer": 0,
       "why": [
         "The cell never fills up. It makes energy and spends it at the same time, all the time.",
@@ -122,7 +163,11 @@
         "Why does mitochondrial number have an optimum rather than a maximum?",
         "What sets the upper bound on useful mitochondrial density?"
       ],
-      "options": ["Each one costs energy to run", "They get in each other's way", "There is not enough room"],
+      "options": [
+        "Each one costs energy to run",
+        "They get in each other's way",
+        "There is not enough room"
+      ],
       "answer": 0,
       "why": [
         "Every power plant needs energy just to keep going. Build too many and they eat more than they make.",

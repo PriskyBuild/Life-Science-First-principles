@@ -154,9 +154,15 @@ class Part extends HTMLElement {
 }
 
 class Placeable extends Part {
+  /* Returns the same boolean the base does. It did not, and the type checker was
+     the first thing ever to say so: a third class extending Placeable would call
+     super.connectedCallback(), get undefined, and silently decline to wire itself
+     up. That is precisely the D66 fault — a guard a subclass can walk around —
+     sitting latent, waiting for the next component. (D79) */
   connectedCallback() {
-    if (!super.connectedCallback()) return;
+    if (!super.connectedCallback()) return false;
     this.addEventListener("pointerdown", (e) => this.startDrag(e));
+    return true;
   }
   /* A placed piece taps back INTO the hand, not just out of its slot: two taps
      to change an answer, and it returns to the tray so the hand is visible. */

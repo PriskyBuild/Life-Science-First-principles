@@ -3,6 +3,7 @@
   "module": "neuroscience",
   "index": 0,
   "title": "Thinking Is Electricity",
+  "principle": "A nerve signal is called an action potential, and it is always the same size.",
   "specimen": "action-potential",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "If size carries no information, something else must be carrying it."
       ]
     },
-
     {
       "type": "predict",
       "concept": "signals-are-electrical",
@@ -35,39 +35,50 @@
         "Commit. You are about to measure this rather than be told it."
       ]
     },
-
     {
       "type": "sim",
       "sim": "spike",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Poke it gently. Then poke it harder. Watch the size of what comes out.",
         "Try a weak poke, then a stronger one, then a very strong one. Watch the height of the spike each time — and find the point below which nothing happens at all."
       ],
-      "params": { "task": "threshold", "amp": 4, "aspect": 0.6 },
+      "params": {
+        "task": "threshold",
+        "amp": 4,
+        "aspect": 0.6
+      },
       "goal": [
         "Every spike is the same height. Poking harder does not make it shout louder.",
         "Amplitude did not change with stimulus strength, and below a certain poke there was no spike at all."
       ]
     },
-
     {
       "type": "sim",
       "sim": "spike",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Now push steadily instead of poking. Find both edges of the range where it fires.",
         "Sustained current rather than a pulse. There is a lower bound below which nothing happens — and an upper bound above which it also stops. Find both, and work out why the two silences are not the same silence."
       ],
-      "params": { "task": "window", "current": 0, "aspect": 0.6 },
+      "params": {
+        "task": "window",
+        "current": 0,
+        "aspect": 0.6
+      },
       "goal": [
         "Too little and nothing. Too much and it stops again.",
         "Both boundaries found. Silence below threshold and silence above it have completely different causes."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -83,7 +94,6 @@
         "Adrian won a Nobel for establishing this in 1932 — that intensity is frequency. It is a good example of a constraint producing a design: nothing chose rate coding, it is what remains once amplitude is spoken for."
       ]
     },
-
     {
       "type": "check",
       "concept": "signals-are-electrical",
@@ -104,7 +114,6 @@
         "Frequency and population coding, and they are what is left rather than what was chosen. The all-or-nothing law removes amplitude as a variable, so any information about intensity must be carried by the remaining degrees of freedom."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "biomolecules",
   "index": 3,
   "title": "Beads That Fold Into Machines",
+  "principle": "A string of these beads is a protein.",
   "specimen": "peptide-chain",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Same twenty everywhere, which is why a human gene works in a bacterium."
       ]
     },
-
     {
       "type": "predict",
       "concept": "shape-from-sequence",
@@ -35,7 +35,6 @@
         "Commit. Sickle-cell disease is one amino acid out of 146, which is a fact worth holding while you answer."
       ]
     },
-
     {
       "type": "sim",
       "sim": "folding",
@@ -44,14 +43,26 @@
         "Fold this string and see what it turns into.",
         "Fold the chain to its best arrangement, then look at the shape you ended up with."
       ],
-      "params": { "seq": "PHHPPHHP", "target": 2, "aspect": 0.85 },
-      "paramsByLevel": { "3": { "seq": "HHPPHPPHPPHH", "target": 4 }, "4": { "seq": "HHPPHPPHPPHH", "target": 4 } },
+      "params": {
+        "seq": "PHHPPHHP",
+        "target": 2,
+        "aspect": 0.85
+      },
+      "paramsByLevel": {
+        "3": {
+          "seq": "HHPPHPPHPPHH",
+          "target": 4
+        },
+        "4": {
+          "seq": "HHPPHPPHPPHH",
+          "target": 4
+        }
+      },
       "goal": [
         "A shape, from nothing but the order of the beads.",
         "A specific structure, produced by sequence alone. No template, no mould, nothing supervising it."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -67,7 +78,6 @@
         "That exposed hydrophobic patch makes deoxygenated haemoglobin polymerise into fibres, which deform the cell. One residue, one exposed surface, and a disease — and the same allele confers malaria resistance in carriers, which is why selection has not removed it."
       ]
     },
-
     {
       "type": "check",
       "concept": "shape-from-sequence",
@@ -88,7 +98,6 @@
         "Positional sensitivity varies enormously and predictably: buried core residues and active-site residues are highly constrained, surface loops are largely tolerant. This is why conservation across species is such a good predictor of which mutations will be pathogenic — evolution has already run the experiment."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

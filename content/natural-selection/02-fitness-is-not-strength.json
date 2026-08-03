@@ -3,6 +3,7 @@
   "module": "natural-selection",
   "index": 1,
   "title": "Fitness Is Not Strength",
+  "principle": "Fitness means how many young you leave, here, now.",
   "specimen": "fitness-dial",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "'Survival of the fittest' is doing much less work than it sounds like."
       ]
     },
-
     {
       "type": "predict",
       "concept": "fitness-is-contextual",
@@ -35,7 +35,6 @@
         "Commit. Note that the phrase was not Darwin's — Spencer coined it, and Darwin adopted it reluctantly."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
@@ -44,14 +43,26 @@
         "Get the beetles matching the ground. Then change the ground and watch what happens to the winners.",
         "Adapt the population to one background, then move the slider to a different one and watch the previously-best beetles become the worst."
       ],
-      "params": { "task": "watch", "bg": 0.85, "aspect": 0.78 },
-      "paramsByLevel": { "1": { "n": 27, "pressure": 0.85 }, "4": { "n": 45, "pressure": 0.7 } },
+      "params": {
+        "task": "watch",
+        "bg": 0.85,
+        "aspect": 0.78
+      },
+      "paramsByLevel": {
+        "1": {
+          "n": 27,
+          "pressure": 0.85
+        },
+        "4": {
+          "n": 45,
+          "pressure": 0.7
+        }
+      },
       "goal": [
         "The beetles that were winning are now the ones getting eaten. Nothing about them changed.",
         "The formerly-best beetles are now the worst, and not one of them changed. Only the ground did — which is where fitness actually lives."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -67,7 +78,6 @@
         "Longevity, strength and intelligence matter only insofar as they change reproductive output in that environment — which is why the peacock's tail, which is a survival liability, is a fitness asset."
       ]
     },
-
     {
       "type": "check",
       "concept": "fitness-is-contextual",
@@ -88,11 +98,13 @@
         "This is why 'the environment selects' is a better formulation than 'the fittest survive'. It also explains heterozygote advantage: the sickle-cell allele is a liability where there is no malaria and an asset where there is, so selection maintains it at intermediate frequency in exactly the places malaria is endemic."
       ]
     },
-
     {
       "type": "check",
       "concept": "drift-is-not-selection",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "q": [
         "A population changes over time. Is that always selection?",
         "Does directional change in a population entail selection?"
@@ -108,7 +120,6 @@
         "Sampling error alone moves allele frequencies, and it does so faster in small populations. Distinguishing drift from selection is a real statistical problem, not a technicality — it is why 'the population changed' and 'the population adapted' are two different claims, and why demonstrating selection requires more than showing a trend."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

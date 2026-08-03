@@ -3,6 +3,7 @@
   "module": "animals",
   "index": 3,
   "title": "Behaviour Is Inherited Too",
+  "principle": "A behaviour you are born knowing is called an instinct.",
   "specimen": "instinct-card",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "There is nobody it could have learned this from, which narrows the possibilities considerably."
       ]
     },
-
     {
       "type": "predict",
       "concept": "behaviour-is-heritable",
@@ -35,23 +35,29 @@
         "Commit. Note that adult cuckoos leave weeks before the young ones do."
       ]
     },
-
     {
       "type": "sim",
       "sim": "selection",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "If a behaviour is inherited, selection can act on it exactly like a colour. Check that the machine does not care what the trait is.",
         "The three conditions say nothing about what the trait must be. If a behaviour varies and is heritable and affects survival, selection acts on it identically. Confirm that by breaking it the same way."
       ],
-      "params": { "task": "break", "bg": 0.85, "switches": true, "aspect": 0.82 },
+      "params": {
+        "task": "break",
+        "bg": 0.85,
+        "switches": true,
+        "aspect": 0.82
+      },
       "goal": [
         "The same machine, and it never asked what the trait was.",
         "Identical mechanism. Nothing in the three conditions refers to colour, or to anatomy — only to variation, heredity and differential survival. A behaviour meeting those is selected on exactly as a pigment is."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -67,7 +73,6 @@
         "The nature-versus-nurture framing is the wrong shape for almost every real case. What is inherited is usually a predisposition and a learning rule, not a finished behaviour — and asking which of the two 'caused' it is like asking whether the area of a rectangle is caused by its length or its width."
       ]
     },
-
     {
       "type": "check",
       "concept": "behaviour-is-heritable",
@@ -88,7 +93,6 @@
         "The mechanism is substrate-neutral, which is why it also describes antibiotic resistance and clonal selection in your immune system. That generality is the strongest thing about it — and it is why 'evolution of behaviour' needs no separate theory."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

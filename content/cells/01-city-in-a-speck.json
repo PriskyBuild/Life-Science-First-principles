@@ -3,6 +3,7 @@
   "module": "cells",
   "index": 0,
   "title": "The City in a Speck",
+  "principle": "That tiny city is called a cell.",
   "specimen": "scale-lens",
   "stages": [
     {
@@ -20,7 +21,6 @@
         "Roughly 3 × 10¹³ of them, in about 200 distinct types, in you right now."
       ]
     },
-
     {
       "type": "predict",
       "concept": "cell-scale",
@@ -30,7 +30,11 @@
         "A typical human cell is about 20 micrometres across. How many fit across a 0.5 mm full stop?",
         "Given a 20 µm cell and a 0.5 mm printed full stop, estimate the linear packing count."
       ],
-      "options": ["About 5", "About 25", "About 2,000"],
+      "options": [
+        "About 5",
+        "About 25",
+        "About 2,000"
+      ],
       "outcome": "About 25",
       "note": [
         "Guessing is the point. Nobody knows this one until they check.",
@@ -39,13 +43,17 @@
         "Order-of-magnitude estimation first. Anchoring on your own wrong estimate is what makes the correction memorable."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "How close are we?",
-      "min": 0, "max": 4, "value": 0,
+      "min": 0,
+      "max": 4,
+      "value": 0,
       "captions": [
         "A whole city. You can see the buildings.",
         "One street. You could walk down it.",
@@ -62,13 +70,17 @@
         "Five steps of ten. That is how you get from a city you can walk through to something you cannot see."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "Powers of ten",
-      "min": 0, "max": 6, "value": 0,
+      "min": 0,
+      "max": 6,
+      "value": 0,
       "captions": [
         "1 m — a person",
         "10⁻¹ m — a hand",
@@ -87,7 +99,6 @@
         "Five orders below a human, one further to the organelle. That a mitochondrion is bacterium-sized is not a coincidence; it is the evidence for endosymbiosis."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -103,7 +114,6 @@
         "No known life escapes this: unicellular or multicellular, with viruses sitting outside the definition precisely because they lack it."
       ]
     },
-
     {
       "type": "apply",
       "t": [
@@ -114,7 +124,6 @@
       ],
       "kicker": "Why this matters"
     },
-
     {
       "type": "check",
       "concept": "cell-scale",
@@ -124,7 +133,11 @@
         "What is the approximate diameter of a typical human cell?",
         "Order of magnitude for a typical eukaryotic cell diameter?"
       ],
-      "options": ["Too small to see without a microscope", "About the size of a grain of sand", "Big enough to see if you look closely"],
+      "options": [
+        "Too small to see without a microscope",
+        "About the size of a grain of sand",
+        "Big enough to see if you look closely"
+      ],
       "answer": 0,
       "why": [
         "About 25 cells fit across a full stop. Your eyes stop working long before that.",
@@ -133,7 +146,6 @@
         "≈20 µm, against an unaided resolution limit near 100 µm — hence the entire history of the field waiting on lens grinding."
       ]
     },
-
     {
       "type": "check",
       "concept": "cell-is-a-system",
@@ -143,7 +155,11 @@
         "In what sense is a cell a system rather than a component?",
         "Why does the city analogy hold and the brick analogy fail?"
       ],
-      "options": ["It has many parts, each doing a different job", "It is made of one solid material", "It is the same all the way through"],
+      "options": [
+        "It has many parts, each doing a different job",
+        "It is made of one solid material",
+        "It is the same all the way through"
+      ],
       "answer": 0,
       "why": [
         "A brick is the same all the way through. A cell has power, walls and instructions — all different, all working at once.",

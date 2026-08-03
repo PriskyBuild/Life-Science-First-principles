@@ -3,6 +3,7 @@
   "module": "microbiology",
   "index": 1,
   "title": "Fast Life",
+  "principle": "Doubling again and again is called exponential growth, and it never really happens for long.",
   "specimen": "generation-timer",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The arithmetic is not in dispute. What the arithmetic tells you about the world is the interesting part."
       ]
     },
-
     {
       "type": "predict",
       "concept": "fast-generations",
@@ -35,7 +35,6 @@
         "Commit. Exponential growth is the thing human intuition is worst at, and knowing that does not much help."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -60,7 +59,6 @@
         "Nothing about the growth rate changed. The visible transition from nothing to catastrophic happens in a handful of doublings, which is why exponential processes are noticed too late."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -76,7 +74,6 @@
         "Generation time is the rate-limiter on evolution. What takes an elephant a thousand years takes E. coli a fortnight, which is why laboratory evolution is done in bacteria and why resistance appears within a single course of treatment."
       ]
     },
-
     {
       "type": "check",
       "concept": "fast-generations",
@@ -97,7 +94,6 @@
         "Population size compounds it: a culture holds enough individuals that even very rare mutations are present somewhere, so a bacterial population explores sequence space vastly faster than a large-bodied animal can. Rate and number, not any difference in the mechanism."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

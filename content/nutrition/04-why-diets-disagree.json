@@ -3,6 +3,7 @@
   "module": "nutrition",
   "index": 3,
   "title": "Why Diets Disagree",
+  "principle": "When two things go together, that does not mean one caused the other.",
   "specimen": "study-sieve",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "It is that nutrition is unusually hard to study, for reasons worth knowing."
       ]
     },
-
     {
       "type": "predict",
       "concept": "evidence-in-nutrition",
@@ -35,7 +35,6 @@
         "Commit. Ask what else is true of someone who eats a lot of vegetables."
       ]
     },
-
     {
       "type": "slider",
       "guided": true,
@@ -59,7 +58,6 @@
         "Randomised diet trials are expensive, short, and hard to blind — you cannot conceal from someone what they are eating. So most nutritional evidence is observational, and that is a structural limit rather than a lapse."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -75,7 +73,6 @@
         "It cuts both ways over time: as advice changes, the people eating a given food change with it, so the same food can generate opposite associations in different decades. That mechanism explains a great deal of the reversal without anyone having done bad science."
       ]
     },
-
     {
       "type": "check",
       "concept": "evidence-in-nutrition",
@@ -96,7 +93,6 @@
         "Because adjustment only removes confounders you measured, and the list of ways diet tracks with everything else in someone's life is not closed. That is why randomisation matters: it balances the confounders nobody thought of, which is precisely the set that produced the historical reversals."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

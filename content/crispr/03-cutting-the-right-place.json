@@ -3,6 +3,7 @@
   "module": "crispr",
   "index": 2,
   "title": "Cutting the Right Place",
+  "principle": "Cuts in the wrong place are called off-target edits.",
   "specimen": "target-lock",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "That is the actual problem: pairing tolerates mismatches, so near-matches can be cut too."
       ]
     },
-
     {
       "type": "predict",
       "concept": "targeting-accuracy",
@@ -35,7 +35,6 @@
         "Commit. Pairing is a matter of how strongly things stick, not a lock that either opens or does not."
       ]
     },
-
     {
       "type": "sim",
       "sim": "replication",
@@ -44,14 +43,24 @@
         "Place the bases again — and this time watch how the wrong one is refused. That refusal is what specificity depends on.",
         "The same pairing you used to copy a strand. Note that a wrong base is rejected because it does not fit — and that a sequence with only one or two wrong positions still fits almost as well."
       ],
-      "params": { "task": "pair", "n": 18, "aspect": 0.62 },
-      "paramsByLevel": { "1": { "n": 12 }, "2": { "n": 14 } },
+      "params": {
+        "task": "pair",
+        "n": 18,
+        "aspect": 0.62
+      },
+      "paramsByLevel": {
+        "1": {
+          "n": 12
+        },
+        "2": {
+          "n": 14
+        }
+      },
       "goal": [
         "Every letter had to match. Now imagine two of twenty being wrong — it would still mostly stick.",
         "Perfect pairing at every position. The off-target problem is that near-perfect pairing is still strong pairing, and biology has no threshold that says 'close enough is not close enough'."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -67,7 +76,6 @@
         "That is the same trade you met in DNA replication: fidelity is bought with rate, and the engineered variants pay for accuracy with activity. It recurs because it is not a quirk of any one system — checking takes time and effort wherever it happens."
       ]
     },
-
     {
       "type": "check",
       "concept": "targeting-accuracy",
@@ -88,7 +96,6 @@
         "Each base pair contributes a small amount of binding energy, so the total falls incrementally as mismatches accumulate. Specificity is therefore statistical, and the practical response is to choose guides whose nearest genomic near-match is as distant as possible — managing the gradient rather than escaping it."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

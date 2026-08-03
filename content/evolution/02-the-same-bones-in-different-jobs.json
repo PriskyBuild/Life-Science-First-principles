@@ -3,6 +3,7 @@
   "module": "evolution",
   "index": 1,
   "title": "The Same Bones in Different Jobs",
+  "principle": "Bones that match like this are called homologous.",
   "specimen": "limb-set",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "One bone, then two, then a cluster of small ones, then digits. Every time, in that order."
       ]
     },
-
     {
       "type": "predict",
       "concept": "homology",
@@ -35,7 +35,6 @@
         "Commit first. Notice that an insect wing, which flies perfectly well, contains no bones at all."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -51,10 +50,12 @@
         "Crucially the similarities are nested rather than scattered — groups within groups — which is a far more specific pattern than mere resemblance and is what both accounts below have to explain."
       ]
     },
-
     {
       "type": "weigh",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "concept": "homology",
       "t": [
         "Everyone agrees the bones match. Here is what each side says the matching means.",
@@ -101,7 +102,6 @@
         "Both accounts handle useful shared structure comfortably. The place they come apart is shared NON-function: broken genes, useless remnants, wiring that costs the animal something. Ask what each account predicts about those, and then ask what each would accept as a counter-example."
       ]
     },
-
     {
       "type": "check",
       "concept": "homology",
@@ -122,7 +122,6 @@
         "The definition is intentionally function-blind, because a function-based definition would make the concept circular. Diagnosis rests on relative position, connectivity and developmental origin, which is why an octopus eye and a vertebrate eye are analogous despite the resemblance: they develop from different tissues and are wired in opposite directions."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

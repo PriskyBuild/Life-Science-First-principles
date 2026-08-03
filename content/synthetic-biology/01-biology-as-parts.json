@@ -3,6 +3,7 @@
   "module": "synthetic-biology",
   "index": 0,
   "title": "Biology as Parts",
+  "principle": "Making biological parts standard, so they work the same every time, is called synthetic biology.",
   "specimen": "part-registry",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "It is not that the parts are complicated. It is that they are not the same twice."
       ]
     },
-
     {
       "type": "predict",
       "concept": "biology-as-parts",
@@ -35,7 +35,6 @@
         "Commit. Ask what an engineer assumes about a component without ever checking."
       ]
     },
-
     {
       "type": "build",
       "guided": true,
@@ -44,19 +43,54 @@
         "Match each element of a genetic construct to its function."
       ],
       "parts": [
-        { "id": "promoter", "label": "Promoter" },
-        { "id": "rbs", "label": "Ribosome binding site" },
-        { "id": "coding", "label": "Coding sequence" },
-        { "id": "terminator", "label": "Terminator" }
+        {
+          "id": "promoter",
+          "label": "Promoter"
+        },
+        {
+          "id": "rbs",
+          "label": "Ribosome binding site"
+        },
+        {
+          "id": "coding",
+          "label": "Coding sequence"
+        },
+        {
+          "id": "terminator",
+          "label": "Terminator"
+        }
       ],
       "slots": [
-        { "accepts": "promoter", "label": ["Decides when reading starts", "Controls when and how strongly the gene is transcribed"] },
-        { "accepts": "rbs", "label": ["Decides how much gets made", "Sets translation initiation rate"] },
-        { "accepts": "coding", "label": ["Says what to build", "Specifies the protein"] },
-        { "accepts": "terminator", "label": ["Says where to stop", "Ends transcription cleanly"] }
+        {
+          "accepts": "promoter",
+          "label": [
+            "Decides when reading starts",
+            "Controls when and how strongly the gene is transcribed"
+          ]
+        },
+        {
+          "accepts": "rbs",
+          "label": [
+            "Decides how much gets made",
+            "Sets translation initiation rate"
+          ]
+        },
+        {
+          "accepts": "coding",
+          "label": [
+            "Says what to build",
+            "Specifies the protein"
+          ]
+        },
+        {
+          "accepts": "terminator",
+          "label": [
+            "Says where to stop",
+            "Ends transcription cleanly"
+          ]
+        }
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -72,7 +106,6 @@
         "The response has been to build insulating devices and to characterise parts in context rather than in isolation — treating context-dependence as something to be measured rather than assumed away. Twenty years in, the field is more modest and more useful than its founding manifestos."
       ]
     },
-
     {
       "type": "check",
       "concept": "biology-as-parts",
@@ -93,7 +126,6 @@
         "Because the resources are finite and common by construction. Every expressed construct draws on the same ribosome pool and energy budget, so coupling is a property of being in a cell rather than a flaw to be designed out. It can be reduced by insulation and by characterising in context; it cannot be eliminated."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

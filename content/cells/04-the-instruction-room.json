@@ -3,6 +3,7 @@
   "module": "cells",
   "index": 3,
   "title": "The Instruction Room",
+  "principle": "The locked room is the nucleus.",
   "specimen": "nucleus",
   "stages": [
     {
@@ -29,7 +30,11 @@
         "Why is the template retained and a transcript exported?",
         "What does keeping the template sequestered buy the cell?"
       ],
-      "options": ["Because the original could get damaged or lost", "Because the original is too heavy", "Because copies work better"],
+      "options": [
+        "Because the original could get damaged or lost",
+        "Because the original is too heavy",
+        "Because copies work better"
+      ],
       "outcome": "Because the original could get damaged or lost",
       "note": [
         "Have a guess first.",
@@ -40,49 +45,134 @@
     },
     {
       "type": "build",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Put each thing where it belongs.",
         "Put each piece of the instruction system where it belongs. Tap a piece, then tap its place."
       ],
       "parts": [
-        { "id": "dna", "label": "The original" },
-        { "id": "copy", "label": "The copy" },
-        { "id": "builder", "label": "The builder" }
+        {
+          "id": "dna",
+          "label": "The original"
+        },
+        {
+          "id": "copy",
+          "label": "The copy"
+        },
+        {
+          "id": "builder",
+          "label": "The builder"
+        }
       ],
       "slots": [
-        { "accepts": "dna", "label": ["Locked room", "Stays in the locked room"] },
-        { "accepts": "copy", "label": ["Travels out", "Carries the message out"] },
-        { "accepts": "builder", "label": ["Does the building", "Reads the copy and builds"] }
+        {
+          "accepts": "dna",
+          "label": [
+            "Locked room",
+            "Stays in the locked room"
+          ]
+        },
+        {
+          "accepts": "copy",
+          "label": [
+            "Travels out",
+            "Carries the message out"
+          ]
+        },
+        {
+          "accepts": "builder",
+          "label": [
+            "Does the building",
+            "Reads the copy and builds"
+          ]
+        }
       ],
-      "win": ["That is the whole system.", "That is the whole system: archive, message, factory."],
-      "lose": ["Nearly — move the pieces around and try again.", "Not quite. Move a piece and see."]
+      "win": [
+        "That is the whole system.",
+        "That is the whole system: archive, message, factory."
+      ],
+      "lose": [
+        "Nearly — move the pieces around and try again.",
+        "Not quite. Move a piece and see."
+      ]
     },
     {
       "type": "build",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Five parts, five jobs. Work out which goes where — some of the names will be new, and that is fine.",
         "Five components. Assign each to its role. The names may be unfamiliar; the logic of the pipeline should not be."
       ],
       "parts": [
-        { "id": "dna", "label": "DNA" },
-        { "id": "copy", "label": "mRNA" },
-        { "id": "builder", "label": "Ribosome" },
-        { "id": "carrier", "label": "tRNA" },
-        { "id": "product", "label": "Protein" }
+        {
+          "id": "dna",
+          "label": "DNA"
+        },
+        {
+          "id": "copy",
+          "label": "mRNA"
+        },
+        {
+          "id": "builder",
+          "label": "Ribosome"
+        },
+        {
+          "id": "carrier",
+          "label": "tRNA"
+        },
+        {
+          "id": "product",
+          "label": "Protein"
+        }
       ],
       "slots": [
-        { "accepts": "dna", "label": ["The archive, kept in the nucleus"] },
-        { "accepts": "copy", "label": ["The transcript, exported to the cytoplasm"] },
-        { "accepts": "builder", "label": ["Reads the transcript three letters at a time"] },
-        { "accepts": "carrier", "label": ["Brings the matching amino acid"] },
-        { "accepts": "product", "label": ["The finished chain that folds and does a job"] }
+        {
+          "accepts": "dna",
+          "label": [
+            "The archive, kept in the nucleus"
+          ]
+        },
+        {
+          "accepts": "copy",
+          "label": [
+            "The transcript, exported to the cytoplasm"
+          ]
+        },
+        {
+          "accepts": "builder",
+          "label": [
+            "Reads the transcript three letters at a time"
+          ]
+        },
+        {
+          "accepts": "carrier",
+          "label": [
+            "Brings the matching amino acid"
+          ]
+        },
+        {
+          "accepts": "product",
+          "label": [
+            "The finished chain that folds and does a job"
+          ]
+        }
       ],
-      "win": ["That is transcription and translation in five parts.", "That is the central dogma, assembled: DNA to RNA to protein, with tRNA as the adaptor."],
-      "lose": ["Something is in the wrong place. Move it and look again.", "One or more assignments are wrong. Reconsider what each component physically does."]
+      "win": [
+        "That is transcription and translation in five parts.",
+        "That is the central dogma, assembled: DNA to RNA to protein, with tRNA as the adaptor."
+      ],
+      "lose": [
+        "Something is in the wrong place. Move it and look again.",
+        "One or more assignments are wrong. Reconsider what each component physically does."
+      ]
     },
     {
       "type": "name",
@@ -118,7 +208,11 @@
         "Why is the template retained rather than exported?",
         "What is the functional argument for sequestering the template?"
       ],
-      "options": ["So it cannot be damaged or lost", "Because it is stuck", "Because copies are faster"],
+      "options": [
+        "So it cannot be damaged or lost",
+        "Because it is stuck",
+        "Because copies are faster"
+      ],
       "answer": 0,
       "why": [
         "There is only one original. If it were damaged, every copy after it would be wrong too.",
@@ -136,7 +230,11 @@
         "What are the minimum inputs to translation?",
         "What does a ribosome require beyond a transcript?"
       ],
-      "options": ["The copy of the instructions", "More energy only", "Nothing, it just builds"],
+      "options": [
+        "The copy of the instructions",
+        "More energy only",
+        "Nothing, it just builds"
+      ],
       "answer": 0,
       "why": [
         "A builder with no instructions builds nothing. The copy has to arrive first.",

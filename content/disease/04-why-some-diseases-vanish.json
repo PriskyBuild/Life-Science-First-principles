@@ -3,6 +3,7 @@
   "module": "disease",
   "index": 3,
   "title": "Why Some Diseases Vanish",
+  "principle": "Wiping a disease out completely is called eradication, and it needs several things to be true at once.",
   "specimen": "eradication-kit",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "The interesting question is not how smallpox was beaten but why the same effort has not worked twice."
       ]
     },
-
     {
       "type": "predict",
       "concept": "eradication-conditions",
@@ -35,7 +35,6 @@
         "Commit. Ask where the pathogen could be while you are vaccinating every human."
       ]
     },
-
     {
       "type": "sim",
       "sim": "outbreak",
@@ -44,14 +43,28 @@
         "Find the level of protection that stops it. Then make it more catchy and find it again.",
         "Vaccination does not have to reach everyone — only enough that R falls below one. Find that level, then raise R₀ and find how sharply the requirement moves."
       ],
-      "params": { "task": "threshold", "r0": 3, "catchy": true, "protect": true, "aspect": 0.6 },
-      "paramsByLevel": { "1": { "catchy": false, "r0": 3 }, "2": { "catchy": false, "r0": 3 } },
+      "params": {
+        "task": "threshold",
+        "r0": 3,
+        "catchy": true,
+        "protect": true,
+        "aspect": 0.6
+      },
+      "paramsByLevel": {
+        "1": {
+          "catchy": false,
+          "r0": 3
+        },
+        "2": {
+          "catchy": false,
+          "r0": 3
+        }
+      },
       "goal": [
         "You do not need everybody. But for a really catchy one you need nearly everybody.",
         "The threshold is 1 − 1/R₀, so it climbs steeply with transmissibility: 50% at R₀ = 2, 67% at 3, and about 93% for measles."
       ]
     },
-
     {
       "type": "build",
       "guided": false,
@@ -60,41 +73,123 @@
         "Match each property to what it does to an eradication campaign. Placement is unconstrained, then it is tested."
       ],
       "parts": [
-        { "id": "human", "label": "Infects only humans" },
-        { "id": "stable", "label": "Does not change its coat" },
-        { "id": "vaccine", "label": "A good vaccine exists" },
-        { "id": "visible", "label": "Obvious when someone has it" }
+        {
+          "id": "human",
+          "label": "Infects only humans"
+        },
+        {
+          "id": "stable",
+          "label": "Does not change its coat"
+        },
+        {
+          "id": "vaccine",
+          "label": "A good vaccine exists"
+        },
+        {
+          "id": "visible",
+          "label": "Obvious when someone has it"
+        }
       ],
       "slots": [
-        { "correct": "human", "label": ["Nowhere for it to hide while you vaccinate"] },
-        { "correct": "stable", "label": ["The vaccine keeps working year after year"] },
-        { "correct": "vaccine", "label": ["You have something to give people"] },
-        { "correct": "visible", "label": ["You can find every case and ring-fence it"] }
+        {
+          "correct": "human",
+          "label": [
+            "Nowhere for it to hide while you vaccinate"
+          ]
+        },
+        {
+          "correct": "stable",
+          "label": [
+            "The vaccine keeps working year after year"
+          ]
+        },
+        {
+          "correct": "vaccine",
+          "label": [
+            "You have something to give people"
+          ]
+        },
+        {
+          "correct": "visible",
+          "label": [
+            "You can find every case and ring-fence it"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Have anything to give people", "A vaccine"],
-          "needs": ["vaccine"],
-          "pass": ["There is a vaccine that works.", "An effective vaccine exists."],
-          "fail": ["No vaccine, no campaign. That is malaria's problem for a century.", "Without an effective vaccine there is no eradication tool, which is why malaria and HIV are not eradication candidates however much is spent."]
+          "name": [
+            "Have anything to give people",
+            "A vaccine"
+          ],
+          "needs": [
+            "vaccine"
+          ],
+          "pass": [
+            "There is a vaccine that works.",
+            "An effective vaccine exists."
+          ],
+          "fail": [
+            "No vaccine, no campaign. That is malaria's problem for a century.",
+            "Without an effective vaccine there is no eradication tool, which is why malaria and HIV are not eradication candidates however much is spent."
+          ]
         },
         {
-          "name": ["Still work in ten years", "A stable target"],
-          "needs": ["vaccine", "stable"],
-          "pass": ["The vaccine still matches the pathogen.", "Antigenic stability means one vaccine keeps working."],
-          "fail": ["It changes its coat every year, so you are always behind.", "Influenza is reformulated annually because the target moves. You cannot eradicate something you have to chase."]
+          "name": [
+            "Still work in ten years",
+            "A stable target"
+          ],
+          "needs": [
+            "vaccine",
+            "stable"
+          ],
+          "pass": [
+            "The vaccine still matches the pathogen.",
+            "Antigenic stability means one vaccine keeps working."
+          ],
+          "fail": [
+            "It changes its coat every year, so you are always behind.",
+            "Influenza is reformulated annually because the target moves. You cannot eradicate something you have to chase."
+          ]
         },
         {
-          "name": ["Have nowhere left to hide", "No animal reservoir"],
-          "needs": ["vaccine", "stable", "human"],
-          "pass": ["Vaccinate the humans and it has nowhere to be.", "With no animal reservoir, eliminating human infection eliminates the pathogen."],
-          "fail": ["You vaccinated every person, and it came back out of the animals.", "Yellow fever lives in monkeys and rabies in many mammals. A reservoir makes eradication impossible in principle, not merely difficult."]
+          "name": [
+            "Have nowhere left to hide",
+            "No animal reservoir"
+          ],
+          "needs": [
+            "vaccine",
+            "stable",
+            "human"
+          ],
+          "pass": [
+            "Vaccinate the humans and it has nowhere to be.",
+            "With no animal reservoir, eliminating human infection eliminates the pathogen."
+          ],
+          "fail": [
+            "You vaccinated every person, and it came back out of the animals.",
+            "Yellow fever lives in monkeys and rabies in many mammals. A reservoir makes eradication impossible in principle, not merely difficult."
+          ]
         },
         {
-          "name": ["Find the last cases", "Detectability"],
-          "needs": ["vaccine", "stable", "human", "visible"],
-          "pass": ["Every case is obvious, so the last ones can be chased down.", "Visible presentation allows surveillance and ring vaccination of the final chains."],
-          "fail": ["Most infections are silent, so you can never be sure it is gone.", "Polio's difficulty: most infections cause no symptoms, so the last chains of transmission are invisible. That is why polio has taken decades longer than smallpox despite a good vaccine."]
+          "name": [
+            "Find the last cases",
+            "Detectability"
+          ],
+          "needs": [
+            "vaccine",
+            "stable",
+            "human",
+            "visible"
+          ],
+          "pass": [
+            "Every case is obvious, so the last ones can be chased down.",
+            "Visible presentation allows surveillance and ring vaccination of the final chains."
+          ],
+          "fail": [
+            "Most infections are silent, so you can never be sure it is gone.",
+            "Polio's difficulty: most infections cause no symptoms, so the last chains of transmission are invisible. That is why polio has taken decades longer than smallpox despite a good vaccine."
+          ]
         }
       ],
       "win": [
@@ -106,7 +201,6 @@
         "Each failed trial names the condition that was not satisfied. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -122,7 +216,6 @@
         "The polio campaign is the clearest demonstration that the conditions are not negotiable. It has a good vaccine, no animal reservoir and a stable target — and the invisibility of most infections has kept the last one percent out of reach for three decades."
       ]
     },
-
     {
       "type": "check",
       "concept": "eradication-conditions",
@@ -143,7 +236,6 @@
         "The reservoir alone is decisive. Antigenic drift makes control expensive and continuous; the reservoir makes eradication impossible in principle, because the pathogen persists in populations no campaign can vaccinate. Only one of those two can be engineered around."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "genes",
   "index": 1,
   "title": "Same Book, Different Pages",
+  "principle": "Which pages a cell reads is called gene expression.",
   "specimen": "switch-board",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "If the instructions are identical, the difference cannot be in the instructions."
       ]
     },
-
     {
       "type": "predict",
       "concept": "expression-is-selective",
@@ -35,10 +35,12 @@
         "Commit. Two of these were seriously proposed, and one was disproved by cloning a frog."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "label": "Which cell?",
       "min": 0,
@@ -59,10 +61,12 @@
         "Nothing was added or removed. What changed is which genes are being read."
       ]
     },
-
     {
       "type": "slider",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "label": "Proportion of genes active",
       "min": 0,
@@ -83,7 +87,6 @@
         "Differentiation is not subtraction. Alternative programmes are actively repressed rather than absent, which is precisely why a differentiated nucleus can be reprogrammed at all."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -99,7 +102,6 @@
         "Gurdon in 1962 and Yamanaka in 2006 share the 2012 Nobel for the two halves of that argument: the differentiated nucleus retains everything, and four transcription factors are enough to send it back."
       ]
     },
-
     {
       "type": "check",
       "concept": "expression-is-selective",
@@ -120,7 +122,6 @@
         "Difference is regulatory, not genomic. The strongest evidence is reversibility: somatic cell nuclear transfer produces a whole organism from a differentiated nucleus, which would be impossible if differentiation involved loss."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",

@@ -3,6 +3,7 @@
   "module": "human-body",
   "index": 1,
   "title": "The Pump That Never Stops",
+  "principle": "Blood goes round in a loop.",
   "specimen": "heart-model",
   "stages": [
     {
@@ -16,7 +17,6 @@
         "Before asking how it works, ask why the job exists."
       ]
     },
-
     {
       "type": "predict",
       "concept": "circulation-is-a-loop",
@@ -35,75 +35,209 @@
         "Commit. Diffusion time scales with the square of distance, which is the number that decides this."
       ]
     },
-
     {
       "type": "build",
-      "levels": [1, 2],
+      "levels": [
+        1,
+        2
+      ],
       "guided": true,
       "t": [
         "Put each part of the loop in the right place.",
         "Assemble the circuit: each component in the job it does."
       ],
       "parts": [
-        { "id": "heart", "label": "The pump" },
-        { "id": "arteries", "label": "Pipes going out" },
-        { "id": "capillaries", "label": "Tiny thin pipes" },
-        { "id": "veins", "label": "Pipes coming back" }
+        {
+          "id": "heart",
+          "label": "The pump"
+        },
+        {
+          "id": "arteries",
+          "label": "Pipes going out"
+        },
+        {
+          "id": "capillaries",
+          "label": "Tiny thin pipes"
+        },
+        {
+          "id": "veins",
+          "label": "Pipes coming back"
+        }
       ],
       "slots": [
-        { "accepts": "heart", "label": ["Pushes the blood", "Generates the pressure"] },
-        { "accepts": "arteries", "label": ["Carries it away at high pressure", "Carries blood away from the heart"] },
-        { "accepts": "capillaries", "label": ["Where things actually get swapped", "Where exchange with tissue happens"] },
-        { "accepts": "veins", "label": ["Brings it back to the pump", "Returns blood to the heart"] }
+        {
+          "accepts": "heart",
+          "label": [
+            "Pushes the blood",
+            "Generates the pressure"
+          ]
+        },
+        {
+          "accepts": "arteries",
+          "label": [
+            "Carries it away at high pressure",
+            "Carries blood away from the heart"
+          ]
+        },
+        {
+          "accepts": "capillaries",
+          "label": [
+            "Where things actually get swapped",
+            "Where exchange with tissue happens"
+          ]
+        },
+        {
+          "accepts": "veins",
+          "label": [
+            "Brings it back to the pump",
+            "Returns blood to the heart"
+          ]
+        }
       ]
     },
-
     {
       "type": "build",
-      "levels": [3, 4],
+      "levels": [
+        3,
+        4
+      ],
       "guided": false,
       "t": [
         "Any part goes in any slot, so the marking is on you. Then it gets tested.",
         "Placement is unconstrained. Assign each component, then the circuit is stress-tested — and every misassignment fails a different way."
       ],
       "parts": [
-        { "id": "heart", "label": "The pump" },
-        { "id": "arteries", "label": "Arteries" },
-        { "id": "capillaries", "label": "Capillaries" },
-        { "id": "veins", "label": "Veins" },
-        { "id": "valves", "label": "Valves" }
+        {
+          "id": "heart",
+          "label": "The pump"
+        },
+        {
+          "id": "arteries",
+          "label": "Arteries"
+        },
+        {
+          "id": "capillaries",
+          "label": "Capillaries"
+        },
+        {
+          "id": "veins",
+          "label": "Veins"
+        },
+        {
+          "id": "valves",
+          "label": "Valves"
+        }
       ],
       "slots": [
-        { "correct": "heart", "label": ["Generates the pressure"] },
-        { "correct": "arteries", "label": ["Carries blood away under high pressure"] },
-        { "correct": "capillaries", "label": ["Thin enough for exchange to happen"] },
-        { "correct": "veins", "label": ["Returns blood at low pressure"] },
-        { "correct": "valves", "label": ["Stops it going backwards"] }
+        {
+          "correct": "heart",
+          "label": [
+            "Generates the pressure"
+          ]
+        },
+        {
+          "correct": "arteries",
+          "label": [
+            "Carries blood away under high pressure"
+          ]
+        },
+        {
+          "correct": "capillaries",
+          "label": [
+            "Thin enough for exchange to happen"
+          ]
+        },
+        {
+          "correct": "veins",
+          "label": [
+            "Returns blood at low pressure"
+          ]
+        },
+        {
+          "correct": "valves",
+          "label": [
+            "Stops it going backwards"
+          ]
+        }
       ],
       "trials": [
         {
-          "name": ["Move blood at all", "Generate flow"],
-          "needs": ["heart", "arteries"],
-          "pass": ["Blood leaves the heart under pressure.", "Pressure is generated and conducted away from the pump."],
-          "fail": ["Nothing is pushing, or nothing is carrying it away.", "No pressure source or no conducting vessel: there is no flow to speak of."]
+          "name": [
+            "Move blood at all",
+            "Generate flow"
+          ],
+          "needs": [
+            "heart",
+            "arteries"
+          ],
+          "pass": [
+            "Blood leaves the heart under pressure.",
+            "Pressure is generated and conducted away from the pump."
+          ],
+          "fail": [
+            "Nothing is pushing, or nothing is carrying it away.",
+            "No pressure source or no conducting vessel: there is no flow to speak of."
+          ]
         },
         {
-          "name": ["Actually deliver anything", "Exchange"],
-          "needs": ["heart", "arteries", "capillaries"],
-          "pass": ["Thin enough walls for oxygen to cross into tissue.", "Exchange occurs across capillary walls."],
-          "fail": ["Blood went round and never gave anything up.", "Flow without a thin-walled exchange bed delivers nothing. Transport is not the purpose; exchange is."]
+          "name": [
+            "Actually deliver anything",
+            "Exchange"
+          ],
+          "needs": [
+            "heart",
+            "arteries",
+            "capillaries"
+          ],
+          "pass": [
+            "Thin enough walls for oxygen to cross into tissue.",
+            "Exchange occurs across capillary walls."
+          ],
+          "fail": [
+            "Blood went round and never gave anything up.",
+            "Flow without a thin-walled exchange bed delivers nothing. Transport is not the purpose; exchange is."
+          ]
         },
         {
-          "name": ["Complete the circuit", "Return"],
-          "needs": ["heart", "arteries", "capillaries", "veins"],
-          "pass": ["It comes back, so it can go round again.", "Venous return closes the loop and the circuit is continuous."],
-          "fail": ["Blood arrived somewhere and stayed there.", "No return path: this is an open system, and it drains rather than circulates."]
+          "name": [
+            "Complete the circuit",
+            "Return"
+          ],
+          "needs": [
+            "heart",
+            "arteries",
+            "capillaries",
+            "veins"
+          ],
+          "pass": [
+            "It comes back, so it can go round again.",
+            "Venous return closes the loop and the circuit is continuous."
+          ],
+          "fail": [
+            "Blood arrived somewhere and stayed there.",
+            "No return path: this is an open system, and it drains rather than circulates."
+          ]
         },
         {
-          "name": ["Work while standing up", "Directionality against gravity"],
-          "needs": ["heart", "arteries", "capillaries", "veins", "valves"],
-          "pass": ["It cannot run backwards down your legs.", "One-way valves prevent retrograde flow in low-pressure vessels."],
-          "fail": ["It circulated beautifully lying down and pooled in your feet.", "Venous pressure is too low to oppose gravity unaided — without valves, blood pools in the legs. This is exactly what varicose veins are."]
+          "name": [
+            "Work while standing up",
+            "Directionality against gravity"
+          ],
+          "needs": [
+            "heart",
+            "arteries",
+            "capillaries",
+            "veins",
+            "valves"
+          ],
+          "pass": [
+            "It cannot run backwards down your legs.",
+            "One-way valves prevent retrograde flow in low-pressure vessels."
+          ],
+          "fail": [
+            "It circulated beautifully lying down and pooled in your feet.",
+            "Venous pressure is too low to oppose gravity unaided — without valves, blood pools in the legs. This is exactly what varicose veins are."
+          ]
         }
       ],
       "win": [
@@ -115,7 +249,6 @@
         "Each failed trial names the function that was missing. Reassign and re-test."
       ]
     },
-
     {
       "type": "name",
       "t": [
@@ -131,7 +264,6 @@
         "That separation of pressures is the reason a four-chambered heart appears independently in birds and mammals. A single circuit cannot satisfy both constraints at once, and the fix is the same fix twice."
       ]
     },
-
     {
       "type": "check",
       "concept": "circulation-is-a-loop",
@@ -152,7 +284,6 @@
         "The t ∝ x² scaling is the whole argument, and it is why every animal above a millimetre or so has some form of bulk transport. It also explains capillary density: the system's job is to get a vessel within diffusion distance of every cell, which is why no cell in you sits more than about 20 micrometres from one."
       ]
     },
-
     {
       "type": "apply",
       "kicker": "Why this matters",
