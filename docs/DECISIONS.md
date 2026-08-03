@@ -1780,3 +1780,48 @@ all of it at once, at the size it is used. The contact-sheet tool that produced 
 ten minutes and is the part I would rebuild first.
 
 275 of 275, and the empty space in the module cards is empty again.
+
+### D85 — An importer, so the drawing tool stops being the question
+*Asked to look at Graphite, Lorien and macSVG. All three are useful and none of them is the answer,
+because none of them is a library — they are tools for a person to draw with.*
+
+**Graphite** (Apache 2.0, Rust/WASM, alpha) is a browser app with a node-based procedural engine, which
+is genuinely the interesting one: a node graph enforces consistency across twenty-five drawings *by
+construction*, which is precisely what I failed at by hand. **Lorien** (MIT, Godot, desktop) is the
+closest to what was actually wanted — pressure-sensitive freehand, and it already stores strokes as
+point lists rather than pixels. **macSVG** (MIT, macOS, last release July 2022) I would skip; Inkscape
+does the same job with support behind it. None has a CLI, a headless mode or an embeddable core, so
+none of them can ever be part of the build.
+
+**Which means the missing piece was never a drawing app.** Every one of these — and Figma, and
+Illustrator, and a photograph of a pencil sketch — emits concrete hex colours, whatever coordinate space
+the artboard happened to have, transforms, groups and metadata. What this format needs is roles that
+resolve against a world palette, a 48-unit grid, flat absolute path data and a path budget. That gap is
+one tool, written once, and then it does not matter which app anybody drew in.
+
+**The browser is the parser.** Playwright is already a dev dependency and Chromium has had a complete
+SVG implementation for twenty years, so `getPointAtLength()` walks a circle, a rect, a polyline and a
+path identically, and `getCTM()` flattens every transform without me implementing matrix composition.
+Writing an SVG parser to avoid a dependency I already have would have been the expensive kind of purity.
+
+**Two bugs, and the second one is the point.**
+
+Sending the simplification algorithm across the boundary as a string broke its recursion: an arrow
+function assigned to a const has no name to call itself by once it has been through `new Function()`.
+The browser samples points now and defines nothing.
+
+And Ramer–Douglas–Peucker measures every point against the line from the first to the last — which on a
+**closed ring is the same point.** Zero-length baseline, every distance reads as nothing, and a perfect
+circle simplifies to two points. The first run turned four circles into four straight lines and reported
+`4 filled, 8 paths` — which is a true statement about what it did and says nothing about what it
+produced. **A converter that reports its actions rather than its output will tell you it worked right up
+until you look at the picture.** The ring is cut at its furthest point from the start now, and there is a
+check that a round thing is still round.
+
+The proof feeds a deliberately awkward drawing through — a scaled group, a rect, a polyline, an ellipse,
+an unfilled stroke, and a 200×140 artboard — and checks the output rather than the log: on the grid, in
+the safe area, absolute only, fills first, no hex anywhere, under the limit, uniformly scaled, and three
+luminances mapping to three different roles.
+
+Nothing here ships. It is a desk tool, and the display side stays out of the app until there are
+drawings worth displaying.
