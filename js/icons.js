@@ -26,23 +26,15 @@ const NS = "http://www.w3.org/2000/svg";
     and em-based sizing from .icon in base.css. */
 /** One place that builds an SVG, so the specimen drawings and the UI icons cannot
     drift apart on the attributes that make them decorative and inheritable. */
-/* A path may be a bare string — stroke only, which is every specimen drawing —
-   or a [d, role] pair, where the role picks a flat fill from the module's own
-   world palette. Nothing carries a colour of its own: `fill`, `tint` and `deep`
-   are class names, the CSS resolves them against --w-*, and a drawing therefore
-   inherits dark mode and its world's hue for free. `hatch` is a thinner stroke,
-   for the shading in the reference notebooks. (D82) */
 export function svgOf(ds, { cls = "icon", box = 24 } = {}) {
   const svg = document.createElementNS(NS, "svg");
   svg.setAttribute("viewBox", `0 0 ${box} ${box}`);
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("focusable", "false");
   svg.setAttribute("class", cls);
-  for (const entry of ds) {
-    const [d, role] = Array.isArray(entry) ? entry : [entry, null];
+  for (const d of ds) {
     const path = document.createElementNS(NS, "path");
     path.setAttribute("d", d);
-    if (role) path.setAttribute("class", `art-${role}`);
     svg.append(path);
   }
   return svg;

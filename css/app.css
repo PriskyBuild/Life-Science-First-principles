@@ -755,10 +755,8 @@ body:not([data-ready]) #main { opacity: 0; }
    two cards now share one grid rather than one set of child classes. (D74) */
 .continue, .review-call {
   display: grid;
-  /* A third column for the drawing, which collapses to nothing on the review
-     card because that card has no art to put in it. */
-  grid-template-columns: 1fr auto auto;
-  grid-template-areas: "kicker art icon" "title art icon" "hook art icon";
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "kicker icon" "title icon" "hook icon";
   align-items: center;
   gap: 2px var(--s-4);
   padding: var(--s-5);
@@ -825,9 +823,7 @@ body:not([data-ready]) #main { opacity: 0; }
 }
 
 .node-hit {
-  /* mark · text · drawing. The third column is `auto`, so a card with no art
-     collapses to exactly what it was before. */
-  display: grid; grid-template-columns: auto 1fr auto;
+  display: grid; grid-template-columns: auto 1fr;
   align-items: start; gap: var(--s-3);
   min-height: var(--touch);
   padding: var(--s-3) var(--s-4);
@@ -1519,42 +1515,6 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
 }
 
 
-
-/* ---- module drawings: line art with flat colour, one hand, one grid -------
-
-   Same 48-unit grid and same single stroke weight as the specimen art. What is
-   added is fill, and no fill names a colour: the three roles resolve against the
-   module's own world palette, so a drawing inherits its hue and dark mode for
-   nothing and cannot introduce a colour the palette generator never gated. (D82) */
-.module-art { display: block; width: 100%; height: 100%; overflow: visible; }
-.module-art path {
-  /* 2.6, not 2. At the size these are used the thinner weight read as an icon
-     set rather than as drawing, which is the opposite of the reference. */
-  fill: none; stroke: var(--w-line); stroke-width: 2.6;
-  stroke-linecap: round; stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-}
-.module-art .art-fill { fill: var(--w-fill); stroke: none; }
-/* NOT --w-tint. The module card's own background IS the world tint, so a tint
-   fill vanished into it completely — the drawing rendered and could not be seen.
-   Paper reads against every card state: tinted, plain and greyed. */
-.module-art .art-tint { fill: var(--surface); stroke: none; }
-.module-art .art-deep { fill: var(--w-deep); stroke: none; }
-.module-art .art-line { fill: none; }
-/* Hatching is what makes a drawn diagram read as drawn rather than filled in. */
-.module-art .art-hatch { stroke-width: 1.5; opacity: .65; }
-
-/* In a module card the drawing sits opposite the text and takes the space that
-   was empty. It is decoration in the accessibility sense — the card's title and
-   hook already say everything — so it is aria-hidden and never a link on its own. */
-.node-art { width: 3.4rem; height: 3.4rem; align-self: center; }
-@media (max-width: 30rem) { .node-art { width: 2.6rem; height: 2.6rem; } }
-/* A locked module is a preview, not a prize. Its drawing greys with the rest of
-   the card rather than staying colourful and drawing the eye to a closed door. */
-.node--locked .node-art { opacity: .45; filter: grayscale(1); }
-
-/* The Continue card had the most empty space of anything on the Atlas. */
-.continue-art { grid-area: art; width: 5.5rem; height: 5.5rem; align-self: center; }
 
 /* ---- the opening. Read once, by a CHILD, before the level picker. -----------
 

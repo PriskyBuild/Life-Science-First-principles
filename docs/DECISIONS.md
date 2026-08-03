@@ -1760,3 +1760,23 @@ Two I would still revisit with a child watching: `crispr` and `synthetic-biology
 of the twenty-five, and abstraction is exactly what the contact sheet showed does not survive at 54px.
 
 275 of 275.
+
+### D84 — The drawings are gone
+*"Didn't like the drawings? Remove them." Removed, and removed properly.*
+
+Not hidden behind a flag and not left in the tree for later. The twenty-five drawings, the card slots
+that held them, the loader that fetched them, the fill roles added to `svgOf`, the CSS, and the build
+guard that policed them are all out. The Atlas is byte-for-byte the design it was before D82, and the
+shell CSS went back from 18.0 KB to 17.2.
+
+**Unused capability is the first thing the ladder says to eliminate.** The role support in `svgOf` was
+three lines and harmless and nothing used it, and "we might want it again" is exactly the argument that
+turns a codebase into a museum. If drawings come back they will come back as one commit, built for
+whatever actually makes them — which is not necessarily what this system assumed.
+
+D82 and D83 stay in this log. They were wrong about the output and right about two things that outlived
+it: a filtered view of a gate is not the gate, and a set of drawings can only be judged by looking at
+all of it at once, at the size it is used. The contact-sheet tool that produced that second lesson cost
+ten minutes and is the part I would rebuild first.
+
+275 of 275, and the empty space in the module cards is empty again.

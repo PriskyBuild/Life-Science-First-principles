@@ -176,60 +176,6 @@ writeFileSync(join(ROOT, "content/reviews.json"), JSON.stringify(reviews, null, 
   console.log(`hook length by level (median words): ${med.map((n, i) => `L${i + 1} ${n}`).join("  ")}`);
 }
 
-/* ------------------------------------------------- module art (authored)
-   One drawing per module, same hand and same grid as the specimen art, with flat
-   colour added. Checked rather than remembered, because a set of twenty-five
-   drawings made over weeks drifts unless something objects. (D82) */
-{
-  const art = JSON.parse(readFileSync(join(ROOT, "content/module-art.json"), "utf8"));
-  const ROLES = new Set(["fill", "deep", "tint", "line", "hatch"]);
-  const seen = new Set();
-
-  for (const [id, paths] of Object.entries(art)) {
-    if (id.startsWith("_")) continue;
-    const where = (msg) => fail(`module-art "${id}": ${msg}`);
-    if (!ids.has(id)) { where("no module with this id exists"); continue; }
-    seen.add(id);
-    if (!Array.isArray(paths) || !paths.length) { where("no paths"); continue; }
-    /* FORTY, NOT FOURTEEN. The first cap was a guess and it was the thing making
-       these read as an icon set rather than as drawings — the reference notebook
-       diagrams are thirty to forty strokes each. The real constraint is whether
-       it reads at 54px, which is a contact sheet's job to answer, not a number's.
-       Forty is a runaway guard: past it a drawing is trying to be a poster. (D83) */
-    if (paths.length > 40) where(`${paths.length} paths — past forty it is trying to be a poster, and this is drawn at 54px`);
-
-    let lastFillAt = -1, firstStrokeAt = -1, coloured = false;
-    for (const [i, entry] of paths.entries()) {
-      const [d, role] = Array.isArray(entry) ? entry : [entry, null];
-      if (typeof d !== "string" || !d.trim()) { where(`path ${i} is empty`); continue; }
-      if (role && !ROLES.has(role)) where(`path ${i}: unknown role "${role}"`);
-      /* Relative commands cannot be checked against the grid without replaying
-         the whole path, so the format simply does not allow them. */
-      if (/[a-z]/.test(d.replace(/[a-z]/g, (c) => ("mlhvcsqtaz".includes(c) ? c : "")))) {
-        where(`path ${i}: relative commands — absolute only, so every coordinate can be checked`);
-      }
-      for (const n of d.match(/-?\d+(\.\d+)?/g) ?? []) {
-        const v = Math.abs(Number(n));
-        if (v > 48) where(`path ${i}: coordinate ${n} is off the 48-unit grid`);
-      }
-      if (role === "fill" || role === "deep" || role === "tint") {
-        coloured = true;
-        lastFillAt = i;
-        /* Fills first, lines after — otherwise a fill covers its own outline and
-           the drawing loses the line work that makes it a drawing. */
-        if (firstStrokeAt >= 0) where(`path ${i} fills after line work has begun; fills come first`);
-      } else if (!role || role === "line") {
-        if (firstStrokeAt < 0) firstStrokeAt = i;
-      }
-    }
-    void lastFillAt;
-    if (!coloured) where("no colour at all — this is the one thing module art has that specimen art does not");
-  }
-
-  const missing = modules.map((m) => m.id).filter((id) => !seen.has(id));
-  if (missing.length) warn(`module art: ${missing.length} module(s) have no drawing yet: ${missing.join(", ")}`);
-}
-
 /* --------------------------------------------------- specimen art (authored)
    The drawings are hand-authored, unlike almost everything else under content/.
    A consistent set is what stops line art reading as generated, and consistency
