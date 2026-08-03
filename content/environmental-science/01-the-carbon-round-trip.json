@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "carbon-cycle",
       "t": [
         "Carbon going round between air, living things, oceans and rock is the carbon cycle.",
         "The carbon cycle: exchange between atmosphere, biosphere, ocean and geological reservoirs, each with its own residence time.",
         "A fast biological cycle turning over in years sits inside a slow geological one turning over in hundreds of millions. They are coupled, and the rate difference is the point.",
         "Photosynthesis and respiration alone move roughly 120 gigatonnes of carbon a year each way and very nearly cancel. Against that enormous balanced flux, the human contribution of about 10 gigatonnes a year is small — and it does not cancel, which is why a small number changes the total and the large ones do not."
+      ],
+      "term": [
+        "carbon cycle",
+        "carbon cycle",
+        "A fast biological cycle",
+        "the human contribution"
       ],
       "sub": [
         "Energy flows through and is lost. Matter goes round and round.",

@@ -186,11 +186,18 @@
     },
     {
       "type": "name",
+      "concept": "body-plan",
       "t": [
         "Building a body is done by local rules, and part of it is taking things away.",
         "A body plan emerges from local rules — divide, sense position, take on identity, express selectively, and remove what is not needed.",
         "Development is subtractive as well as additive. Sculpting by programmed cell death is not a tidying step; it is how several structures are made at all.",
         "Apoptosis is a genuinely counter-intuitive component. Your fingers are separated because the cells between them are instructed to destroy themselves, and roughly half the neurons you ever make are eliminated during development. Building by removal is as fundamental here as building by addition."
+      ],
+      "term": [
+        "local rules",
+        "A body plan",
+        "programmed cell death",
+        "Apoptosis"
       ],
       "sub": [
         "Nothing anywhere holds a picture of the finished animal.",

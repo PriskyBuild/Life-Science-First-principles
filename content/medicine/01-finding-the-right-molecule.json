@@ -238,11 +238,18 @@
     },
     {
       "type": "name",
+      "concept": "drug-must-reach-target",
       "t": [
         "A medicine has to reach the thing it is meant to act on. That is usually the hard part.",
         "Binding is necessary and nowhere near sufficient. A drug must also be absorbed, survive metabolism, reach the target tissue, be selective, and be cleared.",
         "Pharmacokinetics — absorption, distribution, metabolism and excretion — kills far more candidates than pharmacodynamics does. The molecule has to be a good drug as well as a good binder.",
         "Roughly nine in ten candidates entering clinical trials fail, and the majority of those had already demonstrated target engagement. Improved target identification has therefore not improved success rates much: the bottleneck was never finding something that binds."
+      ],
+      "term": [
+        "reach the thing it is meant to act on",
+        "necessary and nowhere near sufficient",
+        "Pharmacokinetics",
+        "the bottleneck"
       ],
       "sub": [
         "Being right about the target is not the same as having a medicine.",

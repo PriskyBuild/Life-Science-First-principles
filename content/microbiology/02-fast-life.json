@@ -61,11 +61,18 @@
     },
     {
       "type": "name",
+      "concept": "fast-generations",
       "t": [
         "Doubling again and again is called exponential growth, and it never really happens for long.",
         "This is exponential growth. It never continues, because something always runs out — food, space, or somewhere to put the waste.",
         "Unconstrained exponential growth is a limiting case that no real population sustains. In practice growth is logistic: exponential early, then flattening as a resource becomes limiting.",
         "The interesting question is therefore never whether growth is exponential but what stops it, and when. That is the same question as carrying capacity in ecology, and it is the same question as why a tumour eventually needs its own blood supply."
+      ],
+      "term": [
+        "exponential growth",
+        "exponential growth",
+        "logistic",
+        "carrying capacity"
       ],
       "sub": [
         "Which is why one germ on your hand matters and one on a table usually does not.",

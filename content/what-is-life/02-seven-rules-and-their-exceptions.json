@@ -62,11 +62,18 @@
     },
     {
       "type": "name",
+      "concept": "seven-signs",
       "t": [
         "Nothing is alive because of one sign. It is alive because of most of them together.",
         "Life is recognised by a cluster of properties, not by any single test. The list works collectively even though every item fails alone.",
         "This is a cluster concept: membership is conferred by satisfying enough of a set of criteria, none of which is individually necessary.",
         "Wittgenstein's family-resemblance account fits this exactly — the members of a category can share no single common feature and still form a real category. Biology is full of these, and treating them as if they had crisp definitions produces most of the confusion around viruses."
+      ],
+      "term": [
+        "",
+        "cluster of properties",
+        "cluster concept",
+        "family-resemblance"
       ],
       "sub": [
         "A tree does not move and a mule has no babies. Both are clearly alive.",

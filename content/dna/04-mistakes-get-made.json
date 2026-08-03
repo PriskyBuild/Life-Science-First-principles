@@ -92,11 +92,18 @@
     },
     {
       "type": "name",
+      "concept": "mutation-is-copy-error",
       "t": [
         "A letter copied wrong is called a mutation.",
         "A base copied incorrectly and left uncorrected is a mutation.",
         "A mutation is an uncorrected replication error, or damage that repair missed. Most are neutral, some are harmful, a few are useful.",
         "Mutation is the only source of genuinely novel sequence; recombination reshuffles, it does not invent. Any account of how populations change has to supply this term or explain what replaces it."
+      ],
+      "term": [
+        "mutation",
+        "mutation",
+        "mutation",
+        "Mutation"
       ],
       "sub": [
         "Most of them do not matter at all.",

@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "life-is-a-process",
       "t": [
         "Being alive is something a thing does, not something it is made of.",
         "Life is a process rather than a substance. Nothing in a living thing is made of any special material.",
         "There is no vital substance. Every atom in you is ordinary and was somewhere else last year; what distinguishes life is an organised, self-maintaining process.",
         "Vitalism — the idea of a living essence — was the mainstream position until Wöhler synthesised urea in 1828 from plainly inorganic starting material. What replaced it is harder to state and much better supported: life is a particular kind of organisation, and organisation is a verb."
+      ],
+      "term": [
+        "",
+        "process",
+        "self-maintaining process",
+        "a particular kind of organisation"
       ],
       "sub": [
         "You are made of the same stuff as everything else.",

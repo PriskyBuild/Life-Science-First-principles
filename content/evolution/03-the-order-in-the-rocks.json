@@ -37,11 +37,18 @@
     },
     {
       "type": "name",
+      "concept": "fossil-order",
       "t": [
         "The rocks come in layers, and the layers always come in the same order. That is called the fossil record.",
         "Layered rock preserves a sequence, and the sequence is consistent worldwide. This is the fossil record — and the consistency, not the fossils themselves, is the thing to explain.",
         "The geological column: a globally consistent superposition of assemblages. No single site contains all of it, but the relative order is the same wherever overlapping sections are compared.",
         "The column is a correlation, not a stack anyone has walked down. Its force comes from the consistency of relative order across thousands of non-overlapping sections, established by index fossils long before any absolute dating existed."
+      ],
+      "term": [
+        "the fossil record",
+        "the fossil record",
+        "The geological column",
+        "a correlation"
       ],
       "sub": [
         "You never find a rabbit at the bottom.",

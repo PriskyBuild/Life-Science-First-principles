@@ -177,11 +177,18 @@
     },
     {
       "type": "name",
+      "concept": "vaccination-is-training",
       "t": [
         "A vaccine is practice. It shows your body the shape, and your body remembers it.",
         "A vaccine presents an antigen without the danger, so clonal selection runs and memory cells are left behind. The learning is identical; only the risk differs.",
         "Vaccination exploits clonal selection deliberately: present the antigen, let the matching clones expand, and retain memory cells. The pathogen was never needed — only its shape.",
         "Which is why an mRNA vaccine is not a strange departure but the logical endpoint. If all the immune system needs is the shape, then supplying instructions for your own cells to make that shape is the most direct route, and it removes the need to grow the pathogen at all."
+      ],
+      "term": [
+        "vaccine",
+        "vaccine",
+        "Vaccination",
+        "mRNA vaccine"
       ],
       "sub": [
         "Getting the illness would teach the same lesson, at a much worse price.",

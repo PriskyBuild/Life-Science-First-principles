@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "gene-is-a-unit",
       "t": [
         "A gene is a stretch of the thread that has one job.",
         "A gene is a length of DNA with a start signal, a stop signal, and a product it specifies.",
         "A gene is a sequence with regulatory boundaries that specifies a functional product — usually a protein, sometimes an RNA that is the product itself.",
         "The definition has been revised repeatedly and none of the versions is clean. One gene can yield several proteins by alternative splicing, genes overlap, and some are read from both strands. 'Gene' is a useful unit rather than a natural one, and it is worth knowing that early."
+      ],
+      "term": [
+        "gene",
+        "gene",
+        "gene",
+        "gene"
       ],
       "sub": [
         "You have about twenty thousand of them.",

@@ -95,11 +95,18 @@
     },
     {
       "type": "name",
+      "concept": "positional-information",
       "t": [
         "A chemical that tells a cell where it is is called a morphogen.",
         "A substance whose concentration specifies position is a morphogen, and the slope it forms is a gradient.",
         "Morphogen gradients convert a continuous spatial variable into discrete cell fates, by way of concentration thresholds.",
         "Wolpert's French flag model, 1969: a field of cells reading one gradient against two thresholds produces three sharply bounded regions. Smooth input, sharp output — which is why fingers have edges when the chemistry does not."
+      ],
+      "term": [
+        "morphogen",
+        "morphogen",
+        "Morphogen gradients",
+        "Wolpert's French flag model"
       ],
       "sub": [
         "Your fingers are numbered by how much of one chemical reaches them.",

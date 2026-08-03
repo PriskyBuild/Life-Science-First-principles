@@ -186,11 +186,18 @@
     },
     {
       "type": "name",
+      "concept": "dominance",
       "t": [
         "A copy that still works even when the other is broken is called dominant.",
         "When one working copy is enough, that version is dominant and the broken one is recessive.",
         "Dominance describes the relationship between alleles at a locus, not a property of either allele alone. Most recessive conditions are recessive because one functional copy makes enough product.",
         "Dominance is a statement about the mapping from genotype to phenotype, and it is not intrinsic. The same allele can be dominant for one trait and recessive for another — sickle-cell is recessive for the anaemia and effectively dominant for malaria resistance."
+      ],
+      "term": [
+        "dominant",
+        "dominant",
+        "Dominance",
+        "Dominance"
       ],
       "sub": [
         "It is not about being stronger. It is about one copy being enough.",

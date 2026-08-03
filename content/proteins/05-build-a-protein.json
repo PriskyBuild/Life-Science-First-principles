@@ -191,11 +191,18 @@
     },
     {
       "type": "name",
+      "concept": "shape-is-function",
       "t": [
         "That is a protein: a string that folds itself into a machine.",
         "That is the whole of this module — a sequence that becomes a structure that does a job, plus the machinery that keeps the process honest.",
         "Primary sequence to tertiary structure to catalytic function, with chaperones raising the yield and degradation removing the failures.",
         "Worth noticing what is absent from that account: nothing anywhere specifies the shape, and nothing supervises the folding. The information is one-dimensional and the machine is three-dimensional, and physics does the conversion."
+      ],
+      "term": [
+        "a protein",
+        "a sequence that becomes a structure",
+        "catalytic function",
+        "physics does the conversion"
       ],
       "sub": [
         "And all of it comes from the order of the beads.",

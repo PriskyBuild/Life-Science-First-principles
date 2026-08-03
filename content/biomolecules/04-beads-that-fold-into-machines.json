@@ -65,11 +65,18 @@
     },
     {
       "type": "name",
+      "concept": "shape-from-sequence",
       "t": [
         "A string of these beads is a protein. The beads are amino acids.",
         "A chain of amino acids is a protein, and it is the most versatile of the four families by a long way.",
         "Amino acids joined by peptide bonds. Twenty side chains — oily, watery, acidic, basic, large, tiny — which is the variety that makes the fold specific.",
         "The nucleic acids store and the carbohydrates fuel and the lipids partition, but essentially every action in a cell is taken by a protein. That division of labour is close to universal, and the RNA world hypothesis exists partly because it is hard to see how it could have started that way."
+      ],
+      "term": [
+        "protein",
+        "protein",
+        "peptide bonds",
+        "protein"
       ],
       "sub": [
         "Change one bead and the machine can stop working.",

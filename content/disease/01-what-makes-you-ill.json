@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "causes-of-illness",
       "t": [
         "Illnesses come in kinds, and the kind tells you what might help.",
         "Infectious, deficiency, genetic, environmental and degenerative — five broad categories, and the category determines what kind of intervention could possibly work.",
         "The categories overlap: most common diseases have genetic susceptibility interacting with environmental exposure, and infection can be a cause of cancer. The classification is a starting point rather than a partition.",
         "Germ theory's great achievement was separating the first category out, and its great distortion was that for fifty years afterwards people looked for a germ behind everything. Scurvy was thought infectious. So was pellagra, and Goldberger had to drink a patient's excretions to convince anyone otherwise — the categories are not obvious from the outside."
+      ],
+      "term": [
+        "come in kinds",
+        "five broad categories",
+        "The categories overlap",
+        "Germ theory"
       ],
       "sub": [
         "An antibiotic helps with exactly one of these, and does nothing for the rest.",

@@ -104,11 +104,18 @@
     },
     {
       "type": "name",
+      "concept": "synapse-is-a-gap",
       "t": [
         "The gap is called a synapse, and the chemical that crosses it is a neurotransmitter.",
         "The gap is a synapse. The signal crosses it as a chemical — a neurotransmitter — and becomes electrical again on the other side.",
         "A chemical synapse: the electrical signal is converted to a chemical one across a 20-nanometre cleft, then back. That conversion is what makes the connection adjustable.",
         "The cleft is about 20 nm and crossing takes well under a millisecond by diffusion alone — the same unassisted diffusion as everywhere else, working because the distance is tiny. Over any greater distance it would be hopeless, which is why the gap is so narrow."
+      ],
+      "term": [
+        "synapse",
+        "synapse",
+        "chemical synapse",
+        "The cleft"
       ],
       "sub": [
         "It is not just a wire. It is a switch that can be turned up or down.",

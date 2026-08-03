@@ -251,11 +251,18 @@
     },
     {
       "type": "name",
+      "concept": "circulation-is-a-loop",
       "t": [
         "Blood goes round in a loop. It never stops and never runs out.",
         "This is a closed circulation: the same blood goes round and round, and the pump only has to keep it moving.",
         "A closed double circulation — one circuit to the lungs, one to the body — driven by a four-chambered pump. Delivery happens only in the capillaries; everything else is plumbing.",
         "Harvey worked out in 1628 that the blood must circulate, and he did it by arithmetic rather than dissection: the heart pumps more than the body's weight in blood every hour, so it cannot possibly be manufacturing it. It has to be the same blood coming back."
+      ],
+      "term": [
+        "loop",
+        "closed circulation",
+        "closed double circulation",
+        "Harvey"
       ],
       "sub": [
         "The tiny pipes are where the useful bit happens.",

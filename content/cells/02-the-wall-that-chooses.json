@@ -106,11 +106,18 @@
     },
     {
       "type": "name",
+      "concept": "membrane-selectivity",
       "t": [
         "A wall with holes that pick and choose is called a membrane.",
         "A wall that lets some things through and stops others is a membrane. Scientists call it selectively permeable.",
         "This is a selectively permeable membrane: a barrier whose passage rule depends on the properties of what is trying to cross.",
         "A selectively permeable membrane. Steric exclusion is one selectivity mechanism; charge, chemistry and dedicated channels are the others."
+      ],
+      "term": [
+        "membrane",
+        "membrane",
+        "selectively permeable membrane",
+        "selectively permeable membrane"
       ],
       "sub": [
         "Nothing pushed the food in. It just wandered until there was as much inside as out.",

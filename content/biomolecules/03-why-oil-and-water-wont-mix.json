@@ -81,11 +81,18 @@
     },
     {
       "type": "name",
+      "concept": "hydrophobic-effect",
       "t": [
         "Water squeezes the oily bits together. It is called the hydrophobic effect.",
         "This is the hydrophobic effect. The water does the work — oil is pushed together rather than pulling itself together.",
         "The hydrophobic effect is entropic. Water forms an ordered cage around an exposed oily surface; burying that surface frees the caged water, and the entropy gained by the water pays for it.",
         "It is one of the few genuinely counter-intuitive results in undergraduate biochemistry: the association of the nonpolar molecules is not driven by any attraction between them. The driving term sits in the solvent, which is why the effect strengthens with temperature over a wide range instead of weakening."
+      ],
+      "term": [
+        "hydrophobic effect",
+        "hydrophobic effect",
+        "hydrophobic effect",
+        "the solvent"
       ],
       "sub": [
         "The oil is not sticky. The water is fussy.",

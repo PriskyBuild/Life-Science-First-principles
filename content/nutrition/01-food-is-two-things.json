@@ -205,11 +205,18 @@
     },
     {
       "type": "name",
+      "concept": "food-is-fuel-and-parts",
       "t": [
         "Food is fuel to burn and bricks to build with, and you need both.",
         "Food supplies energy and materials. They are separate requirements and having plenty of one does not substitute for the other.",
         "Macronutrients supply both energy and structure; micronutrients supply neither, and are required in milligrams. Adequacy has to be assessed separately on each axis.",
         "This is why a calorie count is a partial description of a diet. It measures one of the two jobs and says nothing about the other — and the diseases of the second kind, from kwashiorkor to scurvy, occur in people consuming perfectly adequate calories."
+      ],
+      "term": [
+        "fuel to burn and bricks to build with",
+        "energy and materials",
+        "Macronutrients",
+        "a calorie count"
       ],
       "sub": [
         "You replace most of yourself continuously. That has to come from somewhere.",

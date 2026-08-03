@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "extremophiles",
       "t": [
         "Stopping completely and starting again later is called cryptobiosis. Hidden life.",
         "Cryptobiosis is a reversible suspension of metabolism. Measured activity falls below a ten-thousandth of normal, which is to say below anything that can be detected at all.",
         "Losing water is the trigger. As the animal dries, specialised disordered proteins turn the cytoplasm into a glass, immobilising everything inside it so that nothing can react, drift or unfold.",
         "That glass is the whole mechanism, and it explains the shape of the results. A vitrified organism has no chemistry to disrupt, so temperature and pressure have little to act on — but ionising radiation and ultraviolet damage molecules directly, without needing metabolism, and those are exactly the exposures that kill tuns. Tardigrades also carry a protein that binds DNA and shields it, which reduces radiation damage but does not abolish it."
+      ],
+      "term": [
+        "cryptobiosis",
+        "Cryptobiosis",
+        "disordered proteins",
+        "That glass"
       ],
       "sub": [
         "It is not asleep. Asleep is still doing things.",

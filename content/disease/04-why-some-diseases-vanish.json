@@ -203,11 +203,18 @@
     },
     {
       "type": "name",
+      "concept": "eradication-conditions",
       "t": [
         "Wiping a disease out completely is called eradication, and it needs several things to be true at once.",
         "Eradication requires an effective vaccine, a stable target, no animal reservoir, and detectable cases. All four, simultaneously.",
         "Elimination is local and reversible; eradication is global and permanent. The conditions are demanding enough that only one human disease has met them.",
         "Rinderpest, a cattle disease, is the second eradication of anything and it met the same conditions. The pattern is not that eradication is hard to organise — it is that the biology rarely permits it, and no amount of funding changes an animal reservoir."
+      ],
+      "term": [
+        "eradication",
+        "Eradication",
+        "Elimination",
+        "Rinderpest"
       ],
       "sub": [
         "Smallpox had all of them. Malaria has almost none.",

@@ -177,11 +177,18 @@
     },
     {
       "type": "name",
+      "concept": "cell-is-a-system",
       "t": [
         "Four parts. Take any one away and it stops being alive.",
         "Four parts, four jobs, and no spares. Take one away and the whole thing stops.",
         "A cell is not a bag of parts. Each component depends on the others: remove one and functions that seemed unrelated fail with it.",
         "Viability is a property of the assembly, not of any component. That interdependence is the reason no one has yet built a cell from scratch."
+      ],
+      "term": [
+        "",
+        "",
+        "",
+        "Viability"
       ],
       "sub": [
         "That is what being alive means: all the parts working at once.",

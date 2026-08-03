@@ -177,11 +177,18 @@
     },
     {
       "type": "name",
+      "concept": "chromosome-structure",
       "t": [
         "The twist-reliever really does cut the strand, let it spin, and join it up again.",
         "The twist-reliever is an enzyme called topoisomerase, and it genuinely cuts the backbone, allows rotation, and reseals it.",
         "Topoisomerase relieves torsional stress by transiently breaking one or both strands, permitting rotation, and religating. The break is real and controlled.",
         "It is a startling solution: the cell's response to a topological problem is to deliberately introduce the exact lesion its repair machinery spends the rest of its time preventing — and then undo it, thousands of times a second, without losing the ends."
+      ],
+      "term": [
+        "",
+        "topoisomerase",
+        "Topoisomerase",
+        "a topological problem"
       ],
       "sub": [
         "It is the scariest thing in the cell, and it happens constantly.",

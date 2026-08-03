@@ -82,11 +82,18 @@
     },
     {
       "type": "name",
+      "concept": "transmission-and-r0",
       "t": [
         "The number of people each ill person passes it to is called R.",
         "R₀ is the average number of new cases produced by one case in a fully susceptible population. Above one it grows; below one it dies out.",
         "R₀ = β/γ — transmission rate over recovery rate. It is not a property of the pathogen alone but of the pathogen in a particular population with particular behaviour.",
         "That last point is routinely lost. R₀ depends on contact rates, so the same virus has different R₀ in a crowded city and a rural village, and quoted values are population-specific estimates rather than constants. Measles is usually given as 12–18 and even that is a range across settings."
+      ],
+      "term": [
+        "R",
+        "R₀",
+        "transmission rate over recovery rate",
+        "contact rates"
       ],
       "sub": [
         "Below one and it dies out on its own. That is the whole aim.",

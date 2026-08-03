@@ -214,11 +214,18 @@
     },
     {
       "type": "name",
+      "concept": "resistance-is-selection",
       "t": [
         "Resistance is natural selection, with the medicine doing the choosing.",
         "Antibiotic resistance is natural selection with a drug as the selective agent. Nothing about it is new or special.",
         "The three conditions again: bacteria vary, the variation is heritable, and the drug makes survival depend on it. Resistance follows automatically.",
         "Fleming warned about it in his 1945 Nobel lecture, before resistance had become a clinical problem, because the mechanism made it inevitable. That is a prediction from theory, made in advance, and it was right."
+      ],
+      "term": [
+        "Resistance",
+        "Antibiotic resistance",
+        "The three conditions",
+        "Fleming"
       ],
       "sub": [
         "The drug does not make germs resistant. It finds the ones that already were.",

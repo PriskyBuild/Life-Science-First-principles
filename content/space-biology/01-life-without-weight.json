@@ -112,11 +112,18 @@
     },
     {
       "type": "name",
+      "concept": "life-without-gravity",
       "t": [
         "Your body treats gravity as a message. Take the message away and it rebuilds itself smaller.",
         "Bone continuously remodels in response to mechanical strain. Remove the strain and resorption outpaces formation, so density falls at about 1 to 1.5% per month in the load-bearing bones.",
         "Cells called osteocytes, buried in the bone, sense strain and set the balance between the cells that build and the cells that dismantle. Unloading shifts that balance; the tissue is doing exactly what it is designed to do.",
         "Spaceflight is therefore a natural experiment in what was load-bearing — physiologically as well as mechanically. The headward fluid shift flattens the back of the eye and swells the optic disc, a condition serious enough to constrain Mars mission planning; the vestibular system, deprived of a gravity vector, recalibrates over days. None of these are injuries. They are a body correctly adapting to conditions it was never specified for."
+      ],
+      "term": [
+        "gravity as a message",
+        "mechanical strain",
+        "osteocytes",
+        "a natural experiment"
       ],
       "sub": [
         "It is not damage. It is your body being economical.",

@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "digestion-is-disassembly",
       "t": [
         "Digestion is taking food apart into pieces small enough to cross the wall.",
         "Digestion is controlled disassembly: polymers broken back down into the monomers they were built from.",
         "Hydrolysis of polymers into monomers — starch to glucose, protein to amino acids, fat to fatty acids — which are then small enough to be absorbed and generic enough to rebuild anything.",
         "The elegance is that the monomer set is universal, so an organism can dismantle any other organism and reuse the parts. Digestion is not purification; it is reduction to a common currency."
+      ],
+      "term": [
+        "Digestion",
+        "controlled disassembly",
+        "Hydrolysis",
+        "a common currency"
       ],
       "sub": [
         "Then you build your own things out of the pieces.",

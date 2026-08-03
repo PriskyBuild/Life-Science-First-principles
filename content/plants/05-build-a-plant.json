@@ -172,11 +172,18 @@
     },
     {
       "type": "name",
+      "concept": "plant-systems",
       "t": [
         "Every part of a plant is an answer to being stuck in one place.",
         "A plant's whole body plan follows from one constraint: it cannot move. Everything else is a consequence.",
         "Rooted immobility forces every solution here — collect from where you are, transport without a pump, capture diffuse energy over area, and hire something mobile to reproduce.",
         "Being sessile also explains what plants do not have: no nervous system, no immune memory of the animal kind, and no ability to flee. What they have instead is chemistry — the majority of the drugs and poisons humans use come from plants, because a thing that cannot run has to make something a predator will regret."
+      ],
+      "term": [
+        "stuck in one place",
+        "it cannot move",
+        "Rooted immobility",
+        "sessile"
       ],
       "sub": [
         "Including the flowers, which are for getting somewhere it cannot go.",

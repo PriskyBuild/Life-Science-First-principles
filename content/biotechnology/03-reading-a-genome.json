@@ -59,11 +59,18 @@
     },
     {
       "type": "name",
+      "concept": "read-a-genome",
       "t": [
         "Working out the order of the letters is called sequencing.",
         "Sequencing determines the order of bases. Modern methods read enormous numbers of short fragments in parallel and reassemble them computationally.",
         "High-throughput sequencing reads millions of short fragments simultaneously; the assembly is a computational problem, which is why the field became as much bioinformatics as biology.",
         "The shift from reading one sequence carefully to reading everything and sorting it out afterwards changed what biology is like to do. It also created a durable asymmetry: sequences accumulate far faster than anyone can work out what they do, so the bottleneck moved from data to interpretation and has stayed there."
+      ],
+      "term": [
+        "sequencing",
+        "Sequencing",
+        "High-throughput sequencing",
+        "from data to interpretation"
       ],
       "sub": [
         "You do not read it in one go. You read millions of tiny pieces and fit them together.",

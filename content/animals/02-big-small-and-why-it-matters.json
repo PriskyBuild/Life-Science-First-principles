@@ -91,11 +91,18 @@
     },
     {
       "type": "name",
+      "concept": "surface-area-to-volume",
       "t": [
         "Surface grows by squaring. Volume grows by cubing. Volume always wins.",
         "Surface area scales as length squared, volume as length cubed. So the bigger something gets, the less outside it has per unit of inside.",
         "The square-cube law. Any quantity governed by surface — heat loss, gas exchange, diffusion, drag — falls behind any quantity governed by volume, which includes mass, heat production and strength requirements.",
         "It is the most consistently underrated constraint in biology, and it is arithmetic rather than biology. It explains why there are no insects the size of dogs, why large animals need lungs and small ones sometimes do not, why a mouse survives a fall that kills a horse, and why cells stay small."
+      ],
+      "term": [
+        "Volume always wins",
+        "Surface area",
+        "The square-cube law",
+        "arithmetic rather than biology"
       ],
       "sub": [
         "So small animals lose heat fast, and have to eat almost constantly.",

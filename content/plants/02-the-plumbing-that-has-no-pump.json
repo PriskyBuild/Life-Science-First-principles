@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "transpiration-pull",
       "t": [
         "Water leaving the leaves drags the rest up. It is called transpiration pull.",
         "Evaporation from the leaves puts the water column under tension and drags it upward — cohesion-tension. The plant spends no energy on the lifting.",
         "The cohesion-tension mechanism: hydrogen bonding holds the column together, evaporation at the top generates negative pressure, and an unbroken thread of water is pulled from root to leaf.",
         "The water in a tall tree is under substantial negative pressure — genuinely stretched, in a metastable state that ought to boil at ordinary temperatures and does not, because the xylem vessels are narrow enough and free enough of nucleation sites to prevent it. It is one of the stranger physical situations in biology."
+      ],
+      "term": [
+        "transpiration pull",
+        "cohesion-tension",
+        "cohesion-tension mechanism",
+        "a metastable state"
       ],
       "sub": [
         "Water molecules stick to each other. That is the whole trick.",

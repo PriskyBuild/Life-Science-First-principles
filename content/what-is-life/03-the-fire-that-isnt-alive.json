@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "metabolism-is-not-burning",
       "t": [
         "Getting energy out in small steps, on purpose, is called metabolism.",
         "Releasing energy in small controlled steps and capturing it is metabolism — not simply burning.",
         "Metabolism is coupled, enzyme-catalysed oxidation: the same overall reaction as combustion, run in many small steps so the energy can be captured rather than lost as heat.",
         "Glucose oxidation in a cell and in a flame have identical reactants, products and free energy change. The difference is entirely in the path — roughly thirty enzymatic steps that capture about a third of the available energy in ATP, against one step that captures none."
+      ],
+      "term": [
+        "metabolism",
+        "metabolism",
+        "Metabolism",
+        "the path"
       ],
       "sub": [
         "And a recipe for making another one of you.",

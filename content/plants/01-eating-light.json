@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "photosynthesis-is-building",
       "t": [
         "Making food out of air and light is called photosynthesis.",
         "Photosynthesis: carbon dioxide and water, plus light energy, assembled into sugar. Oxygen is the leftover.",
         "6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂. Light energy is captured and stored in chemical bonds; the oxygen is a by-product of splitting water, not of the carbon dioxide.",
         "The oxygen comes from the water rather than the CO₂, which was settled by isotope labelling in 1941 and is not obvious from the equation. Every oxygen molecule you have ever breathed was pulled off a water molecule by a plant, an alga or a cyanobacterium."
+      ],
+      "term": [
+        "photosynthesis",
+        "Photosynthesis",
+        "chemical bonds",
+        "isotope labelling"
       ],
       "sub": [
         "The oxygen you breathe is what plants throw away.",

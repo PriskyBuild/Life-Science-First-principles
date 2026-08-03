@@ -153,11 +153,18 @@
     },
     {
       "type": "name",
+      "concept": "form-follows-constraint",
       "t": [
         "Every animal is a set of compromises. Being good at one thing costs you another.",
         "Traits trade off against each other. An animal is not an optimum — it is a compromise between demands that pull in different directions.",
         "Trade-offs arise because traits share a finite budget of energy, mass and developmental resource, and because some requirements are physically contradictory.",
         "The absence of a fast, armoured, strong, cheap animal is therefore not a gap waiting to be filled. It is excluded — partly by shared budgets and partly by physical contradiction, and no amount of time or selection produces one."
+      ],
+      "term": [
+        "compromises",
+        "trade off",
+        "Trade-offs",
+        "physical contradiction"
       ],
       "sub": [
         "Which is why there are so many different kinds of animal.",

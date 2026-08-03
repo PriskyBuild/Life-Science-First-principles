@@ -63,11 +63,18 @@
     },
     {
       "type": "name",
+      "concept": "targeting-accuracy",
       "t": [
         "Cuts in the wrong place are called off-target edits.",
         "An off-target edit is a cut at a site resembling the intended one. Guides tolerate mismatches, particularly away from the cutting end.",
         "Off-target activity is sequence-dependent and predictable in part: mismatches near the PAM-proximal seed region are poorly tolerated, distal ones much better. Guides are therefore chosen computationally against the whole genome before use.",
         "Detecting off-target cuts is harder than predicting them, and the assays — GUIDE-seq, CIRCLE-seq and others — disagree with each other. Reported off-target rates depend substantially on which method was used, which is an uncomfortable state of affairs for a technology being put into patients and is stated openly in the literature."
+      ],
+      "term": [
+        "off-target edits",
+        "off-target edit",
+        "PAM-proximal seed region",
+        "Detecting off-target cuts"
       ],
       "sub": [
         "So the guide is chosen by searching the whole genome first.",

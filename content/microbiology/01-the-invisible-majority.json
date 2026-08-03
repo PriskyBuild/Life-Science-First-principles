@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "invisible-majority",
       "t": [
         "Living things too small to see are called microbes, and there are more of them than everything else put together.",
         "Microorganisms — bacteria, archaea, many fungi and protists — outnumber all visible life by an enormous margin, and always have.",
         "Bacteria and archaea account for the majority of Earth's biological diversity and a substantial fraction of its biomass, much of it kilometres underground in rock.",
         "Visible life is a thin and unrepresentative sample. Most of the genetic diversity on the planet is microbial, most metabolic strategies exist only in microbes, and the deep subsurface biosphere alone may hold a mass comparable to all surface life. Animals are the exception that happens to be doing the looking."
+      ],
+      "term": [
+        "microbes",
+        "Microorganisms",
+        "Bacteria and archaea",
+        "deep subsurface biosphere"
       ],
       "sub": [
         "They were doing everything for billions of years before anything bigger existed.",

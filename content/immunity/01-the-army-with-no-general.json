@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "layered-defence",
       "t": [
         "The first defences do not know what they are fighting. They stop nearly everything anyway.",
         "This is innate immunity: fast, general, and completely uninterested in what it is stopping.",
         "Innate immunity — barriers, phagocytes and inflammation — responds within minutes to broad classes of threat, using receptors for features shared by whole groups of pathogens.",
         "It recognises patterns rather than individuals: bacterial cell-wall components, double-stranded RNA, flagellin. Those are features a pathogen cannot easily abandon, which is why a system with a few dozen receptors can cover an enormous range of threats and why it has changed little in hundreds of millions of years."
+      ],
+      "term": [
+        "The first defences",
+        "innate immunity",
+        "Innate immunity",
+        "patterns rather than individuals"
       ],
       "sub": [
         "No memory, no learning, and it does most of the work.",

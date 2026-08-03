@@ -91,11 +91,18 @@
     },
     {
       "type": "name",
+      "concept": "guided-cutting",
       "t": [
         "The matching strand is called a guide, and it takes the scissors to the right place.",
         "A guide RNA about twenty letters long pairs with the matching DNA sequence, and the nuclease attached to it cuts there.",
         "CRISPR-Cas9: a guide RNA supplies the address by base pairing and Cas9 supplies the cut. The two functions are separate, which is why the address is reprogrammable.",
         "Separating targeting from cutting is the whole reason this displaced everything before it. Earlier editing tools — zinc fingers, TALENs — needed a new protein engineered for every target, which took months. Here you change twenty letters of RNA, which takes a day and costs almost nothing."
+      ],
+      "term": [
+        "guide",
+        "guide RNA",
+        "CRISPR-Cas9",
+        "Separating targeting from cutting"
       ],
       "sub": [
         "The rule doing all the work is the one from DNA lesson 2.",

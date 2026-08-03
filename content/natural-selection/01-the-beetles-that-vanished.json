@@ -103,11 +103,18 @@
     },
     {
       "type": "name",
+      "concept": "selection-needs-no-agent",
       "t": [
         "This is called natural selection. Nobody chose. The bird just could not see the ones that matched.",
         "This is natural selection. Nothing chose anything: the beetles that were harder to spot left more babies, and that was enough.",
         "This is natural selection: variation, heredity and differential survival, all three at once. Given those, the population shifts automatically — no chooser is required, and none is available.",
         "Natural selection is the name for the joint consequence of three conditions. It is not a force acting on the population; it is a description of what necessarily follows when all three hold. The explanatory work is done by the conditions, not by the label."
+      ],
+      "term": [
+        "natural selection",
+        "natural selection",
+        "natural selection",
+        "Natural selection"
       ],
       "sub": [
         "The word 'selection' makes it sound like someone picked. Nobody picked.",

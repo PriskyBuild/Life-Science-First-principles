@@ -173,11 +173,18 @@
     },
     {
       "type": "name",
+      "concept": "genetic-circuits",
       "t": [
         "Genes switching each other on and off make a circuit, and a circuit can compute.",
         "Gene regulatory circuits perform logic, memory and timing. The toggle switch and the repressilator were both built in 2000 and started the field.",
         "The behaviour comes from the topology rather than from the components: mutual repression gives bistability, an odd ring gives oscillation, self-repression gives stability. The same motifs appear throughout natural genomes.",
         "That the same handful of network motifs recur across unrelated organisms — and were then rediscovered by engineers designing from scratch — is a strong hint that they are the small set of arrangements that produce useful behaviour, rather than accidents of history."
+      ],
+      "term": [
+        "a circuit can compute",
+        "Gene regulatory circuits",
+        "the topology",
+        "network motifs"
       ],
       "sub": [
         "Your own cells are full of these, doing exactly the same jobs.",

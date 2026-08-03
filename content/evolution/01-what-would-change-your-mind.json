@@ -45,11 +45,18 @@
     },
     {
       "type": "name",
+      "concept": "evidence-and-inference",
       "t": [
         "There are two ways of knowing: watching it happen, and working it out from what is left.",
         "Two different ways of knowing: watching something happen, and working it out afterwards from what it left behind.",
         "Two routes to a claim: direct observation, and inference from traces. Both are real knowledge. They fail in different ways.",
         "Observation and inference. Neither is second-class, but they carry different risks: observation can be mistaken about what it saw, inference can be mistaken about what else could have produced the same trace."
+      ],
+      "term": [
+        "two ways of knowing",
+        "Two different ways of knowing",
+        "Two routes to a claim",
+        "Observation and inference"
       ],
       "sub": [
         "Both are real. Both can go wrong.",

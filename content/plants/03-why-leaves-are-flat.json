@@ -95,11 +95,18 @@
     },
     {
       "type": "name",
+      "concept": "leaf-is-a-tradeoff",
       "t": [
         "The holes are called stomata, and a plant opens and shuts them all day.",
         "The pores are stomata, each with two guard cells that swell and shrink to open and close it — continuously, in response to water, light and carbon dioxide.",
         "Stomatal conductance is regulated moment to moment against a trade-off with no fixed solution. It is why leaves are thin and broad: maximise the area intercepting light while minimising the diffusion distance for gas.",
         "The regulation is the point. There is no optimum aperture, only an optimum for the current conditions, so a plant that could not adjust would be badly wrong most of the time. CAM plants take the strategy to its limit and open only at night, storing carbon as acid until morning — paying an energetic cost to move gas exchange to the cool hours."
+      ],
+      "term": [
+        "stomata",
+        "stomata",
+        "Stomatal conductance",
+        "CAM plants"
       ],
       "sub": [
         "Wide open is not the answer. It never is.",

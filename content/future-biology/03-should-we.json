@@ -243,11 +243,18 @@
     },
     {
       "type": "name",
+      "concept": "ethics-of-capability",
       "t": [
         "Being able to do something is never a reason to do it. That is the whole of this lesson.",
         "Capability establishes that a question is worth asking. It contributes nothing to the answer, because 'can' and 'ought' are different kinds of claim.",
         "This is a formal point rather than a cautious one: no set of factual premises entails a conclusion about what should be done, without a premise about what is good. That missing premise is where every real disagreement lives.",
         "Which is why arguments about biotechnology so often go nowhere. One side answers a 'should' question with evidence about safety; the other answers a 'can' question with a conviction about value; and both are annoyed. People reason towards the missing premise from genuinely different starting points — consequences, duties, rights, what a person or a society ought to be — and those starting points are not themselves scientific findings. Naming which one you are arguing from is the single most useful thing you can do in one of these arguments."
+      ],
+      "term": [
+        "never a reason to do it",
+        "Capability",
+        "a formal point",
+        "the missing premise"
       ],
       "sub": [
         "You can, and you still have to decide.",

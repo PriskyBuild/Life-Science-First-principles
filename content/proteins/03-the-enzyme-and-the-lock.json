@@ -90,11 +90,18 @@
     },
     {
       "type": "name",
+      "concept": "enzyme-specificity",
       "t": [
         "A protein that speeds up a reaction is called an enzyme. The notch is its active site.",
         "A protein that catalyses a reaction is an enzyme, and the pocket it does it in is the active site.",
         "Enzymes are catalysts: they lower the activation energy of a reaction without being consumed and without altering its equilibrium.",
         "The mechanism is not simply holding the substrate — it is binding the transition state more tightly than the substrate itself. Pauling's insight in 1948, and the reason transition-state analogues make such effective drugs."
+      ],
+      "term": [
+        "enzyme",
+        "enzyme",
+        "catalysts",
+        "the transition state"
       ],
       "sub": [
         "It only fits one thing, so it only does one job.",

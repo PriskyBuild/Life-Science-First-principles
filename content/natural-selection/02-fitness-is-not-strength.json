@@ -65,11 +65,18 @@
     },
     {
       "type": "name",
+      "concept": "fitness-is-contextual",
       "t": [
         "Fitness means how many young you leave, here, now. It is not about being tough.",
         "Fitness is reproductive success in a particular environment. It is a relationship between an organism and its surroundings, not a property of the organism.",
         "Fitness is relative reproductive success in a specified environment. Change the environment and the fitness of every genotype changes, without any of them changing at all.",
         "Because fitness is defined by reproductive output, 'survival of the fittest' is close to circular if read as a definition — which is a fair criticism of the slogan and not of the theory. The theory's content is in the three conditions, which are each independently measurable, and the slogan is a Victorian summary Darwin did not write."
+      ],
+      "term": [
+        "Fitness",
+        "Fitness",
+        "Fitness",
+        "survival of the fittest"
       ],
       "sub": [
         "A polar bear is very fit in the Arctic and very unfit in a desert.",

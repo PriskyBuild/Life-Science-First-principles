@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "shape-is-function",
       "t": [
         "What a protein does depends on the shape it is, not what it is made of.",
         "Function follows structure. The composition is nearly the same across every protein; the fold is what differs.",
         "Structure determines function, and it does so through surface geometry: which residues are exposed, in what arrangement, forming what pockets.",
         "This is why proteins are described as molecular machines rather than molecules. What matters is the shape of the surface and how it moves — the chemistry of the individual side chains is nearly the same set in all of them."
+      ],
+      "term": [
+        "the shape it is",
+        "Function follows structure",
+        "surface geometry",
+        "molecular machines"
       ],
       "sub": [
         "Change the shape and you have changed the job.",

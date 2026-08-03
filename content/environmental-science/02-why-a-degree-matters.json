@@ -91,11 +91,18 @@
     },
     {
       "type": "name",
+      "concept": "energy-balance",
       "t": [
         "Some gases let sunlight in and slow heat on its way out. That is the greenhouse effect.",
         "Carbon dioxide, water vapour and methane are transparent to incoming sunlight and absorb outgoing infrared. That asymmetry is the greenhouse effect, and without it the Earth would average about −18 °C.",
         "Greenhouse gases absorb in the infrared and are near-transparent in the visible. The effect was measured by Tyndall in 1859 and the surface-temperature consequence estimated by Arrhenius in 1896 — this is old, laboratory-established physics.",
         "The radiative properties of CO₂ are not in dispute anywhere: they are measured in the laboratory, used to design infrared instruments, and confirmed by satellite spectra showing exactly the predicted absorption bands. Doubling CO₂ adds about 3.7 W/m² — about 1% of incoming — and the contested questions are all downstream of that number, in how the climate system responds to it."
+      ],
+      "term": [
+        "greenhouse effect",
+        "greenhouse effect",
+        "Greenhouse gases",
+        "The radiative properties"
       ],
       "sub": [
         "Without it the Earth would be frozen solid. The argument is about how much, not whether.",

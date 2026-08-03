@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "amplify-dna",
       "t": [
         "Copying DNA on purpose like this is called PCR.",
         "The polymerase chain reaction: heat to separate the strands, cool so short primers stick to the sequence you want, and let polymerase copy. Repeat.",
         "PCR. Heat denatures, cooling anneals sequence-specific primers, and a heat-stable polymerase extends. The primers are what make it selective — only the region between them is amplified.",
         "The enabling piece was a polymerase that survives 95 °C, found in a bacterium living in a Yellowstone hot spring. Before Taq, the enzyme had to be replaced by hand every cycle. An organism nobody was studying for any applied reason made the whole method practical, which is the standard argument for curiosity-driven research and one of its better examples."
+      ],
+      "term": [
+        "PCR",
+        "polymerase chain reaction",
+        "sequence-specific primers",
+        "Taq"
       ],
       "sub": [
         "It is the ladder copying itself, done deliberately, over and over.",

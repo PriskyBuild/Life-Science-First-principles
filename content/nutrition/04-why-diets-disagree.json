@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "evidence-in-nutrition",
       "t": [
         "When two things go together, that does not mean one caused the other.",
         "Correlation is not causation, and in nutrition the confounders are unusually strong: diet tracks wealth, education, exercise and smoking.",
         "Randomisation is what breaks confounding, because it distributes unmeasured differences evenly between groups. Statistical adjustment can only correct for what was measured.",
         "That asymmetry is the crux. Adjustment handles known confounders; randomisation handles the unknown ones too, which is why a randomised trial is not merely a better observational study but a different kind of evidence. The famous reversals — hormone replacement therapy, beta-carotene, vitamin E — were all cases where large, careful observational findings did not survive randomisation."
+      ],
+      "term": [
+        "",
+        "Correlation is not causation",
+        "Randomisation",
+        "Adjustment"
       ],
       "sub": [
         "People who eat well tend to do lots of other things well too.",

@@ -187,11 +187,18 @@
     },
     {
       "type": "name",
+      "concept": "grown-tissue",
       "t": [
         "Growing living tissue on a shape you designed is called tissue engineering.",
         "Tissue engineering combines cells, a scaffold and differentiation signals to produce functional tissue. Thin constructs are clinical; thick ones are not.",
         "The scaffold can be a synthetic polymer or a donor organ stripped of its cells, leaving the protein architecture and the vascular tree intact for reseeding. That approach solves the geometry problem by not designing the geometry.",
         "It is worth being precise about the state of the field, because it is routinely overstated. Bladders, skin, cartilage and cornea have been engineered and implanted. Organoids — millimetre-scale kidney, gut and brain tissue grown from stem cells — are transforming what can be studied in a dish, and none of them are transplantable, precisely because they have no blood supply. No solid organ has been engineered and successfully transplanted in a person."
+      ],
+      "term": [
+        "tissue engineering",
+        "Tissue engineering",
+        "a donor organ stripped of its cells",
+        "Organoids"
       ],
       "sub": [
         "The hard part is plumbing.",

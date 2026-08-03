@@ -186,11 +186,18 @@
     },
     {
       "type": "name",
+      "concept": "layered-defence",
       "t": [
         "It is layers. Each one handles what the one before it missed.",
         "Defence is layered: barriers, then fast general response, then slow specific response, then memory — with tolerance running underneath all of it.",
         "Innate and adaptive immunity are not alternatives but stages, differing in speed and specificity. The innate response also decides whether and how the adaptive one is engaged.",
         "The layering is not merely sequential — it is instructive. Innate sensing determines which kind of adaptive response is mounted, which is why adjuvants exist: a purified antigen alone provokes little, because nothing has told the system there is a threat worth responding to."
+      ],
+      "term": [
+        "layers",
+        "layered",
+        "not alternatives but stages",
+        "instructive"
       ],
       "sub": [
         "And the clever part is the same trick as the beetles.",

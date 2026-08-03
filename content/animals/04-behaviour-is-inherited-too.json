@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "behaviour-is-heritable",
       "t": [
         "A behaviour you are born knowing is called an instinct.",
         "An inherited behaviour performed without learning is an instinct, or a fixed action pattern — and it evolves exactly as a body part does.",
         "Fixed action patterns are heritable, variable, and selectable. They are triggered by a specific stimulus, run to completion once started, and can be studied genetically like any other trait.",
         "Cross-breeding experiments settle the genetics directly. Blackcaps from populations with different migratory directions produce hybrids that orient intermediately — the heading is inherited quantitatively, which is about as clean a demonstration that a behaviour is a genetic trait as one could ask for."
+      ],
+      "term": [
+        "instinct",
+        "fixed action pattern",
+        "Fixed action patterns",
+        "Cross-breeding experiments"
       ],
       "sub": [
         "It can be selected for, just like a colour or a bone.",

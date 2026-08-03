@@ -168,11 +168,18 @@
     },
     {
       "type": "name",
+      "concept": "culture-and-count",
       "t": [
         "Growing them on purpose is called culturing, and each spot is a colony.",
         "This is culture: give them food, keep everything else out, and let one cell become a visible colony. Counting colonies counts the cells you started with.",
         "Plate counting. Each colony-forming unit descends from a single cell, so counts multiplied by dilution give the original concentration — the foundation of quantitative microbiology.",
         "It also has a large blind spot that took a century to notice: the great majority of microbial species will not grow on any medium anyone has devised. Estimates of the unculturable fraction run above 99%, so a hundred years of microbiology described whichever organisms happened to like the conditions in a laboratory."
+      ],
+      "term": [
+        "culturing",
+        "culture",
+        "colony-forming unit",
+        "the unculturable fraction"
       ],
       "sub": [
         "The spot is millions of copies of the one cell that landed there.",

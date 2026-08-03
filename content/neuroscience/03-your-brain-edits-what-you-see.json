@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "perception-is-constructed",
       "t": [
         "What you see is not a picture of the world. It is your brain's best guess.",
         "Perception is not reception. Your brain builds a model from incomplete data and you experience the model, not the data.",
         "Perception is inference. The retinal image is ambiguous, low-resolution outside the fovea, interrupted by the optic disc and smeared by eye movement — and none of that reaches awareness.",
         "Helmholtz called it unconscious inference in the 1860s and the framing has held up. The visual system is solving an underdetermined problem — infinitely many scenes are consistent with any retinal image — and it resolves it using assumptions about the world. Those assumptions are usually right, which is why illusions are interesting: they are the cases where a normally-correct assumption is wrong."
+      ],
+      "term": [
+        "best guess",
+        "Perception is not reception",
+        "Perception is inference",
+        "unconscious inference"
       ],
       "sub": [
         "Most of the time the guess is right, so you never notice you are guessing.",

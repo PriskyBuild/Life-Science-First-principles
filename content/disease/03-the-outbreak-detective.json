@@ -204,11 +204,18 @@
     },
     {
       "type": "name",
+      "concept": "outbreak-investigation",
       "t": [
         "Studying who gets ill and why is called epidemiology.",
         "Epidemiology studies the distribution of disease in populations. It can identify and remove a cause without any understanding of the mechanism.",
         "This is inference from pattern rather than from mechanism — the same forensic reasoning you met in the evidence lesson, applied to populations.",
         "Snow's map is famous and his best evidence was elsewhere: a natural experiment in which two water companies supplied intermingled houses in south London from different points on the Thames. Households were effectively randomised by which company happened to serve them, and the death rates differed by a factor of about eight. That is a controlled comparison found rather than constructed."
+      ],
+      "term": [
+        "epidemiology",
+        "Epidemiology",
+        "inference from pattern",
+        "a natural experiment"
       ],
       "sub": [
         "He was wrong about a lot. He was right about the pump.",

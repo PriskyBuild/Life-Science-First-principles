@@ -64,11 +64,18 @@
     },
     {
       "type": "name",
+      "concept": "four-letters",
       "t": [
         "The four letters are A, T, C and G. They are called bases.",
         "The four letters are A, T, C and G — adenine, thymine, cytosine and guanine. Each is a base.",
         "Adenine, thymine, cytosine and guanine: two purines and two pyrimidines, strung along a sugar-phosphate backbone.",
         "The backbone is chemically uniform, which matters: the sequence carries the information precisely because the chemistry does not constrain the order. Any base can follow any base."
+      ],
+      "term": [
+        "bases",
+        "base",
+        "sugar-phosphate backbone",
+        "the sequence carries the information"
       ],
       "sub": [
         "And they always hold hands the same way: A with T, C with G.",

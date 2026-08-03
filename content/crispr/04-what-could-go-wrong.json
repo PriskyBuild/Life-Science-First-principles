@@ -145,11 +145,18 @@
     },
     {
       "type": "name",
+      "concept": "edit-consequences",
       "t": [
         "An edit in an embryo is called a germline edit, and it never stops being passed on.",
         "Germline editing alters every cell including the reproductive ones, so the change is inherited indefinitely. Somatic editing affects only the person treated.",
         "The distinction is the central one in the ethics and in most national law: somatic therapy is broadly permitted and regulated as medicine, heritable editing is prohibited in most countries.",
         "Roughly seventy countries prohibit heritable human editing, and the 2018 case produced near-unanimous condemnation and a prison sentence rather than a debate about whether it was premature. That near-unanimity is itself notable — it is one of the few places where a scientific community drew a line quickly and held it."
+      ],
+      "term": [
+        "germline edit",
+        "Germline editing",
+        "heritable editing",
+        "heritable human editing"
       ],
       "sub": [
         "Which is why almost everywhere forbids it, and treating patients is allowed.",

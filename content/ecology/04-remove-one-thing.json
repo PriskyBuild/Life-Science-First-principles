@@ -55,11 +55,18 @@
     },
     {
       "type": "name",
+      "concept": "keystone-effects",
       "t": [
         "An effect that travels down through the levels is called a trophic cascade.",
         "This is a trophic cascade: a change at the top propagating downwards through levels nobody touched.",
         "A trophic cascade. Removing a predator releases its prey, which then suppresses the level below — so the sign of the effect alternates as it descends.",
         "The alternation is the diagnostic feature: remove a carnivore and herbivores rise and plants fall; remove a herbivore and plants rise. That sign-flipping pattern is what distinguishes a genuine cascade from a coincidence, and it is why the prediction is testable rather than merely plausible."
+      ],
+      "term": [
+        "trophic cascade",
+        "trophic cascade",
+        "trophic cascade",
+        "The alternation"
       ],
       "sub": [
         "A species that matters far more than its numbers suggest is a keystone.",

@@ -98,11 +98,18 @@
     },
     {
       "type": "name",
+      "concept": "gas-exchange",
       "t": [
         "Breathing is mostly about getting carbon dioxide out.",
         "Breathing serves two jobs, and the urgent one is removing carbon dioxide rather than collecting oxygen.",
         "Ventilation is regulated primarily by arterial CO₂, detected as a fall in blood pH. Oxygen sensing exists but only takes over at low levels.",
         "Central chemoreceptors respond to pH change in cerebrospinal fluid, which tracks CO₂ closely because CO₂ crosses the blood-brain barrier and hydrates to carbonic acid. Oxygen is monitored peripherally and contributes little until saturation falls a long way — which is a control design with a serious failure mode."
+      ],
+      "term": [
+        "carbon dioxide",
+        "carbon dioxide",
+        "Ventilation",
+        "Central chemoreceptors"
       ],
       "sub": [
         "The swap itself is just diffusion. Nothing pushes the gases across.",

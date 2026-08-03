@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "memory-is-reconstructive",
       "t": [
         "Remembering rebuilds the memory, and then saves the rebuilt one.",
         "Recall is reconstructive, and it is followed by reconsolidation — the memory is stored again, in whatever state recall left it.",
         "Reconsolidation: retrieval returns a memory to a labile state, and it must be re-stabilised. Whatever changed during retrieval is what gets re-stored.",
         "The finding is relatively recent and was resisted, because it undermines the archive metaphor entirely. It also means memory is not a recording device that sometimes fails; it is a reconstruction device that usually succeeds — and those two descriptions make very different predictions about when it will go wrong."
+      ],
+      "term": [
+        "rebuilds the memory",
+        "reconsolidation",
+        "Reconsolidation",
+        "a reconstruction device"
       ],
       "sub": [
         "It does not feel like guessing. That is the problem.",

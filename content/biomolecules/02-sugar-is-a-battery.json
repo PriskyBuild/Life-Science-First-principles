@@ -96,11 +96,18 @@
     },
     {
       "type": "name",
+      "concept": "sugar-is-stored-energy",
       "t": [
         "Sugar is a store. The energy is locked in the bonds until something breaks them.",
         "A carbohydrate is chemical energy in storage. The bonds hold it, and it stays held until an enzyme takes the molecule apart in controlled steps.",
         "Energy is released when bonds in glucose and oxygen are exchanged for the stronger bonds in carbon dioxide and water. The difference is what a cell captures.",
         "Strictly it is the difference in bond enthalpy between reactants and products, not energy 'in' any one bond — a common and stubborn misstatement. Bonds do not contain energy waiting to escape; breaking a bond costs energy, and the yield comes from forming stronger ones afterwards."
+      ],
+      "term": [
+        "store",
+        "chemical energy in storage",
+        "the stronger bonds",
+        "bond enthalpy"
       ],
       "sub": [
         "Which is why sugar does nothing until you eat it.",

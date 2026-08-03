@@ -173,11 +173,18 @@
     },
     {
       "type": "name",
+      "concept": "systems-interact",
       "t": [
         "Keeping things steady like this is called homeostasis.",
         "Holding conditions steady against disturbance is homeostasis, and it is done with feedback loops rather than decisions.",
         "Homeostasis: regulation by negative feedback. Sensor, comparator, effector, and a return path — the same architecture wherever it appears, and it requires no intelligence at any point.",
         "Cannon named it in 1926, and Bernard's milieu intérieur set it up seventy years earlier. The insight is that an organism does not tolerate its environment — it maintains an internal one, and nearly every physiological variable you can name is defended this way."
+      ],
+      "term": [
+        "homeostasis",
+        "homeostasis",
+        "negative feedback",
+        "Cannon"
       ],
       "sub": [
         "Your temperature, water, sugar and salt are all held steady the same way.",

@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "colony-of-cells",
       "t": [
         "Lots of the same cells together make a tissue. Tissues make organs. Organs make systems.",
         "Cells of one kind form a tissue; tissues form an organ; organs that work together form a system.",
         "Levels of organisation: cell, tissue, organ, organ system, organism. Each level has properties the level below does not.",
         "The properties at each level are emergent in a strict sense — no muscle cell contracts a limb, and no neuron has a thought. Describing a level in terms of the one below is possible in principle and useless in practice, which is why physiology exists as a discipline."
+      ],
+      "term": [
+        "tissue",
+        "tissue",
+        "Levels of organisation",
+        "emergent"
       ],
       "sub": [
         "About two hundred different kinds of cell in you.",

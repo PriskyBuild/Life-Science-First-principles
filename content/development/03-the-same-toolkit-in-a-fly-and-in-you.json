@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "conserved-toolkit",
       "t": [
         "These are Hox genes. They do not build anything — they say what goes where.",
         "Hox genes specify identity along the head-to-tail axis. They are switches that tell a region what kind of structure to build, not instructions for building it.",
         "Hox genes are transcription factors specifying positional identity. Remarkably, they sit on the chromosome in the same order as the body regions they control — colinearity, which nobody predicted and nobody has fully explained.",
         "Colinearity is one of the strangest facts in biology: the spatial order of genes on the DNA matches the spatial order of the structures they specify along the animal. It holds in flies and in mammals, and there is still no complete account of why."
+      ],
+      "term": [
+        "Hox genes",
+        "Hox genes",
+        "colinearity",
+        "Colinearity"
       ],
       "sub": [
         "A fly has them. You have them. They are recognisably the same genes.",

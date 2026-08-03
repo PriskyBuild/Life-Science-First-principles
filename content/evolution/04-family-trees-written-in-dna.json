@@ -37,11 +37,18 @@
     },
     {
       "type": "name",
+      "concept": "shared-errors",
       "t": [
         "When the same broken bit turns up in the same place in two creatures, that is called a shared error.",
         "Identical damage at an identical position in two genomes is a shared error — and it is treated very differently from shared function.",
         "Shared derived defects: pseudogenes disabled by the same lesion at the same nucleotide, and endogenous retroviral insertions at the same genomic coordinate in different species.",
         "The argument turns on the vast size of the space of possible errors. Function can be independently arrived at; a specific inactivating mutation at a specific site, or a viral insertion at one of billions of possible loci, cannot easily be."
+      ],
+      "term": [
+        "shared error",
+        "shared error",
+        "Shared derived defects",
+        "the space of possible errors"
       ],
       "sub": [
         "There are millions of ways to break something. Breaking it the same way twice by accident is very unlucky.",

@@ -151,11 +151,18 @@
     },
     {
       "type": "name",
+      "concept": "design-then-test",
       "t": [
         "Anything you build into a living thing has to survive being alive.",
         "An engineered organism evolves. If your construct costs the host anything, cells that lose it grow faster — so the design is under selection from the moment it works.",
         "Evolutionary instability is the distinctive engineering problem of this field. A bridge does not mutate; a production strain does, and reverts to a non-producing state on a timescale of days.",
         "It is the one respect in which biological engineering is categorically unlike every other kind. The response is to reduce burden, to couple the desired function to the host's survival so that losing it is fatal, and to accept that a strain has a working lifetime — which is a strange thing for a manufacturing process to have."
+      ],
+      "term": [
+        "survive being alive",
+        "An engineered organism evolves",
+        "Evolutionary instability",
+        "reduce burden"
       ],
       "sub": [
         "The thing you built is a cost to the cell, and cells that drop it win.",

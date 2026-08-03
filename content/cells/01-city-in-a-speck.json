@@ -101,11 +101,18 @@
     },
     {
       "type": "name",
+      "concept": "cell-is-a-system",
       "t": [
         "That tiny city is called a cell.",
         "That tiny city has a name: a cell. It is the smallest thing that is properly alive.",
         "A cell is the smallest unit that performs every function we call living — it takes in energy, keeps itself separate from its surroundings, and copies itself.",
         "A cell is the smallest self-maintaining thermodynamic system: it imports free energy, holds a boundary against equilibrium, and reproduces its own organisation."
+      ],
+      "term": [
+        "cell",
+        "cell",
+        "cell",
+        "cell"
       ],
       "sub": [
         "Everything alive is made of them.",

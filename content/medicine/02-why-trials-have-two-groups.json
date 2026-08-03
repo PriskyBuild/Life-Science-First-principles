@@ -204,11 +204,18 @@
     },
     {
       "type": "name",
+      "concept": "controlled-trial",
       "t": [
         "The group that does not get the medicine is called the control group.",
         "A randomised controlled trial compares a treated group with an untreated one, assigned by chance so the groups differ only in the treatment.",
         "Randomisation is what makes the comparison causal. Blinding removes expectancy, pre-specification removes selective reporting, and adequate size removes chance.",
         "Each element was added because of a specific historical failure, which is why the design looks over-engineered until you know the history. It is worth seeing as an accumulated list of ways people have been fooled, mostly in good faith, rather than as bureaucracy."
+      ],
+      "term": [
+        "control group",
+        "randomised controlled trial",
+        "Randomisation",
+        "a specific historical failure"
       ],
       "sub": [
         "People given a dummy treatment often improve too. That is not nothing, and it is not the drug.",

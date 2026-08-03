@@ -256,11 +256,18 @@
     },
     {
       "type": "name",
+      "concept": "habitability",
       "t": [
         "Whether somewhere could hold life is called habitability. It is not the same as whether anything is there.",
         "Habitability is an assessment of conditions: solvent, energy, elements, shielding and duration. It is necessary for life and nowhere near sufficient.",
         "Keeping the two questions apart is what makes the field tractable. Habitability can be measured remotely; inhabitation requires either a sample or an unambiguous biosignature, and no agreed unambiguous biosignature exists.",
         "The Martian surface is currently assessed as habitable in the past and hostile now, with the subsurface remaining the live candidate. Two of the most-cited surface observations are still open: the seasonal methane Curiosity measures at Gale Crater has not been confirmed by the orbiter looking for it, and the radar-bright material read as a subglacial lake in 2018 has since been attributed by several groups to clays. Both remain unresolved, which is the ordinary condition of the field rather than a scandal."
+      ],
+      "term": [
+        "habitability",
+        "Habitability",
+        "inhabitation",
+        "the live candidate"
       ],
       "sub": [
         "Earth is the only place we know is inhabited. Everywhere else, we are scoring the conditions.",

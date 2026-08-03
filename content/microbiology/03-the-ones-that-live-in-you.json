@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "microbiome",
       "t": [
         "The bacteria living on and in you are called your microbiome.",
         "The community of microbes you carry is your microbiome, and it is best thought of as an organ you were not born with.",
         "The microbiome is acquired after birth, differs between individuals, and performs metabolic and immunological functions the host genome does not encode.",
         "It is inherited horizontally rather than vertically — from birth canal, milk, food and environment rather than from your genome — which makes it unlike any other part of you and means it can be lost, damaged and in principle restored."
+      ],
+      "term": [
+        "microbiome",
+        "microbiome",
+        "microbiome",
+        "inherited horizontally"
       ],
       "sub": [
         "Germ-free animals grow up with immune systems that do not work properly.",

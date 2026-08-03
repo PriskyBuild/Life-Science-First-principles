@@ -37,11 +37,18 @@
     },
     {
       "type": "name",
+      "concept": "origin-of-life-unsolved",
       "t": [
         "They made amino acids — the beads that proteins are made of. They did not make anything alive.",
         "The experiment produced amino acids: the components proteins are built from. It did not produce a cell, a self-copying molecule, or anything alive.",
         "Miller–Urey demonstrated abiotic synthesis of several amino acids under assumed early-earth conditions. The gap between a mixture of monomers and a self-replicating, metabolising, information-bearing system remains open.",
         "The result was real and important, and its popular reading is not what it showed. Producing monomers is a long way from the assembly, sequence-specificity, homochirality, compartmentation and coupled replication a minimal cell requires."
+      ],
+      "term": [
+        "amino acids",
+        "amino acids",
+        "abiotic synthesis",
+        "a minimal cell"
       ],
       "sub": [
         "Beads are not a necklace, and a necklace is not alive.",

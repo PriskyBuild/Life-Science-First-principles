@@ -42,6 +42,12 @@
    list        an array of objects, each matching a declared sub-shape.
    any         checked by `extra`, not here.                                     */
 
+/* The one thing this file imports, and it imports it from the app rather than
+   redefining it: the build must refuse a naming term by exactly the rule the
+   browser will use to find it. js/lesson/term.js imports nothing itself, which
+   is what makes it readable from Node. */
+import { termHits } from "../js/lesson/term.js";
+
 export const KINDS = new Set(["text", "slug", "lessonId", "int", "variants", "options",
   "perOption", "list", "any"]);
 
@@ -131,10 +137,26 @@ export const STAGES = {
     lose:        { kind: "any" },
   },
 
+  /* THE ONE STAGE WHOSE JOB IS NAMING WAS THE ONE STAGE THAT DID NOT RECORD
+     WHAT IT NAMED. Every check, weigh and predict carried a concept id; the
+     naming carried a paragraph and nothing else. So nothing downstream could
+     mark the moment a word was given, and the boxed keyword in the margin had
+     no id to be.
+
+     `term` is per level and it is not a decoration. The reading register does
+     not merely reword the same name — it often withholds it. "Blood goes round
+     in a loop" at L1 becomes "a closed circulation" at L2, because you do not
+     begin with definitions. Measured across all 110 naming stages, only 28% use
+     a word that survives all four levels, and reading the failures showed the
+     pedagogy working rather than the authoring slipping. So an empty entry is
+     legal and means "no name is given at this level yet", and the marker simply
+     has nothing to sweep. (D87) */
   name: {
     ...COMMON,
-    t:   { kind: "variants", required: true },
-    sub: { kind: "variants", required: true },
+    concept: { kind: "slug", required: true },
+    t:       { kind: "variants", required: true },
+    term:    { kind: "variants", required: true, mayBeEmpty: true },
+    sub:     { kind: "variants", required: true },
   },
 
   check: {
@@ -211,6 +233,30 @@ export const EXTRA = {
   sim(st, say, ctx) {
     if (st.sim && !ctx.sims.has(st.sim)) say(`no simulation named "${st.sim}" in js/sims/`);
   },
+
+  /* THE GATE THAT MAKES THE MARKER A FACT RATHER THAN A HOPE. A term the
+     renderer cannot find in the sentence is a highlight that silently does not
+     happen — visible to nobody, reported by nothing, and exactly the failure
+     this project keeps meeting. The same function the renderer uses is the one
+     that answers here, so the build cannot pass on a match the browser will
+     miss. Exactly one occurrence, because two is a question with no answer. */
+  name(st, say) {
+    const t = st.t ?? [], term = st.term ?? [];
+    if (term.length > t.length) {
+      say(`"term" has ${term.length} entries for ${t.length} levels of "t"`);
+    }
+    for (const [lv, word] of term.entries()) {
+      if (!word.trim()) continue;                       // no name at this level yet
+      const hits = termHits(t[lv], word);
+      if (hits === 0) {
+        say(`L${lv + 1} term "${word}" is not in that level's sentence, so the marker `
+          + `would sweep nothing — it must appear there as a whole word`);
+      } else if (hits > 1) {
+        say(`L${lv + 1} term "${word}" appears ${hits} times, so there is no answer to `
+          + `which one is the naming`);
+      }
+    }
+  },
 };
 
 /* --------------------------------------------------------------- the walker
@@ -259,8 +305,15 @@ function field(name, spec, value, say, ctx, stage) {
 
     case "variants":
       if (!Array.isArray(value)) return say(`"${name}" must be an array of level variants`);
-      if (!value[0]) return say(`"${name}" has no L1 variant`);
-      if (value.some((v) => typeof v !== "string")) say(`"${name}" must contain only strings`);
+      if (value.some((v) => typeof v !== "string")) return say(`"${name}" must contain only strings`);
+      /* `mayBeEmpty` exists for one field: a naming term the youngest register
+         deliberately withholds. It still has to say something somewhere, or the
+         field is a stage claiming to name nothing. */
+      if (spec.mayBeEmpty) {
+        if (!value.some((v) => v.trim())) say(`"${name}" is empty at every level`);
+      } else if (!value[0]) {
+        return say(`"${name}" has no L1 variant`);
+      }
       if (spec.firstSentenceWords) {
         for (const [lv, variant] of value.entries()) {
           const first = String(variant).split(/(?<=[.!?])\s+/)[0];

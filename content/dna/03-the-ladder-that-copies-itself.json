@@ -98,11 +98,18 @@
     },
     {
       "type": "name",
+      "concept": "semiconservative-copying",
       "t": [
         "Copying DNA is called replication. Each new ladder keeps one old side.",
         "This is replication, and it is semiconservative: every new double strand keeps one original strand and builds one new one.",
         "Semiconservative replication. Each daughter duplex retains one parental strand — which is not obvious, and was not settled until it was measured.",
         "Meselson and Stahl settled it in 1958 by growing bacteria on heavy nitrogen and watching the density of the DNA shift over successive generations. It is often called the most beautiful experiment in biology, because it distinguished three plausible models with one measurement."
+      ],
+      "term": [
+        "replication",
+        "semiconservative",
+        "Semiconservative replication",
+        "Meselson and Stahl"
       ],
       "sub": [
         "So half of it is always the original.",

@@ -82,11 +82,18 @@
     },
     {
       "type": "name",
+      "concept": "inheritance-patterns",
       "t": [
         "Someone who carries a broken copy without showing it is called a carrier.",
         "A person with one broken copy and no signs of the condition is a carrier — and most people are carriers of something.",
         "Heterozygous carriers are typically asymptomatic for recessive conditions. The average person carries several severe recessive alleles without knowing.",
         "Every person carries an estimated one to two alleles that would be lethal or severely disabling in the homozygous state. This is the actual basis of the harm from close-relative marriage: shared ancestry raises the chance that both parents carry the same rare allele."
+      ],
+      "term": [
+        "carrier",
+        "carrier",
+        "Heterozygous carriers",
+        "the homozygous state"
       ],
       "sub": [
         "Which is why it can hide for a generation and then show up.",

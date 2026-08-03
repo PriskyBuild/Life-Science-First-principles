@@ -55,11 +55,18 @@
     },
     {
       "type": "name",
+      "concept": "carrying-capacity",
       "t": [
         "The number a place can hold is called its carrying capacity.",
         "The level a population settles at is the carrying capacity — the number the environment can support given whatever is scarcest.",
         "Carrying capacity is not a property of the species or of the place alone, but of the pairing, and it moves whenever the limiting resource does.",
         "It is also not a fixed constant, which is where the concept is most often misused. Carrying capacity for humans has risen repeatedly with agriculture, sanitation and fertiliser — each of which relaxed whatever was binding at the time. Treating it as a number rather than as a function of the binding constraint is the standard error."
+      ],
+      "term": [
+        "carrying capacity",
+        "carrying capacity",
+        "Carrying capacity",
+        "the binding constraint"
       ],
       "sub": [
         "It is whatever runs out first. Food, water, space, somewhere to nest.",

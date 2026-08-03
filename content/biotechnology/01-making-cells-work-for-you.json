@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "cells-as-factories",
       "t": [
         "Putting a gene from one thing into another is called recombinant DNA.",
         "Recombinant DNA: a gene from one organism inserted into another, which then reads it as its own and makes the product.",
         "The host reads the foreign gene because the genetic code is essentially universal. Nothing has to be translated between species — the same four letters and the same codon assignments.",
         "That universality is what makes the whole field possible, and it is the same fact you met in DNA lesson 2. A human gene in a bacterium works because bacteria and humans share the alphabet and very nearly the whole coding convention, which is a fact about the history of life that biotechnology simply exploits."
+      ],
+      "term": [
+        "recombinant DNA",
+        "Recombinant DNA",
+        "essentially universal",
+        "That universality"
       ],
       "sub": [
         "The cell does not know the instruction is not its own.",

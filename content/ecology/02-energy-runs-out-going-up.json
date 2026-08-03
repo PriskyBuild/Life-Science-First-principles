@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "energy-loss-up-trophic",
       "t": [
         "Each level up gets about a tenth of what the one below had.",
         "Roughly 10% of the energy at one level becomes body mass at the next. The rest is spent living, or lost as heat.",
         "Trophic efficiency averages around 10%, though it ranges from about 1% to 40% depending on the organisms. The remainder goes to respiration, movement, and material that is never eaten or never digested.",
         "The figure is a rough average rather than a law — aquatic systems with small, fast producers run considerably higher than terrestrial ones with woody plants. What is robust is the order of magnitude, and that is enough to explain the pyramid and the ceiling on chain length."
+      ],
+      "term": [
+        "about a tenth",
+        "becomes body mass",
+        "Trophic efficiency",
+        "the order of magnitude"
       ],
       "sub": [
         "The rest is not wasted. It is spent staying alive, and then it is heat.",

@@ -81,11 +81,18 @@
     },
     {
       "type": "name",
+      "concept": "sequence-determines-fold",
       "t": [
         "The order of the beads decides the shape. That is the only thing that decides it.",
         "The sequence of amino acids determines the folded structure. Nothing else is needed.",
         "Anfinsen's dogma: the native structure is determined by the primary sequence alone, and it is the thermodynamic minimum rather than a kinetically trapped state.",
         "Anfinsen unfolded ribonuclease completely — breaking every disulfide bond and denaturing it — then removed the denaturant and watched full activity return. No cellular machinery was present. The information for the fold is in the chain, and it is thermodynamic rather than historical."
+      ],
+      "term": [
+        "The order of the beads",
+        "The sequence of amino acids",
+        "Anfinsen's dogma",
+        "Anfinsen"
       ],
       "sub": [
         "Oily bits hide from the water. That is nearly the whole story.",

@@ -81,11 +81,18 @@
     },
     {
       "type": "name",
+      "concept": "signals-are-electrical",
       "t": [
         "A nerve signal is called an action potential, and it is always the same size.",
         "An action potential is all-or-nothing: below threshold nothing happens, above it you get a full spike, and the spike does not grow with the stimulus.",
         "The all-or-nothing law. Amplitude is set by the ion gradients across the membrane, not by the stimulus, so the stimulus can only decide whether a spike happens.",
         "Amplitude is fixed because it is determined by the sodium and potassium equilibrium potentials, which the stimulus does not touch. The stimulus only pushes the membrane past the point where voltage-gated sodium channels open faster than potassium can oppose them — and after that the spike is a runaway that runs the same way every time."
+      ],
+      "term": [
+        "action potential",
+        "all-or-nothing",
+        "The all-or-nothing law",
+        "equilibrium potentials"
       ],
       "sub": [
         "So how hard something is, is sent as how MANY signals, not how big.",

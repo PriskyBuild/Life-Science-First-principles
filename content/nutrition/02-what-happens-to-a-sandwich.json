@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "digestion-is-disassembly",
       "t": [
         "Taking food apart into pieces small enough to cross is called digestion.",
         "Digestion is hydrolysis: polymers cut back into the monomers they were built from — starch to glucose, protein to amino acids, fat to fatty acids.",
         "It is the exact reverse of the polymerisation you met in Biomolecules, run by enzymes, and it reduces everything to a common currency of monomers.",
         "That reduction to a common currency is why any organism can eat any other. Nothing about a cow's protein is retained; it becomes amino acids indistinguishable from those in a lentil, and you rebuild from the pool. Digestion is not purification and not extraction — it is standardisation."
+      ],
+      "term": [
+        "digestion",
+        "hydrolysis",
+        "polymerisation",
+        "standardisation"
       ],
       "sub": [
         "Nothing you eat becomes part of you as it was.",

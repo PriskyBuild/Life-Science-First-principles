@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "self-vs-nonself",
       "t": [
         "Learning not to attack yourself is called tolerance.",
         "Self-tolerance is learned, cell by cell, by destroying the ones that react to you.",
         "Central tolerance: developing lymphocytes are tested against self antigens and deleted if they bind strongly. Peripheral mechanisms catch what escapes.",
         "The thymus deliberately expresses proteins from all over the body — insulin, myelin, retinal proteins — specifically so that T cells can be screened against them. A single transcription factor, AIRE, drives that promiscuous expression, and children who inherit a broken copy develop autoimmunity against many organs at once."
+      ],
+      "term": [
+        "tolerance",
+        "Self-tolerance",
+        "Central tolerance",
+        "AIRE"
       ],
       "sub": [
         "It is not built in. It has to be learned, and it can go wrong.",

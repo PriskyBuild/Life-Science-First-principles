@@ -64,11 +64,18 @@
     },
     {
       "type": "name",
+      "concept": "limits-of-change",
       "t": [
         "Change inside a group is easy to see. Change into a whole new kind of thing is the argument.",
         "Small-scale change within a population is directly observed. Whether the same process, given enough time, accounts for the major groups is what is actually disputed.",
         "Microevolution — change in allele frequencies within populations, including speciation — is observed and undisputed. Macroevolution — the origin of major body plans by the same mechanism extrapolated — is the contested extrapolation.",
         "The terms are worth using precisely, because a great deal of argument at cross purposes comes from one side defending observed microevolution and the other attacking unobserved macroevolution, as though the same claim were in view."
+      ],
+      "term": [
+        "Change inside a group",
+        "Small-scale change within a population",
+        "Microevolution",
+        "observed microevolution"
       ],
       "sub": [
         "Both sides agree new species can appear. That surprises most people.",

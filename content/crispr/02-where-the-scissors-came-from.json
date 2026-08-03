@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "bacterial-origin",
       "t": [
         "The library of past attackers is called a CRISPR array, and it is a bacterium's memory.",
         "The CRISPR array is a genuine adaptive immune system: acquired, specific, heritable, and stored as sequence.",
         "Acquisition, expression and interference — the same three phases as vertebrate adaptive immunity, implemented in DNA rather than in cell populations.",
         "It differs from your immune system in one striking way: the memory is written into the genome and inherited by every descendant. A bacterium that survives an infection passes the immunity on, which is Lamarckian in form — acquired characteristics genuinely being inherited — and one of very few real instances."
+      ],
+      "term": [
+        "CRISPR array",
+        "adaptive immune system",
+        "Acquisition, expression and interference",
+        "Lamarckian"
       ],
       "sub": [
         "The spacers are a record of what that bacterium's ancestors survived.",

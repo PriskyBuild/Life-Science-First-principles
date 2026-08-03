@@ -89,11 +89,18 @@
     },
     {
       "type": "name",
+      "concept": "expression-is-selective",
       "t": [
         "Which pages a cell reads is called gene expression.",
         "Which genes a cell is reading at any moment is its pattern of gene expression.",
-        "Gene expression: the regulated transcription of a subset of the genome. Identity is a expression state, not a genomic one.",
+        "Gene expression: the regulated transcription of a subset of the genome. Identity is an expression state, not a genomic one.",
         "Regulation is where the complexity lives. Human and chimpanzee protein-coding sequence differs by little more than one percent; most of what distinguishes them is when and where genes are switched on."
+      ],
+      "term": [
+        "gene expression",
+        "gene expression",
+        "Gene expression",
+        "Regulation"
       ],
       "sub": [
         "Nothing gets thrown away. It just gets switched off.",

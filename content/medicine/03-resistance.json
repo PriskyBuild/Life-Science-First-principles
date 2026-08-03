@@ -68,11 +68,18 @@
     },
     {
       "type": "name",
+      "concept": "resistance-is-selection",
       "t": [
         "Resistance is natural selection with the medicine doing the choosing.",
         "Antimicrobial resistance is selection: bacteria vary, the variation is heritable, and the drug makes survival depend on it. The outcome follows automatically.",
         "The drug supplies only the third condition. Variation and heredity belong to the bacteria, so no property of the molecule can prevent resistance — only slow it.",
         "Fleming said so in his 1945 Nobel lecture, before resistance was a clinical problem, because the mechanism made it inevitable. That is a prediction from theory, made in advance, and it was right — which is a better argument for taking the theory seriously than any retrospective explanation."
+      ],
+      "term": [
+        "Resistance",
+        "Antimicrobial resistance",
+        "the third condition",
+        "Fleming"
       ],
       "sub": [
         "So the aim is never to prevent it. It is to slow it down.",

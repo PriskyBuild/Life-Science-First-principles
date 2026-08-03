@@ -186,11 +186,18 @@
     },
     {
       "type": "name",
+      "concept": "risk-and-benefit",
       "t": [
         "A medicine is not just a molecule. It is a molecule plus proof, plus rules, plus a way to get it.",
         "Treatment is a system: a causal target, a deliverable molecule, controlled evidence, usage discipline and access. Failure at any point makes the rest worthless.",
         "The scientific requirements are necessary and not sufficient. The last two are institutional problems, and they are the ones that determine how much good a treatment actually does.",
         "It is worth being precise about which kind of problem you are looking at, because they need different work. A delivery failure needs chemists; a stewardship failure needs prescribing policy; an access failure needs pricing and supply chains. Treating all of them as 'we need more research' is the standard error and it wastes the effort."
+      ],
+      "term": [
+        "a molecule plus proof",
+        "Treatment is a system",
+        "necessary and not sufficient",
+        "a stewardship failure"
       ],
       "sub": [
         "The hardest parts are often not the scientific ones.",

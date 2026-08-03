@@ -204,11 +204,18 @@
     },
     {
       "type": "name",
+      "concept": "designing-responsibly",
       "t": [
         "Being able to say how you would find out you were wrong is the whole thing. Everything else was practice.",
         "A design is defensible when it states a purpose, a mechanism, a disconfirming test, a route back and a source of permission. Four of those five are not biology.",
         "This is also, in reverse, how everything in these six worlds was established. Somebody stated what they thought was happening, said what would be observed if they were wrong, and went and looked.",
         "It is worth seeing the pattern whole now that you have done it a hundred times. You changed one thing at a time and watched what moved. You ran the model before you trusted the story about it. You found the cases where the maximum lost to the middle, where the fastest copy was not the best one, where removing one animal changed three others. Nothing in that method is about biology in particular — which is why it transfers, and why it is the thing actually worth taking away from here."
+      ],
+      "term": [
+        "how you would find out you were wrong",
+        "a disconfirming test",
+        "what would be observed if they were wrong",
+        "why it transfers"
       ],
       "sub": [
         "You have done this a hundred times already. This is just the name for it.",

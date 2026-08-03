@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "biology-as-parts",
       "t": [
         "Making biological parts standard, so they work the same every time, is called synthetic biology.",
         "Synthetic biology treats biological components as characterised, composable parts — the engineering discipline biology has never had.",
         "The aspiration is abstraction: use a part by its specification without knowing its internals, as an electronic engineer does. Standard registries of characterised parts exist for exactly this.",
         "The aspiration has proved much harder than the founders expected, and it is worth being honest about why. Parts interact through the host's shared resources — ribosomes, polymerase, energy — so adding a second circuit changes the behaviour of the first. That is a violation of the modularity assumption the whole approach rests on, and it is not a bug in any particular part."
+      ],
+      "term": [
+        "synthetic biology",
+        "Synthetic biology",
+        "abstraction",
+        "the modularity assumption"
       ],
       "sub": [
         "It is a good idea that biology keeps resisting.",

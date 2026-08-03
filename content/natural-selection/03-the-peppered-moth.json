@@ -95,11 +95,18 @@
     },
     {
       "type": "name",
+      "concept": "selection-is-observed",
       "t": [
         "This really happened, and people wrote the numbers down.",
         "Industrial melanism in the peppered moth, Biston betularia. Measured, published, argued over, re-measured, and confirmed.",
         "The dark form went from under 2% to over 90% in polluted areas in about fifty years, then reversed after clean-air legislation. Both directions were tracked by direct counting.",
         "Kettlewell's original 1950s experiments were later criticised on methodology — moths pinned to trunks, releases in unnatural densities — and creationist critiques made much of that. Michael Majerus then spent seven years, 2001 to 2007, redoing it properly with natural resting positions, and the result held. That sequence is worth as much as the finding: a challenged result was re-tested and survived."
+      ],
+      "term": [
+        "",
+        "Industrial melanism",
+        "direct counting",
+        "Michael Majerus"
       ],
       "sub": [
         "The moths did not change. Which moths survived did.",

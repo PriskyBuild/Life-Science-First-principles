@@ -186,11 +186,18 @@
     },
     {
       "type": "name",
+      "concept": "food-web-stability",
       "t": [
         "A web survives losing things. A chain does not.",
         "Redundancy is what makes an ecosystem robust: more than one species doing each job means a loss can be absorbed.",
         "Functional redundancy is the property that separates a resilient system from a fragile one, and it is invisible in a diagram that draws one species per role.",
         "It also predicts where the exceptions are. A keystone species is precisely one whose role has no redundancy — which is why keystone effects are not a separate phenomenon but the limiting case of this one, and why they cannot be identified by counting."
+      ],
+      "term": [
+        "A web survives losing things",
+        "Redundancy",
+        "Functional redundancy",
+        "A keystone species"
       ],
       "sub": [
         "Which is why losing lots of species is worse than it sounds.",

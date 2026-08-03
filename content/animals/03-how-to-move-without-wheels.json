@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "locomotion-tradeoffs",
       "t": [
         "A wheel needs to spin all the way round, and nothing living can do that.",
         "A wheel must rotate freely and continuously, so it cannot be connected to the body — and anything not connected cannot be fed, repaired or grown.",
         "The constraint is topological. Continuous rotation forbids a permanent connection, and blood vessels, nerves and tissue supply all require one. There is no route to a wheel that passes through functioning intermediates.",
         "Bacterial flagella actually are true rotating motors, which shows the physics is not the obstacle. The obstacle is scale and supply: at bacterial size the driving structure is small enough to work without vasculature. Above that, a rotating limb would starve, and the developmental route to one has no viable intermediate step."
+      ],
+      "term": [
+        "spin all the way round",
+        "rotate freely and continuously",
+        "topological",
+        "Bacterial flagella"
       ],
       "sub": [
         "And a wheel is useless on ground that is not flat.",

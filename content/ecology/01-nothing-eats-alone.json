@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "nothing-eats-alone",
       "t": [
         "All those lines together are called a food web.",
         "The whole network of who-eats-what is a food web. A food chain is one thread pulled out of it.",
         "A food web is the full set of trophic links. The chain is a useful abstraction that discards exactly the property — redundancy — that determines how the system responds to loss.",
         "Which is why chains mislead. A chain implies that removing a link breaks everything downstream; a web implies that it usually does not, because there are other routes. Whether a particular removal matters is then an empirical question about that web's structure rather than something readable off a diagram."
+      ],
+      "term": [
+        "food web",
+        "food web",
+        "trophic links",
+        "chains mislead"
       ],
       "sub": [
         "And the decomposers are the part everyone forgets.",

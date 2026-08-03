@@ -216,11 +216,18 @@
     },
     {
       "type": "name",
+      "concept": "reflex-arc",
       "t": [
         "A loop like this is called a reflex arc, and your brain is not in it.",
         "This is a reflex arc: sensor, in, turn round, out, move. The brain is informed in parallel, not consulted in series.",
         "A spinal reflex arc. The decision is taken by a circuit of two or three neurons in the cord; the ascending pathway to cortex runs alongside and arrives later.",
         "The design constraint is conduction time. A metre and a half at conduction velocity, plus synaptic delays and cortical processing, is a substantial fraction of a second — long enough to matter for tissue damage. Deciding locally is not a shortcut in the pejorative sense; it is the only architecture that meets the deadline."
+      ],
+      "term": [
+        "reflex arc",
+        "reflex arc",
+        "spinal reflex arc",
+        "conduction time"
       ],
       "sub": [
         "Deciding locally is much faster than asking.",

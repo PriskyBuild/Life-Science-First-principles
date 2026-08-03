@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "minimal-genome",
       "t": [
         "The fewest genes something can live with is called a minimal genome.",
         "A minimal genome is the smallest gene set supporting independent life under favourable conditions. JCVI-syn3.0 has 473 and was assembled chemically.",
         "Essentiality is conditional: these are the genes required in rich medium with no competition. A cell facing scarcity, predators or variable temperature needs a great many more.",
         "That conditionality is why 'minimal' is a claim about an environment rather than about life. The stripped cell is a laboratory organism that would not survive an hour anywhere real — which makes it a superb tool for asking what a cell must do, and a poor model of what cells actually are."
+      ],
+      "term": [
+        "minimal genome",
+        "minimal genome",
+        "Essentiality is conditional",
+        "That conditionality"
       ],
       "sub": [
         "About 90 of the 473 are essential and completely unexplained.",

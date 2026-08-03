@@ -109,11 +109,18 @@
     },
     {
       "type": "name",
+      "concept": "atp-is-a-flow",
       "t": [
         "The power plants are called mitochondria. The energy they make is called ATP.",
         "Those power plants are mitochondria, and the energy they make is a molecule called ATP.",
         "Mitochondria carry out oxidative phosphorylation, converting glucose and oxygen into ATP — the molecule almost every process in the cell spends.",
         "Mitochondria couple substrate oxidation to a proton gradient and use it to phosphorylate ADP. ATP is the universal intermediate, not the store."
+      ],
+      "term": [
+        "ATP",
+        "ATP",
+        "ATP",
+        "ATP"
       ],
       "sub": [
         "Here is the strange bit: mitochondria are about the size of a whole bacterium.",

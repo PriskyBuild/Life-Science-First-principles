@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "pollination-is-a-deal",
       "t": [
         "A flower is an advert with a payment attached. The payment is nectar.",
         "A flower is a signal plus a reward: colour and scent to advertise, nectar to pay, and pollen transferred as a condition of collection.",
         "Pollination is a mutualism with the structure of a contract — signal, reward, and a mechanism that makes the reward hard to collect without providing the service.",
         "Specificity is what makes it efficient. A flower shaped for one pollinator wastes far less pollen than one broadcasting to all comers, and both parties end up committed to the arrangement. Darwin predicted a moth with a 30-centimetre tongue from the spur of a Madagascan orchid; it was found forty-one years after his death."
+      ],
+      "term": [
+        "nectar",
+        "a signal plus a reward",
+        "a mutualism",
+        "Specificity"
       ],
       "sub": [
         "Red flowers are not for bees. Bees cannot really see red.",

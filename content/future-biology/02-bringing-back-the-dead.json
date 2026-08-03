@@ -209,11 +209,18 @@
     },
     {
       "type": "name",
+      "concept": "de-extinction",
       "t": [
         "Trying to bring an extinct animal back is called de-extinction. What comes back is a very good copy.",
         "De-extinction produces an approximation. The routes are back-breeding, cloning from an intact cell, and editing a close relative's genome — and only the third is available for anything long dead.",
         "The recovered sequence is assembled from millions of short damaged fragments, mapped against a living relative's genome to work out where they go. That reference is doing a great deal of the work, so the result is partly the relative by construction.",
         "This makes the word 'back' the contested part rather than the technique. An Asian elephant edited at several dozen loci for cold tolerance is a real and difficult achievement and is not a mammoth; it shares 99.6% of its genome with Asian elephants because it is one. Whether an approximation that fills the same ecological role counts as the species returning is a question about what a species is, and it is being answered implicitly by press release rather than explicitly by argument."
+      ],
+      "term": [
+        "de-extinction",
+        "De-extinction",
+        "The recovered sequence",
+        "the contested part"
       ],
       "sub": [
         "You cannot copy something you cannot read all of.",

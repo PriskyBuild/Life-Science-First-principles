@@ -176,11 +176,18 @@
     },
     {
       "type": "name",
+      "concept": "copy-not-original",
       "t": [
         "The locked room is the nucleus. The copy is called mRNA.",
         "The locked room is the nucleus, the copy is messenger RNA, and the builder is a ribosome.",
         "Transcription copies a gene into mRNA inside the nucleus; translation reads that mRNA into protein at a ribosome outside it.",
         "Transcription produces a processed mRNA; translation decodes it in triplets at the ribosome, with tRNA as the physical adaptor between codon and amino acid."
+      ],
+      "term": [
+        "mRNA",
+        "messenger RNA",
+        "Transcription",
+        "Transcription"
       ],
       "sub": [
         "One room, one copy, one builder. That is how everything in you gets made.",

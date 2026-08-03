@@ -186,11 +186,18 @@
     },
     {
       "type": "name",
+      "concept": "edit-consequences",
       "t": [
         "Cutting is the easy half. What the cell does next is the hard half.",
         "CRISPR cuts. The cell repairs — and which repair pathway it uses determines whether you get the edit you designed or simply a broken gene.",
         "Cas9 makes a double-strand break; the outcome depends on whether the cell uses non-homologous end joining, which disrupts, or homology-directed repair, which can install a chosen sequence.",
         "HDR is far less efficient than end joining and works mainly in dividing cells, which is why precise correction remains much harder than disruption. It is also why base editing and prime editing were developed — they change letters without a double-strand break at all, and they are the more significant advance of the last few years."
+      ],
+      "term": [
+        "the hard half",
+        "which repair pathway",
+        "double-strand break",
+        "base editing and prime editing"
       ],
       "sub": [
         "Breaking a gene is easy. Fixing one is not.",

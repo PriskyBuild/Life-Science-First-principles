@@ -222,11 +222,18 @@
     },
     {
       "type": "name",
+      "concept": "closed-life-support",
       "t": [
         "A system where everything goes round and nothing comes in is called closed.",
         "A closed ecological life-support system recycles matter indefinitely, using only energy from outside. Earth is one; a spacecraft has to be built as one.",
         "Energy crosses the boundary and matter does not — which is exactly the distinction from Ecology, made unavoidable by having a physical hull.",
         "Nobody has ever closed one fully. Biosphere 2 famously failed on oxygen in 1991: concrete absorbed carbon dioxide and soil microbes consumed oxygen faster than anyone modelled, and the crew needed injections of outside air. The failure was informative rather than embarrassing — it was a flux nobody had thought to measure."
+      ],
+      "term": [
+        "closed",
+        "closed ecological life-support system",
+        "Energy crosses the boundary",
+        "Biosphere 2"
       ],
       "sub": [
         "Earth is the only one that has ever worked for long.",

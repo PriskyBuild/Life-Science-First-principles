@@ -186,11 +186,18 @@
     },
     {
       "type": "name",
+      "concept": "recombinant-protein",
       "t": [
         "A protein made by putting its gene into something else is called recombinant.",
         "Recombinant protein manufacture: express a human gene in a host organism, then purify the product. Insulin was the first, in 1982.",
         "The advantages are supply, consistency and sequence identity. Animal insulin differs from human by one to three amino acids, which is enough to provoke immune responses in some patients.",
         "It also decoupled supply from an unrelated industry. Animal insulin production was limited by how many cattle and pigs were slaughtered, so the treatment for a growing disease was tied to the meat trade — a constraint nobody chose and nobody could relieve. Recombinant production removed it entirely."
+      ],
+      "term": [
+        "recombinant",
+        "Recombinant protein manufacture",
+        "sequence identity",
+        "decoupled supply"
       ],
       "sub": [
         "The bacterium has never had a pancreas and does not need one.",

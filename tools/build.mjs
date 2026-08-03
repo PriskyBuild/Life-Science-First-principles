@@ -102,6 +102,7 @@ const REQUIRED_PER_LEVEL = [
 const lessonFiles = files.filter((f) => /^content\/[^/]+\/[^/]+\.json$/.test(f));
 const reviews = {};
 const stageTypes = {};        // lesson id -> the stage types it contains, for the budget
+const named = [];             // [lesson id, concept] from every naming stage
 
 for (const f of lessonFiles) {
   const lesson = JSON.parse(readFileSync(join(ROOT, f), "utf8"));
@@ -123,6 +124,7 @@ for (const f of lessonFiles) {
       reviews[st.concept] = { q: st.q, options: st.options, answer: st.answer, why: st.why,
         fb: st.fb, from: lesson.id };
     }
+    if (st.type === "name" && st.concept) named.push([lesson.id, st.concept]);
   }
 
   /* The module's concept list is a contract, not documentation. A typo'd
@@ -152,6 +154,22 @@ for (const f of lessonFiles) {
     for (const [label, test] of REQUIRED_PER_LEVEL) {
       if (!mine.some((st) => test(st.type))) where(`level ${lv} has no ${label} — the stage filter stranded it`);
     }
+  }
+}
+
+/* A NAMED CONCEPT MUST BE A TESTED ONE, and this can only be asked once every
+   lesson has been read, because the beat may live in a later lesson of the same
+   module. Two things depend on it. The marker stays swept for a concept the
+   child already owns, and "owns" is read from the retrieval schedule — a concept
+   with no beat never enters the schedule, so its keyword could never light up
+   and nothing would explain why. And a naming with no retrieval anywhere is a
+   word given and never asked for again, which is the definition of teaching a
+   label instead of an idea. (D87) */
+for (const [lessonId, concept] of named) {
+  if (!reviews[concept]) {
+    fail(`${lessonId}: the naming stage claims concept "${concept}", which no check stage `
+      + `anywhere tests — so it is never scheduled, never asked again, and the keyword `
+      + `for it can never light up`);
   }
 }
 

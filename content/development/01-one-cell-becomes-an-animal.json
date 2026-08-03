@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "one-cell-to-many",
       "t": [
         "Cells become different because of where they end up, not because they were told to.",
         "Cells differentiate according to position. A cell's fate is decided by its neighbours and its location, not by an instruction it was handed.",
         "Differentiation is positional. Identical genomes, different signalling environments, different subsets of genes switched on — which is the previous world's lesson doing structural work.",
         "The logic is local throughout: no cell has any representation of the organism it is part of. Global order emerges from short-range signalling, which is the same class of explanation as the beetle population and the thirty trillion cells that never meet."
+      ],
+      "term": [
+        "where they end up",
+        "differentiate according to position",
+        "Differentiation is positional",
+        "short-range signalling"
       ],
       "sub": [
         "The same instructions, read differently depending on where you are.",

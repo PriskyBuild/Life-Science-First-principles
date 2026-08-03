@@ -225,11 +225,18 @@
     },
     {
       "type": "name",
+      "concept": "intervention-tradeoffs",
       "t": [
         "Every fix does something you did not intend. The question is whether you looked.",
         "Interventions in connected systems always have effects beyond their target. The useful discipline is not avoiding them but tracing them before acting.",
         "Second-order effects are the rule rather than the exception in any system with more than one link per node — which is every ecosystem.",
         "The four questions generalise well beyond ecology: what is upstream, what is downstream, can this be undone, and what does success look like. Any policy that cannot answer the third should face a much higher bar than one that can."
+      ],
+      "term": [
+        "something you did not intend",
+        "effects beyond their target",
+        "Second-order effects",
+        "The four questions"
       ],
       "sub": [
         "And some fixes really do work.",

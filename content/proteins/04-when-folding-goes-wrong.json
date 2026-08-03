@@ -81,11 +81,18 @@
     },
     {
       "type": "name",
+      "concept": "misfolding-disease",
       "t": [
         "The cell has helpers that stop proteins folding wrong. They are called chaperones.",
         "Chaperone proteins bind newly made chains and prevent them from aggregating while they fold.",
         "Chaperones do not specify the fold — they suppress the wrong outcomes, mainly by keeping exposed hydrophobic surfaces from finding each other.",
         "The distinction matters: a chaperone raises the yield of the native state without adding information to it. Anfinsen still holds — the sequence determines the structure — and the chaperone only improves the odds of getting there without aggregating on the way."
+      ],
+      "term": [
+        "chaperones",
+        "Chaperone proteins",
+        "Chaperones",
+        "the native state"
       ],
       "sub": [
         "And a cell can throw away the ones that still come out wrong.",

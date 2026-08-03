@@ -37,11 +37,18 @@
     },
     {
       "type": "name",
+      "concept": "homology",
       "t": [
         "Bones that match like this are called homologous. It means 'the same underneath'.",
         "Structures that match part-for-part in this way are called homologous — the same underlying plan doing different jobs.",
         "Homologous structures: the same skeletal elements in the same topological relationships, serving different functions. Contrast analogous structures, which do the same job by different means — a bird wing and an insect wing.",
         "Homology is a claim about correspondence of parts, not of function. It is diagnosed by relative position, developmental origin and connectivity, and it is deliberately independent of what the structure is used for — otherwise it would be circular."
+      ],
+      "term": [
+        "homologous",
+        "homologous",
+        "Homologous structures",
+        "Homology"
       ],
       "sub": [
         "The bat and the whale do totally different things with them.",

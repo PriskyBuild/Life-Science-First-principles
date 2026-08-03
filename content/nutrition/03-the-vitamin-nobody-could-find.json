@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "essential-nutrients",
       "t": [
         "Things your body needs and cannot make are called essential nutrients.",
         "An essential nutrient is one an organism requires and cannot synthesise, so it has to come from food. Vitamin C is essential for us and not for a dog.",
         "Essentiality is species-specific and reflects lost biosynthetic capacity. Humans, other primates and guinea pigs carry a broken gene for the final enzyme in vitamin C synthesis — the same gene you met in the shared-errors lesson.",
         "The broken GULO pseudogene is why we need fruit and a dog does not, and it is the same molecular fact used as evidence in the DNA module. Worth noticing the connection: a nutritional requirement and a genomic scar are the same observation seen from two directions."
+      ],
+      "term": [
+        "essential nutrients",
+        "essential nutrient",
+        "Essentiality",
+        "GULO pseudogene"
       ],
       "sub": [
         "A dog makes its own vitamin C. You cannot, because the instruction is broken.",

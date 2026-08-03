@@ -25,6 +25,19 @@ const cases = [
   ["feedback with the wrong count",      (l) => (l.stages[5].fb = ["only one"], l)],
   ["feedback with an empty entry",       (l) => (l.stages[5].fb = ["a", "", "c"], l)],
   ["an unknown stage type",              (l) => (l.stages[0].type = "lecture", l)],
+
+  /* The naming stage. The first three are shape; the last three are the reason
+     the field exists at all — a term the renderer cannot find is a highlight
+     that silently does not happen, which is invisible unless something refuses
+     to build. Level 2 is used for the term cases because "Surface area" is in
+     that sentence and nowhere near the others. (D87) */
+  ["a naming with no concept",           (l) => (delete l.stages[4].concept, l)],
+  ["a naming with no term at all",       (l) => (delete l.stages[4].term, l)],
+  ["a term empty at every level",        (l) => (l.stages[4].term = ["", "", "", ""], l)],
+  ["a term missing from its sentence",   (l) => (l.stages[4].term[1] = "mitochondria", l)],
+  ["a term that is only part of a word", (l) => (l.stages[4].term[1] = "Surf", l)],
+  ["a term appearing twice",             (l) => (l.stages[4].t[1] += " Surface area again.", l)],
+  ["more terms than levels",             (l) => (l.stages[4].term = ["a", "b", "c", "d", "e"], l)],
 ];
 
 let bad = 0;

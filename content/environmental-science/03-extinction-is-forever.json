@@ -60,11 +60,18 @@
     },
     {
       "type": "name",
+      "concept": "extinction-is-permanent",
       "t": [
         "When the last one dies, that is extinction, and nothing brings it back.",
         "Extinction is the loss of the last individual, and it is irreversible in a way almost nothing else in biology is.",
         "Extinction is irreversible because a species is not a design but a particular accumulated history — a combination of alleles assembled over millions of years and not recoverable from a specification.",
         "It is also why bottlenecks matter long before extinction does. Cheetahs passed through one about 12,000 years ago and remain so genetically uniform that unrelated individuals accept skin grafts from each other. The population recovered in number and never recovered in variation, and it is now unusually vulnerable to any new disease."
+      ],
+      "term": [
+        "extinction",
+        "Extinction",
+        "a particular accumulated history",
+        "bottlenecks"
       ],
       "sub": [
         "Losing variation is losing the ability to change later.",

@@ -95,11 +95,18 @@
     },
     {
       "type": "name",
+      "concept": "chromosome-structure",
       "t": [
         "The thread is called DNA. Wound up tight, it makes a chromosome.",
         "The thread is DNA. Wound around proteins and coiled repeatedly, it forms a chromosome.",
         "DNA wound around histone octamers forms nucleosomes; nucleosomes coil into fibres, fibres loop onto a scaffold, and the fully condensed result is a chromosome.",
         "The hierarchy is DNA → nucleosome → 30 nm fibre → looped domain → chromatid. Only the last is visible by light microscopy, and only during division, which is why chromosomes were described long before DNA was."
+      ],
+      "term": [
+        "chromosome",
+        "chromosome",
+        "chromosome",
+        "chromatid"
       ],
       "sub": [
         "You have 46 of them in nearly every cell.",

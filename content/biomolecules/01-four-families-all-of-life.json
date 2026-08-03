@@ -93,11 +93,18 @@
     },
     {
       "type": "name",
+      "concept": "polymers-from-monomers",
       "t": [
         "The four families are carbohydrates, lipids, proteins and nucleic acids.",
         "Carbohydrates, lipids, proteins and nucleic acids. Three of the four are chains of repeating units.",
         "Carbohydrates, lipids, proteins and nucleic acids. Three are polymers built from monomers; lipids are the odd one out and are not chains at all.",
         "The polymer trick — a small monomer set joined in arbitrary order — appears three times independently in that list, which tells you something about how few good solutions there are to the problem of open-ended variety."
+      ],
+      "term": [
+        "four families",
+        "chains of repeating units",
+        "polymers built from monomers",
+        "The polymer trick"
       ],
       "sub": [
         "Small pieces, joined into long strings, in any order you like.",

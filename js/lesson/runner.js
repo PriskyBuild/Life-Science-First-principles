@@ -46,10 +46,26 @@ export async function loadLesson(path) {
   return lesson;
 }
 
-/** Every concept a lesson tests, in order. Drives what gets seeded into the
-    retrieval schedule on completion. */
+/** Every concept a lesson TESTS, in order. Drives what gets seeded into the
+    retrieval schedule on completion.
+
+    CHECK STAGES ONLY, and that word is doing work. This used to seed from any
+    stage carrying a concept id, which put two concepts into the schedule that
+    no beat could ever answer: `content/reviews.json` is lifted from check
+    stages, the review screen drops a concept it has no beat for, and `review()`
+    is the only thing that advances a due date. So those two came due, were
+    silently skipped, never advanced, and came due again — for ever. The Atlas
+    counted them honestly and was wrong every day of the child's life.
+
+    The rule underneath it is not a caching detail. A retrieval beat needs a
+    right answer. A `predict` stage has an outcome rather than a mark, because a
+    wrong prediction is the point of the stage. A `weigh` stage has no answer AT
+    ALL, on purpose — turning an attributed disagreement into a flashcard with a
+    correct option would be this platform quietly picking a side. So "seeded" and
+    "testable" have to be the same set, and the way to guarantee that is to
+    derive one from the other rather than to remember. (D87) */
 export const conceptsOf = (lesson) =>
-  [...new Set(lesson.stages.filter((s) => s.concept).map((s) => s.concept))];
+  [...new Set(lesson.stages.filter((s) => s.type === "check" && s.concept).map((s) => s.concept))];
 
 /** Walks a lesson for one level. Deliberately a plain object with an index —
     a state machine class here would be an abstraction over `i++`. */
