@@ -747,7 +747,13 @@ body:not([data-ready]) #main { opacity: 0; }
 #main { opacity: 1; transition: opacity var(--t-state) linear; }
 
 /* ------------------------------------------------------------------ continue */
-.continue {
+/* ONE CARD, TWO USES. The review call reused .continue-kicker/-title/-hook for
+   their appearance — and those classes also carry grid PLACEMENT, which only
+   resolves inside .continue's named areas. .review-call declared no areas, so
+   all three lines landed in the same cell and printed on top of each other at
+   every width. Styling and placement bundled into one class is the fault; the
+   two cards now share one grid rather than one set of child classes. (D74) */
+.continue, .review-call {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas: "kicker icon" "title icon" "hook icon";
@@ -762,13 +768,15 @@ body:not([data-ready]) #main { opacity: 0; }
   text-decoration: none; color: var(--ink);
   min-height: var(--touch);
 }
+.review-call { margin-bottom: var(--s-6); }
+
 .continue-kicker {
   grid-area: kicker; font-size: var(--fs-sm); font-weight: var(--weight-bold);
   letter-spacing: .06em; text-transform: uppercase; color: var(--w-text);
 }
 .continue-title { grid-area: title; font-family: var(--font-display); font-size: var(--fs-xl); }
 .continue-hook { grid-area: hook; color: var(--ink-2); font-size: var(--fs-sm); max-width: var(--measure); }
-.continue .icon { grid-area: icon; color: var(--w-text); }
+.continue .icon, .review-call .icon { grid-area: icon; color: var(--w-text); }
 
 /* ------------------------------------------------------------------- islands */
 .islands {
@@ -1122,19 +1130,6 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
    somewhere. It sits above the Continue card because a due retrieval is worth
    more than the next lesson. (It was flat and dashed while the review flow did
    not exist; the affordance audit caught the day that stopped being true.) ---- */
-.review-call {
-  display: grid; grid-template-columns: 1fr auto; align-items: center;
-  gap: 2px var(--s-4);
-  padding: var(--s-5); margin-bottom: var(--s-6);
-  border-radius: var(--r-lg);
-  border: var(--clay-border) solid var(--w-line);
-  background: var(--w-tint);
-  box-shadow: var(--e1);
-  text-decoration: none; color: var(--ink);
-  min-height: var(--touch);
-}
-.review-call > span:not(.icon) { grid-column: 1; }
-.review-call > .icon { grid-column: 2; grid-row: 1 / -1; color: var(--w-text); }
 .review-call .notice { margin-top: var(--s-3); }
 
 /* ---- shelves: badges and specimens in Me ---- */

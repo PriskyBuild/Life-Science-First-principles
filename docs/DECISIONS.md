@@ -1428,3 +1428,60 @@ anything. The file now states that out loud, forecloses nothing, and sets out th
 put to the owner — locked, free-for-families-not-companies, or fully open — along with the note that
 code and content are usually licensed separately. The choice and the exact legal name are the owner's,
 and both are read from one constant so changing them is a one-line edit.
+
+### D74 — Three lines of text printed on top of each other, on the Atlas, at every width
+*Reported by the owner: "the reminder to relearn and the topic headings overlap." He was right, and
+nothing in a 249-check suite could see it.*
+
+The review reminder — the card a returning child meets first, saying which ideas are due — drew its
+kicker, its title and its hook **in the same grid cell**. Not at one awkward width. At 320, 390, 768 and
+1280, on every save with something due.
+
+**The cause is a habit, not a typo.** `.continue-kicker`, `.continue-title` and `.continue-hook` each
+carried *both* appearance (size, weight, colour) and *placement* (`grid-area: kicker` and friends). The
+review call reused those classes because it wanted the appearance — and inherited placement that only
+resolves inside `.continue`'s `grid-template-areas`. `.review-call` declared a grid of its own with no
+named areas, so all three `grid-area` names resolved to nothing and every line landed at 1/1. **A class
+that bundles what a thing looks like with where it sits cannot be reused for the first without silently
+taking the second.** The fix is not a third set of classes: the two cards now share one grid rule, which
+is what they always meant, and the bespoke `.review-call` block is gone. Nine lines of CSS deleted.
+
+**Why no test caught it is the part worth keeping.** Contrast, affordance, visibility and touch-target
+audits all passed this card happily — every element *was* on screen, correctly coloured, correctly
+sized, correctly touchable. They were simply all in the same place, and **no check in the suite had ever
+asked whether two pieces of text occupy the same rectangle.** There is one now: `overlapAudit()` walks
+the leaf text nodes in `main` and fails on any pair overlapping by more than four pixels in both axes —
+four, because a descender or a rounded corner is not a fault. It runs on seven screens.
+
+It also needed a state no test had ever rendered: **an Atlas with reviews actually due.** Every existing
+Atlas check used a save with an empty schedule, so the card under discussion had never been drawn by the
+suite at all. A screen that only exists in one state of the data is a screen that is only tested in the
+other one.
+
+### D75 — Two flaky tests, and neither was flaky for a mysterious reason
+*Cleaning up after D74, because a suite that fails one run in three teaches you to ignore it.*
+
+**1. The harness aborted a fetch and then blamed the app for noticing.** `openWith()` navigated with
+`waitUntil: "domcontentloaded"`, wrote the save, and navigated again — while `content/curriculum.json`
+was still in flight. The second navigation cancelled it, `loadCurriculum()` threw, and `boot()` did
+exactly the right thing: caught it, told the child the curriculum could not be loaded, and logged the
+error. The console-error audit then counted the harness's own doing as a defect, and only sometimes,
+because it depended on whether the old document was torn down before the log landed.
+
+The app already publishes the signal that was needed. `boot()` sets `[data-ready]` on the body in its
+`finally` block, success path and failure path alike — that is its only honest "I have finished".
+Three navigations now wait for it. Reproduced first with `curriculum.json` held for 200 ms: **8 loads
+out of 8 errored on the old sequence, 0 of 8 with the wait, and no aborted requests at all.** Removing
+the race beats filtering its symptom; a suppression rule would have hidden the next real one.
+
+The diagnostic that made this findable is worth more than the fix. `TypeError: Failed to fetch` names
+no resource, so the harness now records every `requestfailed` with its path and reports them alongside
+the error. **A failure message that does not name what failed is a riddle, not a report.**
+
+**2. A test about event plumbing was riding on a dice roll.** The goal test ran twelve generations of
+natural selection to "establish it works", then asserted the goal fired exactly once. But the test
+directly above it *measures* that selection closes the gap in about nine runs out of ten — so twelve
+generations was a weighted coin, and it came up tails. The claim has nothing to do with how many
+generations adaptation takes; it is that the goal fires once. It now runs *until* the goal is met, with
+a cap as a runaway guard rather than a deadline. The same lesson as D52, in a different costume:
+**assert the rule, never the outcome of a random process.**

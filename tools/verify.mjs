@@ -61,6 +61,30 @@ page.on("console", (m) => {
   }
 });
 page.on("pageerror", (e) => { if (!expectedOffline(String(e))) errors.push(String(e)); });
+/* "TypeError: Failed to fetch" names no resource, which makes it a riddle rather
+   than a report. Record what actually failed, so the next one reads as a fact. */
+const failedRequests = [];
+page.on("requestfailed", (r) => failedRequests.push(
+  `${new URL(r.url()).pathname} (${r.failure()?.errorText ?? "?"})`));
+
+/* THE APP SAYS WHEN IT HAS FINISHED BOOTING; THE HARNESS SHOULD LISTEN. boot()
+   sets [data-ready] on the body in its finally block — success path and failure
+   path alike — and that is the only honest "I am done" this app has.
+
+   domcontentloaded fires long before it. Three tests navigated on that signal and
+   then immediately navigated again, which aborted the content/curriculum.json
+   fetch still in flight; the app then correctly reported a curriculum it could not
+   load, and the console-error audit counted the harness's own doing as a defect.
+   It failed roughly one run in three, which is the worst kind of failing.
+
+   Reproduced by holding curriculum.json for 200ms: 8 loads out of 8 errored on
+   the old sequence, 0 out of 8 with this wait, and no aborted requests at all.
+   Waiting for the flag the app already sets costs nothing and removes the race
+   rather than filtering its symptom. (D75) */
+const landed = async (url = BASE, waitUntil = "domcontentloaded") => {
+  await page.goto(url, { waitUntil });
+  await page.waitForSelector("body[data-ready]", { timeout: 8000 });
+};
 
 await page.goto(BASE, { waitUntil: "networkidle" });
 
@@ -390,6 +414,38 @@ async function elevationDirection(label) {
 }
 
 /* 17. Affordance rule: inside main, raised == touchable, both directions. */
+
+/* Nothing in this suite could see text printed on top of other text. The review
+   reminder had all three of its lines stacked in one grid cell — at every width,
+   on the Atlas, the first screen a returning child sees — and contrast, affordance
+   and visibility audits all passed it happily, because each element was on screen,
+   readable and correctly coloured. They were simply in the same place. (D74)
+
+   Reported by a user. Boxes that overlap by more than a few pixels in both axes
+   are a layout fault; a couple of pixels is a descender or a rounded corner. */
+async function overlapAudit(label) {
+  const clashes = await page.evaluate(() => {
+    const nodes = [...document.querySelectorAll("main h1, main h2, main h3, main p, main span, main a, main li")]
+      .filter((n) => n.textContent.trim() && !n.closest(".sr-only") && window.shown(n)
+        && ![...n.children].some((c) => c.textContent.trim()));   // leaf text only
+    const out = [];
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i].getBoundingClientRect(), b = nodes[j].getBoundingClientRect();
+        const dy = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+        const dx = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+        if (dy > 4 && dx > 4) {
+          out.push(`"${nodes[i].textContent.trim().slice(0, 24)}" over `
+            + `"${nodes[j].textContent.trim().slice(0, 24)}"`);
+        }
+      }
+    }
+    return out;
+  });
+  check(`no text printed on top of other text (${label})`, clashes.length === 0,
+    clashes.slice(0, 2).join(" | "));
+}
+
 async function affordanceRule(label) {
   const bad = await page.evaluate(() => {
     /* <summary> is natively focusable and activates its <details> — it is a
@@ -556,12 +612,13 @@ async function visibilityAudit(url, label) {
    welcome screen only appears on a save with no level set, so it needs its own
    visit rather than riding along on "#/" like the others. (D72) */
 {
-  await page.goto(BASE, { waitUntil: "domcontentloaded" });
+  await landed();
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: "networkidle" });
   await page.waitForSelector(".welcome-h", { timeout: 8000 });
   await auditContrast("light welcome");
   await affordanceRule("welcome");
+  await overlapAudit("welcome");
   const cta = await page.evaluate(() => {
     const b = document.querySelector("main .next-btn");
     const cs = getComputedStyle(b);
@@ -863,7 +920,7 @@ const getSave = () => page.evaluate(() => JSON.parse(localStorage.getItem("fp.pr
    changing only the hash leaves the old in-memory progress in place. Always
    land on the origin, write, navigate, then reload. */
 async function openWith(save, hash = "") {
-  await page.goto(BASE, { waitUntil: "domcontentloaded" });
+  await landed();
   await setSave(save);
   await page.goto(BASE + hash, { waitUntil: "networkidle" });
   await page.reload({ waitUntil: "networkidle" });
@@ -1062,10 +1119,12 @@ await page.waitForSelector(".islands");
 /* 42. No regressions in the rules that hold the whole design together. */
 await affordanceRule("phase 5 Me");
 await auditContrast("phase 5 Me");
+await overlapAudit("Me");
 await page.goto(BASE, { waitUntil: "networkidle" });
 await page.waitForSelector(".islands");
 await affordanceRule("phase 5 Atlas");
 await auditContrast("phase 5 Atlas");
+await overlapAudit("Atlas");
 
 /* ===================== phase 6: the learning engine ===================== */
 
@@ -1254,6 +1313,7 @@ async function stepLesson(maxSteps = 16, stopAt = null) {
   await page.waitForSelector(".stage");
   await affordanceRule("lesson");
   await auditContrast("lesson");
+  await overlapAudit("lesson");
 }
 
 /* ===================== phase 7: simulations ===================== */
@@ -1473,6 +1533,7 @@ async function openSim(lv) {
 {
   await openSim(2);
   await affordanceRule("simulation");
+  await overlapAudit("simulation");
   await auditContrast("simulation");
   await page.screenshot({ path: join(SHOTS, "membrane.png") });
 }
@@ -1661,6 +1722,7 @@ const assemble = (swap = null) => page.evaluate((sw) => {
   }), "#/l/cells/4");
   await page.waitForSelector(".stage");
   await affordanceRule("boss");
+  await overlapAudit("boss");
   await auditContrast("boss");
 }
 
@@ -2110,7 +2172,13 @@ const mountSelection = (body) => page.evaluate(async (src) => {
   const r = await mountSelection(`
     let fired = 0, said = null;
     sim.addEventListener("fp:sim-goal", (e) => { fired++; said = e.detail?.say ?? null; });
-    generations(12);                       // establish it works
+    /* Run UNTIL the goal is met, not for a fixed twelve generations. Selection is
+       stochastic by construction — the test above measures it closing the gap in
+       about nine runs out of ten — so "twelve generations" was a coin weighted
+       against us, and it came up tails. The claim here has nothing to do with how
+       many generations adaptation takes; it is that the goal fires exactly once.
+       Say that instead. The cap is a runaway guard, not a deadline. (D75) */
+    for (let i = 0; i < 200 && !sim.met; i++) sim.next();
     /* Break it by removing VARIATION, not survival. This test is about the
        event plumbing — does the goal fire once, and does it carry the sim's own
        sentence — so it must not ride on a stochastic outcome. With variation
@@ -2508,7 +2576,7 @@ const mountSelection = (body) => page.evaluate(async (src) => {
   const fetched = async (hash, wait, save = freshSave({ level: 2 })) => {
     const seen = [];
     const listen = (r) => seen.push(new URL(r.url()).pathname);
-    await page.goto(BASE, { waitUntil: "domcontentloaded" });
+    await landed();
     await setSave(save);
     page.on("request", listen);
     await page.goto(BASE + hash, { waitUntil: "networkidle" });
@@ -2718,7 +2786,24 @@ const mountSelection = (body) => page.evaluate(async (src) => {
   check("and the shelf says how many you have", /\b3 of \d+/.test(shelf.count), shelf.count);
 }
 
-check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));
+/* 88. The Atlas with something DUE, at every width — the exact state the review
+   reminder is drawn in, and the one no screen in this suite had ever rendered. */
+{
+  const overdue = {};
+  for (const c of ["form-follows-constraint", "surface-area-to-volume", "locomotion-tradeoffs"]) {
+    overdue[c] = { step: 0, ease: 1, reps: 1, lapses: 0, due: Date.now() - 864e5, lastGrade: 1 };
+  }
+  for (const w of [320, 390, 768, 1280]) {
+    await page.setViewportSize({ width: w, height: 900 });
+    await openWith(freshSave({ level: 2, concepts: overdue }));
+    await page.waitForSelector(".review-call");
+    await overlapAudit(`Atlas with reviews due, ${w}px`);
+  }
+  await page.setViewportSize({ width: 1280, height: 900 });
+}
+
+check("no console errors anywhere", errors.length === 0,
+  [...errors.slice(0, 3), ...(failedRequests.length ? [`failed requests: ${failedRequests.slice(0, 4).join(", ")}`] : [])].join(" | "));
 
 await browser.close();
 server.close();
