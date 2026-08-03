@@ -1854,3 +1854,71 @@ behind it carrying the colour. What gets exported is only what was drawn.
 Still nothing shipped. `content/module-art.json` was written by the test and deleted again; the display
 side stays out until there are drawings worth displaying, and restoring it means bringing back the role
 support in `js/icons.js`, the card art slots in `js/screens.js` and the three CSS rules D84 removed.
+
+### D87 — The naming stage records what it names
+
+Column C of the notebook directions rests on one move: the marker sweeps the phrase at the moment the
+word is given, and the boxed keyword in the margin IS the concept id. Checking that against the code
+before building it turned up the hole. Every `check`, `weigh` and `predict` stage carried a concept id.
+**The one stage whose entire job is naming carried a paragraph and nothing else.** Nothing downstream
+could mark the moment a word was given, and the boxed keyword had no id to be.
+
+**The term could not be inferred, and the reason it could not is the pedagogy working.** Across all 110
+naming stages, only 28% use a word that survives all four reading registers — and reading the failures
+showed why. `human-body/02` says "Blood goes round in a loop" at L1 and "a closed circulation" at L2,
+because you do not begin with definitions. `animals/01` moves from "compromises" to "trade-offs". The
+term is real at every level, it is a different word at each, and at L1 it is often absent altogether.
+So `term` is a variants field where an empty entry is legal and means "no name is given here yet", and
+the marker has nothing to sweep. 110 concepts and 432 terms of a possible 440.
+
+**The gate is what makes it a fact.** A term the renderer cannot find is a highlight that silently does
+not happen: no error, no visible fault, a page that looks entirely correct. So the build refuses a term
+that is not in that level's sentence, refuses one that appears twice — two occurrences is a question
+with no answer about which is the naming — and refuses a partial word, because "cell" landing inside
+"cells" puts the marker over half a word. Seven proofs, each of which fires.
+
+**One rule, one place.** The matcher lives in `js/lesson/term.js`, which imports nothing, so a Node
+build reads the same function a browser runs. Two copies would be two rules, and the build would go on
+passing while the marker highlighted nothing. `termHits` was moved OUT of that file into the build after
+measuring: counting is a build-only question and a helper no browser calls has no business on a child's
+device.
+
+**A real bug found on the way, and it was permanent.** `conceptsOf` seeded from any stage carrying a
+concept id, which put two concepts into the retrieval schedule that no beat could ever answer.
+`content/reviews.json` is lifted from check stages, the review screen drops a concept it has no beat
+for, and `review()` is the only thing that advances a due date. So those two came due, were silently
+skipped, never advanced, and came due again — every day, for ever, with the Atlas counting them
+honestly and being wrong. Seeding is check-only now. The rule underneath is not a caching detail: a
+retrieval beat needs a right answer, a prediction has an outcome rather than a mark, and **a weigh stage
+has no answer at all on purpose** — turning an attributed disagreement into a flashcard with a correct
+option would be this platform quietly picking a side. Deriving "seeded" from "testable" makes that
+structural instead of remembered.
+
+**The budget was measured before the design was trimmed, and the assumption was wrong.** A realistic
+first cut of the whole notebook surface — paper, ruling, margin rule, marker, boxed keyword — costs 756
+bytes gzipped against 3,922 bytes of shell headroom. What was actually tight was the lesson JS tier,
+which reached 99% and came back to 97% by moving the long-form reasoning out of the shipped files and
+into this entry. **Comments in a no-build-step project are bytes on a child's device**; the archaeology
+belongs here, and the call site keeps only what a reader needs to act.
+
+**Two things came out cheaper than the plan assumed.** The marker is `--w-fill`, because the palette
+generator already solves ink-on-fill to 4.6:1 for every world in both themes — a yellow highlighter
+would have needed a new gate; this one arrived gated. And the ruling period is derived rather than
+chosen: the prose dial moves type from 22px to 16px and line height from 1.7 to 1.5, so a fixed pitch
+would sit under the words at L1 and drift off them by L4. One `calc` keeps the lines under the text at
+all four levels, with no per-level rules and no script.
+
+**The sweep uses no JavaScript at all.** An animation runs when the element enters the document, so the
+highlight is a consequence of the stage being drawn rather than of anything remembering to start it.
+Under reduced motion the same rules arrive at the end state — already highlighted — which is the honest
+degradation, because the information was never in the movement.
+
+The boxed keyword's two new colour pairs were measured before being shipped: deep-on-fill runs 8.7 to
+9.4 and world-text-on-paper 4.8 to 5.1, across every world in both themes. The generator now gates
+deep-on-fill as well, which changed no value today and exists so the next hue change cannot quietly take
+it below the line.
+
+Not done here, and deliberately: the handwriting face, because it is the only part of column C that adds
+a request and a download to a child's device and it should be judged on its own; and the hand-drawn
+marks, which need content before they need code. The lesson JS tier is at 97%, so the next thing added
+to it needs a saving first.

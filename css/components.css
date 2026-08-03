@@ -517,12 +517,41 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
    One stage on screen at a time, deliberately. A scrollable lesson invites
    skimming to the quiz; a paged one makes each beat a decision.
    =========================================================================== */
+/* PAPER, NOT APP. Two gradients: no image, no request, and dark mode for free
+   because every colour resolves from the world palette. The ruling period is
+   DERIVED — the prose dial moves type 22px to 16px and line height 1.7 to 1.5,
+   so a fixed pitch would drift off the words by L4. Stock stays the world tint,
+   because a cream page would cost the only thing that says which world. (D87) */
 .stage-wrap {
+  --rule: calc(var(--type-scale) * 1rem * var(--lh-body));
   display: grid; gap: var(--s-5);
   padding: var(--s-5); border-radius: var(--r-lg);
   border: var(--clay-border) solid var(--w-line);
-  background: var(--w-tint);
+  background-color: var(--w-tint);
+  background-image: linear-gradient(color-mix(in oklab, var(--w-line) 20%, transparent) 1px,
+                                    transparent 1px);
+  background-size: 100% var(--rule);
+  background-position: 0 calc(var(--s-5) + var(--rule) - 1px);
   box-shadow: var(--e0);            /* a stage is a place, not a control */
+}
+/* Only where there is room. On a phone that space is space an L1 reader needs. */
+@media (min-width: 46rem) {
+  .stage-wrap {
+    --marg: 2.75rem;
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--w-line) 20%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, transparent var(--marg),
+        color-mix(in oklab, var(--w-line) 38%, transparent) var(--marg),
+        color-mix(in oklab, var(--w-line) 38%, transparent) calc(var(--marg) + 1px),
+        transparent calc(var(--marg) + 1px));
+    background-size: 100% var(--rule), 100% 100%;
+    background-position: 0 calc(var(--s-5) + var(--rule) - 1px), 0 0;
+    padding-inline-start: calc(var(--marg) + var(--s-4));
+  }
+}
+/* Texture goes first when someone has asked the system for more contrast. */
+@media (prefers-contrast: more) {
+  .stage-wrap { background-image: none; padding-inline-start: var(--s-5); }
 }
 .stage-host { min-height: 16rem; display: grid; align-content: start; }
 
@@ -533,6 +562,45 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
   text-transform: uppercase; letter-spacing: .06em; color: var(--w-text);
 }
 .stage-hook, .stage-name { font-size: var(--fs-xl); }
+
+/* THE MARKER IS THE NAMING. No script: an animation runs when the element
+   enters the document, so the sweep is a consequence of the stage being drawn.
+   Reduced motion arrives at the end state — the information was never in the
+   movement. --w-fill because the palette generator already solves ink-on-fill
+   to 4.6:1 in both themes; a yellow highlighter would need a new gate. (D87) */
+.stage-name .term {
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(var(--w-fill), var(--w-fill));
+  background-repeat: no-repeat;
+  background-position: 0 .45em;
+  background-size: 0 .62em;
+  padding-inline: .1em;
+  border-radius: .14em;
+  animation: sweep calc(460ms * var(--motion-scale)) cubic-bezier(.2, .8, .3, 1) 240ms both;
+}
+@keyframes sweep {
+  from { background-size: 0 .62em; }
+  to   { background-size: 100% .62em; }
+}
+/* Already met: no sweep, because the moment has already happened. */
+.stage-name .term[data-known] { animation: none; background-size: 100% .62em; }
+@media (prefers-reduced-motion: reduce) {
+  .stage-name .term { animation: none; background-size: 100% .62em; }
+}
+
+/* THE BOXED KEYWORD — the term the way a child boxes a word, carrying the
+   concept id underneath. Filled once it is in the schedule, so the ones you own
+   look different from the ones you met once. */
+.stage-term {
+  justify-self: start;
+  font-family: var(--font-display); font-weight: var(--weight-display);
+  font-size: var(--fs-sm); font-style: normal; line-height: 1.25;
+  color: var(--w-text); background: var(--paper);
+  border: 2px solid var(--w-line); border-radius: var(--r-sm);
+  padding: .22em .55em;
+}
+.stage-term[data-known] { background: var(--w-fill); color: var(--w-deep); }
 .stage-lead { font-size: var(--fs-lg); }
 .stage-sub, .stage-note { color: var(--ink-2); }
 .stage-note { font-size: var(--fs-sm); }

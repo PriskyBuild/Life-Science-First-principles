@@ -29,6 +29,12 @@ const clamp = (n, lo, hi) => Math.min(hi, Math.max(lo, n));
 
 export const blank = () => ({ step: 0, ease: 1, reps: 0, lapses: 0, due: 0, lastGrade: null });
 
+/** Has this child met this concept before? The schedule is the record of what
+    has been named and tested, so it is also the honest answer to "do I already
+    own this" — which is what keeps a naming already highlighted on a second
+    visit instead of replaying a moment that has passed. (D87) */
+export const met = (conceptId) => !!progress.concepts[conceptId];
+
 /** First encounter: schedule the concept for tomorrow. */
 export function seed(conceptId, now = Date.now()) {
   update((p) => {

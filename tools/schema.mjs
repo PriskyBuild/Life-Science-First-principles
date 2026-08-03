@@ -46,7 +46,15 @@
    redefining it: the build must refuse a naming term by exactly the rule the
    browser will use to find it. js/lesson/term.js imports nothing itself, which
    is what makes it readable from Node. */
-import { termHits } from "../js/lesson/term.js";
+import { termSpan } from "../js/lesson/term.js";
+
+/* Counting is a build-only question, so it is asked here rather than shipped:
+   a helper no browser calls has no business on a child's device. */
+const termHits = (text, word) => {
+  let n = 0;
+  for (let cut, rest = text; (cut = termSpan(rest, word)); rest = cut[2]) n++;
+  return n;
+};
 
 export const KINDS = new Set(["text", "slug", "lessonId", "int", "variants", "options",
   "perOption", "list", "any"]);

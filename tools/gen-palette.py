@@ -49,7 +49,12 @@ def scope(ground, ink, dark):
                 or min(contrast(r["text"], g) for g in checks) < 4.5
                 or contrast(r["fill"], ink) < 4.5
                 # `deep` is used as a solid fill with page-coloured text on it
-                or contrast(r["deep"], ground) < 4.5):
+                or contrast(r["deep"], ground) < 4.5
+                # ...and `deep` on `fill` is the boxed keyword once the concept
+                # is owned. Measured at 8.7 to 9.4 across every world in both
+                # themes, so this gate costs nothing today — it exists so that
+                # the next hue change cannot quietly take it below the line.
+                or contrast(r["deep"], r["fill"]) < 4.5):
             fails.append(key)
     return out, fails
 

@@ -1241,6 +1241,21 @@ async function stepLesson(maxSteps = 16, stopAt = null) {
     if (t === "predict") await page.locator(".predict-option").first().click();
     if (t === "check") await page.locator(".quiz-option").first().click();
     if (t === "slider") { await page.locator("fp-slider input").focus(); await page.keyboard.press("End"); }
+    if (t === "sim") { await page.waitForSelector(".sim-canvas"); await page.locator(".stage-actions button").click(); }
+    /* A WALKER THAT STOPS AT A BUILD STAGE CANNOT TEST ANYTHING AFTER ONE, and
+       52 lessons of 110 have one. It stopped silently — the Next button is
+       disabled, the loop breaks, and the caller gets a short path that looks
+       like a complete one. Assembled by tap-then-tap using each slot's own
+       answer, because a boss slot is unconstrained and carries no `accepts`. */
+    if (t === "build") {
+      const slots = await page.locator("fp-slot").count();
+      for (let k = 0; k < slots; k++) {
+        const want = await page.locator("fp-slot").nth(k).getAttribute("data-correct");
+        await page.locator(`fp-placeable[data-id="${want}"]`).click();
+        await page.locator("fp-slot").nth(k).click();
+        await page.waitForTimeout(30);
+      }
+    }
     const next = page.locator(".next-btn");
     if (!(await next.count()) || await next.isDisabled()) break;
     await next.click();
@@ -1267,6 +1282,71 @@ async function stepLesson(maxSteps = 16, stopAt = null) {
   check("no child ever sees both tracks",
     [1, 2, 3, 4].every((lv) => per[lv].seen.filter((t) => t === "slider").length === 1),
     [1, 2, 3, 4].map((lv) => per[lv].seen.filter((t) => t === "slider").length).join(","));
+}
+
+/* 43b. THE MARKER IS THE NAMING, so what is tested is that the right run of
+   characters is marked and that nothing was lost cutting the sentence up —
+   not what the highlight looks like. A renderer that silently marked nothing
+   would still have drawn a correct-looking page, which is the whole reason
+   this is a test rather than a screenshot. (D87) */
+{
+  const lesson = JSON.parse(readFileSync(join(ROOT, "content/cells/01-city-in-a-speck.json"), "utf8"));
+  const naming = lesson.stages.find((s) => s.type === "name");
+
+  const at = async (lv, extra = {}) => {
+    await openWith(freshSave({ level: lv, ...extra }), "#/l/cells/0");
+    await page.waitForSelector(".stage");
+    await stepLesson(16, "name");
+    return {
+      sentence: await page.locator(".stage-name").textContent(),
+      marks: await page.locator(".stage-name mark.term").count(),
+      marked: await page.locator(".stage-name mark.term").first().textContent().catch(() => null),
+      known: await page.locator(".stage-name mark.term[data-known]").count(),
+      boxed: await page.locator(".stage-term").first().textContent().catch(() => null),
+    };
+  };
+
+  const seen = {};
+  for (const lv of [1, 4]) seen[lv] = await at(lv);
+
+  check("the naming marks the term the content declares, once",
+    [1, 4].every((lv) => seen[lv].marks === 1 && seen[lv].marked === naming.term[lv - 1]),
+    [1, 4].map((lv) => `L${lv} ${seen[lv].marks}x "${seen[lv].marked}"`).join("  "));
+
+  /* Cutting a sentence into three text nodes is exactly the operation that
+     loses a character at a boundary, and it would lose it silently. */
+  check("cutting the sentence up loses nothing",
+    [1, 4].every((lv) => seen[lv].sentence === naming.t[lv - 1]),
+    [1, 4].map((lv) => (seen[lv].sentence === naming.t[lv - 1] ? `L${lv} ok` : `L${lv} "${seen[lv].sentence}"`)).join("  "));
+
+  check("the boxed keyword carries the same word as the marker",
+    [1, 4].every((lv) => seen[lv].boxed === seen[lv].marked),
+    [1, 4].map((lv) => `L${lv} box "${seen[lv].boxed}"`).join("  "));
+
+  /* Met already: the sweep must not replay a moment that has passed. The state
+     is read from the retrieval schedule, so this seeds the schedule rather than
+     anything the lesson screen owns. */
+  const fresh = await at(2);
+  const met = await at(2, { concepts: { [naming.concept]: { step: 2, ease: 1, reps: 3, lapses: 0, due: Date.now() + 8.64e7, lastGrade: 1 } } });
+  check("a concept already met arrives already marked, and a new one does not",
+    met.known === 1 && fresh.known === 0, `met ${met.known}, fresh ${fresh.known}`);
+}
+
+/* 43c. A LEVEL THAT WITHHOLDS THE NAME MUST RENDER PLAIN PROSE. "Blood goes
+   round in a loop" names nothing, and the correct rendering of that is a
+   sentence with no highlight — not a highlight over an arbitrary phrase. */
+{
+  const lesson = JSON.parse(readFileSync(join(ROOT, "content/what-is-life/02-seven-rules-and-their-exceptions.json"), "utf8"));
+  const naming = lesson.stages.find((s) => s.type === "name");
+  await openWith(freshSave({ level: 1, modules: { "what-is-life": { lessonsDone: 1 } } }), "#/l/what-is-life/1");
+  await page.waitForSelector(".stage");
+  await stepLesson(16, "name");
+  const marks = await page.locator(".stage-name mark.term").count();
+  const boxes = await page.locator(".stage-term").count();
+  const sentence = await page.locator(".stage-name").textContent();
+  check("a level with no name given renders the sentence plain, and no empty box",
+    naming.term[0] === "" && marks === 0 && boxes === 0 && sentence === naming.t[0],
+    `term "${naming.term[0]}", ${marks} marks, ${boxes} boxes`);
 }
 
 /* 44. The same stage reads at the child's level. */

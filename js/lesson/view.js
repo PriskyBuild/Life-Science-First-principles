@@ -10,9 +10,10 @@ import "../components/predict.js";
 import "../components/quiz.js";
 import { sfx, readStage, stopSpeaking, voiceMode, canSpeak } from "../audio.js";
 import { pick, loadLesson, runner, conceptsOf, content } from "./runner.js";
+import { termSpan } from "./term.js";
 import { awardXp, completeLesson } from "../reward.js";
 import { recordLessonPerformance, levelNudge, acceptNudge, declineNudge } from "../level.js";
-import { review, GRADE } from "../scheduler.js";
+import { review, GRADE, met } from "../scheduler.js";
 import { getModule, getWorldOf, lessonFile } from "../curriculum.js";
 import { loadParts } from "./parts.js";
 import { celebrate } from "./celebrate.js";
@@ -84,13 +85,27 @@ const PROSE = {
     ];
   },
 
-  /* The naming. On the guided track this arrives one stage after the
-     exploration; on the open track the child has already got there. */
-  name: (s) => [
-    el("p", { class: "stage-kicker", text: "So that is what it is" }),
-    el("h2", { class: "stage-name", text: pick(s.t) }),
-    s.sub ? el("p", { class: "stage-sub", text: pick(s.sub) }) : null,
-  ],
+  /* The naming, and the marker sweeps the phrase at the moment the word is
+     given. <mark> because it is already the element for "marked for reference",
+     so the highlight survives being read aloud and copied out. `known` comes
+     from the retrieval schedule, so a concept already met arrives already swept
+     rather than replaying a moment that has passed; a level that withholds the
+     name has no term, and the sentence renders plain. (D87) */
+  name: (s) => {
+    const text = pick(s.t);
+    const cut = termSpan(text, pick(s.term));
+    const known = met(s.concept);
+    return [
+      el("p", { class: "stage-kicker", text: "So that is what it is" }),
+      cut ? el("dfn", { class: "stage-term", "data-concept": s.concept,
+        "data-known": known, text: cut[1] }) : null,
+      cut
+        ? el("h2", { class: "stage-name" }, cut[0],
+            el("mark", { class: "term", "data-known": known, text: cut[1] }), cut[2])
+        : el("h2", { class: "stage-name", text }),
+      s.sub ? el("p", { class: "stage-sub", text: pick(s.sub) }) : null,
+    ];
+  },
 
   apply: (s) => [
     el("p", { class: "stage-kicker", text: s.kicker ?? "Why this matters" }),
