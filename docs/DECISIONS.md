@@ -1569,3 +1569,59 @@ navigating fires `pagehide` and flushes; two direct writes had never learned it.
 slightly slower.**
 
 261 of 261 pass.
+
+### D80 — The fix shipped on Monday and the person who reported it saw the bug on Wednesday
+*Reported by the owner: "I can't see any changes on Vercel even though it's deployed." He was right, and
+he was right about where to look — "some problem in the linking codes." It was the update path.*
+
+The overlap fix from D74 was in the pushed CSS, the deployment was live, the headers on `sw.js` and
+`index.html` were already `no-cache`, and the rendering was clean locally at every width in both colour
+schemes. And the owner still saw the broken card, because **none of that is the thing that decides what
+a returning visitor gets.** The service worker does.
+
+**So the upgrade was measured, and it took three page loads.** Old build in the cache, new build on the
+server: load one served the old app while the new worker installed; load two ran with the new cache but
+had already fetched the old shell; only load three showed the fix. Nothing on screen said anything was
+happening. **A fix that takes three visits to appear is indistinguishable from a fix that was never
+deployed** — and the person most likely to hit it is the person who reported the bug, because they are
+the one who goes and looks straight away.
+
+**Nothing in the project had ever tested this.** Every offline and caching test installs the worker
+once, on one build, and asks whether the app works. That is a fresh install. A returning visitor is a
+different event, and it is the one that happens ten thousand times more often. `tools/upgrade.mjs`
+builds the tree twice, serves the first, lets the worker take hold, swaps the directory underneath it
+and asserts the new build arrives on the **first** return — and that having arrived it settles rather
+than reloading in a loop.
+
+The fix is four lines: listen for `controllerchange` and reload once. `skipWaiting()` and
+`clients.claim()` were already there and were never enough on their own, because they hand control to
+the new worker without telling the page already on screen, which goes on displaying assets it fetched
+before any of that happened.
+
+**Two guards, both about not making the reader pay for a mistake.** `refreshing` stops the reload loop.
+And the reload only happens if there was a controller to begin with: on a first visit `clients.claim()`
+fires the same event, and reloading a child who has just arrived would be a flicker for nothing.
+
+**The honest limitation, stated because it matters right now.** This cannot fix the deploy that carries
+it. The old `app.js` is what runs on the visit that installs the new one, and the old `app.js` has never
+heard of `controllerchange`. So the *current* correction still costs the owner one hard reload, and
+every deploy after it lands on the first visit. A fix to an update mechanism is always one release late,
+which is a good reason to get update mechanisms right early.
+
+**Two things found underneath it.**
+
+**`addAll()` is all-or-nothing, and that makes precaching able to hold a correction hostage.** One 404
+rejects the whole batch, install fails, `skipWaiting` never runs, and the previous worker serves the
+previous build forever — retrying and failing on every visit. D68 was exactly that, and the fix then
+was to stop putting missing files in the list. That addressed the cause and left the blast radius
+untouched: the next mistake of any kind still freezes the app at whatever version last succeeded, which
+is the hardest failure to diagnose because the app looks perfectly fine, just old. Files are cached one
+at a time now, tolerating individual failures. The build is still what makes sure the list is right.
+**An optimisation must never be able to hold a correction hostage.**
+
+**`jsconfig.json` was being downloaded by every child.** It is a `.json` file in the root, and the
+precache allow-list works by extension, so it went straight through — the same shape of hole as the
+DENY-list in D68, arriving from the opposite direction. Nothing under `tools/`, and no dev config, is
+app content, and the rule says so now rather than relying on the extension list to have an opinion.
+
+261 of 261 in the browser suite, 4 of 4 in the new upgrade gate.

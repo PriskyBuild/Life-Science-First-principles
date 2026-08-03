@@ -38,6 +38,10 @@ const DEV_ONLY = new Set([
   // repo furniture, not app content
   "package.json", "package-lock.json", "vercel.json", "_headers", "README.md", "LICENSE",
   "docs",
+  // jsconfig.json is a .json file at the root, so the extension allow-list waved it
+  // straight through and every child was downloading a TypeScript config in order
+  // to boot. Trivial in size, wrong in kind. (D80)
+  "jsconfig.json", "tsconfig.json",
 ]);
 /* A DENY list was the wrong shape and it cost the whole offline story. Two
    throwaway diagnostic scripts sitting in the repo root got precached because
@@ -49,7 +53,9 @@ const DEV_ONLY = new Set([
    actually serves. Anything else in the tree — a scratch script, a bundle, a
    log, a note — cannot reach a child's device by being forgotten about. */
 const SHIPPED = new Set([".html", ".js", ".css", ".json", ".webmanifest", ".woff2", ".png", ".svg", ".ico"]);
-const files = walk().filter((f) => f !== "sw.js" && SHIPPED.has(extname(f)) && !DEV_ONLY.has(f));
+// Nothing under tools/ is app content, by definition — it is the build's own tree.
+const files = walk().filter((f) => f !== "sw.js" && SHIPPED.has(extname(f))
+  && !DEV_ONLY.has(f) && !f.startsWith("tools/"));
 const CSS_ORDER_FOR_BUDGET = ["css/worlds.css", "css/tokens.css", "css/base.css", "css/components.css"];
 
 /* --------------------------------------------------------- content lint */

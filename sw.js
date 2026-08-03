@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "d19d04dc80a6";
+const VERSION = "1300c92919a3";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -169,13 +169,30 @@ const PRECACHE = [
   "js/sims/stomata.js",
   "js/sims/web.js",
   "js/state.js",
-  "jsconfig.json",
   "manifest.webmanifest"
 ];
 /* __PRECACHE_END__ */
 
+/* ONE BAD FILE MUST NOT STRAND EVERYBODY ON THE OLD VERSION.
+
+   addAll() is all-or-nothing: a single 404 rejects the whole thing, install fails,
+   skipWaiting never runs, and the previous worker goes on serving the previous
+   build — forever, retrying and failing on every visit. D68 was exactly that, and
+   the fix then was to stop putting missing files in the list. That fixed the cause
+   and left the blast radius: the next mistake of any kind still freezes the app at
+   whatever version it last succeeded on, which is the hardest failure to diagnose
+   because the app looks completely fine, just old.
+
+   Cached one at a time, tolerating individual failures. A file that will not fetch
+   degrades that one asset and nothing else; the build is still the thing that
+   makes sure the list is right. Precaching is an optimisation, and an optimisation
+   must never be able to hold a correction hostage. (D80) */
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
+  e.waitUntil((async () => {
+    const c = await caches.open(CACHE);
+    await Promise.all(PRECACHE.map((url) => c.add(url).catch(() => {})));
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener("activate", (e) => {

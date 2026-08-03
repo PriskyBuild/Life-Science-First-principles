@@ -133,7 +133,29 @@ subscribe(() => {
     document.body.dataset.ready = "";
   }
 
+  /* A DEPLOY HAS TO REACH THE CHILD. Registering was the whole of this and it is
+     not enough: the worker serves the shell from its cache, so a returning visitor
+     keeps the OLD app until a new worker has installed, activated, claimed, and
+     then been asked for a fresh page. Measured on the real upgrade — old build in
+     the cache, new build on the server — that took THREE page loads. The first two
+     showed the previous version with nothing to say so. A fix shipped on Monday
+     reached the person who reported it on Wednesday, and looked like it had never
+     shipped at all. (D80)
+
+     controllerchange fires the moment the new worker takes over. Reload once, and
+     the deploy lands on the first return visit instead of the third.
+
+     `refreshing` guards the reload loop. The `controller` test guards the FIRST
+     install: clients.claim() on a page that had no controller also fires this, and
+     reloading a child who has simply arrived would be a flicker for nothing. */
   if ("serviceWorker" in navigator && location.protocol !== "file:") {
+    let refreshing = false;
+    const hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (refreshing || !hadController) return;
+      refreshing = true;
+      location.reload();
+    });
     navigator.serviceWorker.register("sw.js").catch(() => { /* offline is a bonus, not a requirement */ });
   }
 })();

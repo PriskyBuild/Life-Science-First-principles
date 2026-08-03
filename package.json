@@ -10,9 +10,10 @@
     "palette": "python3 tools/gen-palette.py",
     "verify": "node tools/verify.mjs",
     "lighthouse": "node tools/lighthouse.mjs",
-    "check": "npm run schema && npm run types && npm run build && npm run verify && npm run lighthouse",
+    "check": "npm run schema && npm run types && npm run build && npm run verify && npm run upgrade && npm run lighthouse",
     "schema": "node tools/schema-proof.mjs",
-    "types": "node tools/typecheck.mjs"
+    "types": "node tools/typecheck.mjs",
+    "upgrade": "node tools/upgrade.mjs"
   },
   "devDependencies": {
     "chrome-launcher": "^1.1.0",
