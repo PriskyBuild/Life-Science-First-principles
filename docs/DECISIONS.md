@@ -1825,3 +1825,32 @@ luminances mapping to three different roles.
 
 Nothing here ships. It is a desk tool, and the display side stays out of the app until there are
 drawings worth displaying.
+
+### D86 — The canvas is the instruction
+
+The importer proved out on a real Figma export before anybody was asked to draw twenty-five pictures.
+A test drawing — a rotated group, three filled ellipses, a stroke-only curve — went into Figma, came
+back as an SVG with a `rotate()` on every shape, and came out the other side as a cell that is still
+legible at 54px. The picture was looked at, not the log. That is the whole reason to do one first.
+
+**What looking at it changed.** Two of the four swatches I had put on the canvas were the same colour.
+Luminance maps anything above 0.8 to `tint`, and paper white and the world tint are both above 0.8 — so
+a "paper — holes only" swatch and a "tint" swatch produce identical output. A canvas that offers four
+choices where there are three is a canvas that lies, and the person drawing finds out weeks later.
+Three swatches now.
+
+**And the paper behind each square is the world's tint, not white.** D83 lost twenty-five drawings to
+exactly one mistake: the biggest shape was filled with `--w-tint` and a module card's background *is*
+the world tint, so the art rendered perfectly and could not be seen. Writing that down as a rule for
+somebody else to remember is the weak fix. Making them draw on the colour the card will actually be is
+the strong one — a shape that will vanish, vanishes while they are drawing it, and they fix it without
+being told. **Eliminate before you instruct.**
+
+**The square they draw in has no fill.** A Figma frame with a background exports that background as a
+`<rect>`, and the importer would read it as a shape — the largest one, so it would set the bounding box
+and squash the real drawing into the middle of it. The frame is transparent and a locked rectangle sits
+behind it carrying the colour. What gets exported is only what was drawn.
+
+Still nothing shipped. `content/module-art.json` was written by the test and deleted again; the display
+side stays out until there are drawings worth displaying, and restoring it means bringing back the role
+support in `js/icons.js`, the card art slots in `js/screens.js` and the three CSS rules D84 removed.
