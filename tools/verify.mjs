@@ -102,11 +102,18 @@ check("the front door names who owns it",
   /©/.test(await page.locator(".owner-line").textContent()),
   await page.locator(".owner-line").textContent());
 await page.locator("main .next-btn").click();
+
+/* Between the handover and the picker sits the child's opening. It is asserted
+   properly further down; here the flow just has to walk through it, because a
+   five-year-old's first screen is no longer a reading test. (D81) */
+await page.waitForSelector(".intro-poke");
+check("handing over shows the child's opening", true, "Poke it.");
+await page.locator(".intro .next-btn").click();
 await page.waitForSelector(".picker-card");
 
 // then the level picker
-check("handing over shows the level picker",
-  (await page.locator("h1").textContent()) === "Which one feels right?");
+check("and the opening leads on to the level picker",
+  (await page.locator("#main h1").textContent()) === "Which one feels right?");
 check("picker offers exactly 4 reading samples", await page.locator(".picker-card").count() === 4);
 
 // touch target audit at each level, from the DOM not the token
@@ -365,6 +372,12 @@ await page.goto(BASE, { waitUntil: "networkidle" });
 await page.waitForSelector(".welcome-h");
 await page.screenshot({ path: join(SHOTS, "welcome.png"), fullPage: true });
 await page.locator("main .next-btn").click();       // the front door comes first now
+await page.waitForSelector(".intro-poke");         // then the child's opening (D81)
+await page.screenshot({ path: join(SHOTS, "intro.png") });
+for (let i = 0; i < 5; i++) { await page.locator(".intro-poke").click(); await page.waitForTimeout(150); }
+await page.waitForTimeout(600);
+await page.screenshot({ path: join(SHOTS, "intro-divided.png") });
+await page.locator(".intro .next-btn").click();
 await page.waitForSelector(".picker");
 await page.screenshot({ path: join(SHOTS, "picker.png") });
 
@@ -651,10 +664,83 @@ async function visibilityAudit(url, label) {
   await page.locator("main .next-btn").click();
   await page.waitForTimeout(300);
   const handed = await page.evaluate(() => document.querySelector("main h1")?.textContent);
-  check("it hands over to the reading-level picker", handed === "Which one feels right?", handed);
+  check("it hands over to the child's opening, not to a reading test",
+    handed === "Poke it.", handed);
   await page.reload({ waitUntil: "networkidle" });
   const again = await page.evaluate(() => document.querySelector("main h1")?.textContent);
-  check("and a parent is never shown it twice", again === "Which one feels right?", again);
+  check("and a parent is never shown the front door twice", again === "Poke it.", again);
+
+  /* THE OPENING. The first thing a child ever touches in this product, and the
+     one screen that cannot use either level dial because it runs before both are
+     set. What it must do is the thesis in one gesture: they act, it responds,
+     and the word comes last. (D81) */
+  {
+    await page.waitForSelector(".intro-poke");
+    const first = await page.evaluate(() => ({
+      cells: document.querySelectorAll(".intro-cell").length,
+      count: document.querySelector(".intro-count")?.textContent,
+      named: document.querySelector(".intro-named")?.hidden,
+      h1s: document.querySelectorAll("main h1").length,
+    }));
+    check("it opens on one cell and an instruction, not a name",
+      first.cells === 1 && first.count === "1 cell" && first.named === true, JSON.stringify(first));
+    check("and it is still exactly one top-level heading", first.h1s === 1, `${first.h1s}`);
+
+    const sizes = [];
+    for (const expect of [2, 4, 8, 16, 32]) {
+      await page.locator(".intro-poke").click();
+      await page.waitForTimeout(160);
+      const r = await page.evaluate(() => ({
+        n: document.querySelectorAll(".intro-cell").length,
+        w: parseFloat(getComputedStyle(document.querySelector(".intro-cell")).width),
+        say: document.querySelector(".intro-count")?.textContent,
+      }));
+      sizes.push(r.w);
+      if (r.n !== expect) check(`poking doubles the cells (${expect})`, false, JSON.stringify(r));
+    }
+    check("every poke doubles the cells, 1 through 32", true, "2 4 8 16 32");
+    /* Cleavage divides without the whole growing, so each cell really is smaller
+       than its parent. A child watching sees that without being told it. */
+    check("and each generation is smaller than the one before",
+      sizes.every((w, i) => i === 0 || w < sizes[i - 1]), sizes.map((w) => Math.round(w)).join(" > "));
+
+    const after = await page.evaluate(() => ({
+      named: document.querySelector(".intro-named")?.hidden,
+      name: document.querySelector(".intro-name")?.textContent,
+      live: document.querySelector(".intro-count")?.getAttribute("aria-live"),
+    }));
+    check("the word arrives only after they have done the thing",
+      after.named === false && after.name === "Dividing.", JSON.stringify(after));
+    check("and the count is announced, not just drawn", after.live === "polite", after.live);
+
+    /* One control, not two hundred and fifty-six. A keyboard user presses space
+       once; they do not tab through every cell on screen. */
+    const focusables = await page.evaluate(() =>
+      document.querySelectorAll("main button, main a[href], main [tabindex]:not([tabindex='-1'])").length);
+    check("the field is one control, however many cells are in it",
+      focusables <= 3, `${focusables} focusable things on screen`);
+
+    await page.locator(".intro-poke").focus();
+    const beforeKey = await page.locator(".intro-cell").count();
+    await page.keyboard.press("Enter");
+    await page.waitForTimeout(200);
+    check("and it divides from the keyboard as well as a finger",
+      (await page.locator(".intro-cell").count()) === beforeKey * 2, "");
+
+    await auditContrast("the opening");
+    await affordanceRule("the opening");
+    await overlapAudit("the opening");
+
+    /* A child who does not want to play must never be trapped, so the way on is
+       there from the first second — and once taken, the opening is done with. */
+    await page.locator(".intro .next-btn").click();
+    await page.waitForTimeout(300);
+    check("the way onward is there from the first second, and leads to the picker",
+      (await page.evaluate(() => document.querySelector("main h1")?.textContent)) === "Which one feels right?", "");
+    await page.reload({ waitUntil: "networkidle" });
+    check("and the opening never plays twice",
+      (await page.evaluate(() => document.querySelector("main h1")?.textContent)) === "Which one feels right?", "");
+  }
   /* Put the world back. This block clears storage to reach the front door, and
      leaving it cleared sent every later test to the front door too. A test
      restores what it disturbs. Written out longhand because the freshSave and

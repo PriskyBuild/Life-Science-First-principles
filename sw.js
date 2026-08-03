@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "1300c92919a3";
+const VERSION = "584542543232";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -143,6 +143,7 @@ const PRECACHE = [
   "js/curriculum.js",
   "js/el.js",
   "js/icons.js",
+  "js/intro.js",
   "js/lesson/celebrate.js",
   "js/lesson/parts.js",
   "js/lesson/parts/build.js",

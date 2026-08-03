@@ -182,6 +182,11 @@ export function me() {
             onchange: (e) => loadFile(e.currentTarget) }))),
       el("p", { class: "notice notice--soft", id: "keep-said", hidden: true })),
 
+    /* Children re-watch the thing they liked. Taking it away is a small loss for
+       no gain, so it stays reachable — just not in the way. (D81) */
+    el("a", { class: "back pressable", href: "#/intro" },
+      svgIcon("next"), el("span", { text: "Watch the opening again" })),
+
     el("button", {
       class: "danger pressable",
       onclick: () => { if (confirm("Erase all progress? This cannot be undone.")) { reset(); location.hash = "#/"; } },

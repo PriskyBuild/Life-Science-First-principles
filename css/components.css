@@ -823,6 +823,79 @@ fp-board .board-slots fp-slot { flex: 1 1 8rem; }
   border-color: var(--chip, var(--w-line)); color: var(--w-text);
 }
 
+
+/* ---- the opening. Read once, by a CHILD, before the level picker. -----------
+
+   It runs before either level dial has been set, so there is no register to
+   write to and no world palette from progress — the section carries
+   data-world="origins" so --w-* resolves to the first world's colours.
+
+   Every effect here is CSS. The cells move because a transform transition moves
+   them, breathe because of one keyframe, and stop doing both under reduced
+   motion because that is a media query rather than a branch in a script. (D81) */
+.intro { display: grid; gap: var(--s-3); justify-items: center; text-align: center; }
+.intro-h {
+  font-family: var(--font-display); font-size: var(--fs-2xl); font-weight: var(--weight-display);
+  color: var(--w-deep); margin: 0; min-height: 1.15em;
+}
+.intro-sub { color: var(--ink-2); max-width: 32ch; margin: 0; min-height: 3em; }
+
+/* The field IS the control. One target, so a keyboard user presses space once
+   rather than tabbing through two hundred and fifty-six cells. */
+.intro-poke {
+  position: relative; display: block; width: min(100%, 34rem); aspect-ratio: 5 / 4;
+  margin: var(--s-2) 0; padding: 0; overflow: hidden;
+  border-radius: var(--r-lg); border: var(--clay-border) solid var(--w-line);
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--surface) 0%, transparent 70%),
+    var(--w-tint);
+  box-shadow: var(--e1); cursor: pointer;
+}
+.intro-field { position: absolute; inset: 0; }
+
+.intro-cell {
+  position: absolute; left: var(--x); top: var(--y);
+  width: var(--r); aspect-ratio: 1; margin: calc(var(--r) / -2) 0 0 calc(var(--r) / -2);
+  border-radius: 50%;
+  /* A cell reads as a cell because the light sits off-centre and there is a
+     denser spot inside it. Two gradients, no images, no requests. */
+  background:
+    radial-gradient(circle at 57% 59%, var(--w-deep) 0 13%, transparent 14%),
+    radial-gradient(circle at 34% 30%, #fff6 0 22%, transparent 46%),
+    var(--w-fill);
+  box-shadow: 0 0 0 max(1px, calc(var(--r) * .06)) var(--w-line), var(--e1);
+  transition: left 620ms var(--ease-appear), top 620ms var(--ease-appear),
+              width 620ms var(--ease-appear), margin 620ms var(--ease-appear);
+  animation: intro-breathe 3.4s var(--ease-move) infinite;
+  animation-delay: var(--d);
+}
+@keyframes intro-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.07); }
+}
+
+.intro-count {
+  font-family: var(--font-display); font-weight: var(--weight-bold);
+  font-variant-numeric: tabular-nums; color: var(--w-text); margin: 0;
+}
+.intro-named { display: grid; gap: 2px; justify-items: center; margin-top: var(--s-2); }
+.intro-kicker {
+  font-size: var(--fs-sm); font-weight: var(--weight-bold); letter-spacing: .06em;
+  text-transform: uppercase; color: var(--w-text); margin: 0;
+}
+.intro-name {
+  font-family: var(--font-display); font-size: var(--fs-xl); font-weight: var(--weight-display);
+  color: var(--ink); margin: 0;
+}
+.intro .next-btn { margin-inline-start: 0; margin-top: var(--s-4); }
+
+/* Asked for less movement: the cells still divide, still get smaller, still
+   count up. They simply arrive where they are going instead of travelling, and
+   nothing breathes. The lesson is untouched; only the motion is. */
+@media (prefers-reduced-motion: reduce) {
+  .intro-cell { transition: none; animation: none; }
+}
+
 /* ---- the front door. Read once, by an adult, before anything else. ---- */
 .owner-mark {
   display: block; width: 8.5rem; height: 8.5rem; margin: 0 auto var(--s-4);

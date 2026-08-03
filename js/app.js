@@ -2,7 +2,7 @@
    works identically from a file server, a static host and the service worker. */
 
 import { progress, subscribe } from "./state.js";
-import { applyRoot, needsPicker, needsWelcome } from "./level.js";
+import { applyRoot, needsPicker, needsWelcome, needsIntro } from "./level.js";
 import { loadCurriculum } from "./curriculum.js";
 import { atlas, module as moduleScreen, levelPicker, welcome } from "./screens.js";
 import { el, mount } from "./el.js";
@@ -17,6 +17,10 @@ const lazyReview = () => import("./lesson/review.js").then((m) => m.reviewView()
 /* Me is a route too: badges, the specimen shelf and every setting are worth
    several kilobytes that a child booting to the Atlas has no use for. (D73) */
 const lazyMe = () => import("./me.js").then((m) => m.me());
+/* The opening is lazy for the same reason as everything else here: it is played
+   once and then never again, and a child returning to the Atlas on day two
+   should not be downloading it. (D81) */
+const lazyIntro = () => import("./intro.js").then((m) => m.intro());
 
 /* `live: true` marks a route that owns its own DOM across state changes.
    Without it, awarding XP mid-lesson dispatched fp:change, the subscriber
@@ -29,6 +33,7 @@ const routes = [
   [/^\/l\/([\w-]+)\/(\d+)$/, lazyLesson, { live: true }],
   [/^\/review$/, lazyReview, { live: true }],
   [/^\/me$/, lazyMe],
+  [/^\/intro$/, lazyIntro],
 ];
 
 let liveRoute = false;
@@ -58,7 +63,9 @@ async function paint() {
   /* Two gates before the router, in order: say what this is, then ask how the
      words should read. Both are one-time and both override the hash, because a
      cold start has nothing to route to yet. */
-  const view = needsWelcome() ? welcome : needsPicker() ? levelPicker : resolve();
+  const view = needsWelcome() ? welcome
+    : needsIntro() ? lazyIntro
+    : needsPicker() ? levelPicker : resolve();
   // A view may be async (lazily-imported lesson code). Awaiting it here keeps
   // every caller synchronous-looking and means there is exactly one paint path.
   /* A view that throws used to render NOTHING — a blank page, no console error,

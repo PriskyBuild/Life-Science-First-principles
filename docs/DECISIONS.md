@@ -1625,3 +1625,51 @@ DENY-list in D68, arriving from the opposite direction. Nothing under `tools/`, 
 app content, and the rule says so now rather than relying on the extension list to have an opinion.
 
 261 of 261 in the browser suite, 4 of 4 in the new upgrade gate.
+
+### D81 — The child's first thirty seconds
+*Asked for: "an introduction page with some beautiful CSS, effect that helps children lock on." What
+was actually missing was smaller and worse than a missing page.*
+
+The front door is written for the parent — it has to be, because the parent is who decides. They read
+it and press *Hand it to your child*. And the very first thing that child met was **"Which one feels
+right?"**: four sentences to measure yourself against. Of every screen in this product it is the only
+one that asks before it gives, and it was the one a five-year-old saw first.
+
+**So the opening is the thesis performed, not stated.** One cell, breathing. Poke it and it splits in
+two. Poke again and both split. Five pokes and there are thirty-two, every one descended from the one
+they started with, each smaller than its parent — which is what a cleaving embryo actually does, where
+the cells divide without the whole growing. **The count doubling in front of them is the lesson**: 1,
+2, 4, 8, 16, 32. Only then does the word arrive: *Dividing.* And underneath it, the only thing the
+screen says about itself — *you did it before you knew the word, and that is the order everything here
+happens in.*
+
+**It is not a splash screen, and the difference is not decoration.** A splash is a wait, and nothing
+here may make a child wait in order to be shown a logo. A splash is also skippable, which teaches a
+child to skip. This is operable in the first second and finishable in the first second — the way onward
+sits there from the start, because a child who does not want to play must never be trapped, and a
+parent showing three children in a row should not have to divide cells three times.
+
+**Every effect is CSS.** Cells are elements; they move because a transform transition moves them and
+breathe because of one keyframe. No canvas, no render loop, no frame budget — and reduced motion then
+becomes a media query rather than a branch in a script. Under it the cells still divide, still shrink,
+still count up; they simply arrive where they are going instead of travelling. **The lesson is
+untouched and only the motion is**, which is the whole of what that setting asks for.
+
+**One control, not two hundred and fifty-six.** Every cell being a button would mean tabbing through
+every cell on screen and a screen reader reading each one. The field is the control and the cells are
+what it looks like; the count sits in a live region, so a child who cannot see it is told it doubled.
+
+**The one screen that cannot use the two dials.** It runs before either has been set, so there is no
+prose level to write to. Everything on it is a single register — short enough for a five-year-old, not
+so soft that a fifteen-year-old feels handled. That constraint is why the copy is this plain, and it is
+worth saying out loud because the instinct on a first-run screen is to write it warmly for the
+youngest, which would patronise three quarters of the audience on their first contact.
+
+**No random numbers.** Cells push apart at the golden angle, 137.5° — what a sunflower does with its
+seeds. It fills the space evenly, and the same taps always give the same picture, so a test can assert
+against it rather than around it.
+
+It is a lazy route, played once, and reachable again from Me — because children re-watch the thing they
+liked, and taking it away is a small loss for no gain.
+
+275 of 275.

@@ -68,6 +68,13 @@ export const needsPicker = () => progress.prose == null;
 /* The front door comes before the level picker, and only once. A parent who has
    already read it should never be made to read it again. */
 export const needsWelcome = () => progress.prose == null && !progress.prefs?.greeted;
+/* And between the two, the child's own opening. The parent reads the front door
+   and hands the device over; without this the very next thing a five-year-old
+   met was four sentences to measure themselves against. It runs once, and only
+   after the handover, so a parent still choosing is never made to sit through
+   it. (D81) */
+export const needsIntro = () =>
+  progress.prose == null && !!progress.prefs?.greeted && !progress.prefs?.met;
 
 /* ---------------------------------------------------------- the level nudge
    Self-selected difficulty skews upward: children pick the clever-sounding
