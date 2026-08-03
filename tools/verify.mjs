@@ -34,6 +34,17 @@ const browser = await chromium.launch(
   process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, deviceScaleFactor: 2 });
 const page = await ctx.newPage();
+/* ONE definition of "on screen", available to every page.evaluate in this file.
+
+   getClientRects() was the D70 answer and it is not enough: Chrome hides a closed
+   <details> with content-visibility, and its descendants still report boxes. Only
+   checkVisibility() accounts for that. The rule stands — do not ask an element
+   what it thinks it is doing — but the way to ask had to get sharper. (D73) */
+await ctx.addInitScript(() => {
+  window.shown = (n) => (n.checkVisibility
+    ? n.checkVisibility({ contentVisibilityAuto: true, visibilityProperty: true })
+    : n.getClientRects().length > 0);
+});
 const errors = [];
 /* Two tests deliberately break the network — one severs it entirely, one blocks a
    single file to prove the shelf survives without it. A request that fails while
@@ -316,7 +327,7 @@ await page.emulateMedia({ colorScheme: "light" });
 
 // 14. capture the remaining surfaces for review
 await page.goto(BASE + "#/me", { waitUntil: "networkidle" });
-await page.waitForSelector(".choices");
+await page.waitForSelector(".choices", { timeout: 8000 });
 await page.screenshot({ path: join(SHOTS, "me.png"), fullPage: true });
 await page.goto(BASE + "#/m/what-is-life", { waitUntil: "networkidle" });
 await page.waitForSelector(".module-head");
@@ -381,7 +392,11 @@ async function elevationDirection(label) {
 /* 17. Affordance rule: inside main, raised == touchable, both directions. */
 async function affordanceRule(label) {
   const bad = await page.evaluate(() => {
-    const touchable = (n) => !!n.closest('a[href],button,label,[tabindex]:not([tabindex="-1"])');
+    /* <summary> is natively focusable and activates its <details> — it is a
+       control, and the rule simply had never met a raised one before the shelf.
+       An affordance rule that does not know the platform's own controls will
+       eventually call a real button a decoration. */
+    const touchable = (n) => !!n.closest('a[href],button,label,summary,[tabindex]:not([tabindex="-1"])');
     const raised = (n) => {
       const sh = getComputedStyle(n).boxShadow;
       return sh && sh !== "none" && !/^inset/.test(sh);
@@ -2554,7 +2569,7 @@ const mountSelection = (body) => page.evaluate(async (src) => {
   await page.waitForSelector(".stage--done");
 
   const lying = await page.evaluate(() => [...document.querySelectorAll("[hidden]")]
-    .filter((n) => n.getClientRects().length > 0)
+    .filter((n) => shown(n))
     .map((n) => n.className || n.tagName));
   check("nothing marked hidden is still on screen", lying.length === 0, lying.join(", "));
 
@@ -2569,7 +2584,7 @@ const mountSelection = (body) => page.evaluate(async (src) => {
      whatever it believes about itself. */
   const exits = await page.evaluate(() =>
     [...document.querySelectorAll(".stage-wrap button, .stage-wrap a")]
-      .filter((b) => b.getClientRects().length > 0).map((b) => b.textContent.trim()));
+      .filter((b) => shown(b)).map((b) => b.textContent.trim()));
   check("a finished lesson shows exactly one control, and it is the way out",
     exits.length === 1, JSON.stringify(exits));
   check("and it says where it goes", /Cells/.test(exits[0] ?? ""), exits[0] ?? "(none)");
@@ -2656,6 +2671,51 @@ const mountSelection = (body) => page.evaluate(async (src) => {
     JSON.stringify(readable));
   await page.unroute("**/specimen-art.json");
   breakingNetwork = false;
+}
+
+/* 86. A screen that cannot render must SAY so. A missing import in the lazily
+   loaded Me screen rendered a blank page with no console error and no clue — the
+   router awaited the view and mounted whatever came back, including nothing. It
+   took calling the function by hand in a browser to find. (D73) */
+{
+  await openWith(freshSave({ level: 2 }));
+  await page.waitForSelector(".islands");
+  breakingNetwork = true;
+  await page.route("**/js/me.js", (r) => r.abort());
+  await page.evaluate(async () => {
+    const regs = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(regs.map((r) => r.unregister()));
+  });
+  await page.goto(BASE + "#/me", { waitUntil: "networkidle" });
+  await page.reload({ waitUntil: "networkidle" });
+  await page.waitForTimeout(600);
+  const said = await page.evaluate(() => document.querySelector("main")?.innerText ?? "");
+  check("a screen that cannot load says so instead of going blank",
+    said.trim().length > 20 && /did not load/i.test(said), said.slice(0, 70));
+  check("and it still offers a way out",
+    await page.locator('main a[href="#/"]').count() > 0);
+  await page.unroute("**/js/me.js");
+  breakingNetwork = false;
+}
+
+/* 87. The shelf groups by world, and a world with nothing in it stays shut. Flat,
+   thirteen filled cards were followed by ninety-seven identical grey ones. */
+{
+  await openWith(freshSave({ level: 2, specimens: ["scale-lens", "membrane", "nucleus"] }), "#/me");
+  await page.waitForSelector(".shelf-world", { timeout: 8000 });
+  const shelf = await page.evaluate(() => ({
+    worlds: document.querySelectorAll(".shelf-world").length,
+    open: [...document.querySelectorAll(".shelf-world")].filter((d) => d.open).length,
+    visibleCards: [...document.querySelectorAll(".specimen")].filter((n) => shown(n)).length,
+    count: document.querySelector(".shelf-count")?.textContent ?? "",
+  }));
+  check("the shelf is grouped by world, not one flat list of 110",
+    shelf.worlds >= 6, JSON.stringify(shelf));
+  check("only the world you have collected from is open",
+    shelf.open === 1, `${shelf.open} open of ${shelf.worlds}`);
+  check("so the empty ninety-seven are not a wall of grey",
+    shelf.visibleCards < 20, `${shelf.visibleCards} cards on screen`);
+  check("and the shelf says how many you have", /\b3 of \d+/.test(shelf.count), shelf.count);
 }
 
 check("no console errors anywhere", errors.length === 0, errors.slice(0, 3).join(" | "));

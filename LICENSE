@@ -1,0 +1,44 @@
+Copyright © 2026 PriskyBuild. All rights reserved.
+
+This includes the source code, the curriculum, the lesson text, the simulations,
+the artwork and every other original work in this repository.
+
+No permission is granted to copy, modify, distribute, publish, sublicense or
+otherwise use any part of this work, in whole or in part, by any means, without
+the prior written permission of the copyright holder.
+
+--------------------------------------------------------------------------------
+
+A NOTE ON THIS FILE, WHICH IS A PLACEHOLDER AND SHOULD BE REPLACED.
+
+Until now this repository carried no licence at all. That is not the same as
+being unrestricted: under the Berne Convention an original work is protected
+automatically from the moment it is fixed, and the absence of a licence means
+nobody has permission to do anything with it. So "all rights reserved" was
+already the legal position — this file only states it out loud, and removes the
+ambiguity for anyone who reads the repository and wonders.
+
+It therefore forecloses nothing. It is the most conservative option available
+and it is deliberately temporary.
+
+The owner intends this work to reach homeschooling families, which the terms
+above do not permit. Three replacements were put to the owner:
+
+  1. Keep it locked. These terms, unchanged. Every use approved individually.
+
+  2. Free for families, not for companies. Homeschoolers, co-ops and individual
+     teachers may use, copy and share it at no cost; commercial use requires a
+     separate agreement. A Creative Commons BY-NC licence is the usual vehicle,
+     commonly with ShareAlike or NoDerivatives depending on whether adaptations
+     should be permitted.
+
+  3. Fully open. Anyone may use, adapt and sell it, with attribution. MIT or
+     Apache-2.0 for the code; CC BY for the curriculum and artwork.
+
+Code and content are often licensed separately, because what suits a program
+rarely suits a book. That choice, and the exact legal name of the copyright
+holder, are the owner's to make. Nothing here is legal advice.
+
+The name and the licence appear in exactly two places in the running app, both
+read from one constant: OWNER and LICENCE in js/screens.js. Changing them there
+changes the front door and the Me screen together.

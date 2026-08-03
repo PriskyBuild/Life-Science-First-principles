@@ -1377,3 +1377,54 @@ and turns to coloured mush at 64 — so it belongs on the front door and the Abo
 28px header, and the flat vector mark stays there. Quantised to 96 colours: **13.5 KB against 92 KB,
 visually identical at every size used.** And the honest note: a logo does not claim ownership. A
 LICENSE file does, and there still isn't one.
+
+### D73 — The shelf was a wall of grey, and three faults found under it
+*The design fault I reported in D71 and then fixed. It uncovered more than it cost.*
+
+Thirteen filled cards followed by **ninety-seven identical grey "Not collected" cards** — and the new
+drawings made the emptiness more conspicuous, not less. It is now grouped by world using native
+`<details>`: a world you have collected from opens by default, and a world you have not reached is a
+single coloured line saying `0 of 14`. Thirteen cards on screen instead of a hundred and ten. What you
+have found should never need a click; what you have not yet reached should never need a scroll.
+
+**Three faults surfaced while doing it, and each is worth more than the fix.**
+
+**1. A broken screen rendered nothing at all.** Moving the Me screen out of the shell left one import
+behind, and the result was a blank page — no console error, no clue, nothing. The router awaited the
+view and mounted whatever came back, including `undefined`. It took calling the function by hand in a
+browser to find a plain `ReferenceError`. A screen that cannot render must *say* so; silence is the one
+response that helps nobody. The router now catches, logs, and renders an apology with a way out — and
+there is a check that blocks the module and asserts the app says something.
+
+**2. The affordance rule did not know `<summary>` is a control.** It tested
+`a[href], button, label, [tabindex]`, so a raised `<summary>` read as "raised but not touchable". The
+shelf is the first raised summary the audit has ever walked, so the rule had never been wrong out
+loud. **An affordance rule that does not know the platform's own controls will eventually call a real
+button a decoration.**
+
+**3. `getClientRects()` was not a sharp enough question.** D70's rule was "do not ask an element what
+it thinks it is doing, ask whether it is on screen", and client rects were how I asked. Chrome hides a
+closed `<details>` with `content-visibility`, and its descendants **still report boxes** — so the test
+counted all 110 cards as visible when only 13 were. `checkVisibility()` accounts for it and
+`getClientRects()` does not. The rule stands; the way of asking had to get sharper, and there is now
+one definition of "on screen" injected into every page in the suite rather than three spellings of it.
+
+**And a budget boundary moved, honestly.** Taking the Me screen out of the shell dropped boot from
+**24.7 KB to 16.0** and pushed the worst lesson route from 19.8 to 25.5, because `reward.js` and
+`audio.js` are no longer downloaded merely to look at the Atlas. Same bytes, correctly charged. The
+composite went **down**, 56.0 to 53.8 KB. So the per-tier limits were re-derived rather than treated as
+sacred: **they are diagnostics, the composite is the ceiling.** Refusing to re-derive after a boundary
+moves means the build fails an improvement. Shell is now capped at 20 KB rather than 25, which locks
+the gain in.
+
+The front-door copy also moved out of the shell into `content/welcome.json` — 1.5 KB of prose that
+every child was downloading to boot, and which will be revised by someone who should not have to open
+a JavaScript file to do it. Only the headline and the button stay inline, so a failed fetch still
+leaves a screen that says something and a control that works.
+
+**A LICENSE exists at last, and it is a placeholder that says so.** The absence of one was never
+neutral: an original work is protected automatically, so "no licence" already meant nobody could use
+anything. The file now states that out loud, forecloses nothing, and sets out the three replacements
+put to the owner — locked, free-for-families-not-companies, or fully open — along with the note that
+code and content are usually licensed separately. The choice and the exact legal name are the owner's,
+and both are read from one constant so changing them is a one-line edit.

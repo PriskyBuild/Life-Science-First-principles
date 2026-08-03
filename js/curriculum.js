@@ -130,11 +130,20 @@ export function allSpecimens() {
   for (const world of worlds) {
     for (const m of world.modules) {
       for (const specimen of m.specimens ?? []) {
-        out.push({ specimen, module: { ...m, worldId: world.id } });
+        out.push({ specimen, module: { ...m, worldId: world.id }, world });
       }
     }
   }
   return out;
+}
+
+/** The same list, in world order, with each world's own specimens together.
+    A flat list of 110 is a wall; a shelf has shelves. */
+export function specimensByWorld() {
+  const all = allSpecimens();
+  return worlds.map((world) => ({
+    world, items: all.filter((s) => s.module.worldId === world.id),
+  })).filter((g) => g.items.length);
 }
 
 /** The single thing the Atlas should glow: the next unlocked, unfinished module. */

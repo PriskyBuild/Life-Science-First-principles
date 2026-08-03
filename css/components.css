@@ -468,6 +468,18 @@ fp-predict { display: grid; gap: var(--s-3); max-width: var(--measure); }
 .badge-why { display: block; font-size: var(--fs-sm); color: var(--ink-3); }
 .badge--earned .badge-why { color: var(--ink-2); }
 
+.shelf-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-3); }
+.shelf-count { font-weight: var(--weight-bold); color: var(--ink-3); font-size: var(--fs-sm); }
+.shelf-world { margin-top: var(--s-3); }
+.shelf-summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+  min-height: var(--touch); padding: var(--s-2) var(--s-4);
+  border-radius: var(--r-md); border: var(--clay-border) solid var(--w-line, var(--hairline));
+  background: var(--surface); box-shadow: var(--e1); cursor: pointer;
+}
+.shelf-world-name { font-family: var(--font-display); font-weight: var(--weight-bold); color: var(--w-text, var(--ink)); }
+.shelf-world-count { font-size: var(--fs-sm); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.shelf-world[open] .shelf-summary { margin-bottom: var(--s-3); }
 .specimens { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fill, minmax(min(13rem,100%), 1fr)); }
 .specimen {
   display: grid; gap: 2px; align-content: start;

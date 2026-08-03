@@ -3,16 +3,14 @@
 
 import { el } from "./el.js";
 import { icon as svgIcon, svgEl, svgOf } from "./icons.js";
-import { progress, reset, update } from "./state.js";
-import { LEVELS, DEPTH, prose, content, setLevels } from "./level.js";
-import { sfx, canSpeak } from "./audio.js";
+import { progress, setPref } from "./state.js";
+import { LEVELS, prose, content, setLevels } from "./level.js";
 import {
   worlds, getModule, getWorldOf, isComplete, isModuleUnlocked,
-  isWorldUnlocked, worldProgress, lockReason, nextUp, completedCount, allSpecimens,
+  isWorldUnlocked, worldProgress, lockReason, nextUp, completedCount, specimensByWorld,
   playableWorlds, comingWorlds, writtenCount, isWritten,
 } from "./curriculum.js";
 import { due, dueCount, SESSION_CAP } from "./scheduler.js";
-import { BADGES, earnedBadges, hasSpecimen } from "./reward.js";
 
 const lvl = prose;   /* text variants are a reading decision, always */
 
@@ -24,7 +22,7 @@ export const LICENCE = "All rights reserved";
 /** Text nodes carry variants and fall back to the nearest lower level, so
     content can ship with two variants and be refined later without a schema
     change. Blueprint 8.6. */
-const pick = (v) => (Array.isArray(v) ? v[Math.min(lvl() - 1, v.length - 1)] : v);
+export const pick = (v) => (Array.isArray(v) ? v[Math.min(lvl() - 1, v.length - 1)] : v);
 
 
 /* ---------------------------------------------------------------- progress ring */
@@ -196,197 +194,24 @@ export function module(id) {
 }
 
 /* ------------------------------------------------------------------------- me */
-function choiceGroup(legend, name, options, currentValue, onPick) {
-  return el("fieldset", { class: "choices" },
-    el("legend", { text: legend }),
-    el("div", { class: "choice-row" },
-      options.map((o) =>
-        el("label", { class: "choice" },
-          el("input", {
-            type: "radio", name, value: String(o.value),
-            "data-fk": `${name}:${o.value}`,          // survives the repaint, see app.js
-            checked: String(o.value) === String(currentValue),
-            onchange: () => onPick(o.value),
-          }),
-          el("span", { class: "choice-box pressable" },
-            el("span", { class: "choice-label", text: o.label }),
-            o.hint ? el("span", { class: "choice-hint", text: o.hint }) : null)))));
-}
-
-/* Preferences go through state.update like everything else — one persistence
-   path, one place migrations have to know about. applyRoot() reads them back
-   onto <html> so CSS is the only consumer. */
-function setPref(key, value) {
-  update((p) => { p.prefs[key] = value || null; });
-}
-
-function badgeShelf() {
-  const earned = new Set(earnedBadges(progress).map((b) => b.id));
-  return el("section", { class: "shelf" },
-    el("h2", { text: "Badges" }),
-    // Every criterion reads the retrieval schedule, never the completion count.
-    // "Finished the module" is not a badge; "still had it three weeks later" is.
-    el("p", { class: "shelf-note", text: pick([
-      "You get these for remembering things later, not for finishing things.",
-      "Awarded on what you still remember weeks later — not on what you completed.",
-    ]) }),
-    el("ul", { class: "badges" }, BADGES.map((b) =>
-      el("li", { class: `badge${earned.has(b.id) ? " badge--earned" : ""}` },
-        el("span", { class: "badge-mark" }, svgIcon(earned.has(b.id) ? "done" : "lock")),
-        el("span", {},
-          el("span", { class: "badge-title", text: b.title }),
-          el("span", { class: "badge-why", text: b.why }))))));
-}
-
-/* The drawings arrive AFTER the shelf, never before it, and the shelf is fully
-   readable without them. A picture is the reward for collecting the thing; it is
-   not allowed to be a prerequisite for reading about it. One fetch, cached, and a
-   failure is silence rather than an empty screen. (D71) */
-let artPromise;
-function drawSpecimen(slot, id) {
-  artPromise ??= fetch("content/specimen-art.json").then((r) => r.json()).catch(() => ({}));
-  artPromise.then((art) => {
-    if (art[id] && slot.isConnected) {
-      slot.replaceChildren(svgOf(art[id], { cls: "specimen-art", box: 48 }));
-    }
-  });
-}
-
-function specimenShelf() {
-  const all = allSpecimens();
-  if (!all.length) return null;
-  return el("section", { class: "shelf" },
-    el("h2", { text: "Specimens" }),
-    el("p", { class: "shelf-note", text: pick([
-      "These are parts, not stickers. You use them to build things later.",
-      "Each is a working component: collecting it here is what lets you build with it in a later world.",
-    ]) }),
-    el("ul", { class: "specimens" }, all.map(({ specimen, module }) => {
-      const got = hasSpecimen(specimen.id);
-      // Only for collected ones: seeing the drawing IS the reveal.
-      const slot = got ? el("span", { class: "specimen-slot" }) : null;
-      if (slot) drawSpecimen(slot, specimen.id);
-      return el("li", { class: `specimen${got ? " specimen--got" : ""}`, "data-world": module.worldId },
-        slot,
-        el("span", { class: "specimen-title", text: got ? specimen.title : "Not collected" }),
-        el("span", { class: "specimen-blurb", text: got ? pick(specimen.blurb) : `From ${module.title}` }),
-        el("span", { class: "specimen-unlocks", text: got ? specimen.unlocks : "" }));
-    })));
-}
-
-export function me() {
-  /* No XP number and no streak. Both were built carefully and read by nothing:
-     not a badge, not a screen, not a decision. A score with no evidence that a
-     child wants it is a number that teaches score-watching. Badges stay,
-     because they are evidence of mastery, and specimens stay because they are
-     content. See DECISIONS D37. */
-  const stats = [
-    ["Modules finished", completedCount(progress)],
-    ["Specimens", progress.specimens.length],
-    ["Badges", earnedBadges(progress).length],
-  ];
-
-  return [
-    el("a", { class: "back pressable", href: "#/" }, svgIcon("back"), el("span", { text: "Atlas" })),
-    el("h1", { text: "Me" }),
-    el("ul", { class: "stats" }, stats.map(([k, v]) =>
-      el("li", {}, el("span", { class: "stat-v", text: String(v) }), el("span", { class: "stat-k", text: k })))),
-
-    badgeShelf(),
-    specimenShelf(),
-
-    /* Two dials, deliberately separate and deliberately explained. Reading
-       ability and conceptual maturity are independent, and the child who needs
-       that most is the one who cannot get at it if they are one control. */
-    el("p", { class: "shelf-note", text: pick([
-      "You can change how the words are written and how hard the science is, one at a time.",
-      "Words and science are separate settings. Make the words easier without making the science easier — that is allowed, and it is what it is for.",
-    ]) }),
-    choiceGroup("How should the words be written?", "prose",
-      LEVELS.map((l) => ({ value: l.n, label: l.label, hint: l.sample })), prose(),
-      (v) => setLevels({ prose: v })),
-    choiceGroup("How deep should the science go?", "content",
-      DEPTH.map((d) => ({ value: d.n, label: d.label, hint: d.hint })), content(),
-      (v) => setLevels({ content: v })),
-
-    choiceGroup("Colours", "theme", [
-      { value: "", label: "Match my device" }, { value: "light", label: "Light" }, { value: "dark", label: "Dark" },
-    ], progress.prefs.theme ?? "", (v) => setPref("theme", v)),
-
-    /* Sound defaults ON: it is synthesised, so it costs nothing to ship, and
-       the confirmation chime on switching it back on is the fastest way to know
-       what the setting does. Voice defaults are DERIVED from the prose dial
-       rather than fixed — see audio.js. There is no music control because there
-       is no music. */
-    choiceGroup("Sounds", "sound", [
-      { value: "", label: "On", hint: "Quiet clicks and chimes as you play" },
-      { value: "off", label: "Off" },
-    ], progress.prefs.sound ?? "", (v) => { setPref("sound", v); sfx("pick"); }),
-
-    canSpeak() ? choiceGroup("Reading aloud", "voice", [
-      { value: "", label: "Match my reading level", hint: "Reads by itself at level 1, on request above it" },
-      { value: "auto", label: "Always read to me" },
-      { value: "ask", label: "Only when I ask" },
-      { value: "off", label: "Never" },
-    ], progress.prefs.voice ?? "", (v) => setPref("voice", v)) : null,
-
-    choiceGroup("Letter shapes", "face", [
-      { value: "", label: "Standard" },
-      { value: "hyperlegible", label: "Easier to read", hint: "A font designed for low vision and dyslexia" },
-    ], progress.prefs.face ?? "", (v) => setPref("face", v)),
-
-    el("button", {
-      class: "danger pressable",
-      onclick: () => { if (confirm("Erase all progress? This cannot be undone.")) { reset(); location.hash = "#/"; } },
-    }, "Erase all progress"),
-  ];
-}
-
-/* ---------------------------------------------------------------- level picker */
-/* ------------------------------------------------------------------ welcome
-   The front door, and it is written for the ADULT. A homeschooling parent is the
-   one deciding whether this gets used, and until now the first thing they saw was
-   "Which one feels right?" offering four sentences about cells — a reading-level
-   picker, before anything had said what the thing was. Real feedback, and fair.
-
-   It leads with the method rather than a slogan, because the method is the only
-   claim here that is unusual. And it says plainly what it does where biology
-   touches origins: this audience will want to know before handing it over, and
-   being surprised by that later would be a betrayal of their trust. */
-export function welcome() {
+export async function welcome() {
+  const c = await fetch("content/welcome.json").then((r) => r.json())
+    .catch(() => ({ headline: "A child runs the experiment first. The name for it comes after." }));
   return [
     el("img", { class: "owner-mark", src: "assets/publisher-mark.png",
       width: 320, height: 320, alt: "", decoding: "async" }),
-    el("h1", { class: "welcome-h", text: "A child runs the experiment first. The name for it comes after." }),
-    el("p", { class: "lede", text:
-      "Every lesson opens with something they can operate — a simulation to break, a "
-      + "prediction they have to commit to, a thing to build. The word for what they "
-      + "have just seen arrives afterwards, never before. That order is the whole method." }),
-    el("ul", { class: "welcome-facts" },
-      [["110 lessons, six worlds",
-        "Cells and DNA, bodies and ecosystems, and where biology is going next."],
-       ["Five to sixteen, on two dials",
-        "Reading level and science level are set separately, so a strong reader can have "
-        + "gentle science, or the other way round."],
-       ["Yours, and private",
-        "It works with no internet after the first visit. No account, no advertising, and "
-        + "nothing about your child leaves the device."],
-       ["Where biology touches origins",
-        "The child handles the evidence first. Then both readings of it are set out side by "
-        + "side and attributed to the people who hold them. We say which is which. We do not "
-        + "tell your child what to conclude."],
-      ].map(([k, v]) => el("li", {},
-        el("span", { class: "welcome-k", text: k }),
-        el("span", { class: "welcome-v", text: v })))),
-    /* data-world is not decoration here. .next-btn paints itself from --w-deep,
-       which only exists inside a world, so outside one the button rendered cream
-       text on a cream page: present, sized, shadowed and invisible. (D72) */
+    el("h1", { class: "welcome-h", text: c.headline }),
+    c.lede ? el("p", { class: "lede", text: c.lede }) : null,
+    c.facts ? el("ul", { class: "welcome-facts" }, c.facts.map(([k, v]) =>
+      el("li", {}, el("span", { class: "welcome-k", text: k }),
+        el("span", { class: "welcome-v", text: v })))) : null,
+    /* data-world is not decoration. .next-btn paints itself from --w-deep, which
+       only exists inside a world, so outside one it rendered cream text on a cream
+       page: present, sized, shadowed and invisible. (D72) */
     el("button", { class: "next-btn pressable m-attend", "data-world": "discovery",
       onclick: () => { setPref("greeted", "1"); location.hash = "#/"; } },
-      el("span", { text: "Hand it to your child" }), svgIcon("next")),
-    el("p", { class: "welcome-note", text:
-      "They choose how the words are written on the next screen. You can change it, and "
-      + "everything else, under Me." }),
+      el("span", { text: c.cta ?? "Start" }), svgIcon("next")),
+    c.note ? el("p", { class: "welcome-note", text: c.note }) : null,
     el("p", { class: "owner-line", text: `${OWNER} · ${LICENCE}` }),
   ];
 }

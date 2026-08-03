@@ -114,3 +114,10 @@ export function reset() {
 /* XP is awarded only through reward.js, which owns the rate table and refuses
    to pay for anything not in it. There is deliberately no generic
    "add N points" function here — that is the hole an economy leaks through. */
+
+/* Preferences go through update() like everything else — one persistence path,
+   one place migrations have to know about. applyRoot() reads them back onto
+   <html> so CSS is the only consumer. */
+export function setPref(key, value) {
+  update((p) => { p.prefs[key] = value || null; });
+}

@@ -4,8 +4,8 @@
 import { progress, subscribe } from "./state.js";
 import { applyRoot, needsPicker, needsWelcome } from "./level.js";
 import { loadCurriculum } from "./curriculum.js";
-import { atlas, module as moduleScreen, me, levelPicker, welcome } from "./screens.js";
-import { mount } from "./el.js";
+import { atlas, module as moduleScreen, levelPicker, welcome } from "./screens.js";
+import { el, mount } from "./el.js";
 
 const host = document.getElementById("main");
 const live = document.getElementById("live");
@@ -14,6 +14,9 @@ const live = document.getElementById("live");
    Atlas never downloads the runner, the quiz component or the review flow. */
 const lazyLesson = (...args) => import("./lesson/view.js").then((m) => m.lessonView(...args));
 const lazyReview = () => import("./lesson/review.js").then((m) => m.reviewView());
+/* Me is a route too: badges, the specimen shelf and every setting are worth
+   several kilobytes that a child booting to the Atlas has no use for. (D73) */
+const lazyMe = () => import("./me.js").then((m) => m.me());
 
 /* `live: true` marks a route that owns its own DOM across state changes.
    Without it, awarding XP mid-lesson dispatched fp:change, the subscriber
@@ -25,7 +28,7 @@ const routes = [
   [/^\/m\/([\w-]+)$/, moduleScreen],
   [/^\/l\/([\w-]+)\/(\d+)$/, lazyLesson, { live: true }],
   [/^\/review$/, lazyReview, { live: true }],
-  [/^\/me$/, me],
+  [/^\/me$/, lazyMe],
 ];
 
 let liveRoute = false;
@@ -58,7 +61,23 @@ async function paint() {
   const view = needsWelcome() ? welcome : needsPicker() ? levelPicker : resolve();
   // A view may be async (lazily-imported lesson code). Awaiting it here keeps
   // every caller synchronous-looking and means there is exactly one paint path.
-  mount(host, await view());
+  /* A view that throws used to render NOTHING — a blank page, no console error,
+     no clue. A missing import in a lazily-loaded screen was invisible until I
+     called the function by hand in a browser. A screen that cannot render must
+     say so; silence is the one response that helps nobody. (D73) */
+  let painted$;
+  try {
+    painted$ = await view();
+  } catch (e) {
+    console.error("view failed", e);
+    painted$ = [
+      el("h1", { text: "That screen did not load" }),
+      el("p", { class: "notice notice--soft", text:
+        "Something is wrong at our end, not yours. Your progress is safe — it is stored on this device." }),
+      el("a", { class: "back pressable", href: "#/" }, el("span", { text: "Back to the Atlas" })),
+    ];
+  }
+  mount(host, painted$);
 
   const restored = keep && host.querySelector(`[data-fk="${CSS.escape(keep)}"]`);
   if (restored) { restored.focus({ preventScroll: true }); return; }

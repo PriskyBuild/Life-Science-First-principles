@@ -413,8 +413,17 @@ const preloadFonts = files.filter((f) => f.includes("fonts/nunito"));
 }
 
 const budgets = [
-  ["shell JS (gz)", sum(shellJs), 25 * 1024],
-  [`lesson JS (gz, worst route: ${worstId})`, sum(worstSet), 20 * 1024],
+  /* THE PER-TIER LIMITS ARE DIAGNOSTICS. The composite below is the ceiling.
+
+     Moving the Me screen out of the shell dropped boot from 24.7 KB to 16.0 and
+     pushed the lesson route from 19.8 to 25.5, because reward.js and audio.js are
+     no longer downloaded to look at the Atlas — the same bytes, correctly charged
+     to the screen that needs them. Total went DOWN. Refusing to re-derive a tier
+     limit after a boundary moves means the build fails an improvement, so these
+     three are re-derived whenever the split changes and the composite is what may
+     not move. Each is set to the current figure plus real headroom, not to fit. */
+  ["shell JS (gz)", sum(shellJs), 20 * 1024],
+  [`lesson JS (gz, worst route: ${worstId})`, sum(worstSet), 28 * 1024],
   ["sim JS (gz, worst stage)", sum(simStage()), 20 * 1024],
   /* The first number here that matches what a child actually downloads to play
      a lesson: boot, plus the heaviest route, plus the heaviest simulation on it.

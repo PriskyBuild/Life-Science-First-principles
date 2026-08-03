@@ -2,7 +2,7 @@
    tools/build.mjs — do not hand-edit the list. Offline is the normal case for
    this product, not a degraded one. */
 
-const VERSION = "f07cbb777708";
+const VERSION = "7fb9dfe33457";
 const CACHE = `fp-${VERSION}`;
 
 /* __PRECACHE_START__ */
@@ -127,6 +127,7 @@ const PRECACHE = [
   "content/synthetic-biology/02-a-circuit-made-of-genes.json",
   "content/synthetic-biology/03-the-smallest-possible-life.json",
   "content/synthetic-biology/04-design-an-organism.json",
+  "content/welcome.json",
   "content/what-is-life/01-the-line-you-cannot-draw.json",
   "content/what-is-life/02-seven-rules-and-their-exceptions.json",
   "content/what-is-life/03-the-fire-that-isnt-alive.json",
@@ -153,6 +154,7 @@ const PRECACHE = [
   "js/lesson/tutor.js",
   "js/lesson/view.js",
   "js/level.js",
+  "js/me.js",
   "js/reward.js",
   "js/scheduler.js",
   "js/screens.js",
